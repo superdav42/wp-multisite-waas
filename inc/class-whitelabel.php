@@ -61,7 +61,7 @@ class Whitelabel {
 	 */
 	public function init(): void {
 
-		add_action('wp_ultimo_load', [$this, 'add_settings'], 20);
+		add_action('init', [$this, 'add_settings'], 20);
 
 		add_action('admin_init', [$this, 'clear_footer_texts']);
 
@@ -85,12 +85,9 @@ class Whitelabel {
 
 			add_action('wp_dashboard_setup', [$this, 'remove_dashboard_widgets'], 11);
 
-			add_action('admin_enqueue_scripts', [$this, 'enqueue_styles']);
-
-			add_action('wp_enqueue_scripts', [$this, 'enqueue_styles']);
 		}
 
-		if (wu_get_setting('hide_sites_menu', true)) {
+		if (wu_get_setting('hide_sites_menu', tenqueue_stylesrue)) {
 			add_action('network_admin_menu', [$this, 'remove_sites_admin_menu']);
 		}
 	}
@@ -291,6 +288,7 @@ class Whitelabel {
 		global $wp_admin_bar;
 
 		$wp_admin_bar->remove_menu('wp-logo');
+		$this->enqueue_styles();
 	}
 
 	/**
