@@ -47,14 +47,21 @@ class Scripts {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param string $handle The script handle. Used to enqueue the script.
-	 * @param string $src URL to the file.
-	 * @param array  $deps List of dependency scripts.
+	 * @param string     $handle The script handle. Used to enqueue the script.
+	 * @param string     $src URL to the file.
+	 * @param array      $deps List of dependency scripts.
+	 * @param array|bool $args     {
+	 *     Optional. An array of additional script loading strategies. Default empty array.
+	 *     Otherwise, it may be a boolean in which case it determines whether the script is printed in the footer. Default false.
+	 *
+	 *     @type string    $strategy     Optional. If provided, may be either 'defer' or 'async'.
+	 *     @type bool      $in_footer    Optional. Whether to print the script in the footer. Default 'false'.
+	 * }
 	 * @return void
 	 */
-	public function register_script($handle, $src, $deps = []): void {
+	public function register_script($handle, $src, $deps = [], $args = ['async' => true, 'in_footer' => true]): void {
 
-		wp_register_script($handle, $src, $deps, wu_get_version());
+		wp_register_script($handle, $src, $deps, wu_get_version(), $args);
 	}
 
 	/**
@@ -141,9 +148,9 @@ class Scripts {
 			[
 				'currency'           => wu_get_setting('currency_symbol', 'USD'),
 				'currency_symbol'    => wu_get_currency_symbol(),
-				'currency_position'  => wu_get_setting('currency_position'),
-				'decimal_separator'  => wu_get_setting('decimal_separator'),
-				'thousand_separator' => wu_get_setting('thousand_separator'),
+				'currency_position'  => wu_get_setting('currency_position', '%s %v'),
+				'decimal_separator'  => wu_get_setting('decimal_separator', '.'),
+				'thousand_separator' => wu_get_setting('thousand_separator', ','),
 				'precision'          => wu_get_setting('precision', 2),
 				'use_container'      => get_user_setting('wu_use_container', false),
 				'disable_image_zoom' => wu_get_setting('disable_image_zoom', false),
@@ -153,7 +160,11 @@ class Scripts {
 		/*
 		 * Adds Fields & Components
 		 */
-		$this->register_script('wu-fields', wu_get_asset('fields.js', 'js'), ['jquery', 'wu-vue', 'wu-selectizer', 'wp-color-picker']);
+		$this->register_script(
+			'wu-fields',
+			wu_get_asset('fields.js', 'js'),
+			['jquery', 'wu-vue', 'wu-selectizer', 'wp-color-picker']
+		);
 
 		/*
 		 * Localize components
@@ -226,6 +237,13 @@ class Scripts {
 				'noiframes'        => __('This feature requires inline frames. You have iframes disabled or your browser does not support them.'),
 				'loadingAnimation' => includes_url('js/thickbox/loadingAnimation.gif'),
 			]
+		);
+
+		wp_register_script_module(
+			'wu-flags-polyfill',
+			wu_get_asset('flags.js', 'js'),
+			array(),
+			\WP_Ultimo::VERSION
 		);
 
 		/*
