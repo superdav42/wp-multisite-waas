@@ -525,6 +525,8 @@ class Dashboard_Admin_Page extends Base_Admin_Page {
 		wp_enqueue_style('wu-apex-charts', wu_get_asset('apexcharts.css', 'css'), [], wu_get_version());
 
 		wp_enqueue_style('wu-flags');
+
+		wp_enqueue_script_module('wu-flags-polyfill');
 	}
 
 	/**

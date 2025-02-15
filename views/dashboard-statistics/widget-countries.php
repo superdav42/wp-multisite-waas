@@ -25,7 +25,7 @@ foreach ($countries as $country_code => $count) {
 	];
 
 	$data[] = $line;
-} // end foreach;
+}
 
 $page->render_csv_button(
 	[
@@ -49,8 +49,8 @@ $page->render_csv_button(
 
 		<thead>
 		<tr>
-			<th><?php _e('Country', 'wp-ultimo'); ?></th>
-			<th class="wu-text-right"><?php _e('Customer Count', 'wp-ultimo'); ?></th>
+			<th><?php esc_html_e('Country', 'wp-ultimo'); ?></th>
+			<th class="wu-text-right"><?php esc_html_e('Customer Count', 'wp-ultimo'); ?></th>
 		</tr>
 		</thead>
 
@@ -63,15 +63,15 @@ $page->render_csv_button(
 				<?php
 
 				printf(
-					'<span class="wu-flag-icon wu-flag-icon-%s wu-w-5 wu-mr-1" %s></span>',
-					strtolower($country_code),
-					wu_tooltip_text(wu_get_country_name($country_code))
+					'<span class="wu-flag-icon wu-w-5 wu-mr-1" %s>%s</span>',
+					wu_tooltip_text(wu_get_country_name($country_code)), // phpcs:ignore WordPress.Security.EscapeOutput
+					esc_html(wu_get_flag_emoji($country_code)),
 				);
 
 				?>
-				<?php echo wu_get_country_name($country_code); ?>
+				<?php echo esc_html(wu_get_country_name($country_code)); ?>
 			</td>
-			<td class="wu-text-right"><?php echo $count; ?></td>
+			<td class="wu-text-right"><?php echo esc_html($count); ?></td>
 			</tr>
 
 			<?php
@@ -87,8 +87,8 @@ $page->render_csv_button(
 				?>
 
 			<tr>
-				<td class="wu-text-xs">|&longrightarrow; <?php echo $state; ?></td>
-				<td class="wu-text-right"><?php echo $state_count; ?></td>
+				<td class="wu-text-xs">|&longrightarrow; <?php echo esc_html($state); ?></td>
+				<td class="wu-text-right"><?php echo esc_html($state_count); ?></td>
 			</tr>
 
 			<?php endforeach; ?>
@@ -96,8 +96,8 @@ $page->render_csv_button(
 			<?php if ($state_list && $count - $_state_count >= 0) : ?>
 
 			<tr>
-				<td class="wu-text-xs">|&longrightarrow; <?php _e('Other', 'wp-ultimo'); ?></td>
-				<td class="wu-text-right"><?php echo $count - $_state_count; ?></td>
+				<td class="wu-text-xs">|&longrightarrow; <?php esc_html_e('Other', 'wp-ultimo'); ?></td>
+				<td class="wu-text-right"><?php echo esc_html($count - $_state_count); ?></td>
 			</tr>
 
 			<?php endif; ?>
@@ -114,7 +114,7 @@ $page->render_csv_button(
 
 	<div class="wu-bg-gray-100 wu-p-4 wu-rounded wu-mt-6">
 
-	<?php _e('No countries registered yet.', 'wp-ultimo'); ?>
+	<?php esc_html_e('No countries registered yet.', 'wp-ultimo'); ?>
 
 	</div>
 
