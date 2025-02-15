@@ -392,7 +392,7 @@ class Thank_You_Element extends Base_Element {
 		/*
 		 * Deal with conversion tracking
 		 */
-		$conversion_snippets = $atts['checkout_form']->get_conversion_snippets();
+		$conversion_snippets = $atts['checkout_form'] ? $atts['checkout_form']->get_conversion_snippets() : false;
 
 		if ( ! empty($conversion_snippets)) {
 			$product_ids = [];

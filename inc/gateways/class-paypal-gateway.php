@@ -358,7 +358,7 @@ class PayPal_Gateway extends Base_Gateway {
 		 */
 		$temp_payment = wu_membership_create_new_payment($membership, false, true, false);
 
-		$description = wu_get_setting('company_name', __('Subscription', 'wp-ultimo')) . ': ' . implode(', ', array_map(fn($item) => 'x' . $item->get_quantity() . ' ' . $item->get_title(), $temp_payment->get_line_items()));
+		$description = wu_get_setting('company_name', get_network_option(null, 'site_name')) . ': ' . implode(', ', array_map(fn($item) => 'x' . $item->get_quantity() . ' ' . $item->get_title(), $temp_payment->get_line_items()));
 
 		$args = [
 			'USER'      => $this->username,

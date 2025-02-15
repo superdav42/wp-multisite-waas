@@ -176,11 +176,6 @@ final class WP_Ultimo {
 		$this->scripts = WP_Ultimo\Scripts::get_instance();
 
 		/*
-		 * Checks Sunrise versions
-		 */
-		WP_Ultimo\Sunrise::manage_sunrise_updates();
-
-		/*
 		 * Loads tables
 		 */
 		$this->setup_tables();
@@ -205,11 +200,20 @@ final class WP_Ultimo {
 		 */
 		do_action('wp_ultimo_load');
 
+		add_action('init', [$this, 'after_init']);
+	}
+
+	public function after_init() {
 		/*
 		 * Loads admin pages
 		 * @todo: move this to a manager in the future?
 		 */
 		$this->load_admin_pages();
+
+		/*
+		 * Checks Sunrise versions
+		 */
+		WP_Ultimo\Sunrise::manage_sunrise_updates();
 	}
 
 	/**

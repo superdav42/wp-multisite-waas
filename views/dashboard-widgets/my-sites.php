@@ -5,8 +5,6 @@
  * @since 2.0.0
  */
 
-$current_site = wu_get_current_site();
-
 $add_new_url = wu_get_setting('enable_multiple_sites') ? $element->get_new_site_url() : wu_get_registration_url();
 
 // Redirect back to this page after create the site

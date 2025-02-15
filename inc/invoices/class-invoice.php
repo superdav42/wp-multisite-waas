@@ -243,8 +243,8 @@ class Invoice {
 		$attributes = wp_parse_args(
 			$attributes,
 			[
-				'company_name'    => wu_get_setting('company_name'),
-				'company_address' => wu_get_setting('company_address'),
+				'company_name'    => wu_get_setting('company_name', get_network_option(null, 'site_name')),
+				'company_address' => wu_get_setting('company_address', ''),
 				'primary_color'   => '#675645',
 				'font'            => 'DejaVuSansCondensed',
 				'logo_url'        => wu_get_network_logo(),

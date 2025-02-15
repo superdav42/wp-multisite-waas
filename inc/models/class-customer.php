@@ -730,7 +730,7 @@ class Customer extends Base_Model {
 	 * @options customer
 	 * @return void
 	 */
-	public function set_type($type): void {
+	public function set_type($type) {
 
 		$this->type = $type;
 	}

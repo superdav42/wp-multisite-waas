@@ -146,7 +146,7 @@ function wu_get_network_logo($size = 'full') {
 
 	switch_to_blog(wu_get_main_site_id());
 
-		$settings_logo = wp_get_attachment_image_src(wu_get_setting('company_logo'), $size); // phpcs:ignore
+		$settings_logo = wp_get_attachment_image_src(wu_get_setting('company_logo', ''), $size); // phpcs:ignore
 
 	restore_current_blog();
 

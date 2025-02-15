@@ -502,7 +502,7 @@ class Cart implements \JsonSerializable {
 			return $this->cart_descriptor;
 		}
 
-		$desc = wu_get_setting('company_name', __('Subscription', 'wp-ultimo'));
+		$desc = wu_get_setting('company_name', get_network_option(null, 'site_name'));
 
 		$products = [];
 

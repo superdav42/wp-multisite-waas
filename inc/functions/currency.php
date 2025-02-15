@@ -85,7 +85,7 @@ function wu_get_currencies(): array {
 function wu_get_currency_symbol($currency = '') {
 
 	if ( ! $currency) {
-		$currency = wu_get_setting('currency_symbol');
+		$currency = wu_get_setting('currency_symbol', 'USD');
 	} switch ($currency) {
 		case 'AED':
 			$currency_symbol = 'د.إ';
@@ -252,10 +252,10 @@ function wu_format_currency($value, $currency = null, $format = null, $thousands
 	$atts = wp_parse_args(
 		$args,
 		[
-			'currency'      => wu_get_setting('currency_symbol'),
-			'format'        => wu_get_setting('currency_position'),
-			'thousands_sep' => wu_get_setting('thousand_separator'),
-			'decimal_sep'   => wu_get_setting('decimal_separator'),
+			'currency'      => wu_get_setting('currency_symbol', 'USD'),
+			'format'        => wu_get_setting('currency_position', '%s %v'),
+			'thousands_sep' => wu_get_setting('thousand_separator', ','),
+			'decimal_sep'   => wu_get_setting('decimal_separator', '.'),
 			'precision'     => (int) wu_get_setting('precision', 2),
 		]
 	);

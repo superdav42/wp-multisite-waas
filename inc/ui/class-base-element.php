@@ -237,11 +237,14 @@ abstract class Base_Element {
 
 		add_action('wu_element_preview', [$this, 'setup_preview']);
 
-		// Init should be the correct time to call this to avoid the deprecated notice from I18N.
-		// But it doesn't work for some reason, fix later.
-		// add_action('init', function () {
-			do_action('wu_element_loaded', $this);
-		// } );
+		add_action(
+			'init',
+			function () {
+				do_action('wu_element_loaded', $this);
+			},
+			5,
+			0
+		);
 
 		if ($this->public) {
 			self::register_public_element($this);

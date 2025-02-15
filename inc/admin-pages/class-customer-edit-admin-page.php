@@ -108,6 +108,8 @@ class Customer_Edit_Admin_Page extends Edit_Admin_Page {
 
 		wp_enqueue_style('wu-flags');
 
+		wp_enqueue_script_module('wu-flags-polyfill');
+
 		wp_enqueue_editor();
 
 		wp_enqueue_media();
@@ -944,10 +946,10 @@ class Customer_Edit_Admin_Page extends Edit_Admin_Page {
 
 		if ($country_code) {
 			$html = sprintf(
-				'<span>%s</span><span class="wu-flag-icon wu-flag-icon-%s wu-w-5 wu-ml-1" %s></span>',
+				'<span>%s</span><span class="wu-flag-icon wu-w-5 wu-ml-1" %s>%s</span>',
 				$country_name,
-				strtolower((string) $country_code),
-				wu_tooltip_text($country_name)
+				wu_tooltip_text($country_name),
+				wu_get_flag_emoji((string) $country_code)
 			);
 		} else {
 			$html = $country_name;

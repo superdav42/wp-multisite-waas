@@ -766,3 +766,27 @@ function wu_is_block_theme() {
 
 	return false;
 }
+
+/**
+ * Generate flag emoji from a two-character country code.
+ *
+ * @param string $country_code The two-letter uppercase country code (e.g., "US", "GB").
+ * @return string The flag emoji or empty string if invalid input.
+ */
+function wu_get_flag_emoji(string $country_code): string {
+	// Ensure the country code is uppercase.
+	$country_code = strtoupper($country_code);
+
+	// Validate that the input is exactly two letters.
+	if (strlen($country_code) !== 2 || ! ctype_alpha($country_code)) {
+		return ''; // Return an empty string for invalid input.
+	}
+
+	// Convert the country code to regional indicator symbols.
+	$emoji = '';
+	foreach (str_split($country_code) as $char) {
+		$emoji .= mb_chr(0x1F1E6 - ord('A') + ord($char), 'UTF-8');
+	}
+
+	return $emoji;
+}

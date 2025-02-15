@@ -46,7 +46,7 @@ class Jumper {
 	 */
 	public function __construct() {
 
-		add_action('wp_ultimo_load', [$this, 'add_settings'], 20);
+		add_action('init', [$this, 'add_settings'], 20);
 
 		add_action('init', [$this, 'load_jumper']);
 	}

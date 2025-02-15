@@ -394,12 +394,13 @@ class Template_Previewer {
 	 * @since 2.0.0
 	 *
 	 * @param string $setting The setting key.
-	 * @param mixed  $default Default value, if it is not found.
+	 * @param mixed  $default_value Default value, if it is not found.
+	 *
 	 * @return mixed
 	 */
-	public function get_setting($setting, $default = false) {
-
-		return wu_get_isset($this->get_settings(), $setting, $default);
+	public function get_setting($setting, $default_value = false) {
+		$settings = wu_get_option(self::KEY, []);
+		return wu_get_isset($settings, $setting, $default_value);
 	}
 
 	/**

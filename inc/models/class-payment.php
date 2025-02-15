@@ -905,7 +905,7 @@ class Payment extends Base_Model {
 		if (false === $this->invoice_number) {
 			$provisional = true;
 
-			$this->invoice_number = wu_get_setting('next_invoice_number');
+			$this->invoice_number = wu_get_setting('next_invoice_number', 1);
 		}
 
 		$prefix = wu_get_setting('invoice_prefix', '');

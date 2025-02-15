@@ -105,21 +105,12 @@ class Sunrise {
 	public static function load_dependencies(): void {
 
 		require_once __DIR__ . '/deprecated/early-deprecated.php';
-
 		require_once __DIR__ . '/deprecated/mercator.php';
-
-		require_once __DIR__ . '/class-autoloader.php';
-
 		require_once __DIR__ . '/functions/site.php';
-
 		require_once __DIR__ . '/functions/debug.php';
-
 		require_once __DIR__ . '/functions/url.php';
-
 		require_once __DIR__ . '/functions/number-helpers.php';
-
 		require_once __DIR__ . '/functions/array-helpers.php';
-
 		require_once __DIR__ . '/traits/trait-singleton.php';
 		require_once __DIR__ . '/objects/class-limitations.php';
 		require_once __DIR__ . '/models/traits/trait-limitable.php';
@@ -127,6 +118,10 @@ class Sunrise {
 		require_once __DIR__ . '/traits/trait-wp-ultimo-site-deprecated.php';
 		require_once __DIR__ . '/database/engine/class-enum.php';
 		require_once __DIR__ . '/database/sites/class-site-type.php';
+		require_once __DIR__ . '/../vendor/berlindb/core/src/Database/Base.php';
+		require_once __DIR__ . '/../vendor/berlindb/core/src/Database/Query.php';
+		require_once __DIR__ . '/database/engine/class-query.php';
+		require_once __DIR__ . '/database/sites/class-site-query.php';
 		require_once __DIR__ . '/models/class-base-model.php';
 		require_once __DIR__ . '/models/class-domain.php';
 		require_once __DIR__ . '/models/class-site.php';
@@ -260,49 +255,21 @@ class Sunrise {
 	 */
 	public static function try_upgrade() {
 
-		$possible_sunrises = [
-			WP_PLUGIN_DIR . '/wp-multisite-waas/sunrise.php',
-			WPMU_PLUGIN_DIR . '/wp-multisite-waas/sunrise.php',
-		];
+		$copy_results = @copy(
+			dirname(WP_ULTIMO_PLUGIN_FILE) . '/sunrise.php',
+			WP_CONTENT_DIR . '/sunrise.php'
+		); // phpcs:ignore
 
-		$sunrise_found = false;
-
-		$error = false;
-
-		$location = WP_CONTENT_DIR . '/sunrise.php';
-
-		foreach ($possible_sunrises as $new_file) {
-			if ( ! file_exists($new_file)) {
-				continue;
-			}
-
-			$sunrise_found = true;
-
-			$copy_results = @copy($new_file, $location); // phpcs:ignore
-
-			if ( ! $copy_results) {
-				$error = error_get_last();
-
-				continue;
-			}
-
-			wu_log_add('sunrise', __('Sunrise upgrade attempt succeeded.', 'wp-ultimo'));
-
-			return true;
-		}
-
-		if (false === $sunrise_found) {
-			$error = [
-				'message' => __('File not found.', 'wp-ultimo'),
-			];
-		}
-
-		if ( ! empty($error)) {
+		if ( ! $copy_results) {
+			$error = error_get_last();
 			wu_log_add('sunrise', $error['message'], LogLevel::ERROR);
 
 			/* translators: the placeholder is an error message */
 			return new \WP_Error('error', sprintf(__('Sunrise copy failed: %s', 'wp-ultimo'), $error['message']));
 		}
+
+		wu_log_add('sunrise', __('Sunrise upgrade attempt succeeded.', 'wp-ultimo'));
+		return true;
 	}
 
 	/**

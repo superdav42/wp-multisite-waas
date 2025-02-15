@@ -91,7 +91,7 @@ class Settings {
 			return $status;
 		}
 
-		$status = wu_get_setting('enable_registration') ? 'all' : $status;
+		$status = wu_get_setting('enable_registration', true) ? 'all' : $status;
 
 		return $status;
 	}
@@ -153,13 +153,8 @@ class Settings {
 			$this->settings = wu_get_option(self::KEY);
 		}
 
-		if (false === $this->settings || empty($this->settings)) {
-			if ( ! $this->saving) {
-				$this->saving   = true;
-				$this->settings = $this->save_settings([], true);
-			} else {
-				return [];
-			}
+		if (empty($this->settings)) {
+			return [];
 		}
 
 		if ($check_caps) {} // phpcs:ignore;
@@ -174,10 +169,11 @@ class Settings {
 	 * @since  1.4.0 Now we can filter settings we get.
 	 *
 	 * @param  string $setting Settings name to return.
-	 * @param  mixed  $default Default value for the setting if it doesn't exist.
+	 * @param  mixed  $default_value Default value for the setting if it doesn't exist.
+	 *
 	 * @return mixed The value of that setting
 	 */
-	public function get_setting($setting, $default = false) {
+	public function get_setting($setting, $default_value = false) {
 
 		$settings = $this->get_all();
 
@@ -185,9 +181,9 @@ class Settings {
 			_doing_it_wrong($setting, __('Dashes are no longer supported when registering a setting. You should change it to underscores in later versions.', 'wp-ultimo'), '2.0.0');
 		}
 
-		$setting_value = $settings[ $setting ] ?? $default;
+		$setting_value = $settings[ $setting ] ?? $default_value;
 
-		return apply_filters('wu_get_setting', $setting_value, $setting, $default, $settings);
+		return apply_filters('wu_get_setting', $setting_value, $setting, $default_value, $settings);
 	}
 
 	/**
@@ -234,7 +230,7 @@ class Settings {
 
 		$sections = $this->get_sections();
 
-		$saved_settings = ! $reset ? $this->get_all() : [];
+		$saved_settings = $this->get_all();
 
 		do_action('wu_before_save_settings', $settings_to_save);
 
@@ -253,7 +249,7 @@ class Settings {
 					$new_value = false;
 				}
 
-				$value = $reset ? $field->default : $new_value;
+				$value = $new_value;
 
 				$field->set_value($value);
 

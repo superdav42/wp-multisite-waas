@@ -188,7 +188,7 @@ abstract class Base_Admin_Page {
 		/*
 		 * Add forms
 		 */
-		add_action('plugins_loaded', [$this, 'register_forms']);
+		$this->register_forms();
 
 		/**
 		 * Allow plugin developers to run additional things when pages are registered.

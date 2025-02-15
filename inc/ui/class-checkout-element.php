@@ -570,7 +570,7 @@ class Checkout_Element extends Base_Element {
 			return sprintf(__('Checkout form %s contains no fields.', 'wp-ultimo'), $slug);
 		}
 
-		if ( ! $checkout_form->is_active() || ! wu_get_setting('enable_registration')) {
+		if ( ! $checkout_form->is_active() || ! wu_get_setting('enable_registration', true)) {
 			return sprintf('<p>%s</p>', __('Registration is not available at this time.', 'wp-ultimo'));
 		}
 

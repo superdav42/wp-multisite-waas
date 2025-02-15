@@ -135,7 +135,7 @@ class Domain_Mapping {
 		// add_action('allowed_http_origin', array($this, 'add_mapped_domains_as_allowed_origins'));
 
 		/**
-		 * On WP Multisite WaaS 1.X builds we used Mercator. The Mercator actions and filters are now deprecated.
+		 * On WP Ultimo 1.X builds we used Mercator. The Mercator actions and filters are now deprecated.
 		 */
 		if (has_action('mercator_load')) {
 			do_action_deprecated('mercator_load', [], '2.0.0', 'wu_domain_mapping_load');

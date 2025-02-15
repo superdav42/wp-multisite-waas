@@ -95,7 +95,7 @@ class Checkout_Admin_Page extends \WP_Ultimo\Admin_Pages\Base_Customer_Facing_Ad
 	 */
 	public function get_title() {
 
-		return sprintf(__('Checkout', 'wp-ultimo'));
+		return __('Checkout', 'wp-ultimo');
 	}
 
 	/**

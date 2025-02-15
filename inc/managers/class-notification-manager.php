@@ -39,7 +39,7 @@ class Notification_Manager {
 	 */
 	public function init(): void {
 
-		add_action('wp_ultimo_load', [$this, 'add_settings']);
+		add_action('init', [$this, 'add_settings']);
 
 		if (is_admin() && ! is_network_admin()) {
 			add_action('admin_init', [$this, 'hide_notifications_subsites']);

@@ -44,7 +44,7 @@ class Requirements {
 	 * @since 2.0.0
 	 * @var string
 	 */
-	public static $php_recommended_version = '7.4.1';
+	public static $php_recommended_version = '8.2.27';
 
 	/**
 	 * Minimum WordPress version required to run WP Multisite WaaS.
@@ -60,7 +60,7 @@ class Requirements {
 	 * @since 2.0.0
 	 * @var string
 	 */
-	public static $wp_recommended_version = '6.4.1';
+	public static $wp_recommended_version = '6.7.2';
 
 	/**
 	 * Static-only class.

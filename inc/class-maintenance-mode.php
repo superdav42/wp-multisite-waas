@@ -30,7 +30,7 @@ class Maintenance_Mode {
 	 */
 	public function init(): void {
 
-		add_action('wp_ultimo_load', [$this, 'add_settings']);
+		add_action('init', [$this, 'add_settings']);
 
 		if (wu_get_setting('maintenance_mode')) {
 			$this->hooks();
@@ -145,7 +145,7 @@ class Maintenance_Mode {
 		$site_id = \WP_Ultimo\Helpers\Hash::decode(wu_request('site_hash'), 'site');
 
 		if ( ! current_user_can_for_blog($site_id, 'manage_options')) {
-			return wp_send_json_error(
+			wp_send_json_error(
 				[
 					'message' => __('You do not have the necessary permissions to perform this option.', 'wp-ultimo'),
 					'value'   => false,
