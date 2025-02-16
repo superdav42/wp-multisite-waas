@@ -9,13 +9,13 @@
 
 	<h1 class="wp-heading-inline">
 
-	<?php _e('Tax Rates', 'wp-ultimo'); ?>
+	<?php _e('Tax Rates', 'wp-multisite-waas'); ?>
 
 	</h1>
 
 	<a href="<?php echo network_admin_url('admin.php?page=wp-ultimo-settings&tab=taxes'); ?>" class="page-title-action">
 
-	<?php _e('Go to the Tax Settings Page', 'wp-ultimo'); ?>
+	<?php _e('Go to the Tax Settings Page', 'wp-multisite-waas'); ?>
 
 	</a>
 
@@ -31,14 +31,14 @@
 
 		<div v-show="creating">
 
-			<input type="text" style="background: white !important;" class="button wu-bg-white" v-model="create_name" placeholder="<?php _e('Tax Category Name', 'wp-ultimo'); ?>">
+			<input type="text" style="background: white !important;" class="button wu-bg-white" v-model="create_name" placeholder="<?php _e('Tax Category Name', 'wp-multisite-waas'); ?>">
 
 			<button class="button button-primary" v-on:click.prevent="add_tax_category" v-bind:disabled="create_name.length <= 3">
-			<?php _e('Create', 'wp-ultimo'); ?>
+			<?php _e('Create', 'wp-multisite-waas'); ?>
 			</button>
 
 			<button class="button action" v-on:click.prevent="creating = false">
-			<?php _e('&larr; Back', 'wp-ultimo'); ?>
+			<?php _e('&larr; Back', 'wp-multisite-waas'); ?>
 			</button>
 
 		</div>
@@ -46,7 +46,7 @@
 		<div v-show="switching">
 
 			<button class="button action" v-on:click.prevent="switching = false">
-			<?php _e('&larr; Back', 'wp-ultimo'); ?>
+			<?php _e('&larr; Back', 'wp-multisite-waas'); ?>
 			</button>
 
 			<select v-model="tax_category" class="wu-bg-white">
@@ -62,17 +62,17 @@
 			<input type="text" style="background: white !important;" class="button wu-bg-white" v-model="data[tax_category].name">
 
 			<button class="button action" v-on:click.prevent="switching = true">
-			<?php _e('Switch', 'wp-ultimo'); ?>
+			<?php _e('Switch', 'wp-multisite-waas'); ?>
 			</button>
 
 			<button class="button action" v-on:click.prevent="delete_tax_category">
-			<?php _e('Delete', 'wp-ultimo'); ?>
+			<?php _e('Delete', 'wp-multisite-waas'); ?>
 			</button>
 
 			&nbsp;
 
 			<button class="button action wu-ml-3" v-on:click.prevent="creating = true">
-			<?php _e('Add new Tax Category', 'wp-ultimo'); ?>
+			<?php _e('Add new Tax Category', 'wp-multisite-waas'); ?>
 			</button>
 
 		</div>
@@ -83,7 +83,7 @@
 
 		<span class="displaying-num">
 
-			{{data[tax_category].rates.length}} <?php _e('item(s)', 'wp-ultimo'); ?>
+			{{data[tax_category].rates.length}} <?php _e('item(s)', 'wp-multisite-waas'); ?>
 
 		</span>
 
@@ -130,7 +130,7 @@
 
 			<div class="wu-p-4">
 
-				<?php _e('Loading Tax Rates...', 'wp-ultimo'); ?>
+				<?php _e('Loading Tax Rates...', 'wp-multisite-waas'); ?>
 
 			</div>
 
@@ -144,7 +144,7 @@
 
 			<div class="wu-p-4">
 
-				<?php _e('No items to display', 'wp-ultimo'); ?>
+				<?php _e('No items to display', 'wp-multisite-waas'); ?>
 
 			</div>
 
@@ -246,7 +246,7 @@
 				:options="item.state_options" 
 				model="state" 
 				style="width: 100%;"
-				placeholder="<?php esc_attr_e('Leave blank to apply to all', 'wp-ultimo'); ?>"
+				placeholder="<?php esc_attr_e('Leave blank to apply to all', 'wp-multisite-waas'); ?>"
 				></selectizer>
 
 			<?php break; ?>
@@ -261,7 +261,7 @@
 				:country="item.country" 
 				model="city" 
 				style="width: 100%;"
-				placeholder="<?php esc_attr_e('Leave blank to apply to all', 'wp-ultimo'); ?>"
+				placeholder="<?php esc_attr_e('Leave blank to apply to all', 'wp-multisite-waas'); ?>"
 				v-cloak
 				></selectizer>
 
@@ -345,13 +345,13 @@
 
 		<button v-on:click.prevent="add_row" class="button">
 
-		<?php _e('Add new Row', 'wp-ultimo'); ?>
+		<?php _e('Add new Row', 'wp-multisite-waas'); ?>
 
 		</button>
 
 		<button v-on:click.prevent="delete_rows" class="button">
 
-		<?php _e('Delete Selected Rows', 'wp-ultimo'); ?>
+		<?php _e('Delete Selected Rows', 'wp-multisite-waas'); ?>
 
 		</button>
 
@@ -377,11 +377,11 @@
 
 		<span v-if="changed && !saveMessage && !saving" class="description"
 		style="display: inline-block; line-height: 28px; margin-right: 10px;">
-		<?php _e('Save your changes!', 'wp-ultimo'); ?>
+		<?php _e('Save your changes!', 'wp-multisite-waas'); ?>
 		</span>
 
 		<span v-if="saving" class="description" style="display: inline-block; line-height: 28px; margin-right: 10px;">
-		<?php _e('Saving...', 'wp-ultimo'); ?>
+		<?php _e('Saving...', 'wp-multisite-waas'); ?>
 		</span>
 
 		<span v-if="saveMessage" class="description"

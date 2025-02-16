@@ -15,7 +15,7 @@ $text_no  = '<span class="dashicons dashicons-no-alt wu-text-red-600"></span>';
 
 		<tr>
 			<td colspan="2" class="wu-px-4 wu-py-2">
-				<?php _e('No items found.', 'wp-ultimo'); ?>
+				<?php _e('No items found.', 'wp-multisite-waas'); ?>
 			</td>
 		</tr>
 

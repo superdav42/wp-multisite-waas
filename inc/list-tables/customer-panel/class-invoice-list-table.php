@@ -30,10 +30,10 @@ class Invoice_List_Table extends Parent_Payment_List_Table {
 	public function get_columns() {
 
 		$columns = [
-			'hash'         => __('Code', 'wp-ultimo'),
-			'status'       => __('Status', 'wp-ultimo'),
-			'total'        => __('Total', 'wp-ultimo'),
-			'date_created' => __('Created at', 'wp-ultimo'),
+			'hash'         => __('Code', 'wp-multisite-waas'),
+			'status'       => __('Status', 'wp-multisite-waas'),
+			'total'        => __('Total', 'wp-multisite-waas'),
+			'date_created' => __('Created at', 'wp-multisite-waas'),
 		];
 
 		return $columns;

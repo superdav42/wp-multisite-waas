@@ -265,10 +265,10 @@ class Sunrise {
 			wu_log_add('sunrise', $error['message'], LogLevel::ERROR);
 
 			/* translators: the placeholder is an error message */
-			return new \WP_Error('error', sprintf(__('Sunrise copy failed: %s', 'wp-ultimo'), $error['message']));
+			return new \WP_Error('error', sprintf(__('Sunrise copy failed: %s', 'wp-multisite-waas'), $error['message']));
 		}
 
-		wu_log_add('sunrise', __('Sunrise upgrade attempt succeeded.', 'wp-ultimo'));
+		wu_log_add('sunrise', __('Sunrise upgrade attempt succeeded.', 'wp-multisite-waas'));
 		return true;
 	}
 

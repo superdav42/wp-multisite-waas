@@ -43,7 +43,7 @@ class Overview extends \QM_Output_Html {
 	 */
 	public function name() {
 
-		return __('WP Multisite WaaS', 'wp-ultimo');
+		return __('WP Multisite WaaS', 'wp-multisite-waas');
 	}
 
 	/**
@@ -105,7 +105,7 @@ class Overview extends \QM_Output_Html {
 		$new_menu = [
 			'wp-ultimo' => $this->menu(
 				[
-					'title' => esc_html__('WP Multisite WaaS', 'wp-ultimo'),
+					'title' => esc_html__('WP Multisite WaaS', 'wp-multisite-waas'),
 					'id'    => 'wp-ultimo',
 				]
 			),

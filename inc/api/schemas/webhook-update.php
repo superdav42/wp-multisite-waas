@@ -20,62 +20,62 @@ defined('ABSPATH') || exit;
  */
 return [
 	'name'             => [
-		'description' => __('Webhook name, which is used as product title as well.', 'wp-ultimo'),
+		'description' => __('Webhook name, which is used as product title as well.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'webhook_url'      => [
-		'description' => __('The URL used for the webhook call.', 'wp-ultimo'),
+		'description' => __('The URL used for the webhook call.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'event'            => [
-		'description' => __('The event that needs to be fired for this webhook to be sent.', 'wp-ultimo'),
+		'description' => __('The event that needs to be fired for this webhook to be sent.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'event_count'      => [
-		'description' => __('How many times this webhook was sent.', 'wp-ultimo'),
+		'description' => __('How many times this webhook was sent.', 'wp-multisite-waas'),
 		'type'        => 'integer',
 		'required'    => false,
 	],
 	'active'           => [
-		'description' => __('Set this webhook as active (true), which means available will fire when the event occur, or inactive (false).', 'wp-ultimo'),
+		'description' => __('Set this webhook as active (true), which means available will fire when the event occur, or inactive (false).', 'wp-multisite-waas'),
 		'type'        => 'boolean',
 		'required'    => false,
 	],
 	'hidden'           => [
-		'description' => __('Is this webhook hidden.', 'wp-ultimo'),
+		'description' => __('Is this webhook hidden.', 'wp-multisite-waas'),
 		'type'        => 'boolean',
 		'required'    => false,
 	],
 	'date_created'     => [
-		'description' => __('Date when this was created.', 'wp-ultimo'),
+		'description' => __('Date when this was created.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'integration'      => [
-		'description' => __('The integration that created this webhook.', 'wp-ultimo'),
+		'description' => __('The integration that created this webhook.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'date_last_failed' => [
-		'description' => __('The date when this webhook last fail.', 'wp-ultimo'),
+		'description' => __('The date when this webhook last fail.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'date_modified'    => [
-		'description' => __('Model last modification date.', 'wp-ultimo'),
+		'description' => __('Model last modification date.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'migrated_from_id' => [
-		'description' => __('The ID of the original 1.X model that was used to generate this item on migration.', 'wp-ultimo'),
+		'description' => __('The ID of the original 1.X model that was used to generate this item on migration.', 'wp-multisite-waas'),
 		'type'        => 'integer',
 		'required'    => false,
 	],
 	'skip_validation'  => [
-		'description' => __('Set true to have field information validation bypassed when saving this event.', 'wp-ultimo'),
+		'description' => __('Set true to have field information validation bypassed when saving this event.', 'wp-multisite-waas'),
 		'type'        => 'boolean',
 		'required'    => false,
 	],

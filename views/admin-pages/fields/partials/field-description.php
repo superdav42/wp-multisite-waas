@@ -8,7 +8,7 @@
 
 <?php if ($field->desc) : ?>
 
-	<p class="description wu-text-2xs" id="<?php echo $field->id; ?>-desc">
+	<p class="description wu-text-2xs" id="<?php echo esc_attr($field->id); ?>-desc">
 
 	<?php echo $field->desc; ?>
 

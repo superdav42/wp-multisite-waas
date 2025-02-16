@@ -54,7 +54,7 @@ class Signup_Field_Period_Selection extends Base_Signup_Field {
 	 */
 	public function get_title() {
 
-		return __('Period Select', 'wp-ultimo');
+		return __('Period Select', 'wp-multisite-waas');
 	}
 
 	/**
@@ -67,7 +67,7 @@ class Signup_Field_Period_Selection extends Base_Signup_Field {
 	 */
 	public function get_description() {
 
-		return __('Adds a period selector, that allows customers to switch between different billing periods.', 'wp-ultimo');
+		return __('Adds a period selector, that allows customers to switch between different billing periods.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -80,7 +80,7 @@ class Signup_Field_Period_Selection extends Base_Signup_Field {
 	 */
 	public function get_tooltip() {
 
-		return __('Adds a period selector, that allows customers to switch between different billing periods.', 'wp-ultimo');
+		return __('Adds a period selector, that allows customers to switch between different billing periods.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -134,7 +134,7 @@ class Signup_Field_Period_Selection extends Base_Signup_Field {
 
 		return [
 			'id'       => 'period_selection',
-			'name'     => __('Plan Duration Switch', 'wp-ultimo'),
+			'name'     => __('Plan Duration Switch', 'wp-multisite-waas'),
 			'required' => true,
 		];
 	}
@@ -169,8 +169,8 @@ class Signup_Field_Period_Selection extends Base_Signup_Field {
 			'fields' => [
 				'period_selection_template' => [
 					'type'            => 'select',
-					'title'           => __('Period Selector Template', 'wp-ultimo'),
-					'placeholder'     => __('Select your Template', 'wp-ultimo'),
+					'title'           => __('Period Selector Template', 'wp-multisite-waas'),
+					'placeholder'     => __('Select your Template', 'wp-multisite-waas'),
 					'options'         => [$this, 'get_template_options'],
 					'wrapper_classes' => 'wu-flex-grow',
 					'html_attr'       => [
@@ -182,14 +182,14 @@ class Signup_Field_Period_Selection extends Base_Signup_Field {
 
 		$editor_fields['period_options_header'] = [
 			'type'  => 'small-header',
-			'title' => __('Options', 'wp-ultimo'),
-			'desc'  => __('Add different options below. These need to match your product price variations.', 'wp-ultimo'),
+			'title' => __('Options', 'wp-multisite-waas'),
+			'desc'  => __('Add different options below. These need to match your product price variations.', 'wp-multisite-waas'),
 			'order' => 90,
 		];
 
 		$editor_fields['period_options_empty'] = [
 			'type'              => 'note',
-			'desc'              => __('Add the first option using the button below.', 'wp-ultimo'),
+			'desc'              => __('Add the first option using the button below.', 'wp-multisite-waas'),
 			'classes'           => 'wu-text-gray-600 wu-text-xs wu-text-center wu-w-full',
 			'wrapper_classes'   => 'wu-bg-gray-100 wu-items-end',
 			'order'             => 90.5,
@@ -212,12 +212,12 @@ class Signup_Field_Period_Selection extends Base_Signup_Field {
 			'fields'            => [
 				'period_options_remove'        => [
 					'type'            => 'note',
-					'desc'            => sprintf('<a title="%s" class="wu-no-underline wu-inline-block wu-text-gray-600 wu-mt-2 wu-mr-2" href="#" @click.prevent="() => period_options.splice(index, 1)"><span class="dashicons-wu-squared-cross"></span></a>', __('Remove', 'wp-ultimo')),
+					'desc'            => sprintf('<a title="%s" class="wu-no-underline wu-inline-block wu-text-gray-600 wu-mt-2 wu-mr-2" href="#" @click.prevent="() => period_options.splice(index, 1)"><span class="dashicons-wu-squared-cross"></span></a>', __('Remove', 'wp-multisite-waas')),
 					'wrapper_classes' => 'wu-absolute wu-top-0 wu-right-0',
 				],
 				'period_options_duration'      => [
 					'type'            => 'number',
-					'title'           => __('Duration', 'wp-ultimo'),
+					'title'           => __('Duration', 'wp-multisite-waas'),
 					'placeholder'     => '',
 					'wrapper_classes' => 'wu-w-2/12',
 					'min'             => 1,
@@ -237,16 +237,16 @@ class Signup_Field_Period_Selection extends Base_Signup_Field {
 						'v-bind:name' => '"period_options[" + index + "][duration_unit]"',
 					],
 					'options'         => [
-						'day'   => __('Days', 'wp-ultimo'),
-						'week'  => __('Weeks', 'wp-ultimo'),
-						'month' => __('Months', 'wp-ultimo'),
-						'year'  => __('Years', 'wp-ultimo'),
+						'day'   => __('Days', 'wp-multisite-waas'),
+						'week'  => __('Weeks', 'wp-multisite-waas'),
+						'month' => __('Months', 'wp-multisite-waas'),
+						'year'  => __('Years', 'wp-multisite-waas'),
 					],
 				],
 				'period_options_label'         => [
 					'type'            => 'text',
-					'title'           => __('Label', 'wp-ultimo'),
-					'placeholder'     => __('e.g. Monthly', 'wp-ultimo'),
+					'title'           => __('Label', 'wp-multisite-waas'),
+					'placeholder'     => __('e.g. Monthly', 'wp-multisite-waas'),
 					'wrapper_classes' => 'wu-w-5/12',
 					'html_attr'       => [
 						'v-model'     => 'period_option.label',
@@ -259,7 +259,7 @@ class Signup_Field_Period_Selection extends Base_Signup_Field {
 		$editor_fields['repeat'] = [
 			'order'             => 92,
 			'type'              => 'submit',
-			'title'             => __('+ Add option', 'wp-ultimo'),
+			'title'             => __('+ Add option', 'wp-multisite-waas'),
 			'classes'           => 'wu-uppercase wu-text-2xs wu-text-blue-700 wu-border-none wu-bg-transparent wu-font-bold wu-text-right wu-w-full wu-cursor-pointer',
 			'wrapper_classes'   => 'wu-bg-gray-100 wu-items-end',
 			'wrapper_html_attr' => [
@@ -297,7 +297,7 @@ class Signup_Field_Period_Selection extends Base_Signup_Field {
 
 		$template_class = Field_Templates_Manager::get_instance()->get_template_class('period_selection', $attributes['period_selection_template']);
 
-		$content = $template_class ? $template_class->render_container($attributes) : __('Template does not exist.', 'wp-ultimo');
+		$content = $template_class ? $template_class->render_container($attributes) : __('Template does not exist.', 'wp-multisite-waas');
 
 		$checkout_fields = [];
 

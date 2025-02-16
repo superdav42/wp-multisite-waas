@@ -62,7 +62,7 @@ class Customer_Manager extends Base_Manager {
 			function () {
 				Event_Manager::register_model_events(
 					'customer',
-					__('Customer', 'wp-ultimo'),
+					__('Customer', 'wp-multisite-waas'),
 					['created', 'updated']
 				);
 			}
@@ -89,7 +89,7 @@ class Customer_Manager extends Base_Manager {
 	public function handle_resend_verification_email(): void {
 
 		if ( ! check_ajax_referer('wu_resend_verification_email_nonce', false, false)) {
-			wp_send_json_error(new \WP_Error('not-allowed', __('Error: you are not allowed to perform this action.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('not-allowed', __('Error: you are not allowed to perform this action.', 'wp-multisite-waas')));
 
 			exit;
 		}
@@ -97,7 +97,7 @@ class Customer_Manager extends Base_Manager {
 		$customer = wu_get_current_customer();
 
 		if ( ! $customer) {
-			wp_send_json_error(new \WP_Error('customer-not-found', __('Error: customer not found.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('customer-not-found', __('Error: customer not found.', 'wp-multisite-waas')));
 
 			exit;
 		}
@@ -200,7 +200,7 @@ class Customer_Manager extends Base_Manager {
 			wp_die(
 				sprintf(
 					/* translators: the placeholder is the login URL */
-					__('You must be authenticated in order to verify your email address. <a href=%s>Click here</a> to access your account.', 'wp-ultimo'),
+					__('You must be authenticated in order to verify your email address. <a href=%s>Click here</a> to access your account.', 'wp-multisite-waas'),
 					wp_login_url(
 						add_query_arg(
 							[
@@ -214,31 +214,31 @@ class Customer_Manager extends Base_Manager {
 		}
 
 		if ( ! $customer_to_verify) {
-			wp_die(__('Invalid verification key.', 'wp-ultimo'));
+			wp_die(__('Invalid verification key.', 'wp-multisite-waas'));
 		}
 
 		$current_customer = wu_get_current_customer();
 
 		if ( ! $current_customer) {
-			wp_die(__('Invalid verification key.', 'wp-ultimo'));
+			wp_die(__('Invalid verification key.', 'wp-multisite-waas'));
 		}
 
 		if ($current_customer->get_id() !== $customer_to_verify->get_id()) {
-			wp_die(__('Invalid verification key.', 'wp-ultimo'));
+			wp_die(__('Invalid verification key.', 'wp-multisite-waas'));
 		}
 
 		if ($customer_to_verify->get_email_verification() !== 'pending') {
-			wp_die(__('Invalid verification key.', 'wp-ultimo'));
+			wp_die(__('Invalid verification key.', 'wp-multisite-waas'));
 		}
 
 		$key = $customer_to_verify->get_verification_key();
 
 		if ( ! $key) {
-			wp_die(__('Invalid verification key.', 'wp-ultimo'));
+			wp_die(__('Invalid verification key.', 'wp-multisite-waas'));
 		}
 
 		if ($key !== $email_verify_key) {
-			wp_die(__('Invalid verification key.', 'wp-ultimo'));
+			wp_die(__('Invalid verification key.', 'wp-multisite-waas'));
 		}
 
 		/*

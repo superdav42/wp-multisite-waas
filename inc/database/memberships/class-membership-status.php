@@ -65,12 +65,12 @@ class Membership_Status extends Enum {
 	protected function labels() {
 
 		return [
-			static::PENDING   => __('Pending', 'wp-ultimo'),
-			static::ACTIVE    => __('Active', 'wp-ultimo'),
-			static::TRIALING  => __('Trialing', 'wp-ultimo'),
-			static::ON_HOLD   => __('On Hold', 'wp-ultimo'),
-			static::EXPIRED   => __('Expired', 'wp-ultimo'),
-			static::CANCELLED => __('Cancelled', 'wp-ultimo'),
+			static::PENDING   => __('Pending', 'wp-multisite-waas'),
+			static::ACTIVE    => __('Active', 'wp-multisite-waas'),
+			static::TRIALING  => __('Trialing', 'wp-multisite-waas'),
+			static::ON_HOLD   => __('On Hold', 'wp-multisite-waas'),
+			static::EXPIRED   => __('Expired', 'wp-multisite-waas'),
+			static::CANCELLED => __('Cancelled', 'wp-multisite-waas'),
 		];
 	}
 }

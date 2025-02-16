@@ -41,7 +41,7 @@ class Core_Installer extends Base_Installer {
 					if ( ! (defined('SUNRISE') && SUNRISE)) {
 
 						// translators: %s is a URL to a documentation link.
-						$closte_message = sprintf(__('You are using Closte and they prevent the wp-config.php file from being written to. <a href="%s" target="_blank">Follow these instructions to do it manually</a>.', 'wp-ultimo'), wu_get_documentation_url('wp-ultimo-closte-config'));
+						$closte_message = sprintf(__('You are using Closte and they prevent the wp-config.php file from being written to. <a href="%s" target="_blank">Follow these instructions to do it manually</a>.', 'wp-multisite-waas'), wu_get_documentation_url('wp-ultimo-closte-config'));
 
 						throw new \Exception($closte_message);
 					}
@@ -68,21 +68,21 @@ class Core_Installer extends Base_Installer {
 
 		$steps['database_tables'] = [
 			'done'        => $has_tables_installed,
-			'title'       => __('Create Database Tables', 'wp-ultimo'),
-			'description' => __('WP Multisite WaaS uses custom tables for performance reasons. We need to create those tables and make sure they are setup properly before we can activate the plugin.', 'wp-ultimo'),
-			'pending'     => __('Pending', 'wp-ultimo'),
-			'installing'  => __('Creating default tables...', 'wp-ultimo'),
-			'success'     => __('Success!', 'wp-ultimo'),
+			'title'       => __('Create Database Tables', 'wp-multisite-waas'),
+			'description' => __('WP Multisite WaaS uses custom tables for performance reasons. We need to create those tables and make sure they are setup properly before we can activate the plugin.', 'wp-multisite-waas'),
+			'pending'     => __('Pending', 'wp-multisite-waas'),
+			'installing'  => __('Creating default tables...', 'wp-multisite-waas'),
+			'success'     => __('Success!', 'wp-multisite-waas'),
 			'help'        => wu_get_documentation_url('installation-errors'),
 		];
 
 		$steps['sunrise'] = [
 			'done'        => defined('SUNRISE') && SUNRISE && defined('WP_ULTIMO_SUNRISE_VERSION'),
-			'title'       => __('Install <code>sunrise.php</code> File', 'wp-ultimo'),
-			'description' => __('We need to add our own sunrise.php file to the wp-content folder in order to be able to control access to sites and plugins before anything else happens on WordPress. ', 'wp-ultimo'),
-			'pending'     => __('Pending', 'wp-ultimo'),
-			'installing'  => __('Installing sunrise file...', 'wp-ultimo'),
-			'success'     => __('Success!', 'wp-ultimo'),
+			'title'       => __('Install <code>sunrise.php</code> File', 'wp-multisite-waas'),
+			'description' => __('We need to add our own sunrise.php file to the wp-content folder in order to be able to control access to sites and plugins before anything else happens on WordPress. ', 'wp-multisite-waas'),
+			'pending'     => __('Pending', 'wp-multisite-waas'),
+			'installing'  => __('Installing sunrise file...', 'wp-multisite-waas'),
+			'success'     => __('Success!', 'wp-multisite-waas'),
 			'help'        => wu_get_documentation_url('installation-errors'),
 		];
 
@@ -117,7 +117,7 @@ class Core_Installer extends Base_Installer {
 			if (false === $success) {
 
 				// translators: %s is the name of a database table, e.g. wu_memberships.
-				$error_message = sprintf(__('Installation of the table %s failed', 'wp-ultimo'), $table->get_name());
+				$error_message = sprintf(__('Installation of the table %s failed', 'wp-multisite-waas'), $table->get_name());
 
 				throw new \Exception($error_message);
 			}

@@ -101,7 +101,7 @@ if (null !== $first_recurring_product) {
 
 <div class="wu-text-center wu-bg-gray-100 wu-rounded wu-uppercase wu-font-semibold wu-text-xs wu-text-gray-700 wu-p-4">
 
-	<?php _e('No Products Found.', 'wp-ultimo'); ?>
+	<?php _e('No Products Found.', 'wp-multisite-waas'); ?>
 
 </div>
 
@@ -130,7 +130,7 @@ if (null !== $first_recurring_product) {
 					/**
 					 * Featured tag.
 					 */
-					echo apply_filters('wu_featured_plan_label', __('Featured Plan', 'wp-ultimo'), $product);
+					echo apply_filters('wu_featured_plan_label', __('Featured Plan', 'wp-multisite-waas'), $product);
 
 				?>
 
@@ -158,7 +158,7 @@ if (null !== $first_recurring_product) {
 
 				<span class="plan-price">
 
-				<?php _e('Free!', 'wp-ultimo'); ?>
+				<?php _e('Free!', 'wp-multisite-waas'); ?>
 
 				</span>
 
@@ -178,7 +178,7 @@ if (null !== $first_recurring_product) {
 
 				<span class="plan-price">
 
-					<?php echo apply_filters('wu_plan_contact_us_price_line', __('--', 'wp-ultimo')); ?>
+					<?php echo apply_filters('wu_plan_contact_us_price_line', __('--', 'wp-multisite-waas')); ?>
 
 				</span>
 
@@ -256,7 +256,7 @@ if (null !== $first_recurring_product) {
 					/**
 					 * Period Unit.
 					 */
-					$symbol = $product->is_recurring() ? __('/mo', 'wp-ultimo') : '';
+					$symbol = $product->is_recurring() ? __('/mo', 'wp-multisite-waas') : '';
 
 					echo (! $symbol_left ? wu_get_currency_symbol() : '') . ' ' . $symbol;
 
@@ -304,8 +304,8 @@ if (null !== $first_recurring_product) {
 				 * Display quarterly and Annually plans, to be hidden.
 				 */
 				$prices_total = [
-					3  => __('every 3 months', 'wp-ultimo'),
-					12 => __('yearly', 'wp-ultimo'),
+					3  => __('every 3 months', 'wp-multisite-waas'),
+					12 => __('yearly', 'wp-multisite-waas'),
 				];
 
 				foreach ($prices_total as $freq => $string) {
@@ -314,7 +314,7 @@ if (null !== $first_recurring_product) {
 					if ( ! $price_variation || $product->get_pricing_type() == 'free' || $product->get_pricing_type() == 'contact_us') {
 						echo "<li v-cloak v-show='duration == " . $freq . "' class='total-price total-price-$freq'>-</li>";
 					} else {
-						$text = sprintf(__('%1$s, billed %2$s', 'wp-ultimo'), wu_format_currency($price_variation['amount']), $string);
+						$text = sprintf(__('%1$s, billed %2$s', 'wp-multisite-waas'), wu_format_currency($price_variation['amount']), $string);
 
 						$extra_check_for_annual = '';
 
@@ -344,7 +344,7 @@ if (null !== $first_recurring_product) {
 				value="<?php echo $product->get_id(); ?>" 
 				class="button button-primary button-next"
 				>
-				<?php _e('Select Plan', 'wp-ultimo'); ?>
+				<?php _e('Select Plan', 'wp-multisite-waas'); ?>
 				</button>
 
 				<button 
@@ -354,7 +354,7 @@ if (null !== $first_recurring_product) {
 				value="<?php echo $product->get_id(); ?>" 
 				class="button button-primary button-next"
 				>
-				<?php _e('Select Plan', 'wp-ultimo'); ?>
+				<?php _e('Select Plan', 'wp-multisite-waas'); ?>
 				</button>
 
 			</li>

@@ -15,8 +15,8 @@
 $data    = [];
 $slug    = 'signup_forms';
 $headers = [
-	__('Checkout Form', 'wp-ultimo'),
-	__('Signups', 'wp-ultimo'),
+	__('Checkout Form', 'wp-multisite-waas'),
+	__('Signups', 'wp-multisite-waas'),
 ];
 
 foreach ($forms as $form) {
@@ -50,8 +50,8 @@ $page->render_csv_button(
 
 		<thead>
 		<tr>
-			<th><?php _e('Checkout Form', 'wp-ultimo'); ?></th>
-			<th class="wu-text-right"><?php _e('Signups', 'wp-ultimo'); ?></th>
+			<th><?php _e('Checkout Form', 'wp-multisite-waas'); ?></th>
+			<th class="wu-text-right"><?php _e('Signups', 'wp-multisite-waas'); ?></th>
 		</tr>
 		</thead>
 
@@ -63,7 +63,7 @@ $page->render_csv_button(
 			<td>
 				<?php echo $form->signup_form; ?>
 				<?php if ('by-admin' === $form->signup_form) : ?>
-					<?php echo wu_tooltip(__('Customers created via the admin panel, by super admins.', 'wp-ultimo')); ?>
+					<?php echo wu_tooltip(__('Customers created via the admin panel, by super admins.', 'wp-multisite-waas')); ?>
 				<?php endif; ?>
 			</td>
 			<td class="wu-text-right"><?php echo $form->count; ?></td>
@@ -81,7 +81,7 @@ $page->render_csv_button(
 
 	<div class="wu-bg-gray-100 wu-p-4 wu-rounded wu-mt-6">
 
-	<?php _e('No data yet.', 'wp-ultimo'); ?>
+	<?php _e('No data yet.', 'wp-multisite-waas'); ?>
 
 	</div>
 

@@ -53,7 +53,7 @@
 	<?php if (wu_request('updated')) : ?>
 
 	<div id="message" class="updated notice wu-admin-notice notice-success is-dismissible below-h2">
-		<p><?php _e('Settings successfully saved.', 'wp-ultimo'); ?></p>
+		<p><?php _e('Settings successfully saved.', 'wp-multisite-waas'); ?></p>
 	</div>
 
 	<?php endif; ?>
@@ -88,7 +88,7 @@
 
 			<li class="md:wu-hidden wu-p-4 wu-font-bold wu-uppercase wu-text-xs wu-text-gray-700">
 
-				<?php _e('Menu', 'wp-ultimo'); ?>
+				<?php _e('Menu', 'wp-multisite-waas'); ?>
 
 			</li>
 
@@ -183,7 +183,7 @@
 			<ul class="wu-pt-4">
 
 				<li class="wu-px-4 wu-font-bold wu-uppercase wu-text-xs wu-text-gray-700">
-				<?php _e('Add-ons', 'wp-ultimo'); ?>
+				<?php _e('Add-ons', 'wp-multisite-waas'); ?>
 				</li>
 
 				<?php foreach ($addons as $section_name => $section) : ?>

@@ -109,7 +109,7 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 	 */
 	public function get_title(): string {
 
-		return sprintf(__('Integration Setup', 'wp-ultimo'));
+		return sprintf(__('Integration Setup', 'wp-multisite-waas'));
 	}
 
 	/**
@@ -120,7 +120,7 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Host Provider Integration', 'wp-ultimo');
+		return __('Host Provider Integration', 'wp-multisite-waas');
 	}
 
 	/**
@@ -133,25 +133,25 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 		$sections = [
 			'activation'   => [
-				'title'   => __('Activation', 'wp-ultimo'),
+				'title'   => __('Activation', 'wp-multisite-waas'),
 				'view'    => [$this, 'section_activation'],
 				'handler' => [$this, 'handle_activation'],
 			],
 			'instructions' => [
-				'title' => __('Instructions', 'wp-ultimo'),
+				'title' => __('Instructions', 'wp-multisite-waas'),
 				'view'  => [$this, 'section_instructions'],
 			],
 			'config'       => [
-				'title'   => __('Configuration', 'wp-ultimo'),
+				'title'   => __('Configuration', 'wp-multisite-waas'),
 				'view'    => [$this, 'section_configuration'],
 				'handler' => [$this, 'handle_configuration'],
 			],
 			'testing'      => [
-				'title' => __('Testing Integration', 'wp-ultimo'),
+				'title' => __('Testing Integration', 'wp-multisite-waas'),
 				'view'  => [$this, 'section_test'],
 			],
 			'done'         => [
-				'title' => __('Ready!', 'wp-ultimo'),
+				'title' => __('Ready!', 'wp-multisite-waas'),
 				'view'  => [$this, 'section_ready'],
 			],
 		];

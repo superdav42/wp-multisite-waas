@@ -16,7 +16,7 @@
 		<?php
 
 		// translators: 1$s is the display name of the user currently logged in.
-		printf(__('Not %1$s? <a href="%2$s" class="wu-no-underline">Log in</a> using your account.', 'wp-ultimo'), wp_get_current_user()->display_name, $login_url);
+		printf(__('Not %1$s? <a href="%2$s" class="wu-no-underline">Log in</a> using your account.', 'wp-multisite-waas'), wp_get_current_user()->display_name, $login_url);
 
 		?>
 
@@ -44,12 +44,12 @@
 		<div class="wu-ml-auto">
 
 			<a
-			title="<?php esc_attr_e('Update Billing Address', 'wp-ultimo'); ?>"
+			title="<?php esc_attr_e('Update Billing Address', 'wp-multisite-waas'); ?>"
 			class="wu-text-sm wu-no-underline button"
 			href="<?php echo wu_get_registration_url(); ?>"
 			>
 
-			<?php _e('Create an Account', 'wp-ultimo'); ?>
+			<?php _e('Create an Account', 'wp-multisite-waas'); ?>
 
 			</a>
 

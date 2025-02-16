@@ -8,17 +8,17 @@
 <div class="wu-block">
 
 	<div class="wu-block wu-text-gray-700 wu-font-bold wu-uppercase wu-text-xs wu-py-2">
-	<?php echo __('WP Multisite WaaS Requires:', 'wp-ultimo'); ?>
+	<?php echo __('WP Multisite WaaS Requires:', 'wp-multisite-waas'); ?>
 	</div>
 
 	<div class="wu-advanced-filters">
 	<table class="widefat fixed striped wu-border-b">
 		<thead>
 		<tr>
-			<th><?php _e('Item', 'wp-ultimo'); ?></th>
-			<th><?php _e('Minimum Version', 'wp-ultimo'); ?></th>
-			<th><?php _e('Recommended', 'wp-ultimo'); ?></th>
-			<th><?php _e('Installed', 'wp-ultimo'); ?></th>
+			<th><?php _e('Item', 'wp-multisite-waas'); ?></th>
+			<th><?php _e('Minimum Version', 'wp-multisite-waas'); ?></th>
+			<th><?php _e('Recommended', 'wp-multisite-waas'); ?></th>
+			<th><?php _e('Installed', 'wp-multisite-waas'); ?></th>
 		</tr>
 		</thead>
 		<tbody>
@@ -34,8 +34,8 @@
 
 			<?php if ( ! $req['pass_requirements']) : ?>
 
-				<a class="wu-no-underline wu-block" href="<?php echo $req['help']; ?>" title="<?php esc_attr_e('Help', 'wp-ultimo'); ?>">
-				<?php _e('Read More', 'wp-ultimo'); ?>
+				<a class="wu-no-underline wu-block" href="<?php echo $req['help']; ?>" title="<?php esc_attr_e('Help', 'wp-multisite-waas'); ?>">
+				<?php _e('Read More', 'wp-multisite-waas'); ?>
 				<span class="dashicons-wu-help-with-circle"></span>
 				</a>
 
@@ -49,15 +49,15 @@
 	</div>
 
 	<div class="wu-block wu-text-gray-700 wu-font-bold wu-uppercase wu-text-xs wu-py-2">
-	<?php echo __('And', 'wp-ultimo'); ?>
+	<?php echo __('And', 'wp-multisite-waas'); ?>
 	</div>
 
 	<div class="wu-advanced-filters">
 	<table class="widefat fixed striped wu-border-b">
 		<thead>
 		<tr>
-			<th><?php _e('Item', 'wp-ultimo'); ?></th>
-			<th><?php _e('Condition', 'wp-ultimo'); ?></th>
+			<th><?php _e('Item', 'wp-multisite-waas'); ?></th>
+			<th><?php _e('Condition', 'wp-multisite-waas'); ?></th>
 		</tr>
 		</thead>
 		<tbody>
@@ -70,9 +70,9 @@
 
 			<?php if ( ! $req['pass_requirements']) : ?>
 
-				<a target="_blank" class="wu-no-underline wu-ml-2" href="<?php echo $req['help']; ?>" title="<?php esc_attr_e('Help', 'wp-ultimo'); ?>">
+				<a target="_blank" class="wu-no-underline wu-ml-2" href="<?php echo $req['help']; ?>" title="<?php esc_attr_e('Help', 'wp-multisite-waas'); ?>">
 				<span class="dashicons-wu-help-with-circle wu-align-baseline"></span>
-				<?php _e('Read More', 'wp-ultimo'); ?>
+				<?php _e('Read More', 'wp-multisite-waas'); ?>
 				</a>
 
 			<?php endif; ?>
@@ -87,7 +87,7 @@
 	<?php if (\WP_Ultimo\Requirements::met() === false) : ?>
 
 	<div class="wu-mt-4 wu-p-4 wu-bg-red-100 wu-border wu-border-solid wu-border-red-200 wu-rounded-sm wu-text-red-500">
-		<?php _e('It looks like your hosting environment does not support the current version of WP Multisite WaaS. Visit the <strong>Read More</strong> links on each item to see what steps you need to take to bring your environment up to the WP Multisite WaaS current requirements.', 'wp-ultimo'); ?>
+		<?php _e('It looks like your hosting environment does not support the current version of WP Multisite WaaS. Visit the <strong>Read More</strong> links on each item to see what steps you need to take to bring your environment up to the WP Multisite WaaS current requirements.', 'wp-multisite-waas'); ?>
 	</div>
 
 	<?php endif; ?>

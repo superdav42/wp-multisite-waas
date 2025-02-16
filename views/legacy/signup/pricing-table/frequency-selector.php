@@ -28,9 +28,9 @@ if ( ! defined('ABSPATH')) {
 	<?php
 
 	$prices = [
-		1  => __('Monthly', 'wp-ultimo'),
-		3  => __('Quarterly', 'wp-ultimo'),
-		12 => __('Yearly', 'wp-ultimo'),
+		1  => __('Monthly', 'wp-multisite-waas'),
+		3  => __('Quarterly', 'wp-multisite-waas'),
+		12 => __('Yearly', 'wp-multisite-waas'),
 	];
 
 	$first = true;

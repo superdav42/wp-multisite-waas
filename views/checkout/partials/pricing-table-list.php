@@ -18,7 +18,7 @@
 
 	<div class="wu-text-center wu-bg-gray-100 wu-rounded wu-uppercase wu-font-semibold wu-text-xs wu-text-gray-700 wu-p-4">
 
-	<?php _e('No Products Found.', 'wp-ultimo'); ?>
+	<?php _e('No Products Found.', 'wp-multisite-waas'); ?>
 
 	</div>
 
@@ -54,7 +54,7 @@
 		<div class="wu-relative">
 
 		<a href="#wu-checkout-add-<?php echo $product->get_slug(); ?>" class="button btn wu-w-full wu-text-center wu-inline-block">
-			<?php _e('Select', 'wp-ultimo'); ?>
+			<?php _e('Select', 'wp-multisite-waas'); ?>
 		</a>
 
 		</div>

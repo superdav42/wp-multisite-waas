@@ -20,7 +20,7 @@
 		</div>
 
 		<div class="wu-text-sm wu-text-gray-600">
-		<span class="wu-block"><?php _e('New Memberships', 'wp-ultimo'); ?></span>
+		<span class="wu-block"><?php _e('New Memberships', 'wp-multisite-waas'); ?></span>
 		</div>
 
 	</li>
@@ -34,8 +34,8 @@
 
 		<thead>
 		<tr>
-			<th><?php _e('Product Name', 'wp-ultimo'); ?></th>
-			<th class="wu-text-right"><?php _e('New Memberships', 'wp-ultimo'); ?></th>
+			<th><?php _e('Product Name', 'wp-multisite-waas'); ?></th>
+			<th class="wu-text-right"><?php _e('New Memberships', 'wp-multisite-waas'); ?></th>
 		</tr>
 		</thead>
 
@@ -60,7 +60,7 @@
 
 			<tr>
 				<td colspan="2">
-				<?php _e('No Products found.', 'wp-ultimo'); ?>
+				<?php _e('No Products found.', 'wp-multisite-waas'); ?>
 				</td>
 			</tr>
 

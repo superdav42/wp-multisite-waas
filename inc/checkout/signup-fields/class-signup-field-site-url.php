@@ -63,7 +63,7 @@ class Signup_Field_Site_Url extends Base_Signup_Field {
 	 */
 	public function get_title() {
 
-		return __('Site URL', 'wp-ultimo');
+		return __('Site URL', 'wp-multisite-waas');
 	}
 
 	/**
@@ -76,7 +76,7 @@ class Signup_Field_Site_Url extends Base_Signup_Field {
 	 */
 	public function get_description() {
 
-		return __('Adds a Site URL field. This is used to set the URL of the site being created.', 'wp-ultimo');
+		return __('Adds a Site URL field. This is used to set the URL of the site being created.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -89,7 +89,7 @@ class Signup_Field_Site_Url extends Base_Signup_Field {
 	 */
 	public function get_tooltip() {
 
-		return __('Adds a Site URL field. This is used to set the URL of the site being created.', 'wp-ultimo');
+		return __('Adds a Site URL field. This is used to set the URL of the site being created.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -169,8 +169,8 @@ class Signup_Field_Site_Url extends Base_Signup_Field {
 			'auto_generate_site_url'    => [
 				'order'     => 12,
 				'type'      => 'toggle',
-				'title'     => __('Auto-generate', 'wp-ultimo'),
-				'desc'      => __('Check this option to auto-generate this field based on the username of the customer.', 'wp-ultimo'),
+				'title'     => __('Auto-generate', 'wp-multisite-waas'),
+				'desc'      => __('Check this option to auto-generate this field based on the username of the customer.', 'wp-multisite-waas'),
 				'tooltip'   => '',
 				'value'     => 0,
 				'html_attr' => [
@@ -180,8 +180,8 @@ class Signup_Field_Site_Url extends Base_Signup_Field {
 			'display_field_attachments' => [
 				'order'             => 18,
 				'type'              => 'toggle',
-				'title'             => __('Display URL field attachments', 'wp-ultimo'),
-				'desc'              => __('Adds the prefix and suffix blocks to the URL field.', 'wp-ultimo'),
+				'title'             => __('Display URL field attachments', 'wp-multisite-waas'),
+				'desc'              => __('Adds the prefix and suffix blocks to the URL field.', 'wp-multisite-waas'),
 				'tooltip'           => '',
 				'value'             => 1,
 				'tab'               => 'content',
@@ -195,8 +195,8 @@ class Signup_Field_Site_Url extends Base_Signup_Field {
 			'display_url_preview'       => [
 				'order'             => 19,
 				'type'              => 'toggle',
-				'title'             => __('Display URL preview block', 'wp-ultimo'),
-				'desc'              => __('Adds a preview block that shows the final URL.', 'wp-ultimo'),
+				'title'             => __('Display URL preview block', 'wp-multisite-waas'),
+				'desc'              => __('Adds a preview block that shows the final URL.', 'wp-multisite-waas'),
 				'tooltip'           => '',
 				'value'             => 1,
 				'tab'               => 'content',
@@ -210,8 +210,8 @@ class Signup_Field_Site_Url extends Base_Signup_Field {
 			'enable_domain_selection'   => [
 				'order'             => 20,
 				'type'              => 'toggle',
-				'title'             => __('Enable Domain Selection', 'wp-ultimo'),
-				'desc'              => __('Offer different domain options to your customers to choose from.', 'wp-ultimo'),
+				'title'             => __('Enable Domain Selection', 'wp-multisite-waas'),
+				'desc'              => __('Offer different domain options to your customers to choose from.', 'wp-multisite-waas'),
 				'tooltip'           => '',
 				'value'             => 0,
 				'tab'               => 'content',
@@ -226,9 +226,9 @@ class Signup_Field_Site_Url extends Base_Signup_Field {
 			'available_domains'         => [
 				'order'             => 30,
 				'type'              => 'textarea',
-				'title'             => __('Available Domains', 'wp-ultimo'),
+				'title'             => __('Available Domains', 'wp-multisite-waas'),
 				'desc'              => '',
-				'desc'              => __('Enter one domain option per line.', 'wp-ultimo'),
+				'desc'              => __('Enter one domain option per line.', 'wp-multisite-waas'),
 				'value'             => $current_site->domain . PHP_EOL,
 				'tab'               => 'content',
 				'wrapper_html_attr' => [
@@ -250,8 +250,8 @@ class Signup_Field_Site_Url extends Base_Signup_Field {
 	public function get_url_preview_templates() {
 
 		$templates = [
-			'legacy/signup/steps/step-domain-url-preview' => __('New URL Preview', 'wp-ultimo'),
-			// 'legacy/signup/steps/step-domain-url-preview' => __('Legacy Template', 'wp-ultimo'),
+			'legacy/signup/steps/step-domain-url-preview' => __('New URL Preview', 'wp-multisite-waas'),
+			// 'legacy/signup/steps/step-domain-url-preview' => __('Legacy Template', 'wp-multisite-waas'),
 		];
 
 		return apply_filters('wu_get_pricing_table_templates', $templates);
@@ -331,7 +331,7 @@ class Signup_Field_Site_Url extends Base_Signup_Field {
 			$options = $this->get_domain_options($attributes['available_domains']);
 
 			$checkout_fields['site_domain'] = [
-				'name'              => __('Domain', 'wp-ultimo'),
+				'name'              => __('Domain', 'wp-multisite-waas'),
 				'options'           => $options,
 				'wrapper_classes'   => wu_get_isset($attributes, 'wrapper_element_classes', ''),
 				'classes'           => wu_get_isset($attributes, 'element_classes', ''),

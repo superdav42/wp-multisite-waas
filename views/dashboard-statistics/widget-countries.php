@@ -14,8 +14,8 @@
 $data    = [];
 $slug    = 'signup_countries';
 $headers = [
-	__('Country', 'wp-ultimo'),
-	__('Customer Count', 'wp-ultimo'),
+	__('Country', 'wp-multisite-waas'),
+	__('Customer Count', 'wp-multisite-waas'),
 ];
 
 foreach ($countries as $country_code => $count) {
@@ -49,8 +49,8 @@ $page->render_csv_button(
 
 		<thead>
 		<tr>
-			<th><?php esc_html_e('Country', 'wp-ultimo'); ?></th>
-			<th class="wu-text-right"><?php esc_html_e('Customer Count', 'wp-ultimo'); ?></th>
+			<th><?php esc_html_e('Country', 'wp-multisite-waas'); ?></th>
+			<th class="wu-text-right"><?php esc_html_e('Customer Count', 'wp-multisite-waas'); ?></th>
 		</tr>
 		</thead>
 
@@ -96,7 +96,7 @@ $page->render_csv_button(
 			<?php if ($state_list && $count - $_state_count >= 0) : ?>
 
 			<tr>
-				<td class="wu-text-xs">|&longrightarrow; <?php esc_html_e('Other', 'wp-ultimo'); ?></td>
+				<td class="wu-text-xs">|&longrightarrow; <?php esc_html_e('Other', 'wp-multisite-waas'); ?></td>
 				<td class="wu-text-right"><?php echo esc_html($count - $_state_count); ?></td>
 			</tr>
 
@@ -114,7 +114,7 @@ $page->render_csv_button(
 
 	<div class="wu-bg-gray-100 wu-p-4 wu-rounded wu-mt-6">
 
-	<?php esc_html_e('No countries registered yet.', 'wp-ultimo'); ?>
+	<?php esc_html_e('No countries registered yet.', 'wp-multisite-waas'); ?>
 
 	</div>
 

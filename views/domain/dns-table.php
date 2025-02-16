@@ -11,10 +11,10 @@
 
 	<thead>
 		<tr>
-		<th class="wu-w-4/12"><?php _e('Host', 'wp-ultimo'); ?></th>
-		<th class="wu-w-2/12"><?php _e('Type', 'wp-ultimo'); ?></th>
-		<th class="wu-w-4/12"><?php _e('IP / Target', 'wp-ultimo'); ?></th>
-		<th class="wu-w-2/12"><?php _e('TTL', 'wp-ultimo'); ?></th>
+		<th class="wu-w-4/12"><?php _e('Host', 'wp-multisite-waas'); ?></th>
+		<th class="wu-w-2/12"><?php _e('Type', 'wp-multisite-waas'); ?></th>
+		<th class="wu-w-4/12"><?php _e('IP / Target', 'wp-multisite-waas'); ?></th>
+		<th class="wu-w-2/12"><?php _e('TTL', 'wp-multisite-waas'); ?></th>
 		</tr>
 	</thead>
 
@@ -24,7 +24,7 @@
 
 		<td colspan="4">
 
-			<?php _e('Loading DNS entries...', 'wp-ultimo'); ?>
+			<?php _e('Loading DNS entries...', 'wp-multisite-waas'); ?>
 
 		</td>
 
@@ -70,7 +70,7 @@
 		</tr>
 
 		<tr>
-		<td colspan="2"><?php _e('Your Network IP', 'wp-ultimo'); ?></td>
+		<td colspan="2"><?php _e('Your Network IP', 'wp-multisite-waas'); ?></td>
 		<td colspan="2" class="wu-text-left">{{ results.network_ip }}</td>
 		</tr>
 

@@ -126,7 +126,7 @@ class Theme_Limits {
 		if ($theme_limitations->allowed($new_theme, 'not_available')) {
 			$response = [
 				'code'    => 'not-available',
-				'message' => __('This theme is not available on your current plan.', 'wp-ultimo'),
+				'message' => __('This theme is not available on your current plan.', 'wp-multisite-waas'),
 			];
 
 			wp_send_json($response, 'not-available');
@@ -168,7 +168,7 @@ class Theme_Limits {
 		}
 
 		$upgrade_button = wu_generate_upgrade_to_unlock_button(
-			__('Upgrade to unlock', 'wp-ultimo'),
+			__('Upgrade to unlock', 'wp-multisite-waas'),
 			[
 				'module'  => 'themes',
 				'type'    => 'EXTENSION',

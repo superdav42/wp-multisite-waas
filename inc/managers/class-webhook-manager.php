@@ -196,7 +196,7 @@ class Webhook_Manager extends Base_Manager {
 		if ( ! current_user_can('manage_network')) {
 			wp_send_json(
 				[
-					'response' => __('You do not have enough permissions to send a test event.', 'wp-ultimo'),
+					'response' => __('You do not have enough permissions to send a test event.', 'wp-multisite-waas'),
 					'webhooks' => Webhook::get_items_as_array(),
 				]
 			);
@@ -249,7 +249,7 @@ class Webhook_Manager extends Base_Manager {
 		';
 
 		if ( ! current_user_can('manage_network')) {
-			echo __('You do not have enough permissions to read the logs of this webhook.', 'wp-ultimo');
+			echo __('You do not have enough permissions to read the logs of this webhook.', 'wp-multisite-waas');
 
 			exit;
 		}

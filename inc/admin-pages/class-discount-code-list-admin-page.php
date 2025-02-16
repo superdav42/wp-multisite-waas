@@ -71,8 +71,8 @@ class Discount_Code_List_Admin_Page extends List_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'deleted_message' => __('Discount Code removed successfully.', 'wp-ultimo'),
-			'search_label'    => __('Search Discount Code', 'wp-ultimo'),
+			'deleted_message' => __('Discount Code removed successfully.', 'wp-multisite-waas'),
+			'search_label'    => __('Search Discount Code', 'wp-multisite-waas'),
 		];
 	}
 
@@ -84,7 +84,7 @@ class Discount_Code_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('Discount Codes', 'wp-ultimo');
+		return __('Discount Codes', 'wp-multisite-waas');
 	}
 
 	/**
@@ -95,7 +95,7 @@ class Discount_Code_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Discount Codes', 'wp-ultimo');
+		return __('Discount Codes', 'wp-multisite-waas');
 	}
 
 	/**
@@ -106,7 +106,7 @@ class Discount_Code_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_submenu_title() {
 
-		return __('Discount Codes', 'wp-ultimo');
+		return __('Discount Codes', 'wp-multisite-waas');
 	}
 
 	/**

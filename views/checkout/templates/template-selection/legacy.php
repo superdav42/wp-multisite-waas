@@ -38,7 +38,7 @@ $customer_sites = isset($customer_sites) ? array_map('intval', $customer_sites) 
 	class="wu-text-center wu-bg-gray-100 wu-rounded wu-uppercase wu-font-semibold wu-text-xs wu-text-gray-700 wu-p-4"
 >
 
-	<?php _e('No Site Templates Found.', 'wp-ultimo'); ?>
+	<?php _e('No Site Templates Found.', 'wp-multisite-waas'); ?>
 
 </div>
 
@@ -59,7 +59,7 @@ $customer_sites = isset($customer_sites) ? array_map('intval', $customer_sites) 
 
 		<h2>
 
-		<?php _e('Pick your Template', 'wp-ultimo'); ?>
+		<?php _e('Pick your Template', 'wp-multisite-waas'); ?>
 
 		<span class="title-count theme-count">
 
@@ -75,13 +75,13 @@ $customer_sites = isset($customer_sites) ? array_map('intval', $customer_sites) 
 
 		<div class="wp-filter-responsive">
 
-		<h4><?php _e('Template Categories', 'wp-ultimo'); ?></h4>
+		<h4><?php _e('Template Categories', 'wp-multisite-waas'); ?></h4>
 
 		<select class="">
 
 			<option value="">
 			
-				<?php _e('All Templates', 'wp-ultimo'); ?>
+				<?php _e('All Templates', 'wp-multisite-waas'); ?>
 		  
 			</option>
 
@@ -120,7 +120,7 @@ $customer_sites = isset($customer_sites) ? array_map('intval', $customer_sites) 
 			v-on:click.prevent="$parent.template_category = ''"
 			>
 			
-			<?php _e('All Templates', 'wp-ultimo'); ?>
+			<?php _e('All Templates', 'wp-multisite-waas'); ?>
 		  
 			</a>
 
@@ -207,7 +207,7 @@ $customer_sites = isset($customer_sites) ? array_map('intval', $customer_sites) 
 				id="<?php echo $site->get_id(); ?>-action"
 			>
 
-					<?php $is_template ? _e('View Template', 'wp-ultimo') : _e('View Site', 'wp-ultimo'); ?>
+					<?php $is_template ? _e('View Template', 'wp-multisite-waas') : _e('View Site', 'wp-multisite-waas'); ?>
 
 			</a>
 
@@ -227,9 +227,9 @@ $customer_sites = isset($customer_sites) ? array_map('intval', $customer_sites) 
 					v-on:click.prevent="$parent.template_id = <?php echo esc_attr($site->get_id()); ?>"
 				>
 
-					<span v-if="$parent.template_id == <?php echo esc_attr($site->get_id()); ?>"><?php _e('Selected', 'wp-ultimo'); ?></span>
+					<span v-if="$parent.template_id == <?php echo esc_attr($site->get_id()); ?>"><?php _e('Selected', 'wp-multisite-waas'); ?></span>
 
-					<span v-else><?php _e('Select', 'wp-ultimo'); ?></span>
+					<span v-else><?php _e('Select', 'wp-multisite-waas'); ?></span>
 
 				</button>
 
@@ -254,7 +254,7 @@ $customer_sites = isset($customer_sites) ? array_map('intval', $customer_sites) 
 
 	<p class="no-themes">
 
-		<?php _e('No Templates Found', 'wp-ultimo'); ?>
+		<?php _e('No Templates Found', 'wp-multisite-waas'); ?>
 		
 	</p>
 

@@ -336,7 +336,7 @@ function wu_print_signup_field($field_slug, $field, $results) {
       <input name="signup_form_id" type="hidden" value="1">
 
       <button id="wp-submit" <?php echo $attributes; ?> type="submit" class="button button-primary button-large button-next" value="1" name="save_step">
-			<?php esc_attr_e($field['name'], 'wp-ultimo'); ?>
+			<?php esc_attr_e($field['name'], 'wp-multisite-waas'); ?>
       </button>
 
 			<?php wp_nonce_field('signup_form_1', '_signup_form'); ?>

@@ -72,7 +72,7 @@ $percent     = 100 / $count;
 
 	<a class="wu-signup-back-link" href="<?php echo $prev_link; ?>">
 
-		<?php _e('&larr; Go Back to Previous Step', 'wp-ultimo'); ?>
+		<?php _e('&larr; Go Back to Previous Step', 'wp-multisite-waas'); ?>
 
 	</a>
 

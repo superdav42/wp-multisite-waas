@@ -12,11 +12,11 @@
 	<div class="wu-w-full sm:wu-w-8/12">
 
 		<span class="wu-block wu-my-1 wu-text-base wu-font-semibold wu-text-gray-700">
-		<?php _e('Your network is taking shape!', 'wp-ultimo'); ?>
+		<?php _e('Your network is taking shape!', 'wp-multisite-waas'); ?>
 		</span>
 
 		<span class="wu-block wu-my-1 wu-text-gray-600">
-		<?php _e('Here are the next steps to keep you on that streak!', 'wp-ultimo'); ?>
+		<?php _e('Here are the next steps to keep you on that streak!', 'wp-multisite-waas'); ?>
 		</span>
 
 	</div>
@@ -24,7 +24,7 @@
 	<div class="wu-w-4/12 wu-text-right wu-hidden sm:wu-inline-block">
 
 		<span class="wu-inline-block wu-bg-green-100 wu-text-center wu-align-middle wu-p-2 wu-font-mono wu-px-3 wu-border wu-border-green-300 wu-text-green-700 wu-border-solid wu-rounded">
-		<?php echo $percentage . '% ' . __('done', 'wp-ultimo'); ?>
+		<?php echo $percentage . '% ' . __('done', 'wp-multisite-waas'); ?>
 		</span>
 
 	</div>
@@ -92,7 +92,7 @@ endforeach;
 		class="button wu-text-center hide-postbox-tog"
 		id="wp-ultimo-setup-hide"
 		>
-		<?php _e('Dismiss', 'wp-ultimo'); ?>
+		<?php _e('Dismiss', 'wp-multisite-waas'); ?>
 		</button>
 
 	</div>

@@ -14,14 +14,14 @@
 		<img
 		style="opacity: 0.6;"
 		class="wu-w-full wu-h-auto wu-image-preview"
-		data-image="<?php echo $item->get_featured_image('large'); ?>"
-		src="<?php echo $item->get_featured_image('wu-thumb-medium'); ?>"
+		data-image="<?php echo esc_attr($item->get_featured_image('large')); ?>"
+		src="<?php echo esc_attr($item->get_featured_image('wu-thumb-medium')); ?>"
 		/>
 
 		<?php if (current_user_can('wu_read_sites')) : ?>
 
 		<div class="wu-my-4 wu-mx-3 wu-inline-block wu-absolute wu-bottom-0 wu-right-0 wu-rounded wu-px-2 wu-py-1 wu-uppercase wu-text-xs wu-font-bold <?php echo esc_attr($item->get_type_class()); ?>">
-			<?php echo $item->get_type_label(); ?>
+			<?php echo esc_html($item->get_type_label()); ?>
 		</div>
 
 		<?php endif; ?>
@@ -31,12 +31,12 @@
 	<div class="wu-text-base wu-px-3 wu-my-3">
 
 		<div>
-		<span class="wu-font-semibold"><?php echo $item->get_title(); ?></span>
-		<small><?php echo $item->get_id() ? '#' . $item->get_id() : ''; ?></small>
+		<span class="wu-font-semibold"><?php echo esc_html($item->get_title()); ?></span>
+		<small><?php echo esc_html($item->get_id() ? '#' . $item->get_id() : ''); ?></small>
 		</div>
 
 		<div class="wu-text-xs wu-my-1">
-		<a class="wu-no-underline" href="<?php echo $item->get_active_site_url(); ?>"><?php echo $item->get_active_site_url(); ?></a>
+		<a class="wu-no-underline" href="<?php echo esc_url($item->get_active_site_url()); ?>"><?php echo esc_url($item->get_active_site_url()); ?></a>
 		</div>
 
 	</div>
@@ -48,23 +48,23 @@
 			<?php if ($item->get_type() === 'pending') : ?>
 
 			<label>
-				<input class="wu-rounded-none" type="checkbox" name="bulk-delete[]" value="<?php echo $item->get_membership_id(); ?>" />
-				<?php _e('Select Site', 'wp-ultimo'); ?>
+				<input class="wu-rounded-none" type="checkbox" name="bulk-delete[]" value="<?php echo esc_attr($item->get_membership_id()); ?>" />
+				<?php esc_html_e('Select Site', 'wp-multisite-waas'); ?>
 			</label>
 
-			<a title="<?php echo esc_attr(__('Publish pending site', 'wp-ultimo')); ?>" href="<?php echo wu_get_form_url('publish_pending_site', ['membership_id' => $item->get_membership_id()]); ?>" class="wubox button button-primary">
-				<?php _e('Publish Site', 'wp-ultimo'); ?>
+			<a title="<?php echo esc_attr(__('Publish pending site', 'wp-multisite-waas')); ?>" href="<?php echo esc_attr(wu_get_form_url('publish_pending_site', ['membership_id' => $item->get_membership_id()])); ?>" class="wubox button button-primary">
+				<?php esc_html_e('Publish Site', 'wp-multisite-waas'); ?>
 			</a>
 
 			<?php else : ?>
 
 			<label>
-				<input class="wu-rounded-none" type="checkbox" name="bulk-delete[]" value="<?php echo $item->get_id(); ?>" />
-				<?php _e('Select Site', 'wp-ultimo'); ?>
+				<input class="wu-rounded-none" type="checkbox" name="bulk-delete[]" value="<?php echo esc_attr($item->get_id()); ?>" />
+				<?php esc_html_e('Select Site', 'wp-multisite-waas'); ?>
 			</label>
 
-			<a href="<?php echo wu_network_admin_url('wp-ultimo-edit-site', ['id' => $item->get_id()]); ?>" class="button button-primary">
-				<?php _e('Manage', 'wp-ultimo'); ?>
+			<a href="<?php echo esc_attr(wu_network_admin_url('wp-ultimo-edit-site', ['id' => $item->get_id()])); ?>" class="button button-primary">
+				<?php esc_html_e('Manage', 'wp-multisite-waas'); ?>
 			</a>
 
 			<?php endif; ?>
@@ -73,8 +73,8 @@
 
 			<span>&nbsp;</span>
 
-			<a href="<?php echo wu_network_admin_url('wp-ultimo-edit-site', ['id' => $item->get_id()]); ?>" class="button button-primary">
-			<?php _e('See Main Site', 'wp-ultimo'); ?>
+			<a href="<?php echo esc_attr(wu_network_admin_url('wp-ultimo-edit-site', ['id' => $item->get_id()])); ?>" class="button button-primary">
+			<?php esc_html_e('See Main Site', 'wp-multisite-waas'); ?>
 			</a>
 
 		<?php endif; ?>

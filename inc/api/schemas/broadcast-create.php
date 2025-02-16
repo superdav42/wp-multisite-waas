@@ -20,12 +20,12 @@ defined('ABSPATH') || exit;
  */
 return [
 	'migrated_from_id' => [
-		'description' => __('The ID of the original 1.X model that was used to generate this item on migration.', 'wp-ultimo'),
+		'description' => __('The ID of the original 1.X model that was used to generate this item on migration.', 'wp-multisite-waas'),
 		'type'        => 'integer',
 		'required'    => false,
 	],
 	'notice_type'      => [
-		'description' => __('Can be info, success, warning or error.', 'wp-ultimo'),
+		'description' => __('Can be info, success, warning or error.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 		'enum'        => [
@@ -36,57 +36,57 @@ return [
 		],
 	],
 	'name'             => [
-		'description' => __('This broadcast name, which is used as broadcast title as well.', 'wp-ultimo'),
+		'description' => __('This broadcast name, which is used as broadcast title as well.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'type'             => [
-		'description' => __('The type being set.', 'wp-ultimo'),
+		'description' => __('The type being set.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => true,
 	],
 	'status'           => [
-		'description' => __('The status being set.', 'wp-ultimo'),
+		'description' => __('The status being set.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'author_id'        => [
-		'description' => __('The author ID.', 'wp-ultimo'),
+		'description' => __('The author ID.', 'wp-multisite-waas'),
 		'type'        => 'integer',
 		'required'    => false,
 	],
 	'title'            => [
-		'description' => __('Post title.', 'wp-ultimo'),
+		'description' => __('Post title.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => true,
 	],
 	'content'          => [
-		'description' => __('Post content.', 'wp-ultimo'),
+		'description' => __('Post content.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => true,
 	],
 	'excerpt'          => [
-		'description' => __('Post excerpt.', 'wp-ultimo'),
+		'description' => __('Post excerpt.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'date_created'     => [
-		'description' => __('Post creation date.', 'wp-ultimo'),
+		'description' => __('Post creation date.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'date_modified'    => [
-		'description' => __('Post last modification date.', 'wp-ultimo'),
+		'description' => __('Post last modification date.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'slug'             => [
-		'description' => __('The slug.', 'wp-ultimo'),
+		'description' => __('The slug.', 'wp-multisite-waas'),
 		'type'        => 'mixed',
 		'required'    => false,
 	],
 	'skip_validation'  => [
-		'description' => __('Set true to have field information validation bypassed when saving this event.', 'wp-ultimo'),
+		'description' => __('Set true to have field information validation bypassed when saving this event.', 'wp-multisite-waas'),
 		'type'        => 'boolean',
 		'required'    => false,
 	],

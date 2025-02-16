@@ -240,7 +240,7 @@ class Template_Previewer {
 		 * Check if this is a site template
 		 */
 		if ( ! $selected_template || ($selected_template->get_type() !== Site_Type::SITE_TEMPLATE && ! wu_request('customizer'))) {
-			wp_die(__('This template is not available', 'wp-ultimo'));
+			wp_die(__('This template is not available', 'wp-multisite-waas'));
 		}
 
 		$categories = [];
@@ -360,7 +360,7 @@ class Template_Previewer {
 			'bg_color'                    => '#f9f9f9',
 			'button_bg_color'             => '#00a1ff',
 			'logo_url'                    => wu_get_network_logo(),
-			'button_text'                 => __('Use this Template', 'wp-ultimo'),
+			'button_text'                 => __('Use this Template', 'wp-multisite-waas'),
 			'preview_url_parameter'       => 'template-preview',
 			'display_responsive_controls' => true,
 			'use_custom_logo'             => false,

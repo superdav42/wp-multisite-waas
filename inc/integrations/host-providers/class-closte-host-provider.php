@@ -162,7 +162,7 @@ class Closte_Host_Provider extends Base_Host_Provider {
 			);
 		}
 
-		$error = new \WP_Error('not-auth', __('Something went wrong', 'wp-ultimo'));
+		$error = new \WP_Error('not-auth', __('Something went wrong', 'wp-multisite-waas'));
 
 		wp_send_json_error($error);
 	}
@@ -224,7 +224,7 @@ class Closte_Host_Provider extends Base_Host_Provider {
 	 */
 	public function get_description() {
 
-		return __('Closte is not just another web hosting who advertise their services as a cloud hosting while still provides fixed plans like in 1995.', 'wp-ultimo');
+		return __('Closte is not just another web hosting who advertise their services as a cloud hosting while still provides fixed plans like in 1995.', 'wp-multisite-waas');
 	}
 
 	/**

@@ -71,7 +71,7 @@
 
 		</div>
 
-		<button type="button" data-select-all="multiselect-<?php echo $field_slug; ?>" class="button wu-select-all"><?php _e('Check / Uncheck All', 'wp-ultimo'); ?></button>
+		<button type="button" data-select-all="multiselect-<?php echo $field_slug; ?>" class="button wu-select-all"><?php _e('Check / Uncheck All', 'wp-multisite-waas'); ?></button>
 
 		<br>
 

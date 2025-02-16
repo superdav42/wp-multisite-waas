@@ -38,7 +38,7 @@
 
 	<span class="wu-text-xs wu-uppercase wu-font-bold wu-block">
 
-		<?php _e('Product Description:', 'wp-ultimo'); ?>
+		<?php _e('Product Description:', 'wp-multisite-waas'); ?>
 
 	</span>
 
@@ -48,7 +48,7 @@
 
 	<span class="wu-text-xs wu-uppercase wu-font-bold wu-block">
 
-	<?php _e('Product Characteristics:', 'wp-ultimo'); ?>
+	<?php _e('Product Characteristics:', 'wp-multisite-waas'); ?>
 
 	</span>
 

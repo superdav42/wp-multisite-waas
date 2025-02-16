@@ -43,11 +43,11 @@
 			<div class="wu-block wu-mt-4">
 
 				<span class="wu-text-xs wu-text-gray-700 wu-my-1 wu-mr-4 wu-block">
-				<?php printf(__('Version %s', 'wp-ultimo'), $theme_data['Version']); ?>
+				<?php printf(__('Version %s', 'wp-multisite-waas'), $theme_data['Version']); ?>
 				</span>
 
 				<span class="wu-text-xs wu-text-gray-700 wu-my-1 wu-mr-4 wu-block">
-				<?php printf(__('by %s', 'wp-ultimo'), $theme_data['Author']); ?>
+				<?php printf(__('by %s', 'wp-multisite-waas'), $theme_data['Author']); ?>
 				</span>
 
 			</div>
@@ -60,25 +60,25 @@
 
 			<h3 class="wu-mb-1 wu-text-2xs wu-uppercase wu-text-gray-600">
 
-				<?php _e('Visibility', 'wp-ultimo'); ?>
+				<?php _e('Visibility', 'wp-multisite-waas'); ?>
 
 			</h3>
 
 			<select name="modules[themes][limit][<?php echo esc_attr($theme_path); ?>][visibility]" class="wu-w-full">
-				<option <?php selected('visible' === $theme_settings->visibility); ?> value="visible"><?php _e('Visible', 'wp-ultimo'); ?></option>
-				<option <?php selected('hidden' === $theme_settings->visibility); ?> value="hidden"><?php _e('Hidden', 'wp-ultimo'); ?></option>
+				<option <?php selected('visible' === $theme_settings->visibility); ?> value="visible"><?php _e('Visible', 'wp-multisite-waas'); ?></option>
+				<option <?php selected('hidden' === $theme_settings->visibility); ?> value="hidden"><?php _e('Hidden', 'wp-multisite-waas'); ?></option>
 			</select>
 
 			<h3 class="wu-my-1 wu-mt-4 wu-text-2xs wu-uppercase wu-text-gray-600">
 
-				<?php _e('Behavior', 'wp-ultimo'); ?>
+				<?php _e('Behavior', 'wp-multisite-waas'); ?>
 
 			</h3>
 
 			<select v-on:change="force_active_theme = ($event.target.value === 'force_active' ? '<?php echo esc_attr($theme_path); ?>' : '')" name="modules[themes][limit][<?php echo esc_attr($theme_path); ?>][behavior]" class="wu-w-full">
-				<option <?php selected('available' === $theme_settings->behavior); ?> value="available"><?php _e('Available', 'wp-ultimo'); ?></option>
-				<option <?php selected('not_available' === $theme_settings->behavior); ?> value="not_available"><?php _e('Not Available', 'wp-ultimo'); ?></option>
-				<option :disabled="force_active_theme !== '' && force_active_theme != '<?php echo esc_attr($theme_path); ?>'" <?php selected('force_active' === $theme_settings->behavior); ?> value="force_active"><?php _e('Force Activate', 'wp-ultimo'); ?></option>
+				<option <?php selected('available' === $theme_settings->behavior); ?> value="available"><?php _e('Available', 'wp-multisite-waas'); ?></option>
+				<option <?php selected('not_available' === $theme_settings->behavior); ?> value="not_available"><?php _e('Not Available', 'wp-multisite-waas'); ?></option>
+				<option :disabled="force_active_theme !== '' && force_active_theme != '<?php echo esc_attr($theme_path); ?>'" <?php selected('force_active' === $theme_settings->behavior); ?> value="force_active"><?php _e('Force Activate', 'wp-multisite-waas'); ?></option>
 			</select>
 
 			</div>
@@ -88,7 +88,7 @@
 		<?php if ('product' !== $object->model && $object->get_limitations(false)->themes->exists($theme_path)) : ?>
 
 			<p class="wu-m-0 wu-mt-4 wu-p-2 wu-bg-blue-100 wu-text-blue-600 wu-rounded">
-				<?php _e('This value is being applied only to this entity. Changes made to the membership or product permissions will not affect this particular value.', 'wp-ultimo'); ?>
+				<?php _e('This value is being applied only to this entity. Changes made to the membership or product permissions will not affect this particular value.', 'wp-multisite-waas'); ?>
 			</p>
 
 		<?php endif; ?>

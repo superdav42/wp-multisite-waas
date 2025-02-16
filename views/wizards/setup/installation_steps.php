@@ -12,8 +12,8 @@
 		<?php if ($checks) : ?>
 			<th class="check" style="width: 30px;"></th>
 		<?php endif ?>
-		<th class="item"><?php _e('Item', 'wp-ultimo'); ?></th>
-		<th class="status" style="width: 40%;"><?php _e('Status', 'wp-ultimo'); ?></th>
+		<th class="item"><?php _e('Item', 'wp-multisite-waas'); ?></th>
+		<th class="status" style="width: 40%;"><?php _e('Status', 'wp-multisite-waas'); ?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -44,15 +44,15 @@
 			<?php if ($default['done']) : ?>
 			<td class="status">
 				<span class="wu-text-green-600">
-				<?php echo $default['completed'] ?? __('Completed!', 'wp-ultimo'); ?>
+				<?php echo $default['completed'] ?? __('Completed!', 'wp-multisite-waas'); ?>
 				</span>
 			</td>
 			<?php else : ?>
 			<td class="status">
 				<span><?php echo $default['pending']; ?></span>
 				<div class="spinner"></div>
-				<!-- <a style="display: none;" class="wu-no-underline wu-block help" href="<?php echo $default['help']; ?>" title="<?php esc_attr_e('Help', 'wp-ultimo'); ?>">
-					<?php _e('Read More', 'wp-ultimo'); ?>
+				<!-- <a style="display: none;" class="wu-no-underline wu-block help" href="<?php echo $default['help']; ?>" title="<?php esc_attr_e('Help', 'wp-multisite-waas'); ?>">
+					<?php _e('Read More', 'wp-multisite-waas'); ?>
 					<span class="dashicons-wu-help-with-circle"></span>
 				</a> -->
 			</td>

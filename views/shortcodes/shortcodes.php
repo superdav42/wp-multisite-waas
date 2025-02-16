@@ -8,7 +8,7 @@
 
 <div id="wp-ultimo-wrap" class="<?php wu_wrap_use_container(); ?> wrap">
 
-	<h1 class="wp-heading-inline"><?php _e('Available Shortcodes', 'wp-ultimo'); ?></h1>
+	<h1 class="wp-heading-inline"><?php _e('Available Shortcodes', 'wp-multisite-waas'); ?></h1>
 
 	<div id="poststuff">
 	<div id="post-body" class="">
@@ -24,10 +24,10 @@
 					<a  
 					href="<?php echo $shortcode['generator_form_url']; ?>" 
 					class="wu-float-right wubox wu-no-underline wu-text-gray-600"
-					title="<?php _e('Generator', 'wp-ultimo'); ?>"
+					title="<?php _e('Generator', 'wp-multisite-waas'); ?>"
 					>
 					<span class="dashicons-wu-rocket"></span>
-					<?php _e('Generator', 'wp-ultimo'); ?>
+					<?php _e('Generator', 'wp-multisite-waas'); ?>
 					</a>  
 					<div class="wu-block">
 					<h3 class="wu-my-1 wu-text-base wu-text-gray-800">
@@ -43,16 +43,16 @@
 					<table class="wu-table-auto striped wu-w-full">
 					<tr>
 						<th class="wu-px-4 wu-py-2 wu-w-3/12 wu-text-left">
-						<?php _e('Parameter', 'wp-ultimo'); ?>
+						<?php _e('Parameter', 'wp-multisite-waas'); ?>
 						</th>
 						<th class="wu-px-4 wu-py-2 wu-w-4/12 wu-text-left">
-						<?php _e('Description', 'wp-ultimo'); ?>
+						<?php _e('Description', 'wp-multisite-waas'); ?>
 						</th>
 						<th class="wu-px-4 wu-py-2 wu-w-3/12 wu-text-left">
-						<?php _e('Accepted Values', 'wp-ultimo'); ?>
+						<?php _e('Accepted Values', 'wp-multisite-waas'); ?>
 						</th>
 						<th class="wu-px-4 wu-py-2 wu-w-2/12 wu-text-left">
-						<?php _e('Default Value', 'wp-ultimo'); ?>
+						<?php _e('Default Value', 'wp-multisite-waas'); ?>
 						</th>
 					</tr>
 					<?php foreach ($shortcode['params'] as $param => $value) { ?>

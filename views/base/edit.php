@@ -9,7 +9,7 @@
 
 	<h1 class="wp-heading-inline">
 
-	<?php echo $page->edit ? $labels['edit_label'] : $labels['add_new_label']; ?>
+	<?php echo esc_html($page->edit ? $labels['edit_label'] : $labels['add_new_label']); ?>
 
 	<?php
 	/**
@@ -24,7 +24,7 @@
 
 		?>
 
-		<a title="<?php echo esc_attr($action_link['label']); ?>" href="<?php echo esc_url($action_link['url']); ?>" class="page-title-action <?php echo esc_attr($action_classes); ?>" <?php echo $attrs; ?>>
+		<a title="<?php echo esc_attr($action_link['label']); ?>" href="<?php echo esc_url($action_link['url']); ?>" class="page-title-action <?php echo esc_attr($action_classes); ?>" <?php echo esc_attr($attrs); ?>>
 
 		<?php if ($action_link['icon']) : ?>
 
@@ -34,7 +34,7 @@
 
 		<?php endif; ?>
 
-		<?php echo $action_link['label']; ?>
+		<?php echo esc_html($action_link['label']); ?>
 
 		</a>
 

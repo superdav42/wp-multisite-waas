@@ -16,7 +16,7 @@
 
 		<h3 class="wu-m-0 <?php echo wu_env_picker('', 'wu-widget-title'); ?>">
 
-			<?php echo __('Actions', 'wp-ultimo'); ?>
+			<?php echo __('Actions', 'wp-multisite-waas'); ?>
 
 		</h3>
 
@@ -61,7 +61,7 @@
 
 			<h3 class="wu-m-0 <?php echo wu_env_picker('', 'wu-widget-title'); ?>">
 
-			<?php echo __('Danger Zone', 'wp-ultimo'); ?>
+			<?php echo __('Danger Zone', 'wp-multisite-waas'); ?>
 
 			</h3>
 

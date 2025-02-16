@@ -104,7 +104,7 @@ class Invoice {
 
 		$this->printer->SetProtection(['print']);
 
-		$this->printer->SetTitle(__('Invoice', 'wp-ultimo'));
+		$this->printer->SetTitle(__('Invoice', 'wp-multisite-waas'));
 
 		$this->printer->SetAuthor($this->company_name);
 
@@ -251,7 +251,7 @@ class Invoice {
 				'use_custom_logo' => false,
 				'custom_logo'     => false,
 				'footer_message'  => '',
-				'paid_tag_text'   => __('Paid', 'wp-ultimo'),
+				'paid_tag_text'   => __('Paid', 'wp-multisite-waas'),
 			]
 		);
 

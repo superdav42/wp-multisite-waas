@@ -22,7 +22,7 @@ if ( ! defined('ABSPATH')) {
 ?>
 
 <!-- This example requires Tailwind CSS v2.0+ -->
-<nav aria-label="<?php esc_attr_e('Progress', 'wp-ultimo'); ?>">
+<nav aria-label="<?php esc_attr_e('Progress', 'wp-multisite-waas'); ?>">
 	<ul class="wu-minimal-steps">
 
 
@@ -47,7 +47,7 @@ if ( ! defined('ABSPATH')) {
 
 		<li class="<?php echo esc_attr($class); ?>">
 		<span class="wu-minimal-steps-bar">&nbsp;</span>
-		<span class="wu-minimal-steps-step-count"><?php printf(__('Step %d', 'wp-ultimo'), $index + 1); ?></span>
+		<span class="wu-minimal-steps-step-count"><?php printf(__('Step %d', 'wp-multisite-waas'), $index + 1); ?></span>
 		<span class="wu-minimal-steps-step-label"><?php echo $step['name']; ?></span>
 		</li>
 

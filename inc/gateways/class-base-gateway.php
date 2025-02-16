@@ -614,18 +614,18 @@ abstract class Base_Gateway {
 	public function get_amount_update_message($to_customer = false) {
 
 		if ( ! $this->supports_amount_update()) {
-			$message = __('The current payment integration will be cancelled.', 'wp-ultimo');
+			$message = __('The current payment integration will be cancelled.', 'wp-multisite-waas');
 
 			if ($to_customer) {
-				$message .= ' ' . __('You will receive a new invoice on the next billing cycle.', 'wp-ultimo');
+				$message .= ' ' . __('You will receive a new invoice on the next billing cycle.', 'wp-multisite-waas');
 			} else {
-				$message .= ' ' . __('The customer will receive a new invoice on the next billing cycle.', 'wp-ultimo');
+				$message .= ' ' . __('The customer will receive a new invoice on the next billing cycle.', 'wp-multisite-waas');
 			}
 
 			return $message;
 		}
 
-		return __('The current payment integration will be updated.', 'wp-ultimo');
+		return __('The current payment integration will be updated.', 'wp-multisite-waas');
 	}
 
 	/**

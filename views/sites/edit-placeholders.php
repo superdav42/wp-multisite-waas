@@ -9,7 +9,7 @@
 
 	<h1 class="wp-heading-inline">
 
-	<?php _e('Template Placeholders', 'wp-ultimo'); ?>
+	<?php _e('Template Placeholders', 'wp-multisite-waas'); ?>
 
 	</h1>
 
@@ -27,7 +27,7 @@
 
 			<span v-cloak class="displaying-num">
 
-			{{data.placeholders.length}} <?php _e('item(s)', 'wp-ultimo'); ?>
+			{{data.placeholders.length}} <?php _e('item(s)', 'wp-multisite-waas'); ?>
 
 			</span>
 
@@ -73,7 +73,7 @@
 
 				<div class="wu-p-4">
 
-				<?php _e('Loading Template Placeholders...', 'wp-ultimo'); ?>
+				<?php _e('Loading Template Placeholders...', 'wp-multisite-waas'); ?>
 
 				</div>
 
@@ -87,7 +87,7 @@
 
 				<div class="wu-p-4">
 
-				<?php _e('No items to display', 'wp-ultimo'); ?>
+				<?php _e('No items to display', 'wp-multisite-waas'); ?>
 
 				</div>
 
@@ -206,13 +206,13 @@
 
 		<button v-on:click.prevent="add_row" class="button">
 
-		<?php _e('Add new Row', 'wp-ultimo'); ?>
+		<?php _e('Add new Row', 'wp-multisite-waas'); ?>
 
 		</button>
 
 		<button v-on:click.prevent="delete_rows" class="button">
 
-		<?php _e('Delete Selected Rows', 'wp-ultimo'); ?>
+		<?php _e('Delete Selected Rows', 'wp-multisite-waas'); ?>
 
 		</button>
 
@@ -238,11 +238,11 @@
 
 		<span v-if="changed && !saveMessage && !saving" class="description"
 		style="display: inline-block; line-height: 28px; margin-right: 10px;">
-		<?php _e('Save your changes!', 'wp-ultimo'); ?>
+		<?php _e('Save your changes!', 'wp-multisite-waas'); ?>
 		</span>
 
 		<span v-if="saving" class="description" style="display: inline-block; line-height: 28px; margin-right: 10px;">
-		<?php _e('Saving...', 'wp-ultimo'); ?>
+		<?php _e('Saving...', 'wp-multisite-waas'); ?>
 		</span>
 
 		<span v-if="saveMessage" class="description"

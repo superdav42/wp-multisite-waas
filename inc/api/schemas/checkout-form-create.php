@@ -20,47 +20,47 @@ defined('ABSPATH') || exit;
  */
 return [
 	'slug'                => [
-		'description' => __('The checkout form slug. It needs to be unique and preferably make it clear what it is about. E.g. my_checkout_form.', 'wp-ultimo'),
+		'description' => __('The checkout form slug. It needs to be unique and preferably make it clear what it is about. E.g. my_checkout_form.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => true,
 	],
 	'name'                => [
-		'description' => __('Your checkout form name, which is used as checkout form title as well.', 'wp-ultimo'),
+		'description' => __('Your checkout form name, which is used as checkout form title as well.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => true,
 	],
 	'active'              => [
-		'description' => __('Set this checkout form as active (true), which means available to be used, or inactive (false).', 'wp-ultimo'),
+		'description' => __('Set this checkout form as active (true), which means available to be used, or inactive (false).', 'wp-multisite-waas'),
 		'type'        => 'boolean',
 		'required'    => true,
 	],
 	'custom_css'          => [
-		'description' => __('Custom CSS code for the checkout form.', 'wp-ultimo'),
+		'description' => __('Custom CSS code for the checkout form.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'settings'            => [
-		'description' => __('The checkout form settings and configurations.', 'wp-ultimo'),
+		'description' => __('The checkout form settings and configurations.', 'wp-multisite-waas'),
 		'type'        => 'object',
 		'required'    => false,
 	],
 	'allowed_countries'   => [
-		'description' => __('The allowed countries that can access this checkout.', 'wp-ultimo'),
+		'description' => __('The allowed countries that can access this checkout.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'thank_you_page_id'   => [
-		'description' => __('The thank you page ID. This page is shown after a successful purchase.', 'wp-ultimo'),
+		'description' => __('The thank you page ID. This page is shown after a successful purchase.', 'wp-multisite-waas'),
 		'type'        => 'integer',
 		'required'    => false,
 	],
 	'conversion_snippets' => [
-		'description' => __('Snippets to run on thank you page.', 'wp-ultimo'),
+		'description' => __('Snippets to run on thank you page.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'template'            => [
-		'description' => __("Template mode. Can be either 'blank', 'single-step' or 'multi-step'.", 'wp-ultimo'),
+		'description' => __("Template mode. Can be either 'blank', 'single-step' or 'multi-step'.", 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 		'enum'        => [
@@ -70,22 +70,22 @@ return [
 		],
 	],
 	'date_created'        => [
-		'description' => __('Model creation date.', 'wp-ultimo'),
+		'description' => __('Model creation date.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'date_modified'       => [
-		'description' => __('Model last modification date.', 'wp-ultimo'),
+		'description' => __('Model last modification date.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'migrated_from_id'    => [
-		'description' => __('The ID of the original 1.X model that was used to generate this item on migration.', 'wp-ultimo'),
+		'description' => __('The ID of the original 1.X model that was used to generate this item on migration.', 'wp-multisite-waas'),
 		'type'        => 'integer',
 		'required'    => false,
 	],
 	'skip_validation'     => [
-		'description' => __('Set true to have field information validation bypassed when saving this event.', 'wp-ultimo'),
+		'description' => __('Set true to have field information validation bypassed when saving this event.', 'wp-multisite-waas'),
 		'type'        => 'boolean',
 		'required'    => false,
 	],

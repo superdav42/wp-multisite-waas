@@ -55,10 +55,10 @@ if (false !== $product_variation) {
 	</div>
 
 	<div v-if="!($parent.has_product('<?php echo $product->get_id(); ?>') || $parent.has_product('<?php echo $product->get_slug(); ?>'))" class="wu-ml-2">
-	<a href="#" @click.prevent="$parent.add_product('<?php echo $product->get_id(); ?>')" class="button btn"><?php _e('Add to Cart', 'wp-ultimo'); ?></a>
+	<a href="#" @click.prevent="$parent.add_product('<?php echo $product->get_id(); ?>')" class="button btn"><?php _e('Add to Cart', 'wp-multisite-waas'); ?></a>
 	</div>
 	<div v-else class="wu-ml-2">
-	<a href="#" @click.prevent="$parent.remove_product('<?php echo $product->get_id(); ?>', '<?php echo $product->get_slug(); ?>')" class="button btn"><?php _e('Remove', 'wp-ultimo'); ?></a>
+	<a href="#" @click.prevent="$parent.remove_product('<?php echo $product->get_id(); ?>', '<?php echo $product->get_slug(); ?>')" class="button btn"><?php _e('Remove', 'wp-multisite-waas'); ?></a>
 	<input type="hidden" name="products[]" value="<?php echo $product->get_id(); ?>">
 	</div>
 

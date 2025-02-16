@@ -54,7 +54,7 @@ class Signup_Field_Steps extends Base_Signup_Field {
 	 */
 	public function get_title() {
 
-		return __('Steps', 'wp-ultimo');
+		return __('Steps', 'wp-multisite-waas');
 	}
 
 	/**
@@ -67,7 +67,7 @@ class Signup_Field_Steps extends Base_Signup_Field {
 	 */
 	public function get_description() {
 
-		return __('Adds a list of the steps.', 'wp-ultimo');
+		return __('Adds a list of the steps.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -80,7 +80,7 @@ class Signup_Field_Steps extends Base_Signup_Field {
 	 */
 	public function get_tooltip() {
 
-		return __('Adds a list of the steps.', 'wp-ultimo');
+		return __('Adds a list of the steps.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -163,8 +163,8 @@ class Signup_Field_Steps extends Base_Signup_Field {
 			'fields' => [
 				'steps_template' => [
 					'type'            => 'select',
-					'title'           => __('Layout', 'wp-ultimo'),
-					'placeholder'     => __('Select your Layout', 'wp-ultimo'),
+					'title'           => __('Layout', 'wp-multisite-waas'),
+					'placeholder'     => __('Select your Layout', 'wp-multisite-waas'),
 					'options'         => [$this, 'get_templates'],
 					'wrapper_classes' => 'wu-flex-grow',
 					'html_attr'       => [
@@ -180,7 +180,7 @@ class Signup_Field_Steps extends Base_Signup_Field {
 		// 'order'           => 99,
 		// 'wrapper_classes' => 'sm:wu-p-0 sm:wu-block',
 		// 'classes'         => '',
-		// 'desc'            => sprintf('<div class="wu-p-4 wu-bg-blue-100 wu-text-grey-600">%s</div>', __('Want to add customized steps templates?<br><a target="_blank" class="wu-no-underline" href="https://help.wpultimo.com/article/343-customize-your-checkout-flow-using-field-templates">See how you can do that here</a>.', 'wp-ultimo')),
+		// 'desc'            => sprintf('<div class="wu-p-4 wu-bg-blue-100 wu-text-grey-600">%s</div>', __('Want to add customized steps templates?<br><a target="_blank" class="wu-no-underline" href="https://help.wpultimo.com/article/343-customize-your-checkout-flow-using-field-templates">See how you can do that here</a>.', 'wp-multisite-waas')),
 		// );
 
 		return $editor_fields;
@@ -207,7 +207,7 @@ class Signup_Field_Steps extends Base_Signup_Field {
 
 		$template_class = Field_Templates_Manager::get_instance()->get_template_class('steps', $attributes['steps_template']);
 
-		$content = $template_class ? $template_class->render_container($attributes) : __('Template does not exist.', 'wp-ultimo');
+		$content = $template_class ? $template_class->render_container($attributes) : __('Template does not exist.', 'wp-multisite-waas');
 
 		return [
 			$attributes['id'] => [

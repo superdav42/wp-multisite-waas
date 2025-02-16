@@ -14,11 +14,11 @@
 	$data    = [];
 	$slug    = 'taxes_by_day';
 	$headers = [
-		__('Day', 'wp-ultimo'),
-		__('Orders', 'wp-ultimo'),
-		__('Total Sales', 'wp-ultimo'),
-		__('Tax Total', 'wp-ultimo'),
-		__('Net Profit', 'wp-ultimo'),
+		__('Day', 'wp-multisite-waas'),
+		__('Orders', 'wp-multisite-waas'),
+		__('Total Sales', 'wp-multisite-waas'),
+		__('Tax Total', 'wp-multisite-waas'),
+		__('Net Profit', 'wp-multisite-waas'),
 	];
 
 	foreach ($taxes_by_day as $day => $tax_line) {
@@ -47,11 +47,11 @@
 
 		<thead>
 			<tr>
-			<th class="wu-w-1/3"><?php _e('Day', 'wp-ultimo'); ?></th>
-			<th><?php _e('Orders', 'wp-ultimo'); ?></th>
-			<th><?php _e('Total Sales', 'wp-ultimo'); ?></th>
-			<th><?php _e('Tax Total', 'wp-ultimo'); ?></th>
-			<th><?php _e('Net Profit', 'wp-ultimo'); ?></th>
+			<th class="wu-w-1/3"><?php _e('Day', 'wp-multisite-waas'); ?></th>
+			<th><?php _e('Orders', 'wp-multisite-waas'); ?></th>
+			<th><?php _e('Total Sales', 'wp-multisite-waas'); ?></th>
+			<th><?php _e('Tax Total', 'wp-multisite-waas'); ?></th>
+			<th><?php _e('Net Profit', 'wp-multisite-waas'); ?></th>
 			</tr>
 		</thead>
 
@@ -85,7 +85,7 @@
 
 				<tr>
 				<td colspan="4">
-					<?php _e('No Taxes found.', 'wp-ultimo'); ?>
+					<?php _e('No Taxes found.', 'wp-multisite-waas'); ?>
 				</td>
 				</tr>
 

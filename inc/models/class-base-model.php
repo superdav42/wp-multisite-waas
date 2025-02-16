@@ -182,7 +182,7 @@ abstract class Base_Model implements \JsonSerializable {
 		$value = call_user_func([$this, "get_{$field}"]);
 
 		if ( ! is_numeric($value)) {
-			_doing_it_wrong(__METHOD__, __('You can only use numeric fields to generate hashes.', 'wp-ultimo'), '2.0.0');
+			_doing_it_wrong(__METHOD__, __('You can only use numeric fields to generate hashes.', 'wp-multisite-waas'), '2.0.0');
 
 			return false;
 		}
@@ -607,7 +607,7 @@ abstract class Base_Model implements \JsonSerializable {
 	public function delete() {
 
 		if ( ! $this->get_id()) {
-			return new \WP_Error("wu_{$this->model}_delete_unsaved_item", __('Item not found.', 'wp-ultimo'));
+			return new \WP_Error("wu_{$this->model}_delete_unsaved_item", __('Item not found.', 'wp-multisite-waas'));
 		}
 
 		/**
@@ -681,12 +681,12 @@ abstract class Base_Model implements \JsonSerializable {
 
 		if ( ! $this->get_meta_table_name()) {
 
-			// _doing_it_wrong(__METHOD__, __('This model does not support metadata.', 'wp-ultimo'), '2.0.0');
+			// _doing_it_wrong(__METHOD__, __('This model does not support metadata.', 'wp-multisite-waas'), '2.0.0');
 
 			return false;
 		}
 
-        // _doing_it_wrong(__METHOD__, __('Model metadata only works for already saved models.', 'wp-ultimo'), '2.0.0');
+        // _doing_it_wrong(__METHOD__, __('Model metadata only works for already saved models.', 'wp-multisite-waas'), '2.0.0');
         return !(! $this->get_id() && ! $this->_mocked);
 	}
 
@@ -730,7 +730,7 @@ abstract class Base_Model implements \JsonSerializable {
 		}
 
 		if ( ! is_array($meta)) {
-			_doing_it_wrong(__METHOD__, __('This method expects an array as argument.', 'wp-ultimo'), '2.0.0');
+			_doing_it_wrong(__METHOD__, __('This method expects an array as argument.', 'wp-multisite-waas'), '2.0.0');
 
 			return false;
 		}

@@ -548,13 +548,13 @@ class Payment extends Base_Model {
 		$gateway = $this->get_gateway();
 
 		if ( ! $gateway) {
-			return __('None', 'wp-ultimo');
+			return __('None', 'wp-multisite-waas');
 		}
 
 		$gateway_class = wu_get_gateway($gateway);
 
 		if ( ! $gateway_class) {
-			return __('None', 'wp-ultimo');
+			return __('None', 'wp-multisite-waas');
 		}
 
 		$title = $gateway_class->get_public_title();
@@ -930,7 +930,7 @@ class Payment extends Base_Model {
 
 		$prefix = str_replace($search, $replace, (string) $prefix);
 
-		return sprintf('%s%s %s', $prefix, $this->invoice_number, $provisional ? __('(provisional)', 'wp-ultimo') : '');
+		return sprintf('%s%s %s', $prefix, $this->invoice_number, $provisional ? __('(provisional)', 'wp-multisite-waas') : '');
 	}
 
 	/**
@@ -1050,11 +1050,11 @@ class Payment extends Base_Model {
 		 * it is a partial refund.
 		 */
 		if ($amount >= $this->get_total()) {
-			$title = __('Full Refund', 'wp-ultimo');
+			$title = __('Full Refund', 'wp-multisite-waas');
 
 			$new_status = Payment_Status::REFUND;
 		} else {
-			$title = __('Partial Refund', 'wp-ultimo');
+			$title = __('Partial Refund', 'wp-multisite-waas');
 
 			$new_status = Payment_Status::PARTIAL_REFUND;
 		}
@@ -1064,7 +1064,7 @@ class Payment extends Base_Model {
 		$formatted_value = date_i18n(get_option('date_format'), $time);
 
 		// translators: %s is the date of processing.
-		$description = sprintf(__('Processed on %s', 'wp-ultimo'), $formatted_value);
+		$description = sprintf(__('Processed on %s', 'wp-multisite-waas'), $formatted_value);
 
 		$line_item_data = [
 			'type'         => 'refund',

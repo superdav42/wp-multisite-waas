@@ -9,7 +9,7 @@
 
 	<h1 class="wp-heading-inline">
 
-	<?php echo $page->get_title(); ?>
+	<?php echo esc_html($page->get_title()); ?>
 
 	<?php
 	/**
@@ -32,7 +32,7 @@
 
 		<?php endif; ?>
 
-		<?php echo $action_link['label']; ?>
+		<?php echo esc_html($action_link['label']); ?>
 
 		</a>
 

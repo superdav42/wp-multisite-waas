@@ -75,14 +75,14 @@ class Limits_Element extends Base_Element {
 	 *
 	 * This is used on the Blocks list of Gutenberg.
 	 * You should return a string with the localized title.
-	 * e.g. return __('My Element', 'wp-ultimo').
+	 * e.g. return __('My Element', 'wp-multisite-waas').
 	 *
 	 * @since 2.0.0
 	 * @return string
 	 */
 	public function get_title() {
 
-		return __('Limits & Quotas', 'wp-ultimo');
+		return __('Limits & Quotas', 'wp-multisite-waas');
 	}
 
 	/**
@@ -91,14 +91,14 @@ class Limits_Element extends Base_Element {
 	 * This is also used on the Gutenberg block list
 	 * to explain what this block is about.
 	 * You should return a string with the localized title.
-	 * e.g. return __('Adds a checkout form to the page', 'wp-ultimo').
+	 * e.g. return __('Adds a checkout form to the page', 'wp-multisite-waas').
 	 *
 	 * @since 2.0.0
 	 * @return string
 	 */
 	public function get_description() {
 
-		return __('Adds a checkout form block to the page.', 'wp-ultimo');
+		return __('Adds a checkout form block to the page.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -123,23 +123,23 @@ class Limits_Element extends Base_Element {
 		$fields = [];
 
 		$fields['header'] = [
-			'title' => __('General', 'wp-ultimo'),
-			'desc'  => __('General', 'wp-ultimo'),
+			'title' => __('General', 'wp-multisite-waas'),
+			'desc'  => __('General', 'wp-multisite-waas'),
 			'type'  => 'header',
 		];
 
 		$fields['title'] = [
 			'type'    => 'text',
-			'title'   => __('Title', 'wp-ultimo'),
-			'value'   => __('Site Limits', 'wp-ultimo'),
-			'desc'    => __('Leave blank to hide the title completely.', 'wp-ultimo'),
+			'title'   => __('Title', 'wp-multisite-waas'),
+			'value'   => __('Site Limits', 'wp-multisite-waas'),
+			'desc'    => __('Leave blank to hide the title completely.', 'wp-multisite-waas'),
 			'tooltip' => '',
 		];
 
 		$fields['columns'] = [
 			'type'    => 'number',
-			'title'   => __('Columns', 'wp-ultimo'),
-			'desc'    => __('How many columns to use.', 'wp-ultimo'),
+			'title'   => __('Columns', 'wp-multisite-waas'),
+			'desc'    => __('How many columns to use.', 'wp-multisite-waas'),
 			'tooltip' => '',
 			'value'   => 1,
 			'min'     => 1,
@@ -195,7 +195,7 @@ class Limits_Element extends Base_Element {
 
 		return [
 			'columns' => 1,
-			'title'   => __('Site Limits', 'wp-ultimo'),
+			'title'   => __('Site Limits', 'wp-multisite-waas'),
 		];
 	}
 

@@ -47,15 +47,15 @@
 
                 </a>',
 					$payment->get_invoice_url(),
-					esc_attr__('Download Invoice', 'wp-ultimo')
+					esc_attr__('Download Invoice', 'wp-multisite-waas')
 				);
 
 				$payment_column = $payment->get_status() === 'pending' ? [
 					'pay_now' => [
 						'url'   => add_query_arg(['payment' => $payment->get_hash()], wu_get_registration_url()),
 						'icon'  => 'dashicons-wu-credit-card wu-align-middle wu-mr-1',
-						'label' => __('Go to payment', 'wp-ultimo'),
-						'value' => __('Pay Now', 'wp-ultimo'),
+						'label' => __('Go to payment', 'wp-multisite-waas'),
+						'value' => __('Pay Now', 'wp-multisite-waas'),
 					],
 				] : [];
 

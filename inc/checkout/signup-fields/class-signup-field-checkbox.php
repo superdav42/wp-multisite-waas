@@ -69,7 +69,7 @@ class Signup_Field_Checkbox extends Base_Signup_Field {
 	 */
 	public function get_title() {
 
-		return __('Checkbox', 'wp-ultimo');
+		return __('Checkbox', 'wp-multisite-waas');
 	}
 
 	/**
@@ -82,7 +82,7 @@ class Signup_Field_Checkbox extends Base_Signup_Field {
 	 */
 	public function get_description() {
 
-		return __('Adds a checkout box that can be checked by the customer.', 'wp-ultimo');
+		return __('Adds a checkout box that can be checked by the customer.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -95,7 +95,7 @@ class Signup_Field_Checkbox extends Base_Signup_Field {
 	 */
 	public function get_tooltip() {
 
-		return __('Adds a checkout box that can be checked by the customer.', 'wp-ultimo');
+		return __('Adds a checkout box that can be checked by the customer.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -166,8 +166,8 @@ class Signup_Field_Checkbox extends Base_Signup_Field {
 		return [
 			'default_state' => [
 				'type'  => 'toggle',
-				'title' => __('Default State', 'wp-ultimo'),
-				'desc'  => __('Use the toggle to the set the default state of the checkbox.', 'wp-ultimo'),
+				'title' => __('Default State', 'wp-multisite-waas'),
+				'desc'  => __('Use the toggle to the set the default state of the checkbox.', 'wp-multisite-waas'),
 				'value' => 0,
 				'order' => 12,
 			],

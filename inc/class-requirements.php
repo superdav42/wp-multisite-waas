@@ -281,7 +281,7 @@ class Requirements {
 	public static function notice_unsupported_php_version(): void {
 
 		// translators: the %1$s placeholder is the required PHP version, while the %2$s is the current PHP version.
-		$message = sprintf(__('WP Multisite WaaS requires at least PHP version %1$s to run. Your current PHP version is <strong>%2$s</strong>. Please, contact your hosting company support to upgrade your PHP version. If you want maximum performance consider upgrading your PHP to version 7.0 or later.', 'wp-ultimo'), self::$php_version, phpversion());
+		$message = sprintf(__('WP Multisite WaaS requires at least PHP version %1$s to run. Your current PHP version is <strong>%2$s</strong>. Please, contact your hosting company support to upgrade your PHP version. If you want maximum performance consider upgrading your PHP to version 7.0 or later.', 'wp-multisite-waas'), self::$php_version, phpversion());
 
 		printf('<div class="notice notice-error"><p>%s</p></div>', $message);
 	}
@@ -297,7 +297,7 @@ class Requirements {
 		global $wp_version;
 
 		// translators: the %1$s placeholder is the required WP version, while the %2$s is the current WP version.
-		$message = sprintf(__('WP Multisite WaaS requires at least WordPress version %1$s to run. Your current WordPress version is <strong>%2$s</strong>.', 'wp-ultimo'), self::$wp_version, $wp_version);
+		$message = sprintf(__('WP Multisite WaaS requires at least WordPress version %1$s to run. Your current WordPress version is <strong>%2$s</strong>.', 'wp-multisite-waas'), self::$wp_version, $wp_version);
 
 		printf('<div class="notice notice-error"><p>%s</p></div>', $message);
 	}
@@ -310,7 +310,7 @@ class Requirements {
 	 */
 	public static function notice_not_multisite(): void {
 
-		$message = __('WP Multisite WaaS requires a multisite install to run properly. To know more about WordPress Networks, visit this link: <a href="https://wordpress.org/support/article/create-a-network/">Create a Network &rarr;</a>', 'wp-ultimo');
+		$message = __('WP Multisite WaaS requires a multisite install to run properly. To know more about WordPress Networks, visit this link: <a href="https://wordpress.org/support/article/create-a-network/">Create a Network &rarr;</a>', 'wp-multisite-waas');
 
 		printf('<div class="notice notice-error"><p>%s</p></div>', $message);
 	}
@@ -324,7 +324,7 @@ class Requirements {
 	public static function notice_not_network_active(): void {
 
 		// translators: %s is a placeholder for the Network Admin plugins page URL.
-		$message = sprintf(__('WP Multisite WaaS needs to be network active to run properly. You can "Network Activate" it <a href="%s">here</a>', 'wp-ultimo'), network_admin_url('plugins.php'));
+		$message = sprintf(__('WP Multisite WaaS needs to be network active to run properly. You can "Network Activate" it <a href="%s">here</a>', 'wp-multisite-waas'), network_admin_url('plugins.php'));
 
 		printf('<div class="notice notice-error"><p>%s</p></div>', $message);
 	}

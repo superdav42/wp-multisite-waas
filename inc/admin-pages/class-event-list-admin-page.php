@@ -160,8 +160,8 @@ class Event_List_Admin_Page extends List_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'deleted_message' => __('Event removed successfully.', 'wp-ultimo'),
-			'search_label'    => __('Search Event', 'wp-ultimo'),
+			'deleted_message' => __('Event removed successfully.', 'wp-multisite-waas'),
+			'search_label'    => __('Search Event', 'wp-multisite-waas'),
 		];
 	}
 
@@ -173,7 +173,7 @@ class Event_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('Events', 'wp-ultimo');
+		return __('Events', 'wp-multisite-waas');
 	}
 
 	/**
@@ -184,7 +184,7 @@ class Event_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Events', 'wp-ultimo');
+		return __('Events', 'wp-multisite-waas');
 	}
 
 	/**
@@ -195,7 +195,7 @@ class Event_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_submenu_title() {
 
-		return __('Events', 'wp-ultimo');
+		return __('Events', 'wp-multisite-waas');
 	}
 
 	/**

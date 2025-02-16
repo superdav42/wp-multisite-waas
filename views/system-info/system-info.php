@@ -10,7 +10,7 @@
 
 <div id="wp-ultimo-wrap" class="<?php wu_wrap_use_container(); ?> wrap">
 
-	<h1 class="wp-heading-inline"><?php _e('System Info', 'wp-ultimo'); ?></h1>
+	<h1 class="wp-heading-inline"><?php _e('System Info', 'wp-multisite-waas'); ?></h1>
 
 	<textarea cols="100" rows="40" aria-hidden="true" class="screen-reader-text" id="hidden_textarea">
 
@@ -27,7 +27,7 @@
 
 	<span class="dashicons dashicons-admin-page wu-text-sm wu-align-middle wu-h-4 wu-w-4">&nbsp;</span>
 
-	<?php _e('Copy Data to Clipboard', 'wp-ultimo'); ?>
+	<?php _e('Copy Data to Clipboard', 'wp-multisite-waas'); ?>
 
 	</button>
 
@@ -35,7 +35,7 @@
 
 	<span class="dashicons dashicons-download wu-text-sm wu-align-middle wu-h-4 wu-w-4">&nbsp;</span>
 
-	<?php _e('Download File', 'wp-ultimo'); ?>
+	<?php _e('Download File', 'wp-multisite-waas'); ?>
 
 	</a>
 

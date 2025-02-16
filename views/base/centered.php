@@ -98,7 +98,7 @@
 
 						<h3 class="wu-m-0 wu-widget-title">
 
-							<?php _e('Change Membership', 'wp-ultimo'); ?>
+							<?php _e('Change Membership', 'wp-multisite-waas'); ?>
 
 						</h3>
 

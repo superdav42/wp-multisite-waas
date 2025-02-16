@@ -6,7 +6,7 @@
  */
 ?>
 <h1>
-	<?php printf(__('Activate %s Integration', 'wp-ultimo'), $integration->get_title()); ?>
+	<?php printf(__('Activate %s Integration', 'wp-multisite-waas'), $integration->get_title()); ?>
 </h1>
 
 <p class="wu-text-lg wu-text-gray-600 wu-my-4">
@@ -32,7 +32,7 @@
 	<div>
 
 	<span class="wu-text-sm wu-text-gray-800 wu-inline-block wu-py-4">
-		<?php _e('This integration will:', 'wp-ultimo'); ?>
+		<?php _e('This integration will:', 'wp-multisite-waas'); ?>
 	</span>
 
 	<ul class="wu--mx-5 wu-my-0 wu-border-t wu-border-solid wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300">
@@ -54,7 +54,7 @@
 	<div>
 
 		<span class="wu-text-sm wu-text-gray-800 wu-inline-block wu-py-4">
-		<?php _e('This integration will <strong>not</strong>:', 'wp-ultimo'); ?>
+		<?php _e('This integration will <strong>not</strong>:', 'wp-multisite-waas'); ?>
 		</span>
 
 		<ul class="wu--mx-5 wu-my-0 wu-border-t wu-border-solid wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300">
@@ -79,27 +79,27 @@
 <!-- Submit Box -->
 <div class="wu-flex wu-justify-between wu-bg-gray-100 wu--m-in wu-mt-4 wu-p-4 wu-overflow-hidden wu-border-t wu-border-solid wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300">
 
-	<a href="<?php echo esc_url(wu_network_admin_url('wp-ultimo-settings&tab=integrations')); ?>" class="wu-self-center button button-large wu-float-left"><?php _e('&larr; Cancel', 'wp-ultimo'); ?></a>
+	<a href="<?php echo esc_url(wu_network_admin_url('wp-ultimo-settings&tab=integrations')); ?>" class="wu-self-center button button-large wu-float-left"><?php _e('&larr; Cancel', 'wp-multisite-waas'); ?></a>
 
 	<span class="wu-self-center wu-content-center wu-flex">
 
 	<?php if ($integration->is_enabled()) : ?>
 
 		<span class="wu-self-center wu-text-green-800 wu-mr-4">
-		<?php _e('Integration already activated.', 'wp-ultimo'); ?>
+		<?php _e('Integration already activated.', 'wp-multisite-waas'); ?>
 		</span>
 
 	<?php endif; ?>
 
 	<button name="submit" value="1" class="button button-primary button-large">
-		<?php echo $integration->is_enabled() ? __('Deactivate', 'wp-ultimo') : __('Activate', 'wp-ultimo'); ?>
+		<?php echo $integration->is_enabled() ? __('Deactivate', 'wp-multisite-waas') : __('Activate', 'wp-multisite-waas'); ?>
 	</button>
 
 	&nbsp;
 
 	<?php if ($integration->is_enabled()) : ?>
 		<a href="<?php echo esc_attr($page->get_next_section_link()); ?>" class="button button-large">
-		<?php _e('Continue', 'wp-ultimo'); ?>
+		<?php _e('Continue', 'wp-multisite-waas'); ?>
 		</a>
 	<?php endif; ?>
 

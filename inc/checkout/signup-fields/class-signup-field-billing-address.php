@@ -69,7 +69,7 @@ class Signup_Field_Billing_Address extends Base_Signup_Field {
 	 */
 	public function get_title() {
 
-		return __('Address', 'wp-ultimo');
+		return __('Address', 'wp-multisite-waas');
 	}
 
 	/**
@@ -82,7 +82,7 @@ class Signup_Field_Billing_Address extends Base_Signup_Field {
 	 */
 	public function get_description() {
 
-		return __('Adds billing address fields such as country, zip code.', 'wp-ultimo');
+		return __('Adds billing address fields such as country, zip code.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -95,7 +95,7 @@ class Signup_Field_Billing_Address extends Base_Signup_Field {
 	 */
 	public function get_tooltip() {
 
-		return __('Adds billing address fields such as country, zip code.', 'wp-ultimo');
+		return __('Adds billing address fields such as country, zip code.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -165,8 +165,8 @@ class Signup_Field_Billing_Address extends Base_Signup_Field {
 		return [
 			'zip_and_country' => [
 				'type'  => 'toggle',
-				'title' => __('Display only ZIP and Country?', 'wp-ultimo'),
-				'desc'  => __('Checking this option will only add the ZIP and country fields, instead of all the normal billing address fields.', 'wp-ultimo'),
+				'title' => __('Display only ZIP and Country?', 'wp-multisite-waas'),
+				'desc'  => __('Checking this option will only add the ZIP and country fields, instead of all the normal billing address fields.', 'wp-multisite-waas'),
 				'value' => true,
 			],
 		];

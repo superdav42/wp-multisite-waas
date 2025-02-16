@@ -14,10 +14,10 @@
 	$data    = [];
 	$slug    = 'taxes_by_code';
 	$headers = [
-		__('Tax', 'wp-ultimo'),
-		__('Rate', 'wp-ultimo'),
-		__('Orders', 'wp-ultimo'),
-		__('Tax Total', 'wp-ultimo'),
+		__('Tax', 'wp-multisite-waas'),
+		__('Rate', 'wp-multisite-waas'),
+		__('Orders', 'wp-multisite-waas'),
+		__('Tax Total', 'wp-multisite-waas'),
 	];
 
 	foreach ($taxes_by_rate as $tax_line) {
@@ -45,10 +45,10 @@
 
 		<thead>
 			<tr>
-			<th><?php _e('Tax', 'wp-ultimo'); ?></th>
-			<th><?php _e('Rate', 'wp-ultimo'); ?></th>
-			<th><?php _e('Orders', 'wp-ultimo'); ?></th>
-			<th><?php _e('Tax Total', 'wp-ultimo'); ?></th>
+			<th><?php _e('Tax', 'wp-multisite-waas'); ?></th>
+			<th><?php _e('Rate', 'wp-multisite-waas'); ?></th>
+			<th><?php _e('Orders', 'wp-multisite-waas'); ?></th>
+			<th><?php _e('Tax Total', 'wp-multisite-waas'); ?></th>
 			</tr>
 		</thead>
 
@@ -79,7 +79,7 @@
 
 				<tr>
 				<td colspan="4">
-					<?php _e('No Taxes found.', 'wp-ultimo'); ?>
+					<?php _e('No Taxes found.', 'wp-multisite-waas'); ?>
 				</td>
 				</tr>
 

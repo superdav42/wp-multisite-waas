@@ -87,13 +87,13 @@ class Payment_Status extends Enum {
 	protected function labels() {
 
 		return [
-			static::PENDING        => __('Pending', 'wp-ultimo'),
-			static::COMPLETED      => __('Completed', 'wp-ultimo'),
-			static::REFUND         => __('Refunded', 'wp-ultimo'),
-			static::PARTIAL_REFUND => __('Partially Refunded', 'wp-ultimo'),
-			static::PARTIAL        => __('Partially Paid', 'wp-ultimo'),
-			static::FAILED         => __('Failed', 'wp-ultimo'),
-			static::CANCELLED      => __('Cancelled', 'wp-ultimo'),
+			static::PENDING        => __('Pending', 'wp-multisite-waas'),
+			static::COMPLETED      => __('Completed', 'wp-multisite-waas'),
+			static::REFUND         => __('Refunded', 'wp-multisite-waas'),
+			static::PARTIAL_REFUND => __('Partially Refunded', 'wp-multisite-waas'),
+			static::PARTIAL        => __('Partially Paid', 'wp-multisite-waas'),
+			static::FAILED         => __('Failed', 'wp-multisite-waas'),
+			static::CANCELLED      => __('Cancelled', 'wp-multisite-waas'),
 		];
 	}
 }

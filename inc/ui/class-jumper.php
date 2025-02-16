@@ -185,7 +185,7 @@ class Jumper {
 		$custom_links = $this->get_user_custom_links();
 
 		if ( ! empty($custom_links)) {
-			$links[ __('Custom Links', 'wp-ultimo') ] = $custom_links;
+			$links[ __('Custom Links', 'wp-multisite-waas') ] = $custom_links;
 		}
 
 		return $links;
@@ -203,27 +203,27 @@ class Jumper {
 
 		if (isset($links['WP Ultimo'])) {
 			$settings_tabs = [
-				'general'        => __('General', 'wp-ultimo'),
-				'network'        => __('Network Settings', 'wp-ultimo'),
-				'gateways'       => __('Payment Gateways', 'wp-ultimo'),
-				'domain_mapping' => __('Domain Mapping & SSL', 'wp-ultimo'),
-				'emails'         => __('Emails', 'wp-ultimo'),
-				'styling'        => __('Styling', 'wp-ultimo'),
-				'tools'          => __('Tools', 'wp-ultimo'),
-				'advanced'       => __('Advanced', 'wp-ultimo'),
-				'activation'     => __('Activation & Support', 'wp-ultimo'),
+				'general'        => __('General', 'wp-multisite-waas'),
+				'network'        => __('Network Settings', 'wp-multisite-waas'),
+				'gateways'       => __('Payment Gateways', 'wp-multisite-waas'),
+				'domain_mapping' => __('Domain Mapping & SSL', 'wp-multisite-waas'),
+				'emails'         => __('Emails', 'wp-multisite-waas'),
+				'styling'        => __('Styling', 'wp-multisite-waas'),
+				'tools'          => __('Tools', 'wp-multisite-waas'),
+				'advanced'       => __('Advanced', 'wp-multisite-waas'),
+				'activation'     => __('Activation & Support', 'wp-multisite-waas'),
 			];
 
 			foreach ($settings_tabs as $tab => $tab_label) {
 				$url = network_admin_url('admin.php?page=wp-ultimo-settings&wu-tab=' . $tab);
 
 				// translators: The placeholder represents the title of the Settings tab.
-				$links['WP Ultimo'][ $url ] = sprintf(__('Settings: %s', 'wp-ultimo'), $tab_label);
+				$links['WP Ultimo'][ $url ] = sprintf(__('Settings: %s', 'wp-multisite-waas'), $tab_label);
 			}
 
-			$links['WP Ultimo'][ network_admin_url('admin.php?page=wp-ultimo-settings&wu-tab=tools') ] = __('Settings: Webhooks', 'wp-ultimo');
+			$links['WP Ultimo'][ network_admin_url('admin.php?page=wp-ultimo-settings&wu-tab=tools') ] = __('Settings: Webhooks', 'wp-multisite-waas');
 
-			$links['WP Ultimo'][ network_admin_url('admin.php?page=wp-ultimo-system-info&wu-tab=logs') ] = __('System Info: Logs', 'wp-ultimo');
+			$links['WP Ultimo'][ network_admin_url('admin.php?page=wp-ultimo-system-info&wu-tab=logs') ] = __('System Info: Logs', 'wp-multisite-waas');
 
 			/**
 			 * Adds Main Site Dashboard
@@ -231,7 +231,7 @@ class Jumper {
 			if (isset($links[ __('Sites') ])) {
 				$main_site_url = get_admin_url(get_current_site()->blog_id);
 
-				$links[ __('Sites') ][ $main_site_url ] = __('Main Site Dashboard', 'wp-ultimo');
+				$links[ __('Sites') ][ $main_site_url ] = __('Main Site Dashboard', 'wp-multisite-waas');
 			}
 		}
 
@@ -298,7 +298,7 @@ class Jumper {
 		$html = trim($html, '+');
 
 		// translators: the %s placeholder is the key combination to trigger the Jumper.
-		return '<span class="wu-keys">' . sprintf(__('<strong>Quick Tip:</strong> Use %s to jump between pages.', 'wp-ultimo'), $html) . '</span>' . $text;
+		return '<span class="wu-keys">' . sprintf(__('<strong>Quick Tip:</strong> Use %s to jump between pages.', 'wp-multisite-waas'), $html) . '</span>' . $text;
 	}
 
 	/**
@@ -317,7 +317,7 @@ class Jumper {
 			'wu-jumper',
 			'wu_jumper_vars',
 			[
-				'not_found_message' => __('Nothing found for', 'wp-ultimo'),
+				'not_found_message' => __('Nothing found for', 'wp-multisite-waas'),
 				'trigger_key'       => $this->get_defined_trigger_key(),
 				'network_base_url'  => network_admin_url(),
 				'ajaxurl'           => wu_ajax_url(),
@@ -406,7 +406,7 @@ class Jumper {
 
 		return Logger::track_time(
 			'jumper',
-			__('Regenerating Jumper menu items', 'wp-ultimo'),
+			__('Regenerating Jumper menu items', 'wp-multisite-waas'),
 			function () {
 
 				global $menu, $submenu;
@@ -487,8 +487,8 @@ class Jumper {
 		wu_register_settings_section(
 			'tools',
 			[
-				'title' => __('Tools', 'wp-ultimo'),
-				'desc'  => __('Tools', 'wp-ultimo'),
+				'title' => __('Tools', 'wp-multisite-waas'),
+				'desc'  => __('Tools', 'wp-multisite-waas'),
 				'icon'  => 'dashicons-wu-tools',
 			]
 		);
@@ -497,8 +497,8 @@ class Jumper {
 			'tools',
 			'tools_header',
 			[
-				'title' => __('Jumper', 'wp-ultimo'),
-				'desc'  => __('Spotlight-like search bar that allows you to easily access everything on your network.', 'wp-ultimo'),
+				'title' => __('Jumper', 'wp-multisite-waas'),
+				'desc'  => __('Spotlight-like search bar that allows you to easily access everything on your network.', 'wp-multisite-waas'),
 				'type'  => 'header',
 			]
 		);
@@ -507,8 +507,8 @@ class Jumper {
 			'tools',
 			'enable_jumper',
 			[
-				'title'   => __('Enable Jumper', 'wp-ultimo'),
-				'desc'    => __('Turn this option on to make the Jumper available on your network.', 'wp-ultimo'),
+				'title'   => __('Enable Jumper', 'wp-multisite-waas'),
+				'desc'    => __('Turn this option on to make the Jumper available on your network.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 1,
 			]
@@ -518,8 +518,8 @@ class Jumper {
 			'tools',
 			'jumper_key',
 			[
-				'title'   => __('Trigger Key', 'wp-ultimo'),
-				'desc'    => __('Change the keyboard key used in conjunction with ctrl + alt (or cmd + option), to trigger the Jumper box.', 'wp-ultimo'),
+				'title'   => __('Trigger Key', 'wp-multisite-waas'),
+				'desc'    => __('Change the keyboard key used in conjunction with ctrl + alt (or cmd + option), to trigger the Jumper box.', 'wp-multisite-waas'),
 				'type'    => 'text',
 				'default' => 'g',
 				'require' => [
@@ -532,9 +532,9 @@ class Jumper {
 			'tools',
 			'jumper_custom_links',
 			[
-				'title'       => __('Custom Links', 'wp-ultimo'),
-				'desc'        => __('Use this textarea to add custom links to the Jumper. Add one per line, with the format "Title : url".', 'wp-ultimo'),
-				'placeholder' => __('Tile of Custom Link : http://link.com', 'wp-ultimo'),
+				'title'       => __('Custom Links', 'wp-multisite-waas'),
+				'desc'        => __('Use this textarea to add custom links to the Jumper. Add one per line, with the format "Title : url".', 'wp-multisite-waas'),
+				'placeholder' => __('Tile of Custom Link : http://link.com', 'wp-multisite-waas'),
 				'type'        => 'textarea',
 				'html_attr'   => [
 					'rows' => 4,

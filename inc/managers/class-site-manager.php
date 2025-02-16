@@ -132,7 +132,7 @@ class Site_Manager extends Base_Manager {
 			}
 
 			if (preg_match('/[^a-z0-9-]+/', (string) $result['blogname'])) {
-				$result['errors']->add('blogname', __('Site names can only contain lowercase letters (a-z), numbers, and hyphens.', 'wp-ultimo'));
+				$result['errors']->add('blogname', __('Site names can only contain lowercase letters (a-z), numbers, and hyphens.', 'wp-multisite-waas'));
 			}
 		}
 
@@ -165,7 +165,7 @@ class Site_Manager extends Base_Manager {
 				$customer = wu_get_current_customer();
 
 				if ( ! $customer || ! $membership || $customer->get_id() !== $membership->get_customer_id()) {
-					$errors->add('not-owner', __('You do not have the necessary permissions to create a site to this membership', 'wp-ultimo'));
+					$errors->add('not-owner', __('You do not have the necessary permissions to create a site to this membership', 'wp-multisite-waas'));
 				}
 
 				if ($errors->has_errors() === false) {
@@ -316,9 +316,9 @@ class Site_Manager extends Base_Manager {
 				new \WP_Error(
 					'not-available',
 				// phpcs:ignore
-				sprintf( __('This site is not available at the moment.<br><small>If you are the site admin, click <a href="%s">here</a> to login.</small>', 'wp-ultimo'), wp_login_url()),
+				sprintf( __('This site is not available at the moment.<br><small>If you are the site admin, click <a href="%s">here</a> to login.</small>', 'wp-multisite-waas'), wp_login_url()),
 					[
-						'title' => __('Site not available', 'wp-ultimo'),
+						'title' => __('Site not available', 'wp-multisite-waas'),
 					]
 				),
 				'',
@@ -370,7 +370,7 @@ class Site_Manager extends Base_Manager {
 
 		if ( ! $site) {
 			wp_send_json_error(
-				new \WP_Error('missing-site', __('Site not found.', 'wp-ultimo'))
+				new \WP_Error('missing-site', __('Site not found.', 'wp-multisite-waas'))
 			);
 		}
 
@@ -380,7 +380,7 @@ class Site_Manager extends Base_Manager {
 
 		if ( ! $attachment_id) {
 			wp_send_json_error(
-				new \WP_Error('error', __('We were not able to fetch the screenshot.', 'wp-ultimo'))
+				new \WP_Error('error', __('We were not able to fetch the screenshot.', 'wp-multisite-waas'))
 			);
 		}
 
@@ -421,7 +421,7 @@ class Site_Manager extends Base_Manager {
 	public function add_no_index_warning(): void {
 
 		if (wu_get_setting('stop_template_indexing', false)) {
-			add_meta_box('wu-warnings', __('WP Multisite WaaS - Search Engines', 'wp-ultimo'), [$this, 'render_no_index_warning'], 'dashboard-network', 'normal', 'high');
+			add_meta_box('wu-warnings', __('WP Multisite WaaS - Search Engines', 'wp-multisite-waas'), [$this, 'render_no_index_warning'], 'dashboard-network', 'normal', 'high');
 		}
 	}
 
@@ -437,9 +437,9 @@ class Site_Manager extends Base_Manager {
 
 			<div class="wu-border-l-4 wu-border-yellow-500 wu-border-solid wu-border-0 wu-px-4 wu-py-2 wu--m-3">
 
-				<p><?php _e('Your WP Multisite WaaS settings are configured to <strong>prevent search engines such as Google from indexing your template sites</strong>.', 'wp-ultimo'); ?></p>
+				<p><?php _e('Your WP Multisite WaaS settings are configured to <strong>prevent search engines such as Google from indexing your template sites</strong>.', 'wp-multisite-waas'); ?></p>
 
-				<p><?php printf(__('If you are experiencing negative SEO impacts on other sites in your network, consider disabling this setting <a href="%s">here</a>.', 'wp-ultimo'), wu_network_admin_url('wp-ultimo-settings', ['tab' => 'sites'])); ?></p>
+				<p><?php printf(__('If you are experiencing negative SEO impacts on other sites in your network, consider disabling this setting <a href="%s">here</a>.', 'wp-multisite-waas'), wu_network_admin_url('wp-ultimo-settings', ['tab' => 'sites'])); ?></p>
 
 			</div>
 
@@ -540,7 +540,7 @@ class Site_Manager extends Base_Manager {
 	 */
 	public function add_notices_to_default_site_page(): void {
 
-		$notice = __('Hey there! We highly recommend managing your network sites using the WP Multisite WaaS &rarr; Sites page. <br>If you want to avoid confusion, you can also hide this page from the admin panel completely on the WP Multisite WaaS &rarr; Settings &rarr; Whitelabel options.', 'wp-ultimo');
+		$notice = __('Hey there! We highly recommend managing your network sites using the WP Multisite WaaS &rarr; Sites page. <br>If you want to avoid confusion, you can also hide this page from the admin panel completely on the WP Multisite WaaS &rarr; Settings &rarr; Whitelabel options.', 'wp-multisite-waas');
 
 		WP_Ultimo()->notices->add(
 			$notice,
@@ -549,11 +549,11 @@ class Site_Manager extends Base_Manager {
 			'wu-sites-use-wp-ultimo',
 			[
 				[
-					'title' => __('Go to the WP Multisite WaaS Sites page &rarr;', 'wp-ultimo'),
+					'title' => __('Go to the WP Multisite WaaS Sites page &rarr;', 'wp-multisite-waas'),
 					'url'   => wu_network_admin_url('wp-ultimo-sites'),
 				],
 				[
-					'title' => __('Go to the Whitelabel Settings &rarr;', 'wp-ultimo'),
+					'title' => __('Go to the Whitelabel Settings &rarr;', 'wp-multisite-waas'),
 					'url'   => wu_network_admin_url(
 						'wp-ultimo-settings',
 						[

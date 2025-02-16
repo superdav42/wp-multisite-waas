@@ -13,7 +13,7 @@
 
 			<div class="wu-p-2 wu-border wu-border-solid wu-border-gray-400 wu-border-t-0 wu-border-l-0 wu-border-r-0 wu-bg-gray-100">
 
-				<input class="wu-w-full wu-border-gray-400" type="text" placeholder="<?php _e('Search Placeholders', 'wp-ultimo'); ?>" v-model="search" />
+				<input class="wu-w-full wu-border-gray-400" type="text" placeholder="<?php _e('Search Placeholders', 'wp-multisite-waas'); ?>" v-model="search" />
 
 			</div>
 
@@ -27,13 +27,13 @@
 
 							<th style="width: 30%;">
 
-								<?php echo __('Name', 'wp-ultimo'); ?>
+								<?php echo __('Name', 'wp-multisite-waas'); ?>
 
 							</th>
 
 							<th style="width: 30%;">
 
-								<?php echo __('Placeholder', 'wp-ultimo'); ?>
+								<?php echo __('Placeholder', 'wp-multisite-waas'); ?>
 
 							</th>
 
@@ -57,7 +57,7 @@
 
 							<td class="wu-align-middle wu-text-xs">
 
-									<a @click.prevent="" <?php echo wu_tooltip_text(__('Copy', 'wp-ultimo')); ?> class="wu-no-underline wp-ui-text-highlight wu-copy" href="#" data-clipboard-action="copy" :data-clipboard-target="'#payload_event_placeholder_' + placeholder.placeholder">
+									<a @click.prevent="" <?php echo wu_tooltip_text(__('Copy', 'wp-multisite-waas')); ?> class="wu-no-underline wp-ui-text-highlight wu-copy" href="#" data-clipboard-action="copy" :data-clipboard-target="'#payload_event_placeholder_' + placeholder.placeholder">
 
 										<span class="dashicons-wu-copy wu-align-middle"></span>
 

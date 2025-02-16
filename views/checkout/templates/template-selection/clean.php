@@ -46,7 +46,7 @@ $customer_sites = isset($customer_sites) ? array_map('intval', $customer_sites) 
 		:class="$parent.template_category === '' ? 'current wu-font-semibold' : ''"
 		v-on:click.prevent="$parent.template_category = ''"
 		>
-		<?php _e('All', 'wp-ultimo'); ?>
+		<?php _e('All', 'wp-multisite-waas'); ?>
 		</a>
 	</li>
 
@@ -105,7 +105,7 @@ $customer_sites = isset($customer_sites) ? array_map('intval', $customer_sites) 
 		<div class="wu-site-template-image-container wu-relative">
 
 			<a
-			title="<?php esc_attr_e('View Template Preview', 'wp-ultimo'); ?>"
+			title="<?php esc_attr_e('View Template Preview', 'wp-multisite-waas'); ?>"
 			class="wu-site-template-selector wu-cursor-pointer wu-no-underline"
 			<?php echo $is_template ? $site_template->get_preview_url_attrs() : sprintf('href="%s" target="_blank"', $site_template->get_active_site_url()); ?>
 			>
@@ -132,9 +132,9 @@ $customer_sites = isset($customer_sites) ? array_map('intval', $customer_sites) 
 
 			<button v-on:click.prevent="$parent.template_id = <?php echo esc_attr($site_template->get_id()); ?>" type="button" class="wu-site-template-selector button btn button-primary btn-primary wu-w-full wu-text-center wu-cursor-pointer">
 
-			<span v-if="$parent.template_id == <?php echo esc_attr($site_template->get_id()); ?>"><?php _e('Selected', 'wp-ultimo'); ?></span>
+			<span v-if="$parent.template_id == <?php echo esc_attr($site_template->get_id()); ?>"><?php _e('Selected', 'wp-multisite-waas'); ?></span>
 
-			<span v-else><?php _e('Select', 'wp-ultimo'); ?></span>
+			<span v-else><?php _e('Select', 'wp-multisite-waas'); ?></span>
 
 			</button>
 

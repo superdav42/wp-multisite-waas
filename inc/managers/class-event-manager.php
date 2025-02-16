@@ -191,19 +191,19 @@ class Event_Manager extends Base_Manager {
 	public function event_payload_preview(): void {
 
 		if ( ! wu_request('event')) {
-			wp_send_json_error(new \WP_Error('error', __('No event was selected.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('error', __('No event was selected.', 'wp-multisite-waas')));
 		}
 
 		$slug = wu_request('event');
 
 		if ( ! $slug) {
-			wp_send_json_error(new \WP_Error('not-found', __('Event was not found.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('not-found', __('Event was not found.', 'wp-multisite-waas')));
 		}
 
 		$event = wu_get_event_type($slug);
 
 		if ( ! $event) {
-			wp_send_json_error(new \WP_Error('not-found', __('Data not found.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('not-found', __('Data not found.', 'wp-multisite-waas')));
 		} else {
 			$payload = isset($event['payload']) ? wu_maybe_lazy_load_payload($event['payload']) : '{}';
 
@@ -367,8 +367,8 @@ class Event_Manager extends Base_Manager {
 		wu_register_event_type(
 			'payment_received',
 			[
-				'name'            => __('Payment Received', 'wp-ultimo'),
-				'desc'            => __('This event is fired every time a new payment is received, regardless of the payment status.', 'wp-ultimo'),
+				'name'            => __('Payment Received', 'wp-multisite-waas'),
+				'desc'            => __('This event is fired every time a new payment is received, regardless of the payment status.', 'wp-multisite-waas'),
 				'payload'         => fn() => array_merge(
 					wu_generate_event_payload('payment'),
 					wu_generate_event_payload('membership'),
@@ -390,8 +390,8 @@ class Event_Manager extends Base_Manager {
 		wu_register_event_type(
 			'site_published',
 			[
-				'name'            => __('Site Published', 'wp-ultimo'),
-				'desc'            => __('This event is fired every time a new site is created tied to a membership, or transitions from a pending state to a published state.', 'wp-ultimo'),
+				'name'            => __('Site Published', 'wp-multisite-waas'),
+				'desc'            => __('This event is fired every time a new site is created tied to a membership, or transitions from a pending state to a published state.', 'wp-multisite-waas'),
 				'payload'         => fn() => array_merge(
 					wu_generate_event_payload('site'),
 					wu_generate_event_payload('customer'),
@@ -407,8 +407,8 @@ class Event_Manager extends Base_Manager {
 		wu_register_event_type(
 			'confirm_email_address',
 			[
-				'name'            => __('Email Verification Needed', 'wp-ultimo'),
-				'desc'            => __('This event is fired every time a new customer is added with an email verification status of pending.', 'wp-ultimo'),
+				'name'            => __('Email Verification Needed', 'wp-multisite-waas'),
+				'desc'            => __('This event is fired every time a new customer is added with an email verification status of pending.', 'wp-multisite-waas'),
 				'payload'         => fn() => array_merge(
 					[
 						'verification_link' => 'https://linktoverifyemail.com',
@@ -425,8 +425,8 @@ class Event_Manager extends Base_Manager {
 		wu_register_event_type(
 			'domain_created',
 			[
-				'name'            => __('New Domain Mapping Added', 'wp-ultimo'),
-				'desc'            => __('This event is fired every time a new domain mapping is added by a customer.', 'wp-ultimo'),
+				'name'            => __('New Domain Mapping Added', 'wp-multisite-waas'),
+				'desc'            => __('This event is fired every time a new domain mapping is added by a customer.', 'wp-multisite-waas'),
 				'payload'         => fn() => array_merge(
 					wu_generate_event_payload('domain'),
 					wu_generate_event_payload('site'),
@@ -449,8 +449,8 @@ class Event_Manager extends Base_Manager {
 		wu_register_event_type(
 			'renewal_payment_created',
 			[
-				'name'            => __('New Renewal Payment Created', 'wp-ultimo'),
-				'desc'            => __('This event is fired every time a new renewal payment is created by WP Multisite WaaS.', 'wp-ultimo'),
+				'name'            => __('New Renewal Payment Created', 'wp-multisite-waas'),
+				'desc'            => __('This event is fired every time a new renewal payment is created by WP Multisite WaaS.', 'wp-multisite-waas'),
 				'payload'         => fn() => array_merge(
 					[
 						'default_payment_url' => 'https://linktopayment.com',
@@ -470,8 +470,8 @@ class Event_Manager extends Base_Manager {
 				wu_register_event_type(
 					$model . '_' . $type,
 					[
-						'name'            => sprintf(__('%1$s %2$s', 'wp-ultimo'), $params['label'], ucfirst($type)),
-						'desc'            => sprintf(__('This event is fired every time a %1$s is %2$s by WP Multisite WaaS.', 'wp-ultimo'), $params['label'], $type),
+						'name'            => sprintf(__('%1$s %2$s', 'wp-multisite-waas'), $params['label'], ucfirst($type)),
+						'desc'            => sprintf(__('This event is fired every time a %1$s is %2$s by WP Multisite WaaS.', 'wp-multisite-waas'), $params['label'], $type),
 						'deprecated_args' => [],
 						'payload'         => fn() => $this->get_model_payload($model),
 					]
@@ -621,7 +621,7 @@ class Event_Manager extends Base_Manager {
 			}
 		}
 
-		wu_log_add('wu-cron', sprintf(__('Removed %1$d events successfully. Failed to remove %2$d events.', 'wp-ultimo'), $success_count, count($events_to_remove) - $success_count));
+		wu_log_add('wu-cron', sprintf(__('Removed %1$d events successfully. Failed to remove %2$d events.', 'wp-multisite-waas'), $success_count, count($events_to_remove) - $success_count));
 
 		return true;
 	}

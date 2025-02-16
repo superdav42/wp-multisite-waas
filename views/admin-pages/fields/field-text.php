@@ -37,11 +37,11 @@
 
 			<div class="wu-ml-1 wu-my-1" v-cloak>
 			<a
-				v-bind:href="'<?php echo wu_get_isset($field->html_attr, 'data-base-link'); ?>' + '=' + <?php echo wu_get_isset($field->html_attr, 'v-model'); ?>"
+				v-bind:href="'<?php echo esc_js(wu_get_isset($field->html_attr, 'data-base-link')); ?>' + '=' + <?php echo esc_js(wu_get_isset($field->html_attr, 'v-model')); ?>"
 				target="_blank"
 				class="button"
-				v-show='<?php echo wu_get_isset($field->html_attr, 'v-model'); ?>'
-				<?php echo wu_tooltip_text(__('View', 'wp-ultimo')); ?>
+				v-show='<?php echo esc_js(wu_get_isset($field->html_attr, 'v-model')); ?>'
+				<?php echo wu_tooltip_text(__('View', 'wp-multisite-waas')); ?>
 			>
 				<span class="dashicons-wu-popup wu-m-0 wu-p-0"></span>
 			</a>

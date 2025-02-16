@@ -84,11 +84,11 @@ class Maintenance_Mode {
 			$args = [
 				'id'     => 'wu-maintenance-mode',
 				'parent' => 'top-secondary',
-				'title'  => __('Maintenance Mode - Active', 'wp-ultimo'),
+				'title'  => __('Maintenance Mode - Active', 'wp-multisite-waas'),
 				'href'   => '#wp-ultimo-site-maintenance-element',
 				'meta'   => [
 					'class' => 'wu-maintenance-mode ' . (self::check_maintenance_mode() ? '' : 'hidden'),
-					'title' => __('This means that your site is not available for visitors at the moment. Only you and other logged users have access to it. Click here to toggle this option.', 'wp-ultimo'),
+					'title' => __('This means that your site is not available for visitors at the moment. Only you and other logged users have access to it. Click here to toggle this option.', 'wp-multisite-waas'),
 				],
 			];
 
@@ -110,12 +110,12 @@ class Maintenance_Mode {
 
 		$text = apply_filters(
 			'wu_maintenance_mode_text',
-			__('Website under planned maintenance. Please check back later.', 'wp-ultimo')
+			__('Website under planned maintenance. Please check back later.', 'wp-multisite-waas')
 		);
 
 		$title = apply_filters(
 			'wu_maintenance_mode_title',
-			__('Under Maintenance', 'wp-ultimo')
+			__('Under Maintenance', 'wp-multisite-waas')
 		);
 
 		wp_die($text, $title, 503);
@@ -147,7 +147,7 @@ class Maintenance_Mode {
 		if ( ! current_user_can_for_blog($site_id, 'manage_options')) {
 			wp_send_json_error(
 				[
-					'message' => __('You do not have the necessary permissions to perform this option.', 'wp-ultimo'),
+					'message' => __('You do not have the necessary permissions to perform this option.', 'wp-multisite-waas'),
 					'value'   => false,
 				]
 			);
@@ -160,7 +160,7 @@ class Maintenance_Mode {
 		update_site_meta($site_id, 'wu_maintenance_mode', $value);
 
 		$return = [
-			'message' => __('New maintenance settings saved.', 'wp-ultimo'),
+			'message' => __('New maintenance settings saved.', 'wp-multisite-waas'),
 			'value'   => $value,
 		];
 
@@ -182,8 +182,8 @@ class Maintenance_Mode {
 			'sites',
 			'maintenance_mode',
 			[
-				'title'   => __('Site Maintenance Mode', 'wp-ultimo'),
-				'desc'    => __('Allow your customers and super admins to quickly take sites offline via a toggle on the site dashboard.', 'wp-ultimo'),
+				'title'   => __('Site Maintenance Mode', 'wp-multisite-waas'),
+				'desc'    => __('Allow your customers and super admins to quickly take sites offline via a toggle on the site dashboard.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 0,
 				'order'   => 23,

@@ -56,10 +56,10 @@ class Site_Customer_List_Table extends Customer_List_Table {
 	 */
 	public function column_responsive($item): void {
 
-		$last_login = sprintf(__('Last login %s', 'wp-ultimo'), wu_human_time_diff(strtotime((string) $item->get_last_login())));
+		$last_login = sprintf(__('Last login %s', 'wp-multisite-waas'), wu_human_time_diff(strtotime((string) $item->get_last_login())));
 
 		if ($item->is_online()) {
-			$last_login = '<span class="wu-inline-block wu-mr-1 wu-rounded-full wu-h-2 wu-w-2 wu-bg-green-500"></span>' . __('Online', 'wp-ultimo');
+			$last_login = '<span class="wu-inline-block wu-mr-1 wu-rounded-full wu-h-2 wu-w-2 wu-bg-green-500"></span>' . __('Online', 'wp-multisite-waas');
 		}
 
 		echo wu_responsive_table_row(
@@ -87,20 +87,20 @@ class Site_Customer_List_Table extends Customer_List_Table {
 			[
 				'total' => [
 					'icon'  => 'dashicons-wu-at-sign wu-align-middle wu-mr-1',
-					'label' => __('Email Address', 'wp-ultimo'),
+					'label' => __('Email Address', 'wp-multisite-waas'),
 					'value' => $item->get_email_address(),
 				],
 			],
 			[
 				'date_expiration' => [
 					'icon'  => $item->is_online() === false ? 'dashicons-wu-calendar1 wu-align-middle wu-mr-1' : '',
-					'label' => __('Last Login', 'wp-ultimo'),
+					'label' => __('Last Login', 'wp-multisite-waas'),
 					'value' => $last_login,
 				],
 				'date_created'    => [
 					'icon'  => 'dashicons-wu-calendar1 wu-align-middle wu-mr-1',
 					'label' => '',
-					'value' => sprintf(__('Registered %s', 'wp-ultimo'), wu_human_time_diff(strtotime((string) $item->get_date_registered()))),
+					'value' => sprintf(__('Registered %s', 'wp-multisite-waas'), wu_human_time_diff(strtotime((string) $item->get_date_registered()))),
 				],
 			]
 		);

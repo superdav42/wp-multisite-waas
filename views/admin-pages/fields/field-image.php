@@ -81,13 +81,13 @@ $content_wrapper_classes = $field->content_wrapper_classes
 
 			<div class="wu-wrapper-image-field-upload-actions wu-absolute wu-top-4 wu-right-4 <?php echo $mq; ?>md:wu-top-2 <?php echo $mq; ?>md:wu-right-2 wu-scale-150 <?php echo $mq; ?>md:wu-scale-100">
 
-			<a title="<?php _e('Preview Image', 'wp-ultimo'); ?>" href="<?php echo $field->img; ?>" class="wubox wu-no-underline wu-text-center wu-inline-block wu-bg-black wu-opacity-60 wu-rounded-full wu-text-white wu-w-5 wu-h-5 wu-shadow-sm">
+			<a title="<?php _e('Preview Image', 'wp-multisite-waas'); ?>" href="<?php echo $field->img; ?>" class="wubox wu-no-underline wu-text-center wu-inline-block wu-bg-black wu-opacity-60 wu-rounded-full wu-text-white wu-w-5 wu-h-5 wu-shadow-sm">
 
 				<span class="dashicons-wu-eye1 wu-align-middle" style="top: -2px;"></span>
 
 			</a>
 
-			<a title="<?php _e('Remove Image', 'wp-ultimo'); ?>" href="#" class="wu-remove-image wu-no-underline wu-text-center wu-inline-block wu-bg-black wu-opacity-60 wu-rounded-full wu-text-white wu-w-5 wu-h-5 wu-shadow-sm">
+			<a title="<?php _e('Remove Image', 'wp-multisite-waas'); ?>" href="#" class="wu-remove-image wu-no-underline wu-text-center wu-inline-block wu-bg-black wu-opacity-60 wu-rounded-full wu-text-white wu-w-5 wu-h-5 wu-shadow-sm">
 
 				<span class="dashicons-wu-cross wu-align-middle"></span>
 
@@ -103,7 +103,7 @@ $content_wrapper_classes = $field->content_wrapper_classes
 
 			<a class="button wu-w-full wu-text-center wu-add-image">
   
-			<span class="dashicons-wu-upload"></span> <?php _e('Upload Image', 'wp-ultimo'); ?>
+			<span class="dashicons-wu-upload"></span> <?php _e('Upload Image', 'wp-multisite-waas'); ?>
   
 			</a>
 

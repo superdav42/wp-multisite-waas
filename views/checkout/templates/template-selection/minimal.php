@@ -42,7 +42,7 @@ $customer_sites = isset($customer_sites) ? array_map('intval', $customer_sites) 
 		:class="$parent.template_category === '' ? 'current wu-font-semibold' : ''"
 		v-on:click.prevent="$parent.template_category = ''"
 		>
-		<?php _e('All', 'wp-ultimo'); ?>
+		<?php _e('All', 'wp-multisite-waas'); ?>
 		</a>
 	</li>
 
@@ -115,7 +115,7 @@ $customer_sites = isset($customer_sites) ? array_map('intval', $customer_sites) 
 
 			<a class="wu-site-template-selector" <?php echo $site_template->get_preview_url_attrs(); ?>>
 
-			<?php _e('View Template Preview', 'wp-ultimo'); ?>
+			<?php _e('View Template Preview', 'wp-multisite-waas'); ?>
 
 			</a>
 
@@ -127,7 +127,7 @@ $customer_sites = isset($customer_sites) ? array_map('intval', $customer_sites) 
 
 			<a class="wu-site-template-selector" @click.prevent="" href="#">
 
-			<?php _e('Select this Template', 'wp-ultimo'); ?>
+			<?php _e('Select this Template', 'wp-multisite-waas'); ?>
 
 			</a>
 

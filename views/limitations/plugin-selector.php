@@ -25,7 +25,7 @@
 					<?php if (is_plugin_active_for_network($plugin_path)) : ?>
 
 					<span class="wu-text-xs wu-normal-case wu-font-normal wu-ml-2 wu-text-green-600">
-						<?php _e('Network Active', 'wp-ultimo'); ?>
+						<?php _e('Network Active', 'wp-multisite-waas'); ?>
 					</span>
 
 					<?php endif; ?>
@@ -43,11 +43,11 @@
 				<div class="wu-block wu-mt-4">
 
 				<span class="wu-text-xs wu-text-gray-700 wu-my-1 wu-mr-4 wu-block">
-					<?php printf(__('Version %s', 'wp-ultimo'), $plugin_data['Version']); ?>
+					<?php printf(__('Version %s', 'wp-multisite-waas'), $plugin_data['Version']); ?>
 				</span>
 
 				<span class="wu-text-xs wu-text-gray-700 wu-my-1 wu-mr-4 wu-block">
-					<?php printf(__('by %s', 'wp-ultimo'), wp_strip_all_tags($plugin_data['Author'])); ?>
+					<?php printf(__('by %s', 'wp-multisite-waas'), wp_strip_all_tags($plugin_data['Author'])); ?>
 				</span>
 
 				</div>
@@ -58,27 +58,27 @@
 
 				<h3 class="wu-mb-1 wu-text-2xs wu-uppercase wu-text-gray-600">
 
-				<?php _e('Visibility', 'wp-ultimo'); ?>
+				<?php _e('Visibility', 'wp-multisite-waas'); ?>
 
 				</h3>
 
 				<select name="modules[plugins][limit][<?php echo esc_attr($plugin_path); ?>][visibility]" class="wu-w-full">
-				<option <?php selected('visible' === $object->get_limitations()->plugins->{$plugin_path}->visibility); ?> value="visible"><?php _e('Visible', 'wp-ultimo'); ?></option>
-				<option <?php selected('hidden' === $object->get_limitations()->plugins->{$plugin_path}->visibility); ?> value="hidden"><?php _e('Hidden', 'wp-ultimo'); ?></option>
+				<option <?php selected('visible' === $object->get_limitations()->plugins->{$plugin_path}->visibility); ?> value="visible"><?php _e('Visible', 'wp-multisite-waas'); ?></option>
+				<option <?php selected('hidden' === $object->get_limitations()->plugins->{$plugin_path}->visibility); ?> value="hidden"><?php _e('Hidden', 'wp-multisite-waas'); ?></option>
 				</select>
 
 				<h3 class="wu-my-1 wu-mt-4 wu-text-2xs wu-uppercase wu-text-gray-600">
 
-				<?php _e('Behavior', 'wp-ultimo'); ?>
+				<?php _e('Behavior', 'wp-multisite-waas'); ?>
 
 				</h3>
 
 				<select name="modules[plugins][limit][<?php echo esc_attr($plugin_path); ?>][behavior]" class="wu-w-full">
-				<option <?php selected('default' === $object->get_limitations()->plugins->{$plugin_path}->behavior); ?> value="default"><?php _e('Default', 'wp-ultimo'); ?></option>
-				<option <?php disabled(is_plugin_active_for_network($plugin_path)); ?> <?php selected('force_active' === $object->get_limitations()->plugins->{$plugin_path}->behavior); ?> value="force_active"><?php _e('Force Activate', 'wp-ultimo'); ?></option>
-				<option <?php disabled(is_plugin_active_for_network($plugin_path)); ?> <?php selected('force_inactive' === $object->get_limitations()->plugins->{$plugin_path}->behavior); ?> value="force_inactive"><?php _e('Force Inactivate', 'wp-ultimo'); ?></option>
-				<option <?php selected('force_active_locked' === $object->get_limitations()->plugins->{$plugin_path}->behavior); ?> value="force_active_locked"><?php _e('Force Activate & Lock', 'wp-ultimo'); ?></option>
-				<option <?php selected('force_inactive_locked' === $object->get_limitations()->plugins->{$plugin_path}->behavior); ?> value="force_inactive_locked"><?php _e('Force Inactivate & Lock', 'wp-ultimo'); ?></option>
+				<option <?php selected('default' === $object->get_limitations()->plugins->{$plugin_path}->behavior); ?> value="default"><?php _e('Default', 'wp-multisite-waas'); ?></option>
+				<option <?php disabled(is_plugin_active_for_network($plugin_path)); ?> <?php selected('force_active' === $object->get_limitations()->plugins->{$plugin_path}->behavior); ?> value="force_active"><?php _e('Force Activate', 'wp-multisite-waas'); ?></option>
+				<option <?php disabled(is_plugin_active_for_network($plugin_path)); ?> <?php selected('force_inactive' === $object->get_limitations()->plugins->{$plugin_path}->behavior); ?> value="force_inactive"><?php _e('Force Inactivate', 'wp-multisite-waas'); ?></option>
+				<option <?php selected('force_active_locked' === $object->get_limitations()->plugins->{$plugin_path}->behavior); ?> value="force_active_locked"><?php _e('Force Activate & Lock', 'wp-multisite-waas'); ?></option>
+				<option <?php selected('force_inactive_locked' === $object->get_limitations()->plugins->{$plugin_path}->behavior); ?> value="force_inactive_locked"><?php _e('Force Inactivate & Lock', 'wp-multisite-waas'); ?></option>
 				</select>
 
 			</div>
@@ -90,7 +90,7 @@
 		<?php if ('product' !== $object->model && $object->get_limitations(false)->plugins->exists($plugin_path)) : ?>
 
 			<p class="wu-m-0 wu-mt-4 wu-p-2 wu-bg-blue-100 wu-text-blue-600 wu-rounded">
-				<?php _e('This value is being applied only to this entity. Changes made to the membership or product permissions will not affect this particular value.', 'wp-ultimo'); ?>
+				<?php _e('This value is being applied only to this entity. Changes made to the membership or product permissions will not affect this particular value.', 'wp-multisite-waas'); ?>
 			</p>
 
 		<?php endif; ?>

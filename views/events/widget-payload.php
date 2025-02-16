@@ -31,7 +31,7 @@
 
 	<span>
 	<button type="button" data-clipboard-action="copy" data-clipboard-target="#hidden_textarea" class="btn-clipboard button">
-		<?php _e('Copy to the Clipboard', 'wp-ultimo'); ?>
+		<?php _e('Copy to the Clipboard', 'wp-multisite-waas'); ?>
 	</button>
 	</span>
 

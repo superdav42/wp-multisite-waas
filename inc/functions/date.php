@@ -112,13 +112,13 @@ function wu_filter_duration_unit($unit, $length) {
 
 	switch ($unit) {
 		case 'day':
-			$new_unit = $length > 1 ? __('Days', 'wp-ultimo') : __('Day', 'wp-ultimo');
+			$new_unit = $length > 1 ? __('Days', 'wp-multisite-waas') : __('Day', 'wp-multisite-waas');
 			break;
 		case 'month':
-			$new_unit = $length > 1 ? __('Months', 'wp-ultimo') : __('Month', 'wp-ultimo');
+			$new_unit = $length > 1 ? __('Months', 'wp-multisite-waas') : __('Month', 'wp-multisite-waas');
 			break;
 		case 'year':
-			$new_unit = $length > 1 ? __('Years', 'wp-ultimo') : __('Year', 'wp-ultimo');
+			$new_unit = $length > 1 ? __('Years', 'wp-multisite-waas') : __('Year', 'wp-multisite-waas');
 			break;
 		default:
 			$new_unit = $new_unit;
@@ -146,14 +146,14 @@ function wu_human_time_diff($from, $limit = '-5 days', $to = false): string {
 	if ($timestamp_from <= $limit) {
 
 		// translators: %s: date.
-		return sprintf(__('on %s', 'wp-ultimo'), date_i18n(get_option('date_format'), $timestamp_from));
+		return sprintf(__('on %s', 'wp-multisite-waas'), date_i18n(get_option('date_format'), $timestamp_from));
 	}
 
 	if (false === $to) {
 		$to = wu_get_current_time('timestamp'); // phpcs:ignore
 	}
 
-	$placeholder = wu_get_current_time('timestamp') > $timestamp_from ? __('%s ago', 'wp-ultimo') : __('In %s', 'wp-ultimo'); // phpcs:ignore
+	$placeholder = wu_get_current_time('timestamp') > $timestamp_from ? __('%s ago', 'wp-multisite-waas') : __('In %s', 'wp-multisite-waas'); // phpcs:ignore
 
 	return sprintf($placeholder, human_time_diff($timestamp_from, $to));
 }

@@ -76,14 +76,14 @@ class Invoices_Element extends Base_Element {
 	 *
 	 * This is used on the Blocks list of Gutenberg.
 	 * You should return a string with the localized title.
-	 * e.g. return __('My Element', 'wp-ultimo').
+	 * e.g. return __('My Element', 'wp-multisite-waas').
 	 *
 	 * @since 2.0.0
 	 * @return string
 	 */
 	public function get_title() {
 
-		return __('Invoices', 'wp-ultimo');
+		return __('Invoices', 'wp-multisite-waas');
 	}
 
 	/**
@@ -92,14 +92,14 @@ class Invoices_Element extends Base_Element {
 	 * This is also used on the Gutenberg block list
 	 * to explain what this block is about.
 	 * You should return a string with the localized title.
-	 * e.g. return __('Adds a checkout form to the page', 'wp-ultimo').
+	 * e.g. return __('Adds a checkout form to the page', 'wp-multisite-waas').
 	 *
 	 * @since 2.0.0
 	 * @return string
 	 */
 	public function get_description() {
 
-		return __('Adds a checkout form block to the page.', 'wp-ultimo');
+		return __('Adds a checkout form block to the page.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -124,24 +124,24 @@ class Invoices_Element extends Base_Element {
 		$fields = [];
 
 		$fields['header'] = [
-			'title' => __('General', 'wp-ultimo'),
-			'desc'  => __('General', 'wp-ultimo'),
+			'title' => __('General', 'wp-multisite-waas'),
+			'desc'  => __('General', 'wp-multisite-waas'),
 			'type'  => 'header',
 		];
 
 		$fields['title'] = [
 			'type'    => 'text',
-			'title'   => __('Title', 'wp-ultimo'),
-			'value'   => __('Invoices', 'wp-ultimo'),
-			'desc'    => __('Leave blank to hide the title completely.', 'wp-ultimo'),
+			'title'   => __('Title', 'wp-multisite-waas'),
+			'value'   => __('Invoices', 'wp-multisite-waas'),
+			'desc'    => __('Leave blank to hide the title completely.', 'wp-multisite-waas'),
 			'tooltip' => '',
 		];
 
 		$fields['limit'] = [
 			'type'    => 'int',
-			'title'   => __('Limit', 'wp-ultimo'),
+			'title'   => __('Limit', 'wp-multisite-waas'),
 			'value'   => 10,
-			'desc'    => __('Limit the number of invoices to show.', 'wp-ultimo'),
+			'desc'    => __('Limit the number of invoices to show.', 'wp-multisite-waas'),
 			'tooltip' => '',
 		];
 
@@ -193,7 +193,7 @@ class Invoices_Element extends Base_Element {
 	public function defaults() {
 
 		return [
-			'title' => __('Invoices', 'wp-ultimo'),
+			'title' => __('Invoices', 'wp-multisite-waas'),
 			'limit' => 0,
 		];
 	}

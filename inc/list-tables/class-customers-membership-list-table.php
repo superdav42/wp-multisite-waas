@@ -50,7 +50,7 @@ class Customers_Membership_List_Table extends Membership_List_Table {
 
 		$product_count = 1 + count($item->get_addon_ids());
 
-		$products_list = $p ? sprintf(_n('Contains %s', 'Contains %1$s and %2$s other product(s)', $product_count, 'wp-ultimo'), $p->get_name(), count($item->get_addon_ids())) : ''; // phpcs:ignore
+		$products_list = $p ? sprintf(_n('Contains %s', 'Contains %1$s and %2$s other product(s)', $product_count, 'wp-multisite-waas'), $p->get_name(), count($item->get_addon_ids())) : ''; // phpcs:ignore
 
 		echo wu_responsive_table_row(
 			[
@@ -67,30 +67,30 @@ class Customers_Membership_List_Table extends Membership_List_Table {
 			[
 				'total'    => [
 					'icon'  => 'dashicons-wu-shopping-bag1 wu-align-middle wu-mr-1',
-					'label' => __('Payment Total', 'wp-ultimo'),
+					'label' => __('Payment Total', 'wp-multisite-waas'),
 					'value' => $item->get_price_description(),
 				],
 				'products' => [
 					'icon'  => 'dashicons-wu-package wu-align-middle wu-mr-1',
-					'label' => __('Products', 'wp-ultimo'),
+					'label' => __('Products', 'wp-multisite-waas'),
 					'value' => $products_list,
 				],
 				'gateway'  => [
 					'icon'  => 'dashicons-wu-credit-card2 wu-align-middle wu-mr-1',
-					'label' => __('Gateway', 'wp-ultimo'),
+					'label' => __('Gateway', 'wp-multisite-waas'),
 					'value' => wu_slug_to_name($item->get_gateway()),
 				],
 			],
 			[
 				'date_expiration' => [
 					'icon'  => 'dashicons-wu-calendar1 wu-align-middle wu-mr-1',
-					'label' => __('Expires', 'wp-ultimo'),
-					'value' => sprintf($expired ? __('Expired %s', 'wp-ultimo') : __('Expiring %s', 'wp-ultimo'), wu_human_time_diff(strtotime((string) $item->get_date_expiration()))),
+					'label' => __('Expires', 'wp-multisite-waas'),
+					'value' => sprintf($expired ? __('Expired %s', 'wp-multisite-waas') : __('Expiring %s', 'wp-multisite-waas'), wu_human_time_diff(strtotime((string) $item->get_date_expiration()))),
 				],
 				'date_created'    => [
 					'icon'  => 'dashicons-wu-calendar1 wu-align-middle wu-mr-1',
-					'label' => __('Created at', 'wp-ultimo'),
-					'value' => sprintf(__('Created %s', 'wp-ultimo'), wu_human_time_diff(strtotime((string) $item->get_date_created()))),
+					'label' => __('Created at', 'wp-multisite-waas'),
+					'value' => sprintf(__('Created %s', 'wp-multisite-waas'), wu_human_time_diff(strtotime((string) $item->get_date_created()))),
 				],
 			]
 		);

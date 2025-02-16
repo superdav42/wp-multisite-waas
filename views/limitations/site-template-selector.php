@@ -42,7 +42,7 @@
 
 			<span class="wu-mt-2 wu-block wu-text-xs">
 
-				<?php echo ! $site_template->get_categories() ? __('No categories', 'wp-ultimo') : implode(', ', $site_template->get_categories()); ?>
+				<?php echo ! $site_template->get_categories() ? __('No categories', 'wp-multisite-waas') : implode(', ', $site_template->get_categories()); ?>
 
 			</span>
 
@@ -52,7 +52,7 @@
 
 			<h3 class="wu-my-1 wu-text-2xs wu-uppercase wu-text-gray-600">
 
-				<?php _e('Behavior', 'wp-ultimo'); ?>
+				<?php _e('Behavior', 'wp-multisite-waas'); ?>
 
 			</h3>
 
@@ -61,9 +61,9 @@
 				name="modules[site_templates][limit][<?php echo esc_attr($site_template->get_id()); ?>][behavior]"
 				class="wu-w-full"
 			>
-				<option <?php selected('available' === $template_settings->behavior); ?> value="available"><?php _e('Available', 'wp-ultimo'); ?></option>
-				<option <?php selected('not_available' === $template_settings->behavior); ?> value="not_available"><?php _e('Not Available', 'wp-ultimo'); ?></option>
-				<option :disabled="pre_selected_template !== '' && pre_selected_template !== false && pre_selected_template != '<?php echo esc_attr($site_template->get_id()); ?>'" <?php selected('pre_selected' === $template_settings->behavior); ?> value="pre_selected"><?php _e('Pre-Selected', 'wp-ultimo'); ?></option>
+				<option <?php selected('available' === $template_settings->behavior); ?> value="available"><?php _e('Available', 'wp-multisite-waas'); ?></option>
+				<option <?php selected('not_available' === $template_settings->behavior); ?> value="not_available"><?php _e('Not Available', 'wp-multisite-waas'); ?></option>
+				<option :disabled="pre_selected_template !== '' && pre_selected_template !== false && pre_selected_template != '<?php echo esc_attr($site_template->get_id()); ?>'" <?php selected('pre_selected' === $template_settings->behavior); ?> value="pre_selected"><?php _e('Pre-Selected', 'wp-multisite-waas'); ?></option>
 			</select>
 
 			</div>

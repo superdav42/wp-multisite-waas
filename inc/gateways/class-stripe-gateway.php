@@ -73,8 +73,8 @@ class Stripe_Gateway extends Base_Stripe_Gateway {
 			'payment-gateways',
 			'stripe_header',
 			[
-				'title'           => __('Stripe', 'wp-ultimo'),
-				'desc'            => __('Use the settings section below to configure Stripe as a payment method.', 'wp-ultimo'),
+				'title'           => __('Stripe', 'wp-multisite-waas'),
+				'desc'            => __('Use the settings section below to configure Stripe as a payment method.', 'wp-multisite-waas'),
 				'type'            => 'header',
 				'show_as_submenu' => true,
 				'require'         => [
@@ -87,10 +87,10 @@ class Stripe_Gateway extends Base_Stripe_Gateway {
 			'payment-gateways',
 			'stripe_public_title',
 			[
-				'title'   => __('Stripe Public Name', 'wp-ultimo'),
-				'tooltip' => __('The name to display on the payment method selection field. By default, "Credit Card" is used.', 'wp-ultimo'),
+				'title'   => __('Stripe Public Name', 'wp-multisite-waas'),
+				'tooltip' => __('The name to display on the payment method selection field. By default, "Credit Card" is used.', 'wp-multisite-waas'),
 				'type'    => 'text',
-				'default' => __('Credit Card', 'wp-ultimo'),
+				'default' => __('Credit Card', 'wp-multisite-waas'),
 				'require' => [
 					'active_gateways' => 'stripe',
 				],
@@ -101,8 +101,8 @@ class Stripe_Gateway extends Base_Stripe_Gateway {
 			'payment-gateways',
 			'stripe_sandbox_mode',
 			[
-				'title'     => __('Stripe Sandbox Mode', 'wp-ultimo'),
-				'desc'      => __('Toggle this to put Stripe on sandbox mode. This is useful for testing and making sure Stripe is correctly setup to handle your payments.', 'wp-ultimo'),
+				'title'     => __('Stripe Sandbox Mode', 'wp-multisite-waas'),
+				'desc'      => __('Toggle this to put Stripe on sandbox mode. This is useful for testing and making sure Stripe is correctly setup to handle your payments.', 'wp-multisite-waas'),
 				'type'      => 'toggle',
 				'default'   => 1,
 				'html_attr' => [
@@ -120,10 +120,10 @@ class Stripe_Gateway extends Base_Stripe_Gateway {
 			'payment-gateways',
 			'stripe_test_pk_key',
 			[
-				'title'       => __('Stripe Test Publishable Key', 'wp-ultimo'),
+				'title'       => __('Stripe Test Publishable Key', 'wp-multisite-waas'),
 				'desc'        => ! empty($pk_test_status) ? sprintf($error_message_wrap, $pk_test_status) : '',
-				'tooltip'     => __('Make sure you are placing the TEST keys, not the live ones.', 'wp-ultimo'),
-				'placeholder' => __('pk_test_***********', 'wp-ultimo'),
+				'tooltip'     => __('Make sure you are placing the TEST keys, not the live ones.', 'wp-multisite-waas'),
+				'placeholder' => __('pk_test_***********', 'wp-multisite-waas'),
 				'type'        => 'text',
 				'default'     => '',
 				'capability'  => 'manage_api_keys',
@@ -140,10 +140,10 @@ class Stripe_Gateway extends Base_Stripe_Gateway {
 			'payment-gateways',
 			'stripe_test_sk_key',
 			[
-				'title'       => __('Stripe Test Secret Key', 'wp-ultimo'),
+				'title'       => __('Stripe Test Secret Key', 'wp-multisite-waas'),
 				'desc'        => ! empty($sk_test_status) ? sprintf($error_message_wrap, $sk_test_status) : '',
-				'tooltip'     => __('Make sure you are placing the TEST keys, not the live ones.', 'wp-ultimo'),
-				'placeholder' => __('sk_test_***********', 'wp-ultimo'),
+				'tooltip'     => __('Make sure you are placing the TEST keys, not the live ones.', 'wp-multisite-waas'),
+				'placeholder' => __('sk_test_***********', 'wp-multisite-waas'),
 				'type'        => 'text',
 				'default'     => '',
 				'capability'  => 'manage_api_keys',
@@ -160,10 +160,10 @@ class Stripe_Gateway extends Base_Stripe_Gateway {
 			'payment-gateways',
 			'stripe_live_pk_key',
 			[
-				'title'       => __('Stripe Live Publishable Key', 'wp-ultimo'),
+				'title'       => __('Stripe Live Publishable Key', 'wp-multisite-waas'),
 				'desc'        => ! empty($pk_status) ? sprintf($error_message_wrap, $pk_status) : '',
-				'tooltip'     => __('Make sure you are placing the LIVE keys, not the test ones.', 'wp-ultimo'),
-				'placeholder' => __('pk_live_***********', 'wp-ultimo'),
+				'tooltip'     => __('Make sure you are placing the LIVE keys, not the test ones.', 'wp-multisite-waas'),
+				'placeholder' => __('pk_live_***********', 'wp-multisite-waas'),
 				'type'        => 'text',
 				'default'     => '',
 				'capability'  => 'manage_api_keys',
@@ -180,10 +180,10 @@ class Stripe_Gateway extends Base_Stripe_Gateway {
 			'payment-gateways',
 			'stripe_live_sk_key',
 			[
-				'title'       => __('Stripe Live Secret Key', 'wp-ultimo'),
+				'title'       => __('Stripe Live Secret Key', 'wp-multisite-waas'),
 				'desc'        => ! empty($sk_status) ? sprintf($error_message_wrap, $sk_status) : '',
-				'tooltip'     => __('Make sure you are placing the LIVE keys, not the test ones.', 'wp-ultimo'),
-				'placeholder' => __('sk_live_***********', 'wp-ultimo'),
+				'tooltip'     => __('Make sure you are placing the LIVE keys, not the test ones.', 'wp-multisite-waas'),
+				'placeholder' => __('sk_live_***********', 'wp-multisite-waas'),
 				'type'        => 'text',
 				'default'     => '',
 				'capability'  => 'manage_api_keys',
@@ -194,15 +194,15 @@ class Stripe_Gateway extends Base_Stripe_Gateway {
 			]
 		);
 
-		$webhook_message = sprintf('<span class="wu-p-2 wu-bg-blue-100 wu-text-blue-600 wu-rounded wu-mt-3 wu-mb-0 wu-block wu-text-xs">%s</span>', __('Whenever you change your Stripe settings, WP Multisite WaaS will automatically check the webhook URLs on your Stripe account to make sure we get notified about changes in subscriptions and payments.', 'wp-ultimo'));
+		$webhook_message = sprintf('<span class="wu-p-2 wu-bg-blue-100 wu-text-blue-600 wu-rounded wu-mt-3 wu-mb-0 wu-block wu-text-xs">%s</span>', __('Whenever you change your Stripe settings, WP Multisite WaaS will automatically check the webhook URLs on your Stripe account to make sure we get notified about changes in subscriptions and payments.', 'wp-multisite-waas'));
 
 		wu_register_settings_field(
 			'payment-gateways',
 			'stripe_webhook_listener_explanation',
 			[
-				'title'           => __('Webhook Listener URL', 'wp-ultimo'),
+				'title'           => __('Webhook Listener URL', 'wp-multisite-waas'),
 				'desc'            => $webhook_message,
-				'tooltip'         => __('This is the URL Stripe should send webhook calls to.', 'wp-ultimo'),
+				'tooltip'         => __('This is the URL Stripe should send webhook calls to.', 'wp-multisite-waas'),
 				'type'            => 'text-display',
 				'copy'            => true,
 				'default'         => $this->get_webhook_listener_url(),
@@ -257,7 +257,7 @@ class Stripe_Gateway extends Base_Stripe_Gateway {
 		if (is_wp_error($s_customer)) {
 
 			// translators: %s is the error message.
-			return new \WP_Error($s_customer->get_error_code(), sprintf(__('Error creating Stripe customer: %s', 'wp-ultimo'), $s_customer->get_error_message()));
+			return new \WP_Error($s_customer->get_error_code(), sprintf(__('Error creating Stripe customer: %s', 'wp-multisite-waas'), $s_customer->get_error_message()));
 		}
 
 		$this->membership->set_gateway_customer_id($s_customer->id);
@@ -509,7 +509,7 @@ class Stripe_Gateway extends Base_Stripe_Gateway {
 		$payment_intent_id = $payment->get_meta('stripe_payment_intent_id');
 
 		if (empty($payment_intent_id)) {
-			throw new \Exception(__('Missing Stripe payment intent, please try again or contact support if the issue persists.', 'wp-ultimo'), 'missing_stripe_payment_intent');
+			throw new \Exception(__('Missing Stripe payment intent, please try again or contact support if the issue persists.', 'wp-multisite-waas'), 'missing_stripe_payment_intent');
 		}
 
 		/**
@@ -544,7 +544,7 @@ class Stripe_Gateway extends Base_Stripe_Gateway {
 		$s_customer = $this->get_or_create_customer($customer->get_id(), $customer->get_user_id(), $payment_intent->customer);
 
 		// translators: first is the customer id, then the customer email.
-		$description = sprintf(__('Customer ID: %1$d - User Email: %2$s', 'wp-ultimo'), $customer->get_id(), $customer->get_email_address());
+		$description = sprintf(__('Customer ID: %1$d - User Email: %2$s', 'wp-multisite-waas'), $customer->get_id(), $customer->get_email_address());
 
 		if (strlen($description) > 350) {
 			$description = substr($description, 0, 350);
@@ -646,12 +646,12 @@ class Stripe_Gateway extends Base_Stripe_Gateway {
 		$card_options = $this->get_saved_card_options();
 
 		if ($card_options) {
-			$card_options['add-new'] = __('Add new card', 'wp-ultimo');
+			$card_options['add-new'] = __('Add new card', 'wp-multisite-waas');
 
 			$fields = [
 				'payment_method' => [
 					'type'      => 'radio',
-					'title'     => __('Saved Payment Methods', 'wp-ultimo'),
+					'title'     => __('Saved Payment Methods', 'wp-multisite-waas'),
 					'value'     => wu_request('payment_method'),
 					'options'   => $card_options,
 					'html_attr' => [
@@ -721,7 +721,7 @@ class Stripe_Gateway extends Base_Stripe_Gateway {
 				$fields = [
 					"payment_method_{$payment_method}" => [
 						'type'          => 'text-display',
-						'title'         => __('Saved Cards', 'wp-ultimo'),
+						'title'         => __('Saved Cards', 'wp-multisite-waas'),
 						'display_value' => $card,
 					],
 				];

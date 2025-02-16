@@ -138,15 +138,15 @@ class Limitation_Manager {
 		$fields = [
 			'confirm'       => [
 				'type'      => 'toggle',
-				'title'     => __('Confirm Reset', 'wp-ultimo'),
-				'desc'      => __('This action can not be undone.', 'wp-ultimo'),
+				'title'     => __('Confirm Reset', 'wp-multisite-waas'),
+				'desc'      => __('This action can not be undone.', 'wp-multisite-waas'),
 				'html_attr' => [
 					'v-model' => 'confirmed',
 				],
 			],
 			'submit_button' => [
 				'type'            => 'submit',
-				'title'           => __('Reset Limitations', 'wp-ultimo'),
+				'title'           => __('Reset Limitations', 'wp-multisite-waas'),
 				'value'           => 'save',
 				'classes'         => 'button button-primary wu-w-full',
 				'wrapper_classes' => 'wu-items-end',
@@ -165,7 +165,7 @@ class Limitation_Manager {
 		];
 
 		$form_attributes = [
-			'title'                 => __('Reset', 'wp-ultimo'),
+			'title'                 => __('Reset', 'wp-multisite-waas'),
 			'views'                 => 'admin-pages/fields',
 			'classes'               => 'wu-modal-form wu-widget-list wu-striped wu-m-0 wu-mt-0',
 			'field_wrapper_classes' => 'wu-w-full wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid',
@@ -200,7 +200,7 @@ class Limitation_Manager {
 			wp_send_json_error(
 				new \WP_Error(
 					'parameters-not-found',
-					__('Required parameters are missing.', 'wp-ultimo')
+					__('Required parameters are missing.', 'wp-multisite-waas')
 				)
 			);
 		}
@@ -258,11 +258,11 @@ class Limitation_Manager {
 	public function add_limitation_sections($sections, $object) {
 
 		if ($this->get_object_type($object) === 'site' && $object->get_type() !== Site_Type::CUSTOMER_OWNED) {
-			$html = sprintf('<span class="wu--mt-4 wu-p-2 wu-bg-blue-100 wu-text-blue-600 wu-rounded wu-block">%s</span>', __('Limitations are only available for customer-owned sites. You need to change the type to Customer-owned and save this site before the options are shown.', 'wp-ultimo'));
+			$html = sprintf('<span class="wu--mt-4 wu-p-2 wu-bg-blue-100 wu-text-blue-600 wu-rounded wu-block">%s</span>', __('Limitations are only available for customer-owned sites. You need to change the type to Customer-owned and save this site before the options are shown.', 'wp-multisite-waas'));
 
 			$sections['sites'] = [
-				'title'  => __('Limits', 'wp-ultimo'),
-				'desc'   => __('Only customer-owned sites have limitations.', 'wp-ultimo'),
+				'title'  => __('Limits', 'wp-multisite-waas'),
+				'desc'   => __('Only customer-owned sites have limitations.', 'wp-multisite-waas'),
 				'icon'   => 'dashicons-wu-browser',
 				'fields' => [
 					'note' => [
@@ -277,8 +277,8 @@ class Limitation_Manager {
 
 		if ($this->get_object_type($object) !== 'site') {
 			$sections['sites'] = [
-				'title'  => __('Sites', 'wp-ultimo'),
-				'desc'   => __('Control limitations imposed to the number of sites allowed for memberships attached to this product.', 'wp-ultimo'),
+				'title'  => __('Sites', 'wp-multisite-waas'),
+				'desc'   => __('Control limitations imposed to the number of sites allowed for memberships attached to this product.', 'wp-multisite-waas'),
 				'icon'   => 'dashicons-wu-browser',
 				'fields' => $this->get_sites_fields($object),
 				'v-show' => "get_state_value('product_type', 'none') !== 'service'",
@@ -293,8 +293,8 @@ class Limitation_Manager {
 		 */
 		if ((bool) wu_get_setting('enable_visits_limiting', true)) {
 			$sections['visits'] = [
-				'title'  => __('Visits', 'wp-ultimo'),
-				'desc'   => __('Control limitations imposed to the number of unique visitors allowed for memberships attached to this product.', 'wp-ultimo'),
+				'title'  => __('Visits', 'wp-multisite-waas'),
+				'desc'   => __('Control limitations imposed to the number of unique visitors allowed for memberships attached to this product.', 'wp-multisite-waas'),
 				'icon'   => 'dashicons-wu-man',
 				'v-show' => "get_state_value('product_type', 'none') !== 'service'",
 				'state'  => [
@@ -303,8 +303,8 @@ class Limitation_Manager {
 				'fields' => [
 					'modules[visits][enabled]' => [
 						'type'      => 'toggle',
-						'title'     => __('Limit Unique Visits', 'wp-ultimo'),
-						'desc'      => __('Toggle this option to enable unique visits limitation.', 'wp-ultimo'),
+						'title'     => __('Limit Unique Visits', 'wp-multisite-waas'),
+						'desc'      => __('Toggle this option to enable unique visits limitation.', 'wp-multisite-waas'),
 						'value'     => 10,
 						'html_attr' => [
 							'v-model' => 'limit_visits',
@@ -319,9 +319,9 @@ class Limitation_Manager {
 
 			$sections['visits']['fields']['modules[visits][limit]'] = [
 				'type'              => 'number',
-				'title'             => __('Unique Visits Quota', 'wp-ultimo'),
-				'desc'              => __('Set a top limit for the number of monthly unique visits. Leave empty or 0 to allow for unlimited visits.', 'wp-ultimo'),
-				'placeholder'       => __('e.g. 10000', 'wp-ultimo'),
+				'title'             => __('Unique Visits Quota', 'wp-multisite-waas'),
+				'desc'              => __('Set a top limit for the number of monthly unique visits. Leave empty or 0 to allow for unlimited visits.', 'wp-multisite-waas'),
+				'placeholder'       => __('e.g. 10000', 'wp-multisite-waas'),
 				'value'             => $object->get_limitations()->visits->get_limit(),
 				'wrapper_html_attr' => [
 					'v-show'  => 'limit_visits',
@@ -343,8 +343,8 @@ class Limitation_Manager {
 			if ($this->get_object_type($object) === 'site') {
 				$sections['visits']['fields']['visits_count'] = [
 					'type'              => 'text-display',
-					'title'             => __('Current Unique Visits Count this Month', 'wp-ultimo'),
-					'desc'              => __('Current visits count for this particular site.', 'wp-ultimo'),
+					'title'             => __('Current Unique Visits Count this Month', 'wp-multisite-waas'),
+					'desc'              => __('Current visits count for this particular site.', 'wp-multisite-waas'),
 					'display_value'     => sprintf('%s visit(s)', $object->get_visits_count()),
 					'wrapper_html_attr' => [
 						'v-show'  => 'limit_visits',
@@ -355,8 +355,8 @@ class Limitation_Manager {
 		}
 
 		$sections['users'] = [
-			'title'  => __('Users', 'wp-ultimo'),
-			'desc'   => __('Control limitations imposed to the number of user allowed for memberships attached to this product.', 'wp-ultimo'),
+			'title'  => __('Users', 'wp-multisite-waas'),
+			'desc'   => __('Control limitations imposed to the number of user allowed for memberships attached to this product.', 'wp-multisite-waas'),
 			'icon'   => 'dashicons-wu-users',
 			'v-show' => "get_state_value('product_type', 'none') !== 'service'",
 			'state'  => [
@@ -365,8 +365,8 @@ class Limitation_Manager {
 			'fields' => [
 				'modules[users][enabled]' => [
 					'type'      => 'toggle',
-					'title'     => __('Limit User', 'wp-ultimo'),
-					'desc'      => __('Enable user limitations for this product.', 'wp-ultimo'),
+					'title'     => __('Limit User', 'wp-multisite-waas'),
+					'desc'      => __('Enable user limitations for this product.', 'wp-multisite-waas'),
 					'html_attr' => [
 						'v-model' => 'limit_users',
 					],
@@ -381,8 +381,8 @@ class Limitation_Manager {
 		$this->register_user_fields($sections, $object);
 
 		$sections['post_types'] = [
-			'title'  => __('Post Types', 'wp-ultimo'),
-			'desc'   => __('Control limitations imposed to the number of posts allowed for memberships attached to this product.', 'wp-ultimo'),
+			'title'  => __('Post Types', 'wp-multisite-waas'),
+			'desc'   => __('Control limitations imposed to the number of posts allowed for memberships attached to this product.', 'wp-multisite-waas'),
 			'icon'   => 'dashicons-wu-book',
 			'v-show' => "get_state_value('product_type', 'none') !== 'service'",
 			'state'  => [
@@ -391,8 +391,8 @@ class Limitation_Manager {
 			'fields' => [
 				'modules[post_types][enabled]' => [
 					'type'      => 'toggle',
-					'title'     => __('Limit Post Types', 'wp-ultimo'),
-					'desc'      => __('Toggle this option to set limits to each post type.', 'wp-ultimo'),
+					'title'     => __('Limit Post Types', 'wp-multisite-waas'),
+					'desc'      => __('Toggle this option to set limits to each post type.', 'wp-multisite-waas'),
 					'value'     => false,
 					'html_attr' => [
 						'v-model' => 'limit_post_types',
@@ -407,7 +407,7 @@ class Limitation_Manager {
 
 		$sections['post_types']['post_quota_note'] = [
 			'type'              => 'note',
-			'desc'              => __('<strong>Note:</strong> Using the fields below you can set a post limit for each of the post types activated. <br>Toggle the switch to <strong>deactivate</strong> the post type altogether. Leave 0 or blank for unlimited posts.', 'wp-ultimo'),
+			'desc'              => __('<strong>Note:</strong> Using the fields below you can set a post limit for each of the post types activated. <br>Toggle the switch to <strong>deactivate</strong> the post type altogether. Leave 0 or blank for unlimited posts.', 'wp-multisite-waas'),
 			'wrapper_html_attr' => [
 				'v-show'  => 'limit_post_types',
 				'v-cloak' => '1',
@@ -417,8 +417,8 @@ class Limitation_Manager {
 		$this->register_post_type_fields($sections, $object);
 
 		$sections['limit_disk_space'] = [
-			'title'  => __('Disk Space', 'wp-ultimo'),
-			'desc'   => __('Control limitations imposed to the disk space allowed for memberships attached to this entity.', 'wp-ultimo'),
+			'title'  => __('Disk Space', 'wp-multisite-waas'),
+			'desc'   => __('Control limitations imposed to the disk space allowed for memberships attached to this entity.', 'wp-multisite-waas'),
 			'icon'   => 'dashicons-wu-drive',
 			'v-show' => "get_state_value('product_type', 'none') !== 'service'",
 			'state'  => [
@@ -427,8 +427,8 @@ class Limitation_Manager {
 			'fields' => [
 				'modules[disk_space][enabled]' => [
 					'type'      => 'toggle',
-					'title'     => __('Limit Disk Space per Site', 'wp-ultimo'),
-					'desc'      => __('Enable disk space limitations for this entity.', 'wp-ultimo'),
+					'title'     => __('Limit Disk Space per Site', 'wp-multisite-waas'),
+					'desc'      => __('Enable disk space limitations for this entity.', 'wp-multisite-waas'),
 					'value'     => true,
 					'html_attr' => [
 						'v-model' => 'limit_disk_space',
@@ -443,8 +443,8 @@ class Limitation_Manager {
 
 		$sections['limit_disk_space']['fields']['modules[disk_space][limit]'] = [
 			'type'              => 'number',
-			'title'             => __('Disk Space Allowance', 'wp-ultimo'),
-			'desc'              => __('Set a limit in MBs for the disk space for <strong>each</strong> individual site.', 'wp-ultimo'),
+			'title'             => __('Disk Space Allowance', 'wp-multisite-waas'),
+			'desc'              => __('Set a limit in MBs for the disk space for <strong>each</strong> individual site.', 'wp-multisite-waas'),
 			'min'               => 0,
 			'placeholder'       => 100,
 			'value'             => $object->get_limitations()->disk_space->get_limit(),
@@ -459,8 +459,8 @@ class Limitation_Manager {
 		}
 
 		$sections['custom_domain'] = [
-			'title'  => __('Custom Domains', 'wp-ultimo'),
-			'desc'   => __('Limit the number of users on each role, posts, pages, and more.', 'wp-ultimo'),
+			'title'  => __('Custom Domains', 'wp-multisite-waas'),
+			'desc'   => __('Limit the number of users on each role, posts, pages, and more.', 'wp-multisite-waas'),
 			'icon'   => 'dashicons-wu-link1',
 			'v-show' => "get_state_value('product_type', 'none') !== 'service'",
 			'state'  => [
@@ -469,8 +469,8 @@ class Limitation_Manager {
 			'fields' => [
 				'modules[domain_mapping][enabled]' => [
 					'type'              => 'toggle',
-					'title'             => __('Allow Custom Domains', 'wp-ultimo'),
-					'desc'              => __('Toggle this option on to allow this plan to enable custom domains for sign-ups on this plan.', 'wp-ultimo'),
+					'title'             => __('Allow Custom Domains', 'wp-multisite-waas'),
+					'desc'              => __('Toggle this option on to allow this plan to enable custom domains for sign-ups on this plan.', 'wp-multisite-waas'),
 					'value'             => $object->get_limitations()->domain_mapping->is_enabled(),
 					'wrapper_html_attr' => [
 						'v-cloak' => '1',
@@ -487,8 +487,8 @@ class Limitation_Manager {
 		}
 
 		$sections['allowed_themes'] = [
-			'title'  => __('Themes', 'wp-ultimo'),
-			'desc'   => __('Limit the number of users on each role, posts, pages, and more.', 'wp-ultimo'),
+			'title'  => __('Themes', 'wp-multisite-waas'),
+			'desc'   => __('Limit the number of users on each role, posts, pages, and more.', 'wp-multisite-waas'),
 			'icon'   => 'dashicons-wu-palette',
 			'v-show' => "get_state_value('product_type', 'none') !== 'service'",
 			'state'  => [
@@ -497,23 +497,23 @@ class Limitation_Manager {
 			'fields' => [
 				'themes' => [
 					'type'    => 'html',
-					'title'   => __('Themes', 'wp-ultimo'),
-					'desc'    => __('Select how the themes installed on the network should behave.', 'wp-ultimo'),
+					'title'   => __('Themes', 'wp-multisite-waas'),
+					'desc'    => __('Select how the themes installed on the network should behave.', 'wp-multisite-waas'),
 					'content' => fn() => $this->get_theme_selection_list($object, $sections['allowed_themes']),
 				],
 			],
 		];
 
 		$sections['allowed_plugins'] = [
-			'title'  => __('Plugins', 'wp-ultimo'),
-			'desc'   => __('You can choose the behavior of each plugin installed on the platform.', 'wp-ultimo'),
+			'title'  => __('Plugins', 'wp-multisite-waas'),
+			'desc'   => __('You can choose the behavior of each plugin installed on the platform.', 'wp-multisite-waas'),
 			'icon'   => 'dashicons-wu-power-plug',
 			'v-show' => "get_state_value('product_type', 'none') !== 'service'",
 			'fields' => [
 				'plugins' => [
 					'type'    => 'html',
-					'title'   => __('Plugins', 'wp-ultimo'),
-					'desc'    => __('Select how the plugins installed on the network should behave.', 'wp-ultimo'),
+					'title'   => __('Plugins', 'wp-multisite-waas'),
+					'desc'    => __('Select how the plugins installed on the network should behave.', 'wp-multisite-waas'),
 					'content' => fn() => $this->get_plugin_selection_list($object),
 				],
 			],
@@ -528,14 +528,14 @@ class Limitation_Manager {
 		);
 
 		$sections['reset_limitations'] = [
-			'title'  => __('Reset Limitations', 'wp-ultimo'),
-			'desc'   => __('Reset the limitations applied to this element.', 'wp-ultimo'),
+			'title'  => __('Reset Limitations', 'wp-multisite-waas'),
+			'desc'   => __('Reset the limitations applied to this element.', 'wp-multisite-waas'),
 			'icon'   => 'dashicons-wu-back-in-time',
 			'fields' => [
 				'reset_permissions' => [
 					'type'  => 'note',
-					'title' => sprintf("%s<span class='wu-normal-case wu-block wu-text-xs wu-font-normal wu-mt-1'>%s</span>", __('Reset Limitations', 'wp-ultimo'), __('Use this option to reset the custom limitations applied to this object.', 'wp-ultimo')),
-					'desc'  => sprintf('<a href="%s" title="%s" class="wubox button-primary">%s</a>', $reset_url, __('Reset Limitations', 'wp-ultimo'), __('Reset Limitations', 'wp-ultimo')),
+					'title' => sprintf("%s<span class='wu-normal-case wu-block wu-text-xs wu-font-normal wu-mt-1'>%s</span>", __('Reset Limitations', 'wp-multisite-waas'), __('Use this option to reset the custom limitations applied to this object.', 'wp-multisite-waas')),
+					'desc'  => sprintf('<a href="%s" title="%s" class="wubox button-primary">%s</a>', $reset_url, __('Reset Limitations', 'wp-multisite-waas'), __('Reset Limitations', 'wp-multisite-waas')),
 				],
 			],
 		];
@@ -554,7 +554,7 @@ class Limitation_Manager {
 	 */
 	protected function override_notice($show = false, $additional_checks = []) {
 
-		$text = sprintf('<p class="wu-m-0 wu-p-2 wu-bg-blue-100 wu-text-blue-600 wu-rounded">%s</p>', __('This value is being applied only to this entity. Changes made to the membership or product permissions will not affect this particular value.', 'wp-ultimo'));
+		$text = sprintf('<p class="wu-m-0 wu-p-2 wu-bg-blue-100 wu-text-blue-600 wu-rounded">%s</p>', __('This value is being applied only to this entity. Changes made to the membership or product permissions will not affect this particular value.', 'wp-multisite-waas'));
 
 		return [
 			'desc'              => $text,
@@ -588,8 +588,8 @@ class Limitation_Manager {
 
 			$sections['users']['fields'][ "control_{$user_role_slug}" ] = [
 				'type'              => 'group',
-				'title'             => sprintf(__('Limit %s Role', 'wp-ultimo'), $user_role['name']),
-				'desc'              => sprintf(__('The customer will be able to create %s users(s) of this user role.', 'wp-ultimo'), "{{ roles['{$user_role_slug}'].enabled ? ( parseInt(roles['{$user_role_slug}'].number, 10) ? roles['{$user_role_slug}'].number : '" . __('unlimited', 'wp-ultimo') . "' ) : '" . __('no', 'wp-ultimo') . "' }}"),
+				'title'             => sprintf(__('Limit %s Role', 'wp-multisite-waas'), $user_role['name']),
+				'desc'              => sprintf(__('The customer will be able to create %s users(s) of this user role.', 'wp-multisite-waas'), "{{ roles['{$user_role_slug}'].enabled ? ( parseInt(roles['{$user_role_slug}'].number, 10) ? roles['{$user_role_slug}'].number : '" . __('unlimited', 'wp-multisite-waas') . "' ) : '" . __('no', 'wp-multisite-waas') . "' }}"),
 				'tooltip'           => '',
 				'wrapper_html_attr' => [
 					'v-bind:class' => "!roles['{$user_role_slug}'].enabled ? 'wu-opacity-75' : ''",
@@ -599,7 +599,7 @@ class Limitation_Manager {
 				'fields'            => [
 					"modules[users][limit][{$user_role_slug}][number]" => [
 						'type'            => 'number',
-						'placeholder'     => sprintf(__('%s Role Quota. e.g. 10', 'wp-ultimo'), $user_role['name']),
+						'placeholder'     => sprintf(__('%s Role Quota. e.g. 10', 'wp-multisite-waas'), $user_role['name']),
 						'min'             => 0,
 						'wrapper_classes' => 'wu-w-full',
 						'html_attr'       => [
@@ -646,8 +646,8 @@ class Limitation_Manager {
 
 			$sections['post_types']['fields'][ "control_{$post_type_slug}" ] = [
 				'type'              => 'group',
-				'title'             => sprintf(__('Limit %s', 'wp-ultimo'), $post_type->label),
-				'desc'              => sprintf(__('The customer will be able to create %s post(s) of this post type.', 'wp-ultimo'), "{{ types['{$post_type_slug}'].enabled ? ( parseInt(types['{$post_type_slug}'].number, 10) ? types['{$post_type_slug}'].number : '" . __('unlimited', 'wp-ultimo') . "' ) : '" . __('no', 'wp-ultimo') . "' }}"),
+				'title'             => sprintf(__('Limit %s', 'wp-multisite-waas'), $post_type->label),
+				'desc'              => sprintf(__('The customer will be able to create %s post(s) of this post type.', 'wp-multisite-waas'), "{{ types['{$post_type_slug}'].enabled ? ( parseInt(types['{$post_type_slug}'].number, 10) ? types['{$post_type_slug}'].number : '" . __('unlimited', 'wp-multisite-waas') . "' ) : '" . __('no', 'wp-multisite-waas') . "' }}"),
 				'tooltip'           => '',
 				'wrapper_html_attr' => [
 					'v-bind:class' => "!types['{$post_type_slug}'].enabled ? 'wu-opacity-75' : ''",
@@ -657,7 +657,7 @@ class Limitation_Manager {
 				'fields'            => [
 					"modules[post_types][limit][{$post_type_slug}][number]" => [
 						'type'            => 'number',
-						'placeholder'     => sprintf(__('%s Quota. e.g. 200', 'wp-ultimo'), $post_type->label),
+						'placeholder'     => sprintf(__('%s Quota. e.g. 200', 'wp-multisite-waas'), $post_type->label),
 						'min'             => 0,
 						'wrapper_classes' => 'wu-w-full',
 						'html_attr'       => [
@@ -702,8 +702,8 @@ class Limitation_Manager {
 		$fields = [
 			'modules[sites][enabled]' => [
 				'type'      => 'toggle',
-				'title'     => __('Limit Sites', 'wp-ultimo'),
-				'desc'      => __('Enable site limitations for this product.', 'wp-ultimo'),
+				'title'     => __('Limit Sites', 'wp-multisite-waas'),
+				'desc'      => __('Enable site limitations for this product.', 'wp-multisite-waas'),
 				'value'     => $object->get_limitations()->sites->is_enabled(),
 				'html_attr' => [
 					'v-model' => 'limit_sites',
@@ -720,7 +720,7 @@ class Limitation_Manager {
 		 */
 		$fields['site_not_allowed_note'] = [
 			'type'              => 'note',
-			'desc'              => __('The product type selection does not support allowing for the creating of extra sites.', 'wp-ultimo'),
+			'desc'              => __('The product type selection does not support allowing for the creating of extra sites.', 'wp-multisite-waas'),
 			'tooltip'           => '',
 			'wrapper_html_attr' => [
 				'v-show'  => "get_state_value('product_type', 'none') === 'service' && limit_sites",
@@ -731,8 +731,8 @@ class Limitation_Manager {
 		$fields['modules[sites][limit]'] = [
 			'type'              => 'number',
 			'min'               => 1,
-			'title'             => __('Site Allowance', 'wp-ultimo'),
-			'desc'              => __('This is the number of sites the customer will be able to create under this membership.', 'wp-ultimo'),
+			'title'             => __('Site Allowance', 'wp-multisite-waas'),
+			'desc'              => __('This is the number of sites the customer will be able to create under this membership.', 'wp-multisite-waas'),
 			'placeholder'       => 1,
 			'value'             => $object->get_limitations()->sites->get_limit(),
 			'wrapper_html_attr' => [

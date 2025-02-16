@@ -208,7 +208,7 @@ class Gridpane_Host_Provider extends Base_Host_Provider {
 		if (wu_get_isset($results, 'message') === 'This action is unauthorized.') {
 			wp_send_json_error(
 				[
-					'error' => __('We were not able to successfully establish a connection.', 'wp-ultimo'),
+					'error' => __('We were not able to successfully establish a connection.', 'wp-multisite-waas'),
 				]
 			);
 		}
@@ -216,14 +216,14 @@ class Gridpane_Host_Provider extends Base_Host_Provider {
 		if (is_wp_error($results)) {
 			wp_send_json_error(
 				[
-					'error' => __('We were not able to successfully establish a connection.', 'wp-ultimo'),
+					'error' => __('We were not able to successfully establish a connection.', 'wp-multisite-waas'),
 				]
 			);
 		}
 
 		wp_send_json_success(
 			[
-				'success' => __('Connection successfully established.', 'wp-ultimo'),
+				'success' => __('Connection successfully established.', 'wp-multisite-waas'),
 			]
 		);
 	}
@@ -247,7 +247,7 @@ class Gridpane_Host_Provider extends Base_Host_Provider {
 	 */
 	public function get_description() {
 
-		return __("GridPane is the world's first hosting control panel built exclusively for serious WordPress professionals.", 'wp-ultimo');
+		return __("GridPane is the world's first hosting control panel built exclusively for serious WordPress professionals.", 'wp-multisite-waas');
 	}
 
 	/**
