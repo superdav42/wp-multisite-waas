@@ -55,22 +55,43 @@ jobs:
           
           echo "All version numbers match: ${{ env.VERSION }}"
 
-      - name: Generate translation files
+      - name: Choose build method
+        id: build_method
+        run: |
+          # Check if we have TypeScript files
+          if ls assets/js/*.ts &> /dev/null; then
+            echo "USE_MODERN_BUILD=true" >> $GITHUB_ENV
+            echo "Using modern build process with TypeScript"
+          else
+            echo "USE_MODERN_BUILD=false" >> $GITHUB_ENV
+            echo "Using compatibility build process"
+          fi
+
+      - name: Modern Build - Generate translation files
+        if: env.USE_MODERN_BUILD == 'true'
         run: npm run translations
 
-      - name: Process CSS and JS
+      - name: Modern Build - Process CSS and JS
+        if: env.USE_MODERN_BUILD == 'true'
         run: |
           npm run css
           npm run js
 
-      - name: Create ZIP file
+      - name: Modern Build - Create ZIP file
+        if: env.USE_MODERN_BUILD == 'true'
         run: npm run zip
+
+      - name: Compatibility Build - Run build process
+        if: env.USE_MODERN_BUILD == 'false'
+        run: npm run build:compat
 
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          files: build/wp-multisite-waas-${{ env.VERSION }}.zip
+          files: |
+            build/wp-multisite-waas-${{ env.VERSION }}.zip
+            wp-multisite-waas.zip
           name: WP Multisite WaaS ${{ env.VERSION }}
           draft: false
           prerelease: false

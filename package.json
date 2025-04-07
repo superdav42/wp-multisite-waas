@@ -1,7 +1,9 @@
 {
   "name": "wp-multisite-waas",
   "version": "2.3.4",
+  "title": "WP Multisite WaaS",
   "description": "The Complete Network Solution for transforming your WordPress Multisite into a Website as a Service (WaaS) platform",
+  "homepage": "https://wpmultisitewaas.org/",
   "main": "index.js",
   "scripts": {
     "start": "wp-scripts start",
@@ -13,14 +15,26 @@
     "js": "npm run js:compile && npm run js:minify",
     "js:compile": "tsc -p tsconfig.json",
     "js:minify": "terser assets/js/*.js --compress --mangle --output dist/js/ --source-map \"root='../assets/js',url='[name].min.js.map'\"",
-    "translations": "wp i18n make-pot . lang/wp-multisite-waas.pot --include=\"**/*.php\" --exclude=\"vendor,node_modules,tests\"",
+    "translations": "wp i18n make-pot ./ lang/wp-multisite-waas.pot --include=\"**/*.php\" --exclude=\"vendor,node_modules,tests\"",
     "lint:php": "composer run-script phpcs",
     "lint:js": "eslint assets/js/**/*.js assets/js/**/*.ts",
     "lint:css": "stylelint assets/css/**/*.scss",
     "lint": "npm run lint:php && npm run lint:js && npm run lint:css",
     "test": "jest",
     "prepare-release": "npm run build && npm run lint && npm run test",
-    "zip": "npm run build && bash ./bin/create-zip.sh"
+    "zip": "npm run build && bash ./bin/create-zip.sh",
+    
+    "prebuild:compat": "composer install --no-dev",
+    "prebuild:dev:compat": "composer install",
+    "build:compat": "npm run uglify && npm run makepot && npm run cleancss:compat && npm run archive",
+    "build:dev:compat": "npm run uglify && npm run makepot && npm run cleancss:compat",
+    "archive": "composer archive --file=$npm_package_name --format=zip",
+    "postarchive": "rm -rf $npm_package_name && unzip $npm_package_name.zip -d $npm_package_name && rm $npm_package_name.zip && zip -r $npm_package_name.zip $npm_package_name && rm -rf $npm_package_name",
+    "preuglify": "rm -f assets/js/*.min.js",
+    "uglify": "for f in assets/js/*.js; do file=${f%.js}; node_modules/.bin/uglifyjs $f -c -m > $file.min.js; done",
+    "precleancss:compat": "rm -f assets/css/*.min.css",
+    "cleancss:compat": "for f in assets/css/*.css; do file=${f%.css}; node_modules/.bin/cleancss -o $file.min.css $f; done",
+    "makepot": "wp i18n make-pot ./ lang/$npm_package_name.pot --exclude=node_modules,tests,docs,assets/js/lib"
   },
   "repository": {
     "type": "git",
@@ -36,7 +50,9 @@
   "bugs": {
     "url": "https://github.com/wpallstars/wp-multisite-waas/issues"
   },
-  "homepage": "https://github.com/wpallstars/wp-multisite-waas#readme",
+  "config": {
+    "translate": true
+  },
   "devDependencies": {
     "@types/jest": "^29.5.3",
     "@types/node": "^20.4.5",
@@ -52,6 +68,7 @@
     "stylelint-config-standard-scss": "^10.0.0",
     "terser": "^5.19.2",
     "ts-jest": "^29.1.1",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "uglify-js": "^3.19.3"
   }
 } 
