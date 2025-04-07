@@ -1,0 +1,57 @@
+{
+  "name": "wp-multisite-waas",
+  "version": "2.3.4",
+  "description": "The Complete Network Solution for transforming your WordPress Multisite into a Website as a Service (WaaS) platform",
+  "main": "index.js",
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "npm run clean && npm run translations && npm run css && npm run js",
+    "clean": "rm -rf dist && mkdir -p dist/css dist/js",
+    "css": "npm run css:compile && npm run css:minify",
+    "css:compile": "sass --style=expanded --source-map --embed-sources --no-error-css assets/css/src/:assets/css/",
+    "css:minify": "cleancss -O1 --format breakWith=lf --source-map --source-map-inline-sources --output assets/css/ --batch --batch-suffix '.min' 'assets/css/*.css' '!assets/css/*.min.css'",
+    "js": "npm run js:compile && npm run js:minify",
+    "js:compile": "tsc -p tsconfig.json",
+    "js:minify": "terser assets/js/*.js --compress --mangle --output dist/js/ --source-map \"root='../assets/js',url='[name].min.js.map'\"",
+    "translations": "wp i18n make-pot . lang/wp-multisite-waas.pot --include=\"**/*.php\" --exclude=\"vendor,node_modules,tests\"",
+    "lint:php": "composer run-script phpcs",
+    "lint:js": "eslint assets/js/**/*.js assets/js/**/*.ts",
+    "lint:css": "stylelint assets/css/**/*.scss",
+    "lint": "npm run lint:php && npm run lint:js && npm run lint:css",
+    "test": "jest",
+    "prepare-release": "npm run build && npm run lint && npm run test",
+    "zip": "npm run build && bash ./bin/create-zip.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wpallstars/wp-multisite-waas.git"
+  },
+  "keywords": [
+    "wordpress",
+    "multisite",
+    "waas"
+  ],
+  "author": "WP Multisite WaaS Contributors",
+  "license": "GPL-2.0-or-later",
+  "bugs": {
+    "url": "https://github.com/wpallstars/wp-multisite-waas/issues"
+  },
+  "homepage": "https://github.com/wpallstars/wp-multisite-waas#readme",
+  "devDependencies": {
+    "@types/jest": "^29.5.3",
+    "@types/node": "^20.4.5",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "@wordpress/env": "^8.8.0",
+    "@wordpress/scripts": "^26.13.0",
+    "clean-css-cli": "^5.6.2",
+    "eslint": "^8.46.0",
+    "jest": "^29.6.2",
+    "sass": "^1.64.1",
+    "stylelint": "^15.10.2",
+    "stylelint-config-standard-scss": "^10.0.0",
+    "terser": "^5.19.2",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.1.6"
+  }
+} 

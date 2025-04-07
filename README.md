@@ -103,22 +103,56 @@ We welcome contributions to WP Multisite WaaS! Here's how you can contribute eff
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Run `npm install` and `composer install` to set up dependencies
+3. Set up the development environment:
+   ```bash
+   # Install PHP dependencies
+   composer install
+   
+   # Install Node.js dependencies
+   npm install
+   ```
 4. Make your changes
-5. Before committing, run `npm run build` to:
-   - Generate translation POT files
-   - Minify CSS and JS assets
-   - Process and optimize other assets
-6. **Important:** Update both README.md and readme.txt files when making changes that affect:
+5. Use the available npm scripts for development:
+   ```bash
+   # Watch for CSS/JS changes during development
+   npm start
+   
+   # Generate translation files
+   npm run translations
+   
+   # Process CSS (compile SCSS to CSS and minify)
+   npm run css
+   
+   # Process JavaScript (compile TypeScript to JS and minify)
+   npm run js
+   
+   # Run all linters (PHP, JS, CSS)
+   npm run lint
+   
+   # Run tests
+   npm run test
+   ```
+6. Before committing, run the build process to ensure all assets are properly processed:
+   ```bash
+   npm run build
+   ```
+   This command:
+   - Generates translation POT files
+   - Compiles and minifies CSS from SCSS
+   - Compiles and minifies JS from TypeScript
+   - Optimizes other assets
+   
+7. **Important:** Update both README.md and readme.txt files when making changes that affect:
    - Version numbers
    - Required WordPress/PHP versions
    - Feature additions or changes
    - Installation instructions
    - Documentation
    - Changelog entries
-7. Commit your changes (`git commit -m 'Add some amazing feature'`)
-8. Push to the branch (`git push origin feature/amazing-feature`)
-9. Open a Pull Request
+   
+8. Commit your changes (`git commit -m 'Add some amazing feature'`)
+9. Push to the branch (`git push origin feature/amazing-feature`)
+10. Open a Pull Request
 
 ### Pull Request Guidelines
 
@@ -146,12 +180,16 @@ git push origin v2.3.5
 The tag must begin with "v" followed by the version number (v*.*.*)
 
 This will automatically:
-1. Build the plugin (run `npm run build`)
-2. Create a properly packaged ZIP file
-3. Create a GitHub release with the ZIP attached
+1. Verify all version numbers match across files
+2. Build the plugin (translations, CSS, JS)
+3. Create a properly packaged ZIP file
+4. Create a GitHub release with the ZIP attached
 
 When preparing for a release:
-1. Update the version number in the main plugin file and readme.txt
+1. Update the version number in:
+   - The main plugin file (wp-multisite-waas.php)
+   - readme.txt (Stable tag)
+   - package.json
 2. Update the changelog in readme.txt
 3. Ensure README.md and readme.txt are synchronized with the latest information
 4. Create and push the appropriate version tag

@@ -41,36 +41,46 @@ We welcome contributions to WP Multisite WaaS! To contribute effectively:
 
 1. Fork the repository on GitHub
 2. Create a feature branch from main
-3. Run `npm install` and `composer install` to set up dependencies
+3. Set up the development environment:
+   * Install PHP dependencies with `composer install`
+   * Install Node.js dependencies with `npm install`
 4. Make your changes
-5. Before committing, run `npm run build` to:
+5. Use the available npm scripts for development:
+   * `npm start` - Watch for CSS/JS changes during development
+   * `npm run translations` - Generate translation files
+   * `npm run css` - Process CSS (compile SCSS to CSS and minify)
+   * `npm run js` - Process JavaScript (compile TypeScript to JS and minify)
+   * `npm run lint` - Run all linters (PHP, JS, CSS)
+   * `npm run test` - Run tests
+6. Before committing, run `npm run build` to:
    * Generate translation POT files
-   * Minify CSS and JS assets
-   * Process and optimize other assets
-6. **Important:** Update both README.md and readme.txt files when making changes that affect:
+   * Compile and minify CSS from SCSS
+   * Compile and minify JS from TypeScript
+   * Optimize other assets
+7. **Important:** Update both README.md and readme.txt files when making changes that affect:
    * Version numbers
    * Required WordPress/PHP versions
    * Feature additions or changes
    * Installation instructions
    * Documentation
    * Changelog entries
-7. Open a Pull Request with your changes
+8. Commit your changes and push to your fork
+9. Open a Pull Request against the main repository
 
-**Pull Request Guidelines:**
-
-Please include a clear description of your changes and their purpose, reference any related issues, and ensure your code follows existing style conventions. Always verify that both README.md and readme.txt are updated and synchronized before submitting your PR.
+When submitting a Pull Request, please include a clear description of the changes and their purpose, reference any related issues, and ensure your code follows existing style conventions. Always verify that both README.md and readme.txt are updated and synchronized before submitting your PR.
 
 **Release Process:**
 
 Releases are automated using GitHub Actions workflows that trigger when a version tag is pushed. 
 
-To trigger a new release build, push a tag following the semantic versioning format:
-`git tag v2.3.5` (for version 2.3.5) and then `git push origin v2.3.5`
-
-The tag must begin with "v" followed by the version number (v*.*.*).
+To trigger a new release build, push a tag following the semantic versioning format (v*.*.*):
+`git tag v2.3.5 && git push origin v2.3.5`
 
 When preparing for a release:
-1. Update the version number in the main plugin file and readme.txt
+1. Update the version number in:
+   * The main plugin file (wp-multisite-waas.php)
+   * readme.txt (Stable tag)
+   * package.json
 2. Update the changelog in readme.txt
 3. Ensure README.md and readme.txt are synchronized with the latest information
 4. Create and push the appropriate version tag

@@ -1,0 +1,42 @@
+# Directories
+/.git
+/.github
+/.vscode
+/.idea
+/bin
+/node_modules
+/tests
+/build
+
+# Root Files
+.distignore
+.editorconfig
+.eslintignore
+.eslintrc*
+.gitignore
+.stylelintrc*
+phpunit.xml
+tsconfig.json
+webpack.config.js
+*.log
+jest.config.js
+
+# Development Files
+*.map
+*.ts
+!*.d.ts
+.travis.yml
+.phpcs.xml.dist
+composer.json
+composer.lock
+package.json
+package-lock.json
+phpcs.xml
+README.md
+CONTRIBUTING.md
+*.zip
+*.tar.gz
+
+# System Files
+.DS_Store
+Thumbs.db 
