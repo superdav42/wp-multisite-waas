@@ -33,6 +33,37 @@ This plugin was formerly known as WP Ultimo and is now community maintained.
 * [GitHub Repository](https://github.com/superdav42/wp-multisite-waas)
 * [Issue Tracker](https://github.com/superdav42/wp-multisite-waas/issues)
 
+= Contributing =
+
+We welcome contributions to WP Multisite WaaS! To contribute effectively:
+
+**Development Workflow:**
+
+1. Fork the repository on GitHub
+2. Create a feature branch from main
+3. Run `npm install` and `composer install` to set up dependencies
+4. Make your changes
+5. Before committing, run `npm run build` to:
+   * Generate translation POT files
+   * Minify CSS and JS assets
+   * Process and optimize other assets
+6. Open a Pull Request with your changes
+
+**Pull Request Guidelines:**
+
+Please include a clear description of your changes and their purpose, reference any related issues, and ensure your code follows existing style conventions.
+
+**Release Process:**
+
+Releases are automated using GitHub Actions workflows that trigger when a version tag is pushed. 
+
+To trigger a new release build, push a tag following the semantic versioning format:
+`git tag v2.3.5` (for version 2.3.5) and then `git push origin v2.3.5`
+
+The tag must begin with "v" followed by the version number (v*.*.*).
+
+For more detailed contribution guidelines, see the [GitHub repository](https://github.com/superdav42/wp-multisite-waas).
+
 == Installation ==
 
 There are two recommended ways to install WP Multisite WaaS:

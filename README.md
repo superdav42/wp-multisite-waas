@@ -95,6 +95,58 @@ This method requires command-line access to your server and familiarity with Git
 <p><strong>Solution:</strong> Use the pre-packaged release from the <a href="https://github.com/superdav42/wp-multisite-waas/releases">Releases page</a> which includes all required files.</p>
 </details>
 
+## 🚀 Contributing
+
+We welcome contributions to WP Multisite WaaS! Here's how you can contribute effectively:
+
+### Development Workflow
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Run `npm install` and `composer install` to set up dependencies
+4. Make your changes
+5. Before committing, run `npm run build` to:
+   - Generate translation POT files
+   - Minify CSS and JS assets
+   - Process and optimize other assets
+6. Commit your changes (`git commit -m 'Add some amazing feature'`)
+7. Push to the branch (`git push origin feature/amazing-feature`)
+8. Open a Pull Request
+
+### Pull Request Guidelines
+
+When submitting pull requests, please:
+
+1. Include a clear description of the changes and their purpose
+2. Reference any related issues using GitHub's issue linking syntax (#123)
+3. Ensure your code follows the existing style and conventions
+4. Include screenshots or GIFs for UI changes if applicable
+5. Make sure all tests pass (if available)
+6. Update documentation as needed
+
+### Release Process
+
+Releases are automated using GitHub Actions workflows that trigger when a version tag is pushed.
+
+**Tagging Convention:** To trigger a new release build, push a tag following the semantic versioning format:
+
+```bash
+git tag v2.3.5  # For example, for version 2.3.5
+git push origin v2.3.5
+```
+
+The tag must begin with "v" followed by the version number (v*.*.*)
+
+This will automatically:
+1. Build the plugin (run `npm run build`)
+2. Create a properly packaged ZIP file
+3. Create a GitHub release with the ZIP attached
+
+When preparing for a release:
+1. Update the version number in the main plugin file and readme.txt
+2. Update the changelog in readme.txt
+3. Create and push the appropriate version tag
+
 ## 🆘 Support
 
 For support, please open an issue on the [GitHub repository](https://github.com/superdav42/wp-multisite-waas/issues).
