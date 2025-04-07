@@ -1,0 +1,69 @@
+name: Release WordPress Plugin
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+    name: Build and Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          extensions: mbstring, intl, curl
+          tools: composer
+
+      - name: Get the version
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+        
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          composer install --no-dev --optimize-autoloader
+          npm ci
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Create build directory
+        run: |
+          mkdir -p build/wp-multisite-waas
+          cp -r $(ls -A | grep -v "^build$" | grep -v "^\.git$" | grep -v "^node_modules$" | xargs) build/wp-multisite-waas/
+
+      - name: Remove development files
+        run: |
+          cd build/wp-multisite-waas
+          rm -rf .github .gitignore composer.json composer.lock package.json package-lock.json phpunit.xml webpack.config.js node_modules tests .git
+          find . -name "*.map" -type f -delete
+
+      - name: Create ZIP file
+        run: |
+          cd build
+          zip -r wp-multisite-waas-${{ env.VERSION }}.zip wp-multisite-waas
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/wp-multisite-waas-${{ env.VERSION }}.zip
+          name: WP Multisite WaaS ${{ env.VERSION }}
+          draft: false
+          prerelease: false
+          body: |
+            WP Multisite WaaS ${{ env.VERSION }}
+            
+            This is an automated release. Please refer to the changelog in readme.txt for details. 
