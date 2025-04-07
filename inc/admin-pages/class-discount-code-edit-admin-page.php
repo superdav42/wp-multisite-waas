@@ -349,7 +349,7 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 								'wrapper_classes' => 'wu-w-2/3',
 								'options'         => [
 									'percentage' => __('Percentage (%)', 'wp-multisite-waas'),
-									// translators: %s is the currency symbol. e.g $
+									// translators: %s is the currency symbol. e.g. $
 									'absolute'   => sprintf(__('Absolute (%s)', 'wp-multisite-waas'), wu_get_currency_symbol()),
 								],
 								'html_attr'       => [

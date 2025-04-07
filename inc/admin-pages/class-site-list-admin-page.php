@@ -313,7 +313,7 @@ class Site_List_Admin_Page extends List_Admin_Page {
 		 */
 		if ($duplicate_id && $site) {
 
-			// translators: the %s is the site title.
+			// translators: the %s is the thing copied.
 			$title         = sprintf(__('Copy of %s', 'wp-multisite-waas'), $site->get_title());
 			$path          = sprintf('%s%s', trim($site->get_path(), '/'), 'copy');
 			$type          = $site->get_type();

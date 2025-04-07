@@ -154,7 +154,7 @@ class Checkout_Form_List_Table extends Base_List_Table {
 
 			$new_checkout_form = $checkout_form->duplicate();
 
-			// translators: 1st placeholder is the original form name.
+			// translators: the %s is the thing copied.
 			$new_name = sprintf(__('Copy of %s', 'wp-multisite-waas'), $checkout_form->get_name());
 
 			$new_checkout_form->set_name($new_name);

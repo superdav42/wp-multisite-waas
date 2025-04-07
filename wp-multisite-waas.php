@@ -3,7 +3,7 @@
  * Plugin Name: WP Multisite WaaS
  * Description: The WordPress Multisite Website as a Service (WaaS) plugin.
  * Plugin URI: https://wpmultisitewaas.org
- * Text Domain: wp-ultimo
+ * Text Domain: wp-multisite-waas
  * Version: 2.3.4
  * Author: WP Multisite Community
  * Author URI: https://github.com/superdav42/wp-multisite-waas

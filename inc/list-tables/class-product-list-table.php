@@ -208,6 +208,7 @@ class Product_List_Table extends Base_List_Table {
 
 			$new_product = $product->duplicate();
 
+			// translators: the %s is the thing copied.
 			$new_name = sprintf(__('Copy of %s', 'wp-multisite-waas'), $product->get_name());
 
 			$new_product->set_name($new_name);

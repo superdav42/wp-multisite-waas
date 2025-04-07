@@ -413,7 +413,7 @@ class Customer_Edit_Admin_Page extends Edit_Admin_Page {
 			$field_location_breadcrumbs = [
 				__(
 					'orphan field - the original form no longer exists',
-					'wp-ultimo'
+					'wp-multisite-waas'
 				),
 			];
 
@@ -480,7 +480,7 @@ class Customer_Edit_Admin_Page extends Edit_Admin_Page {
 				'title'           => __('Display unset fields', 'wp-multisite-waas'),
 				'desc'            => __(
 					'If fields were added after the customer creation or onto a different form, they will not have a set value for this customer. You can manually set those here.',
-					'wp-ultimo'
+					'wp-multisite-waas'
 				),
 				'type'            => 'toggle',
 				'wrapper_classes' => 'wu-bg-gray-100',
@@ -651,7 +651,7 @@ class Customer_Edit_Admin_Page extends Edit_Admin_Page {
 						'type'          => 'text-edit',
 						'value'         => $this->edit ? $this->get_object()->get_last_login(false) : __(
 							'No date',
-							'wp-ultimo'
+							'wp-multisite-waas'
 						),
 						'display_value' => $this->edit ? $this->get_object()->get_last_login(false) : false,
 					],
@@ -807,7 +807,7 @@ class Customer_Edit_Admin_Page extends Edit_Admin_Page {
 						'type'              => 'note',
 						'desc'              => __(
 							'Changing the user will transfer the customer and all its assets to the new user.',
-							'wp-ultimo'
+							'wp-multisite-waas'
 						),
 						'classes'           => 'wu-p-2 wu-bg-red-100 wu-text-red-600 wu-rounded wu-w-full',
 						'wrapper_html_attr' => [
@@ -821,7 +821,7 @@ class Customer_Edit_Admin_Page extends Edit_Admin_Page {
 						'placeholder'       => __('Select Status', 'wp-multisite-waas'),
 						'desc'              => __(
 							'The email verification status. This gets automatically switched to Verified when the customer verifies their email address.',
-							'wp-ultimo'
+							'wp-multisite-waas'
 						),
 						'options'           => [
 							'none'     => __('None', 'wp-multisite-waas'),
@@ -842,7 +842,7 @@ class Customer_Edit_Admin_Page extends Edit_Admin_Page {
 						'title'             => __('Activate Memberships', 'wp-multisite-waas'),
 						'desc'              => __(
 							'If you toggle this option, this change in status will also activate the related pending memberships. If any sites are pending, they are also going to be published automatically.',
-							'wp-ultimo'
+							'wp-multisite-waas'
 						),
 						'value'             => 0,
 						'wrapper_html_attr' => [
@@ -907,7 +907,7 @@ class Customer_Edit_Admin_Page extends Edit_Admin_Page {
 						'date'          => true,
 						'value'         => $this->edit ? $this->get_object()->get_last_login(false) : __(
 							'No date',
-							'wp-ultimo'
+							'wp-multisite-waas'
 						),
 						'display_value' => $this->edit ? $this->get_object()->get_last_login(false) : false,
 						'placeholder'   => '2020-04-04 12:00:00',

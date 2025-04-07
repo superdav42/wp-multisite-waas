@@ -571,7 +571,7 @@ class Product_Edit_Admin_Page extends Edit_Admin_Page {
 			'heading' => [
 				'type'  => 'header',
 				'title' => __('Legacy Options', 'wp-multisite-waas'),
-				// translators: %s is the name of legacy add-ons.
+				// translators: %s is the comma-separated list of legacy add-ons.
 				'desc'  => sprintf(__('Options for %s, and others.', 'wp-multisite-waas'), implode(', ', $tabs)),
 			],
 		];

@@ -1,0 +1,29 @@
+{
+  "name": "wp-multisite-waas",
+  "title": "WP Multisite WaaS",
+  "homepage": "https://wpmultisitewaas.org/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/superdav/wp-multisite-waas.git"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "uglify-js": "^3.19.3"
+  },
+  "config": {
+    "translate": true
+  },
+  "scripts": {
+    "prebuild": "composer install --no-dev --ignore-platform-reqs",
+    "prebuild:dev": "composer install --ignore-platform-reqs",
+    "build": "npm run uglify && npm run makepot && npm run cleancss && npm run archive",
+    "build:dev": "npm run uglify && npm run makepot && npm run cleancss",
+    "archive": "composer archive --file=$npm_package_name --format=zip",
+    "postarchive": "rm -rf $npm_package_name && unzip $npm_package_name.zip -d $npm_package_name && rm $npm_package_name.zip && zip -r $npm_package_name.zip $npm_package_name && rm -rf $npm_package_name",
+    "preuglify": "rm -f assets/js/*.min.js",
+    "uglify": "for f in assets/js/*.js; do file=${f%.js}; node_modules/.bin/uglifyjs $f -c -m > $file.min.js; done",
+    "precleancss": "rm -f assets/css/*.min.css",
+    "cleancss": "for f in assets/css/*.css; do file=${f%.css}; node_modules/.bin/cleancss -o $file.min.css $f; done",
+    "makepot": "wp i18n make-pot ./ lang/$npm_package_name.pot --exclude=node_modules,tests,docs,assets/js/lib"
+  }
+}
