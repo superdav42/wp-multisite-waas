@@ -16,7 +16,7 @@
 <?php endif; ?>
 
 <div class="wu-bg-white wu-p-4 wu--mx-5">
-    <?php echo wp_kses_post($content); ?>
+    <?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 </div>
 
 <!-- Submit Box -->
