@@ -14,8 +14,8 @@
     "translate": true
   },
   "scripts": {
-    "prebuild": "composer install --no-dev --ignore-platform-reqs",
-    "prebuild:dev": "composer install --ignore-platform-reqs",
+    "prebuild": "composer install --no-dev",
+    "prebuild:dev": "composer install",
     "build": "npm run uglify && npm run makepot && npm run cleancss && npm run archive",
     "build:dev": "npm run uglify && npm run makepot && npm run cleancss",
     "archive": "composer archive --file=$npm_package_name --format=zip",
