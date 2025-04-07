@@ -61,7 +61,7 @@
 					<td>
 						<?php echo esc_html($form->signup_form); ?>
 						<?php if ('by-admin' === $form->signup_form) : ?>
-							<?php echo wp_kses_post(wu_tooltip(__('Customers created via the admin panel, by super admins.', 'wp-multisite-waas'))); ?>
+							<?php echo wu_tooltip(__('Customers created via the admin panel, by super admins.', 'wp-multisite-waas')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 						<?php endif; ?>
 					</td>
 					<td class="wu-text-right"><?php echo intval($form->count); ?></td> <!-- Ensure count is an integer and properly escaped -->

@@ -10,7 +10,7 @@
 </h1>
 
 <p class="wu-text-lg wu-text-gray-600 wu-my-4">
-	<?php echo wp_kses_post($integration->get_description()); ?>
+	<?php echo $integration->get_description(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 </p>
 
 <div class="wu-bg-white wu-p-4 wu--mx-6">

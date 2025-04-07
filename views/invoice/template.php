@@ -185,7 +185,7 @@ $has_tax_included = false;
 							/**
 							 * Displays the company address.
 							 */
-							echo wp_kses(nl2br($company_address), array('br' => array()));
+							echo nl2br(esc_html($company_address), array('br' => array()));
 
 							?>
 						</td>
@@ -198,7 +198,7 @@ $has_tax_included = false;
 							/**
 							 * Displays the clients address.
 							 */
-							echo wp_kses(nl2br(implode(PHP_EOL, (array) $billing_address)), array('br' => array()));
+							echo nl2br(esc_html(implode(PHP_EOL, (array) $billing_address)), array('br' => array()));
 
 							?>
 						   

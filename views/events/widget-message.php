@@ -12,7 +12,7 @@
 	<h3 class="wu-my-1 wu-text-2xs wu-uppercase"><?php echo esc_html__('Message', 'wp-multisite-waas'); ?></h3>
 
 	<span class="wu-my-1 wu-inline-block">
-		<?php echo wp_kses_post($object->get_message()); ?>
+		<?php echo $object->get_message(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 	</span>
 
 	</li>

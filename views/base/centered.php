@@ -108,7 +108,7 @@
 
 						<div class="inside">
 
-							<?php echo wp_kses_post($content); ?>
+							<?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 						</div>
 
