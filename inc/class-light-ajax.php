@@ -31,7 +31,7 @@ class Light_Ajax {
 	 */
 	public function __construct() {
 
-		if (isset($_REQUEST['wu-ajax'])) {
+		if (isset($_REQUEST['wu-ajax'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$action = $this->get_when_to_run();
 
 			wu_x_header("X-Ultimo-Ajax-When: $action");
@@ -101,7 +101,7 @@ class Light_Ajax {
 			]
 		);
 
-		$action = isset($_REQUEST['wu-when']) ? base64_decode((string) $_REQUEST['wu-when']) : 'plugins_loaded';
+		$action = isset($_REQUEST['wu-when']) ? base64_decode((string) $_REQUEST['wu-when']) : 'plugins_loaded'; // phpcs:ignore WordPress
 
 		return in_array($action, $allowed_list, true) ? $action : 'plugins_loaded';
 	}
@@ -151,7 +151,7 @@ class Light_Ajax {
 
 		header('Pragma: no-cache');
 
-		$action = esc_attr(trim((string) $_REQUEST['action']));
+		$action = esc_attr(trim((string) $_REQUEST['action'])); // phpcs:ignore
 
 		if (is_user_logged_in()) {
 			do_action('wu_ajax_' . $action); // phpcs:ignore

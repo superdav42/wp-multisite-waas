@@ -57,14 +57,9 @@ class Payment_List_Table extends Base_List_Table {
 	 */
 	public function get_extra_query_fields() {
 
-		$_filter_fields = parent::get_extra_query_fields();
-
-		$search = isset($_GET['s']) ? sanitize_text_field($_GET['s']) : false;
-
+		$_filter_fields                  = parent::get_extra_query_fields();
 		$_filter_fields['membership_id'] = wu_request('membership_id', false);
-
-		$_filter_fields['customer_id'] = wu_request('customer_id', false);
-
+		$_filter_fields['customer_id']   = wu_request('customer_id', false);
 		$_filter_fields['parent_id__in'] = ['0', 0, '', null];
 
 		return $_filter_fields;
@@ -75,7 +70,7 @@ class Payment_List_Table extends Base_List_Table {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_Ultimo\Models\Payment $item Payment object.
+	 * @param \WP_Ultimo\Models\Payment $item Payment object.
 	 * @return string
 	 */
 	public function column_hash($item) {
@@ -129,7 +124,7 @@ class Payment_List_Table extends Base_List_Table {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_Ultimo\Models\Payment $item Payment object.
+	 * @param \WP_Ultimo\Models\Payment $item Payment object.
 	 * @return string
 	 */
 	public function column_product($item) {
@@ -158,7 +153,7 @@ class Payment_List_Table extends Base_List_Table {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_Ultimo\Models\Payment $item Payment object.
+	 * @param \WP_Ultimo\Models\Payment $item Payment object.
 	 * @return string
 	 */
 	public function column_total($item) {

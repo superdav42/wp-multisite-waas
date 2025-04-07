@@ -259,7 +259,7 @@ class Membership_Edit_Admin_Page extends Edit_Admin_Page {
 				'field_wrapper_classes' => 'wu-w-full wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid',
 				'html_attr'             => [
 					'data-wu-app' => 'true',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'confirmed' => false,
 						]
@@ -519,7 +519,7 @@ class Membership_Edit_Admin_Page extends Edit_Admin_Page {
 					'data-label-field'  => 'display_name',
 					'data-search-field' => 'display_name',
 					'data-max-items'    => 1,
-					'data-selected'     => $this->get_object()->get_customer() ? json_encode($this->get_object()->get_customer()->to_search_results()) : '',
+					'data-selected'     => $this->get_object()->get_customer() ? wp_json_encode($this->get_object()->get_customer()->to_search_results()) : '',
 				],
 				'wrapper_html_attr' => [
 					'v-cloak' => '1',
@@ -583,7 +583,7 @@ class Membership_Edit_Admin_Page extends Edit_Admin_Page {
 			[
 				'html_attr' => [
 					'data-wu-app' => 'membership_save',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'status'               => $this->get_object()->get_status(),
 							'original_customer_id' => $this->get_object()->get_customer_id(),
@@ -602,7 +602,7 @@ class Membership_Edit_Admin_Page extends Edit_Admin_Page {
 				'title'     => __('Billing Amount', 'wp-multisite-waas'),
 				'html_attr' => [
 					'data-wu-app' => 'true',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'is_recurring'            => $this->get_object()->is_recurring(),
 							'is_auto_renew'           => $this->get_object()->should_auto_renew(),
@@ -1082,7 +1082,7 @@ class Membership_Edit_Admin_Page extends Edit_Admin_Page {
 		$item = wu_get_membership($item_id);
 
 		if ( ! $item) {
-			wp_redirect(wu_network_admin_url('wp-ultimo-memberships'));
+			wp_safe_redirect(wu_network_admin_url('wp-ultimo-memberships'));
 
 			exit;
 		}
@@ -1162,7 +1162,7 @@ class Membership_Edit_Admin_Page extends Edit_Admin_Page {
 
 		$url = add_query_arg($array_params);
 
-		wp_redirect($url);
+		wp_safe_redirect($url);
 
 		return true;
 	}
@@ -1227,7 +1227,7 @@ class Membership_Edit_Admin_Page extends Edit_Admin_Page {
 
 			$url = remove_query_arg('preview-swap', $url);
 
-			wp_redirect($url);
+			wp_safe_redirect($url);
 
 			return true;
 		}
@@ -1583,7 +1583,7 @@ class Membership_Edit_Admin_Page extends Edit_Admin_Page {
 					'data-label-field'  => 'name',
 					'data-search-field' => 'name',
 					'data-max-items'    => 1,
-					'data-selected'     => json_encode($product->to_search_results()),
+					'data-selected'     => wp_json_encode($product->to_search_results()),
 				],
 			],
 			'update_price'  => [

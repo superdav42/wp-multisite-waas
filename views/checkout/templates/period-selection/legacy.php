@@ -27,8 +27,8 @@ defined('ABSPATH') || exit;
 	<?php foreach ($period_options as $index => $period_option) : ?>
 
 		<li>
-		<a class="wu-text-center" :class="(duration == <?php echo $period_option['duration']; ?> && duration_unit == '<?php echo $period_option['duration_unit']; ?>') || (<?php echo json_encode(0 === $index); ?> && duration === '') ? 'active' : ''" v-on:click.prevent="duration = <?php echo $period_option['duration']; ?>; duration_unit = '<?php echo $period_option['duration_unit']; ?>'" href="#">
-			<?php echo $period_option['label']; ?>
+		<a class="wu-text-center" :class="(duration == <?php echo esc_html($period_option['duration']); ?> && duration_unit == '<?php echo esc_attr($period_option['duration_unit']); ?>') || (<?php echo wp_json_encode(0 === $index); ?> && duration === '') ? 'active' : ''" v-on:click.prevent="duration = <?php echo esc_attr($period_option['duration']); ?>; duration_unit = '<?php echo esc_attr($period_option['duration_unit']); ?>'" href="#">
+			<?php echo esc_html($period_option['label']); ?>
 		</a>
 		</li>
 

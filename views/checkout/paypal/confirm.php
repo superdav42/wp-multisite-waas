@@ -15,7 +15,7 @@ if ($is_trial_setup) {
 	$date = wp_date(get_option('date_format'), strtotime($membership->get_date_trial_end(), wu_get_current_time('timestamp', true)));
 
 	$notes[] = sprintf(__('Your trial period will end on %1$s.', 'wp-multisite-waas'), $date);
-} // end if;
+}
 
 $original_cart = $payment->get_meta('wu_original_cart');
 
@@ -39,14 +39,14 @@ if ($membership->is_recurring() && $should_auto_renew) {
 				$date_renew = wp_date(get_option('date_format'), strtotime($membership->get_date_expiration(), wu_get_current_time('timestamp', true)));
 
 				$notes[] = sprintf(__('Your updated membership will start on %1$s, from that date you will be billed %2$s %3$s.', 'wp-multisite-waas'), $date_renew, $subtotal, $desc);
-			} // end if;
+			}
 		} elseif ($is_trial_setup) {
 			$initial_amount_format = wu_format_currency($membership->get_initial_amount(), $payment->get_currency());
 
 			$notes[] = sprintf(__('After the first payment of %1$s you will be billed %2$s %3$s.', 'wp-multisite-waas'), $initial_amount_format, $recurring_total_format, $desc);
 		} else {
 			$notes[] = sprintf(__('After this payment you will be billed %1$s %2$s.', 'wp-multisite-waas'), $recurring_total_format, $desc);
-		} // end if;
+		}
 	} else {
 		$recurring_total_format = wu_format_currency($recurring_total, $payment->get_currency());
 
@@ -54,9 +54,9 @@ if ($membership->is_recurring() && $should_auto_renew) {
 			$notes[] = sprintf(__('From that date, you will be billed %1$s %2$s.', 'wp-multisite-waas'), $recurring_total_format, $desc);
 		} else {
 			$notes[] = sprintf(__('After this payment you will be billed %1$s.', 'wp-multisite-waas'), $desc);
-		} // end if;
-	} // end if;
-} // end if;
+		}
+	}
+}
 
 $note = implode(' ', $notes);
 
@@ -66,7 +66,7 @@ $subtotal = 0;
 
 <form id="wu-paypal-express-confirm-form" class="wu-styling" action="<?php echo esc_url(add_query_arg('wu-confirm', 'paypal')); ?>" method="post">
 	<div class="wu-confirm-details" id="billing_info">
-		<h2><?php _e('Please confirm your payment', 'wp-multisite-waas'); ?></h2>
+		<h2><?php esc_html_e('Please confirm your payment', 'wp-multisite-waas'); ?></h2>
 
 		<div class="wu-text-sm wu-mb-4 wu-rounded-lg wu-border wu-border-gray-300 wu-bg-white wu-border-solid wu-shadow-sm wu-px-6 wu-py-4">
 			<span class="wu-font-semibold wu-block wu-text-gray-900">
@@ -75,8 +75,8 @@ $subtotal = 0;
 
 			<div class="wu-text-gray-600">
 				<p>
-					<?php _e('PayPal Status:', 'wp-multisite-waas'); ?> <?php echo ucfirst(wu_get_isset($checkout_details, 'PAYERSTATUS', 'none')); ?>
-					<br><?php _e('Email:', 'wp-multisite-waas'); ?> <?php echo wu_get_isset($checkout_details, 'EMAIL', '--'); ?>
+					<?php esc_html_e('PayPal Status:', 'wp-multisite-waas'); ?> <?php echo ucfirst(wu_get_isset($checkout_details, 'PAYERSTATUS', 'none')); ?>
+					<br><?php esc_html_e('Email:', 'wp-multisite-waas'); ?> <?php echo wu_get_isset($checkout_details, 'EMAIL', '--'); ?>
 				</p>
 			</div>
 		</div>
@@ -85,8 +85,8 @@ $subtotal = 0;
 	<table class="wu-w-full wu-mb-4">
 		<thead class="wu-bg-gray-100">
 			<tr>
-				<th class="wu-text-left wu-py-2 wu-px-4"><?php _e('Product', 'wp-multisite-waas'); ?></th>
-				<th class="wu-text-left wu-py-2 wu-px-4"><?php _e('Total', 'wp-multisite-waas'); ?></th>
+				<th class="wu-text-left wu-py-2 wu-px-4"><?php esc_html_e('Product', 'wp-multisite-waas'); ?></th>
+				<th class="wu-text-left wu-py-2 wu-px-4"><?php esc_html_e('Total', 'wp-multisite-waas'); ?></th>
 			</tr>
 		</thead>
 
@@ -112,7 +112,7 @@ $subtotal = 0;
 
 		<tfoot class="wu-bg-gray-100">
 			<tr>
-				<th class="wu-text-left wu-py-2 wu-px-4"><?php _e('Subtotal', 'wp-multisite-waas'); ?></th>
+				<th class="wu-text-left wu-py-2 wu-px-4"><?php esc_html_e('Subtotal', 'wp-multisite-waas'); ?></th>
 				<th class="wu-text-left wu-py-2 wu-px-4"><?php echo wu_format_currency($subtotal, $payment->get_currency()); ?></th>
 			</tr>
 

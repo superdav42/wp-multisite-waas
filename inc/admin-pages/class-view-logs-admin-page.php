@@ -358,7 +358,7 @@ class View_Logs_Admin_Page extends Edit_Admin_Page {
 
 		$url = remove_query_arg('log_file');
 
-		wp_redirect(add_query_arg('deleted', 1, $url));
+		wp_safe_redirect(add_query_arg('deleted', 1, $url));
 
 		exit;
 	}

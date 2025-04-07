@@ -5,7 +5,7 @@
  * @since 2.0.0
  */
 ?>
-<li class="<?php echo esc_attr(trim($field->wrapper_classes)); ?>" <?php echo $field->get_wrapper_html_attributes(); ?>>
+<li class="<?php echo esc_attr(trim($field->wrapper_classes)); ?>" <?php echo $field->get_wrapper_html_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 
 	<div class="wu-block wu-w-full <?php echo esc_attr($field->classes); ?>">
 
@@ -50,7 +50,7 @@
 
 		<div class="wu-mt-2 wu-block wu-bg-gray-100 wu-rounded wu-border-solid wu-border-gray-400 wu-border-t wu-border-l wu-border-b wu-border-r wu-text-2xs wu-py-2 wu-p-2">
 
-		<?php echo $field->desc; ?>
+		<?php echo $field->desc; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 		</div>
 

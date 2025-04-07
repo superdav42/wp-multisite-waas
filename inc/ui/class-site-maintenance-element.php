@@ -9,8 +9,6 @@
 
 namespace WP_Ultimo\UI;
 
-use WP_Ultimo\UI\Base_Element;
-
 // Exit if accessed directly
 defined('ABSPATH') || exit;
 
@@ -45,6 +43,8 @@ class Site_Maintenance_Element extends Base_Element {
 	 * @var boolean
 	 */
 	protected $public = true;
+
+	private \WP_Ultimo\Models\Site $site;
 
 	/**
 	 * Initializes the singleton.
@@ -209,12 +209,12 @@ class Site_Maintenance_Element extends Base_Element {
 	 */
 	public function setup(): void {
 
-		$this->site = WP_Ultimo()->currents->get_site();
+		$site = WP_Ultimo()->currents->get_site();
 
-		if ( ! $this->site || ! $this->site->is_customer_allowed()) {
+		if ( ! $site || ! $site->is_customer_allowed()) {
 			$this->set_display(false);
-
-			return;
+		} else {
+			$this->site = $site;
 		}
 	}
 
@@ -237,7 +237,7 @@ class Site_Maintenance_Element extends Base_Element {
 	 */
 	public function register_scripts(): void {
 
-		wp_register_script('wu-site-maintenance', wu_get_asset('site-maintenance.js', 'js'), ['jquery', 'wu-functions'], wu_get_version());
+		wp_register_script('wu-site-maintenance', wu_get_asset('site-maintenance.js', 'js'), ['jquery', 'wu-functions'], wu_get_version(), true);
 
 		wp_localize_script(
 			'wu-site-maintenance',

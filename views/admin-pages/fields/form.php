@@ -7,7 +7,7 @@
 ?>
 <div class="wu-styling">
 
-	<?php echo $form->before; ?>
+	<?php echo $form->before; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 	<div class="wu-flex wu-flex-wrap">
 
@@ -17,14 +17,14 @@
 		id="<?php echo esc_attr($form_slug); ?>" 
 		action="<?php echo esc_attr($form->action); ?>"
 		method="<?php echo esc_attr($form->method); ?>"
-		<?php echo $form->get_html_attributes(); ?>
+		<?php echo $form->get_html_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		>
 
 	<?php endif; ?>
 
-	<ul id="wp-ultimo-form-<?php echo esc_attr($form->id); ?>" class="wu-flex-grow <?php echo esc_attr(trim($form->classes)); ?>" <?php echo $form->get_html_attributes(); ?>>
+	<ul id="wp-ultimo-form-<?php echo esc_attr($form->id); ?>" class="wu-flex-grow <?php echo esc_attr(trim($form->classes)); ?>" <?php echo $form->get_html_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 
-		<?php echo $rendered_fields; ?>
+		<?php echo $rendered_fields; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 	</ul>
 
@@ -34,7 +34,7 @@
 
 	<?php endif; ?>
 
-	<?php echo $form->after; ?>
+	<?php echo $form->after; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 	</div>
 

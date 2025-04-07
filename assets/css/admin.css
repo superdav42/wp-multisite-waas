@@ -1851,7 +1851,7 @@ a.button.wu-button-delete.wu-border-none {
   border-width: 0;
 }
 a.button.wu-button-delete:hover {
-  border-width: 1 !important;
+  border-width: 1px !important;
   color: #8b0000;
   background-color: transparent;
 }
@@ -5193,7 +5193,7 @@ td.column-id {
   padding: 0;
   margin: -19px 0 0 -19px;
   background-image: url("../img/loader.svg");
-  background-repeat: none;
+  background-repeat: no-repeat;
   background-position: center center;
   width: 38px;
   height: 38px;

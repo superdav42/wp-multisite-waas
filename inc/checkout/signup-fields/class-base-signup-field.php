@@ -360,7 +360,7 @@ abstract class Base_Signup_Field {
 
 					$selected = array_filter($selected);
 
-					$field['html_attr']['data-selected'] = json_encode($selected);
+					$field['html_attr']['data-selected'] = wp_json_encode($selected);
 				}
 			}
 

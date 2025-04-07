@@ -276,7 +276,7 @@ class Email_List_Table extends Base_List_Table {
 				]
 			);
 
-			wp_redirect($redirect_url);
+			wp_safe_redirect($redirect_url);
 
 			exit;
 		}

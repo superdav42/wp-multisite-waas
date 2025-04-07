@@ -94,6 +94,26 @@ class Domain_Edit_Admin_Page extends Edit_Admin_Page {
 
 		add_action('wu_after_delete_domain_modal', [$this, 'domain_after_delete_actions']);
 	}
+	/**
+	 * Registers the necessary scripts and styles for this admin page.
+	 *
+	 * @since 2.0.0
+	 * @return void
+	 */
+	public function register_scripts(): void {
+		parent::register_scripts();
+
+		wp_enqueue_script(
+			'wu-dns-table',
+			wu_get_asset('dns-table.js', 'js'),
+			['jquery', 'wu-vue'],
+			\WP_Ultimo::VERSION,
+			[
+				'async'     => true,
+				'in_footer' => true,
+			]
+		);
+	}
 
 	/**
 	 * Adds the extra delete fields to the delete form.
@@ -126,8 +146,8 @@ class Domain_Edit_Admin_Page extends Edit_Admin_Page {
 					'data-label-field'  => 'domain',
 					'data-search-field' => 'domain',
 					'data-max-items'    => 1,
-					'data-exclude'      => json_encode([$domain->get_id()]),
-					'data-include'      => json_encode($domain->get_blog_id()),
+					'data-exclude'      => wp_json_encode([$domain->get_id()]),
+					'data-include'      => wp_json_encode($domain->get_blog_id()),
 				],
 				'wrapper_html_attr' => [
 					'v-if' => $is_primary_domain && $has_other_domains ? 'true' : 'false',
@@ -312,7 +332,7 @@ class Domain_Edit_Admin_Page extends Edit_Admin_Page {
 							'data-label-field'  => 'title',
 							'data-search-field' => 'title',
 							'data-max-items'    => 1,
-							'data-selected'     => $this->get_object()->get_site() ? json_encode($this->get_object()->get_site()->to_search_results()) : '',
+							'data-selected'     => $this->get_object()->get_site() ? wp_json_encode($this->get_object()->get_site()->to_search_results()) : '',
 						],
 						'wrapper_html_attr' => [
 							'v-cloak' => '1',
@@ -322,7 +342,7 @@ class Domain_Edit_Admin_Page extends Edit_Admin_Page {
 			]
 		);
 
-		$check_for_active_string = sprintf('%s.includes(stage)', json_encode(\WP_Ultimo\Models\Domain::INACTIVE_STAGES));
+		$check_for_active_string = sprintf('%s.includes(stage)', wp_json_encode(\WP_Ultimo\Models\Domain::INACTIVE_STAGES));
 
 		$this->add_fields_widget(
 			'basic',
@@ -502,7 +522,7 @@ class Domain_Edit_Admin_Page extends Edit_Admin_Page {
 		$item = wu_get_domain($item_id);
 
 		if ( ! $item) {
-			wp_redirect(wu_network_admin_url('wp-ultimo-domains'));
+			wp_safe_redirect(wu_network_admin_url('wp-ultimo-domains'));
 
 			exit;
 		}

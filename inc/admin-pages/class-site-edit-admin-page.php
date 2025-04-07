@@ -227,7 +227,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 				'field_wrapper_classes' => 'wu-w-full wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid',
 				'html_attr'             => [
 					'data-wu-app' => 'transfer_site',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'confirmed' => false,
 						]
@@ -414,7 +414,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 			[
 				'html_attr' => [
 					'data-wu-app' => 'site_type',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'type'                   => $this->get_object()->get_type(),
 							'original_membership_id' => $this->get_object()->get_membership_id(),
@@ -487,7 +487,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 							'data-label-field'  => 'reference_code',
 							'data-search-field' => 'reference_code',
 							'data-max-items'    => 1,
-							'data-selected'     => json_encode($membership_selected),
+							'data-selected'     => wp_json_encode($membership_selected),
 						],
 					],
 					'transfer_note' => [
@@ -729,7 +729,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 		$item = wu_get_site($item_id);
 
 		if ( ! $item) {
-			wp_redirect(wu_network_admin_url('wp-ultimo-sites'));
+			wp_safe_redirect(wu_network_admin_url('wp-ultimo-sites'));
 
 			exit;
 		}

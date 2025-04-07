@@ -1960,7 +1960,7 @@ class Checkout {
 				/*
 				 * Redirect go burrr!
 				 */
-				wp_redirect($redirect_url);
+				wp_safe_redirect($redirect_url);
 
 				exit;
 			}
@@ -2002,7 +2002,7 @@ class Checkout {
 				*/
 				$next_step = $this->get_next_step_name();
 
-				wp_redirect(add_query_arg('step', $next_step));
+				wp_safe_redirect(add_query_arg('step', $next_step));
 
 				exit;
 			}
@@ -2165,7 +2165,7 @@ class Checkout {
 				);
 			}
 
-			wp_redirect($redirect_url);
+			wp_safe_redirect($redirect_url);
 
 			exit;
 		} catch (\Throwable $e) {
@@ -2286,12 +2286,12 @@ class Checkout {
 	 * @since 2.0.0
 	 *
 	 * @param string $key Key to retrieve the value for.
-	 * @param mixed  $default The default value to return, when nothing is found.
+	 * @param mixed  $default_value The default value to return, when nothing is found.
 	 * @return mixed
 	 */
-	public function request_or_session($key, $default = false) {
+	public function request_or_session($key, $default_value = false) {
 
-		$value = $default;
+		$value = $default_value;
 
 		if (null !== $this->session) {
 			$session = $this->session->get('signup');

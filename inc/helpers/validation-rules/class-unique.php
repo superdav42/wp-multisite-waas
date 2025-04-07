@@ -46,6 +46,9 @@ class Unique extends Rule {
 	 */
 	public function check($value): bool {
 
+		if (empty($value)) {
+			return true;
+		}
 		$this->requireParameters(
 			[
 				'model',

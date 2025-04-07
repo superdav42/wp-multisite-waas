@@ -1830,7 +1830,7 @@ class Cart implements \JsonSerializable {
 		$where_clauses[] = ['type', $type];
 
 		// Cast to array recursively
-		$line_items = json_decode(json_encode($this->line_items), true);
+		$line_items = json_decode(wp_json_encode($this->line_items), true);
 
 		$line_items = Array_Search::find(
 			$line_items,
@@ -2353,7 +2353,7 @@ class Cart implements \JsonSerializable {
 	 */
 	public function jsonSerialize(): string {
 
-		return json_encode($this->done());
+		return wp_json_encode($this->done());
 	}
 
 	/**

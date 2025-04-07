@@ -357,7 +357,7 @@ class Tax {
 			<div class="wu-p-4">
 
 				<span class="wu-text-gray-700 wu-font-bold wu-uppercase wu-tracking-wide wu-text-xs">
-					<?php _e('Manage Tax Rates', 'wp-multisite-waas'); ?>
+					<?php esc_html_e('Manage Tax Rates', 'wp-multisite-waas'); ?>
 				</span>
 
 				<div class="wu-py-2">
@@ -365,13 +365,13 @@ class Tax {
 				</div>
 
 				<p class="wu-text-gray-600 wu-p-0 wu-m-0">
-					<?php _e('Add different tax rates depending on the country of your customers.', 'wp-multisite-waas'); ?>
+					<?php esc_html_e('Add different tax rates depending on the country of your customers.', 'wp-multisite-waas'); ?>
 				</p>
 
 			</div>
 
 			<div v-cloak v-show="enabled == 0" class="wu-mx-4 wu-p-2 wu-bg-blue-100 wu-text-blue-600 wu-rounded wu-mb-4">
-				<?php _e('You need to activate tax support first.', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('You need to activate tax support first.', 'wp-multisite-waas'); ?>
 			</div>
 
 			<?php if (current_user_can('wu_edit_payments')) : ?>
@@ -379,17 +379,17 @@ class Tax {
 				<div class="wu-p-4 wu-bg-gray-100 wu-border-solid wu-border-0 wu-border-t wu-border-gray-300">
 
 					<span v-if="false" class="button wu-w-full wu-text-center">
-						<?php _e('Manage Tax Rates &rarr;', 'wp-multisite-waas'); ?>
+						<?php esc_html_e('Manage Tax Rates &rarr;', 'wp-multisite-waas'); ?>
 					</span>
 
 					<div v-cloak>
 
 						<a v-if="enabled" class="button wu-w-full wu-text-center" target="_blank" href="<?php echo wu_network_admin_url('wp-ultimo-tax-rates'); ?>">
-							<?php _e('Manage Tax Rates &rarr;', 'wp-multisite-waas'); ?>
+							<?php esc_html_e('Manage Tax Rates &rarr;', 'wp-multisite-waas'); ?>
 						</a>
 
 						<button v-else disabled="disabled" class="button wu-w-full wu-text-center">
-							<?php _e('Manage Tax Rates &rarr;', 'wp-multisite-waas'); ?>
+							<?php esc_html_e('Manage Tax Rates &rarr;', 'wp-multisite-waas'); ?>
 						</button>
 
 					</div>

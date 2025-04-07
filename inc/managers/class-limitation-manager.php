@@ -171,7 +171,7 @@ class Limitation_Manager {
 			'field_wrapper_classes' => 'wu-w-full wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid',
 			'html_attr'             => [
 				'data-wu-app' => 'reset_limitations',
-				'data-state'  => json_encode(
+				'data-state'  => wp_json_encode(
 					[
 						'confirmed' => false,
 					]
@@ -774,11 +774,11 @@ class Limitation_Manager {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param \WP_Ultimo\Models\Trait\Trait_Limitable $object The model being edited.
-	 * @param array                                   $section The section array.
+	 * @param \WP_Ultimo\Models\Traits\Limitable $obj The model being edited.
+	 * @param array                              $section The section array.
 	 * @return string
 	 */
-	public function get_theme_selection_list($object, &$section) {
+	public function get_theme_selection_list($obj, &$section) {
 
 		$all_themes = $this->get_all_themes();
 
@@ -787,7 +787,7 @@ class Limitation_Manager {
 			[
 				'section' => $section,
 				'themes'  => $all_themes,
-				'object'  => $object,
+				'object'  => $obj,
 			]
 		);
 	}

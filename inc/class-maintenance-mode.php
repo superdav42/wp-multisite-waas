@@ -71,7 +71,7 @@ class Maintenance_Mode {
 	 * Add maintenance mode Notice to Admin Bar
 	 *
 	 * @since 2.0.0
-	 * @param WP_Admin_Bar $wp_admin_bar The Admin Bar class.
+	 * @param \WP_Admin_Bar $wp_admin_bar The Admin Bar class.
 	 * @return void
 	 */
 	public function add_notice_to_admin_bar($wp_admin_bar): void {
@@ -118,7 +118,7 @@ class Maintenance_Mode {
 			__('Under Maintenance', 'wp-multisite-waas')
 		);
 
-		wp_die($text, $title, 503);
+		wp_die(esc_html($text), esc_html($title), 503);
 	}
 
 	/**
@@ -140,11 +140,18 @@ class Maintenance_Mode {
 	 */
 	public function toggle_maintenance_mode() {
 
-		check_ajax_referer('wu_toggle_maintenance_mode', $_POST['_wpnonce']);
+		if ( ! check_ajax_referer('wu_toggle_maintenance_mode', '_wpnonce', false)) {
+			wp_send_json_error(
+				[
+					'message' => __('Request failed, please refresh and try again.', 'wp-multisite-waas'),
+					'value'   => false,
+				]
+			);
+		}
 
 		$site_id = \WP_Ultimo\Helpers\Hash::decode(wu_request('site_hash'), 'site');
 
-		if ( ! current_user_can_for_blog($site_id, 'manage_options')) {
+		if ( ! current_user_can_for_site($site_id, 'manage_options')) {
 			wp_send_json_error(
 				[
 					'message' => __('You do not have the necessary permissions to perform this option.', 'wp-multisite-waas'),

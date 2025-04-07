@@ -136,10 +136,10 @@ class Jumper {
 	 */
 	public function rebuild_menu(): void {
 
-		if (isset($_GET[ $this->reset_slug ]) && current_user_can('manage_network')) {
+		if (isset($_GET[ $this->reset_slug ]) && isset($_GET['nonce']) && current_user_can('manage_network') && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['nonce'])), 'reset_password')) {
 			delete_site_transient($this->transient_key);
 
-			wp_redirect(network_admin_url());
+			wp_safe_redirect(network_admin_url());
 
 			exit;
 		}
@@ -243,7 +243,7 @@ class Jumper {
 	 *
 	 * @since 2.0.0
 	 */
-	function get_defined_trigger_key(): string {
+	public function get_defined_trigger_key(): string {
 
 		return substr((string) wu_get_setting('jumper_key', 'g'), 0, 1);
 	}
@@ -259,7 +259,7 @@ class Jumper {
 	 * @param string $os OS to get the key combination for. Options: win or osx.
 	 * @return array
 	 */
-	function get_keys($os = 'win') {
+	public function get_keys($os = 'win') {
 
 		$trigger_key = $this->get_defined_trigger_key();
 
@@ -285,7 +285,7 @@ class Jumper {
 			return $text;
 		}
 
-		$os = stristr((string) $_SERVER['HTTP_USER_AGENT'], 'mac') ? 'osx' : 'win';
+		$os = isset($_SERVER['HTTP_USER_AGENT']) && stristr(sanitize_text_field(wp_unslash($_SERVER['HTTP_USER_AGENT'])), 'mac') ? 'osx' : 'win';
 
 		$keys = $this->get_keys($os);
 
@@ -425,7 +425,7 @@ class Jumper {
 
 					$string = wu_get_isset($title, 0, '');
 
-					$title = preg_replace('/[0-9]+/', '', strip_tags($string));
+					$title = preg_replace('/[0-9]+/', '', wp_strip_all_tags($string));
 
 					// If parent does not exists, skip
 					if ( ! empty($title) && is_array($submenu_items)) {
@@ -435,7 +435,6 @@ class Jumper {
 							$url = $this->get_target_url($submenu_item[2]);
 
 							// Add to our choices the admin urls
-							$choices[ $title ][ $url ] = preg_replace('/[0-9]+/', '', strip_tags((string) $submenu_item[0]));
 						}
 					}
 				}

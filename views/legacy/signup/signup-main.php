@@ -45,9 +45,9 @@ foreach ($admin_actions as $action => $handlers) {
 	foreach ($handlers as $handler => $priority) {
 		if ( ! has_action($action, $handler) && function_exists($handler)) {
 			add_action($action, $handler, $priority);
-		} // end foreach;
-	} // end foreach;
-} // end foreach;
+		}
+	}
+}
 
 do_action('wu_checkout_scripts');
 

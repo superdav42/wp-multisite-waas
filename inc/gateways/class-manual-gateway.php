@@ -385,7 +385,7 @@ class Manual_Gateway extends Base_Gateway {
 
 					<h4 class="wu-m-0 <?php echo wu_env_picker('', 'wu-widget-title'); ?>">
 
-						<?php _e('Instructions for Payment', 'wp-multisite-waas'); ?>
+						<?php esc_html_e('Instructions for Payment', 'wp-multisite-waas'); ?>
 
 					</h4>
 

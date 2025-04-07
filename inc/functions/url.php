@@ -21,10 +21,10 @@ function wu_get_current_url() {
 	 * the initiator URL.
 	 */
 	if (wp_doing_ajax() && isset($_SERVER['HTTP_REFERER'])) {
-		return $_SERVER['HTTP_REFERER'];
+		return wp_unslash($_SERVER['HTTP_REFERER']);
 	}
 
-	return (is_ssl() ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	return (is_ssl() ? 'https://' : 'http://') . strtolower(wp_unslash($_SERVER['HTTP_HOST'])) . $_SERVER['REQUEST_URI'];
 }
 
 /**
@@ -86,7 +86,7 @@ function wu_ajax_url($when = null, $query_args = [], $site_id = false, $scheme =
 	$query_args['r']       = wp_create_nonce('wu-ajax-nonce');
 
 	if ($when) {
-		$query_args['wu-when'] = base64_encode($when);
+		$query_args['wu-when'] = base64_encode($when); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 	}
 
 	$url = add_query_arg($query_args, $base_url);

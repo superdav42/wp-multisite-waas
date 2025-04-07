@@ -281,7 +281,7 @@ class Dashboard_Widgets {
 	public function process_ajax_fetch_rss(): void {
 
 		$atts = wp_parse_args(
-			$_GET,
+			$_GET, // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			[
 				'url'          => 'https://community.wpultimo.com/topics/feed',
 				'title'        => __('Forum Discussions', 'wp-multisite-waas'),

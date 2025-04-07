@@ -36,18 +36,18 @@
 	    <exclude name="WordPress.WhiteSpace.OperatorSpacing.NoSpaceBefore" />
 	    <exclude name="Universal.Arrays.DisallowShortArraySyntax" />
 	    <exclude name="Universal.Operators.DisallowShortTernary" />
+	    <exclude name="Squiz.Commenting.FileComment.SpacingAfterOpen" />
+        <exclude name="Squiz.Commenting.FileComment.SpacingAfterComment" />
+        <exclude name="Squiz.Commenting.FileComment.PackageName" />
+        <exclude name="WordPress.WP.GlobalVariablesOverride.Prohibited" />
+        <exclude name="Generic.Commenting.DocComment.MissingShort" />
 	</rule>
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<!-- Value: replace the function, class, and variable prefixes used. Separate multiple prefixes with a comma. -->
 			<property name="prefixes" type="array" value="wu_,wp_ultimo"/>
 		</properties>
-	</rule>
-	<rule ref="WordPress.WP.I18n">
-		<properties>
-			<!-- Value: replace the text domain used. -->
-			<property name="text_domain" type="array" value="wp-ultimo"/>
-		</properties>
+		<exclude-pattern>/views/</exclude-pattern>
 	</rule>
 	<rule ref="WordPress.WhiteSpace.ControlStructureSpacing">
 		<properties>
@@ -74,8 +74,24 @@
 	</rule>
 	<rule ref="Generic.WhiteSpace.ArbitraryParenthesesSpacing">
         <properties>
-            <property name="spacing" value="0"/>
+            <property name="spacing" value="0"/>read_notes
             <property name="ignoreNewlines" value="true"/>
         </properties>
     </rule>
+    <rule ref="WordPress.WP.Capabilities">
+        <properties>
+            <property name="custom_capabilities" type="array">
+                <element key="0" value="wu_edit_broadcasts"/>
+                <element key="1" value="wu_edit_checkout_forms"/>
+                <element key="2" value="wu_edit_settings"/>
+                <element key="3" value="wu_read_sites"/>
+                <element key="4" value="read_notes"/>
+                <element key="5" value="edit_notes"/>
+                <element key="6" value="delete_notes"/>
+                <element key="7" value="wu_edit_payments"/>
+                <element key="8" value="wu_edit_sites"/>
+            </property>
+        </properties>
+    </rule>
+
 </ruleset>

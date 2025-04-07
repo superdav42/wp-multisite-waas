@@ -10,10 +10,6 @@
 namespace WP_Ultimo\Integrations\Host_Providers;
 
 use Psr\Log\LogLevel;
-use WP_Ultimo\Integrations\Host_Providers\Base_Host_Provider;
-
-// Exit if accessed directly
-defined('ABSPATH') || exit;
 
 /**
  * This base class should be extended to implement new host integrations for SSL and domains.
@@ -219,9 +215,9 @@ class ServerPilot_Host_Provider extends Base_Host_Provider {
 			'timeout'  => 45,
 			'blocking' => true,
 			'method'   => $method,
-			'body'     => $data ? json_encode($data) : [],
+			'body'     => $data ? wp_json_encode($data) : [],
 			'headers'  => [
-				'Authorization' => 'Basic ' . base64_encode(WU_SERVER_PILOT_CLIENT_ID . ':' . WU_SERVER_PILOT_API_KEY),
+				'Authorization' => 'Basic ' . base64_encode(WU_SERVER_PILOT_CLIENT_ID . ':' . WU_SERVER_PILOT_API_KEY), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 				'Content-Type'  => 'application/json',
 			],
 		];
@@ -243,7 +239,7 @@ class ServerPilot_Host_Provider extends Base_Host_Provider {
 	 * Makes sure ServerPilot autoSSL is always on, when possible.
 	 *
 	 * @since 1.7.4
-	 * @return bool
+	 * @return object
 	 */
 	public function turn_server_pilot_auto_ssl_on() {
 
@@ -273,8 +269,8 @@ class ServerPilot_Host_Provider extends Base_Host_Provider {
 		 * Log response so we can see what went wrong
 		 */
 
-		// translators: %s is the json_encode of the error.
-		wu_log_add('integration-serverpilot', sprintf(__('An error occurred while trying to get the current list of domains: %s', 'wp-multisite-waas'), json_encode($app_info)), LogLevel::ERROR);
+		// translators: %s is the wp_json_encode of the error.
+		wu_log_add('integration-serverpilot', sprintf(__('An error occurred while trying to get the current list of domains: %s', 'wp-multisite-waas'), wp_json_encode($app_info)), LogLevel::ERROR);
 
 		return false;
 	}

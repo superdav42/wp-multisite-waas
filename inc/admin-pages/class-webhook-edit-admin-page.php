@@ -259,7 +259,7 @@ class Webhook_Edit_Admin_Page extends Edit_Admin_Page {
 
 		$event = wu_get_event_type($object_event_slug);
 
-		$payload = isset($event['payload']) ? json_encode(wu_maybe_lazy_load_payload($event['payload']), JSON_PRETTY_PRINT) : '{}';
+		$payload = isset($event['payload']) ? wp_json_encode(wu_maybe_lazy_load_payload($event['payload']), JSON_PRETTY_PRINT) : '{}';
 
 		wu_get_template(
 			'events/widget-payload',
@@ -357,7 +357,7 @@ class Webhook_Edit_Admin_Page extends Edit_Admin_Page {
 			$item = $query->get_item_by('id', wu_request('id'));
 
 			if ( ! $item) {
-				wp_redirect(wu_network_admin_url('wp-ultimo-webhooks'));
+				wp_safe_redirect(wu_network_admin_url('wp-ultimo-webhooks'));
 
 				exit;
 			}
@@ -407,7 +407,7 @@ class Webhook_Edit_Admin_Page extends Edit_Admin_Page {
 
 			$url = add_query_arg($array_params);
 
-			wp_redirect($url);
+			wp_safe_redirect($url);
 
 			exit;
 		}

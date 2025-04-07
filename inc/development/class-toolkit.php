@@ -125,7 +125,7 @@ class Toolkit {
 
 		$args = $manager->get_arguments_schema('update' === $context);
 
-		file_put_contents(wu_path("/mpb/data/endpoint/.endpoint-$class_name-$context"), json_encode($args)); // phpcs:ignore
+		file_put_contents(wu_path("/mpb/data/endpoint/.endpoint-$class_name-$context"), wp_json_encode($args)); // phpcs:ignore
 	}
 
 	/**

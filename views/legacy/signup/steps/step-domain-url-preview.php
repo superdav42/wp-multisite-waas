@@ -23,7 +23,7 @@ if ( ! defined('ABSPATH')) {
 
 <div id="wu-your-site-block">
 
-	<small><?php _e('Your URL will be', 'wp-multisite-waas'); ?></small><br>
+	<small><?php esc_html_e('Your URL will be', 'wp-multisite-waas'); ?></small><br>
 
 	<?php
 	/**

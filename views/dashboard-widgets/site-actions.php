@@ -37,7 +37,7 @@
 			class="
 			<?php
 			if (isset($action['classes']) && $action['classes']) {
-				echo esc_attr($action['classes']); } // end if;
+				echo esc_attr($action['classes']); }
 			?>
 			wu-px-4 wu-py-3 wu-inline-block wu-no-underline"
 			>

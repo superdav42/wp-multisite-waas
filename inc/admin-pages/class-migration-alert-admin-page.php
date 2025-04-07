@@ -163,7 +163,7 @@ class Migration_Alert_Admin_Page extends Wizard_Admin_Page {
 		delete_network_option(null, 'wu_setup_finished');
 		delete_network_option(null, 'wu_is_migration_done');
 
-		wp_redirect(wu_network_admin_url('wp-ultimo-setup'));
+		wp_safe_redirect(wu_network_admin_url('wp-ultimo-setup'));
 
 		exit;
 	}

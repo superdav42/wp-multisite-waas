@@ -2446,7 +2446,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 
 			<fieldset id="wu-card-name-wrapper" class="wu_card_fieldset">
 				<p id="wu_card_name_wrap">
-					<label for="wu-update-card-name"><?php _e('Name on Card', 'wp-multisite-waas'); ?></label>
+					<label for="wu-update-card-name"><?php esc_html_e('Name on Card', 'wp-multisite-waas'); ?></label>
 					<input type="text" size="20" id="wu-update-card-name" name="wu_card_name" class="wu_card_name card-name" />
 				</p>
 			</fieldset>

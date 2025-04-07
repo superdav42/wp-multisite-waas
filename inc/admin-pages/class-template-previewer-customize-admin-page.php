@@ -233,7 +233,7 @@ class Template_Previewer_Customize_Admin_Page extends Customizer_Admin_Page {
 					'style'                    => 'margin-top: -6px;',
 					'data-wu-app'              => 'site_template_customizer',
 					'data-wu-customizer-panel' => true,
-					'data-state'               => json_encode($state),
+					'data-state'               => wp_json_encode($state),
 				],
 			]
 		);
@@ -308,7 +308,7 @@ class Template_Previewer_Customize_Admin_Page extends Customizer_Admin_Page {
 
 		$url = add_query_arg($array_params);
 
-		wp_redirect($url);
+		wp_safe_redirect($url);
 
 		exit;
 	}

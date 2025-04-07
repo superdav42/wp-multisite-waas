@@ -219,7 +219,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 	public function redirect_to_wizard(): void {
 
 		if ( ! \WP_Ultimo\Requirements::run_setup() && wu_request('page') !== 'wp-ultimo-setup') {
-			wp_redirect(wu_network_admin_url('wp-ultimo-setup'));
+			wp_safe_redirect(wu_network_admin_url('wp-ultimo-setup'));
 
 			exit;
 		}
@@ -713,12 +713,12 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 	public function handle_checks(): void {
 
 		if (\WP_Ultimo\Requirements::met() === false) {
-			wp_redirect(add_query_arg());
+			wp_safe_redirect(add_query_arg());
 
 			exit;
 		}
 
-		wp_redirect($this->get_next_section_link());
+		wp_safe_redirect($this->get_next_section_link());
 
 		exit;
 	}
@@ -747,7 +747,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 		\WP_Ultimo\Settings::get_instance()->save_settings($settings_to_save);
 
-		wp_redirect($this->get_next_section_link());
+		wp_safe_redirect($this->get_next_section_link());
 
 		exit;
 	}
@@ -772,7 +772,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 			$url = add_query_arg('dry-run', 0);
 		}
 
-		wp_redirect($url);
+		wp_safe_redirect($url);
 
 		exit;
 	}
@@ -790,7 +790,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 			$redirect_url = $this->get_next_section_link();
 
-			wp_redirect($redirect_url);
+			wp_safe_redirect($redirect_url);
 
 			exit;
 		}

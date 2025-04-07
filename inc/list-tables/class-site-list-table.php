@@ -60,7 +60,7 @@ class Site_List_Table extends Base_List_Table {
 	 * @param integer $per_page Number of items to display per page.
 	 * @param integer $page_number Current page.
 	 * @param boolean $count If we should count records or return the actual records.
-	 * @return array
+	 * @return array|int
 	 */
 	public function get_items($per_page = 5, $page_number = 1, $count = false) {
 
@@ -96,7 +96,7 @@ class Site_List_Table extends Base_List_Table {
 	/**
 	 * Render the bulk edit checkbox.
 	 *
-	 * @param WP_Ultimo\Models\Site $item Site object.
+	 * @param \WP_Ultimo\Models\Site $item Site object.
 	 */
 	public function column_cb($item): string {
 
@@ -169,7 +169,7 @@ class Site_List_Table extends Base_List_Table {
 						[
 							'id'          => $item->get_membership_id(),
 							'model'       => 'membership_meta_pending_site',
-							'redirect_to' => urlencode(
+							'redirect_to' => rawurlencode(
 								(string) wu_network_admin_url(
 									'wp-ultimo-sites',
 									[
@@ -193,7 +193,7 @@ class Site_List_Table extends Base_List_Table {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_Ultimo\Models\Site $item Site object.
+	 * @param \WP_Ultimo\Models\Site $item Site object.
 	 */
 	public function column_date_registered($item): string {
 
@@ -207,7 +207,7 @@ class Site_List_Table extends Base_List_Table {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_Ultimo\Models\Site $item Site object.
+	 * @param \WP_Ultimo\Models\Site $item Site object.
 	 * @return string
 	 */
 	public function column_blog_id($item) {
@@ -237,7 +237,7 @@ class Site_List_Table extends Base_List_Table {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_Ultimo\Models\Site $item Site object.
+	 * @param \WP_Ultimo\Models\Site $item Site object.
 	 */
 	public function column_domains($item): string {
 
@@ -286,7 +286,7 @@ class Site_List_Table extends Base_List_Table {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_Ultimo\Models\Customer $item The customer being shown.
+	 * @param \WP_Ultimo\Models\Customer $item The customer being shown.
 	 * @return void
 	 */
 	public function single_row_grid($item): void {
@@ -405,8 +405,6 @@ class Site_List_Table extends Base_List_Table {
 
 			$new_site = $site->duplicate();
 
-			$new_name = sprintf(__('Copy of %s', 'wp-multisite-waas'), $new_site->get_title());
-
 			$new_path = sprintf('%s%s', trim((string) $new_site->get_path(), '/'), 'copy');
 
 			$new_site->set_template_id($new_site->get_blog_id());
@@ -435,7 +433,7 @@ class Site_List_Table extends Base_List_Table {
 				]
 			);
 
-			wp_redirect($redirect_url);
+			wp_safe_redirect($redirect_url);
 
 			exit;
 		}

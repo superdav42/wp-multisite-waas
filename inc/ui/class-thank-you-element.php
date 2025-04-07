@@ -419,7 +419,7 @@ class Thank_You_Element extends Base_Element {
 			);
 
 			foreach ($conversion_placeholders as $placeholder => $value) {
-				$conversion_snippets = preg_replace('/\%\%\s?' . $placeholder . '\s?\%\%/', json_encode($value), (string) $conversion_snippets);
+				$conversion_snippets = preg_replace('/\%\%\s?' . $placeholder . '\s?\%\%/', wp_json_encode($value), (string) $conversion_snippets);
 			}
 
 			add_action(

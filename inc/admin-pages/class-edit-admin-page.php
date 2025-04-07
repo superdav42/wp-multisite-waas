@@ -184,7 +184,7 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 			 */
 			$this->get_object()->unlock();
 
-			wp_redirect(
+			wp_safe_redirect(
 				remove_query_arg(
 					[
 						'remove-lock',
@@ -856,7 +856,7 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 
 			$url = add_query_arg($array_params);
 
-			wp_redirect($url);
+			wp_safe_redirect($url);
 
 			return true;
 		}
@@ -885,7 +885,7 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 		$url = str_replace('_', '-', (string) $object->model);
 		$url = wu_network_admin_url("wp-ultimo-{$url}s");
 
-		wp_redirect($url);
+		wp_safe_redirect($url);
 
 		exit;
 	}

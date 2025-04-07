@@ -17,12 +17,12 @@
 
 		<li class="wu-inline-block wu-mx-1">
 		<a href="<?php echo wu_network_admin_url('wp-ultimo-system-info'); ?>" class="wu-text-gray-500 hover:wu-text-gray-600">
-			<?php _e('System Info', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('System Info', 'wp-multisite-waas'); ?>
 		</a>
 		</li>
 		<li class="wu-inline-block wu-mx-1">
 		<a href="<?php echo wu_network_admin_url('wp-ultimo-shortcodes'); ?>" class="wu-text-gray-500 hover:wu-text-gray-600">
-			<?php _e('Available Shortcodes', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Available Shortcodes', 'wp-multisite-waas'); ?>
 		</a>
 		</li>
 
@@ -32,7 +32,7 @@
 
 		<li class="wu-inline-block wu-mx-1">
 		<a href="<?php echo wu_network_admin_url('wp-ultimo-settings'); ?>" class="wu-text-gray-500 hover:wu-text-gray-600">
-			<?php _e('Settings', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Settings', 'wp-multisite-waas'); ?>
 		</a>
 		</li>
 
@@ -42,7 +42,7 @@
 
 		<li class="wu-inline-block wu-mx-1">
 		<a href="<?php echo wu_network_admin_url('wp-ultimo-jobs'); ?>" class="wu-text-gray-500 hover:wu-text-gray-600">
-			<?php _e('Job Queue', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Job Queue', 'wp-multisite-waas'); ?>
 		</a>
 		</li>
 

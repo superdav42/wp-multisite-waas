@@ -17,8 +17,8 @@ foreach ($products as $index => &$_product) {
 		unset($products[ $index ]);
 
 		$_product = $product_variation;
-	} // end if;
-} // end foreach;
+	}
+}
 
 ?>
 <div class="">
@@ -31,7 +31,7 @@ foreach ($products as $index => &$_product) {
 		id="wu-product-<?php echo $product->get_id(); ?>"
 		class="wu-relative wu-block wu-rounded-lg wu-border wu-border-gray-300 wu-bg-white wu-border-solid wu-shadow-sm wu-px-6 wu-py-4 wu-cursor-pointer hover:wu-border-gray-400 sm:wu-flex sm:wu-justify-between focus-within:wu-ring-1 focus-within:wu-ring-offset-2 focus-within:wu-ring-indigo-500">
 
-		<input v-if="<?php echo json_encode($product->get_pricing_type() !== 'contact_us'); ?>" v-on:click="$parent.add_plan(<?php echo $product->get_id(); ?>)" type="checkbox" name="products[]" value="<?php echo $product->get_id(); ?>" class="screen-reader-text wu-hidden">
+		<input v-if="<?php echo wp_json_encode($product->get_pricing_type() !== 'contact_us'); ?>" v-on:click="$parent.add_plan(<?php echo $product->get_id(); ?>)" type="checkbox" name="products[]" value="<?php echo $product->get_id(); ?>" class="screen-reader-text wu-hidden">
 
 		<input v-else v-on:click="$parent.open_url('<?php echo esc_url($product->get_contact_us_link()); ?>', '_blank');" type="checkbox" name="products[]" value="<?php echo $product->get_id(); ?>" class="screen-reader-text wu-hidden">
 

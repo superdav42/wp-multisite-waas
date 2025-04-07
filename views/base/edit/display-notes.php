@@ -51,7 +51,7 @@
 						)
 					);
 					?>
-					<?php echo $user->display_name; ?>
+					<?php echo esc_html($user->display_name); ?>
 
 				</div>
 

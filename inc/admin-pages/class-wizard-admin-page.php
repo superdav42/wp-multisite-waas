@@ -299,7 +299,7 @@ abstract class Wizard_Admin_Page extends Base_Admin_Page {
 	 */
 	public function default_handler(): void {
 
-		wp_redirect($this->get_next_section_link());
+		wp_safe_redirect($this->get_next_section_link());
 
 		exit;
 	}

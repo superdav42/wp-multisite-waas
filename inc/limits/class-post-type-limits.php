@@ -135,7 +135,7 @@ class Post_Type_Limits {
 			$upgrade_message = __('Your plan does not support this post type.', 'wp-multisite-waas');
 
 			// translators: %s is the URL.
-			wp_die($upgrade_message, __('Limit Reached', 'wp-multisite-waas'), ['back_link' => true]);
+			wp_die(esc_html($upgrade_message), esc_html(__('Limit Reached', 'wp-multisite-waas')), ['back_link' => true]);
 		}
 
 		// Check if that is more than our limit
@@ -143,7 +143,7 @@ class Post_Type_Limits {
 			$upgrade_message = __('You reached your plan\'s post limit.', 'wp-multisite-waas');
 
 			// translators: %s is the URL
-			wp_die($upgrade_message, __('Limit Reached', 'wp-multisite-waas'), ['back_link' => true]);
+			wp_die(esc_html($upgrade_message), esc_html__('Limit Reached', 'wp-multisite-waas'), ['back_link' => true]);
 		}
 	}
 

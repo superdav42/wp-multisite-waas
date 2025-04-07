@@ -11,7 +11,6 @@
 
 namespace WP_Ultimo\Managers;
 
-use WP_Ultimo\Managers\Base_Manager;
 use WP_Ultimo\Helpers\Screenshot;
 use WP_Ultimo\Database\Sites\Site_Type;
 use WP_Ultimo\Database\Memberships\Membership_Status;
@@ -230,7 +229,7 @@ class Site_Manager extends Base_Manager {
 				$redirect_url
 			);
 
-			wp_redirect($redirect_url);
+			wp_safe_redirect($redirect_url);
 
 			exit;
 		}
@@ -307,18 +306,17 @@ class Site_Manager extends Base_Manager {
 
 		if (false === $can_access) {
 			if ($redirect_url) {
-				wp_redirect($redirect_url);
+				wp_safe_redirect($redirect_url);
 
 				exit;
 			}
 
 			wp_die(
-				new \WP_Error(
+				new \WP_Error( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					'not-available',
-				// phpcs:ignore
-				sprintf( __('This site is not available at the moment.<br><small>If you are the site admin, click <a href="%s">here</a> to login.</small>', 'wp-multisite-waas'), wp_login_url()),
+					sprintf(__('This site is not available at the moment.<br><small>If you are the site admin, click <a href="%s">here</a> to login.</small>', 'wp-multisite-waas'), wp_login_url()), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					[
-						'title' => __('Site not available', 'wp-multisite-waas'),
+						'title' => esc_html__('Site not available', 'wp-multisite-waas'),
 					]
 				),
 				'',
@@ -405,10 +403,8 @@ class Site_Manager extends Base_Manager {
 	public function additional_thumbnail_sizes(): void {
 
 		if (is_main_site()) {
-			add_image_size('wu-thumb-large', 900, 675, ['center', 'top']); // (cropped)
-
-			add_image_size('wu-thumb-medium', 400, 300, ['center', 'top']); // (cropped)
-
+			add_image_size('wu-thumb-large', 900, 675, ['center', 'top']); // cropped
+			add_image_size('wu-thumb-medium', 400, 300, ['center', 'top']); // cropped
 		}
 	}
 
@@ -431,21 +427,22 @@ class Site_Manager extends Base_Manager {
 	 * @since 2.0.0
 	 * @return void
 	 */
-	public function render_no_index_warning(): void { // phpcs:disable ?>
+	public function render_no_index_warning(): void {
+		?>
 
 		<div class="wu-styling">
 
 			<div class="wu-border-l-4 wu-border-yellow-500 wu-border-solid wu-border-0 wu-px-4 wu-py-2 wu--m-3">
 
-				<p><?php _e('Your WP Multisite WaaS settings are configured to <strong>prevent search engines such as Google from indexing your template sites</strong>.', 'wp-multisite-waas'); ?></p>
+				<p><?php echo wp_kses_post(__('Your WP Multisite WaaS settings are configured to <strong>prevent search engines such as Google from indexing your template sites</strong>.', 'wp-multisite-waas')); ?></p>
 
-				<p><?php printf(__('If you are experiencing negative SEO impacts on other sites in your network, consider disabling this setting <a href="%s">here</a>.', 'wp-multisite-waas'), wu_network_admin_url('wp-ultimo-settings', ['tab' => 'sites'])); ?></p>
+				<p><?php echo wp_kses_post(sprintf(__('If you are experiencing negative SEO impacts on other sites in your network, consider disabling this setting <a href="%s">here</a>.', 'wp-multisite-waas'), wu_network_admin_url('wp-ultimo-settings', ['tab' => 'sites']))); ?></p>
 
 			</div>
 
 		</div>
 
-		<?php // phpcs:enable
+		<?php
 	}
 
 	/**
@@ -467,7 +464,7 @@ class Site_Manager extends Base_Manager {
 				add_filter('wp_robots', 'wp_robots_no_robots'); // WordPress 5.7+
 
 			} else {
-				wp_no_robots();
+				wp_no_robots(); // phpcs:ignore WordPress.WP.DeprecatedFunctions.wp_no_robotsFound
 			}
 		}
 	}
@@ -794,11 +791,10 @@ class Site_Manager extends Base_Manager {
 			 * Site_Type::CUSTOMER_OWNED or without this meta
 			 */
 			$args = [
-				'number'                 => '',
 				'site__in'               => $site_ids,
 				'update_site_meta_cache' => false,
 				'number'                 => 40,
-				'meta_query'             => [
+				'meta_query'             => [ // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 					'relation' => 'OR',
 					[
 						'key'     => 'wu_type',

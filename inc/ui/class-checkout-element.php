@@ -9,7 +9,6 @@
 
 namespace WP_Ultimo\UI;
 
-use WP_Ultimo\UI\Base_Element;
 use ScssPhp\ScssPhp\Compiler;
 use WP_Ultimo\Database\Memberships\Membership_Status;
 
@@ -266,7 +265,7 @@ class Checkout_Element extends Base_Element {
 			}"
 			)->getCss();
 
-			printf('<style>%s</style>', $custom_css);
+			printf('<style>%s</style>', $custom_css); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
 
@@ -316,7 +315,7 @@ class Checkout_Element extends Base_Element {
 		/**
 		 * Allow developers bypass the output and set a new one
 		 *
-		 * @param string|boll $bypass If we should bypass the checkout form or a string to return instead of the form.
+		 * @param string|bool $bypass If we should bypass the checkout form or a string to return instead of the form.
 		 * @param array       $atts   Parameters of the checkout block/shortcode.
 		 */
 		$bypass = apply_filters('wu_bypass_checkout_form', false, $atts);
@@ -354,8 +353,8 @@ class Checkout_Element extends Base_Element {
 				 * Allow developers to change the message if membership have a pending payment
 				 *
 				 * @param string                      $message    The HTML message to print in screen.
-				 * @param WP_Ultimo\Models\Membership $membership The membership in use.
-				 * @param WP_Ultimo\Models\Customer   $customer   The active customer in use.
+				 * @param \WP_Ultimo\Models\Membership $membership The membership in use.
+				 * @param \WP_Ultimo\Models\Customer   $customer   The active customer in use.
 				 */
 				return apply_filters('wu_checkout_pending_payment_error_message', $message, $membership, $customer);
 			}
@@ -373,7 +372,7 @@ class Checkout_Element extends Base_Element {
 					/**
 					 * Enqueue thank you page scripts to handle resend email verification link
 					 */
-					wp_register_script('wu-thank-you', wu_get_asset('thank-you.js', 'js'), [], wu_get_version());
+					wp_register_script('wu-thank-you', wu_get_asset('thank-you.js', 'js'), [], wu_get_version(), true);
 
 					wp_localize_script(
 						'wu-thank-you',
@@ -401,8 +400,8 @@ class Checkout_Element extends Base_Element {
 				 * Allow developers to change the message if membership have a pending payment
 				 *
 				 * @param string                      $message    The HTML message to print in screen.
-				 * @param WP_Ultimo\Models\Membership $membership The membership in use.
-				 * @param WP_Ultimo\Models\Customer   $customer   The active customer in use.
+				 * @param \WP_Ultimo\Models\Membership $membership The membership in use.
+				 * @param \WP_Ultimo\Models\Customer   $customer   The active customer in use.
 				 */
 				return apply_filters('wu_checkout_membership_status_error_message', $message, $membership, $customer);
 			}
@@ -436,7 +435,7 @@ class Checkout_Element extends Base_Element {
 					 * Allow developers to change the message about the limitation of a single membership for customer.
 					 *
 					 * @param string                      $message    The HTML message to print in screen.
-					 * @param WP_Ultimo\Models\Customer   $customer   The active customer in use.
+					 * @param \WP_Ultimo\Models\Customer   $customer   The active customer in use.
 					 */
 					return apply_filters('wu_checkout_single_membership_message', $message, $customer);
 				}
@@ -449,8 +448,8 @@ class Checkout_Element extends Base_Element {
 				 * Allow developers to change the message if customer is not part of the membership
 				 *
 				 * @param string                      $message    The HTML message to print in screen.
-				 * @param WP_Ultimo\Models\Membership $membership The membership in use.
-				 * @param WP_Ultimo\Models\Customer   $customer   The active customer in use.
+				 * @param \WP_Ultimo\Models\Membership $membership The membership in use.
+				 * @param \WP_Ultimo\Models\Customer   $customer   The active customer in use.
 				 */
 				return apply_filters('wu_checkout_customer_error_message', $message, $membership, $customer);
 			}
@@ -529,8 +528,8 @@ class Checkout_Element extends Base_Element {
 						 * @param string                      $limitation The limitation name.
 						 * @param int                         $limit_max  The allowed limit.
 						 * @param int                         $used_limit The limit used in membership.
-						 * @param WP_Ultimo\Models\Membership $membership The membership in use.
-						 * @param WP_Ultimo\Models\Customer   $customer   The active customer in use.
+						 * @param \WP_Ultimo\Models\Membership $membership The membership in use.
+						 * @param \WP_Ultimo\Models\Customer   $customer   The active customer in use.
 						 */
 						return apply_filters('wu_checkout_membership_limit_message', $message, $limitation, $limit_max, $used_limit, $membership, $customer);
 					}
@@ -683,7 +682,7 @@ class Checkout_Element extends Base_Element {
 				window.wu_auto_submittable_field = %s;
 
 			',
-					json_encode($auto_submittable_field)
+					wp_json_encode($auto_submittable_field)
 				),
 				'after'
 			);

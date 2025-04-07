@@ -84,7 +84,6 @@ class Whitelabel {
 			add_action('wp_user_dashboard_setup', [$this, 'remove_dashboard_widgets'], 11);
 
 			add_action('wp_dashboard_setup', [$this, 'remove_dashboard_widgets'], 11);
-
 		}
 
 		if (wu_get_setting('hide_sites_menu', true)) {
@@ -338,16 +337,11 @@ class Whitelabel {
 
 		global $menu;
 
-		$index = '';
-
 		foreach ($menu as $i => $menu_item) {
 			if ('sites.php' === $menu_item[2]) {
-				$index = $i;
-
-				continue;
+				unset($menu[ $i ]);
+				break;
 			}
 		}
-
-		unset($menu[ $index ]);
 	}
 }

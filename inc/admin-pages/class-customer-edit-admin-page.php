@@ -765,7 +765,7 @@ class Customer_Edit_Admin_Page extends Edit_Admin_Page {
 			[
 				'html_attr' => [
 					'data-wu-app' => 'customer_save',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'original_user_id'            => $this->get_object()->get_user_id(),
 							'user_id'                     => $this->get_object()->get_user_id(),
@@ -797,7 +797,7 @@ class Customer_Edit_Admin_Page extends Edit_Admin_Page {
 							'data-label-field'  => 'display_name',
 							'data-search-field' => 'display_name',
 							'data-max-items'    => 1,
-							'data-selected'     => json_encode($this->get_object()->get_user()->data),
+							'data-selected'     => wp_json_encode($this->get_object()->get_user()->data),
 						],
 						'wrapper_html_attr' => [
 							'v-cloak' => '1',
@@ -1082,7 +1082,7 @@ class Customer_Edit_Admin_Page extends Edit_Admin_Page {
 		$item = wu_get_customer($item_id);
 
 		if ( ! $item || $item->get_type() !== 'customer') {
-			wp_redirect(wu_network_admin_url('wp-ultimo-customers'));
+			wp_safe_redirect(wu_network_admin_url('wp-ultimo-customers'));
 
 			exit;
 		}
@@ -1123,7 +1123,7 @@ class Customer_Edit_Admin_Page extends Edit_Admin_Page {
 				]
 			);
 
-			wp_redirect($redirect_url);
+			wp_safe_redirect($redirect_url);
 
 			exit;
 		}

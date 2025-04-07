@@ -21,7 +21,7 @@ if ( ! defined('ABSPATH')) {
 
 ?>
 
-<div class="wu-setup-content wu-content-<?php echo $signup->step; ?>">
+<div class="wu-setup-content wu-content-<?php echo esc_attr($signup->step); ?>">
 
 	<!-- <p class="message" style="width: 320px; margin-left: auto; margin-right: auto; box-sizing: border-box;">
 	Please enter your username or email address. You will receive a link to create a new password via email.
@@ -37,7 +37,7 @@ if ( ! defined('ABSPATH')) {
 		 * Prints each of our fields using a helper function
 		 */
 		wu_print_signup_field($field_slug, $field, $results);
-	} // end foreach;
+	}
 
 	?>
 

@@ -11,7 +11,6 @@
 
 namespace WP_Ultimo\Managers;
 
-use WP_Ultimo\Managers\Base_Manager;
 use WP_Ultimo\Models\Base_Model;
 use WP_Ultimo\Models\Event;
 
@@ -93,10 +92,11 @@ class Event_Manager extends Base_Manager {
 	 * @param string     $model The model name.
 	 * @param array      $data The data being saved, serialized.
 	 * @param array      $data_unserialized The data being saved, un-serialized.
-	 * @param Base_Model $object The object being saved.
+	 * @param Base_Model $obj The object being saved.
+	 *
 	 * @return void
 	 */
-	public function log_transitions($model, $data, $data_unserialized, $object) {
+	public function log_transitions($model, $data, $data_unserialized, $obj) {
 
 		if ('event' === $model) {
 			return;
@@ -106,7 +106,7 @@ class Event_Manager extends Base_Manager {
 		 * Editing Model
 		 */
 		if (wu_get_isset($data_unserialized, 'id')) {
-			$original = $object->_get_original();
+			$original = $obj->_get_original();
 
 			$diff = wu_array_recursive_diff($data_unserialized, $original);
 
@@ -147,7 +147,7 @@ class Event_Manager extends Base_Manager {
 					return;
 				}
 
-				if (empty(json_encode($old_value)) && empty(json_encode($new_value))) {
+				if (empty(wp_json_encode($old_value)) && empty(wp_json_encode($new_value))) {
 					return;
 				}
 
@@ -161,7 +161,7 @@ class Event_Manager extends Base_Manager {
 				'severity'    => Event::SEVERITY_INFO,
 				'slug'        => 'changed',
 				'object_type' => $model,
-				'object_id'   => $object->get_id(),
+				'object_id'   => $obj->get_id(),
 				'payload'     => $changed,
 			];
 		} else {
@@ -169,7 +169,7 @@ class Event_Manager extends Base_Manager {
 				'severity'    => Event::SEVERITY_INFO,
 				'slug'        => 'created',
 				'object_type' => $model,
-				'object_id'   => $object->get_id(),
+				'object_id'   => $obj->get_id(),
 				'payload'     => [],
 			];
 		}
@@ -179,7 +179,7 @@ class Event_Manager extends Base_Manager {
 			$event_data['author_id'] = get_current_user_id();
 		}
 
-		return wu_create_event($event_data);
+		wu_create_event($event_data);
 	}
 
 	/**
@@ -230,7 +230,6 @@ class Event_Manager extends Base_Manager {
 			'title'      => '$title',
 			'desc'       => '$desc',
 			'class_name' => '$class_name',
-			'active'     => 'in_array($id, $active_gateways, true)',
 			'active'     => 'in_array($id, $active_gateways, true)',
 			'gateway'    => '$class_name', // Deprecated.
 			'hidden'     => false,
@@ -313,7 +312,7 @@ class Event_Manager extends Base_Manager {
 	 * @since 2.0.0
 	 *
 	 * @param string $slug of the event.
-	 * @return array $event with event params.
+	 * @return array|false $event with event params.
 	 */
 	public function get_event($slug) {
 
@@ -563,13 +562,13 @@ class Event_Manager extends Base_Manager {
 		if (method_exists($obj, 'get_billing_address') || method_exists($obj, 'get_membership')) {
 			if (null !== $model_object) {
 				$payload = method_exists($obj, 'get_billing_address')
-				? array_merge(
-					$payload,
-					$obj->get_billing_address()->to_array()
-				) : array_merge(
-					$payload,
-					$obj->get_membership()->get_billing_address()->to_array()
-				);
+					? array_merge(
+						$payload,
+						$obj->get_billing_address()->to_array()
+					) : array_merge(
+						$payload,
+						$obj->get_membership()->get_billing_address()->to_array()
+					);
 			} else {
 				$payload = array_merge(
 					$payload,
@@ -621,6 +620,7 @@ class Event_Manager extends Base_Manager {
 			}
 		}
 
+		// Translators:  1: Number of successfully removed events.  2: Number of failed events to remove.
 		wu_log_add('wu-cron', sprintf(__('Removed %1$d events successfully. Failed to remove %2$d events.', 'wp-multisite-waas'), $success_count, count($events_to_remove) - $success_count));
 
 		return true;
@@ -657,7 +657,7 @@ class Event_Manager extends Base_Manager {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_REST_Request $request The request sent.
+	 * @param \WP_REST_Request $request The request sent.
 	 * @return mixed
 	 */
 	public function get_hooks_rest($request) {

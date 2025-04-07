@@ -216,7 +216,7 @@ class Signup_Field_Products extends Base_Signup_Field {
 		});";
 
 		if (did_action('wu-checkout')) {
-			wp_add_inline_script('wu-checkout', sprintf($script, json_encode($products)), 'before');
+			wp_add_inline_script('wu-checkout', sprintf($script, wp_json_encode($products)), 'before');
 
 			return;
 		}
@@ -225,7 +225,7 @@ class Signup_Field_Products extends Base_Signup_Field {
 			'wp_enqueue_scripts',
 			function () use ($script, $products) {
 
-				wp_add_inline_script('wu-checkout', sprintf($script, json_encode($products)), 'before');
+				wp_add_inline_script('wu-checkout', sprintf($script, wp_json_encode($products)), 'before');
 			},
 			11
 		);

@@ -44,9 +44,9 @@ class Memberships_Site_List_Table extends Customers_Site_List_Table {
 	 */
 	public function column_responsive($item): void {
 
-		$redirect = current_user_can('wu_edit_sites') ? 'wp-ultimo-edit-site' : 'wp-ultimo-sites';
+		$redirect = current_user_can('edit_others_posts') ? 'wp-ultimo-edit-site' : 'wp-ultimo-sites';
 
-		echo wu_responsive_table_row(
+		echo wu_responsive_table_row( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			[
 				'id'     => $item->get_id(),
 				'title'  => $item->get_title(),

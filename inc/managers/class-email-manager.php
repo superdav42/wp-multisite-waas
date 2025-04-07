@@ -383,6 +383,9 @@ class Email_Manager extends Base_Manager {
 	 * @return void
 	 */
 	public function register_all_default_system_emails(): void {
+
+		// TODO: Don't render every email until they are used.
+
 		/*
 		 * Payment Successful - Admin
 		 */

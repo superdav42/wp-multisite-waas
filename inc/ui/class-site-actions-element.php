@@ -9,7 +9,6 @@
 
 namespace WP_Ultimo\UI;
 
-use WP_Ultimo\UI\Base_Element;
 use WP_Ultimo\Database\Memberships\Membership_Status;
 use WP_Ultimo\Models\Site;
 use WP_Ultimo\Models\Membership;
@@ -594,23 +593,21 @@ class Site_Actions_Element extends Base_Element {
 			return new \WP_Error('error', __('You are not allowed to do this.', 'wp-multisite-waas'));
 		}
 
-		$wpdb->query('START TRANSACTION');
+		$wpdb->query('START TRANSACTION'); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
 		try {
 			$saved = $site->delete();
 
 			if (is_wp_error($saved)) {
-				$wpdb->query('ROLLBACK');
-
 				return $saved;
 			}
 		} catch (\Throwable $e) {
-			$wpdb->query('ROLLBACK');
+			$wpdb->query('ROLLBACK'); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
 			return new \WP_Error('exception', $e->getMessage());
 		}
 
-		$wpdb->query('COMMIT');
+		$wpdb->query('COMMIT'); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
 		$redirect_url = wu_request('redirect_url');
 
@@ -659,9 +656,7 @@ class Site_Actions_Element extends Base_Element {
 				'value'           => 'save',
 				'classes'         => 'button button-primary wu-w-full',
 				'wrapper_classes' => 'wu-items-end',
-				'html_attr'       => [
-					// 'v-bind:disabled' => '!confirmed',
-				],
+				'html_attr'       => [],
 			],
 		];
 
@@ -726,11 +721,11 @@ class Site_Actions_Element extends Base_Element {
 		// Log-in again.
 		wp_set_auth_cookie($user->ID);
 		wp_set_current_user($user->ID);
-		do_action('wp_login', $user->user_login, $user); // PHPCS:ignore
+		do_action('wp_login', $user->user_login, $user); // PHPCS:ignore WordPress.NamingConventions
 
 		wp_send_json_success(
 			[
-				'redirect_url' => add_query_arg('updated', 1, $_SERVER['HTTP_REFERER']),
+				'redirect_url' => add_query_arg('updated', 1, $_SERVER['HTTP_REFERER']), // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			]
 		);
 	}
@@ -812,7 +807,7 @@ class Site_Actions_Element extends Base_Element {
 
 			wp_send_json_success(
 				[
-					'redirect_url' => add_query_arg('updated', 1, $_SERVER['HTTP_REFERER']),
+					'redirect_url' => add_query_arg('updated', 1, $_SERVER['HTTP_REFERER']), // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 				]
 			);
 		}

@@ -163,32 +163,32 @@ class Top_Admin_Nav_Menu {
 
 		if (current_user_can('wu_read_sites')) {
 			$wp_admin_bar->add_node($sites);
-		} //end if;
+		} 
 
 		if (current_user_can('wu_read_memberships')) {
 			$wp_admin_bar->add_node($memberships);
-		} //end if;
+		} 
 
 		if (current_user_can('wu_read_customers')) {
 			$wp_admin_bar->add_node($customers);
-		} //end if;
+		} 
 
 		if (current_user_can('wu_read_products')) {
 			$wp_admin_bar->add_node($products);
-		} //end if;
+		} 
 
 		if (current_user_can('wu_read_payments')) {
 			$wp_admin_bar->add_node($payments);
-		} //end if;
+		} 
 
 		if (current_user_can('wu_read_discount_codes')) {
 			$wp_admin_bar->add_node($discount_codes);
-		} //end if;
+		} 
 
 		if (current_user_can('wu_read_settings')) {
 			$wp_admin_bar->add_node($container);
 			$wp_admin_bar->add_node($settings);
-		} //end if;
+		} 
 
 		/*
 		 * Add the sub-menus.

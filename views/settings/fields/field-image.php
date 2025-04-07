@@ -47,7 +47,7 @@ wp_enqueue_script('wu-field-button-upload', WP_Ultimo()->get_asset("wu-field-ima
 	</a>
 
 	<a data-default="<?php echo $field['default']; ?>" href="#" class="button wu-field-button-upload-remove" data-target="<?php echo $field_slug; ?>">
-	<?php _e('Remove Image', 'wp-multisite-waas'); ?>
+	<?php esc_html_e('Remove Image', 'wp-multisite-waas'); ?>
 	</a>
 
 	<?php if ( ! empty($field['desc'])) : ?>

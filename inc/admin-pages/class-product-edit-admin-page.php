@@ -162,7 +162,7 @@ class Product_Edit_Admin_Page extends Edit_Admin_Page {
 					'data-label-field'  => 'name',
 					'data-search-field' => 'name',
 					'data-max-items'    => 1,
-					'data-exclude'      => json_encode([$product->get_id()]),
+					'data-exclude'      => wp_json_encode([$product->get_id()]),
 				],
 			],
 		];
@@ -270,7 +270,7 @@ class Product_Edit_Admin_Page extends Edit_Admin_Page {
 			[
 				'html_attr' => [
 					'data-wu-app' => 'product_pricing',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'is_recurring'  => $this->get_object()->is_recurring(),
 							'pricing_type'  => $this->get_object()->get_pricing_type(),
@@ -705,7 +705,7 @@ class Product_Edit_Admin_Page extends Edit_Admin_Page {
 						'data-label-field'  => 'name',
 						'data-search-field' => 'name',
 						'data-max-items'    => 99,
-						'data-selected'     => json_encode(
+						'data-selected'     => wp_json_encode(
 							wu_get_products(
 								[
 									'id__in'     => $this->get_object()->get_available_addons(),
@@ -750,7 +750,7 @@ class Product_Edit_Admin_Page extends Edit_Admin_Page {
 					'fields'            => [
 						'price_variations_remove'        => [
 							'type'            => 'note',
-							'desc'            => sprintf('<a title="%s" class="wu-no-underline wu-inline-block wu-text-gray-600 wu-mt-2 wu-mr-2" href="#" @click.prevent="() => price_variations.splice(index, 1)"><span class="dashicons-wu-squared-cross"></span></a>', __('Remove', 'wp-multisite-waas')),
+							'desc'            => sprintf('<a title="%s" class="wu-no-underline wu-inline-block wu-text-gray-600 wu-mt-2 wu-mr-2" href="#" @click.prevent="() => price_variations.splice(index, 1)"><span class="dashicons-wu-squared-cross"></span></a>', esc_html__('Remove', 'wp-multisite-waas')),
 							'wrapper_classes' => 'wu-absolute wu-top-0 wu-right-0',
 						],
 						'price_variations_duration'      => [
@@ -1036,7 +1036,7 @@ class Product_Edit_Admin_Page extends Edit_Admin_Page {
 			$item = $query->get_item_by('id', $_GET['id']);
 
 			if ( ! $item) {
-				wp_redirect(wu_network_admin_url('wp-ultimo-products'));
+				wp_safe_redirect(wu_network_admin_url('wp-ultimo-products'));
 
 				exit;
 			}

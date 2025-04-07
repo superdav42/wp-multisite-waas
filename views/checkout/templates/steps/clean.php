@@ -43,7 +43,7 @@ if ( ! defined('ABSPATH')) {
 		} elseif (array_search($current_step, array_column($steps, 'id')) > array_search($step_key, array_column($steps, 'id'))) {
 			$container_class = 'wu-opacity-50';
 			$color           = 'blue';
-		} // end if;
+		}
 
 		?>
 

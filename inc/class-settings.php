@@ -178,7 +178,7 @@ class Settings {
 		$settings = $this->get_all();
 
 		if (str_contains($setting, '-')) {
-			_doing_it_wrong($setting, __('Dashes are no longer supported when registering a setting. You should change it to underscores in later versions.', 'wp-multisite-waas'), '2.0.0');
+			_doing_it_wrong($setting, esc_html__('Dashes are no longer supported when registering a setting. You should change it to underscores in later versions.', 'wp-multisite-waas'), '2.0.0');
 		}
 
 		$setting_value = $settings[ $setting ] ?? $default_value;
@@ -388,6 +388,7 @@ class Settings {
 	 * @param string $section_slug Section to which this field will be added to.
 	 * @param string $field_slug ID of the field. This is used to later retrieve the value saved on this setting.
 	 * @param array  $atts Field attributes such as title, description, tooltip, default value, etc.
+	 * @param int    $priority Priority of the field. This is used to order the fields.
 	 * @return void
 	 */
 	public function add_field($section_slug, $field_slug, $atts, $priority = 10): void {
@@ -401,7 +402,7 @@ class Settings {
 				* We no longer support settings with hyphens.
 				*/
 				if (str_contains($field_slug, '-')) {
-					_doing_it_wrong($field_slug, __('Dashes are no longer supported when registering a setting. You should change it to underscores in later versions.', 'wp-multisite-waas'), '2.0.0');
+					_doing_it_wrong($field_slug, esc_html__('Dashes are no longer supported when registering a setting. You should change it to underscores in later versions.', 'wp-multisite-waas'), '2.0.0');
 				}
 
 				$default_order = (count($fields) + 1) * 10;
@@ -466,7 +467,7 @@ class Settings {
 								$new_attrs['data-selected'] = $data_selected->to_search_results();
 							}
 
-							$new_attrs['data-selected'] = json_encode($new_attrs['data-selected']);
+							$new_attrs['data-selected'] = wp_json_encode($new_attrs['data-selected']);
 
 							return array_merge($original_html_attr, $new_attrs);
 						};
@@ -479,7 +480,7 @@ class Settings {
 					foreach ($atts['require'] as $attr => $value) {
 						$attr = str_replace('-', '_', $attr);
 
-						$value = json_encode($value);
+						$value = wp_json_encode($value);
 
 						$require_rules[] = "require('{$attr}', {$value})";
 					}
@@ -496,6 +497,7 @@ class Settings {
 		);
 
 		$settings = $this->get_all();
+
 		/*
 		 * Makes sure we install the default value if it is not set yet.
 		 */
@@ -633,7 +635,6 @@ class Settings {
 			[
 				'title'   => __('Currency Position', 'wp-multisite-waas'),
 				'desc'    => __('This setting affects all prices displayed across the plugin elements.', 'wp-multisite-waas'),
-				'desc'    => '',
 				'type'    => 'select',
 				'default' => '%s %v',
 				'options' => [

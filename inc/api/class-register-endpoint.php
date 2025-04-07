@@ -93,7 +93,7 @@ class Register_Endpoint {
 	 * @since 2.0.0
 	 *
 	 * @param \WP_REST_Request $request WP Request Object.
-	 * @return array
+	 * @return array|\WP_Error
 	 */
 	public function handle_endpoint($request) {
 
@@ -102,7 +102,7 @@ class Register_Endpoint {
 		$params = json_decode($request->get_body(), true);
 
 		if (\WP_Ultimo\API::get_instance()->should_log_api_calls()) {
-			wu_log_add('api-calls', json_encode($params, JSON_PRETTY_PRINT));
+			wu_log_add('api-calls', wp_json_encode($params, JSON_PRETTY_PRINT));
 		}
 
 		$validation_errors = $this->validate($params);

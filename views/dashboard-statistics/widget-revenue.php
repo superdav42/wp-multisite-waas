@@ -20,7 +20,7 @@
 		</div>
 
 		<div class="wu-text-md wu-text-gray-600">
-		<span class="wu-block"><?php _e('MRR', 'wp-multisite-waas'); ?></span>
+		<span class="wu-block"><?php esc_html_e('MRR', 'wp-multisite-waas'); ?></span>
 		</div>
 
 	</li>
@@ -36,7 +36,7 @@
 		</div>
 
 		<div class="wu-text-md wu-text-gray-600">
-		<span class="wu-block"><?php _e('Gross Revenue', 'wp-multisite-waas'); ?></span>
+		<span class="wu-block"><?php esc_html_e('Gross Revenue', 'wp-multisite-waas'); ?></span>
 		</div>
 
 	</li>
@@ -52,7 +52,7 @@
 		</div>
 
 		<div class="wu-text-md wu-text-gray-600">
-		<span class="wu-block"><?php _e('Refunded', 'wp-multisite-waas'); ?></span>
+		<span class="wu-block"><?php esc_html_e('Refunded', 'wp-multisite-waas'); ?></span>
 		</div>
 
 	</li>
@@ -65,8 +65,8 @@
 
 		<thead>
 			<tr>
-			<th><?php _e('Product', 'wp-multisite-waas'); ?></th>
-			<th class="wu-text-right"><?php _e('Revenue', 'wp-multisite-waas'); ?></th>
+			<th><?php esc_html_e('Product', 'wp-multisite-waas'); ?></th>
+			<th class="wu-text-right"><?php esc_html_e('Revenue', 'wp-multisite-waas'); ?></th>
 			</tr>
 		</thead>
 
@@ -91,7 +91,7 @@
 
 			<tr>
 				<td colspan="2">
-				<?php _e('No Products found.', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('No Products found.', 'wp-multisite-waas'); ?>
 				</td>
 			</tr>
 

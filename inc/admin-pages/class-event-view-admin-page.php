@@ -178,7 +178,7 @@ class Event_View_Admin_Page extends Edit_Admin_Page {
 			[
 				'title'        => __('Event Payload', 'wp-multisite-waas'),
 				'loading_text' => __('Loading Payload', 'wp-multisite-waas'),
-				'payload'      => json_encode($object->get_payload(), JSON_PRETTY_PRINT),
+				'payload'      => wp_json_encode($object->get_payload(), JSON_PRETTY_PRINT),
 			]
 		);
 	}
@@ -272,7 +272,7 @@ class Event_View_Admin_Page extends Edit_Admin_Page {
 			}
 		}
 
-		wp_redirect(wu_network_admin_url('wp-ultimo-events'));
+		wp_safe_redirect(wu_network_admin_url('wp-ultimo-events'));
 
 		exit;
 	}

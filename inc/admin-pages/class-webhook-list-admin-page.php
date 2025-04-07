@@ -157,7 +157,7 @@ class Webhook_List_Admin_Page extends List_Admin_Page {
 				'field_wrapper_classes' => 'wu-w-full wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid',
 				'html_attr'             => [
 					'data-wu-app' => 'edit_line_item',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'event' => '',
 						]

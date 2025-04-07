@@ -42,7 +42,7 @@
 					<path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
 					</svg>
 					<a href="<?php echo esc_url($my_sites_url); ?>" class="wu-mx-4 wu-text-sm wu-font-medium wu-text-gray-500 hover:wu-text-gray-700 wu-no-underline">
-						<?php _e('Your Sites', 'wp-multisite-waas'); ?>
+						<?php esc_html_e('Your Sites', 'wp-multisite-waas'); ?>
 					</a>
 				</div>
 				</li>

@@ -96,12 +96,12 @@ class API {
 			return $result;
 		}
 
-		$current_route = $_SERVER['REQUEST_URI'];
+		$current_route = sanitize_text_field(wp_unslash($_SERVER['REQUEST_URI'] ?? ''));
 
 		$rest_url  = rest_url();
-		$rest_path = rtrim(parse_url($rest_url, PHP_URL_PATH), '/');
+		$rest_path = rtrim(wp_parse_url($rest_url, PHP_URL_PATH), '/');
 
-		if (! str_starts_with((string) $current_route, $rest_path . '/' . $this->get_namespace())) {
+		if (! str_starts_with($current_route, $rest_path . '/' . $this->get_namespace())) {
 			return $result;
 		}
 
@@ -324,7 +324,7 @@ class API {
 	 */
 	public function validate_credentials($api_key, $api_secret) {
 
-		return compact('api_key', 'api_secret') === $this->get_auth(); // phpcs:ignore
+		return [$api_key, $api_secret] === $this->get_auth();
 	}
 
 	/**
@@ -355,7 +355,7 @@ class API {
 				'body_params' => $request->get_body(),
 			];
 
-			wu_log_add('api-calls', json_encode($payload, JSON_PRETTY_PRINT));
+			wu_log_add('api-calls', wp_json_encode($payload, JSON_PRETTY_PRINT));
 		}
 	}
 
@@ -383,7 +383,7 @@ class API {
 					'body_params' => $request->get_body(),
 				];
 
-				wu_log_add('api-errors', json_encode($payload, JSON_PRETTY_PRINT));
+				wu_log_add('api-errors', wp_json_encode($payload, JSON_PRETTY_PRINT));
 			}
 
 			wu_log_add('api-errors', $result);
@@ -401,9 +401,9 @@ class API {
 	 */
 	public function check_authorization($request) {
 
-		if (isset($_SERVER['PHP_AUTH_USER']) && $_SERVER['PHP_AUTH_USER']) {
-			$api_key    = $_SERVER['PHP_AUTH_USER'];
-			$api_secret = $_SERVER['PHP_AUTH_PW'];
+		if (! empty($_SERVER['PHP_AUTH_USER']) && ! empty($_SERVER['PHP_AUTH_PW'])) {
+			$api_key    = sanitize_text_field(wp_unslash($_SERVER['PHP_AUTH_USER']));
+			$api_secret = sanitize_text_field(wp_unslash($_SERVER['PHP_AUTH_PW']));
 		} else {
 			$params = $request->get_params();
 

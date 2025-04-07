@@ -102,7 +102,7 @@ if (typeof jQuery !== 'undefined') {
 		});
 	});
 	})(jQuery);
-} // end if;
+}
 </script>
 
 <style>

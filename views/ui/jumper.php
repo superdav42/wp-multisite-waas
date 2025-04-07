@@ -24,7 +24,7 @@
 
 			<option value="<?php echo network_admin_url('?wu-rebuild-jumper=1'); ?>">
 
-			<?php _e('Click to rebuild menu list', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Click to rebuild menu list', 'wp-multisite-waas'); ?>
 
 			</option>
 
@@ -91,13 +91,13 @@
 
 	<div class="wu-jumper-redirecting wu-bg-gray-200">
 
-	<?php _e('Redirecting you to the target page...', 'wp-multisite-waas'); ?>
+	<?php esc_html_e('Redirecting you to the target page...', 'wp-multisite-waas'); ?>
 
 	</div>
 
 	<div class="wu-jumper-loading wu-bg-gray-200">
 
-	<?php _e('Searching Results...', 'wp-multisite-waas'); ?>
+	<?php esc_html_e('Searching Results...', 'wp-multisite-waas'); ?>
 
 	</div>
 

@@ -91,7 +91,7 @@ class Screenshot {
 		$upload = wp_upload_bits('screenshot-' . gmdate('Y-m-d-H-i-s') . '.png', null, $response['body']);
 
 		if ( ! empty($upload['error'])) {
-			wu_log_add('screenshot-generator', $log_prefix . json_encode($upload['error']), LogLevel::ERROR);
+			wu_log_add('screenshot-generator', $log_prefix . wp_json_encode($upload['error']), LogLevel::ERROR);
 
 			return false;
 		}

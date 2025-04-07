@@ -454,7 +454,7 @@ class Broadcast_Edit_Admin_Page extends Edit_Admin_Page {
 			$item = $query->get_item_by('id', $_GET['id']);
 
 			if ( ! $item) {
-				wp_redirect(wu_network_admin_url('wp-ultimo-broadcasts'));
+				wp_safe_redirect(wu_network_admin_url('wp-ultimo-broadcasts'));
 
 				exit;
 			}

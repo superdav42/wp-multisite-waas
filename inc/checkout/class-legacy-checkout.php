@@ -1018,7 +1018,7 @@ class Legacy_Checkout {
 	public function next_step($args = []): void {
 
 		/** Redirect the user to the next step */
-		wp_redirect(esc_url_raw($this->get_next_step_link($args)));
+		wp_safe_redirect(esc_url_raw($this->get_next_step_link($args)));
 
 		/** Kill the execution after the redirect */
 		exit;

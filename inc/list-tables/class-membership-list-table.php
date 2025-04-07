@@ -55,10 +55,7 @@ class Membership_List_Table extends Base_List_Table {
 	 */
 	public function get_extra_query_fields() {
 
-		$_filter_fields = parent::get_extra_query_fields();
-
-		$search = isset($_GET['s']) ? sanitize_text_field($_GET['s']) : false;
-
+		$_filter_fields                = parent::get_extra_query_fields();
 		$_filter_fields['customer_id'] = wu_request('customer_id');
 
 		return $_filter_fields;
@@ -177,7 +174,6 @@ class Membership_List_Table extends Base_List_Table {
 			'customer'        => __('Customer', 'wp-multisite-waas'),
 			'product'         => __('Product', 'wp-multisite-waas'),
 			'amount'          => __('Price', 'wp-multisite-waas'),
-			// 'sites'              => __('Sites', 'wp-multisite-waas'),
 			'date_created'    => __('Created at', 'wp-multisite-waas'),
 			'date_expiration' => __('Expiration', 'wp-multisite-waas'),
 			'id'              => __('ID', 'wp-multisite-waas'),

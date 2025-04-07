@@ -11,8 +11,6 @@
 
 namespace WP_Ultimo\Managers;
 
-use WP_Ultimo\Managers\Base_Manager;
-
 // Exit if accessed directly
 defined('ABSPATH') || exit;
 
@@ -110,11 +108,11 @@ class Notes_Manager extends Base_Manager {
 	 * @since 2.0.0
 	 *
 	 * @param array  $sections Array sections.
-	 * @param object $object   The object.
+	 * @param object $obj   The object.
 	 *
 	 * @return array
 	 */
-	public function add_notes_options_section($sections, $object) {
+	public function add_notes_options_section($sections, $obj) {
 
 		if ( ! current_user_can('read_notes') && ! current_user_can('edit_notes')) {
 			return $sections;
@@ -131,8 +129,8 @@ class Notes_Manager extends Base_Manager {
 			'content'           => wu_get_template_contents(
 				'base/edit/display-notes',
 				[
-					'notes' => $object->get_notes(),
-					'model' => $object->model,
+					'notes' => $obj->get_notes(),
+					'model' => $obj->model,
 				]
 			),
 		];
@@ -149,8 +147,8 @@ class Notes_Manager extends Base_Manager {
 					'href'  => wu_get_form_url(
 						'clear_notes',
 						[
-							'object_id' => $object->get_id(),
-							'model'     => $object->model,
+							'object_id' => $obj->get_id(),
+							'model'     => $obj->model,
 						]
 					),
 					'title' => __('Clear Notes', 'wp-multisite-waas'),
@@ -168,8 +166,8 @@ class Notes_Manager extends Base_Manager {
 					'href'  => wu_get_form_url(
 						'add_note',
 						[
-							'object_id' => $object->get_id(),
-							'model'     => $object->model,
+							'object_id' => $obj->get_id(),
+							'model'     => $obj->model,
 							'height'    => 306,
 						]
 					),

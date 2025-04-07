@@ -66,7 +66,7 @@ class Customer_List_Table extends Base_List_Table {
 
 		$_filter_fields = parent::get_extra_query_fields();
 
-		$search = isset($_GET['s']) ? sanitize_text_field($_GET['s']) : false;
+		$search = isset($_GET['s']) ? sanitize_text_field(wp_unslash($_GET['s'])) : false;
 
 		if ( ! empty($search)) {
 

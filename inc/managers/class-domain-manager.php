@@ -12,7 +12,6 @@
 
 namespace WP_Ultimo\Managers;
 
-use WP_Ultimo\Managers\Base_Manager;
 use WP_Ultimo\Domain_Mapping\Helper;
 
 // Exit if accessed directly
@@ -72,7 +71,7 @@ class Domain_Manager extends Base_Manager {
 	 * @since 2.0.0
 	 *
 	 * @param string $id The id of the integration. e.g. runcloud.
-	 * @return WP_Ultimo\Integrations\Host_Providers\Base_Host_Provider
+	 * @return \WP_Ultimo\Integrations\Host_Providers\Base_Host_Provider|false
 	 */
 	public function get_integration_instance($id) {
 
@@ -750,6 +749,7 @@ class Domain_Manager extends Base_Manager {
 			wp_send_json_error(
 				[
 					'message' => sprintf(
+						// translators: %s is the name of the missing constant
 						__('The necessary constants were not found on your wp-config.php file: %s', 'wp-multisite-waas'),
 						implode(', ', $integration->get_missing_constants())
 					),
@@ -757,7 +757,7 @@ class Domain_Manager extends Base_Manager {
 			);
 		}
 
-		return $integration->test_connection();
+		$integration->test_connection();
 	}
 
 	/**

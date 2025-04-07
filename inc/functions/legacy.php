@@ -149,7 +149,7 @@ function wu_print_signup_field($field_slug, $field, $results) {
 
     <script type="text/javascript">
 			document.addEventListener('DOMContentLoaded', function() {
-				var requires = <?php echo json_encode($field['requires']); ?>,
+				var requires = <?php echo wp_json_encode($field['requires']); ?>,
 						target_field = document.getElementById('<?php echo $field_slug; ?>-field');
 
         var display_field = function(target_field, requires, velocity) {

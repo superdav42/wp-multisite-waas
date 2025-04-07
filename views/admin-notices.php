@@ -13,7 +13,7 @@ foreach ($notices as $key => $notice) : ?>
 
 	<?php if (str_contains($notice['message'], '<p>')) : ?>
 	
-		<?php echo $notice['message']; ?>
+		<?php echo wp_kses_post($notice['message']); ?>
 	
 	<?php else : ?>
 
@@ -21,7 +21,7 @@ foreach ($notices as $key => $notice) : ?>
 
 <?php endif; ?>
 
-	<?php if (isset($notice['actions']) && ! empty($notice['actions'])) : ?>
+	<?php if ( ! empty($notice['actions'])) : ?>
 
 	<div class="wu-border wu-border-solid wu-border-gray-300 wu-border-r-0 wu-border-l-0 wu-border-b-0 wu-bg-gray-100 wu--ml-2 wu--mb-1 wu--mr-2 sm:wu--mr-7.5 sm:wu--ml-3 sm:wu--mb-px">
 
@@ -30,7 +30,7 @@ foreach ($notices as $key => $notice) : ?>
 		<?php foreach ($notice['actions'] as $action) : ?>
 
 		<li class="wu-inline-block wu-p-0 wu-m-0 wu-flex-shrink">
-			<a class="wu-bg-white wu-uppercase wu-no-underline wu-font-bold wu-text-gray-600 hover:wu-text-gray-700 wu-text-xs wu-inline-block wu-px-4 wu-py-2 wu-border wu-border-solid wu-border-gray-300 wu-border-r-0 wu-border-t-0 wu-border-b-0 wu-transition-all wu-mr-px" title="<?php echo esc_attr($action['title']); ?>" href="<?php echo esc_attr($action['url']); ?>"><?php echo $action['title']; ?></a>
+			<a class="wu-bg-white wu-uppercase wu-no-underline wu-font-bold wu-text-gray-600 hover:wu-text-gray-700 wu-text-xs wu-inline-block wu-px-4 wu-py-2 wu-border wu-border-solid wu-border-gray-300 wu-border-r-0 wu-border-t-0 wu-border-b-0 wu-transition-all wu-mr-px" title="<?php echo esc_attr($action['title']); ?>" href="<?php echo esc_attr($action['url']); ?>"><?php echo wp_kses_post($action['title']); ?></a>
 		</li>
 
 		<?php endforeach; ?>
@@ -41,7 +41,7 @@ foreach ($notices as $key => $notice) : ?>
 
 	<?php endif; ?>
 
-	<?php if (isset($notice['dismissible_key']) && $notice['dismissible_key']) : ?>
+	<?php if (! empty($notice['dismissible_key'])) : ?>
 
 	<input type='hidden' name='notice_id' value='<?php echo esc_attr($notice['dismissible_key']); ?>'>
 

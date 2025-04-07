@@ -689,7 +689,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 					'data-label-field'  => 'name',
 					'data-search-field' => 'name',
 					'data-max-items'    => 1,
-					'data-selected'     => $line_item->get_product() ? json_encode($line_item->get_product()->to_search_results()) : '',
+					'data-selected'     => $line_item->get_product() ? wp_json_encode($line_item->get_product()->to_search_results()) : '',
 				],
 			],
 			'title'              => [
@@ -1073,7 +1073,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 							'data-value-field' => 'id',
 							'data-label-field' => 'reference_code',
 							'data-max-items'   => 1,
-							'data-selected'    => $this->get_object()->get_membership() ? json_encode($this->get_object()->get_membership()->to_search_results()) : '',
+							'data-selected'    => $this->get_object()->get_membership() ? wp_json_encode($this->get_object()->get_membership()->to_search_results()) : '',
 						],
 						'wrapper_html_attr' => [
 							'v-cloak' => '1',
@@ -1141,7 +1141,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 						'value'             => $this->get_object()->get_saved_invoice_number(),
 						'wrapper_classes'   => 'wu-w-full',
 						'wrapper_html_attr' => [
-							'v-show'  => json_encode(wu_get_setting('invoice_numbering_scheme', 'reference_code') === 'sequential_number'),
+							'v-show'  => wp_json_encode(wu_get_setting('invoice_numbering_scheme', 'reference_code') === 'sequential_number'),
 							'v-cloak' => '1',
 						],
 					],
@@ -1280,7 +1280,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			$item = $query->get_item_by('id', $_GET['id']);
 
 			if ( ! $item || $item->get_parent_id()) {
-				wp_redirect(wu_network_admin_url('wp-ultimo-payments'));
+				wp_safe_redirect(wu_network_admin_url('wp-ultimo-payments'));
 
 				exit;
 			}

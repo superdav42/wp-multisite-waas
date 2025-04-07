@@ -409,7 +409,7 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 				'wrapper_classes'   => '',
 				'html_attr'         => [
 					':name'    => "'allowed_products[]'",
-					':checked' => json_encode(!$this->get_object()->get_limit_products() || in_array($product_id, $this->get_object()->get_allowed_products())), // phpcs:ignore
+					':checked' => wp_json_encode(!$this->get_object()->get_limit_products() || in_array($product_id, $this->get_object()->get_allowed_products())), // phpcs:ignore
 					':value'   => $product_id,
 				],
 				'wrapper_html_attr' => [
@@ -609,7 +609,7 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 			$item = wu_get_discount_code($item_id);
 
 			if ( ! $item) {
-				wp_redirect(wu_network_admin_url('wp-ultimo-discount_codes'));
+				wp_safe_redirect(wu_network_admin_url('wp-ultimo-discount_codes'));
 
 				exit;
 			}

@@ -9,7 +9,6 @@
 
 namespace WP_Ultimo\UI;
 
-use WP_Ultimo\UI\Base_Element;
 use WP_Ultimo\Checkout\Checkout_Pages;
 
 // Exit if accessed directly
@@ -398,7 +397,7 @@ class Login_Form_Element extends Base_Element {
 			$rp_cookie = 'wp-resetpass-' . COOKIEHASH;
 
 			if (isset($_GET['key']) && isset($_GET['login'])) {
-				$value = sprintf('%s:%s', wp_unslash($_GET['login']), wp_unslash($_GET['key']));
+				$value = sprintf('%s:%s', sanitize_text_field(wp_unslash($_GET['login'])), sanitize_text_field(wp_unslash($_GET['key'])));
 
 				setcookie(
 					$rp_cookie,
@@ -494,8 +493,7 @@ class Login_Form_Element extends Base_Element {
 				}
 
 				// In this case, WP will not redirect, so we need to do it here
-				wp_redirect($redirect_to);
-
+				wp_safe_redirect($redirect_to);
 				exit;
 			}
 
@@ -512,10 +510,9 @@ class Login_Form_Element extends Base_Element {
 		} elseif ('customer_site' === $redirect_type) {
 			$user_site = get_active_blog_for_user($user->ID);
 
-			wp_redirect($user_site->siteurl . $requested_redirect_to);
+			wp_safe_redirect($user_site->siteurl . $requested_redirect_to);
 			exit;
 		} elseif ('main_site' === $redirect_type) {
-			wp_redirect(network_site_url($requested_redirect_to));
 			exit;
 		}
 
@@ -603,12 +600,12 @@ class Login_Form_Element extends Base_Element {
 		} elseif ($this->is_reset_password_page()) {
 			$rp_cookie = 'wp-resetpass-' . COOKIEHASH;
 
-			if (isset($_COOKIE[ $rp_cookie ]) && 0 < strpos((string) $_COOKIE[ $rp_cookie ], ':')) {
-				[$rp_login, $rp_key] = explode(':', wp_unslash($_COOKIE[ $rp_cookie ]), 2);
+			if (isset($_COOKIE[ $rp_cookie ]) && str_contains(sanitize_text_field(wp_unslash($_COOKIE[ $rp_cookie ])), ':')) {
+				[$rp_login, $rp_key] = explode(':', sanitize_text_field(wp_unslash($_COOKIE[ $rp_cookie ])), 2);
 
 				$user = check_password_reset_key($rp_key, $rp_login);
 
-				if (isset($_POST['pass1']) && ! hash_equals($rp_key, $_POST['rp_key'])) {
+				if (isset($_POST['pass1']) && isset($_POST['rp_key']) && ! hash_equals(wp_unslash($_POST['rp_key']), wp_unslash($_POST['rp_key']))) {
 					$user = false;
 				}
 			} else {
@@ -747,8 +744,7 @@ class Login_Form_Element extends Base_Element {
 			];
 
 			if (isset($_GET['redirect_to'])) {
-				$atts['redirect_type']          = 'query_redirect';
-				$fields['redirect_to']['value'] = $_GET['redirect_to'];
+				$atts['redirect_type'] = 'query_redirect';
 			} elseif ('customer_site' === $atts['redirect_type']) {
 				$fields['redirect_to']['value'] = $atts['customer_redirect_path'];
 			} elseif ('main_site' === $atts['redirect_type']) {

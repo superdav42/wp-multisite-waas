@@ -33,7 +33,7 @@ $plan_attrs = '';
 foreach ([1, 3, 12] as $type) {
 	$price       = $plan->free ? __('Free!', 'wp-multisite-waas') : str_replace(wu_get_currency_symbol(), '', wu_format_currency((((float) $plan->{'price_' . $type}) / $type)));
 	$plan_attrs .= " data-price-$type='$price'";
-} // end foreach;
+}
 
 $plan_attrs = apply_filters('wu_pricing_table_plan', $plan_attrs, $plan);
 
@@ -53,7 +53,7 @@ $plan_attrs = apply_filters('wu_pricing_table_plan', $plan_attrs, $plan);
 	<?php if ($plan->is_free()) : ?>
 
 	<h5>
-		<span class="plan-price"><?php _e('Free!', 'wp-multisite-waas'); ?></span>
+		<span class="plan-price"><?php esc_html_e('Free!', 'wp-multisite-waas'); ?></span>
 	</h5>
 
 	<?php elseif ($plan->is_contact_us()) : ?>
@@ -101,7 +101,7 @@ $plan_attrs = apply_filters('wu_pricing_table_plan', $plan_attrs, $plan);
 		} else {
 			echo "<li class='total-price total-price-$freq'>$text</li>";
 		}
-	} // end foreach;
+	}
 
 	/**
 	 * Loop and Displays Pricing Table Lines

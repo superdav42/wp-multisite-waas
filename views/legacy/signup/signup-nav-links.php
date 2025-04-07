@@ -38,7 +38,7 @@ $nav_links = apply_filters(
 
 if ( ! isset($signup->step)) {
 	return;
-} // end if;
+}
 
 ?>
 

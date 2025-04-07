@@ -101,7 +101,7 @@ class Payment_List_Table_Widget extends Base_List_Table {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_Ultimo\Models\Payment $item Payment object.
+	 * @param \WP_Ultimo\Models\Payment $item Payment object.
 	 */
 	public function column_hash($item): string {
 
@@ -126,7 +126,7 @@ class Payment_List_Table_Widget extends Base_List_Table {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_Ultimo\Models\Payment $item Payment object.
+	 * @param \WP_Ultimo\Models\Payment $item Payment object.
 	 * @return string
 	 */
 	public function column_status($item) {
@@ -144,7 +144,7 @@ class Payment_List_Table_Widget extends Base_List_Table {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_Ultimo\Models\Membership $item Membership object.
+	 * @param \WP_Ultimo\Models\Membership $item Membership object.
 	 * @return string
 	 */
 	public function column_customer($item) {
@@ -181,8 +181,6 @@ class Payment_List_Table_Widget extends Base_List_Table {
 
 		$id = $customer->get_id();
 
-		$email = $customer->get_email_address();
-
 		$customer_link = wu_network_admin_url('wp-ultimo-edit-customer', $url_atts);
 
 		$html = "<a href='{$customer_link}' class='wu-p-1 wu-flex wu-flex-grow wu-bg-gray-100 wu-rounded wu-items-center wu-border wu-border-solid wu-border-gray-300'>
@@ -200,7 +198,7 @@ class Payment_List_Table_Widget extends Base_List_Table {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_Ultimo\Models\Payment $item Payment object.
+	 * @param \WP_Ultimo\Models\Payment $item Payment object.
 	 */
 	public function column_total($item): string {
 

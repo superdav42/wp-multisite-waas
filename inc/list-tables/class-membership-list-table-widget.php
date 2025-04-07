@@ -104,10 +104,7 @@ class Membership_List_Table_Widget extends Base_List_Table {
 	 */
 	public function get_extra_query_fields() {
 
-		$_filter_fields = parent::get_extra_query_fields();
-
-		$search = isset($_GET['s']) ? sanitize_text_field($_GET['s']) : false;
-
+		$_filter_fields                = parent::get_extra_query_fields();
 		$_filter_fields['customer_id'] = wu_request('customer_id');
 
 		return $_filter_fields;
@@ -143,7 +140,7 @@ class Membership_List_Table_Widget extends Base_List_Table {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_Ultimo\Models\Membership $item Membership object.
+	 * @param \WP_Ultimo\Models\Membership $item Membership object.
 	 * @return string
 	 */
 	public function column_status($item) {
@@ -160,7 +157,7 @@ class Membership_List_Table_Widget extends Base_List_Table {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_Ultimo\Models\Membership $item Membership object.
+	 * @param \WP_Ultimo\Models\Membership $item Membership object.
 	 * @return string
 	 */
 	public function column_amount($item) {
@@ -176,7 +173,7 @@ class Membership_List_Table_Widget extends Base_List_Table {
 
 			$message = sprintf(
 				// translators: %1$s is the formatted price, %2$s the duration, and %3$s the duration unit (day, week, month, etc)
-        _n('every %2$s', 'every %1$s %2$s', $duration, 'wp-multisite-waas'), // phpcs:ignore
+                _n('every %2$s', 'every %1$s %2$s', $duration, 'wp-multisite-waas'), // phpcs:ignore
 				$duration,
 				$item->get_duration_unit()
 			);

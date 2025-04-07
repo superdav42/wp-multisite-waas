@@ -11,10 +11,6 @@ namespace WP_Ultimo\Integrations\Host_Providers;
 
 use Psr\Log\LogLevel;
 use WP_Ultimo\Domain_Mapping\Helper;
-use WP_Ultimo\Integrations\Host_Providers\Base_Host_Provider;
-
-// Exit if accessed directly
-defined('ABSPATH') || exit;
 
 /**
  * This base class should be extended to implement new host integrations for SSL and domains.
@@ -120,7 +116,7 @@ class Cloudways_Host_Provider extends Base_Host_Provider {
 		if (is_wp_error($ssl_response)) {
 			wu_log_add('integration-cloudways', '[SSL]' . $ssl_response->get_error_message(), LogLevel::ERROR);
 		} else {
-			wu_log_add('integration-cloudways', '[SSL]' . print_r($ssl_response, true));
+			wu_log_add('integration-cloudways', '[SSL]' . print_r($ssl_response, true)); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 		}
 	}
 
@@ -246,7 +242,7 @@ class Cloudways_Host_Provider extends Base_Host_Provider {
 		if (is_wp_error($alias_response)) {
 			wu_log_add('integration-cloudways', '[Alias]' . $alias_response->get_error_message(), LogLevel::ERROR);
 		} else {
-			wu_log_add('integration-cloudways', '[Alias]' . print_r($alias_response, true));
+			wu_log_add('integration-cloudways', '[Alias]' . print_r($alias_response, true)); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 		}
 	}
 

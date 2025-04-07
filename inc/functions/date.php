@@ -74,9 +74,9 @@ function wu_get_days_ago($date_1, $date_2 = false) {
 
 	$datetime_2 = wu_date($date_2);
 
-	$dateIntervar = $datetime_1->diff($datetime_2, false);
+	$date_intervar = $datetime_1->diff($datetime_2, false);
 
-	return - $dateIntervar->days;
+	return - $date_intervar->days;
 }
 
 /**
@@ -90,7 +90,7 @@ function wu_get_current_time($type = 'mysql', $gmt = false) {
 
 	switch_to_blog(wu_get_main_site_id());
 
-		$time = current_time($type, $gmt); // phpcs:ignore
+	$time = current_time($type, $gmt); // phpcs:ignore
 
 	restore_current_blog();
 
@@ -121,7 +121,6 @@ function wu_filter_duration_unit($unit, $length) {
 			$new_unit = $length > 1 ? __('Years', 'wp-multisite-waas') : __('Year', 'wp-multisite-waas');
 			break;
 		default:
-			$new_unit = $new_unit;
 			break;
 	}
 
@@ -181,10 +180,10 @@ function wu_convert_php_date_format_to_moment_js_format($php_date_format): strin
 		'g' => 'h',
 		'H' => 'HH',
 		'h' => 'hh',
-		'I' => '',       // Daylight Saving Time? => moment().isDST();
+		'I' => '',       // Daylight Saving Time?: moment().isDST().
 		'i' => 'mm',
 		'j' => 'D',
-		'L' => '',       // Leap year? => moment().isLeapYear();
+		'L' => '',       // Is Leap year?: moment().isLeapYear().
 		'l' => 'dddd',
 		'M' => 'MMM',
 		'm' => 'MM',

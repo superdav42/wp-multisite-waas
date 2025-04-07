@@ -12,9 +12,9 @@ namespace WP_Ultimo\Models;
 use WP_Ultimo\Models\Base_Model;
 use WP_Ultimo\Database\Payments\Payment_Status;
 use WP_Ultimo\Checkout\Line_Item;
-use WP_Ultimo\Models\Product;
 use WP_Ultimo\Models\Customer;
 use WP_Ultimo\Models\Membership;
+use WP_Ultimo\Models\Product;
 
 // Exit if accessed directly
 defined('ABSPATH') || exit;
@@ -192,7 +192,7 @@ class Payment extends Base_Model {
 			return wu_format_currency($this->{"$method_key"}(), $this->get_currency());
 		}
 
-		throw new \BadMethodCallException($name);
+		throw new \BadMethodCallException(esc_html($name));
 	}
 
 	/**
@@ -1110,7 +1110,7 @@ class Payment extends Base_Model {
 	 * Creates a copy of the given model adn resets it's id to a 'new' state.
 	 *
 	 * @since 2.0.0
-	 * @return \WP_Ultimo\Model\Base_Model
+	 * @return Base_Model
 	 */
 	public function duplicate() {
 

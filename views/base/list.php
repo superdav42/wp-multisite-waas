@@ -50,9 +50,9 @@
 
 	</h1>
 
-	<?php if (isset($_GET['deleted'])) : ?>
+	<?php if (isset($_GET['deleted'])) : // phpcs:ignore WordPress.Security.NonceVerification ?>
 	<div id="message" class="updated notice wu-admin-notice notice-success is-dismissible below-h2">
-		<p><?php echo $page->get_labels()['deleted_message']; ?></p>
+		<p><?php echo esc_html($page->get_labels()['deleted_message']); ?></p>
 	</div>
 	<?php endif; ?>
 

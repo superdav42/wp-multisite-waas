@@ -20,7 +20,7 @@
 		</div>
 
 		<div class="wu-text-md wu-text-gray-600">
-		<span class="wu-block"><?php _e('Signups today', 'wp-multisite-waas'); ?></span>
+		<span class="wu-block"><?php esc_html_e('Signups today', 'wp-multisite-waas'); ?></span>
 		</div>
 
 	</li>
@@ -36,7 +36,7 @@
 		</div>
 
 		<div class="wu-text-md wu-text-gray-600">
-		<span class="wu-block"><?php _e('MRR', 'wp-multisite-waas'); ?></span>
+		<span class="wu-block"><?php esc_html_e('MRR', 'wp-multisite-waas'); ?></span>
 		</div>
 
 	</li>

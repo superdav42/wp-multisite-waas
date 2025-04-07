@@ -12,7 +12,6 @@
 namespace WP_Ultimo\Managers;
 
 use Psr\Log\LogLevel;
-use WP_Ultimo\Managers\Base_Manager;
 use WP_Ultimo\Gateways\Ignorable_Exception;
 
 use WP_Ultimo\Gateways\Free_Gateway;
@@ -281,7 +280,7 @@ class Gateway_Manager extends Base_Manager {
 			$error = new \WP_Error('missing_gateway', esc_html__('Missing gateway parameter.', 'wp-multisite-waas'));
 
 			wp_die(
-				$error,
+				$error, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				esc_html__('Error', 'wp-multisite-waas'),
 				[
 					'back_link' => true,
@@ -310,8 +309,8 @@ class Gateway_Manager extends Base_Manager {
 
 			if (is_wp_error($results)) {
 				wp_die(
-					$results,
-					__('Error', 'wp-multisite-waas'),
+					$results, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					esc_html__('Error', 'wp-multisite-waas'),
 					[
 						'back_link' => true,
 						'response'  => '200',
@@ -322,8 +321,8 @@ class Gateway_Manager extends Base_Manager {
 			$error = new \WP_Error('confirm-error-' . $e->getCode(), $e->getMessage());
 
 			wp_die(
-				$error,
-				__('Error', 'wp-multisite-waas'),
+				$error, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				esc_html__('Error', 'wp-multisite-waas'),
 				[
 					'back_link' => true,
 					'response'  => '200',
@@ -338,7 +337,15 @@ class Gateway_Manager extends Base_Manager {
 			 * Add a filter to bypass the checkout form.
 			 * This is used for PayPal confirmation page.
 			 */
-			add_action('wu_bypass_checkout_form', fn($bypass, $atts) => $output, 10, 2);
+
+			add_action(
+				'wu_bypass_checkout_form',
+				function ($output) {
+					return $output;
+				},
+				10,
+				1
+			);
 		}
 	}
 
@@ -448,7 +455,7 @@ class Gateway_Manager extends Base_Manager {
 	 *
 	 * @since 2.0.0
 	 * @param string $id The id of the gateway.
-	 * @return array
+	 * @return array|false
 	 */
 	public function get_gateway($id) {
 
@@ -471,7 +478,7 @@ class Gateway_Manager extends Base_Manager {
 
 		// Checks if gateway was already added
 		if ($this->is_gateway_registered($id)) {
-			return;
+			return false;
 		}
 
 		$active_gateways = (array) wu_get_setting('active_gateways', []);
@@ -533,7 +540,7 @@ class Gateway_Manager extends Base_Manager {
 		 */
 		add_action(
 			'wu_checkout_gateway_fields',
-			function ($checkout) use ($gateway) {
+			function () use ($gateway) {
 
 				$field_content = call_user_func([$gateway, 'fields']);
 
@@ -541,15 +548,13 @@ class Gateway_Manager extends Base_Manager {
 
 				?>
 
-			<div v-cloak v-show="gateway == '<?php echo esc_attr($gateway->get_id()); ?>' && order && order.should_collect_payment" class="wu-overflow">
-
-				<?php echo $field_content; ?>
-
-			</div>
+				<div v-cloak v-show="gateway == '<?php echo esc_attr($gateway->get_id()); ?>' && order && order.should_collect_payment" class="wu-overflow">
+					<?php echo $field_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				</div>
 
 				<?php
 
-				echo ob_get_clean();
+				echo ob_get_clean(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 		);
 	}

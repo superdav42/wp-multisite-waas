@@ -17,7 +17,7 @@
 		href="<?php echo esc_attr(wu_get_form_url('edit_membership_product', ['id' => $membership->get_id()])); ?>"
 		>
 		<span class="dashicons-wu-circle-with-plus wu-align-text-bottom"></span>
-		<?php _e('Add new Product', 'wp-multisite-waas'); ?>
+		<?php esc_html_e('Add new Product', 'wp-multisite-waas'); ?>
 		</a>
 
 	</div>

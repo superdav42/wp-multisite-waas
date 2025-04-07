@@ -116,7 +116,7 @@
 		<div class="sm:wu-col-span-1">
 
 			<div class="wu-text-sm wu-font-medium wu-text-gray-600">
-			<?php _e('Status', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Status', 'wp-multisite-waas'); ?>
 			</div>
 
 			<div class="wu-mt-1 wu-text-sm wu-text-gray-900 wu-mb-4">
@@ -134,7 +134,7 @@
 		<div class="sm:wu-col-span-1">
 
 			<div class="wu-text-sm wu-font-medium wu-text-gray-600">
-			<?php _e('Initial Amount', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Initial Amount', 'wp-multisite-waas'); ?>
 			</div>
 
 			<div class="wu-mt-1 wu-text-sm wu-text-gray-900 wu-mb-4">
@@ -148,7 +148,7 @@
 			<div class="sm:wu-col-span-1">
 
 			<div class="wu-text-sm wu-font-medium wu-text-gray-600">
-				<?php _e('Times Billed', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Times Billed', 'wp-multisite-waas'); ?>
 			</div>
 
 			<div class="wu-mt-1 wu-text-sm wu-text-gray-900 wu-mb-4">
@@ -164,7 +164,7 @@
 			<div class="sm:wu-col-span-1">
 
 			<div class="wu-text-sm wu-font-medium wu-text-gray-600">
-				<?php _e('Expires', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Expires', 'wp-multisite-waas'); ?>
 			</div>
 
 			<div class="wu-mt-1 wu-text-sm wu-text-gray-900 wu-mb-4">

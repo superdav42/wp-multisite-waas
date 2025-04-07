@@ -358,7 +358,7 @@ function wu_calculate_taxes_by_day($start_date = false, $end_date = false, $incl
 
 	foreach ($line_items_groups as $line_items_group) {
 		foreach ($line_items_group as $line_item) {
-			$date = gmdate('Y-m-d', strtotime((string) $line_item->date_created));
+			$date = gmdate('Y-m-d', strtotime($line_item->get_date_created()));
 
 			if ( ! wu_get_isset($data, $date)) {
 				$data[ $date ] = [

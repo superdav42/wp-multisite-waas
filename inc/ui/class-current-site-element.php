@@ -9,8 +9,6 @@
 
 namespace WP_Ultimo\UI;
 
-use WP_Ultimo\UI\Base_Element;
-
 // Exit if accessed directly
 defined('ABSPATH') || exit;
 

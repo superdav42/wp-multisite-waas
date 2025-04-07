@@ -93,7 +93,7 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 		}
 
 		if ( ! $this->integration) {
-			wp_redirect(network_admin_url('admin.php?page=wp-ultimo-settings'));
+			wp_safe_redirect(network_admin_url('admin.php?page=wp-ultimo-settings'));
 
 			exit;
 		}
@@ -294,7 +294,7 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 		$this->integration->enable();
 
-		wp_redirect($this->get_next_section_link());
+		wp_safe_redirect($this->get_next_section_link());
 
 		exit;
 	}
@@ -316,7 +316,7 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 				]
 			);
 
-			wp_redirect($redirect_url);
+			wp_safe_redirect($redirect_url);
 
 			exit;
 		}
@@ -332,7 +332,7 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 		$redirect_url = remove_query_arg('manual', $redirect_url);
 
-		wp_redirect($redirect_url);
+		wp_safe_redirect($redirect_url);
 
 		exit;
 	}

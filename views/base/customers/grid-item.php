@@ -42,7 +42,7 @@
 			<?php echo esc_html($item->get_email_address()); ?>
 		</a>
 		<?php else : ?>
-			<?php _e('No email address', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('No email address', 'wp-multisite-waas'); ?>
 		<?php endif; ?>
 		</div>
 		<div class="wu-text-xs">
@@ -56,7 +56,7 @@
 
 		<div class="wu-flex wu-justify-between wu-border-0 wu-border-t wu-border-solid wu-border-gray-300 wu-py-2 wu-px-3">
 			<span>
-			<?php _e('Last Login:', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Last Login:', 'wp-multisite-waas'); ?>
 			</span>
 			<span class="wu-font-semibold">
 			<?php
@@ -72,7 +72,7 @@
 		</div>
 		<div class="wu-flex wu-justify-between wu-border-0 wu-border-t wu-border-solid wu-border-gray-300 wu-py-2 wu-px-3">
 			<span>
-			<?php _e('Customer Since:', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Customer Since:', 'wp-multisite-waas'); ?>
 			</span>
 			<span class="wu-font-semibold">
 			<?php echo human_time_diff(strtotime($item->get_date_registered()), time()) . ' ' . __('ago', 'wp-multisite-waas'); ?>
@@ -81,7 +81,7 @@
 
 		<div class="wu-flex wu-justify-between wu-border-0 wu-border-gray-300 wu-border-t wu-border-b-0 wu-border-solid wu-py-2 wu-px-3">
 			<span>
-			<?php _e('Memberships:', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Memberships:', 'wp-multisite-waas'); ?>
 			</span>
 			<div>
 			<span class="wu-font-semibold">
@@ -92,7 +92,7 @@
 			if ( ! empty($item->get_memberships())) {
 				?>
 				<a  href="<?php echo wu_network_admin_url('wp-ultimo-memberships', ['customer_id' => $item->get_id()]); ?>">
-				<?php _e('View', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('View', 'wp-multisite-waas'); ?>
 				</a>
 				<?php
 			}
@@ -103,7 +103,7 @@
 
 		<div class="wu-flex wu-justify-between wu-border-0 wu-border-gray-300 wu-border-t wu-border-b-0 wu-border-solid wu-py-2 wu-px-3">
 			<span>
-			<?php _e('Actions:', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Actions:', 'wp-multisite-waas'); ?>
 			</span>
 			<div>
 
@@ -131,11 +131,11 @@
 
 		<label>
 			<input class="wu-rounded-none" type="checkbox" name="bulk-delete[]" value="<?php echo $item->get_id(); ?>" />
-			<?php _e('Select Customer', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Select Customer', 'wp-multisite-waas'); ?>
 		</label>
 
 		<a href="<?php echo wu_network_admin_url('wp-ultimo-edit-customer', ['id' => $item->get_id()]); ?>" class="button button-primary">
-			<?php _e('Manage', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Manage', 'wp-multisite-waas'); ?>
 		</a>
 	</div>
 	</div>

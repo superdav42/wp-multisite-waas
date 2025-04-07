@@ -604,9 +604,9 @@ class Dashboard_Admin_Page extends Base_Admin_Page {
 
 		$slug = $args['slug'];
 
-		$header_strings = json_encode($args['headers']);
+		$header_strings = wp_json_encode($args['headers']);
 
-		$data_strings = json_encode($args['data']);
+		$data_strings = wp_json_encode($args['data']);
 
 		$html = "<div class='wu-bg-gray-100 wu-p-2 wu-text-right wu-border-0 wu-border-b wu-border-solid wu-border-gray-400'>
 

@@ -10,7 +10,6 @@
 namespace WP_Ultimo\Integrations\Host_Providers;
 
 use Psr\Log\LogLevel;
-use WP_Ultimo\Integrations\Host_Providers\Base_Host_Provider;
 
 // Exit if accessed directly
 defined('ABSPATH') || exit;
@@ -260,7 +259,7 @@ class Runcloud_Host_Provider extends Base_Host_Provider {
 				'body'        => $data,
 				'method'      => $method,
 				'headers'     => [
-					'Authorization' => 'Basic ' . base64_encode($username . ':' . $password),
+					'Authorization' => 'Basic ' . base64_encode($username . ':' . $password), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 				],
 			]
 		);
@@ -325,7 +324,7 @@ class Runcloud_Host_Provider extends Base_Host_Provider {
 		} else {
 			$data = $this->maybe_return_runcloud_body($response);
 
-			wu_log_add('integration-runcloud', json_encode($data));
+			wu_log_add('integration-runcloud', wp_json_encode($data));
 
 			if (property_exists($data, 'id')) {
 				$ssl_id = $data->id;

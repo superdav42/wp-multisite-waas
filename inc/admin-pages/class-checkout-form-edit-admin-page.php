@@ -107,7 +107,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function add_width_control_script(): void {
 
-		wp_enqueue_script('wu-checkout-form-edit-modal', wu_get_asset('checkout-form-editor-modal.js', 'js'), [], wu_get_version());
+		wp_enqueue_script('wu-checkout-form-edit-modal', wu_get_asset('checkout-form-editor-modal.js', 'js'), [], wu_get_version(), true);
 	}
 
 	/**
@@ -544,7 +544,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			$default_field['wrapper_html_attr'] = array_merge(
 				wu_get_isset($default_field, 'wrapper_html_attr', []),
 				[
-					'v-if'    => sprintf('type && require("type", %s) && require("tab", "%s")', json_encode($reqs), $tab),
+					'v-if'    => sprintf('type && require("type", %s) && require("tab", "%s")', wp_json_encode($reqs), $tab),
 					'v-cloak' => '1',
 				]
 			);
@@ -552,11 +552,11 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			if ('name' === $default_field_slug || 'id' === $default_field_slug || 'default_value' === $default_field_slug) {
 				unset($default_field['wrapper_html_attr']['v-if']);
 
-				$default_field['wrapper_html_attr']['v-show'] = sprintf('type && require("type", %s) && require("tab", "%s")', json_encode($reqs), $tab);
+				$default_field['wrapper_html_attr']['v-show'] = sprintf('type && require("type", %s) && require("tab", "%s")', wp_json_encode($reqs), $tab);
 			}
 
 			if ('id' === $default_field_slug) {
-				$default_field['html_attr']['v-bind:required'] = sprintf('type && require("type", %s) && require("tab", "content")', json_encode($reqs));
+				$default_field['html_attr']['v-bind:required'] = sprintf('type && require("type", %s) && require("tab", "content")', wp_json_encode($reqs));
 			}
 		}
 
@@ -1161,10 +1161,10 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 
 		wp_enqueue_script('wu-checkout-form-editor');
 
-		wp_enqueue_script('wu-vue-sortable', '//cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js', [], wu_get_version());
-		wp_enqueue_script('wu-vue-draggable', '//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js', [], wu_get_version());
+		wp_enqueue_script('wu-vue-sortable', '//cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js', [], wu_get_version(), true);
+		wp_enqueue_script('wu-vue-draggable', '//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js', [], wu_get_version(), true);
 
-		wp_enqueue_style('wu-checkout-form-editor', wu_get_asset('checkout-editor.css', 'css'));
+		wp_enqueue_style('wu-checkout-form-editor', wu_get_asset('checkout-editor.css', 'css'), [], wu_get_version());
 	}
 
 	/**
@@ -1500,7 +1500,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 		$item = wu_get_checkout_form($item_id);
 
 		if ( ! $item) {
-			wp_redirect(wu_network_admin_url('wp-ultimo-checkout-forms'));
+			wp_safe_redirect(wu_network_admin_url('wp-ultimo-checkout-forms'));
 
 			exit;
 		}

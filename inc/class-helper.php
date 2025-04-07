@@ -102,14 +102,14 @@ class Helper {
 	 *
 	 * @since 1.9.6
 	 * @param string $option_name Option name.
-	 * @param mixed  $default The default value.
+	 * @param mixed  $default_value The default value.
 	 * @return mixed
 	 */
-	public function get_option($option_name = 'settings', $default = []) {
+	public function get_option($option_name = 'settings', $default_value = []) {
 
 		_deprecated_function(__METHOD__, '2.0.11', 'wu_get_option');
 
-		return wu_get_option($option_name, $default);
+		return wu_get_option($option_name, $default_value);
 	}
 
 	/**

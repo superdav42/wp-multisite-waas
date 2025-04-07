@@ -72,37 +72,37 @@ class Debug {
 			<a  
 				href="<?php wu_network_admin_url('wp-ultimo-debug-pages'); ?>" 
 				class="wu-ml-2 wu-no-underline wu-text-gray-600"
-				title="<?php _e('Pages', 'wp-multisite-waas'); ?>"
+				title="<?php esc_html_e('Pages', 'wp-multisite-waas'); ?>"
 			>
 				<span class="dashicons-wu-documents"></span>
-				<?php _e('Pages', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Pages', 'wp-multisite-waas'); ?>
 			</a>
 
 			<a  
 				href="<?php echo wu_get_form_url('add_debug_generator_form'); ?>" 
 				class="wubox wu-ml-2 wu-no-underline wu-relative wu-text-gray-600"
-				title="<?php _e('Generator', 'wp-multisite-waas'); ?>"
+				title="<?php esc_html_e('Generator', 'wp-multisite-waas'); ?>"
 			>
 				<span class="dashicons-wu-rocket"></span>
-				<?php _e('Generator', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Generator', 'wp-multisite-waas'); ?>
 			</a>
 
 			<a  
 				href="<?php echo wu_get_form_url('add_debug_reset_database_form'); ?>" 
 				class="wubox wu-ml-2 wu-no-underline wu-text-gray-600"
-				title="<?php _e('Reset Database', 'wp-multisite-waas'); ?>"
+				title="<?php esc_html_e('Reset Database', 'wp-multisite-waas'); ?>"
 			>
 				<span class="dashicons-wu-back-in-time"></span>
-				<?php _e('Reset Database', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Reset Database', 'wp-multisite-waas'); ?>
 			</a>
 
 			<a  
 				href="<?php echo wu_get_form_url('add_debug_drop_database_form'); ?>" 
 				class="wubox wu-ml-2 wu-no-underline wu-text-gray-600"
-				title="<?php _e('Drop Database', 'wp-multisite-waas'); ?>"
+				title="<?php esc_html_e('Drop Database', 'wp-multisite-waas'); ?>"
 			>
 				<span class="dashicons-wu-database"></span>
-				<?php _e('Drop Database', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Drop Database', 'wp-multisite-waas'); ?>
 			</a>
 
 		<?php
@@ -298,7 +298,7 @@ class Debug {
 				'field_wrapper_classes' => 'wu-w-full wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid',
 				'html_attr'             => [
 					'data-wu-app' => 'debug_generator',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'customers'      => false,
 							'products'       => false,
@@ -430,7 +430,7 @@ class Debug {
 				'field_wrapper_classes' => 'wu-w-full wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid',
 				'html_attr'             => [
 					'data-wu-app' => 'debug_reset_database_form',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'reset_only' => true,
 						]
@@ -510,7 +510,7 @@ class Debug {
 				'field_wrapper_classes' => 'wu-w-full wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid',
 				'html_attr'             => [
 					'data-wu-app' => 'debug_drop_database_form',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'reset_only' => true,
 						]

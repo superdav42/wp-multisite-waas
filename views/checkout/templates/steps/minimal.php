@@ -41,7 +41,7 @@ if ( ! defined('ABSPATH')) {
 			$class = 'step-current';
 		} elseif (array_search($current_step, array_column($steps, 'id')) > array_search($step_key, array_column($steps, 'id'))) {
 			$class = 'step-done';
-		} // end if;
+		}
 
 		?>
 

@@ -92,7 +92,8 @@ abstract class Base_Host_Provider {
 			/*
 			 * Adds an admin notice telling the admin that they should probably enable this integration.
 			 */
-			return $this->alert_provider_detected();
+			$this->alert_provider_detected();
+			return;
 		}
 
 		/*
@@ -106,7 +107,8 @@ abstract class Base_Host_Provider {
 				/*
 				 * Adds an admin notice telling the admin that the provider is not correctly setup.
 				 */
-				return $this->alert_provider_not_setup();
+				$this->alert_provider_not_setup();
+				return;
 			}
 
 			/*
@@ -301,7 +303,7 @@ abstract class Base_Host_Provider {
 	 * Get Fields for the integration.
 	 *
 	 * @since 2.0.0
-	 * @return string
+	 * @return array
 	 */
 	public function get_fields() {
 

@@ -200,7 +200,7 @@ class Signup_Field_Payment extends Base_Signup_Field {
 				],
 				'wrapper_html_attr' => [
 					'v-cloak' => 1,
-					'v-show'  => sprintf('%s.includes(gateway) && order.should_collect_payment && order.has_recurring', json_encode($auto_renewable_gateways)),
+					'v-show'  => sprintf('%s.includes(gateway) && order.should_collect_payment && order.has_recurring', wp_json_encode($auto_renewable_gateways)),
 				],
 			];
 		}

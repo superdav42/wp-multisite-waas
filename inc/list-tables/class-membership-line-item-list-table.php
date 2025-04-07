@@ -42,7 +42,7 @@ class Membership_Line_Item_List_Table extends Product_List_Table {
 	 * @param integer $per_page Items per page. This gets overridden as well.
 	 * @param integer $page_number The page number.
 	 * @param boolean $count Return as count or not.
-	 * @return array
+	 * @return array|int
 	 */
 	public function get_items($per_page = 5, $page_number = 1, $count = false) {
 
@@ -74,7 +74,7 @@ class Membership_Line_Item_List_Table extends Product_List_Table {
 		$item = $item['product'];
 
 		if ( ! $item) {
-			echo wu_responsive_table_row(
+			echo wu_responsive_table_row( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				[
 					'url'    => false,
 					'id'     => 'not-found',
@@ -86,6 +86,7 @@ class Membership_Line_Item_List_Table extends Product_List_Table {
 					'quantity' => [
 						'icon'  => 'dashicons-wu-package wu-align-middle wu-mr-1',
 						'label' => __('Quantity', 'wp-multisite-waas'),
+						// translators: %d is a quantity number
 						'value' => sprintf(__('x%d', 'wp-multisite-waas'), $quantity),
 					],
 				]
@@ -98,6 +99,7 @@ class Membership_Line_Item_List_Table extends Product_List_Table {
 			'quantity' => [
 				'icon'  => 'dashicons-wu-package wu-align-middle wu-mr-1',
 				'label' => __('Quantity', 'wp-multisite-waas'),
+				// translators: %d = quantity
 				'value' => sprintf(__('x%d', 'wp-multisite-waas'), $quantity),
 			],
 			'total'    => [
@@ -145,7 +147,7 @@ class Membership_Line_Item_List_Table extends Product_List_Table {
 			];
 		}
 
-		echo wu_responsive_table_row(
+		echo wu_responsive_table_row( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			[
 				'id'     => $item->get_id(),
 				'title'  => $item->get_name(),

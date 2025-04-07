@@ -24,9 +24,9 @@
 
 		<div class="wu-ml-auto">
 
-		<a title="<?php _e('Add Domain', 'wp-multisite-waas'); ?>" href="<?php echo $modal['url']; ?>" class="wu-text-sm wu-no-underline wubox button">
+		<a title="<?php esc_html_e('Add Domain', 'wp-multisite-waas'); ?>" href="<?php echo $modal['url']; ?>" class="wu-text-sm wu-no-underline wubox button">
 
-			<?php _e('Add Domain', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Add Domain', 'wp-multisite-waas'); ?>
 
 		</a>
 
@@ -58,7 +58,7 @@
 
 						if ( ! $item->is_active()) {
 							$label = sprintf('%s <small>(%s)</small>', $label, __('Inactive', 'wp-multisite-waas'));
-						} // end if;
+						}
 
 						$class = $item->get_stage_class();
 
@@ -74,7 +74,7 @@
 								'url'             => $domain['primary_link'],
 								'value'           => __('Make Primary', 'wp-multisite-waas'),
 							];
-						} // end if;
+						}
 
 						$second_row_actions['remove'] = [
 							'wrapper_classes' => 'wu-text-red-500 wubox',

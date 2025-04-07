@@ -129,7 +129,7 @@ class Admin_Notices {
 	 */
 	public function enqueue_scripts(): void {
 
-		wp_enqueue_script('wu-admin-notices', wu_get_asset('admin-notices.js', 'js'), ['jquery'], wu_get_version());
+		wp_enqueue_script('wu-admin-notices', wu_get_asset('admin-notices.js', 'js'), ['jquery'], wu_get_version(), true);
 	}
 
 	/**

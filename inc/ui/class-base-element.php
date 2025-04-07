@@ -611,16 +611,17 @@ abstract class Base_Element {
 	 * @since 2.0.0
 	 *
 	 * @param string $name The parameter name.
-	 * @param mixed  $default The default value.
+	 * @param mixed  $default_value The default value.
+	 *
 	 * @return mixed
 	 */
-	public function get_pre_loaded_attribute($name, $default = false) {
+	public function get_pre_loaded_attribute($name, $default_value = false) {
 
 		if (false === $this->pre_loaded_attributes || ! is_array($this->pre_loaded_attributes)) {
 			return false;
 		}
 
-		return wu_get_isset($this->pre_loaded_attributes, $name, $default);
+		return wu_get_isset($this->pre_loaded_attributes, $name, $default_value);
 	}
 
 	/**
@@ -971,7 +972,6 @@ abstract class Base_Element {
 
 		if ( ! $this->should_display()) {
 			return; // bail if the display was set to false.
-
 		}
 
 		$this->dependencies();
@@ -1095,7 +1095,7 @@ abstract class Base_Element {
 
 				echo '<div class="wu-inline-widget-body ' . esc_attr($control_classes) . '">';
 
-					echo $this->display($atts);
+				echo $this->display($atts); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 				echo '</div>';
 
@@ -1174,9 +1174,9 @@ abstract class Base_Element {
 			$this->get_title(),
 			function () use ($atts, $control_classes) {
 
-				echo '<div class="wu-metabox-widget ' . $control_classes . '">';
+				echo '<div class="wu-metabox-widget ' . esc_attr($control_classes) . '">';
 
-					echo $this->display($atts);
+					echo $this->display($atts); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 				echo '</div>';
 
@@ -1204,32 +1204,23 @@ abstract class Base_Element {
 		$should_display = $this->should_display_customize_controls();
 
 		if ($should_display) {
-
-			// translators: %1$s is the URL to the customize modal. %2$s is the URL of the shortcode generation modal
-			$message = __('<a class="wubox wu-no-underline" title="Customize" href="%1$s">Customize this element</a>, or <a class="wubox wu-no-underline" title="Shortcode" href="%2$s">generate a shortcode</a> to use it on the front-end!', 'wp-multisite-waas');
-
-			$message .= wu_tooltip(__('You are seeing this because you are a super admin', 'wp-multisite-waas'));
-
-			$link_shortcode = wu_get_form_url("shortcode_{$this->id}");
-			$link_customize = wu_get_form_url("customize_{$this->id}");
-
-			$text = sprintf(
-				$message,
-				$link_customize,
-				$link_shortcode
-			);
-
-			$html = '
+			?>
 				<div class="wu-styling">
 						<div class="wu-widget-inset">
 							<div class="wubox wu-no-underline wu-p-4 wu-bg-gray-200 wu-block wu-mt-4 wu-text-center wu-text-sm wu-text-gray-600 wu-m-auto wu-border-solid wu-border-0 wu-border-t wu-border-gray-400">
-								' . $text . '
+								<a class="wubox wu-no-underline" title="Customize" href="<?php echo esc_attr(wu_get_form_url("shortcode_{$this->id}")); ?>">
+									<?php esc_html_e('Customize this element', 'wp-multisite-waas'); ?>
+								</a>
+								<?php esc_html_e(', or'); ?>
+								<a class="wubox wu-no-underline" title="Shortcode" href="<?php echo esc_attr(wu_get_form_url("customize_{$this->id}")); ?>">
+									<?php esc_html_e('generate a shortcode', 'wp-multisite-waas'); ?>
+								</a>
+								<?php esc_html_e('to use it on the front-end!', 'wp-multisite-waas'); ?>
+								<?php echo wu_tooltip(__('You are seeing this because you are a super admin', 'wp-multisite-waas')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							</div>
 					</div>
 				</div>
-			';
-
-			echo $html;
+			<?php
 		}
 	}
 

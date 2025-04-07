@@ -18,7 +18,7 @@
 if ( ! defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 
-} // end if;
+}
 
 /**
  * Allow developers to run code before the template previewer is loaded.
@@ -85,7 +85,7 @@ do_action('wu_template_previewer_before');
 
 						<a id="template_selector" href="#">
 
-									<?php _e('Select template...', 'wp-multisite-waas'); ?>
+									<?php esc_html_e('Select template...', 'wp-multisite-waas'); ?>
 
 							<span style="float: right; margin-top:  -3px" class="dashicons dashicons-arrow-down-alt2"></span>
 
@@ -202,7 +202,7 @@ do_action('wu_template_previewer_before');
 
 			<div class="wu-text-xl wu-rounded wu-font-bold wu-uppercase wu-inline-block wu-p-8 wu-opacity-50" style="margin-top: 62px; background-color: #000; color: #666;">
 
-				<?php _e('Site Template Preview will go here!', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Site Template Preview will go here!', 'wp-multisite-waas'); ?>
 
 			</div>
 

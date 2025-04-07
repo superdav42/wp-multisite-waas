@@ -26,14 +26,15 @@ class Sunrise {
 	 *
 	 * @var string
 	 */
-	static $version = '2.0.0.8';
+
+	public static $version = '2.0.0.8';
 
 	/**
 	 * Keeps the sunrise meta cached after the first read.
 	 *
 	 * @var null|array
 	 */
-	static $sunrise_meta;
+	public static $sunrise_meta;
 
 	/**
 	 * Initializes sunrise and loads additional elements if needed.
@@ -104,6 +105,7 @@ class Sunrise {
 	 */
 	public static function load_dependencies(): void {
 
+		// We can't use JetPack autoloader because WordPress is not fully loaded yet.
 		require_once __DIR__ . '/deprecated/early-deprecated.php';
 		require_once __DIR__ . '/deprecated/mercator.php';
 		require_once __DIR__ . '/functions/site.php';
@@ -115,6 +117,8 @@ class Sunrise {
 		require_once __DIR__ . '/objects/class-limitations.php';
 		require_once __DIR__ . '/models/traits/trait-limitable.php';
 		require_once __DIR__ . '/models/traits/trait-notable.php';
+		require_once __DIR__ . '/models/traits/trait-billable.php';
+		require_once __DIR__ . '/traits/trait-wp-ultimo-subscription-deprecated.php';
 		require_once __DIR__ . '/traits/trait-wp-ultimo-site-deprecated.php';
 		require_once __DIR__ . '/database/engine/class-enum.php';
 		require_once __DIR__ . '/database/sites/class-site-type.php';
@@ -132,6 +136,8 @@ class Sunrise {
 		require_once __DIR__ . '/class-settings.php';
 		require_once __DIR__ . '/limits/class-plugin-limits.php';
 		require_once __DIR__ . '/limits/class-theme-limits.php';
+		require_once __DIR__ . '/limits/class-theme-limits.php';
+		require_once __DIR__ . '/models/class-membership.php';
 	}
 
 	/**
@@ -206,7 +212,7 @@ class Sunrise {
 					 */
 					add_filter('option_active_plugins', fn() => []);
 
-					add_filter('site_option_active_sitewide_plugins', fn($plugins) => [basename(dirname(__DIR__)) . '/wp-ultimo.php' => 1]);
+					add_filter('site_option_active_sitewide_plugins', fn() => [basename(dirname(__DIR__)) . '/wp-ultimo.php' => 1], 10, 0);
 				}
 			}
 		}
@@ -255,7 +261,7 @@ class Sunrise {
 	 */
 	public static function try_upgrade() {
 
-		$copy_results = @copy(
+		$copy_results = copy(
 			dirname(WP_ULTIMO_PLUGIN_FILE) . '/sunrise.php',
 			WP_CONTENT_DIR . '/sunrise.php'
 		); // phpcs:ignore

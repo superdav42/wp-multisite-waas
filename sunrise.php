@@ -83,7 +83,7 @@ $wu_mercator = defined('WP_PLUGIN_DIR')
 if (file_exists($wu_mercator)) {
 	require $wu_mercator;
 }
-unset($wu_mercator)
+unset($wu_mercator);
 
 /**
  * Adds a warning when WP Multisite WaaS is not present but the sunrise file is.

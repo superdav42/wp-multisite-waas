@@ -171,7 +171,7 @@ class Base_List_Table extends \WP_List_Table {
 		if ('grid' === $this->current_mode) {
 			printf(
 				'<button id="cb-select-all-grid" v-on:click.prevent="select_all" class="button">%s</button>',
-				__('Select All', 'wp-multisite-waas')
+				esc_html__('Select All', 'wp-multisite-waas')
 			);
 		}
 	}
@@ -192,13 +192,8 @@ class Base_List_Table extends \WP_List_Table {
 
 		$list_table_name = $this->id;
 
-		if ( ! empty($_REQUEST['mode'])) {
+		if ( ! empty($_REQUEST['mode']) && in_array($_REQUEST['mode'], array_keys($this->modes), true)) {
 			$mode = $_REQUEST['mode'];
-
-			if (in_array($mode, array_keys($this->modes), true)) {
-				$mode = $_REQUEST['mode'];
-			}
-
 			set_user_setting("{$list_table_name}_list_mode", $mode);
 		} else {
 			$mode = get_user_setting("{$list_table_name}_list_mode", current(array_keys($this->modes)));
@@ -502,7 +497,7 @@ class Base_List_Table extends \WP_List_Table {
 		 * Any items at all?
 		 */
 		if ( ! $this->has_items() && 'page' === $this->context) {
-			echo wu_render_empty_state(
+			echo wu_render_empty_state( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				[
 					'message'      => sprintf(__("You don't have any %s yet.", 'wp-multisite-waas'), $this->labels['plural']),
 					'sub_message'  => $this->_args['add_new'] ? __('How about we create a new one?', 'wp-multisite-waas') : __('...but you will see them here once they get created.', 'wp-multisite-waas'),
@@ -531,21 +526,19 @@ class Base_List_Table extends \WP_List_Table {
 
 		$views = apply_filters("wu_{$this->id}_get_views", $this->get_views());
 
-		if (true) {
-			$args = array_merge(
-				$filters,
-				[
-					'filters_el_id'   => sprintf('%s-filters', $this->id),
-					'has_search'      => $this->has_search(),
-					'search_label'    => $this->get_search_input_label(),
-					'views'           => $views,
-					'has_view_switch' => ! empty($this->modes),
-					'table'           => $this,
-				]
-			);
+		$args = array_merge(
+			$filters,
+			[
+				'filters_el_id'   => sprintf('%s-filters', $this->id),
+				'has_search'      => $this->has_search(),
+				'search_label'    => $this->get_search_input_label(),
+				'views'           => $views,
+				'has_view_switch' => ! empty($this->modes),
+				'table'           => $this,
+			]
+		);
 
-			wu_get_template('base/filter', $args);
-		}
+		wu_get_template('base/filter', $args);
 	}
 
 	/**
@@ -596,7 +589,7 @@ class Base_List_Table extends \WP_List_Table {
 			'<div class="wu-py-6 wu-text-gray-600 wu-text-sm wu-text-center">
 			<span class="">%s</span>
 		</div>',
-			__('No items found', 'wp-multisite-waas')
+			esc_html__('No items found', 'wp-multisite-waas')
 		);
 	}
 
@@ -1095,7 +1088,7 @@ class Base_List_Table extends \WP_List_Table {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_Ultimo\Models\Product $item Product object.
+	 * @param \WP_Ultimo\Models\Product $item Product object.
 	 */
 	public function column_featured_image_id($item): string {
 
@@ -1122,7 +1115,7 @@ class Base_List_Table extends \WP_List_Table {
 	/**
 	 * Render the bulk edit checkbox.
 	 *
-	 * @param WP_Ultimo\Models\Product $item Product object.
+	 * @param \WP_Ultimo\Models\Product $item Product object.
 	 *
 	 * @return string
 	 */
@@ -1158,7 +1151,7 @@ class Base_List_Table extends \WP_List_Table {
 		<script type='text/javascript'>
 			document.addEventListener('DOMContentLoaded', function() {
 
-				let table_id = '<?php echo $this->_get_js_var_name(); ?>';
+				let table_id = '<?php echo esc_js($this->_get_js_var_name()); ?>';
 
 				/**
 				 * Create the ajax List Table
@@ -1166,8 +1159,8 @@ class Base_List_Table extends \WP_List_Table {
 				if (typeof window[table_id] === 'undefined') {
 
 					window[table_id + '_config'] = {
-						filters: <?php echo json_encode($this->get_filters()); ?>,
-						context: <?php echo json_encode($this->context); ?>,
+						filters: <?php echo wp_json_encode($this->get_filters()); ?>,
+						context: <?php echo wp_json_encode($this->context); ?>,
 					}
 
 					window[table_id] = wu_create_list(table_id).init();
@@ -1409,6 +1402,7 @@ class Base_List_Table extends \WP_List_Table {
 			'all' => [
 				'field' => 'type',
 				'url'   => '#',
+				// translators: %s will be replaced with a plural label
 				'label' => sprintf(__('All %s', 'wp-multisite-waas'), $this->get_label('plural')),
 				'count' => 0,
 			],

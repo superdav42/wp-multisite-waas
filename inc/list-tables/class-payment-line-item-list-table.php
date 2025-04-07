@@ -104,6 +104,7 @@ class Payment_Line_Item_List_Table extends Line_Item_List_Table {
 		$first_row['subtotal'] = [
 			'icon'  => 'dashicons-wu-info1 wu-align-middle wu-mr-1',
 			'label' => '',
+			/* translators: %s is a currency amount */
 			'value' => sprintf(__('Subtotal: %s', 'wp-multisite-waas'), wu_format_currency($item->get_subtotal())),
 		];
 
@@ -132,7 +133,7 @@ class Payment_Line_Item_List_Table extends Line_Item_List_Table {
 			'value' => $item->get_description(),
 		];
 
-		echo wu_responsive_table_row(
+		echo wu_responsive_table_row( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			[
 				'id'     => '',
 				'title'  => $item->get_title(),
