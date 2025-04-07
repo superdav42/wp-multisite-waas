@@ -38,7 +38,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wpallstars/wp-multisite-waas.git"
+    "url": "git+https://github.com/superdav42/wp-multisite-waas.git"
   },
   "keywords": [
     "wordpress",
@@ -48,7 +48,7 @@
   "author": "WP Multisite WaaS Contributors",
   "license": "GPL-2.0-or-later",
   "bugs": {
-    "url": "https://github.com/wpallstars/wp-multisite-waas/issues"
+    "url": "https://github.com/superdav42/wp-multisite-waas/issues"
   },
   "config": {
     "translate": true
