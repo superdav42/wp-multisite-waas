@@ -47,11 +47,18 @@ We welcome contributions to WP Multisite WaaS! To contribute effectively:
    * Generate translation POT files
    * Minify CSS and JS assets
    * Process and optimize other assets
-6. Open a Pull Request with your changes
+6. **Important:** Update both README.md and readme.txt files when making changes that affect:
+   * Version numbers
+   * Required WordPress/PHP versions
+   * Feature additions or changes
+   * Installation instructions
+   * Documentation
+   * Changelog entries
+7. Open a Pull Request with your changes
 
 **Pull Request Guidelines:**
 
-Please include a clear description of your changes and their purpose, reference any related issues, and ensure your code follows existing style conventions.
+Please include a clear description of your changes and their purpose, reference any related issues, and ensure your code follows existing style conventions. Always verify that both README.md and readme.txt are updated and synchronized before submitting your PR.
 
 **Release Process:**
 
@@ -61,6 +68,12 @@ To trigger a new release build, push a tag following the semantic versioning for
 `git tag v2.3.5` (for version 2.3.5) and then `git push origin v2.3.5`
 
 The tag must begin with "v" followed by the version number (v*.*.*).
+
+When preparing for a release:
+1. Update the version number in the main plugin file and readme.txt
+2. Update the changelog in readme.txt
+3. Ensure README.md and readme.txt are synchronized with the latest information
+4. Create and push the appropriate version tag
 
 For more detailed contribution guidelines, see the [GitHub repository](https://github.com/superdav42/wp-multisite-waas).
 

@@ -109,9 +109,16 @@ We welcome contributions to WP Multisite WaaS! Here's how you can contribute eff
    - Generate translation POT files
    - Minify CSS and JS assets
    - Process and optimize other assets
-6. Commit your changes (`git commit -m 'Add some amazing feature'`)
-7. Push to the branch (`git push origin feature/amazing-feature`)
-8. Open a Pull Request
+6. **Important:** Update both README.md and readme.txt files when making changes that affect:
+   - Version numbers
+   - Required WordPress/PHP versions
+   - Feature additions or changes
+   - Installation instructions
+   - Documentation
+   - Changelog entries
+7. Commit your changes (`git commit -m 'Add some amazing feature'`)
+8. Push to the branch (`git push origin feature/amazing-feature`)
+9. Open a Pull Request
 
 ### Pull Request Guidelines
 
@@ -123,6 +130,7 @@ When submitting pull requests, please:
 4. Include screenshots or GIFs for UI changes if applicable
 5. Make sure all tests pass (if available)
 6. Update documentation as needed
+7. Verify that both README.md and readme.txt are updated and synchronized
 
 ### Release Process
 
@@ -145,7 +153,8 @@ This will automatically:
 When preparing for a release:
 1. Update the version number in the main plugin file and readme.txt
 2. Update the changelog in readme.txt
-3. Create and push the appropriate version tag
+3. Ensure README.md and readme.txt are synchronized with the latest information
+4. Create and push the appropriate version tag
 
 ## 🆘 Support
 
