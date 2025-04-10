@@ -54,7 +54,7 @@
 	<div>
 
 		<span class="wu-text-sm wu-text-gray-800 wu-inline-block wu-py-4">
-		<?php esc_html_e('This integration will <strong>not</strong>:', 'wp-multisite-waas'); ?>
+		<?php echo wp_kses(__('This integration will <strong>not</strong>:', 'wp-multisite-waas'), ['strong' => []]); ?>
 		</span>
 
 		<ul class="wu--mx-5 wu-my-0 wu-border-t wu-border-solid wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300">
