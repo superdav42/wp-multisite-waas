@@ -312,9 +312,9 @@ class CPanel_API {
 		}
 
 		$url = $this->get_base_url() . $this->cpsess . '/json-api/cpanel' .
-		       '?cpanel_jsonapi_version=2' .
-		       "&cpanel_jsonapi_func={$function_name}" .
-		       "&cpanel_jsonapi_module={$module}&" . $parameters;
+				'?cpanel_jsonapi_version=2' .
+				"&cpanel_jsonapi_func={$function_name}" .
+				"&cpanel_jsonapi_module={$module}&" . $parameters;
 
 		return json_decode((string) $this->request($url, $parameters));
 	}

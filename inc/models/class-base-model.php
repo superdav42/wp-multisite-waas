@@ -208,7 +208,7 @@ abstract class Base_Model implements \JsonSerializable {
 		$vars = get_object_vars($object);
 
 		$this->attributes($vars);
-        return !empty($this->id);
+		return ! empty($this->id);
 	}
 
 	/**
@@ -686,8 +686,8 @@ abstract class Base_Model implements \JsonSerializable {
 			return false;
 		}
 
-        // _doing_it_wrong(__METHOD__, __('Model metadata only works for already saved models.', 'wp-multisite-waas'), '2.0.0');
-        return !(! $this->get_id() && ! $this->_mocked);
+		// _doing_it_wrong(__METHOD__, __('Model metadata only works for already saved models.', 'wp-multisite-waas'), '2.0.0');
+		return ! (! $this->get_id() && ! $this->_mocked);
 	}
 
 	/**

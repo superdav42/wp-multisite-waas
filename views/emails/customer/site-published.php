@@ -8,7 +8,7 @@
 <?php // translators: %s: Customer Name ?>
 <p><?php printf(esc_html__('Hey %s,', 'wp-multisite-waas'), '{{customer_name}}'); ?></p>
 <?php // translators: %1$s: Site Title, %2$s: Site Url ?>
-<p><?php echo wp_kses(sprintf(__('We have great news! The site <b>%1$s</b> (%2$s) was created successfully and is ready!', 'wp-multisite-waas'), '{{site_title}}', '<a href="{{site_url}}" style="text-decoration: none;" rel="nofollow">{{site_url}}</a>'),'pre_user_description'); ?></p>
+<p><?php echo wp_kses(sprintf(__('We have great news! The site <b>%1$s</b> (%2$s) was created successfully and is ready!', 'wp-multisite-waas'), '{{site_title}}', '<a href="{{site_url}}" style="text-decoration: none;" rel="nofollow">{{site_url}}</a>'), 'pre_user_description'); ?></p>
 
 <h2><b><?php esc_html_e('Your Site', 'wp-multisite-waas'); ?></b></h2>
 

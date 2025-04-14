@@ -565,8 +565,8 @@ class PayPal_Gateway extends Base_Gateway {
 			];
 
 			$args['PAYMENTREQUEST_0_ITEMAMT'] += $sub_total;
-			$args['PAYMENTREQUEST_0_TAXAMT'] += $tax_amount;
-			$args['PAYMENTREQUEST_0_AMT']     = $args['PAYMENTREQUEST_0_AMT'] + $sub_total + $tax_amount;
+			$args['PAYMENTREQUEST_0_TAXAMT']  += $tax_amount;
+			$args['PAYMENTREQUEST_0_AMT']      = $args['PAYMENTREQUEST_0_AMT'] + $sub_total + $tax_amount;
 
 			$args = array_merge($args, $product_args);
 
@@ -588,7 +588,7 @@ class PayPal_Gateway extends Base_Gateway {
 			);
 
 			$args['PAYMENTREQUEST_0_ITEMAMT'] += $discounts_total;
-			$args['PAYMENTREQUEST_0_AMT'] += $discounts_total;
+			$args['PAYMENTREQUEST_0_AMT']     += $discounts_total;
 
 			++$product_index;
 		}

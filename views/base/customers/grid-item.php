@@ -11,7 +11,19 @@
 
 	<div
 		class="wu--mt-8 wu-py-8 wu-bg-gray-100 wu-bg-cover wu-bg-center"
-		style="opacity: 0.15; background-image: url(<?php echo esc_url(get_avatar_url($item->get_user_id(), array('default' => 'identicon', 'size' => 320))); ?>)"
+		style="opacity: 0.15; background-image: url(
+		<?php
+		echo esc_url(
+			get_avatar_url(
+				$item->get_user_id(),
+				array(
+					'default' => 'identicon',
+					'size'    => 320,
+				)
+			)
+		);
+		?>
+		)"
 	>
 		&nbsp;
 	</div>

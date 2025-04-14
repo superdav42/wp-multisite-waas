@@ -47,8 +47,7 @@ class Arr {
 	 * @param integer $flag The flag determining the return type.
 	 *
 	 * @return mixed
-	 *@since 2.0.11
-	 *
+	 * @since 2.0.11
 	 */
 	public static function filter_by_property($array_to_filter, $property, $expected_value, $flag = 0) {
 
@@ -74,8 +73,7 @@ class Arr {
 	 * @param callable $closure The closure function to call.
 	 *
 	 * @return array
-	 *@since 2.0.11
-	 *
+	 * @since 2.0.11
 	 */
 	public static function filter($array_to_search, $closure) {
 
@@ -99,13 +97,12 @@ class Arr {
 	 *
 	 * @param array  $array_target The array to get the value from.
 	 * @param string $key The array key to get. Supports dot notation.
-	 * @param mixed  $default The value to return ibn the case the key does not exist.
+	 * @param mixed  $default_value The value to return ibn the case the key does not exist.
 	 *
 	 * @return mixed
-	 *@since 2.0.11
-	 *
+	 * @since 2.0.11
 	 */
-	public static function get($array_target, $key, $default = null) {
+	public static function get($array_target, $key, $default_value = null) {
 
 		if (is_null($key)) {
 			return $array_target;
@@ -117,7 +114,7 @@ class Arr {
 
 		foreach (explode('.', $key) as $segment) {
 			if ( ! is_array($array_target) || ! array_key_exists($segment, $array_target)) {
-				return $default;
+				return $default_value;
 			}
 
 			$array_target = $array_target[ $segment ];
@@ -134,8 +131,7 @@ class Arr {
 	 * @param mixed  $value The value to set.
 	 *
 	 * @return array
-	 *@since 2.0.11
-	 *
+	 * @since 2.0.11
 	 */
 	public static function set(&$array_to_modify, $key, $value) {
 

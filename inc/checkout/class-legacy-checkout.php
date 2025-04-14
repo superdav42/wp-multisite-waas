@@ -959,7 +959,7 @@ class Legacy_Checkout {
 	public function has_plan_step(): bool {
 
 		$transient = static::get_transient();
-        return !(isset($transient['skip_plan']) && isset($transient['plan_id']) && isset($transient['plan_freq']));
+		return ! (isset($transient['skip_plan']) && isset($transient['plan_id']) && isset($transient['plan_freq']));
 	}
 
 	/**

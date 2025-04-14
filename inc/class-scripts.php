@@ -59,7 +59,10 @@ class Scripts {
 	 * }
 	 * @return void
 	 */
-	public function register_script($handle, $src, $deps = [], $args = ['async' => true, 'in_footer' => true]): void {
+	public function register_script($handle, $src, $deps = [], $args = [
+		'async'     => true,
+		'in_footer' => true,
+	]): void {
 
 		wp_register_script($handle, $src, $deps, wu_get_version(), $args);
 	}

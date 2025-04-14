@@ -25,11 +25,11 @@ class Event extends Base_Model {
 
 	const SEVERITY_NEUTRAL = 2;
 
-	const SEVERITY_INFO    = 3;
+	const SEVERITY_INFO = 3;
 
 	const SEVERITY_WARNING = 4;
 
-	const SEVERITY_FATAL   = 5;
+	const SEVERITY_FATAL = 5;
 
 	/**
 	 * Severity of the problem.
