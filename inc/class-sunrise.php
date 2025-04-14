@@ -115,6 +115,7 @@ class Sunrise {
 		require_once __DIR__ . '/functions/array-helpers.php';
 		require_once __DIR__ . '/traits/trait-singleton.php';
 		require_once __DIR__ . '/objects/class-limitations.php';
+		require_once __DIR__ . '/models/interface-limitable.php';
 		require_once __DIR__ . '/models/traits/trait-limitable.php';
 		require_once __DIR__ . '/models/traits/trait-notable.php';
 		require_once __DIR__ . '/models/traits/trait-billable.php';
@@ -138,6 +139,7 @@ class Sunrise {
 		require_once __DIR__ . '/limits/class-theme-limits.php';
 		require_once __DIR__ . '/limits/class-theme-limits.php';
 		require_once __DIR__ . '/models/class-membership.php';
+
 	}
 
 	/**
