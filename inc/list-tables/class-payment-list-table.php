@@ -244,39 +244,39 @@ class Payment_List_Table extends Base_List_Table {
 	public function get_views() {
 
 		return [
-			'all'                            => [
+			'all'                          => [
 				'field' => 'status',
 				'url'   => add_query_arg('status', 'all'),
 				'label' => __('All Payments', 'wp-multisite-waas'),
 				'count' => 0,
 			],
-			Payment_Status::COMPLETED()      => [
+			Payment_Status::COMPLETED      => [
 				'field' => 'status',
-				'url'   => add_query_arg('status', Payment_Status::COMPLETED()),
+				'url'   => add_query_arg('status', Payment_Status::COMPLETED),
 				'label' => __('Completed', 'wp-multisite-waas'),
 				'count' => 0,
 			],
-			Payment_Status::PENDING()        => [
+			Payment_Status::PENDING        => [
 				'field' => 'status',
-				'url'   => add_query_arg('status', Payment_Status::PENDING()),
+				'url'   => add_query_arg('status', Payment_Status::PENDING),
 				'label' => __('Pending', 'wp-multisite-waas'),
 				'count' => 0,
 			],
-			Payment_Status::PARTIAL_REFUND() => [
+			Payment_Status::PARTIAL_REFUND => [
 				'field' => 'status',
-				'url'   => add_query_arg('status', Payment_Status::PARTIAL_REFUND()),
+				'url'   => add_query_arg('status', Payment_Status::PARTIAL_REFUND),
 				'label' => __('Partially Refunded', 'wp-multisite-waas'),
 				'count' => 0,
 			],
-			Payment_Status::REFUND()         => [
+			Payment_Status::REFUND         => [
 				'field' => 'status',
-				'url'   => add_query_arg('status', Payment_Status::REFUND()),
+				'url'   => add_query_arg('status', Payment_Status::REFUND),
 				'label' => __('Refunded', 'wp-multisite-waas'),
 				'count' => 0,
 			],
-			Payment_Status::FAILED()         => [
+			Payment_Status::FAILED         => [
 				'field' => 'status',
-				'url'   => add_query_arg('status', Payment_Status::FAILED()),
+				'url'   => add_query_arg('status', Payment_Status::FAILED),
 				'label' => __('Failed', 'wp-multisite-waas'),
 				'count' => 0,
 			],
