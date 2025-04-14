@@ -235,9 +235,11 @@ final class WP_Ultimo {
 	 */
 	public function setup_textdomain(): void {
 		/*
-		 * Loads the translation files.
+		 * Loads the translation files at the init action to prevent "too early" warnings in WP 6.7+
 		 */
-		load_plugin_textdomain('wp-ultimo', false, dirname((string) WP_ULTIMO_PLUGIN_BASENAME) . '/lang');
+		add_action('init', function() {
+			load_plugin_textdomain('wp-ultimo', false, dirname((string) WP_ULTIMO_PLUGIN_BASENAME) . '/lang');
+		});
 	}
 
 	/**
