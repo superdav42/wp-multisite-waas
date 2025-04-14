@@ -53,7 +53,7 @@ $has_tax_included = false;
 }
 
 .invoice-box table {
-	border-collapse: 1;
+	border-collapse: 1px;
 }
 
 .invoice-box table tr.heading th {
@@ -127,7 +127,7 @@ $has_tax_included = false;
 
 .primary-color {
 	padding: 10px;
-	background-color: <?php echo $primary_color; ?>;
+	background-color: <?php echo esc_attr($primary_color); ?>;
 }
 </style>
 
@@ -140,23 +140,22 @@ $has_tax_included = false;
 						<td class="title">
 							<?php if ($use_custom_logo && $custom_logo) : ?>
 
-								<?php $image_attributes = wp_get_attachment_image_src($custom_logo, 'full'); ?>
-
-								<img src="<?php echo wu_get_isset($image_attributes, 0, false); ?>" width="100" height="" />
+								<?php echo wp_get_attachment_image($custom_logo, 'full', false, array('style' => 'width: 100px; height: auto;')); ?>
 
 							<?php else : ?>
 
-								<img width="100" src="<?php echo $logo_url; ?>" alt="<?php echo get_network_option(null, 'site_name'); ?>">
+								<img width="100" src="<?php echo esc_attr($logo_url); ?>" alt="<?php echo esc_attr(get_network_option(null, 'site_name')); ?>">
 								
 							<?php endif; ?>
 						</td>
 
 						<td>
-							<strong><?php _e('Invoice #', 'wp-ultimo'); ?></strong><br>
-							<?php echo $payment->get_invoice_number(); ?>
+							<strong><?php esc_html_e('Invoice #', 'wp-multisite-waas'); ?></strong><br>
+							<?php echo esc_html($payment->get_invoice_number()); ?>
 							<br>
-							<?php printf(__('Created: %s', 'wp-ultimo'), date_i18n(get_option('date_format'), strtotime($payment->get_date_created()))); ?><br>
-							<?php _e('Due on Receipt', 'wp-ultimo'); ?><br>
+							<?php echo esc_html(sprintf(esc_html__('Created: %s', 'wp-multisite-waas'), date_i18n(get_option('date_format'), strtotime($payment->get_date_created())))); ?><br>
+
+							<?php esc_html_e('Due on Receipt', 'wp-multisite-waas'); ?><br>
 						</td>
 					</tr>
 				</table>
@@ -174,7 +173,7 @@ $has_tax_included = false;
 								/**
 								 * Displays company name.
 								 */
-								echo $company_name;
+								echo esc_html($company_name);
 
 								?>
 							</strong>
@@ -186,20 +185,20 @@ $has_tax_included = false;
 							/**
 							 * Displays the company address.
 							 */
-							echo nl2br($company_address);
+							echo nl2br(esc_html($company_address), array('br' => array()));
 
 							?>
 						</td>
 
 						<td>
-							<strong><?php _e('Bill to', 'wp-ultimo'); ?></strong>
+							<strong><?php esc_html_e('Bill to', 'wp-multisite-waas'); ?></strong>
 							<br>
 							<?php
 
 							/**
 							 * Displays the clients address.
 							 */
-							echo nl2br(implode(PHP_EOL, (array) $billing_address));
+							echo nl2br(esc_html(implode(PHP_EOL, (array) $billing_address)), array('br' => array()));
 
 							?>
 						   
@@ -212,23 +211,23 @@ $has_tax_included = false;
 		<tr class="heading">
 
 			<th style="text-align: left;">
-				<?php _e('Item', 'wp-ultimo'); ?>
+				<?php esc_html_e('Item', 'wp-multisite-waas'); ?>
 			</th>
 
 			<th style="width: 17%;">
-				<?php _e('Price', 'wp-ultimo'); ?>
+				<?php esc_html_e('Price', 'wp-multisite-waas'); ?>
 			</th>
 
 			<th style="width: 17%;">
-				<?php _e('Discount', 'wp-ultimo'); ?>
+				<?php esc_html_e('Discount', 'wp-multisite-waas'); ?>
 			</th>
 
 			<th style="width: 17%;">
-				<?php _e('Tax', 'wp-ultimo'); ?>
+				<?php esc_html_e('Tax', 'wp-multisite-waas'); ?>
 			</th>
 
 			<th style="width: 17%;">
-				<?php _e('Total', 'wp-ultimo'); ?>
+				<?php esc_html_e('Total', 'wp-multisite-waas'); ?>
 			</th>
 
 		</tr>
@@ -238,23 +237,23 @@ $has_tax_included = false;
 			<tr class="item">
 
 				<td>
-					<span class="font-weight: medium;"><?php echo $line_item->get_title(); ?></span>
+					<span class="font-weight: medium;"><?php echo esc_html($line_item->get_title()); ?></span>
 					<br>
-					<small><?php echo $line_item->get_description(); ?></small>
+					<small><?php echo esc_html($line_item->get_description()); ?></small>
 				</td>
 
 				<td style="text-align: right;">
-					<?php echo wu_format_currency($line_item->get_subtotal(), $payment->get_currency()); ?>
+					<?php echo esc_html(wu_format_currency($line_item->get_subtotal(), $payment->get_currency())); ?>
 				</td>
 
 				<td style="text-align: right;">
-					<?php echo wu_format_currency($line_item->get_discount_total(), $payment->get_currency()); ?>
+					<?php echo esc_html(wu_format_currency($line_item->get_discount_total(), $payment->get_currency())); ?>
 				</td>
 
 				<td style="text-align: right;">
-					<?php echo wu_format_currency($line_item->get_tax_total(), $payment->get_currency()); ?>
+					<?php echo esc_html(wu_format_currency($line_item->get_tax_total(), $payment->get_currency())); ?>
 					<br>
-					<small><?php echo $line_item->get_tax_label(); ?> (<?php echo $line_item->get_tax_rate(); ?>%)</small>
+					<small><?php echo esc_html($line_item->get_tax_label()); ?> (<?php echo esc_html($line_item->get_tax_rate()); ?>%)</small>
 					<?php if ($line_item->get_tax_inclusive()) : ?>
 						<?php $has_tax_included = true; ?>
 						<small>*</small>
@@ -262,7 +261,7 @@ $has_tax_included = false;
 				</td>
 
 				<td style="text-align: right;">
-					<?php echo wu_format_currency($line_item->get_total(), $payment->get_currency()); ?>
+					<?php echo esc_html(wu_format_currency($line_item->get_total(), $payment->get_currency())); ?>
 				</td>
 
 			</tr>
@@ -272,11 +271,11 @@ $has_tax_included = false;
 		<tr class="total">
 			<?php if ($has_tax_included) : ?>
 				<td style="text-align: left; font-weight: normal;">
-					<small>* <?php _e('Tax included in price.', 'wp-ultimo'); ?></small>
+					<small>* <?php esc_html_e('Tax included in price.', 'wp-multisite-waas'); ?></small>
 				</td>
 			<?php endif; ?>
 			<td colspan='5'>
-				<?php printf(__('Total: %s', 'wp-ultimo'), wu_format_currency($payment->get_total(), $payment->get_currency())); ?>
+				<?php printf(esc_html__('Total: %s', 'wp-multisite-waas'), esc_html(wu_format_currency($payment->get_total(), $payment->get_currency()))); ?>
 			</td>
 		</tr>
 
@@ -284,13 +283,13 @@ $has_tax_included = false;
 
 			<tr class="heading">
 				<th colspan="5" style="text-align: left;">
-					<?php _e('Payment Method', 'wp-ultimo'); ?>
+					<?php esc_html_e('Payment Method', 'wp-multisite-waas'); ?>
 				</th>
 			</tr>
 
 			<tr class="details">
 				<td colspan="5">
-					<?php echo $payment->get_payment_method(); ?>
+					<?php echo esc_html($payment->get_payment_method()); ?>
 				</td>
 			</tr>
 

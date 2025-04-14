@@ -31,9 +31,9 @@ if ( ! defined('ABSPATH')) {
 $plan_attrs = '';
 
 foreach ([1, 3, 12] as $type) {
-	$price       = $plan->free ? __('Free!', 'wp-ultimo') : str_replace(wu_get_currency_symbol(), '', wu_format_currency((((float) $plan->{'price_' . $type}) / $type)));
+	$price       = $plan->free ? __('Free!', 'wp-multisite-waas') : str_replace(wu_get_currency_symbol(), '', wu_format_currency((((float) $plan->{'price_' . $type}) / $type)));
 	$plan_attrs .= " data-price-$type='$price'";
-} // end foreach;
+}
 
 $plan_attrs = apply_filters('wu_pricing_table_plan', $plan_attrs, $plan);
 
@@ -43,7 +43,7 @@ $plan_attrs = apply_filters('wu_pricing_table_plan', $plan_attrs, $plan);
 
 	<?php if ($plan->is_featured_plan()) : ?>
 
-	<h6><?php echo apply_filters('wu_featured_plan_label', __('Featured Plan', 'wp-ultimo'), $plan); ?></h6>
+	<h6><?php echo apply_filters('wu_featured_plan_label', __('Featured Plan', 'wp-multisite-waas'), $plan); ?></h6>
 
 	<?php endif; ?>
 
@@ -53,13 +53,13 @@ $plan_attrs = apply_filters('wu_pricing_table_plan', $plan_attrs, $plan);
 	<?php if ($plan->is_free()) : ?>
 
 	<h5>
-		<span class="plan-price"><?php _e('Free!', 'wp-ultimo'); ?></span>
+		<span class="plan-price"><?php esc_html_e('Free!', 'wp-multisite-waas'); ?></span>
 	</h5>
 
 	<?php elseif ($plan->is_contact_us()) : ?>
 
 	<h5>
-		<span class="plan-price-contact-us"><?php echo apply_filters('wu_plan_contact_us_price_line', __('--', 'wp-ultimo')); ?></span>
+		<span class="plan-price-contact-us"><?php echo apply_filters('wu_plan_contact_us_price_line', __('--', 'wp-multisite-waas')); ?></span>
 	</h5>
 
 	<?php else : ?>
@@ -71,7 +71,7 @@ $plan_attrs = apply_filters('wu_pricing_table_plan', $plan_attrs, $plan);
 			?>
 			<sup class="superscript"><?php echo wu_get_currency_symbol(); ?></sup><?php endif; ?>
 		<span class="plan-price"><?php echo str_replace(wu_get_currency_symbol(), '', wu_format_currency($plan->price_1)); ?></span>
-		<sub> <?php echo (! $symbol_left ? wu_get_currency_symbol() : '') . ' ' . __('/mo', 'wp-ultimo'); ?></sub>
+		<sub> <?php echo (! $symbol_left ? wu_get_currency_symbol() : '') . ' ' . __('/mo', 'wp-multisite-waas'); ?></sub>
 	</h5>
 
 	<?php endif; ?>
@@ -89,19 +89,19 @@ $plan_attrs = apply_filters('wu_pricing_table_plan', $plan_attrs, $plan);
 	 * Display quarterly and Annually plans, to be hidden
 	 */
 	$prices_total = [
-		3  => __('every 3 months', 'wp-ultimo'),
-		12 => __('yearly', 'wp-ultimo'),
+		3  => __('every 3 months', 'wp-multisite-waas'),
+		12 => __('yearly', 'wp-multisite-waas'),
 	];
 
 	foreach ($prices_total as $freq => $string) {
-		$text = sprintf(__('%1$s, billed %2$s', 'wp-ultimo'), wu_format_currency($plan->{"price_$freq"}), $string);
+		$text = sprintf(__('%1$s, billed %2$s', 'wp-multisite-waas'), wu_format_currency($plan->{"price_$freq"}), $string);
 
 		if ($plan->free || $plan->is_contact_us()) {
 			echo "<li class='total-price total-price-$freq'>-</li>";
 		} else {
 			echo "<li class='total-price total-price-$freq'>$text</li>";
 		}
-	} // end foreach;
+	}
 
 	/**
 	 * Loop and Displays Pricing Table Lines
@@ -115,7 +115,7 @@ $plan_attrs = apply_filters('wu_pricing_table_plan', $plan_attrs, $plan);
 
 	<?php
 	$button_attrubutes = apply_filters('wu_plan_select_button_attributes', '', $plan, $current_plan);
-	$button_label      = null != $current_plan && $plan->get_id() == $current_plan->id ? __('This is your current plan', 'wp-ultimo') : __('Select Plan', 'wp-ultimo');
+	$button_label      = null != $current_plan && $plan->get_id() == $current_plan->id ? __('This is your current plan', 'wp-multisite-waas') : __('Select Plan', 'wp-multisite-waas');
 	$button_label      = apply_filters('wu_plan_select_button_label', $button_label, $plan, $current_plan);
 	?>
 

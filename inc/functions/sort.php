@@ -45,15 +45,15 @@ function wu_sort_by_order($a, $b) {
  *
  * @since 2.0.7
  *
- * @param array  $list The list of sortable elements.
+ * @param array  $items The list of sortable elements.
  * @param string $order_key The order key.
  * @return array
  */
-function wu_set_order_from_index($list, $order_key = 'order') {
+function wu_set_order_from_index($items, $order_key = 'order') {
 
 	$index = 1;
 
-	foreach ($list as &$item) {
+	foreach ($items as &$item) {
 		if (isset($item[ $order_key ]) === false) {
 			$index = $index ?: 1; // phpcs:ignore
 
@@ -63,5 +63,5 @@ function wu_set_order_from_index($list, $order_key = 'order') {
 		}
 	}
 
-	return $list;
+	return $items;
 }

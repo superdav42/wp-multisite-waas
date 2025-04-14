@@ -9,7 +9,7 @@
 
 	<h1 class="wp-heading-inline">
 
-	<?php echo $page->get_title(); ?>
+	<?php echo esc_html($page->get_title()); ?>
 
 	<?php
 	/**
@@ -32,7 +32,7 @@
 
 		<?php endif; ?>
 
-		<?php echo $action_link['label']; ?>
+		<?php echo esc_html($action_link['label']); ?>
 
 		</a>
 
@@ -53,7 +53,7 @@
 	<?php if (wu_request('updated')) : ?>
 
 	<div id="message" class="updated notice wu-admin-notice notice-success is-dismissible below-h2">
-		<p><?php _e('Settings successfully saved.', 'wp-ultimo'); ?></p>
+		<p><?php esc_html_e('Settings successfully saved.', 'wp-multisite-waas'); ?></p>
 	</div>
 
 	<?php endif; ?>
@@ -88,7 +88,7 @@
 
 			<li class="md:wu-hidden wu-p-4 wu-font-bold wu-uppercase wu-text-xs wu-text-gray-700">
 
-				<?php _e('Menu', 'wp-ultimo'); ?>
+				<?php esc_html_e('Menu', 'wp-multisite-waas'); ?>
 
 			</li>
 
@@ -114,21 +114,21 @@
 				if (wu_get_isset($section, 'invisible')) {
 					continue; // skip add-ons for now.
 
-				} // end if;
+				}
 
 				if (wu_get_isset($section, 'addon')) {
 					$addons[ $section_name ] = $section;
 
 					continue; // skip add-ons for now.
 
-				} // end if;
+				}
 
 				/**
 				 * Updates the flag after the current section is looped.
 				 */
 				if ($current_section === $section_name) {
 					$is_pre_current_section = false;
-				} // end if;
+				}
 
 				?>
 
@@ -144,7 +144,7 @@
 
 					<span class="<?php echo esc_attr($section['icon']); ?> wu-align-text-bottom wu-mr-1"></span>
 
-					<?php echo $section['title']; ?>
+					<?php echo esc_html($section['title']); ?>
 
 				</a>
 				<!-- End Menu Link -->
@@ -158,7 +158,7 @@
 
 						<li class="classes">
 						<a href="<?php echo esc_url($page->get_section_link($section_name) . '#' . $sub_section_name); ?>" class="wu-block wu-py-2 wu-px-4 wu-no-underline wu-text-gray-500 hover:wu-text-gray-600 wu-text-sm">
-							&rarr; <?php echo $sub_section['title']; ?>
+							&rarr; <?php echo esc_html($sub_section['title']); ?>
 						</a>
 						</li>
 
@@ -183,7 +183,7 @@
 			<ul class="wu-pt-4">
 
 				<li class="wu-px-4 wu-font-bold wu-uppercase wu-text-xs wu-text-gray-700">
-				<?php _e('Add-ons', 'wp-ultimo'); ?>
+				<?php esc_html_e('Add-ons', 'wp-multisite-waas'); ?>
 				</li>
 
 				<?php foreach ($addons as $section_name => $section) : ?>
@@ -195,7 +195,7 @@
 					 */
 					if ($current_section === $section_name) {
 						$is_pre_current_section = false;
-					} // end if;
+					}
 
 					?>
 
@@ -207,7 +207,7 @@
 
 					<span class="<?php echo esc_attr($section['icon']); ?> wu-align-text-bottom wu-mr-1"></span>
 
-					<?php echo $section['title']; ?>
+					<?php echo esc_html($section['title']); ?>
 
 					</a>
 					<!-- End Menu Link -->
@@ -221,7 +221,7 @@
 
 						<li class="classes">
 							<a href="<?php echo esc_url($page->get_section_link($section_name) . '#' . $sub_section_name); ?>" class="wu-block wu-py-2 wu-px-4 wu-no-underline wu-text-gray-500 hover:wu-text-gray-600 wu-text-sm">
-							&rarr; <?php echo $sub_section['title']; ?>
+							&rarr; <?php echo esc_html($sub_section['title']); ?>
 							</a>
 						</li>
 
@@ -301,23 +301,3 @@
 	</form>
 
 </div>
-
-<script type="text/javascript">
-
-/** Not a huge fan of having this here, but it's better than having
-a file for this alone. */
-settings_loader = wu_block_ui('#wp-ultimo-wizard-body');
-
-/**
- * Remove the block ui after the settings loaded.
- *
- * @since 2.0.0
- * @return void
- */
-function remove_block_ui() {
-
-	settings_loader.unblock();
-
-} // end remove_block_ui;
-
-</script>

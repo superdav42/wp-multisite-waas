@@ -260,8 +260,8 @@ class Multiple_Accounts_Compat {
 			'login-and-registration',
 			'multiple_accounts_header',
 			[
-				'title' => __('Multiple Accounts', 'wp-ultimo'),
-				'desc'  => __('Options related to the Multiple Accounts feature.', 'wp-ultimo'),
+				'title' => __('Multiple Accounts', 'wp-multisite-waas'),
+				'desc'  => __('Options related to the Multiple Accounts feature.', 'wp-multisite-waas'),
 				'type'  => 'header',
 			]
 		);
@@ -270,8 +270,8 @@ class Multiple_Accounts_Compat {
 			'login-and-registration',
 			'enable_multiple_accounts',
 			[
-				'title'   => __('Enable Multiple Accounts', 'wp-ultimo'),
-				'desc'    => __('Allow users to have accounts in different sites with the same email address. This is useful when running stores with WooCommerce and other plugins, for example.', 'wp-ultimo') . ' ' . sprintf('<a href="%s" target="_blank">%s</a>', wu_get_documentation_url('multiple-accounts'), __('Read More', 'wp-ultimo')),
+				'title'   => __('Enable Multiple Accounts', 'wp-multisite-waas'),
+				'desc'    => __('Allow users to have accounts in different sites with the same email address. This is useful when running stores with WooCommerce and other plugins, for example.', 'wp-multisite-waas') . ' ' . sprintf('<a href="%s" target="_blank">%s</a>', wu_get_documentation_url('multiple-accounts'), __('Read More', 'wp-multisite-waas')),
 				'type'    => 'toggle',
 				'default' => 0,
 			]
@@ -288,7 +288,7 @@ class Multiple_Accounts_Compat {
 	 */
 	public function add_multiple_account_column($columns) {
 
-		$columns['multiple_accounts'] = __('Multiple Accounts', 'wp-ultimo');
+		$columns['multiple_accounts'] = __('Multiple Accounts', 'wp-multisite-waas');
 
 		return $columns;
 	}
@@ -320,9 +320,9 @@ class Multiple_Accounts_Compat {
 			);
 
 			// translators: the %d is the account count for that email address.
-			$html = sprintf(__('<strong>%d</strong> accounts using this email.', 'wp-ultimo'), $users->total_users);
+			$html = sprintf(__('<strong>%d</strong> accounts using this email.', 'wp-multisite-waas'), $users->total_users);
 
-			$html .= sprintf("<br><a href='%s' class=''>" . __('See all', 'wp-ultimo') . ' &raquo;</a>', network_admin_url('users.php?s=' . $user->user_email));
+			$html .= sprintf("<br><a href='%s' class=''>" . __('See all', 'wp-multisite-waas') . ' &raquo;</a>', network_admin_url('users.php?s=' . $user->user_email));
 
 			echo $html;
 		}

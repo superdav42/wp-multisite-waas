@@ -7,7 +7,7 @@
 ?>
 <li 
 	class="<?php echo esc_attr(trim($field->wrapper_classes)); ?>" 
-	<?php echo $field->get_wrapper_html_attributes(); ?>
+	<?php echo $field->get_wrapper_html_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 >
 
 	<div class="wu-w-full">
@@ -52,7 +52,7 @@
 
 				<span class="wu-my-1 wu-text-xs wu-font-bold wu-block">
 
-				<?php echo $option['title']; ?>
+				<?php echo esc_html($option['title']); ?>
 
 				</span>
 
@@ -60,7 +60,7 @@
 
 				<span class="wu-my-1 wu-inline-block wu-text-xs">
 
-					<?php echo $option['desc']; ?>
+					<?php echo esc_html($option['desc']); ?>
 
 				</span>
 
@@ -72,7 +72,7 @@
 
 				<div class="wu-toggle">
 
-				<input <?php checked(in_array($value, (array) $field->value, true)); ?> value="<?php echo esc_attr($value); ?>" id="<?php echo esc_attr("{$field->id}_{$value}"); ?>" type="checkbox" name="<?php echo esc_attr("{$field->id}[]"); ?>" class="wu-tgl wu-tgl-ios" <?php echo $field->get_html_attributes(); ?>>
+				<input <?php checked(in_array($value, (array) $field->value, true)); ?> value="<?php echo esc_attr($value); ?>" id="<?php echo esc_attr("{$field->id}_{$value}"); ?>" type="checkbox" name="<?php echo esc_attr("{$field->id}[]"); ?>" class="wu-tgl wu-tgl-ios" <?php echo $field->get_html_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 
 				<label for="<?php echo esc_attr("{$field->id}_{$value}"); ?>" class="wu-tgl-btn wp-ui-highlight"></label>
 

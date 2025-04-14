@@ -71,8 +71,8 @@ class Product_List_Admin_Page extends List_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'deleted_message' => __('Product removed successfully.', 'wp-ultimo'),
-			'search_label'    => __('Search Product', 'wp-ultimo'),
+			'deleted_message' => __('Product removed successfully.', 'wp-multisite-waas'),
+			'search_label'    => __('Search Product', 'wp-multisite-waas'),
 		];
 	}
 
@@ -84,7 +84,7 @@ class Product_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('Products', 'wp-ultimo');
+		return __('Products', 'wp-multisite-waas');
 	}
 
 	/**
@@ -95,7 +95,7 @@ class Product_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Products', 'wp-ultimo');
+		return __('Products', 'wp-multisite-waas');
 	}
 
 	/**
@@ -106,7 +106,7 @@ class Product_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_submenu_title() {
 
-		return __('Products', 'wp-ultimo');
+		return __('Products', 'wp-multisite-waas');
 	}
 
 	/**

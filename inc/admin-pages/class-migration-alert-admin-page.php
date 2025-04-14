@@ -104,7 +104,7 @@ class Migration_Alert_Admin_Page extends Wizard_Admin_Page {
 	 */
 	public function get_title(): string {
 
-		return sprintf(__('Migration', 'wp-ultimo'));
+		return sprintf(__('Migration', 'wp-multisite-waas'));
 	}
 
 	/**
@@ -115,7 +115,7 @@ class Migration_Alert_Admin_Page extends Wizard_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return WP_Ultimo()->is_loaded() ? __('WP Multisite WaaS Migration Alert', 'wp-ultimo') : __('WP Multisite WaaS', 'wp-ultimo');
+		return WP_Ultimo()->is_loaded() ? __('WP Multisite WaaS Migration Alert', 'wp-multisite-waas') : __('WP Multisite WaaS', 'wp-multisite-waas');
 	}
 
 	/**
@@ -128,7 +128,7 @@ class Migration_Alert_Admin_Page extends Wizard_Admin_Page {
 
 		return [
 			'alert' => [
-				'title'   => __('Alert!', 'wp-ultimo'),
+				'title'   => __('Alert!', 'wp-multisite-waas'),
 				'view'    => [$this, 'section_alert'],
 				'handler' => [$this, 'handle_proceed'],
 			],
@@ -163,7 +163,7 @@ class Migration_Alert_Admin_Page extends Wizard_Admin_Page {
 		delete_network_option(null, 'wu_setup_finished');
 		delete_network_option(null, 'wu_is_migration_done');
 
-		wp_redirect(wu_network_admin_url('wp-ultimo-setup'));
+		wp_safe_redirect(wu_network_admin_url('wp-ultimo-setup'));
 
 		exit;
 	}

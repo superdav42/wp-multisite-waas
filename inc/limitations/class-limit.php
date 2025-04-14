@@ -266,7 +266,7 @@ abstract class Limit implements \JsonSerializable {
 	#[\ReturnTypeWillChange]
 	public function jsonSerialize() {
 
-		return json_encode($this->to_array());
+		return wp_json_encode($this->to_array());
 	}
 
 	/**

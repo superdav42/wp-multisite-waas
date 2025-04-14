@@ -12,16 +12,16 @@ defined('ABSPATH') || exit;
 /**
  * Get the value of a slugfied network option
  *
- * @since 1.9.6
  * @param string $option_name Option name.
- * @param mixed  $default The default value.
+ * @param mixed  $default_value The default value.
+ *
  * @return mixed
  */
-function wu_get_option($option_name = 'settings', $default = []) {
+function wu_get_option($option_name = 'settings', $default_value = []) {
 
-	$option_value = get_network_option(null, wu_slugify($option_name), $default);
+	$option_value = get_network_option(null, wu_slugify($option_name), $default_value);
 
-	return apply_filters('wu_get_option', $option_value, $option_name, $default);
+	return apply_filters('wu_get_option', $option_value, $option_name, $default_value);
 }
 
 /**

@@ -20,8 +20,7 @@ defined('ABSPATH') || exit;
 
 if ( ! $should_display) {
 	return;
-} // end if;
-
+}
 $sites = array_map('wu_get_site', $sites ?? []);
 
 $categories ??= [];
@@ -35,107 +34,103 @@ $customer_sites = isset($customer_sites) ? array_map('intval', $customer_sites) 
 
 	<ul id="wu-site-template-filter">
 
-	<li class="wu-site-template-filter-all">
-		<a
-		href="#"
-		data-category=""
-		:class="$parent.template_category === '' ? 'current wu-font-semibold' : ''"
-		v-on:click.prevent="$parent.template_category = ''"
-		>
-		<?php _e('All', 'wp-ultimo'); ?>
-		</a>
-	</li>
-
-	<?php if ( ! empty($customer_sites)) : ?>
-
-		<li class="wu-site-template-filter-<?php echo esc_attr(sanitize_title($customer_sites_category)); ?>">
-		<a
-			href="#"
-			data-category="<?php echo esc_attr($customer_sites_category); ?>"
-			:class="$parent.template_category === '<?php echo esc_attr($customer_sites_category); ?>' ? 'current wu-font-semibold' : ''"
-			v-on:click.prevent="$parent.template_category = '<?php echo esc_attr($customer_sites_category); ?>'"
-		><?php echo $customer_sites_category; ?></a>
-		</li>
-
-	<?php endif; ?>
-
-	<?php if (isset($categories) && $categories) : ?>
-
-		<?php foreach ($categories as $category) : ?>
-
-		<li class="wu-site-template-filter-<?php echo esc_attr(sanitize_title($category)); ?>">
+		<li class="wu-site-template-filter-all">
 			<a
-			href="#"
-			data-category="<?php echo esc_attr($category); ?>"
-			:class="$parent.template_category === '<?php echo esc_attr($category); ?>' ? 'current wu-font-semibold' : ''"
-			v-on:click.prevent="$parent.template_category = '<?php echo esc_attr($category); ?>'"
-			><?php echo $category; ?></a>
+				href="#"
+				data-category=""
+				:class="$parent.template_category === '' ? 'current wu-font-semibold' : ''"
+				v-on:click.prevent="$parent.template_category = ''"
+			>
+				<?php esc_html_e('All', 'wp-multisite-waas'); ?>
+			</a>
 		</li>
 
-		<?php endforeach; ?>
+		<?php if ( ! empty($customer_sites)) : ?>
 
-	<?php endif; ?>
+			<li class="wu-site-template-filter-<?php echo esc_attr(sanitize_title($customer_sites_category)); ?>">
+				<a
+					href="#"
+					data-category="<?php echo esc_attr($customer_sites_category); ?>"
+					:class="$parent.template_category === '<?php echo esc_attr($customer_sites_category); ?>' ? 'current wu-font-semibold' : ''"
+					v-on:click.prevent="$parent.template_category = '<?php echo esc_attr($customer_sites_category); ?>'"
+				>
+				<?php echo esc_html($customer_sites_category); ?></a>
+			</li>
+
+		<?php endif; ?>
+
+		<?php if (isset($categories) && $categories) : ?>
+
+			<?php foreach ($categories as $category) : ?>
+
+				<li class="wu-site-template-filter-<?php echo esc_attr(sanitize_title($category)); ?>">
+					<a
+						href="#"
+						data-category="<?php echo esc_attr($category); ?>"
+						:class="$parent.template_category === '<?php echo esc_attr($category); ?>' ? 'current wu-font-semibold' : ''"
+						v-on:click.prevent="$parent.template_category = '<?php echo esc_attr($category); ?>'"
+					>
+					<?php echo esc_html($category); ?></a>
+				</li>
+
+			<?php endforeach; ?>
+
+		<?php endif; ?>
 
 	</ul>
 
 	<div id="wu-site-template-container-grid">
 
-	<?php foreach ($sites as $site_template) : ?>
+		<?php foreach ($sites as $site_template) : ?>
 
-		<?php
-		if ($site_template->get_type() !== 'site_template' && ! in_array($site_template->get_id(), $customer_sites, true)) {
-			continue; }
-		?>
+			<?php
+			if ($site_template->get_type() !== 'site_template' && ! in_array($site_template->get_id(), $customer_sites, true)) {
+				continue; }
+			?>
 
-		<?php $is_template = $site_template->get_type() === 'site_template'; ?>
+			<?php $is_template = $site_template->get_type() === 'site_template'; ?>
 
-		<?php $categories = array_merge($site_template->get_categories(), ! $is_template ? [$customer_sites_category] : []); ?>
+			<?php $categories = array_merge($site_template->get_categories(), ! $is_template ? [$customer_sites_category] : []); ?>
 
-		<div
-		id="wu-site-template-<?php echo esc_attr($site_template->get_id()); ?>"
-		v-show="!$parent.template_category || <?php echo esc_attr(json_encode($categories)); ?>.join(',').indexOf($parent.template_category) > -1"
-		v-cloak
-		>
+			<div
+				id="wu-site-template-<?php echo esc_attr($site_template->get_id()); ?>"
+				v-show="!$parent.template_category || <?php echo esc_attr(wp_json_encode($categories)); ?>.join(',').indexOf($parent.template_category) > -1"
+				v-cloak
+			>
 
-		<img class="wu-site-template-image" src="<?php echo esc_attr($site_template->get_featured_image()); ?>" alt="<?php echo $site_template->get_title(); ?>">
+				<img class="wu-site-template-image" src="<?php echo esc_attr($site_template->get_featured_image()); ?>" alt="<?php echo esc_attr($site_template->get_title()); ?>">
 
-		<h3 class="wu-site-template-title">
+				<h3 class="wu-site-template-title">
+					<?php echo esc_html($site_template->get_title()); ?>
+				</h3>
 
-			<?php echo $site_template->get_title(); ?>
+				<p class="wu-site-template-description">
+					<?php echo esc_html($site_template->get_description()); ?>
+				</p>
 
-		</h3>
+				<div class="wu-site-template-preview-block">
 
-		<p class="wu-site-template-description">
+					<a class="wu-site-template-selector" <?php echo $site_template->get_preview_url_attrs(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+						<?php esc_html_e('View Template Preview', 'wp-multisite-waas'); ?>
+					</a>
 
-			<?php echo $site_template->get_description(); ?>
+				</div>
 
-		</p>
+				<label for="wu-site-template-id-<?php echo esc_attr($site_template->get_id()); ?>">
 
-		<div class="wu-site-template-preview-block">
+					<input id="wu-site-template-id-<?php echo esc_attr($site_template->get_id()); ?>" type="radio" name="template_id" v-model="$parent.template_id" value="<?php echo esc_attr($site_template->get_id()); ?>" />
 
-			<a class="wu-site-template-selector" <?php echo $site_template->get_preview_url_attrs(); ?>>
+					<a class="wu-site-template-selector" @click.prevent="" href="#">
 
-			<?php _e('View Template Preview', 'wp-ultimo'); ?>
+						<?php esc_html_e('Select this Template', 'wp-multisite-waas'); ?>
 
-			</a>
+					</a>
 
-		</div>
+				</label>
 
-		<label for="wu-site-template-id-<?php echo esc_attr($site_template->get_id()); ?>">
+			</div>
 
-			<input id="wu-site-template-id-<?php echo esc_attr($site_template->get_id()); ?>" type="radio" name="template_id" v-model="$parent.template_id" value="<?php echo esc_attr($site_template->get_id()); ?>" />
-
-			<a class="wu-site-template-selector" @click.prevent="" href="#">
-
-			<?php _e('Select this Template', 'wp-ultimo'); ?>
-
-			</a>
-
-		</label>
-
-		</div>
-
-	<?php endforeach; ?>
+		<?php endforeach; ?>
 
 	</div>
 

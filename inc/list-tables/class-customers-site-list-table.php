@@ -76,19 +76,19 @@ class Customers_Site_List_Table extends Site_List_Table {
 			[
 				'link'       => [
 					'icon'  => 'dashicons-wu-link1 wu-align-middle wu-mr-1',
-					'label' => __('Visit Site', 'wp-ultimo'),
+					'label' => __('Visit Site', 'wp-multisite-waas'),
 					'url'   => $item->get_active_site_url(),
 					'value' => $item->get_active_site_url(),
 				],
 				'dashboard'  => [
 					'icon'  => 'dashicons-wu-browser wu-align-middle wu-mr-1',
-					'label' => __('Go to the Dashboard', 'wp-ultimo'),
-					'value' => __('Dashboard', 'wp-ultimo'),
+					'label' => __('Go to the Dashboard', 'wp-multisite-waas'),
+					'value' => __('Dashboard', 'wp-multisite-waas'),
 					'url'   => get_admin_url($item->get_id()),
 				],
 				'membership' => [
 					'icon'  => 'dashicons-wu-rotate-ccw wu-align-middle wu-mr-1',
-					'label' => __('Go to the Membership', 'wp-ultimo'),
+					'label' => __('Go to the Membership', 'wp-multisite-waas'),
 					'value' => $m ? $m->get_hash() : '',
 					'url'   => $m ? wu_network_admin_url(
 						'wp-ultimo-edit-membership',
@@ -103,7 +103,7 @@ class Customers_Site_List_Table extends Site_List_Table {
 					'icon'  => 'dashicons-wu-calendar1 wu-align-middle wu-mr-1',
 					'label' => '',
 					/* translators: the placeholder is a date */
-					'value' => $item->get_type() === 'pending' ? __('Not Available', 'wp-ultimo') : sprintf(__('Created %s', 'wp-ultimo'), wu_human_time_diff(strtotime((string) $item->get_date_registered()))),
+					'value' => $item->get_type() === 'pending' ? __('Not Available', 'wp-multisite-waas') : sprintf(__('Created %s', 'wp-multisite-waas'), wu_human_time_diff(strtotime((string) $item->get_date_registered()))),
 				],
 			]
 		);

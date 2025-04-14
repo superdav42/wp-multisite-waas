@@ -9,6 +9,8 @@
 
 namespace WP_Ultimo\Models;
 
+use stdClass;
+use WP_Ultimo\Database\Engine\Schema;
 use WP_Ultimo\Helpers\Hash;
 
 // Exit if accessed directly
@@ -132,22 +134,21 @@ abstract class Base_Model implements \JsonSerializable {
 	 * Constructs the object via the constructor arguments
 	 *
 	 * @since 2.0.0
-	 *
-	 * @param mixed $object Std object with model parameters.
+	 * @param mixed $object_model Std object with model parameters.
 	 */
-	public function __construct($object = null) {
+	public function __construct($object_model = null) {
 
 		$this->model = sanitize_key((new \ReflectionClass($this))->getShortName());
 
-		if (is_array($object)) {
-			$object = (object) $object;
+		if (is_array($object_model)) {
+			$object_model = (object) $object_model;
 		}
 
-		if ( ! is_object($object)) {
+		if ( ! is_object($object_model)) {
 			return;
 		}
 
-		$this->setup_model($object);
+		$this->setup_model($object_model);
 	}
 
 	/**
@@ -182,7 +183,7 @@ abstract class Base_Model implements \JsonSerializable {
 		$value = call_user_func([$this, "get_{$field}"]);
 
 		if ( ! is_numeric($value)) {
-			_doing_it_wrong(__METHOD__, __('You can only use numeric fields to generate hashes.', 'wp-ultimo'), '2.0.0');
+			_doing_it_wrong(__METHOD__, esc_html__('You can only use numeric fields to generate hashes.', 'wp-multisite-waas'), '2.0.0');
 
 			return false;
 		}
@@ -193,22 +194,21 @@ abstract class Base_Model implements \JsonSerializable {
 	/**
 	 * Setup properties.
 	 *
-	 * @param object $object Row from the database.
+	 * @param object $object_model Row from the database.
 	 *
-	 * @access private
 	 * @since  2.0.0
 	 * @return bool
 	 */
-	private function setup_model($object) {
+	private function setup_model($object_model) {
 
-		if ( ! is_object($object)) {
+		if ( ! is_object($object_model)) {
 			return false;
 		}
 
-		$vars = get_object_vars($object);
+		$vars = get_object_vars($object_model);
 
 		$this->attributes($vars);
-        return !empty($this->id);
+		return ! empty($this->id);
 	}
 
 	/**
@@ -256,6 +256,7 @@ abstract class Base_Model implements \JsonSerializable {
 	 *
 	 * @since 2.0.0
 	 * @return Schema
+	 * @throws \ReflectionException
 	 */
 	public static function get_schema() {
 
@@ -607,7 +608,7 @@ abstract class Base_Model implements \JsonSerializable {
 	public function delete() {
 
 		if ( ! $this->get_id()) {
-			return new \WP_Error("wu_{$this->model}_delete_unsaved_item", __('Item not found.', 'wp-ultimo'));
+			return new \WP_Error("wu_{$this->model}_delete_unsaved_item", __('Item not found.', 'wp-multisite-waas'));
 		}
 
 		/**
@@ -681,13 +682,13 @@ abstract class Base_Model implements \JsonSerializable {
 
 		if ( ! $this->get_meta_table_name()) {
 
-			// _doing_it_wrong(__METHOD__, __('This model does not support metadata.', 'wp-ultimo'), '2.0.0');
+			// _doing_it_wrong(__METHOD__, __('This model does not support metadata.', 'wp-multisite-waas'), '2.0.0');
 
 			return false;
 		}
 
-        // _doing_it_wrong(__METHOD__, __('Model metadata only works for already saved models.', 'wp-ultimo'), '2.0.0');
-        return !(! $this->get_id() && ! $this->_mocked);
+		// _doing_it_wrong(__METHOD__, __('Model metadata only works for already saved models.', 'wp-multisite-waas'), '2.0.0');
+		return ! (! $this->get_id() && ! $this->_mocked);
 	}
 
 	/**
@@ -696,14 +697,14 @@ abstract class Base_Model implements \JsonSerializable {
 	 * @since 2.0.0
 	 *
 	 * @param string $key     The meta key.
-	 * @param mixed  $default The default value to be passed.
+	 * @param mixed  $default_value The default value to be passed.
 	 * @param bool   $single  To return single values or not.
 	 * @return mixed
 	 */
-	public function get_meta($key, $default = false, $single = true) {
+	public function get_meta($key, $default_value = false, $single = true) {
 
 		if ( ! $this->is_meta_available()) {
-			return $default;
+			return $default_value;
 		}
 
 		$meta_type = $this->get_meta_type_name();
@@ -712,7 +713,7 @@ abstract class Base_Model implements \JsonSerializable {
 			return get_metadata($meta_type, $this->get_id(), $key, $single);
 		}
 
-		return $default;
+		return $default_value;
 	}
 
 	/**
@@ -730,7 +731,7 @@ abstract class Base_Model implements \JsonSerializable {
 		}
 
 		if ( ! is_array($meta)) {
-			_doing_it_wrong(__METHOD__, __('This method expects an array as argument.', 'wp-ultimo'), '2.0.0');
+			_doing_it_wrong(__METHOD__, esc_html__('This method expects an array as argument.', 'wp-multisite-waas'), '2.0.0');
 
 			return false;
 		}
@@ -838,7 +839,7 @@ abstract class Base_Model implements \JsonSerializable {
 	 * Allows use as a callback, such as in `array_map`
 	 *
 	 * @param stdClass $data Raw mapping data.
-	 * @return Mapping
+	 * @return Base_model
 	 */
 	protected static function to_instance($data) {
 
@@ -1038,7 +1039,7 @@ abstract class Base_Model implements \JsonSerializable {
 	 * Creates a copy of the given model adn resets it's id to a 'new' state.
 	 *
 	 * @since 2.0.0
-	 * @return \WP_Ultimo\Model\Base_Model
+	 * @return Base_Model
 	 */
 	public function duplicate() {
 

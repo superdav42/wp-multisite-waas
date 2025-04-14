@@ -71,9 +71,9 @@ class Webhook_List_Admin_Page extends List_Admin_Page {
 			'wu_webhook_page',
 			[
 				'i18n' => [
-					'error_title'   => __('Webhook Test', 'wp-ultimo'),
-					'error_message' => __('An error occurred when sending the test webhook, please try again.', 'wp-ultimo'),
-					'copied'        => __('Copied!', 'wp-ultimo'),
+					'error_title'   => __('Webhook Test', 'wp-multisite-waas'),
+					'error_message' => __('An error occurred when sending the test webhook, please try again.', 'wp-multisite-waas'),
+					'copied'        => __('Copied!', 'wp-multisite-waas'),
 				],
 			]
 		);
@@ -120,25 +120,25 @@ class Webhook_List_Admin_Page extends List_Admin_Page {
 		$fields = [
 			'name'          => [
 				'type'        => 'text',
-				'title'       => __('Webhook Name', 'wp-ultimo'),
-				'desc'        => __('A name to easily identify your webhook.', 'wp-ultimo'),
-				'placeholder' => __('E.g. Zapier Integration', 'wp-ultimo'),
+				'title'       => __('Webhook Name', 'wp-multisite-waas'),
+				'desc'        => __('A name to easily identify your webhook.', 'wp-multisite-waas'),
+				'placeholder' => __('E.g. Zapier Integration', 'wp-multisite-waas'),
 			],
 			'event'         => [
-				'title'   => __('Event', 'wp-ultimo'),
+				'title'   => __('Event', 'wp-multisite-waas'),
 				'type'    => 'select',
-				'desc'    => __('The event that will trigger the webhook.', 'wp-ultimo'),
+				'desc'    => __('The event that will trigger the webhook.', 'wp-multisite-waas'),
 				'options' => $event_options,
 			],
 			'webhook_url'   => [
 				'type'        => 'url',
-				'title'       => __('Webhook Url', 'wp-ultimo'),
-				'desc'        => __('The url of your webhook.', 'wp-ultimo'),
-				'placeholder' => __('E.g. https://example.com/', 'wp-ultimo'),
+				'title'       => __('Webhook Url', 'wp-multisite-waas'),
+				'desc'        => __('The url of your webhook.', 'wp-multisite-waas'),
+				'placeholder' => __('E.g. https://example.com/', 'wp-multisite-waas'),
 			],
 			'submit_button' => [
 				'type'            => 'submit',
-				'title'           => __('Add New Webhook', 'wp-ultimo'),
+				'title'           => __('Add New Webhook', 'wp-multisite-waas'),
 				'value'           => 'save',
 				'classes'         => 'button button-primary wu-w-full',
 				'wrapper_classes' => 'wu-items-end',
@@ -157,7 +157,7 @@ class Webhook_List_Admin_Page extends List_Admin_Page {
 				'field_wrapper_classes' => 'wu-w-full wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid',
 				'html_attr'             => [
 					'data-wu-app' => 'edit_line_item',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'event' => '',
 						]
@@ -212,8 +212,8 @@ class Webhook_List_Admin_Page extends List_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'deleted_message' => __('Webhook removed successfully.', 'wp-ultimo'),
-			'search_label'    => __('Search Webhook', 'wp-ultimo'),
+			'deleted_message' => __('Webhook removed successfully.', 'wp-multisite-waas'),
+			'search_label'    => __('Search Webhook', 'wp-multisite-waas'),
 		];
 	}
 
@@ -225,7 +225,7 @@ class Webhook_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('Webhooks', 'wp-ultimo');
+		return __('Webhooks', 'wp-multisite-waas');
 	}
 
 	/**
@@ -236,7 +236,7 @@ class Webhook_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Webhooks', 'wp-ultimo');
+		return __('Webhooks', 'wp-multisite-waas');
 	}
 
 	/**
@@ -247,7 +247,7 @@ class Webhook_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_submenu_title() {
 
-		return __('Webhooks', 'wp-ultimo');
+		return __('Webhooks', 'wp-multisite-waas');
 	}
 
 	/**
@@ -260,7 +260,7 @@ class Webhook_List_Admin_Page extends List_Admin_Page {
 
 		return [
 			[
-				'label'   => __('Add New Webhook', 'wp-ultimo'),
+				'label'   => __('Add New Webhook', 'wp-multisite-waas'),
 				'icon'    => 'wu-circle-with-plus',
 				'classes' => 'wubox',
 				'url'     => wu_get_form_url('add_new_webhook_modal'),

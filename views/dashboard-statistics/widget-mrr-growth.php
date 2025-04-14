@@ -11,7 +11,7 @@
 
 	<span class="wu-blinking-animation">
 
-		<?php _e('Loading...', 'wp-ultimo'); ?>
+		<?php esc_html_e('Loading...', 'wp-multisite-waas'); ?>
 
 	</span>
 

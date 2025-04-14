@@ -87,9 +87,9 @@ class Payment_List_Admin_Page extends List_Admin_Page {
 		$fields = [
 			'products'       => [
 				'type'        => 'model',
-				'title'       => __('Products', 'wp-ultimo'),
-				'placeholder' => __('Search Products...', 'wp-ultimo'),
-				'desc'        => __('Each product will be added as a line item.', 'wp-ultimo'),
+				'title'       => __('Products', 'wp-multisite-waas'),
+				'placeholder' => __('Search Products...', 'wp-multisite-waas'),
+				'desc'        => __('Each product will be added as a line item.', 'wp-multisite-waas'),
 				'value'       => '',
 				'tooltip'     => '',
 				'html_attr'   => [
@@ -102,18 +102,18 @@ class Payment_List_Admin_Page extends List_Admin_Page {
 			],
 			'status'         => [
 				'type'        => 'select',
-				'title'       => __('Status', 'wp-ultimo'),
-				'placeholder' => __('Status', 'wp-ultimo'),
-				'desc'        => __('The payment status to attach to the newly created payment.', 'wp-ultimo'),
+				'title'       => __('Status', 'wp-multisite-waas'),
+				'placeholder' => __('Status', 'wp-multisite-waas'),
+				'desc'        => __('The payment status to attach to the newly created payment.', 'wp-multisite-waas'),
 				'value'       => Payment_Status::COMPLETED,
 				'options'     => Payment_Status::to_array(),
 				'tooltip'     => '',
 			],
 			'membership_id'  => [
 				'type'        => 'model',
-				'title'       => __('Membership', 'wp-ultimo'),
-				'placeholder' => __('Search Membership...', 'wp-ultimo'),
-				'desc'        => __('The membership associated with this payment.', 'wp-ultimo'),
+				'title'       => __('Membership', 'wp-multisite-waas'),
+				'placeholder' => __('Search Membership...', 'wp-multisite-waas'),
+				'desc'        => __('The membership associated with this payment.', 'wp-multisite-waas'),
 				'value'       => '',
 				'tooltip'     => '',
 				'html_attr'   => [
@@ -126,13 +126,13 @@ class Payment_List_Admin_Page extends List_Admin_Page {
 			],
 			'add_setup_fees' => [
 				'type'  => 'toggle',
-				'title' => __('Include Setup Fees', 'wp-ultimo'),
-				'desc'  => __('Checking this box will include setup fees attached to the selected products as well.', 'wp-ultimo'),
+				'title' => __('Include Setup Fees', 'wp-multisite-waas'),
+				'desc'  => __('Checking this box will include setup fees attached to the selected products as well.', 'wp-multisite-waas'),
 				'value' => 1,
 			],
 			'submit_button'  => [
 				'type'            => 'submit',
-				'title'           => __('Add Payment', 'wp-ultimo'),
+				'title'           => __('Add Payment', 'wp-multisite-waas'),
 				'value'           => 'save',
 				'classes'         => 'wu-w-full button button-primary',
 				'wrapper_classes' => 'wu-items-end',
@@ -172,7 +172,7 @@ class Payment_List_Admin_Page extends List_Admin_Page {
 		$membership = wu_get_membership(wu_request('membership_id'));
 
 		if ( ! $membership) {
-			$error = new \WP_Error('invalid-membership', __('Invalid membership.', 'wp-ultimo'));
+			$error = new \WP_Error('invalid-membership', __('Invalid membership.', 'wp-multisite-waas'));
 
 			return wp_send_json_error($error);
 		}
@@ -228,8 +228,8 @@ class Payment_List_Admin_Page extends List_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'deleted_message' => __('Payment removed successfully.', 'wp-ultimo'),
-			'search_label'    => __('Search Payment', 'wp-ultimo'),
+			'deleted_message' => __('Payment removed successfully.', 'wp-multisite-waas'),
+			'search_label'    => __('Search Payment', 'wp-multisite-waas'),
 		];
 	}
 
@@ -241,7 +241,7 @@ class Payment_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('Payments', 'wp-ultimo');
+		return __('Payments', 'wp-multisite-waas');
 	}
 
 	/**
@@ -252,7 +252,7 @@ class Payment_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Payments', 'wp-ultimo');
+		return __('Payments', 'wp-multisite-waas');
 	}
 
 	/**
@@ -263,7 +263,7 @@ class Payment_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_submenu_title() {
 
-		return __('Payments', 'wp-ultimo');
+		return __('Payments', 'wp-multisite-waas');
 	}
 
 	/**
@@ -276,7 +276,7 @@ class Payment_List_Admin_Page extends List_Admin_Page {
 
 		return [
 			[
-				'label'   => __('Add Payment', 'wp-ultimo'),
+				'label'   => __('Add Payment', 'wp-multisite-waas'),
 				'icon'    => 'wu-circle-with-plus',
 				'classes' => 'wubox',
 				'url'     => wu_get_form_url('add_new_payment'),

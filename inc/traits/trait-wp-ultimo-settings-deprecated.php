@@ -74,8 +74,8 @@ trait WP_Ultimo_Settings_Deprecated {
 			$this->add_section(
 				'other',
 				[
-					'title' => __('Other', 'wp-ultimo'),
-					'desc'  => __('Other', 'wp-ultimo'),
+					'title' => __('Other', 'wp-multisite-waas'),
+					'desc'  => __('Other', 'wp-multisite-waas'),
 				]
 			);
 

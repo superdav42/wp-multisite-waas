@@ -64,7 +64,7 @@ class Validator {
 	public function __construct() {
 
 		// translators: %s is the field name.
-		$field_required_message = sprintf(__('The %s field is required', 'wp-ultimo'), ':attribute');
+		$field_required_message = sprintf(__('The %s field is required', 'wp-multisite-waas'), ':attribute');
 
 		$validation_error_messages = apply_filters(
 			'wu_validator_error_messages',
@@ -73,17 +73,17 @@ class Validator {
 				'required_without' => $field_required_message,
 				'required_with'    => $field_required_message,
 				// translators: %s is the email field identifier
-				'email'            => sprintf(__('The %s is not valid email', 'wp-ultimo'), ':attribute'),
+				'email'            => sprintf(__('The %s is not valid email', 'wp-multisite-waas'), ':attribute'),
 				// translators: 1st %s is the field name; 2nd is the allowed value
-				'min'              => sprintf(__('The %1$s minimum is %2$s', 'wp-ultimo'), ':attribute', ':min'),
+				'min'              => sprintf(__('The %1$s minimum is %2$s', 'wp-multisite-waas'), ':attribute', ':min'),
 				// translators: 1st %s is the field name; 2nd is the allowed value
-				'max'              => sprintf(__('The %1$s maximum is %2$s', 'wp-ultimo'), ':attribute', ':max'),
+				'max'              => sprintf(__('The %1$s maximum is %2$s', 'wp-multisite-waas'), ':attribute', ':max'),
 				// translators: %s is the field identifier
-				'alpha_dash'       => sprintf(__('The %s only allows a-z, 0-9, _ and -', 'wp-ultimo'), ':attribute'),
+				'alpha_dash'       => sprintf(__('The %s only allows a-z, 0-9, _ and -', 'wp-multisite-waas'), ':attribute'),
 				// translators: %s is the field identifier
-				'lowercase'        => sprintf(__('The %s must be lowercase', 'wp-ultimo'), ':attribute'),
+				'lowercase'        => sprintf(__('The %s must be lowercase', 'wp-multisite-waas'), ':attribute'),
 				// translators: %s is the field identifier
-				'integer'          => sprintf(__('The %s must be integer', 'wp-ultimo'), ':attribute'),
+				'integer'          => sprintf(__('The %s must be integer', 'wp-multisite-waas'), ':attribute'),
 			],
 			$this
 		);
@@ -92,8 +92,8 @@ class Validator {
 
 		$this->validator->setTranslations(
 			[
-				'and' => __('and', 'wp-ultimo'),
-				'or'  => __('or', 'wp-ultimo'),
+				'and' => __('and', 'wp-multisite-waas'),
+				'or'  => __('or', 'wp-multisite-waas'),
 			]
 		);
 

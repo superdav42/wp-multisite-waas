@@ -128,11 +128,10 @@ class CPanel_API {
 	 *
 	 * @since 1.6.2
 	 * @param string $message Message to be logged.
-	 * @return boolean
 	 */
 	public function log($message) {
 
-		return wu_log_add('integration-cpanel', $message);
+		wu_log_add('integration-cpanel', $message);
 	}
 
 	/**
@@ -152,15 +151,15 @@ class CPanel_API {
 		if ( ! file_exists($this->cookie_file)) {
 			try {
 				fopen($this->cookie_file, 'w');
-			} catch (Exception $ex) {
+			} catch (\Exception $ex) {
 				if ( ! file_exists($this->cookie_file)) {
-					$this->log($ex . __('Cookie file missing.', 'wp-ultimo'));
+					$this->log($ex . __('Cookie file missing.', 'wp-multisite-waas'));
 
 					return false;
 				}
 			}
 		} elseif ( ! is_writable($this->cookie_file)) {
-			$this->log(__('Cookie file not writable', 'wp-ultimo'));
+			$this->log(__('Cookie file not writable', 'wp-multisite-waas'));
 
 			return false;
 		}
@@ -204,7 +203,7 @@ class CPanel_API {
 		if (curl_error($ch)) {
 
 			// translators: %s is the cURL error.
-			$this->log(sprintf(__('cPanel API Error: %s', 'wp-ultimo'), curl_error($ch)));
+			$this->log(sprintf(__('cPanel API Error: %s', 'wp-multisite-waas'), curl_error($ch)));
 
 			return false;
 		}
@@ -232,12 +231,11 @@ class CPanel_API {
 	 * Signs in on the cPanel.
 	 *
 	 * @since 1.6.2
-	 * @return boolean
 	 */
 	private function sign_in() {
 
 		$url  = $this->get_base_url() . '/login/?login_only=1';
-		$url .= '&user=' . $this->username . '&pass=' . urlencode($this->password);
+		$url .= '&user=' . $this->username . '&pass=' . rawurlencode($this->password);
 
 		$reply = $this->request($url);
 
@@ -249,7 +247,7 @@ class CPanel_API {
 			$this->homepage = $this->get_base_url() . $reply['redirect'];
 			$this->ex_page  = $this->get_base_url() . "/{$this->cpsess}/execute/";
 		} else {
-			return $this->log(__('Cannot connect to your cPanel server : Invalid Credentials', 'wp-ultimo'));
+			$this->log(__('Cannot connect to your cPanel server : Invalid Credentials', 'wp-multisite-waas'));
 		}
 	}
 
@@ -257,22 +255,22 @@ class CPanel_API {
 	 * Executes API calls, taking the request to the right API version
 	 *
 	 * @since 1.6.2
-	 * @throws Exception Throwns exception when the api is invalid.
+	 * @throws \Exception Throwns exception when the api is invalid.
 	 * @param string $api API version.
 	 * @param string $module Module name, to build the endpoint.
-	 * @param string $function Endpoint function to call.
+	 * @param string $function_name Endpoint function to call.
 	 * @param array  $parameters Parameters to the API endpoint.
 	 * @return boolean
 	 */
-	public function execute($api, $module, $function, array $parameters = []) {
+	public function execute($api, $module, $function_name, array $parameters = []) {
 
 		switch ($api) {
 			case 'api2':
-				return $this->api2($module, $function, $parameters);
+				return $this->api2($module, $function_name, $parameters);
 			case 'uapi':
-				return $this->uapi($module, $function, $parameters);
+				return $this->uapi($module, $function_name, $parameters);
 			default:
-				throw new Exception('Invalid API type : api2 and uapi are accepted', 1);
+				throw new \Exception('Invalid API type : api2 and uapi are accepted', 1);
 		}
 	}
 
@@ -281,11 +279,11 @@ class CPanel_API {
 	 *
 	 * @since 1.6.2
 	 * @param string $module Module name, to build the endpoint.
-	 * @param string $function Endpoint function to call.
+	 * @param string $function_name Endpoint function to call.
 	 * @param array  $parameters Parameters to the API endpoint.
 	 * @return mixed
 	 */
-	public function uapi($module, $function, array $parameters = []) {
+	public function uapi($module, $function_name, array $parameters = []) {
 
 		if (count($parameters) < 1) {
 			$parameters = '';
@@ -293,7 +291,7 @@ class CPanel_API {
 			$parameters = (http_build_query($parameters));
 		}
 
-		return json_decode((string) $this->request($this->ex_page . $module . '/' . $function . '?' . $parameters));
+		return json_decode((string) $this->request($this->ex_page . $module . '/' . $function_name . '?' . $parameters));
 	}
 
 	/**
@@ -301,11 +299,11 @@ class CPanel_API {
 	 *
 	 * @since 1.6.2
 	 * @param string $module Module name, to build the endpoint.
-	 * @param string $function Endpoint function to call.
+	 * @param string $function_name Endpoint function to call.
 	 * @param array  $parameters Parameters to the API endpoint.
 	 * @return mixed
 	 */
-	public function api2($module, $function, array $parameters = []) {
+	public function api2($module, $function_name, array $parameters = []) {
 
 		if (count($parameters) < 1) {
 			$parameters = '';
@@ -314,9 +312,9 @@ class CPanel_API {
 		}
 
 		$url = $this->get_base_url() . $this->cpsess . '/json-api/cpanel' .
-		'?cpanel_jsonapi_version=2' .
-		"&cpanel_jsonapi_func={$function}" .
-		"&cpanel_jsonapi_module={$module}&" . $parameters;
+				'?cpanel_jsonapi_version=2' .
+				"&cpanel_jsonapi_func={$function_name}" .
+				"&cpanel_jsonapi_module={$module}&" . $parameters;
 
 		return json_decode((string) $this->request($url, $parameters));
 	}

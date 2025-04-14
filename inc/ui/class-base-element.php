@@ -120,7 +120,7 @@ abstract class Base_Element {
 	 *
 	 * This is used on the Blocks list of Gutenberg.
 	 * You should return a string with the localized title.
-	 * e.g. return __('My Element', 'wp-ultimo').
+	 * e.g. return __('My Element', 'wp-multisite-waas').
 	 *
 	 * @since 2.0.0
 	 * @return string
@@ -133,7 +133,7 @@ abstract class Base_Element {
 	 * This is also used on the Gutenberg block list
 	 * to explain what this block is about.
 	 * You should return a string with the localized title.
-	 * e.g. return __('Adds a checkout form to the page', 'wp-ultimo').
+	 * e.g. return __('Adds a checkout form to the page', 'wp-multisite-waas').
 	 *
 	 * @since 2.0.0
 	 * @return string
@@ -237,11 +237,14 @@ abstract class Base_Element {
 
 		add_action('wu_element_preview', [$this, 'setup_preview']);
 
-		// Init should be the correct time to call this to avoid the deprecated notice from I18N.
-		// But it doesn't work for some reason, fix later.
-		// add_action('init', function () {
-			do_action('wu_element_loaded', $this);
-		// } );
+		add_action(
+			'init',
+			function () {
+				do_action('wu_element_loaded', $this);
+			},
+			5,
+			0
+		);
 
 		if ($this->public) {
 			self::register_public_element($this);
@@ -608,16 +611,17 @@ abstract class Base_Element {
 	 * @since 2.0.0
 	 *
 	 * @param string $name The parameter name.
-	 * @param mixed  $default The default value.
+	 * @param mixed  $default_value The default value.
+	 *
 	 * @return mixed
 	 */
-	public function get_pre_loaded_attribute($name, $default = false) {
+	public function get_pre_loaded_attribute($name, $default_value = false) {
 
 		if (false === $this->pre_loaded_attributes || ! is_array($this->pre_loaded_attributes)) {
 			return false;
 		}
 
-		return wu_get_isset($this->pre_loaded_attributes, $name, $default);
+		return wu_get_isset($this->pre_loaded_attributes, $name, $default_value);
 	}
 
 	/**
@@ -740,12 +744,12 @@ abstract class Base_Element {
 		$fields['shortcode_result'] = [
 			'type'            => 'note',
 			'wrapper_classes' => 'sm:wu-block',
-			'desc'            => '<div class="wu-w-full"><span class="wu-my-1 wu-text-2xs wu-uppercase wu-font-bold wu-block">' . __('Result', 'wp-ultimo') . '</span><pre v-html="shortcode" id="wu-shortcode" style="overflow-x: scroll !important;" class="wu-text-center wu-p-4 wu-m-0 wu-mt-2 wu-rounded wu-content-center wu-bg-gray-800 wu-text-white wu-font-mono wu-border wu-border-solid wu-border-gray-300 wu-max-h-screen wu-overflow-x-scroll"></pre></div>',
+			'desc'            => '<div class="wu-w-full"><span class="wu-my-1 wu-text-2xs wu-uppercase wu-font-bold wu-block">' . __('Result', 'wp-multisite-waas') . '</span><pre v-html="shortcode" id="wu-shortcode" style="overflow-x: scroll !important;" class="wu-text-center wu-p-4 wu-m-0 wu-mt-2 wu-rounded wu-content-center wu-bg-gray-800 wu-text-white wu-font-mono wu-border wu-border-solid wu-border-gray-300 wu-max-h-screen wu-overflow-x-scroll"></pre></div>',
 		];
 
 		$fields['submit_copy'] = [
 			'type'            => 'submit',
-			'title'           => __('Copy Shortcode', 'wp-ultimo'),
+			'title'           => __('Copy Shortcode', 'wp-multisite-waas'),
 			'value'           => 'edit',
 			'classes'         => 'button button-primary wu-w-full wu-copy',
 			'wrapper_classes' => 'wu-items-end',
@@ -794,8 +798,8 @@ abstract class Base_Element {
 
 		$fields['hide'] = [
 			'type'            => 'toggle',
-			'title'           => __('Hide Element', 'wp-ultimo'),
-			'desc'            => __('Be careful. Hiding an element from the account page might remove important functionality from your customers\' reach.', 'wp-ultimo'),
+			'title'           => __('Hide Element', 'wp-multisite-waas'),
+			'desc'            => __('Be careful. Hiding an element from the account page might remove important functionality from your customers\' reach.', 'wp-multisite-waas'),
 			'value'           => $this->hidden_by_default,
 			'classes'         => 'button button-primary wu-w-full',
 			'wrapper_classes' => 'wu-items-end',
@@ -830,14 +834,14 @@ abstract class Base_Element {
 			'fields'          => [
 				'restore' => [
 					'type'            => 'submit',
-					'title'           => __('Reset Settings', 'wp-ultimo'),
+					'title'           => __('Reset Settings', 'wp-multisite-waas'),
 					'value'           => 'edit',
 					'classes'         => 'button',
 					'wrapper_classes' => 'wu-mb-0',
 				],
 				'submit'  => [
 					'type'            => 'submit',
-					'title'           => __('Save Changes', 'wp-ultimo'),
+					'title'           => __('Save Changes', 'wp-multisite-waas'),
 					'value'           => 'edit',
 					'classes'         => 'button button-primary',
 					'wrapper_classes' => 'wu-mb-0',
@@ -968,7 +972,6 @@ abstract class Base_Element {
 
 		if ( ! $this->should_display()) {
 			return; // bail if the display was set to false.
-
 		}
 
 		$this->dependencies();
@@ -1049,7 +1052,7 @@ abstract class Base_Element {
 	public function as_inline_content($screen_id, $hook = 'admin_notices', $atts = []): void {
 
 		if ( ! function_exists('get_current_screen')) {
-			_doing_it_wrong(__METHOD__, esc_html__('An element can not be loaded as inline content unless the get_current_screen() function is already available.', 'wp-ultimo'), '2.0.0');
+			_doing_it_wrong(__METHOD__, esc_html__('An element can not be loaded as inline content unless the get_current_screen() function is already available.', 'wp-multisite-waas'), '2.0.0');
 
 			return;
 		}
@@ -1092,7 +1095,7 @@ abstract class Base_Element {
 
 				echo '<div class="wu-inline-widget-body ' . esc_attr($control_classes) . '">';
 
-					echo $this->display($atts);
+				echo $this->display($atts); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 				echo '</div>';
 
@@ -1171,9 +1174,9 @@ abstract class Base_Element {
 			$this->get_title(),
 			function () use ($atts, $control_classes) {
 
-				echo '<div class="wu-metabox-widget ' . $control_classes . '">';
+				echo '<div class="wu-metabox-widget ' . esc_attr($control_classes) . '">';
 
-					echo $this->display($atts);
+					echo $this->display($atts); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 				echo '</div>';
 
@@ -1201,32 +1204,23 @@ abstract class Base_Element {
 		$should_display = $this->should_display_customize_controls();
 
 		if ($should_display) {
-
-			// translators: %1$s is the URL to the customize modal. %2$s is the URL of the shortcode generation modal
-			$message = __('<a class="wubox wu-no-underline" title="Customize" href="%1$s">Customize this element</a>, or <a class="wubox wu-no-underline" title="Shortcode" href="%2$s">generate a shortcode</a> to use it on the front-end!', 'wp-ultimo');
-
-			$message .= wu_tooltip(__('You are seeing this because you are a super admin', 'wp-ultimo'));
-
-			$link_shortcode = wu_get_form_url("shortcode_{$this->id}");
-			$link_customize = wu_get_form_url("customize_{$this->id}");
-
-			$text = sprintf(
-				$message,
-				$link_customize,
-				$link_shortcode
-			);
-
-			$html = '
+			?>
 				<div class="wu-styling">
 						<div class="wu-widget-inset">
 							<div class="wubox wu-no-underline wu-p-4 wu-bg-gray-200 wu-block wu-mt-4 wu-text-center wu-text-sm wu-text-gray-600 wu-m-auto wu-border-solid wu-border-0 wu-border-t wu-border-gray-400">
-								' . $text . '
+								<a class="wubox wu-no-underline" title="Customize" href="<?php echo esc_attr(wu_get_form_url("shortcode_{$this->id}")); ?>">
+									<?php esc_html_e('Customize this element', 'wp-multisite-waas'); ?>
+								</a>
+								<?php esc_html_e(', or'); ?>
+								<a class="wubox wu-no-underline" title="Shortcode" href="<?php echo esc_attr(wu_get_form_url("customize_{$this->id}")); ?>">
+									<?php esc_html_e('generate a shortcode', 'wp-multisite-waas'); ?>
+								</a>
+								<?php esc_html_e('to use it on the front-end!', 'wp-multisite-waas'); ?>
+								<?php echo wu_tooltip(__('You are seeing this because you are a super admin', 'wp-multisite-waas')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							</div>
 					</div>
 				</div>
-			';
-
-			echo $html;
+			<?php
 		}
 	}
 

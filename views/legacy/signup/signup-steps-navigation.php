@@ -21,7 +21,7 @@ if ( ! defined('ABSPATH')) {
 
 if ( ! $signup) {
 	return;
-} // end if;
+}
 
 ?>
 
@@ -52,7 +52,7 @@ $percent     = 100 / $count;
 			$class = 'active';
 		} elseif (array_search($signup->step, array_keys($signup->steps)) > array_search($step_key, array_keys($signup->steps))) {
 			$class = 'done';
-		} // end if;
+		}
 
 		?>
 
@@ -72,7 +72,7 @@ $percent     = 100 / $count;
 
 	<a class="wu-signup-back-link" href="<?php echo $prev_link; ?>">
 
-		<?php _e('&larr; Go Back to Previous Step', 'wp-ultimo'); ?>
+		<?php esc_html_e('&larr; Go Back to Previous Step', 'wp-multisite-waas'); ?>
 
 	</a>
 

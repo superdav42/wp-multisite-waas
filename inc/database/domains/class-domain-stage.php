@@ -26,15 +26,15 @@ class Domain_Stage extends Enum {
 	 */
 	const __default = 'checking-dns'; // phpcs:ignore
 
-	const FAILED           = 'failed';
+	const FAILED = 'failed';
 
-	const CHECKING_DNS     = 'checking-dns';
+	const CHECKING_DNS = 'checking-dns';
 
-	const CHECKING_SSL     = 'checking-ssl-cert';
+	const CHECKING_SSL = 'checking-ssl-cert';
 
 	const DONE_WITHOUT_SSL = 'done-without-ssl';
 
-	const DONE             = 'done';
+	const DONE = 'done';
 
 	/**
 	 * Returns an array with values => CSS Classes.
@@ -62,11 +62,11 @@ class Domain_Stage extends Enum {
 	protected function labels() {
 
 		return [
-			static::FAILED           => __('DNS Failed', 'wp-ultimo'),
-			static::CHECKING_DNS     => __('Checking DNS', 'wp-ultimo'),
-			static::CHECKING_SSL     => __('Checking SSL', 'wp-ultimo'),
-			static::DONE             => __('Ready', 'wp-ultimo'),
-			static::DONE_WITHOUT_SSL => __('Ready (without SSL)', 'wp-ultimo'),
+			static::FAILED           => __('DNS Failed', 'wp-multisite-waas'),
+			static::CHECKING_DNS     => __('Checking DNS', 'wp-multisite-waas'),
+			static::CHECKING_SSL     => __('Checking SSL', 'wp-multisite-waas'),
+			static::DONE             => __('Ready', 'wp-multisite-waas'),
+			static::DONE_WITHOUT_SSL => __('Ready (without SSL)', 'wp-multisite-waas'),
 		];
 	}
 }

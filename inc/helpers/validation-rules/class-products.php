@@ -55,7 +55,7 @@ class Products extends Rule {
 			return true;
 		}
 
-		$this->message = __('A plan is required.', 'wp-ultimo');
+		$this->message = __('A plan is required.', 'wp-multisite-waas');
 
 		return false;
 	}

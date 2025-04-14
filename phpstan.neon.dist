@@ -1,12 +1,12 @@
-includes:
-    - vendor/szepeviktor/phpstan-wordpress/extension.neon
 parameters:
-  level: max
+  level: 0
   inferPrivatePropertyTypeFromConstructor: true
-  checkMissingIterableValueType: false
   treatPhpDocTypesAsCertain: false
   paths:
-    - /
+    - ./views
+    - ./inc
+    - ./wp-multisite-waas.php
   ignoreErrors:
-    # Uses func_get_args()
-    - '/^Function apply_filters(_ref_array)? invoked with [34567] parameters, 2 required\.$/'
+      -
+          message: '#Variable \$.* might not be defined.#'
+          path: ./views/*

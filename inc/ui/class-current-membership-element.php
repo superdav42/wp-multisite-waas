@@ -123,14 +123,14 @@ class Current_Membership_Element extends Base_Element {
 	 *
 	 * This is used on the Blocks list of Gutenberg.
 	 * You should return a string with the localized title.
-	 * e.g. return __('My Element', 'wp-ultimo').
+	 * e.g. return __('My Element', 'wp-multisite-waas').
 	 *
 	 * @since 2.0.0
 	 * @return string
 	 */
 	public function get_title() {
 
-		return __('Membership', 'wp-ultimo');
+		return __('Membership', 'wp-multisite-waas');
 	}
 
 	/**
@@ -139,14 +139,14 @@ class Current_Membership_Element extends Base_Element {
 	 * This is also used on the Gutenberg block list
 	 * to explain what this block is about.
 	 * You should return a string with the localized title.
-	 * e.g. return __('Adds a checkout form to the page', 'wp-ultimo').
+	 * e.g. return __('Adds a checkout form to the page', 'wp-multisite-waas').
 	 *
 	 * @since 2.0.0
 	 * @return string
 	 */
 	public function get_description() {
 
-		return __('Adds a checkout form block to the page.', 'wp-ultimo');
+		return __('Adds a checkout form block to the page.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -171,31 +171,31 @@ class Current_Membership_Element extends Base_Element {
 		$fields = [];
 
 		$fields['header'] = [
-			'title' => __('General', 'wp-ultimo'),
-			'desc'  => __('General', 'wp-ultimo'),
+			'title' => __('General', 'wp-multisite-waas'),
+			'desc'  => __('General', 'wp-multisite-waas'),
 			'type'  => 'header',
 		];
 
 		$fields['title'] = [
 			'type'    => 'text',
-			'title'   => __('Title', 'wp-ultimo'),
-			'value'   => __('Your Membership', 'wp-ultimo'),
-			'desc'    => __('Leave blank to hide the title completely.', 'wp-ultimo'),
+			'title'   => __('Title', 'wp-multisite-waas'),
+			'value'   => __('Your Membership', 'wp-multisite-waas'),
+			'desc'    => __('Leave blank to hide the title completely.', 'wp-multisite-waas'),
 			'tooltip' => '',
 		];
 
 		$fields['display_images'] = [
 			'type'    => 'toggle',
-			'title'   => __('Display Product Images?', 'wp-ultimo'),
-			'desc'    => __('Toggle to show/hide the product images on the element.', 'wp-ultimo'),
+			'title'   => __('Display Product Images?', 'wp-multisite-waas'),
+			'desc'    => __('Toggle to show/hide the product images on the element.', 'wp-multisite-waas'),
 			'tooltip' => '',
 			'value'   => 1,
 		];
 
 		$fields['columns'] = [
 			'type'    => 'number',
-			'title'   => __('Columns', 'wp-ultimo'),
-			'desc'    => __('How many columns to use.', 'wp-ultimo'),
+			'title'   => __('Columns', 'wp-multisite-waas'),
+			'desc'    => __('How many columns to use.', 'wp-multisite-waas'),
 			'tooltip' => '',
 			'value'   => 2,
 			'min'     => 1,
@@ -250,7 +250,7 @@ class Current_Membership_Element extends Base_Element {
 	public function defaults() {
 
 		return [
-			'title'          => __('Your Membership', 'wp-ultimo'),
+			'title'          => __('Your Membership', 'wp-multisite-waas'),
 			'display_images' => 1,
 			'columns'        => 2,
 		];
@@ -370,19 +370,19 @@ class Current_Membership_Element extends Base_Element {
 		$error = '';
 
 		if ( ! $membership) {
-			$error = __('Membership not selected.', 'wp-ultimo');
+			$error = __('Membership not selected.', 'wp-multisite-waas');
 		}
 
 		$product = wu_get_product_by_slug(wu_request('product'));
 
 		if ( ! $product) {
-			$error = __('Product not selected.', 'wp-ultimo');
+			$error = __('Product not selected.', 'wp-multisite-waas');
 		}
 
 		$customer = wu_get_current_customer();
 
 		if (empty($error) && ! is_super_admin() && (! $customer || $customer->get_id() !== $membership->get_customer_id())) {
-			$error = __('You are not allowed to do this.', 'wp-ultimo');
+			$error = __('You are not allowed to do this.', 'wp-multisite-waas');
 		}
 
 		if ( ! empty($error)) {
@@ -439,7 +439,7 @@ class Current_Membership_Element extends Base_Element {
 			],
 			'quantity'      => [
 				'type'              => 'number',
-				'title'             => __('Quantity to Cancel', 'wp-ultimo'),
+				'title'             => __('Quantity to Cancel', 'wp-multisite-waas'),
 				'value'             => 1,
 				'placeholder'       => 1,
 				'wrapper_classes'   => 'wu-w-1/2',
@@ -455,8 +455,8 @@ class Current_Membership_Element extends Base_Element {
 			],
 			'confirm'       => [
 				'type'      => 'toggle',
-				'title'     => __('Confirm Product Cancellation', 'wp-ultimo'),
-				'desc'      => __('This action can not be undone.', 'wp-ultimo'),
+				'title'     => __('Confirm Product Cancellation', 'wp-multisite-waas'),
+				'desc'      => __('This action can not be undone.', 'wp-multisite-waas'),
 				'html_attr' => [
 					'v-model' => 'confirmed',
 				],
@@ -468,8 +468,8 @@ class Current_Membership_Element extends Base_Element {
 			],
 			'submit_button' => [
 				'type'            => 'submit',
-				'title'           => __('Cancel Product Subscription', 'wp-ultimo'),
-				'placeholder'     => __('Cancel Product Subscription', 'wp-ultimo'),
+				'title'           => __('Cancel Product Subscription', 'wp-multisite-waas'),
+				'placeholder'     => __('Cancel Product Subscription', 'wp-multisite-waas'),
 				'value'           => 'save',
 				'classes'         => 'wu-w-full button button-primary',
 				'wrapper_classes' => 'wu-items-end',
@@ -513,7 +513,7 @@ class Current_Membership_Element extends Base_Element {
 	public function handle_edit_membership_product_modal(): void {
 
 		if ( ! wu_request('confirm')) {
-			$error = new \WP_Error('not-confirmed', __('Please confirm the cancellation.', 'wp-ultimo'));
+			$error = new \WP_Error('not-confirmed', __('Please confirm the cancellation.', 'wp-multisite-waas'));
 
 			wp_send_json_error($error);
 		}
@@ -521,7 +521,7 @@ class Current_Membership_Element extends Base_Element {
 		$membership = wu_get_membership_by_hash(wu_request('membership'));
 
 		if ( ! $membership) {
-			$error = new \WP_Error('membership-not-found', __('Membership not found.', 'wp-ultimo'));
+			$error = new \WP_Error('membership-not-found', __('Membership not found.', 'wp-multisite-waas'));
 
 			wp_send_json_error($error);
 		}
@@ -529,7 +529,7 @@ class Current_Membership_Element extends Base_Element {
 		$product = wu_get_product_by_slug(wu_request('product'));
 
 		if ( ! $product) {
-			$error = new \WP_Error('product-not-found', __('Product not found.', 'wp-ultimo'));
+			$error = new \WP_Error('product-not-found', __('Product not found.', 'wp-multisite-waas'));
 
 			wp_send_json_error($error);
 		}
@@ -537,7 +537,7 @@ class Current_Membership_Element extends Base_Element {
 		$customer = wu_get_current_customer();
 
 		if ( ! is_super_admin() && (! $customer || $customer->get_id() !== $membership->get_customer_id())) {
-			$error = __('You are not allowed to do this.', 'wp-ultimo');
+			$error = __('You are not allowed to do this.', 'wp-multisite-waas');
 
 			wp_send_json_error($error);
 		}
@@ -587,7 +587,7 @@ class Current_Membership_Element extends Base_Element {
 		$removed_quantity = $quantity + $existing_difference;
 
 		// translators: %1$s is the quantity removed, %2$s is the product name.
-		$description = sprintf(__('remove %1$s %2$s from membership', 'wp-ultimo'), $removed_quantity, $product->get_name());
+		$description = sprintf(__('remove %1$s %2$s from membership', 'wp-multisite-waas'), $removed_quantity, $product->get_name());
 
 		$cart->set_cart_descriptor($description);
 

@@ -171,8 +171,8 @@ class WU_Page extends \WP_Ultimo\Admin_Pages\Base_Admin_Page {
 				'parent'        => 'wp-ultimo',
 				'capability'    => 'manage_network',
 				'menu_icon'     => 'dashicons-menu',
-				'title'         => __('Admin Page', 'wp-ultimo'),
-				'menu_title'    => __('Admin Page', 'wp-ultimo'),
+				'title'         => __('Admin Page', 'wp-multisite-waas'),
+				'menu_title'    => __('Admin Page', 'wp-multisite-waas'),
 			]
 		);
 
@@ -413,7 +413,7 @@ class WU_Multi_Network {
 	 */
 	public static function __callStatic($method_name, $args) {
 
-		_deprecated_function(self::class . "::$method_name()", '2.0.0');
+		_deprecated_function(self::class . esc_html("::$method_name()"), '2.0.0');
 
 		return false;
 	}
@@ -710,21 +710,21 @@ class WU_Site extends \WP_Ultimo\Models\Site {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param mixed $object Object containing the parameters.
+	 * @param mixed $object_model Object containing the parameters.
 	 */
-	public function __construct($object = null) {
+	public function __construct($object_model = null) {
 
-		_deprecated_function(self::class, '2.0.0', \WP_Ultimo\Models\Site::class);
+		_deprecated_function(self::class, '2.0.0', esc_html(\WP_Ultimo\Models\Site::class));
 
-		if (is_numeric($object)) {
-			$object = wu_get_site($object);
+		if (is_numeric($object_model)) {
+			$object_model = wu_get_site($object_model);
 		}
 
-		if ($object) {
-			$object = get_object_vars($object);
+		if ( $object_model) {
+			$object_model = get_object_vars($object_model);
 		}
 
-		parent::__construct($object);
+		parent::__construct($object_model);
 	}
 }
 
@@ -740,21 +740,21 @@ class WU_Site_Template extends \WP_Ultimo\Models\Site {
 	 *
 	 * @deprecated 2.0.0
 	 *
-	 * @param mixed $object Object containing the parameters.
+	 * @param mixed $object_model Object containing the parameters.
 	 */
-	public function __construct($object = null) {
+	public function __construct($object_model = null) {
 
-		_deprecated_function(self::class, '2.0.0', \WP_Ultimo\Models\Site::class);
+		_deprecated_function(self::class, '2.0.0', esc_html(\WP_Ultimo\Models\Site::class));
 
-		if (is_numeric($object)) {
-			$object = wu_get_site($object);
+		if (is_numeric($object_model)) {
+			$object_model = wu_get_site($object_model);
 		}
 
-		if ($object) {
-			$object = get_object_vars($object);
+		if ( $object_model) {
+			$object_model = get_object_vars($object_model);
 		}
 
-		parent::__construct($object);
+		parent::__construct($object_model);
 	}
 }
 
@@ -843,22 +843,22 @@ class WU_Coupon extends \WP_Ultimo\Models\Discount_Code {
 	 *
 	 * @deprecated 2.0.0
 	 *
-	 * @param mixed $object Object containing the parameters.
+	 * @param mixed $object_model Object containing the parameters.
 	 */
-	public function __construct($object = null) {
+	public function __construct($object_model = null) {
 
 		_deprecated_function(self::class, '2.0.0', \WP_Ultimo\Models\Discount_Code::class);
 
-		if (is_numeric($object)) {
-			$object = wu_get_discount_code($object);
+		if (is_numeric($object_model) ) {
+			$object_model = wu_get_discount_code($object_model);
 		}
 
-		if ($object) {
-			$object = get_object_vars($object);
+		if ( $object_model ) {
+			$object_model = get_object_vars($object_model);
 		}
 
-		if (is_array($object)) {
-			foreach ($object as $att => $value) {
+		if (is_array($object_model)) {
+			foreach ( $object_model as $att => $value) {
 				$this->{$att} = $value;
 			}
 		}
@@ -898,29 +898,29 @@ class WU_Plan extends \WP_Ultimo\Models\Product {
 	 *
 	 * @deprecated 2.0.0
 	 *
-	 * @param mixed $object Object containing the parameters.
+	 * @param mixed $object_model Object containing the parameters.
 	 */
-	public function __construct($object = null) {
+	public function __construct($object_model = null) {
 
-		_deprecated_function(self::class, '2.0.0', \WP_Ultimo\Models\Product::class);
+		_deprecated_function(self::class, '2.0.0', esc_html(\WP_Ultimo\Models\Product::class));
 
-		if (is_numeric($object)) {
-			$object = wu_get_product($object);
+		if (is_numeric($object_model)) {
+			$object_model = wu_get_product($object_model);
 		}
 
-		if ($object) {
-			$object = get_object_vars($object);
+		if ($object_model ) {
+			$object_model = get_object_vars($object_model);
 		}
 
-		if (is_array($object)) {
-			foreach ($object as $att => $value) {
+		if (is_array($object_model)) {
+			foreach ($object_model as $att => $value) {
 				$this->{$att} = $value;
 			}
 		}
 
 		$this->set_slug(uniqid());
 
-		parent::__construct($object);
+		parent::__construct($object_model);
 	}
 
 	/**
@@ -973,21 +973,21 @@ class WU_Subscription extends \WP_Ultimo\Models\Membership {
 	 *
 	 * @deprecated 2.0.0
 	 *
-	 * @param mixed $object Object containing the parameters.
+	 * @param mixed $object_model Object containing the parameters.
 	 */
-	public function __construct($object = null) {
+	public function __construct($object_model = null) {
 
-		_deprecated_function(self::class, '2.0.0', \WP_Ultimo\Models\Membership::class);
+		_deprecated_function(self::class, '2.0.0', esc_html(\WP_Ultimo\Models\Membership::class));
 
-		if (is_numeric($object)) {
-			$object = wu_get_membership($object);
+		if (is_numeric($object_model)) {
+			$object_model = wu_get_membership($object_model);
 		}
 
-		if ($object) {
-			$object = get_object_vars($object);
+		if ($object_model ) {
+			$object_model = get_object_vars($object_model);
 		}
 
-		parent::__construct($object);
+		parent::__construct($object_model);
 	}
 
 	/**

@@ -44,7 +44,7 @@ class Customers_Payment_List_Table extends Payment_List_Table {
 	 */
 	public function column_responsive($item): void {
 
-		echo wu_responsive_table_row(
+		echo wu_responsive_table_row( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			[
 				'id'     => $item->get_id(),
 				'title'  => $item->get_hash(),
@@ -59,12 +59,12 @@ class Customers_Payment_List_Table extends Payment_List_Table {
 			[
 				'total'   => [
 					'icon'  => 'dashicons-wu-shopping-bag1 wu-align-middle wu-mr-1',
-					'label' => __('Payment Total', 'wp-ultimo'),
+					'label' => __('Payment Total', 'wp-multisite-waas'),
 					'value' => wu_format_currency($item->get_total()),
 				],
 				'gateway' => [
 					'icon'  => 'dashicons-wu-credit-card2 wu-align-middle wu-mr-1',
-					'label' => __('Gateway', 'wp-ultimo'),
+					'label' => __('Gateway', 'wp-multisite-waas'),
 					'value' => wu_slug_to_name($item->get_gateway()),
 				],
 			],
@@ -72,7 +72,7 @@ class Customers_Payment_List_Table extends Payment_List_Table {
 				'date_created' => [
 					'icon'  => 'dashicons-wu-calendar1 wu-align-middle wu-mr-1',
 					'label' => '',
-					'value' => sprintf(__('Created %s', 'wp-ultimo'), wu_human_time_diff(strtotime((string) $item->get_date_created()))),
+					'value' => sprintf(__('Created %s', 'wp-multisite-waas'), wu_human_time_diff(strtotime((string) $item->get_date_created()))),
 				],
 			]
 		);

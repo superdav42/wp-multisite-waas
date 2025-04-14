@@ -69,17 +69,17 @@ class Checkout_Form_List_Admin_Page extends List_Admin_Page {
 			[
 				[
 					'id'    => 'checkout-form-list',
-					'title' => __('Checkout Forms', 'wp-ultimo'),
+					'title' => __('Checkout Forms', 'wp-multisite-waas'),
 					'text'  => [
-						__('Checkout Forms are an easy and flexible way to experiment with different approaches when trying to convert new customers.', 'wp-ultimo'),
+						__('Checkout Forms are an easy and flexible way to experiment with different approaches when trying to convert new customers.', 'wp-multisite-waas'),
 					],
 				],
 				[
 					'id'       => 'default-form',
-					'title'    => __('Experiment!', 'wp-ultimo'),
+					'title'    => __('Experiment!', 'wp-multisite-waas'),
 					'text'     => [
-						__('You can create as many checkout forms as you want, with different fields, products on offer, etc.', 'wp-ultimo'),
-						__('Planning on running some sort of promotion? Why not create a custom landing page with a tailor-maid checkout form to go with? The possibilities are endless.', 'wp-ultimo'),
+						__('You can create as many checkout forms as you want, with different fields, products on offer, etc.', 'wp-multisite-waas'),
+						__('Planning on running some sort of promotion? Why not create a custom landing page with a tailor-maid checkout form to go with? The possibilities are endless.', 'wp-multisite-waas'),
 					],
 					'attachTo' => [
 						'element' => '#wp-ultimo-wrap > h1 > a:first-child',
@@ -121,8 +121,8 @@ class Checkout_Form_List_Admin_Page extends List_Admin_Page {
 		$fields = [
 			'template'      => [
 				'type'        => 'select-icon',
-				'title'       => __('Checkout Form Template', 'wp-ultimo'),
-				'desc'        => __('Select a starting point for a new Checkout Form.', 'wp-ultimo'),
+				'title'       => __('Checkout Form Template', 'wp-multisite-waas'),
+				'desc'        => __('Select a starting point for a new Checkout Form.', 'wp-multisite-waas'),
 				'placeholder' => '',
 				'tooltip'     => '',
 				'value'       => '',
@@ -132,22 +132,22 @@ class Checkout_Form_List_Admin_Page extends List_Admin_Page {
 				],
 				'options'     => [
 					'single-step' => [
-						'title' => __('Single Step', 'wp-ultimo'),
+						'title' => __('Single Step', 'wp-multisite-waas'),
 						'icon'  => 'dashicons-before dashicons-list-view',
 					],
 					'multi-step'  => [
-						'title' => __('Multi-Step', 'wp-ultimo'),
+						'title' => __('Multi-Step', 'wp-multisite-waas'),
 						'icon'  => 'dashicons-before dashicons-excerpt-view',
 					],
 					'blank'       => [
-						'title' => __('Blank', 'wp-ultimo'),
+						'title' => __('Blank', 'wp-multisite-waas'),
 						'icon'  => 'dashicons-before dashicons-admin-page',
 					],
 				],
 			],
 			'submit_button' => [
 				'type'            => 'submit',
-				'title'           => __('Go to the Editor &rarr;', 'wp-ultimo'),
+				'title'           => __('Go to the Editor &rarr;', 'wp-multisite-waas'),
 				'value'           => 'save',
 				'classes'         => 'button button-primary wu-w-full',
 				'wrapper_classes' => 'wu-items-end',
@@ -163,7 +163,7 @@ class Checkout_Form_List_Admin_Page extends List_Admin_Page {
 				'field_wrapper_classes' => 'wu-w-full wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid',
 				'html_attr'             => [
 					'data-wu-app' => 'add_checkout_form_field',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'template' => 'single-step',
 						]
@@ -189,7 +189,7 @@ class Checkout_Form_List_Admin_Page extends List_Admin_Page {
 
 		$checkout_form->use_template($template);
 
-		$checkout_form->set_name(__('Draft Checkout Form', 'wp-ultimo'));
+		$checkout_form->set_name(__('Draft Checkout Form', 'wp-multisite-waas'));
 
 		$checkout_form->set_slug(uniqid());
 
@@ -222,8 +222,8 @@ class Checkout_Form_List_Admin_Page extends List_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'deleted_message' => __('Checkout Form removed successfully.', 'wp-ultimo'),
-			'search_label'    => __('Search Checkout Form', 'wp-ultimo'),
+			'deleted_message' => __('Checkout Form removed successfully.', 'wp-multisite-waas'),
+			'search_label'    => __('Search Checkout Form', 'wp-multisite-waas'),
 		];
 	}
 
@@ -235,7 +235,7 @@ class Checkout_Form_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('Checkout Forms', 'wp-ultimo');
+		return __('Checkout Forms', 'wp-multisite-waas');
 	}
 
 	/**
@@ -246,7 +246,7 @@ class Checkout_Form_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Checkout Forms', 'wp-ultimo');
+		return __('Checkout Forms', 'wp-multisite-waas');
 	}
 
 	/**
@@ -257,7 +257,7 @@ class Checkout_Form_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_submenu_title() {
 
-		return __('Checkout Forms', 'wp-ultimo');
+		return __('Checkout Forms', 'wp-multisite-waas');
 	}
 
 	/**

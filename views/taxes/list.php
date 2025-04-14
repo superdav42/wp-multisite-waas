@@ -8,15 +8,11 @@
 <div id="wu-tax-rates" class="<?php wu_wrap_use_container(); ?> wrap wp-ultimo">
 
 	<h1 class="wp-heading-inline">
-
-	<?php _e('Tax Rates', 'wp-ultimo'); ?>
-
+		<?php esc_html_e('Tax Rates', 'wp-multisite-waas'); ?>
 	</h1>
 
-	<a href="<?php echo network_admin_url('admin.php?page=wp-ultimo-settings&tab=taxes'); ?>" class="page-title-action">
-
-	<?php _e('Go to the Tax Settings Page', 'wp-ultimo'); ?>
-
+	<a href="<?php echo esc_url(network_admin_url('admin.php?page=wp-ultimo-settings&tab=taxes')); ?>" class="page-title-action">
+		<?php esc_html_e('Go to the Tax Settings Page', 'wp-multisite-waas'); ?>
 	</a>
 
 	<!-- <p class="description"></p> -->
@@ -31,14 +27,14 @@
 
 		<div v-show="creating">
 
-			<input type="text" style="background: white !important;" class="button wu-bg-white" v-model="create_name" placeholder="<?php _e('Tax Category Name', 'wp-ultimo'); ?>">
+			<input type="text" style="background: white !important;" class="button wu-bg-white" v-model="create_name" placeholder="<?php esc_html_e('Tax Category Name', 'wp-multisite-waas'); ?>">
 
 			<button class="button button-primary" v-on:click.prevent="add_tax_category" v-bind:disabled="create_name.length <= 3">
-			<?php _e('Create', 'wp-ultimo'); ?>
+			<?php esc_html_e('Create', 'wp-multisite-waas'); ?>
 			</button>
 
 			<button class="button action" v-on:click.prevent="creating = false">
-			<?php _e('&larr; Back', 'wp-ultimo'); ?>
+			<?php esc_html_e('&larr; Back', 'wp-multisite-waas'); ?>
 			</button>
 
 		</div>
@@ -46,7 +42,7 @@
 		<div v-show="switching">
 
 			<button class="button action" v-on:click.prevent="switching = false">
-			<?php _e('&larr; Back', 'wp-ultimo'); ?>
+			<?php esc_html_e('&larr; Back', 'wp-multisite-waas'); ?>
 			</button>
 
 			<select v-model="tax_category" class="wu-bg-white">
@@ -62,17 +58,17 @@
 			<input type="text" style="background: white !important;" class="button wu-bg-white" v-model="data[tax_category].name">
 
 			<button class="button action" v-on:click.prevent="switching = true">
-			<?php _e('Switch', 'wp-ultimo'); ?>
+			<?php esc_html_e('Switch', 'wp-multisite-waas'); ?>
 			</button>
 
 			<button class="button action" v-on:click.prevent="delete_tax_category">
-			<?php _e('Delete', 'wp-ultimo'); ?>
+			<?php esc_html_e('Delete', 'wp-multisite-waas'); ?>
 			</button>
 
 			&nbsp;
 
 			<button class="button action wu-ml-3" v-on:click.prevent="creating = true">
-			<?php _e('Add new Tax Category', 'wp-ultimo'); ?>
+			<?php esc_html_e('Add new Tax Category', 'wp-multisite-waas'); ?>
 			</button>
 
 		</div>
@@ -83,7 +79,7 @@
 
 		<span class="displaying-num">
 
-			{{data[tax_category].rates.length}} <?php _e('item(s)', 'wp-ultimo'); ?>
+			{{data[tax_category].rates.length}} <?php esc_html_e('item(s)', 'wp-multisite-waas'); ?>
 
 		</span>
 
@@ -102,7 +98,7 @@
 			<th id="cb" class="manage-column column-cb" style="width: 50px;">
 
 			<label class="screen-reader-text" for="wu-select-2">
-				<?php _e('Select All'); ?>
+				<?php esc_html_e('Select All'); ?>
 			</label>
 
 			<input v-bind:disabled="!data[tax_category].rates" v-model="toggle" v-on:click="select_all" id="wu-select-2"
@@ -112,8 +108,8 @@
 
 			<?php foreach ($columns as $key => $label) : ?>
 
-			<th scope="col" id="<?php echo $key; ?>" class="manage-column sortable asc column-<?php echo $key; ?>">
-				<?php echo $label; ?>
+			<th scope="col" id="<?php echo esc_attr($key); ?>" class="manage-column sortable asc column-<?php echo esc_attr($key); ?>">
+				<?php echo esc_html($label); ?>
 			</th>
 
 			<?php endforeach; ?>
@@ -130,7 +126,7 @@
 
 			<div class="wu-p-4">
 
-				<?php _e('Loading Tax Rates...', 'wp-ultimo'); ?>
+				<?php esc_html_e('Loading Tax Rates...', 'wp-multisite-waas'); ?>
 
 			</div>
 
@@ -144,7 +140,7 @@
 
 			<div class="wu-p-4">
 
-				<?php _e('No items to display', 'wp-ultimo'); ?>
+				<?php esc_html_e('No items to display', 'wp-multisite-waas'); ?>
 
 			</div>
 
@@ -170,7 +166,7 @@
 
 			<label class="screen-reader-text" for="wu-select-1">
 
-				<?php _e('Select'); ?> {{item.title}}
+				<?php esc_html_e('Select'); ?> {{item.title}}
 
 			</label>
 
@@ -180,7 +176,7 @@
 
 			<?php foreach ($columns as $key => $label) : ?>
 
-			<td class="date column-<?php echo $key; ?>" data-colname="<?php echo $key; ?>">
+			<td class="date column-<?php echo esc_attr($key); ?>" data-colname="<?php echo esc_attr($key); ?>">
 
 				<?php
 
@@ -193,19 +189,18 @@
 
 			<input type="checkbox" v-model="item.compound" />
 
-			<?php break; ?>
-
-					<?php
+						<?php
+						break;
 					case 'type':
 						?>
 
-			<select v-model="item.<?php echo $key; ?>" style="width: 100%;">
+			<select v-model="item.<?php echo esc_attr($key); ?>" style="width: 100%;">
 
 						<?php foreach ($types as $tax_rate_type => $tax_rate_type_label) : ?>
 
-				<option value="<?php echo $tax_rate_type; ?>">
+				<option value="<?php echo esc_attr($tax_rate_type); ?>">
 
-							<?php echo $tax_rate_type_label; ?>
+							<?php echo esc_html($tax_rate_type_label); ?>
 
 				</option>
 
@@ -213,19 +208,19 @@
 
 			</select>
 
-			<?php break; ?>
+						<?php
+						break;
 
-					<?php
 					case 'country':
 						?>
 
-			<select v-cloak v-model="item.<?php echo $key; ?>" style="width: 100%;">
+			<select v-cloak v-model="item.<?php echo esc_attr($key); ?>" style="width: 100%;">
 
 						<?php foreach (wu_get_countries_as_options() as $country_code => $country_name) : ?>
 
-				<option value="<?php echo $country_code; ?>">
+				<option value="<?php echo esc_attr($country_code); ?>">
 
-							<?php echo $country_name; ?>
+							<?php echo esc_html($country_name); ?>
 
 				</option>
 
@@ -233,9 +228,8 @@
 
 			</select>
 
-			<?php break; ?>
-
-					<?php
+						<?php
+						break;
 					case 'state':
 						?>
 
@@ -246,12 +240,12 @@
 				:options="item.state_options" 
 				model="state" 
 				style="width: 100%;"
-				placeholder="<?php esc_attr_e('Leave blank to apply to all', 'wp-ultimo'); ?>"
+				placeholder="<?php esc_attr_e('Leave blank to apply to all', 'wp-multisite-waas'); ?>"
 				></selectizer>
 
-			<?php break; ?>
+						<?php
+						break;
 
-					<?php
 					case 'city':
 						?>
 
@@ -261,13 +255,12 @@
 				:country="item.country" 
 				model="city" 
 				style="width: 100%;"
-				placeholder="<?php esc_attr_e('Leave blank to apply to all', 'wp-ultimo'); ?>"
+				placeholder="<?php esc_attr_e('Leave blank to apply to all', 'wp-multisite-waas'); ?>"
 				v-cloak
 				></selectizer>
 
-			<?php break; ?>
-
-					<?php
+						<?php
+						break;
 					case 'move':
 						?>
 
@@ -277,9 +270,8 @@
 
 				</div>
 
-			<?php break; ?>
-
-					<?php
+						<?php
+						break;
 					default:
 						?>
 
@@ -288,13 +280,14 @@
 				name="" 
 				type="text"
 				placeholder="*"
-				v-model="item.<?php echo $key; ?>" 
+				v-model="item.<?php echo esc_attr($key); ?>"
 				v-cloak
 			/>
 
-			<?php break; ?>
-
-			<?php endswitch; ?>
+						<?php
+						break;
+			endswitch;
+				?>
 
 			</td>
 
@@ -312,7 +305,7 @@
 
 			<label class="screen-reader-text" for="wu-select">
 
-				<?php _e('Select All'); ?>
+				<?php esc_html_e('Select All'); ?>
 
 			</label>
 
@@ -323,9 +316,9 @@
 
 			<?php foreach ($columns as $key => $label) : ?>
 
-			<th scope="col" id="<?php echo $key; ?>" class="manage-column sortable asc column-<?php echo $key; ?>">
+			<th scope="col" id="<?php echo esc_attr($key); ?>" class="manage-column sortable asc column-<?php echo esc_attr($key); ?>">
 
-				<?php echo $label; ?>
+				<?php echo esc_html($label); ?>
 
 			</th>
 
@@ -345,13 +338,13 @@
 
 		<button v-on:click.prevent="add_row" class="button">
 
-		<?php _e('Add new Row', 'wp-ultimo'); ?>
+		<?php esc_html_e('Add new Row', 'wp-multisite-waas'); ?>
 
 		</button>
 
 		<button v-on:click.prevent="delete_rows" class="button">
 
-		<?php _e('Delete Selected Rows', 'wp-ultimo'); ?>
+		<?php esc_html_e('Delete Selected Rows', 'wp-multisite-waas'); ?>
 
 		</button>
 
@@ -377,11 +370,11 @@
 
 		<span v-if="changed && !saveMessage && !saving" class="description"
 		style="display: inline-block; line-height: 28px; margin-right: 10px;">
-		<?php _e('Save your changes!', 'wp-ultimo'); ?>
+		<?php esc_html_e('Save your changes!', 'wp-multisite-waas'); ?>
 		</span>
 
 		<span v-if="saving" class="description" style="display: inline-block; line-height: 28px; margin-right: 10px;">
-		<?php _e('Saving...', 'wp-ultimo'); ?>
+		<?php esc_html_e('Saving...', 'wp-multisite-waas'); ?>
 		</span>
 
 		<span v-if="saveMessage" class="description"
@@ -391,7 +384,7 @@
 
 		<button v-on:click.prevent="save" v-bind:disabled="saving" class="button button-primary">
 
-		<?php _e('Save Tax Rates'); ?>
+		<?php esc_html_e('Save Tax Rates'); ?>
 
 		</button>
 

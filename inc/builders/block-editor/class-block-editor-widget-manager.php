@@ -64,7 +64,7 @@ class Block_Editor_Widget_Manager {
 	 */
 	public function is_block_preview($is_preview) {
 
-		if (defined('REST_REQUEST') && true === REST_REQUEST && 'edit' === filter_input(INPUT_GET, 'context', FILTER_SANITIZE_STRING)) {
+		if (defined('REST_REQUEST') && true === REST_REQUEST && ! empty($_GET['context']) && 'edit' === $_GET['context']) { // phpcs:ignore WordPress.Security.NonceVerification
 			$is_preview = true;
 		}
 

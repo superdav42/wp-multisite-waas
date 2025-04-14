@@ -95,7 +95,7 @@ class Country_MX extends Country {
 	 */
 	public function get_name() {
 
-		return __('Mexico', 'wp-ultimo');
+		return __('Mexico', 'wp-multisite-waas');
 	}
 
 	/**
@@ -107,38 +107,38 @@ class Country_MX extends Country {
 	protected function states() {
 
 		return [
-			'AGU'  => __('Aguascalientes', 'wp-ultimo'),
-			'BCN'  => __('Baja California', 'wp-ultimo'),
-			'BCS'  => __('Baja California Sur', 'wp-ultimo'),
-			'CAM'  => __('Campeche', 'wp-ultimo'),
-			'CHP'  => __('Chiapas', 'wp-ultimo'),
-			'CHH'  => __('Chihuahua', 'wp-ultimo'),
-			'CDMX' => __('Ciudad de México', 'wp-ultimo'),
-			'COA'  => __('Coahuila de Zaragoza', 'wp-ultimo'),
-			'COL'  => __('Colima', 'wp-ultimo'),
-			'DUR'  => __('Durango', 'wp-ultimo'),
-			'MEX'  => __('Estado de México', 'wp-ultimo'),
-			'GUA'  => __('Guanajuato', 'wp-ultimo'),
-			'GRO'  => __('Guerrero', 'wp-ultimo'),
-			'HID'  => __('Hidalgo', 'wp-ultimo'),
-			'JAL'  => __('Jalisco', 'wp-ultimo'),
-			'MIC'  => __('Michoacán de Ocampo', 'wp-ultimo'),
-			'MOR'  => __('Morelos', 'wp-ultimo'),
-			'NAY'  => __('Nayarit', 'wp-ultimo'),
-			'NLE'  => __('Nuevo León', 'wp-ultimo'),
-			'OAX'  => __('Oaxaca', 'wp-ultimo'),
-			'PUE'  => __('Puebla', 'wp-ultimo'),
-			'QUE'  => __('Querétaro', 'wp-ultimo'),
-			'ROO'  => __('Quintana Roo', 'wp-ultimo'),
-			'SLP'  => __('San Luis Potosí', 'wp-ultimo'),
-			'SIN'  => __('Sinaloa', 'wp-ultimo'),
-			'SON'  => __('Sonora', 'wp-ultimo'),
-			'TAB'  => __('Tabasco', 'wp-ultimo'),
-			'TAM'  => __('Tamaulipas', 'wp-ultimo'),
-			'TLA'  => __('Tlaxcala', 'wp-ultimo'),
-			'VER'  => __('Veracruz de Ignacio de la Llave', 'wp-ultimo'),
-			'YUC'  => __('Yucatán', 'wp-ultimo'),
-			'ZAC'  => __('Zacatecas', 'wp-ultimo'),
+			'AGU'  => __('Aguascalientes', 'wp-multisite-waas'),
+			'BCN'  => __('Baja California', 'wp-multisite-waas'),
+			'BCS'  => __('Baja California Sur', 'wp-multisite-waas'),
+			'CAM'  => __('Campeche', 'wp-multisite-waas'),
+			'CHP'  => __('Chiapas', 'wp-multisite-waas'),
+			'CHH'  => __('Chihuahua', 'wp-multisite-waas'),
+			'CDMX' => __('Ciudad de México', 'wp-multisite-waas'),
+			'COA'  => __('Coahuila de Zaragoza', 'wp-multisite-waas'),
+			'COL'  => __('Colima', 'wp-multisite-waas'),
+			'DUR'  => __('Durango', 'wp-multisite-waas'),
+			'MEX'  => __('Estado de México', 'wp-multisite-waas'),
+			'GUA'  => __('Guanajuato', 'wp-multisite-waas'),
+			'GRO'  => __('Guerrero', 'wp-multisite-waas'),
+			'HID'  => __('Hidalgo', 'wp-multisite-waas'),
+			'JAL'  => __('Jalisco', 'wp-multisite-waas'),
+			'MIC'  => __('Michoacán de Ocampo', 'wp-multisite-waas'),
+			'MOR'  => __('Morelos', 'wp-multisite-waas'),
+			'NAY'  => __('Nayarit', 'wp-multisite-waas'),
+			'NLE'  => __('Nuevo León', 'wp-multisite-waas'),
+			'OAX'  => __('Oaxaca', 'wp-multisite-waas'),
+			'PUE'  => __('Puebla', 'wp-multisite-waas'),
+			'QUE'  => __('Querétaro', 'wp-multisite-waas'),
+			'ROO'  => __('Quintana Roo', 'wp-multisite-waas'),
+			'SLP'  => __('San Luis Potosí', 'wp-multisite-waas'),
+			'SIN'  => __('Sinaloa', 'wp-multisite-waas'),
+			'SON'  => __('Sonora', 'wp-multisite-waas'),
+			'TAB'  => __('Tabasco', 'wp-multisite-waas'),
+			'TAM'  => __('Tamaulipas', 'wp-multisite-waas'),
+			'TLA'  => __('Tlaxcala', 'wp-multisite-waas'),
+			'VER'  => __('Veracruz de Ignacio de la Llave', 'wp-multisite-waas'),
+			'YUC'  => __('Yucatán', 'wp-multisite-waas'),
+			'ZAC'  => __('Zacatecas', 'wp-multisite-waas'),
 		];
 	}
 }

@@ -69,7 +69,7 @@ class Visits_Manager {
 		}
 
 		if ($site->has_limitations() && $site->get_visits_count() > $site->get_limitations()->visits->get_limit()) {
-			wp_die(__('This site is not available at this time.', 'wp-ultimo'), __('Not available', 'wp-ultimo'), 404);
+			wp_die(__('This site is not available at this time.', 'wp-multisite-waas'), __('Not available', 'wp-multisite-waas'), 404);
 		}
 	}
 

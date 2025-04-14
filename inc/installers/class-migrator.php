@@ -253,12 +253,12 @@ class Migrator extends Base_Installer {
 
 		if ($dry_run && ! $force_all) {
 			$steps['dry_run_check'] = [
-				'title'       => __('Pre-Migration Check', 'wp-ultimo'),
-				'description' => __('Runs all migrations in a sand-boxed environment to see if it hits an error.', 'wp-ultimo'),
+				'title'       => __('Pre-Migration Check', 'wp-multisite-waas'),
+				'description' => __('Runs all migrations in a sand-boxed environment to see if it hits an error.', 'wp-multisite-waas'),
 				'help'        => wu_get_documentation_url('migration-errors'),
-				'pending'     => __('Pending', 'wp-ultimo'),
-				'installing'  => __('Checking...', 'wp-ultimo'),
-				'success'     => __('Success!', 'wp-ultimo'),
+				'pending'     => __('Pending', 'wp-multisite-waas'),
+				'installing'  => __('Checking...', 'wp-multisite-waas'),
+				'success'     => __('Success!', 'wp-multisite-waas'),
 				'done'        => false,
 			];
 
@@ -267,105 +267,105 @@ class Migrator extends Base_Installer {
 
 		if ( ! $dry_run) {
 			$steps['backup'] = [
-				'title'       => __('Prepare for Migration', 'wp-ultimo'),
-				'description' => __('Verifies the data before going forward with the migration.', 'wp-ultimo'),
-				'pending'     => __('Pending', 'wp-ultimo'),
-				'installing'  => __('Preparing...', 'wp-ultimo'),
-				'success'     => __('Success!', 'wp-ultimo'),
+				'title'       => __('Prepare for Migration', 'wp-multisite-waas'),
+				'description' => __('Verifies the data before going forward with the migration.', 'wp-multisite-waas'),
+				'pending'     => __('Pending', 'wp-multisite-waas'),
+				'installing'  => __('Preparing...', 'wp-multisite-waas'),
+				'success'     => __('Success!', 'wp-multisite-waas'),
 				'help'        => wu_get_documentation_url('migration-errors'),
 				'done'        => false,
 			];
 		}
 
 		$steps['settings'] = [
-			'title'       => __('Settings', 'wp-ultimo'),
-			'description' => __('Migrates the settings from the older version.', 'wp-ultimo'),
+			'title'       => __('Settings', 'wp-multisite-waas'),
+			'description' => __('Migrates the settings from the older version.', 'wp-multisite-waas'),
 			'help'        => wu_get_documentation_url('migration-errors'),
 			'done'        => false,
 		];
 
 		$steps['products'] = [
-			'title'       => __('Plans to Products', 'wp-ultimo'),
-			'description' => __('Converts the old plans into products.', 'wp-ultimo'),
+			'title'       => __('Plans to Products', 'wp-multisite-waas'),
+			'description' => __('Converts the old plans into products.', 'wp-multisite-waas'),
 			'help'        => wu_get_documentation_url('migration-errors'),
 			'done'        => false,
 		];
 
 		$steps['customers'] = [
-			'title'       => __('Users to Customers', 'wp-ultimo'),
-			'description' => __('Creates customers based on the existing users.', 'wp-ultimo'),
+			'title'       => __('Users to Customers', 'wp-multisite-waas'),
+			'description' => __('Creates customers based on the existing users.', 'wp-multisite-waas'),
 			'help'        => wu_get_documentation_url('migration-errors'),
 			'done'        => false,
 		];
 
 		$steps['memberships'] = [
-			'title'       => __('Subscriptions to Memberships', 'wp-ultimo'),
-			'description' => __('Converts subscriptions into Memberships.', 'wp-ultimo'),
+			'title'       => __('Subscriptions to Memberships', 'wp-multisite-waas'),
+			'description' => __('Converts subscriptions into Memberships.', 'wp-multisite-waas'),
 			'help'        => wu_get_documentation_url('migration-errors'),
 			'done'        => false,
 		];
 
 		$steps['transactions'] = [
-			'title'       => __('Transactions to Payments & Events', 'wp-ultimo'),
-			'description' => __('Converts transactions into payments and events.', 'wp-ultimo'),
+			'title'       => __('Transactions to Payments & Events', 'wp-multisite-waas'),
+			'description' => __('Converts transactions into payments and events.', 'wp-multisite-waas'),
 			'help'        => wu_get_documentation_url('migration-errors'),
 			'done'        => false,
 		];
 
 		$steps['discount_codes'] = [
-			'title'       => __('Coupons to Discount Codes', 'wp-ultimo'),
-			'description' => __('Converts coupons into discount codes.', 'wp-ultimo'),
+			'title'       => __('Coupons to Discount Codes', 'wp-multisite-waas'),
+			'description' => __('Converts coupons into discount codes.', 'wp-multisite-waas'),
 			'help'        => wu_get_documentation_url('migration-errors'),
 			'done'        => false,
 		];
 
 		$steps['sites'] = [
-			'title'       => __('Customer Sites', 'wp-ultimo'),
-			'description' => __('Adjusts existing customer sites.', 'wp-ultimo'),
-			'installing'  => __('Making Adjustments...', 'wp-ultimo'),
+			'title'       => __('Customer Sites', 'wp-multisite-waas'),
+			'description' => __('Adjusts existing customer sites.', 'wp-multisite-waas'),
+			'installing'  => __('Making Adjustments...', 'wp-multisite-waas'),
 			'help'        => wu_get_documentation_url('migration-errors'),
 			'done'        => false,
 		];
 
 		$steps['site_templates'] = [
-			'title'       => __('Sites Templates', 'wp-ultimo'),
-			'description' => __('Adjusts existing site templates.', 'wp-ultimo'),
-			'installing'  => __('Making Adjustments...', 'wp-ultimo'),
+			'title'       => __('Sites Templates', 'wp-multisite-waas'),
+			'description' => __('Adjusts existing site templates.', 'wp-multisite-waas'),
+			'installing'  => __('Making Adjustments...', 'wp-multisite-waas'),
 			'help'        => wu_get_documentation_url('migration-errors'),
 			'done'        => false,
 		];
 
 		$steps['domains'] = [
-			'title'       => __('Mapped Domains', 'wp-ultimo'),
-			'description' => __('Converts mapped domains.', 'wp-ultimo'),
+			'title'       => __('Mapped Domains', 'wp-multisite-waas'),
+			'description' => __('Converts mapped domains.', 'wp-multisite-waas'),
 			'help'        => wu_get_documentation_url('migration-errors'),
 			'done'        => false,
 		];
 
 		$steps['forms'] = [
-			'title'       => __('Checkout Forms', 'wp-ultimo'),
-			'description' => __('Creates a checkout form based on the existing signup flow.', 'wp-ultimo'),
+			'title'       => __('Checkout Forms', 'wp-multisite-waas'),
+			'description' => __('Creates a checkout form based on the existing signup flow.', 'wp-multisite-waas'),
 			'help'        => wu_get_documentation_url('migration-errors'),
 			'done'        => false,
 		];
 
 		$steps['emails'] = [
-			'title'       => __('Emails & Broadcasts', 'wp-ultimo'),
-			'description' => __('Converts the emails and broadcasts.', 'wp-ultimo'),
+			'title'       => __('Emails & Broadcasts', 'wp-multisite-waas'),
+			'description' => __('Converts the emails and broadcasts.', 'wp-multisite-waas'),
 			'help'        => wu_get_documentation_url('migration-errors'),
 			'done'        => false,
 		];
 
 		$steps['webhooks'] = [
-			'title'       => __('Webhooks', 'wp-ultimo'),
-			'description' => __('Migrates existing webhooks.', 'wp-ultimo'),
+			'title'       => __('Webhooks', 'wp-multisite-waas'),
+			'description' => __('Migrates existing webhooks.', 'wp-multisite-waas'),
 			'help'        => wu_get_documentation_url('migration-errors'),
 			'done'        => false,
 		];
 
 		$steps['other'] = [
-			'title'       => __('Other Migrations', 'wp-ultimo'),
-			'description' => __('Other migrations that don\'t really fit anywhere else.', 'wp-ultimo'),
+			'title'       => __('Other Migrations', 'wp-multisite-waas'),
+			'description' => __('Other migrations that don\'t really fit anywhere else.', 'wp-multisite-waas'),
 			'help'        => wu_get_documentation_url('migration-errors'),
 			'done'        => false,
 		];
@@ -374,9 +374,9 @@ class Migrator extends Base_Installer {
 			fn($item) => wp_parse_args(
 				$item,
 				[
-					'pending'    => __('Pending', 'wp-ultimo'),
-					'installing' => __('Migrating...', 'wp-ultimo'),
-					'success'    => __('Success!', 'wp-ultimo'),
+					'pending'    => __('Pending', 'wp-multisite-waas'),
+					'installing' => __('Migrating...', 'wp-multisite-waas'),
+					'success'    => __('Success!', 'wp-multisite-waas'),
 				]
 			),
 			$steps
@@ -578,7 +578,7 @@ class Migrator extends Base_Installer {
 		$caller = $dry_run ? $wu_migrator_current_installer : $installer;
 
 		// Translators: %s is the name of the installer.
-		$error_nice_message = sprintf(__('Critical error found when migrating "%s".', 'wp-ultimo'), $caller);
+		$error_nice_message = sprintf(__('Critical error found when migrating "%s".', 'wp-multisite-waas'), $caller);
 
 		if ($session) {
 			$errors = (array) $session->get('errors');
@@ -912,7 +912,7 @@ class Migrator extends Base_Installer {
 			'preview_url_parameter'       => 'template-preview',
 			'bg_color'                    => $this->get_old_setting('top-bar-bg-color', '#f9f9f9'),
 			'button_bg_color'             => $this->get_old_setting('top-bar-button-bg-color', '#00a1ff'),
-			'button_text'                 => $this->get_old_setting('top-bar-button-text', __('Use this Template', 'wp-ultimo')),
+			'button_text'                 => $this->get_old_setting('top-bar-button-text', __('Use this Template', 'wp-multisite-waas')),
 			'display_responsive_controls' => $this->get_old_setting('top-bar-enable-resize', true),
 			'use_custom_logo'             => $this->get_old_setting('top-bar-use-logo'),
 			'custom_logo'                 => $this->get_old_setting('top-bar-logo'),
@@ -2310,7 +2310,7 @@ class Migrator extends Base_Installer {
 		}
 
 		$checkout_form = [
-			'name'              => __('Signup Form', 'wp-ultimo'),
+			'name'              => __('Signup Form', 'wp-multisite-waas'),
 			'slug'              => 'main-form',
 			'allowed_countries' => $this->get_old_setting('allowed_countries', []),
 			'settings'          => [],
@@ -2347,7 +2347,7 @@ class Migrator extends Base_Installer {
 		 */
 		$post_details = [
 			'post_name'    => $page_slug,
-			'post_title'   => __('Signup', 'wp-ultimo'),
+			'post_title'   => __('Signup', 'wp-multisite-waas'),
 			'post_status'  => 'publish',
 			'post_type'    => 'page',
 			'post_content' => sprintf($post_content, $status->get_slug()),
@@ -2387,7 +2387,7 @@ class Migrator extends Base_Installer {
 		 */
 		$login_post_details = [
 			'post_name'    => $login_page_slug,
-			'post_title'   => __('Login', 'wp-ultimo'),
+			'post_title'   => __('Login', 'wp-multisite-waas'),
 			'post_status'  => 'publish',
 			'post_type'    => 'page',
 			'post_content' => '',

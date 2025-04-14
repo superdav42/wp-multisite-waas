@@ -55,7 +55,7 @@ class Signup_Field_Submit_Button extends Base_Signup_Field {
 	 */
 	public function get_title() {
 
-		return __('Submit Button', 'wp-ultimo');
+		return __('Submit Button', 'wp-multisite-waas');
 	}
 
 	/**
@@ -68,7 +68,7 @@ class Signup_Field_Submit_Button extends Base_Signup_Field {
 	 */
 	public function get_description() {
 
-		return __('Adds a submit button. This is required to finalize single-step checkout forms or to navigate to the next step on multi-step checkout forms.', 'wp-ultimo');
+		return __('Adds a submit button. This is required to finalize single-step checkout forms or to navigate to the next step on multi-step checkout forms.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -81,7 +81,7 @@ class Signup_Field_Submit_Button extends Base_Signup_Field {
 	 */
 	public function get_tooltip() {
 
-		return __('Adds a submit button. This is required to finalize single-step checkout forms or to navigate to the next step on multi-step checkout forms.', 'wp-ultimo');
+		return __('Adds a submit button. This is required to finalize single-step checkout forms or to navigate to the next step on multi-step checkout forms.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -110,7 +110,7 @@ class Signup_Field_Submit_Button extends Base_Signup_Field {
 
 		return [
 			'enable_go_back_button' => false,
-			'back_button_label'     => __('&larr; Go Back', 'wp-ultimo'),
+			'back_button_label'     => __('&larr; Go Back', 'wp-multisite-waas'),
 		];
 	}
 
@@ -150,8 +150,8 @@ class Signup_Field_Submit_Button extends Base_Signup_Field {
 		return [
 			'enable_go_back_button' => [
 				'type'      => 'toggle',
-				'title'     => __('Add "Go Back" button', 'wp-ultimo'),
-				'desc'      => __('Enable this option to add a "Go Back" button. Useful for multi-step checkout forms.', 'wp-ultimo'),
+				'title'     => __('Add "Go Back" button', 'wp-multisite-waas'),
+				'desc'      => __('Enable this option to add a "Go Back" button. Useful for multi-step checkout forms.', 'wp-multisite-waas'),
 				'tooltip'   => '',
 				'value'     => 0,
 				'html_attr' => [
@@ -160,10 +160,10 @@ class Signup_Field_Submit_Button extends Base_Signup_Field {
 			],
 			'back_button_label'     => [
 				'type'              => 'text',
-				'title'             => __('"Go Back" Button Label', 'wp-ultimo'),
-				'desc'              => __('Value to be used as the "Go Back" label.', 'wp-ultimo'),
-				'placeholder'       => __('e.g. &larr; Go Back', 'wp-ultimo'),
-				'value'             => __('&larr; Go Back', 'wp-ultimo'),
+				'title'             => __('"Go Back" Button Label', 'wp-multisite-waas'),
+				'desc'              => __('Value to be used as the "Go Back" label.', 'wp-multisite-waas'),
+				'placeholder'       => __('e.g. &larr; Go Back', 'wp-multisite-waas'),
+				'value'             => __('&larr; Go Back', 'wp-multisite-waas'),
 				'wrapper_html_attr' => [
 					'v-cloak' => '1',
 					'v-show'  => 'enable_go_back_button',

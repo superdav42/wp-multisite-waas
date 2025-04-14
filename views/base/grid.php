@@ -7,7 +7,7 @@
 ?>
 <?php $table->display_tablenav('top'); ?>
 
-<div class="wu-mt-4 <?php echo implode(' ', $table->get_table_classes()); ?>">
+<div class="wu-mt-4 <?php echo esc_attr(implode(' ', $table->get_table_classes())); ?>">
 
 	<div id="the-list" class="wu-grid-content wu-grid wu-gap-4 wu-grid-cols-1 md:wu-grid-cols-2 lg:wu-grid-cols-3 xl:wu-grid-cols-4">
 

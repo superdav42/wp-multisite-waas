@@ -27,9 +27,9 @@
 
 			if (page === 'edit') {
 
-				webhook_url = $('input[name=webhook_url').val();
+				webhook_url = $('input[name=webhook_url]').val();
 
-				webhook_event = $('select[name=event').val();
+				webhook_event = $('select[name=event]').val();
 
 				const id = $(this).data('object');
 

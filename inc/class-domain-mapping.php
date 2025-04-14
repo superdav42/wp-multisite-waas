@@ -75,7 +75,7 @@ class Domain_Mapping {
 		/*
 		 * Don't run during installation...
 		 */
-		if (defined('WP_INSTALLING') && '/wp-activate.php' !== $_SERVER['SCRIPT_NAME']) {
+		if (defined('WP_INSTALLING') && '/wp-activate.php' !== $_SERVER['SCRIPT_NAME']) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			return;
 		}
 
@@ -132,10 +132,8 @@ class Domain_Mapping {
 		 */
 		add_action('ms_loaded', [$this, 'register_mapped_filters'], 11);
 
-		// add_action('allowed_http_origin', array($this, 'add_mapped_domains_as_allowed_origins'));
-
 		/**
-		 * On WP Multisite WaaS 1.X builds we used Mercator. The Mercator actions and filters are now deprecated.
+		 * On WP Ultimo 1.X builds we used Mercator. The Mercator actions and filters are now deprecated.
 		 */
 		if (has_action('mercator_load')) {
 			do_action_deprecated('mercator_load', [], '2.0.0', 'wu_domain_mapping_load');
@@ -143,7 +141,7 @@ class Domain_Mapping {
 
 		add_action(
 			'wu_sso_site_allowed_domains',
-			function ($list, $site_id): array {
+			function ($domain_list, $site_id): array {
 
 				$domains = wu_get_domains(
 					[
@@ -154,7 +152,7 @@ class Domain_Mapping {
 					]
 				);
 
-				return array_merge($list, $domains);
+				return array_merge($domain_list, $domains);
 			},
 			10,
 			2
@@ -338,7 +336,7 @@ class Domain_Mapping {
 	/**
 	 * Clear mappings for a site when it's deleted
 	 *
-	 * @param WP_Site $site Site being deleted.
+	 * @param \WP_Site $site Site being deleted.
 	 */
 	public function clear_mappings_on_delete($site): void {
 
@@ -354,9 +352,9 @@ class Domain_Mapping {
 			if (is_wp_error($error)) {
 
 				// translators: First placeholder is the mapping ID, second is the site ID.
-				$message = sprintf(__('Unable to delete mapping %1$d for site %2$d', 'wp-ultimo'), $mapping->get_id(), $site->blog_id);
+				$message = sprintf(__('Unable to delete mapping %1$d for site %2$d', 'wp-multisite-waas'), $mapping->get_id(), $site->blog_id);
 
-				trigger_error($message, E_USER_WARNING);
+				trigger_error(esc_html($message), E_USER_WARNING); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error
 			}
 		}
 	}
@@ -376,7 +374,7 @@ class Domain_Mapping {
 		}
 
 		$real_domain = $current_site->domain;
-		$domain      = $_SERVER['HTTP_HOST'];
+		$domain      = $_SERVER['HTTP_HOST']; // phpcs:ignore
 
 		if ($domain === $real_domain) {
 
@@ -474,7 +472,7 @@ class Domain_Mapping {
 		}
 
 		// Replace the domain
-		$domain_base = parse_url($url, PHP_URL_HOST);
+		$domain_base = wp_parse_url($url, PHP_URL_HOST);
 		$domain      = rtrim($domain_base . '/' . $current_mapping->get_site()->get_path(), '/');
 		$regex       = '#^(\w+://)' . preg_quote($domain, '#') . '#i';
 		$mangled     = preg_replace($regex, '${1}' . $current_mapping->get_domain(), $url);

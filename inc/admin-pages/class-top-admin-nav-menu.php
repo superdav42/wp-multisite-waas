@@ -52,11 +52,11 @@ class Top_Admin_Nav_Menu {
 		// Add Parent element
 		$parent = [
 			'id'    => 'wp-ultimo',
-			'title' => __('Multisite Waas', 'wp-ultimo'),
+			'title' => __('Multisite Waas', 'wp-multisite-waas'),
 			'href'  => current_user_can('wu_read_dashboard') ? network_admin_url('admin.php?page=wp-ultimo') : '#',
 			'meta'  => [
 				'class' => 'wp-ultimo-top-menu',
-				'title' => __('Go to the dashboard', 'wp-ultimo'),
+				'title' => __('Go to the dashboard', 'wp-multisite-waas'),
 			],
 		];
 
@@ -64,11 +64,11 @@ class Top_Admin_Nav_Menu {
 		$sites = [
 			'id'     => 'wp-ultimo-sites',
 			'parent' => 'wp-ultimo',
-			'title'  => __('Manage Sites', 'wp-ultimo'),
+			'title'  => __('Manage Sites', 'wp-multisite-waas'),
 			'href'   => network_admin_url('admin.php?page=wp-ultimo-sites'),
 			'meta'   => [
 				'class' => 'wp-ultimo-top-menu',
-				'title' => __('Go to the sites page', 'wp-ultimo'),
+				'title' => __('Go to the sites page', 'wp-multisite-waas'),
 			],
 		];
 
@@ -76,11 +76,11 @@ class Top_Admin_Nav_Menu {
 		$memberships = [
 			'id'     => 'wp-ultimo-memberships',
 			'parent' => 'wp-ultimo',
-			'title'  => __('Manage Memberships', 'wp-ultimo'),
+			'title'  => __('Manage Memberships', 'wp-multisite-waas'),
 			'href'   => network_admin_url('admin.php?page=wp-ultimo-memberships'),
 			'meta'   => [
 				'class' => 'wp-ultimo-top-menu',
-				'title' => __('Go to the memberships page', 'wp-ultimo'),
+				'title' => __('Go to the memberships page', 'wp-multisite-waas'),
 			],
 		];
 
@@ -88,11 +88,11 @@ class Top_Admin_Nav_Menu {
 		$customers = [
 			'id'     => 'wp-ultimo-customers',
 			'parent' => 'wp-ultimo',
-			'title'  => __('Customers', 'wp-ultimo'),
+			'title'  => __('Customers', 'wp-multisite-waas'),
 			'href'   => network_admin_url('admin.php?page=wp-ultimo-customers'),
 			'meta'   => [
 				'class' => 'wp-ultimo-top-menu',
-				'title' => __('Go to the customers page', 'wp-ultimo'),
+				'title' => __('Go to the customers page', 'wp-multisite-waas'),
 			],
 		];
 
@@ -100,11 +100,11 @@ class Top_Admin_Nav_Menu {
 		$products = [
 			'id'     => 'wp-ultimo-products',
 			'parent' => 'wp-ultimo',
-			'title'  => __('Products', 'wp-ultimo'),
+			'title'  => __('Products', 'wp-multisite-waas'),
 			'href'   => network_admin_url('admin.php?page=wp-ultimo-products'),
 			'meta'   => [
 				'class' => 'wp-ultimo-top-menu',
-				'title' => __('Go to the products page', 'wp-ultimo'),
+				'title' => __('Go to the products page', 'wp-multisite-waas'),
 			],
 		];
 
@@ -112,11 +112,11 @@ class Top_Admin_Nav_Menu {
 		$payments = [
 			'id'     => 'wp-ultimo-payments',
 			'parent' => 'wp-ultimo',
-			'title'  => __('Payments', 'wp-ultimo'),
+			'title'  => __('Payments', 'wp-multisite-waas'),
 			'href'   => network_admin_url('admin.php?page=wp-ultimo-payments'),
 			'meta'   => [
 				'class' => 'wp-ultimo-top-menu',
-				'title' => __('Go to the payments page', 'wp-ultimo'),
+				'title' => __('Go to the payments page', 'wp-multisite-waas'),
 			],
 		];
 
@@ -124,11 +124,11 @@ class Top_Admin_Nav_Menu {
 		$discount_codes = [
 			'id'     => 'wp-ultimo-discount-codes',
 			'parent' => 'wp-ultimo',
-			'title'  => __('Discount Codes', 'wp-ultimo'),
+			'title'  => __('Discount Codes', 'wp-multisite-waas'),
 			'href'   => network_admin_url('admin.php?page=wp-ultimo-discount-codes'),
 			'meta'   => [
 				'class' => 'wp-ultimo-top-menu',
-				'title' => __('Go to the discount codes page', 'wp-ultimo'),
+				'title' => __('Go to the discount codes page', 'wp-multisite-waas'),
 			],
 		];
 
@@ -136,11 +136,11 @@ class Top_Admin_Nav_Menu {
 			'id'     => 'wp-ultimo-settings-group',
 			'parent' => 'wp-ultimo',
 			'group'  => true,
-			'title'  => __('Settings Container', 'wp-ultimo'),
+			'title'  => __('Settings Container', 'wp-multisite-waas'),
 			'href'   => '#',
 			'meta'   => [
 				'class' => 'wp-ultimo-top-menu ab-sub-secondary',
-				'title' => __('Go to the settings page', 'wp-ultimo'),
+				'title' => __('Go to the settings page', 'wp-multisite-waas'),
 			],
 		];
 
@@ -148,11 +148,11 @@ class Top_Admin_Nav_Menu {
 		$settings = [
 			'id'     => 'wp-ultimo-settings',
 			'parent' => 'wp-ultimo-settings-group',
-			'title'  => __('Settings', 'wp-ultimo'),
+			'title'  => __('Settings', 'wp-multisite-waas'),
 			'href'   => network_admin_url('admin.php?page=wp-ultimo-settings'),
 			'meta'   => [
 				'class' => 'wp-ultimo-top-menu ab-sub-secondary',
-				'title' => __('Go to the settings page', 'wp-ultimo'),
+				'title' => __('Go to the settings page', 'wp-multisite-waas'),
 			],
 		];
 
@@ -163,32 +163,32 @@ class Top_Admin_Nav_Menu {
 
 		if (current_user_can('wu_read_sites')) {
 			$wp_admin_bar->add_node($sites);
-		} //end if;
+		}
 
 		if (current_user_can('wu_read_memberships')) {
 			$wp_admin_bar->add_node($memberships);
-		} //end if;
+		}
 
 		if (current_user_can('wu_read_customers')) {
 			$wp_admin_bar->add_node($customers);
-		} //end if;
+		}
 
 		if (current_user_can('wu_read_products')) {
 			$wp_admin_bar->add_node($products);
-		} //end if;
+		}
 
 		if (current_user_can('wu_read_payments')) {
 			$wp_admin_bar->add_node($payments);
-		} //end if;
+		}
 
 		if (current_user_can('wu_read_discount_codes')) {
 			$wp_admin_bar->add_node($discount_codes);
-		} //end if;
+		}
 
 		if (current_user_can('wu_read_settings')) {
 			$wp_admin_bar->add_node($container);
 			$wp_admin_bar->add_node($settings);
-		} //end if;
+		}
 
 		/*
 		 * Add the sub-menus.
@@ -215,7 +215,7 @@ class Top_Admin_Nav_Menu {
 				'href'   => network_admin_url('admin.php?page=wp-ultimo-settings&tab=') . $tab,
 				'meta'   => [
 					'class' => 'wp-ultimo-top-menu',
-					'title' => __('Go to the settings page', 'wp-ultimo'),
+					'title' => __('Go to the settings page', 'wp-multisite-waas'),
 				],
 			];
 

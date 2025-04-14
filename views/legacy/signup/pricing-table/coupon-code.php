@@ -21,14 +21,14 @@ if (isset($_GET['coupon']) && wu_get_coupon($_GET['coupon']) !== false && isset(
 		el: "#coupon-code-app",
 		data: {
 		coupon_id: '',
-		coupon: '<?php echo json_encode($coupon); ?>',
-		type : '<?php echo json_encode(get_post_meta($coupon->id, 'wpu_type', true)); ?>',
-		value : parseFloat(<?php echo json_encode(get_post_meta($coupon->id, 'wpu_value', true)); ?>),
-		applies_to_setup_fee : <?php echo json_encode(get_post_meta($coupon->id, 'wpu_applies_to_setup_fee', true)); ?>,
-		setup_fee_discount_value : parseFloat(<?php echo json_encode(get_post_meta($coupon->id, 'wpu_setup_fee_discount_value', true)); ?>),
-		setup_fee_discount_type : '<?php echo json_encode(get_post_meta($coupon->id, 'wpu_setup_fee_discount_type', true)); ?>',
-		allowed_plans : '<?php echo json_encode(get_post_meta($coupon->id, 'wpu_allowed_plans', true)); ?>',
-		allowed_freqs : '<?php echo json_encode(get_post_meta($coupon->id, 'wpu_allowed_freqs', true)); ?>',
+		coupon: '<?php echo wp_json_encode($coupon); ?>',
+		type : '<?php echo wp_json_encode(get_post_meta($coupon->id, 'wpu_type', true)); ?>',
+		value : parseFloat(<?php echo wp_json_encode(get_post_meta($coupon->id, 'wpu_value', true)); ?>),
+		applies_to_setup_fee : <?php echo wp_json_encode(get_post_meta($coupon->id, 'wpu_applies_to_setup_fee', true)); ?>,
+		setup_fee_discount_value : parseFloat(<?php echo wp_json_encode(get_post_meta($coupon->id, 'wpu_setup_fee_discount_value', true)); ?>),
+		setup_fee_discount_type : '<?php echo wp_json_encode(get_post_meta($coupon->id, 'wpu_setup_fee_discount_type', true)); ?>',
+		allowed_plans : '<?php echo wp_json_encode(get_post_meta($coupon->id, 'wpu_allowed_plans', true)); ?>',
+		allowed_freqs : '<?php echo wp_json_encode(get_post_meta($coupon->id, 'wpu_allowed_freqs', true)); ?>',
 		success: false,
 		},
 		mounted: function() {
@@ -87,7 +87,7 @@ if (isset($_GET['coupon']) && wu_get_coupon($_GET['coupon']) !== false && isset(
 
 					$(this).find('h4').after('<div class="old-price">--</div>');
 
-				} // end if;
+				}
 
 					let plan_id = $(this).data('plan');
 
@@ -104,7 +104,7 @@ if (isset($_GET['coupon']) && wu_get_coupon($_GET['coupon']) !== false && isset(
 						is_allowed_plan = true;
 						}
 
-					} // end for;
+					}
 
 					} else {
 					is_allowed_plan = true;
@@ -120,7 +120,7 @@ if (isset($_GET['coupon']) && wu_get_coupon($_GET['coupon']) !== false && isset(
 						is_allowed_freq = true;
 						}
 
-					} // end for;
+					}
 
 					} else {
 					is_allowed_freq = true;
@@ -131,7 +131,7 @@ if (isset($_GET['coupon']) && wu_get_coupon($_GET['coupon']) !== false && isset(
 					$("body").unblock();
 					return;
 
-					} // end if;
+					}
 
 					if (!is_allowed_freq) {
 
@@ -172,7 +172,7 @@ if (isset($_GET['coupon']) && wu_get_coupon($_GET['coupon']) !== false && isset(
 					$(this).find('.old-price').html(accounting.formatMoney(parseFloat(old_price)));
 					if (!$(this).find('.off-value').get(0)) {
 
-					$(this).find('.old-price').after('<div class="off-value">(' + off_with_symbol + ' ' + '<?php _e('OFF', 'wp-ultimo'); ?>' + ')</div>');
+					$(this).find('.old-price').after('<div class="off-value">(' + off_with_symbol + ' ' + '<?php esc_html_e('OFF', 'wp-multisite-waas'); ?>' + ')</div>');
 
 					}
 
@@ -185,7 +185,7 @@ if (isset($_GET['coupon']) && wu_get_coupon($_GET['coupon']) !== false && isset(
 
 					if (!$(this).find('.setupfee-off-value').get(0)) {
 
-						$(this).find('.pricing-table-setupfee').after('<span class="setupfee-off-value"> (' + setupfee_off_with_symbol + ' ' + '<?php _e('OFF', 'wp-ultimo'); ?>' + ')</span>');
+						$(this).find('.pricing-table-setupfee').after('<span class="setupfee-off-value"> (' + setupfee_off_with_symbol + ' ' + '<?php esc_html_e('OFF', 'wp-multisite-waas'); ?>' + ')</span>');
 
 					}
 
@@ -215,7 +215,7 @@ if (isset($_GET['coupon']) && wu_get_coupon($_GET['coupon']) !== false && isset(
 
 					}
 
-					} // end if;
+					}
 
 					if (applies_to_setup_fee)  {
 
@@ -227,13 +227,13 @@ if (isset($_GET['coupon']) && wu_get_coupon($_GET['coupon']) !== false && isset(
 
 					new_setupfee = old_setupfee - parseFloat(setup_fee_discount_value);
 
-					} // end if;
+					}
 
 					} else {
 
 					new_setupfee = old_setupfee;
 
-					} // end if;
+					}
 
 					if (new_yearly_value > 0) {
 
@@ -241,7 +241,7 @@ if (isset($_GET['coupon']) && wu_get_coupon($_GET['coupon']) !== false && isset(
 
 					} else {
 
-					$(this).find('.total-price.total-price-' + $('#wu_plan_freq').val() ).html(' <?php esc_js(_e('Free!', 'wp-ultimo')); ?>');
+					$(this).find('.total-price.total-price-' + $('#wu_plan_freq').val() ).html(' <?php esc_js(_e('Free!', 'wp-multisite-waas')); ?>');
 
 					}
 
@@ -251,7 +251,7 @@ if (isset($_GET['coupon']) && wu_get_coupon($_GET['coupon']) !== false && isset(
 
 					} else {
 
-					$(this).find('.pricing-table-setupfee').html(' <?php esc_js(_e('No Setup Fee', 'wp-ultimo')); ?>');
+					$(this).find('.pricing-table-setupfee').html(' <?php esc_js(_e('No Setup Fee', 'wp-multisite-waas')); ?>');
 
 					}
 
@@ -268,7 +268,7 @@ if (isset($_GET['coupon']) && wu_get_coupon($_GET['coupon']) !== false && isset(
 					} else {
 
 					let plan_price = $(this).find('.plan-price');
-					plan_price.html(' <?php esc_js(_e('Free!', 'wp-ultimo')); ?>');
+					plan_price.html(' <?php esc_js(_e('Free!', 'wp-multisite-waas')); ?>');
 					let hagacinco = $(this).find('h5');
 					hagacinco.find('sub').hide();
 					hagacinco.find('.superscript').hide();

@@ -13,12 +13,14 @@
 		class="wu--mt-8 wu-py-8 wu-bg-gray-100 wu-bg-cover wu-bg-center"
 		style="opacity: 0.15; background-image: url(
 		<?php
-		echo get_avatar_url(
-			$item->get_user_id(),
-			[
-				'default' => 'identicon',
-				'size'    => 320,
-			]
+		echo esc_url(
+			get_avatar_url(
+				$item->get_user_id(),
+				array(
+					'default' => 'identicon',
+					'size'    => 320,
+				)
+			)
 		);
 		?>
 		)"
@@ -43,21 +45,21 @@
 
 	<div class="wu-text-base wu-mt-1">
 		<div>
-		<span class="wu-font-semibold"><?php echo $item->get_display_name(); ?></span>
-		<small>#<?php echo $item->get_id(); ?></small>
+		<span class="wu-font-semibold"><?php echo esc_html($item->get_display_name()); ?></span>
+		<small>#<?php echo esc_html($item->get_id()); ?></small>
 		</div>
 		<div class="wu-text-xs wu-my-1">
 		<?php if ($item->get_email_address()) : ?>
-		<a class="wu-no-underline" href="mailto:<?php echo $item->get_email_address(); ?>">
-			<?php echo $item->get_email_address(); ?>
+		<a class="wu-no-underline" href="mailto:<?php echo esc_attr($item->get_email_address()); ?>">
+			<?php echo esc_html($item->get_email_address()); ?>
 		</a>
 		<?php else : ?>
-			<?php _e('No email address', 'wp-ultimo'); ?>
+			<?php esc_html_e('No email address', 'wp-multisite-waas'); ?>
 		<?php endif; ?>
 		</div>
 		<div class="wu-text-xs">
 		<span class="<?php echo $item->is_vip() ? esc_attr('wu-font-semibold') : ''; ?>">
-			<?php echo $item->is_vip() ? __('VIP Customer', 'wp-ultimo') : __('Regular Customer', 'wp-ultimo'); ?>
+			<?php echo $item->is_vip() ? __('VIP Customer', 'wp-multisite-waas') : __('Regular Customer', 'wp-multisite-waas'); ?>
 		</span>
 		</div>
 	</div>
@@ -66,32 +68,32 @@
 
 		<div class="wu-flex wu-justify-between wu-border-0 wu-border-t wu-border-solid wu-border-gray-300 wu-py-2 wu-px-3">
 			<span>
-			<?php _e('Last Login:', 'wp-ultimo'); ?>
+			<?php esc_html_e('Last Login:', 'wp-multisite-waas'); ?>
 			</span>
 			<span class="wu-font-semibold">
 			<?php
 			if ($item->is_online()) {
-				echo '<span class="wu-inline-block wu-mr-1 wu-rounded-full wu-h-2 wu-w-2 wu-bg-green-500"></span>' . __('Online', 'wp-ultimo');
+				echo '<span class="wu-inline-block wu-mr-1 wu-rounded-full wu-h-2 wu-w-2 wu-bg-green-500"></span>' . __('Online', 'wp-multisite-waas');
 			} elseif ( '0000-00-00 00:00:00' !== $item->get_last_login() ) {
-					echo human_time_diff(strtotime($item->get_last_login()), time()) . ' ' . __('ago', 'wp-ultimo');
+					echo human_time_diff(strtotime($item->get_last_login()), time()) . ' ' . __('ago', 'wp-multisite-waas');
 			} else {
-				_e('Never logged in', 'wp-ultimo');
+				_e('Never logged in', 'wp-multisite-waas');
 			}
 			?>
 			</span>
 		</div>
 		<div class="wu-flex wu-justify-between wu-border-0 wu-border-t wu-border-solid wu-border-gray-300 wu-py-2 wu-px-3">
 			<span>
-			<?php _e('Customer Since:', 'wp-ultimo'); ?>
+			<?php esc_html_e('Customer Since:', 'wp-multisite-waas'); ?>
 			</span>
 			<span class="wu-font-semibold">
-			<?php echo human_time_diff(strtotime($item->get_date_registered()), time()) . ' ' . __('ago', 'wp-ultimo'); ?>
+			<?php echo human_time_diff(strtotime($item->get_date_registered()), time()) . ' ' . __('ago', 'wp-multisite-waas'); ?>
 			</span>
 		</div>
 
 		<div class="wu-flex wu-justify-between wu-border-0 wu-border-gray-300 wu-border-t wu-border-b-0 wu-border-solid wu-py-2 wu-px-3">
 			<span>
-			<?php _e('Memberships:', 'wp-ultimo'); ?>
+			<?php esc_html_e('Memberships:', 'wp-multisite-waas'); ?>
 			</span>
 			<div>
 			<span class="wu-font-semibold">
@@ -102,7 +104,7 @@
 			if ( ! empty($item->get_memberships())) {
 				?>
 				<a  href="<?php echo wu_network_admin_url('wp-ultimo-memberships', ['customer_id' => $item->get_id()]); ?>">
-				<?php _e('View', 'wp-ultimo'); ?>
+				<?php esc_html_e('View', 'wp-multisite-waas'); ?>
 				</a>
 				<?php
 			}
@@ -113,7 +115,7 @@
 
 		<div class="wu-flex wu-justify-between wu-border-0 wu-border-gray-300 wu-border-t wu-border-b-0 wu-border-solid wu-py-2 wu-px-3">
 			<span>
-			<?php _e('Actions:', 'wp-ultimo'); ?>
+			<?php esc_html_e('Actions:', 'wp-multisite-waas'); ?>
 			</span>
 			<div>
 
@@ -122,10 +124,10 @@
 				// Concatenate switch to url
 					$is_modal_switch_to = \WP_Ultimo\User_Switching::get_instance()->check_user_switching_is_activated() ? '' : 'wubox';
 
-					$url_switch_to = sprintf('<a title="%s" class="%s" href="%s">%s</a>', __('Switch To', 'wp-ultimo'), $is_modal_switch_to, \WP_Ultimo\User_Switching::get_instance()->render($item->get_user_id()), __('Switch To', 'wp-ultimo'));
+					$url_switch_to = sprintf('<a title="%s" class="%s" href="%s">%s</a>', __('Switch To', 'wp-multisite-waas'), $is_modal_switch_to, \WP_Ultimo\User_Switching::get_instance()->render($item->get_user_id()), __('Switch To', 'wp-multisite-waas'));
 
 					$actions = [
-						'switch-to' => $item->get_user_id() !== get_current_user_id() ? $url_switch_to : __('None', 'wp-ultimo'),
+						'switch-to' => $item->get_user_id() !== get_current_user_id() ? $url_switch_to : __('None', 'wp-multisite-waas'),
 					];
 
 					echo implode('<br />', $actions);
@@ -141,11 +143,11 @@
 
 		<label>
 			<input class="wu-rounded-none" type="checkbox" name="bulk-delete[]" value="<?php echo $item->get_id(); ?>" />
-			<?php _e('Select Customer', 'wp-ultimo'); ?>
+			<?php esc_html_e('Select Customer', 'wp-multisite-waas'); ?>
 		</label>
 
 		<a href="<?php echo wu_network_admin_url('wp-ultimo-edit-customer', ['id' => $item->get_id()]); ?>" class="button button-primary">
-			<?php _e('Manage', 'wp-ultimo'); ?>
+			<?php esc_html_e('Manage', 'wp-multisite-waas'); ?>
 		</a>
 	</div>
 	</div>

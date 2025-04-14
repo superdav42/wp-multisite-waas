@@ -465,14 +465,14 @@ class Discount_Code extends Base_Model {
 	public function is_valid($product = false) {
 
 		if ($this->is_active() === false) {
-			return new \WP_Error('discount_code', __('This coupon code is not valid.', 'wp-ultimo'));
+			return new \WP_Error('discount_code', __('This coupon code is not valid.', 'wp-multisite-waas'));
 		}
 
 		/*
 		 * Check for uses
 		 */
 		if ($this->has_max_uses() && $this->get_uses() >= $this->get_max_uses()) {
-			return new \WP_Error('discount_code', __('This discount code was already redeemed the maximum amount of times allowed.', 'wp-ultimo'));
+			return new \WP_Error('discount_code', __('This discount code was already redeemed the maximum amount of times allowed.', 'wp-multisite-waas'));
 		}
 
 		/*
@@ -487,9 +487,9 @@ class Discount_Code extends Base_Model {
 			$start_date_instance = wu_date($start_date);
 
 			if ($now < $start_date_instance) {
-				return new \WP_Error('discount_code', __('This coupon code is not valid.', 'wp-ultimo'));
+				return new \WP_Error('discount_code', __('This coupon code is not valid.', 'wp-multisite-waas'));
 
-				return new \WP_Error('discount_code', __('The coupon code is not valid yet.', 'wp-ultimo'));
+				return new \WP_Error('discount_code', __('The coupon code is not valid yet.', 'wp-multisite-waas'));
 			}
 		}
 
@@ -497,7 +497,7 @@ class Discount_Code extends Base_Model {
 			$expiration_date_instance = wu_date($expiration_date);
 
 			if ($now > $expiration_date_instance) {
-				return new \WP_Error('discount_code', __('This coupon code is not valid.', 'wp-ultimo'));
+				return new \WP_Error('discount_code', __('This coupon code is not valid.', 'wp-multisite-waas'));
 			}
 		}
 
@@ -515,7 +515,7 @@ class Discount_Code extends Base_Model {
 			$allowed = $this->get_limit_products() && in_array($product_id, $this->get_allowed_products()); // phpcs:ignore
 
 			if (false === $allowed) {
-				return new \WP_Error('discount_code', __('This coupon code is not valid.', 'wp-ultimo'));
+				return new \WP_Error('discount_code', __('This coupon code is not valid.', 'wp-multisite-waas'));
 			}
 		}
 
@@ -640,7 +640,7 @@ class Discount_Code extends Base_Model {
 
 			$description[] = sprintf(
 				// translators: placeholder is the value off. Can be wither $X.XX or X%
-				__('%1$s OFF on Subscriptions', 'wp-ultimo'),
+				__('%1$s OFF on Subscriptions', 'wp-multisite-waas'),
 				$value
 			);
 		}
@@ -654,12 +654,12 @@ class Discount_Code extends Base_Model {
 
 			$description[] = sprintf(
 				// translators: placeholder is the value off. Can be wither $X.XX or X%
-				__('%1$s OFF on Setup Fees', 'wp-ultimo'),
+				__('%1$s OFF on Setup Fees', 'wp-multisite-waas'),
 				$setup_fee_value
 			);
 		}
 
-		return implode(' ' . __('and', 'wp-ultimo') . ' ', $description);
+		return implode(' ' . __('and', 'wp-multisite-waas') . ' ', $description);
 	}
 
 	/**

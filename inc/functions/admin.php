@@ -24,7 +24,7 @@ function wu_render_empty_state($args = []) {
 		[
 			'message'                  => __('This is not yet available...'),
 			'sub_message'              => __('We\'re still working on this part of the product.'),
-			'link_label'               => __('&larr; Go Back', 'wp-ultimo'),
+			'link_label'               => __('&larr; Go Back', 'wp-multisite-waas'),
 			'link_url'                 => 'javascript:history.go(-1)',
 			'link_classes'             => '',
 			'link_icon'                => '',
@@ -61,7 +61,7 @@ function wu_responsive_table_row($args = [], $first_row = [], $second_row = []) 
 		$args,
 		[
 			'id'     => '',
-			'title'  => __('No Title', 'wp-ultimo'),
+			'title'  => __('No Title', 'wp-multisite-waas'),
 			'url'    => '#',
 			'status' => '',
 			'image'  => '',

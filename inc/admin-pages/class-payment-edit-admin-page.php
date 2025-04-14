@@ -167,15 +167,15 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 		$fields = [
 			'confirm'       => [
 				'type'      => 'toggle',
-				'title'     => __('Confirm Deletion', 'wp-ultimo'),
-				'desc'      => __('This action can not be undone.', 'wp-ultimo'),
+				'title'     => __('Confirm Deletion', 'wp-multisite-waas'),
+				'desc'      => __('This action can not be undone.', 'wp-multisite-waas'),
 				'html_attr' => [
 					'v-model' => 'confirmed',
 				],
 			],
 			'submit_button' => [
 				'type'            => 'submit',
-				'title'           => __('Delete', 'wp-ultimo'),
+				'title'           => __('Delete', 'wp-multisite-waas'),
 				'value'           => 'save',
 				'classes'         => 'button button-primary wu-w-full',
 				'wrapper_classes' => 'wu-items-end',
@@ -227,7 +227,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 		$line_item = wu_get_line_item(wu_request('line_item_id'), $payment->get_id());
 
 		if ( ! $payment || ! $line_item) {
-			wp_send_json_error(new \WP_Error('not-found', __('Payment not found.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('not-found', __('Payment not found.', 'wp-multisite-waas')));
 		}
 
 		$line_items = $payment->get_line_items();
@@ -266,8 +266,8 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 		$fields = [
 			'_amount'                   => [
 				'type'              => 'text',
-				'title'             => __('Refund Amount', 'wp-ultimo'),
-				'placeholder'       => __('Refund Amount', 'wp-ultimo'),
+				'title'             => __('Refund Amount', 'wp-multisite-waas'),
+				'placeholder'       => __('Refund Amount', 'wp-multisite-waas'),
 				'money'             => true,
 				'min'               => 0,
 				'html_attr'         => [
@@ -287,15 +287,15 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			],
 			'cancel_membership'         => [
 				'type'              => 'toggle',
-				'title'             => __('Cancel Related Membership?', 'wp-ultimo'),
-				'desc'              => __('Checking this option will cancel the membership as well.', 'wp-ultimo'),
+				'title'             => __('Cancel Related Membership?', 'wp-multisite-waas'),
+				'desc'              => __('Checking this option will cancel the membership as well.', 'wp-multisite-waas'),
 				'wrapper_html_attr' => [
 					'v-show' => 'step === 1',
 				],
 			],
 			'refund_not_immediate_note' => [
 				'type'              => 'note',
-				'desc'              => __('Confirming the refund might not immediately change the status of the payment, as each gateway handles refunds differently and WP Multisite WaaS relies on the gateway reporting a successful refund before changing the status.', 'wp-ultimo'),
+				'desc'              => __('Confirming the refund might not immediately change the status of the payment, as each gateway handles refunds differently and WP Multisite WaaS relies on the gateway reporting a successful refund before changing the status.', 'wp-multisite-waas'),
 				'classes'           => 'wu-p-2 wu-bg-yellow-200 wu-text-yellow-700 wu-rounded wu-w-full',
 				'wrapper_html_attr' => [
 					'v-show'  => 'step === 2',
@@ -304,8 +304,8 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			],
 			'confirm'                   => [
 				'type'              => 'toggle',
-				'title'             => __('Confirm Refund', 'wp-ultimo'),
-				'desc'              => __('This action can not be undone.', 'wp-ultimo'),
+				'title'             => __('Confirm Refund', 'wp-multisite-waas'),
+				'desc'              => __('This action can not be undone.', 'wp-multisite-waas'),
 				'wrapper_html_attr' => [
 					'v-show' => 'step === 2',
 				],
@@ -315,8 +315,8 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			],
 			'submit_button'             => [
 				'type'              => 'submit',
-				'title'             => __('Next Step', 'wp-ultimo'),
-				'placeholder'       => __('Next Step', 'wp-ultimo'),
+				'title'             => __('Next Step', 'wp-multisite-waas'),
+				'placeholder'       => __('Next Step', 'wp-multisite-waas'),
 				'value'             => 'save',
 				'classes'           => 'button button-primary wu-w-full',
 				'wrapper_classes'   => 'wu-items-end',
@@ -330,8 +330,8 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			],
 			'submit_button_2'           => [
 				'type'              => 'submit',
-				'title'             => __('Issue Refund', 'wp-ultimo'),
-				'placeholder'       => __('Issue Refund', 'wp-ultimo'),
+				'title'             => __('Issue Refund', 'wp-multisite-waas'),
+				'placeholder'       => __('Issue Refund', 'wp-multisite-waas'),
 				'value'             => 'save',
 				'classes'           => 'button button-primary wu-w-full',
 				'wrapper_classes'   => 'wu-items-end',
@@ -385,14 +385,14 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 		$payment = wu_get_payment(wu_request('id'));
 
 		if ( ! $payment) {
-			wp_send_json_error(new \WP_Error('not-found', __('Payment not found.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('not-found', __('Payment not found.', 'wp-multisite-waas')));
 		}
 
 		/*
 		 * Checks for a valid amount.
 		 */
 		if (empty($amount) || $amount > $payment->get_total()) {
-			wp_send_json_error(new \WP_Error('invalid-amount', __('The refund amount is out of bounds.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('invalid-amount', __('The refund amount is out of bounds.', 'wp-multisite-waas')));
 		}
 
 		/*
@@ -402,7 +402,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 		$is_refundable = in_array($payment->get_status(), wu_get_refundable_payment_types(), true);
 
 		if ( ! $is_refundable) {
-			wp_send_json_error(new \WP_Error('payment-not-refunded', __('This payment is not in a refundable state.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('payment-not-refunded', __('This payment is not in a refundable state.', 'wp-multisite-waas')));
 		}
 
 		/*
@@ -453,7 +453,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 		$gateway = wu_get_gateway($gateway_id);
 
 		if ( ! $gateway) {
-			wp_send_json_error(new \WP_Error('gateway-not-found', __('Payment gateway not found.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('gateway-not-found', __('Payment gateway not found.', 'wp-multisite-waas')));
 		}
 
 		/*
@@ -482,14 +482,14 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			if (is_wp_error($status)) {
 
 				// translators: %s is the exception error message.
-				$error = new \WP_Error('refund-error', sprintf(__('An error occurred: %s', 'wp-ultimo'), $status->get_error_message()));
+				$error = new \WP_Error('refund-error', sprintf(__('An error occurred: %s', 'wp-multisite-waas'), $status->get_error_message()));
 
 				wp_send_json_error($error);
 			}
 		} catch (\Throwable $e) {
 
 			// translators: %s is the exception error message.
-			$error = new \WP_Error('refund-error', sprintf(__('An error occurred: %s', 'wp-ultimo'), $e->getMessage()));
+			$error = new \WP_Error('refund-error', sprintf(__('An error occurred: %s', 'wp-multisite-waas'), $e->getMessage()));
 
 			wp_send_json_error($error);
 		}
@@ -541,7 +541,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			$product = wu_get_product(wu_request('product_id'));
 
 			if (empty($product)) {
-				$error = new \WP_Error('missing-product', __('The product was not found.', 'wp-ultimo'));
+				$error = new \WP_Error('missing-product', __('The product was not found.', 'wp-multisite-waas'));
 
 				wp_send_json_error($error);
 			}
@@ -578,7 +578,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			);
 
 			if ( ! in_array($type, $allowed_types, true)) {
-				$error = new \WP_Error('invalid-type', __('The line item type is invalid.', 'wp-ultimo'));
+				$error = new \WP_Error('invalid-type', __('The line item type is invalid.', 'wp-multisite-waas'));
 
 				wp_send_json_error($error);
 			}
@@ -610,7 +610,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 		$saved = $payment->recalculate_totals()->save();
 
 		if ( ! $saved) {
-			wp_send_json_error(new \WP_Error('error', __('Something wrong happened.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('error', __('Something wrong happened.', 'wp-multisite-waas')));
 		}
 
 		if (is_wp_error($saved)) {
@@ -648,9 +648,9 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			'tab'                => [
 				'type'      => 'tab-select',
 				'options'   => [
-					'type' => __('Type', 'wp-ultimo'),
-					'info' => __('Additional Info', 'wp-ultimo'),
-					'tax'  => __('Tax Info', 'wp-ultimo'),
+					'type' => __('Type', 'wp-multisite-waas'),
+					'info' => __('Additional Info', 'wp-multisite-waas'),
+					'tax'  => __('Tax Info', 'wp-multisite-waas'),
 				],
 				'html_attr' => [
 					'v-model' => 'tab',
@@ -658,13 +658,13 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			],
 			'type'               => [
 				'type'              => 'select',
-				'title'             => __('Line Item Type', 'wp-ultimo'),
-				'desc'              => __('Select the line item type.', 'wp-ultimo'),
+				'title'             => __('Line Item Type', 'wp-multisite-waas'),
+				'desc'              => __('Select the line item type.', 'wp-multisite-waas'),
 				'options'           => [
-					'product' => __('Product', 'wp-ultimo'),
-					'refund'  => __('Refund', 'wp-ultimo'),
-					'fee'     => __('Fee', 'wp-ultimo'),
-					'credit'  => __('Credit', 'wp-ultimo'),
+					'product' => __('Product', 'wp-multisite-waas'),
+					'refund'  => __('Refund', 'wp-multisite-waas'),
+					'fee'     => __('Fee', 'wp-multisite-waas'),
+					'credit'  => __('Credit', 'wp-multisite-waas'),
 				],
 				'wrapper_html_attr' => [
 					'v-show' => 'tab === "type"',
@@ -675,9 +675,9 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			],
 			'product_id'         => [
 				'type'              => 'model',
-				'title'             => __('Product', 'wp-ultimo'),
-				'desc'              => __('Product associated with this line item.', 'wp-ultimo'),
-				'placeholder'       => __('Search Products', 'wp-ultimo'),
+				'title'             => __('Product', 'wp-multisite-waas'),
+				'desc'              => __('Product associated with this line item.', 'wp-multisite-waas'),
+				'placeholder'       => __('Search Products', 'wp-multisite-waas'),
 				'value'             => $line_item->get_product_id(),
 				'tooltip'           => '',
 				'wrapper_html_attr' => [
@@ -689,14 +689,14 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 					'data-label-field'  => 'name',
 					'data-search-field' => 'name',
 					'data-max-items'    => 1,
-					'data-selected'     => $line_item->get_product() ? json_encode($line_item->get_product()->to_search_results()) : '',
+					'data-selected'     => $line_item->get_product() ? wp_json_encode($line_item->get_product()->to_search_results()) : '',
 				],
 			],
 			'title'              => [
 				'type'              => 'text',
-				'title'             => __('Line Item Title', 'wp-ultimo'),
-				'placeholder'       => __('E.g. Extra Charge', 'wp-ultimo'),
-				'desc'              => __('This is used when generating invoices.', 'wp-ultimo'),
+				'title'             => __('Line Item Title', 'wp-multisite-waas'),
+				'placeholder'       => __('E.g. Extra Charge', 'wp-multisite-waas'),
+				'desc'              => __('This is used when generating invoices.', 'wp-multisite-waas'),
 				'value'             => $line_item->get_title(),
 				'wrapper_html_attr' => [
 					'v-show' => 'tab === "info"',
@@ -704,9 +704,9 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			],
 			'description'        => [
 				'type'              => 'textarea',
-				'title'             => __('Line Item Description', 'wp-ultimo'),
-				'placeholder'       => __('E.g. This service was done to improve performance.', 'wp-ultimo'),
-				'desc'              => __('This is used when generating invoices.', 'wp-ultimo'),
+				'title'             => __('Line Item Description', 'wp-multisite-waas'),
+				'placeholder'       => __('E.g. This service was done to improve performance.', 'wp-multisite-waas'),
+				'desc'              => __('This is used when generating invoices.', 'wp-multisite-waas'),
 				'value'             => $line_item->get_description(),
 				'html_attr'         => [
 					'rows' => 4,
@@ -717,10 +717,10 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			],
 			'quantity'           => [
 				'type'              => 'number',
-				'title'             => __('Quantity', 'wp-ultimo'),
-				'desc'              => __('Item quantity.', 'wp-ultimo'),
+				'title'             => __('Quantity', 'wp-multisite-waas'),
+				'desc'              => __('Item quantity.', 'wp-multisite-waas'),
 				'value'             => $line_item->get_quantity(),
-				'placeholder'       => __('E.g. 1', 'wp-ultimo'),
+				'placeholder'       => __('E.g. 1', 'wp-multisite-waas'),
 				'wrapper_classes'   => 'wu-w-1/2',
 				'wrapper_html_attr' => [
 					'v-show' => 'type === "product" && tab === "type"',
@@ -738,10 +738,10 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			],
 			'_unit_price'        => [
 				'type'              => 'text',
-				'title'             => __('Unit Price', 'wp-ultimo'),
-				'desc'              => __('Item unit price. This is multiplied by the quantity to calculate the sub-total.', 'wp-ultimo'),
+				'title'             => __('Unit Price', 'wp-multisite-waas'),
+				'desc'              => __('Item unit price. This is multiplied by the quantity to calculate the sub-total.', 'wp-multisite-waas'),
 				// translators: %s is a price placeholder value.
-				'placeholder'       => sprintf(__('E.g. %s', 'wp-ultimo'), wu_format_currency(99)),
+				'placeholder'       => sprintf(__('E.g. %s', 'wp-multisite-waas'), wu_format_currency(99)),
 				'value'             => $line_item->get_unit_price(),
 				'money'             => true,
 				'wrapper_classes'   => 'wu-w-1/2',
@@ -756,10 +756,10 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			],
 			'_unit_price_amount' => [
 				'type'              => 'text',
-				'title'             => __('Amount', 'wp-ultimo'),
-				'desc'              => __('Refund, credit or fee amount.', 'wp-ultimo'),
+				'title'             => __('Amount', 'wp-multisite-waas'),
+				'desc'              => __('Refund, credit or fee amount.', 'wp-multisite-waas'),
 				// translators: %s is a price placeholder value.
-				'placeholder'       => sprintf(__('E.g. %s', 'wp-ultimo'), wu_format_currency(99)),
+				'placeholder'       => sprintf(__('E.g. %s', 'wp-multisite-waas'), wu_format_currency(99)),
 				'value'             => $line_item->get_unit_price(),
 				'money'             => true,
 				'wrapper_classes'   => 'wu-w-1/2',
@@ -774,8 +774,8 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			],
 			'taxable'            => [
 				'type'              => 'toggle',
-				'title'             => __('Is Taxable?', 'wp-ultimo'),
-				'desc'              => __('Checking this box will toggle the tax controls.', 'wp-ultimo'),
+				'title'             => __('Is Taxable?', 'wp-multisite-waas'),
+				'desc'              => __('Checking this box will toggle the tax controls.', 'wp-multisite-waas'),
 				'wrapper_html_attr' => [
 					'v-bind:class' => 'type !== "product" ? "wu-opacity-50" : ""',
 					'v-show'       => 'tab === "tax"',
@@ -787,9 +787,9 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			],
 			'tax_label'          => [
 				'type'              => 'text',
-				'title'             => __('Tax Label', 'wp-ultimo'),
-				'placeholder'       => __('E.g. ES VAT', 'wp-ultimo'),
-				'desc'              => __('Tax description. This is shown on invoices to end customers.', 'wp-ultimo'),
+				'title'             => __('Tax Label', 'wp-multisite-waas'),
+				'placeholder'       => __('E.g. ES VAT', 'wp-multisite-waas'),
+				'desc'              => __('Tax description. This is shown on invoices to end customers.', 'wp-multisite-waas'),
 				'value'             => $line_item->get_tax_label(),
 				'wrapper_html_attr' => [
 					'v-show' => 'taxable &&  tab === "tax"',
@@ -797,8 +797,8 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			],
 			'tax_rate_group'     => [
 				'type'              => 'group',
-				'title'             => __('Tax Rate', 'wp-ultimo'),
-				'desc'              => __('Tax rate and type to apply to this item.', 'wp-ultimo'),
+				'title'             => __('Tax Rate', 'wp-multisite-waas'),
+				'desc'              => __('Tax rate and type to apply to this item.', 'wp-multisite-waas'),
 				'wrapper_html_attr' => [
 					'v-show' => 'taxable && tab === "tax"',
 				],
@@ -819,16 +819,16 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 						'placeholder'     => '',
 						'wrapper_classes' => 'wu-w-2/3',
 						'options'         => [
-							'percentage' => __('Percentage (%)', 'wp-ultimo'),
-							'absolute'   => __('Flat Rate ($)', 'wp-ultimo'),
+							'percentage' => __('Percentage (%)', 'wp-multisite-waas'),
+							'absolute'   => __('Flat Rate ($)', 'wp-multisite-waas'),
 						],
 					],
 				],
 			],
 			'submit_button'      => [
 				'type'            => 'submit',
-				'title'           => __('Save', 'wp-ultimo'),
-				'placeholder'     => __('Save', 'wp-ultimo'),
+				'title'           => __('Save', 'wp-multisite-waas'),
+				'placeholder'     => __('Save', 'wp-multisite-waas'),
 				'value'           => 'save',
 				'classes'         => 'wu-w-full button button-primary',
 				'wrapper_classes' => 'wu-items-end',
@@ -881,7 +881,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 
 		if ($is_refundable) {
 			$actions['refund_payment'] = [
-				'label'        => __('Refund Payment', 'wp-ultimo'),
+				'label'        => __('Refund Payment', 'wp-multisite-waas'),
 				'icon_classes' => 'dashicons-wu-ccw wu-align-text-bottom',
 				'classes'      => 'button wubox',
 				'href'         => wu_get_form_url(
@@ -894,7 +894,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 		}
 
 		$actions['add_line_item'] = [
-			'label'        => __('Add Line Item', 'wp-ultimo'),
+			'label'        => __('Add Line Item', 'wp-multisite-waas'),
 			'icon_classes' => 'dashicons-wu-circle-with-plus wu-align-text-bottom',
 			'classes'      => 'button wubox',
 			'href'         => wu_get_form_url(
@@ -952,26 +952,26 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_fields_widget(
 			'at_a_glance',
 			[
-				'title'                 => __('At a Glance', 'wp-ultimo'),
+				'title'                 => __('At a Glance', 'wp-multisite-waas'),
 				'position'              => 'normal',
 				'classes'               => 'wu-overflow-hidden wu-widget-inset',
 				'field_wrapper_classes' => 'wu-w-1/3 wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t-0 wu-border-l-0 wu-border-r wu-border-b-0 wu-border-gray-300 wu-border-solid wu-float-left wu-relative',
 				'fields'                => [
 					'status' => [
 						'type'          => 'text-display',
-						'title'         => __('Payment Status', 'wp-ultimo'),
+						'title'         => __('Payment Status', 'wp-multisite-waas'),
 						'display_value' => $tag,
 						'tooltip'       => '',
 					],
 					'hash'   => [
 						'copy'          => true,
 						'type'          => 'text-display',
-						'title'         => __('Reference ID', 'wp-ultimo'),
+						'title'         => __('Reference ID', 'wp-multisite-waas'),
 						'display_value' => $this->get_object()->get_hash(),
 					],
 					'total'  => [
 						'type'            => 'text-display',
-						'title'           => __('Total', 'wp-ultimo'),
+						'title'           => __('Total', 'wp-multisite-waas'),
 						'display_value'   => wu_format_currency($this->get_object()->get_total(), $this->get_object()->get_currency()),
 						'wrapper_classes' => 'sm:wu-border-r-0',
 					],
@@ -982,7 +982,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_list_table_widget(
 			'line-items',
 			[
-				'title'        => __('Line Items', 'wp-ultimo'),
+				'title'        => __('Line Items', 'wp-multisite-waas'),
 				'table'        => new \WP_Ultimo\List_Tables\Payment_Line_Item_List_Table(),
 				'position'     => 'normal',
 				'query_filter' => [$this, 'payments_query_filter'],
@@ -993,7 +993,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_widget(
 			'tax-rates',
 			[
-				'title'    => __('Tax Rate Breakthrough', 'wp-ultimo'),
+				'title'    => __('Tax Rate Breakthrough', 'wp-multisite-waas'),
 				'position' => 'normal',
 				'display'  => [$this, 'display_tax_breakthrough'],
 			]
@@ -1002,7 +1002,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_tabs_widget(
 			'options',
 			[
-				'title'    => __('Payment Options', 'wp-ultimo'),
+				'title'    => __('Payment Options', 'wp-multisite-waas'),
 				'position' => 'normal',
 				'sections' => apply_filters('wu_payments_options_sections', [], $this->get_object()),
 			]
@@ -1011,7 +1011,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_list_table_widget(
 			'events',
 			[
-				'title'        => __('Events', 'wp-ultimo'),
+				'title'        => __('Events', 'wp-multisite-waas'),
 				'table'        => new \WP_Ultimo\List_Tables\Inside_Events_List_Table(),
 				'query_filter' => [$this, 'events_query_filter'],
 			]
@@ -1037,9 +1037,9 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 				'fields'    => [
 					'status'                   => [
 						'type'              => 'select',
-						'title'             => __('Status', 'wp-ultimo'),
-						'placeholder'       => __('Status', 'wp-ultimo'),
-						'desc'              => __('The payment current status.', 'wp-ultimo'),
+						'title'             => __('Status', 'wp-multisite-waas'),
+						'placeholder'       => __('Status', 'wp-multisite-waas'),
+						'desc'              => __('The payment current status.', 'wp-multisite-waas'),
 						'value'             => $this->get_object()->get_status(),
 						'options'           => Payment_Status::to_array(),
 						'tooltip'           => '',
@@ -1052,8 +1052,8 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 					],
 					'confirm_membership'       => [
 						'type'              => 'toggle',
-						'title'             => __('Activate Membership?', 'wp-ultimo'),
-						'desc'              => __('This payment belongs to a pending membership. If you toggle this option, this change in status will also apply to the membership. If any sites are pending, they are also going to be published automatically.', 'wp-ultimo'),
+						'title'             => __('Activate Membership?', 'wp-multisite-waas'),
+						'desc'              => __('This payment belongs to a pending membership. If you toggle this option, this change in status will also apply to the membership. If any sites are pending, they are also going to be published automatically.', 'wp-multisite-waas'),
 						'value'             => 0,
 						'wrapper_html_attr' => [
 							'v-if'    => 'status !== original_status && status === "completed" && membership_status === "pending"',
@@ -1062,8 +1062,8 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 					],
 					'membership_id'            => [
 						'type'              => 'model',
-						'title'             => __('Membership', 'wp-ultimo'),
-						'desc'              => __('The membership associated with this payment.', 'wp-ultimo'),
+						'title'             => __('Membership', 'wp-multisite-waas'),
+						'desc'              => __('The membership associated with this payment.', 'wp-multisite-waas'),
 						'value'             => $this->get_object()->get_membership_id(),
 						'tooltip'           => '',
 						'html_attr'         => [
@@ -1073,7 +1073,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 							'data-value-field' => 'id',
 							'data-label-field' => 'reference_code',
 							'data-max-items'   => 1,
-							'data-selected'    => $this->get_object()->get_membership() ? json_encode($this->get_object()->get_membership()->to_search_results()) : '',
+							'data-selected'    => $this->get_object()->get_membership() ? wp_json_encode($this->get_object()->get_membership()->to_search_results()) : '',
 						],
 						'wrapper_html_attr' => [
 							'v-cloak' => '1',
@@ -1081,10 +1081,10 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 					],
 					'gateway'                  => [
 						'type'              => 'text',
-						'title'             => __('Gateway', 'wp-ultimo'),
-						'placeholder'       => __('e.g. stripe', 'wp-ultimo'),
-						'description'       => __('e.g. stripe', 'wp-ultimo'),
-						'desc'              => __('Payment gateway used to process the payment.', 'wp-ultimo'),
+						'title'             => __('Gateway', 'wp-multisite-waas'),
+						'placeholder'       => __('e.g. stripe', 'wp-multisite-waas'),
+						'description'       => __('e.g. stripe', 'wp-multisite-waas'),
+						'desc'              => __('Payment gateway used to process the payment.', 'wp-multisite-waas'),
 						'value'             => $this->get_object()->get_gateway(),
 						'wrapper_classes'   => 'wu-w-full',
 						'html_attr'         => [
@@ -1108,7 +1108,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 							$url = apply_filters("wu_{$gateway_id}_remote_payment_url", $this->get_object()->get_gateway_payment_id());
 
 							if ($url) {
-								return sprintf('<a class="wu-text-gray-800 wu-text-center wu-w-full wu-no-underline" href="%s" target="_blank">%s</a>', esc_attr($url), __('View on Gateway &rarr;', 'wp-ultimo'));
+								return sprintf('<a class="wu-text-gray-800 wu-text-center wu-w-full wu-no-underline" href="%s" target="_blank">%s</a>', esc_attr($url), __('View on Gateway &rarr;', 'wp-multisite-waas'));
 							}
 
 							return '';
@@ -1120,10 +1120,10 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 						'fields'            => [
 							'gateway_payment_id' => [
 								'type'              => 'text',
-								'title'             => __('Gateway Payment ID', 'wp-ultimo'),
-								'placeholder'       => __('e.g. EX897540987913', 'wp-ultimo'),
-								'description'       => __('e.g. EX897540987913', 'wp-ultimo'),
-								'tooltip'           => __('This will usually be set automatically by the payment gateway.', 'wp-ultimo'),
+								'title'             => __('Gateway Payment ID', 'wp-multisite-waas'),
+								'placeholder'       => __('e.g. EX897540987913', 'wp-multisite-waas'),
+								'description'       => __('e.g. EX897540987913', 'wp-multisite-waas'),
+								'tooltip'           => __('This will usually be set automatically by the payment gateway.', 'wp-multisite-waas'),
 								'value'             => $this->get_object()->get_gateway_payment_id(),
 								'wrapper_classes'   => 'wu-w-full',
 								'html_attr'         => [],
@@ -1134,14 +1134,14 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 					'invoice_number'           => [
 						'type'              => 'number',
 						'min'               => 0,
-						'title'             => __('Invoice Number', 'wp-ultimo'),
-						'placeholder'       => __('e.g. 20', 'wp-ultimo'),
-						'tooltip'           => __('This number gets saved automatically when a payment transitions to a complete state. You can change it to generate invoices with a particular number. The number chosen here has no effect on other invoices in the platform.', 'wp-ultimo'),
-						'desc'              => __('The invoice number for this particular payment.', 'wp-ultimo'),
+						'title'             => __('Invoice Number', 'wp-multisite-waas'),
+						'placeholder'       => __('e.g. 20', 'wp-multisite-waas'),
+						'tooltip'           => __('This number gets saved automatically when a payment transitions to a complete state. You can change it to generate invoices with a particular number. The number chosen here has no effect on other invoices in the platform.', 'wp-multisite-waas'),
+						'desc'              => __('The invoice number for this particular payment.', 'wp-multisite-waas'),
 						'value'             => $this->get_object()->get_saved_invoice_number(),
 						'wrapper_classes'   => 'wu-w-full',
 						'wrapper_html_attr' => [
-							'v-show'  => json_encode(wu_get_setting('invoice_numbering_scheme', 'reference_code') === 'sequential_number'),
+							'v-show'  => wp_json_encode(wu_get_setting('invoice_numbering_scheme', 'reference_code') === 'sequential_number'),
 							'v-cloak' => '1',
 						],
 					],
@@ -1158,7 +1158,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function get_title() {
 
-		return $this->edit ? __('Edit Payment', 'wp-ultimo') : __('Add new Payment', 'wp-ultimo');
+		return $this->edit ? __('Edit Payment', 'wp-multisite-waas') : __('Add new Payment', 'wp-multisite-waas');
 	}
 
 	/**
@@ -1169,7 +1169,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Edit Payment', 'wp-ultimo');
+		return __('Edit Payment', 'wp-multisite-waas');
 	}
 
 	/**
@@ -1187,14 +1187,14 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 		if ($payment) {
 			$actions[] = [
 				'url'   => $payment->get_invoice_url(),
-				'label' => __('Generate Invoice', 'wp-ultimo'),
+				'label' => __('Generate Invoice', 'wp-multisite-waas'),
 				'icon'  => 'wu-attachment',
 			];
 
 			if ($payment->is_payable()) {
 				$actions[] = [
 					'url'   => $payment->get_payment_url(),
-					'label' => __('Payment URL', 'wp-ultimo'),
+					'label' => __('Payment URL', 'wp-multisite-waas'),
 					'icon'  => 'wu-credit-card',
 				];
 			}
@@ -1212,15 +1212,15 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'edit_label'          => __('Edit Payment', 'wp-ultimo'),
-			'add_new_label'       => __('Add new Payment', 'wp-ultimo'),
-			'updated_message'     => __('Payment updated with success!', 'wp-ultimo'),
-			'title_placeholder'   => __('Enter Payment Name', 'wp-ultimo'),
-			'title_description'   => __('This name will be used on pricing tables, invoices, and more.', 'wp-ultimo'),
-			'save_button_label'   => __('Save Payment', 'wp-ultimo'),
+			'edit_label'          => __('Edit Payment', 'wp-multisite-waas'),
+			'add_new_label'       => __('Add new Payment', 'wp-multisite-waas'),
+			'updated_message'     => __('Payment updated with success!', 'wp-multisite-waas'),
+			'title_placeholder'   => __('Enter Payment Name', 'wp-multisite-waas'),
+			'title_description'   => __('This name will be used on pricing tables, invoices, and more.', 'wp-multisite-waas'),
+			'save_button_label'   => __('Save Payment', 'wp-multisite-waas'),
 			'save_description'    => '',
-			'delete_button_label' => __('Delete Payment', 'wp-ultimo'),
-			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-ultimo'),
+			'delete_button_label' => __('Delete Payment', 'wp-multisite-waas'),
+			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-multisite-waas'),
 		];
 	}
 
@@ -1280,7 +1280,7 @@ class Payment_Edit_Admin_Page extends Edit_Admin_Page {
 			$item = $query->get_item_by('id', $_GET['id']);
 
 			if ( ! $item || $item->get_parent_id()) {
-				wp_redirect(wu_network_admin_url('wp-ultimo-payments'));
+				wp_safe_redirect(wu_network_admin_url('wp-ultimo-payments'));
 
 				exit;
 			}

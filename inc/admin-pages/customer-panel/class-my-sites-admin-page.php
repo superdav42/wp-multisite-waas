@@ -232,7 +232,7 @@ class My_Sites_Admin_Page extends Base_Customer_Facing_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('My Sites', 'wp-ultimo');
+		return __('My Sites', 'wp-multisite-waas');
 	}
 
 	/**
@@ -243,7 +243,7 @@ class My_Sites_Admin_Page extends Base_Customer_Facing_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('My Sites', 'wp-ultimo');
+		return __('My Sites', 'wp-multisite-waas');
 	}
 
 	/**
@@ -254,7 +254,7 @@ class My_Sites_Admin_Page extends Base_Customer_Facing_Admin_Page {
 	 */
 	public function get_submenu_title() {
 
-		return __('My Sites', 'wp-ultimo');
+		return __('My Sites', 'wp-multisite-waas');
 	}
 
 	/**

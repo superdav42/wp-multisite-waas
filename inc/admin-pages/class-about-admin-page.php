@@ -86,7 +86,7 @@ class About_Admin_Page extends Base_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('About', 'wp-ultimo');
+		return __('About', 'wp-multisite-waas');
 	}
 
 	/**
@@ -97,7 +97,7 @@ class About_Admin_Page extends Base_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Multisite WaaS', 'wp-ultimo');
+		return __('Multisite WaaS', 'wp-multisite-waas');
 	}
 
 	/**
@@ -108,7 +108,7 @@ class About_Admin_Page extends Base_Admin_Page {
 	 */
 	public function get_submenu_title() {
 
-		return __('About', 'wp-ultimo');
+		return __('About', 'wp-multisite-waas');
 	}
 
 	/**

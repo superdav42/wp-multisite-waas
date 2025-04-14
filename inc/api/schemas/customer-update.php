@@ -20,17 +20,17 @@ defined('ABSPATH') || exit;
  */
 return [
 	'user_id'            => [
-		'description' => __('The WordPress user ID attached to this customer.', 'wp-ultimo'),
+		'description' => __('The WordPress user ID attached to this customer.', 'wp-multisite-waas'),
 		'type'        => 'integer',
 		'required'    => false,
 	],
 	'date_registered'    => [
-		'description' => __('Date when the customer was created.', 'wp-ultimo'),
+		'description' => __('Date when the customer was created.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'email_verification' => [
-		'description' => __('Email verification status - either `none`, `pending`, or `verified`.', 'wp-ultimo'),
+		'description' => __('Email verification status - either `none`, `pending`, or `verified`.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 		'enum'        => [
@@ -40,32 +40,32 @@ return [
 		],
 	],
 	'last_login'         => [
-		'description' => __('Date this customer last logged in.', 'wp-ultimo'),
+		'description' => __('Date this customer last logged in.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'has_trialed'        => [
-		'description' => __('Whether or not the customer has trialed before.', 'wp-ultimo'),
+		'description' => __('Whether or not the customer has trialed before.', 'wp-multisite-waas'),
 		'type'        => 'boolean',
 		'required'    => false,
 	],
 	'vip'                => [
-		'description' => __('If this customer is a VIP customer or not.', 'wp-ultimo'),
+		'description' => __('If this customer is a VIP customer or not.', 'wp-multisite-waas'),
 		'type'        => 'boolean',
 		'required'    => false,
 	],
 	'ips'                => [
-		'description' => __('List of IP addresses used by this customer.', 'wp-ultimo'),
+		'description' => __('List of IP addresses used by this customer.', 'wp-multisite-waas'),
 		'type'        => 'array',
 		'required'    => false,
 	],
 	'extra_information'  => [
-		'description' => __('Any extra information related to this customer.', 'wp-ultimo'),
+		'description' => __('Any extra information related to this customer.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'type'               => [
-		'description' => __("The customer type. Can be 'customer'.", 'wp-ultimo'),
+		'description' => __("The customer type. Can be 'customer'.", 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 		'enum'        => [
@@ -73,27 +73,27 @@ return [
 		],
 	],
 	'signup_form'        => [
-		'description' => __('The form used to signup.', 'wp-ultimo'),
+		'description' => __('The form used to signup.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'date_created'       => [
-		'description' => __('Model creation date.', 'wp-ultimo'),
+		'description' => __('Model creation date.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'date_modified'      => [
-		'description' => __('Model last modification date.', 'wp-ultimo'),
+		'description' => __('Model last modification date.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'migrated_from_id'   => [
-		'description' => __('The ID of the original 1.X model that was used to generate this item on migration.', 'wp-ultimo'),
+		'description' => __('The ID of the original 1.X model that was used to generate this item on migration.', 'wp-multisite-waas'),
 		'type'        => 'integer',
 		'required'    => false,
 	],
 	'skip_validation'    => [
-		'description' => __('Set true to have field information validation bypassed when saving this event.', 'wp-ultimo'),
+		'description' => __('Set true to have field information validation bypassed when saving this event.', 'wp-multisite-waas'),
 		'type'        => 'boolean',
 		'required'    => false,
 	],

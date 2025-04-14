@@ -188,7 +188,7 @@ abstract class Base_Admin_Page {
 		/*
 		 * Add forms
 		 */
-		add_action('plugins_loaded', [$this, 'register_forms']);
+		$this->register_forms();
 
 		/**
 		 * Allow plugin developers to run additional things when pages are registered.
@@ -626,7 +626,7 @@ abstract class Base_Admin_Page {
 		if (wu_get_documentation_url($this->get_id(), false)) {
 			$this->action_links[] = [
 				'url'   => wu_get_documentation_url($this->get_id()),
-				'label' => __('Documentation', 'wp-ultimo'),
+				'label' => __('Documentation', 'wp-multisite-waas'),
 				'icon'  => 'wu-open-book',
 			];
 		}

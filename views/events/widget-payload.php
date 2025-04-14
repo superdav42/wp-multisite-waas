@@ -17,7 +17,7 @@
 
 	<span class="wu-blinking-animation wu-text-gray-600 wu-my-1 wu-mb-0 wu-text-2xs wu-uppercase wu-font-semibold" >
 
-		<?php echo $loading_text; ?>
+		<?php echo esc_html($loading_text); ?>
 
 	</span>
 
@@ -27,11 +27,11 @@
 
 <div class="wu-bg-gray-100 wu-px-4 wu-py-4 wu--m-3 wu-mt-3 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid">
 
-	<textarea cols="100" rows="40" aria-hidden="true" class="screen-reader-text" id="hidden_textarea"><?php echo $payload; ?></textarea>
+	<textarea cols="100" rows="40" aria-hidden="true" class="screen-reader-text" id="hidden_textarea"><?php echo esc_html($payload); ?></textarea>
 
 	<span>
 	<button type="button" data-clipboard-action="copy" data-clipboard-target="#hidden_textarea" class="btn-clipboard button">
-		<?php _e('Copy to the Clipboard', 'wp-ultimo'); ?>
+		<?php esc_html_e('Copy to the Clipboard', 'wp-multisite-waas'); ?>
 	</button>
 	</span>
 

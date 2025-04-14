@@ -150,7 +150,7 @@ class System_Info_Admin_Page extends Base_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('System Info', 'wp-ultimo');
+		return __('System Info', 'wp-multisite-waas');
 	}
 
 	/**
@@ -161,7 +161,7 @@ class System_Info_Admin_Page extends Base_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('System Info', 'wp-ultimo');
+		return __('System Info', 'wp-multisite-waas');
 	}
 
 	/**
@@ -172,7 +172,7 @@ class System_Info_Admin_Page extends Base_Admin_Page {
 	 */
 	public function get_submenu_title() {
 
-		return __('Dashboard', 'wp-ultimo');
+		return __('Dashboard', 'wp-multisite-waas');
 	}
 
 	/**
@@ -217,7 +217,7 @@ class System_Info_Admin_Page extends Base_Admin_Page {
 		$memory_usage = $this->get_memory_usage();
 
 		// translators: %s is the number of seconds.
-		$max_execution_time = sprintf(__('%s seconds', 'wp-ultimo'), ini_get('max_execution_time'));
+		$max_execution_time = sprintf(__('%s seconds', 'wp-multisite-waas'), ini_get('max_execution_time'));
 
 		$all_options            = $this->get_all_options();
 		$all_options_serialized = serialize($all_options);
@@ -243,7 +243,7 @@ class System_Info_Admin_Page extends Base_Admin_Page {
 			$array_constants[] = [
 				'tooltip' => '',
 				'title'   => $constant,
-				'value'   => defined($constant) ? (is_bool(constant($constant)) ? __('Enabled', 'wp-ultimo') : constant($constant)) : __('Disabled', 'wp-ultimo'),
+				'value'   => defined($constant) ? (is_bool(constant($constant)) ? __('Enabled', 'wp-multisite-waas') : constant($constant)) : __('Disabled', 'wp-multisite-waas'),
 			];
 		}
 
@@ -374,12 +374,12 @@ class System_Info_Admin_Page extends Base_Admin_Page {
 					'pluguins-url'           => [
 						'tooltip' => '',
 						'title'   => 'Cookie Domain',
-						'value'   => defined('COOKIE_DOMAIN') ? COOKIE_DOMAIN ?: __('Disabled', 'wp-ultimo') : __('Not set', 'wp-ultimo'),
+						'value'   => defined('COOKIE_DOMAIN') ? COOKIE_DOMAIN ?: __('Disabled', 'wp-multisite-waas') : __('Not set', 'wp-multisite-waas'),
 					],
 					'multisite-active'       => [
 						'tooltip' => '',
 						'title'   => 'Multi-Site Active',
-						'value'   => is_multisite() ? __('Yes', 'wp-ultimo') : __('No', 'wp-ultimo'),
+						'value'   => is_multisite() ? __('Yes', 'wp-multisite-waas') : __('No', 'wp-multisite-waas'),
 					],
 					'php-current-time-gmt'   => [
 						'tooltip' => '',
@@ -404,12 +404,12 @@ class System_Info_Admin_Page extends Base_Admin_Page {
 					'php-curl-support'       => [
 						'tooltip' => '',
 						'title'   => 'PHP cURL Support',
-						'value'   => function_exists('curl_init') ? __('Yes', 'wp-ultimo') : __('No', 'wp-ultimo'),
+						'value'   => function_exists('curl_init') ? __('Yes', 'wp-multisite-waas') : __('No', 'wp-multisite-waas'),
 					],
 					'php-gd-time'            => [
 						'tooltip' => '',
 						'title'   => 'PHP GD Support',
-						'value'   => function_exists('gd_info') ? __('Yes', 'wp-ultimo') : __('No', 'wp-ultimo'),
+						'value'   => function_exists('gd_info') ? __('Yes', 'wp-multisite-waas') : __('No', 'wp-multisite-waas'),
 					],
 					'php-memory-limit'       => [
 						'tooltip' => '',
@@ -464,47 +464,47 @@ class System_Info_Admin_Page extends Base_Admin_Page {
 					'wp-debug'               => [
 						'tooltip' => '',
 						'title'   => 'WP Options Transients',
-						'value'   => defined('WP_DEBUG') ? WP_DEBUG ? __('Enabled', 'wp-ultimo') : __('Disabled', 'wp-ultimo') : __('Not set', 'wp-ultimo'),
+						'value'   => defined('WP_DEBUG') ? WP_DEBUG ? __('Enabled', 'wp-multisite-waas') : __('Disabled', 'wp-multisite-waas') : __('Not set', 'wp-multisite-waas'),
 					],
 					'script-debug'           => [
 						'tooltip' => '',
 						'title'   => 'WP Options Transients',
-						'value'   => defined('SCRIPT_DEBUG') ? SCRIPT_DEBUG ? __('Enabled', 'wp-ultimo') : __('Disabled', 'wp-ultimo') : __('Not set', 'wp-ultimo'),
+						'value'   => defined('SCRIPT_DEBUG') ? SCRIPT_DEBUG ? __('Enabled', 'wp-multisite-waas') : __('Disabled', 'wp-multisite-waas') : __('Not set', 'wp-multisite-waas'),
 					],
 					'save-queries'           => [
 						'tooltip' => '',
 						'title'   => 'WP Options Transients',
-						'value'   => defined('SAVEQUERIES') ? SAVEQUERIES ? __('Enabled', 'wp-ultimo') : __('Disabled', 'wp-ultimo') : __('Not set', 'wp-ultimo'),
+						'value'   => defined('SAVEQUERIES') ? SAVEQUERIES ? __('Enabled', 'wp-multisite-waas') : __('Disabled', 'wp-multisite-waas') : __('Not set', 'wp-multisite-waas'),
 					],
 					'autosave-interval'      => [
 						'tooltip' => '',
 						'title'   => 'WP Options Transients',
-						'value'   => defined('AUTOSAVE_INTERVAL') ? AUTOSAVE_INTERVAL ?: __('Disabled', 'wp-ultimo') : __('Not set', 'wp-ultimo'),
+						'value'   => defined('AUTOSAVE_INTERVAL') ? AUTOSAVE_INTERVAL ?: __('Disabled', 'wp-multisite-waas') : __('Not set', 'wp-multisite-waas'),
 					],
 					'wp_post_revisions'      => [
 						'tooltip' => '',
 						'title'   => 'WP Options Transients',
-						'value'   => defined('WP_POST_REVISIONS') ? WP_POST_REVISIONS ?: __('Disabled', 'wp-ultimo') : __('Not set', 'wp-ultimo'),
+						'value'   => defined('WP_POST_REVISIONS') ? WP_POST_REVISIONS ?: __('Disabled', 'wp-multisite-waas') : __('Not set', 'wp-multisite-waas'),
 					],
 					'disable_wp_cron'        => [
 						'tooltip' => '',
 						'title'   => 'DISABLE_WP_CRON',
-						'value'   => defined('DISABLE_WP_CRON') ? DISABLE_WP_CRON ?: __('Yes', 'wp-ultimo') : __('No', 'wp-ultimo'),
+						'value'   => defined('DISABLE_WP_CRON') ? DISABLE_WP_CRON ?: __('Yes', 'wp-multisite-waas') : __('No', 'wp-multisite-waas'),
 					],
 					'wp_lang'                => [
 						'tooltip' => '',
 						'title'   => 'WPLANG',
-						'value'   => defined('WPLANG') ? WPLANG ?: __('Yes', 'wp-ultimo') : __('No', 'wp-ultimo'),
+						'value'   => defined('WPLANG') ? WPLANG ?: __('Yes', 'wp-multisite-waas') : __('No', 'wp-multisite-waas'),
 					],
 					'wp_memory_limit'        => [
 						'tooltip' => '',
 						'title'   => 'WP_MEMORY_LIMIT',
-						'value'   => (defined('WP_MEMORY_LIMIT') && WP_MEMORY_LIMIT) ? WP_MEMORY_LIMIT : __('Not set', 'wp-ultimo'),
+						'value'   => (defined('WP_MEMORY_LIMIT') && WP_MEMORY_LIMIT) ? WP_MEMORY_LIMIT : __('Not set', 'wp-multisite-waas'),
 					],
 					'wp_max_memory_limit'    => [
 						'tooltip' => '',
 						'title'   => 'WP_MAX_MEMORY_LIMIT',
-						'value'   => (defined('WP_MAX_MEMORY_LIMIT') && WP_MAX_MEMORY_LIMIT) ? WP_MAX_MEMORY_LIMIT : __('Not set', 'wp-ultimo'),
+						'value'   => (defined('WP_MAX_MEMORY_LIMIT') && WP_MAX_MEMORY_LIMIT) ? WP_MAX_MEMORY_LIMIT : __('Not set', 'wp-multisite-waas'),
 					],
 					'operating-system'       => [
 						'tooltip' => '',
@@ -541,7 +541,7 @@ class System_Info_Admin_Page extends Base_Admin_Page {
 						'logs-directory' => [
 							'tooltip' => '',
 							'title'   => 'Logs Directory',
-							'value'   => is_writable(Logger::get_logs_folder()) ? __('Writable', 'wp-ultimo') : __('Not Writable', 'wp-ultimo'),
+							'value'   => is_writable(Logger::get_logs_folder()) ? __('Writable', 'wp-multisite-waas') : __('Not Writable', 'wp-multisite-waas'),
 						],
 					],
 					$wpultimo_settings

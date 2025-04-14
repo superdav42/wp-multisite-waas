@@ -24,9 +24,9 @@
 
 		<div class="wu-ml-auto">
 
-		<a title="<?php _e('Add Domain', 'wp-ultimo'); ?>" href="<?php echo $modal['url']; ?>" class="wu-text-sm wu-no-underline wubox button">
+		<a title="<?php esc_html_e('Add Domain', 'wp-multisite-waas'); ?>" href="<?php echo $modal['url']; ?>" class="wu-text-sm wu-no-underline wubox button">
 
-			<?php _e('Add Domain', 'wp-ultimo'); ?>
+			<?php esc_html_e('Add Domain', 'wp-multisite-waas'); ?>
 
 		</a>
 
@@ -57,8 +57,8 @@
 						$label = $item->get_stage_label();
 
 						if ( ! $item->is_active()) {
-							$label = sprintf('%s <small>(%s)</small>', $label, __('Inactive', 'wp-ultimo'));
-						} // end if;
+							$label = sprintf('%s <small>(%s)</small>', $label, __('Inactive', 'wp-multisite-waas'));
+						}
 
 						$class = $item->get_stage_class();
 
@@ -72,15 +72,15 @@
 								'icon'            => 'dashicons-wu-edit1 wu-align-middle wu-mr-1',
 								'label'           => '',
 								'url'             => $domain['primary_link'],
-								'value'           => __('Make Primary', 'wp-ultimo'),
+								'value'           => __('Make Primary', 'wp-multisite-waas'),
 							];
-						} // end if;
+						}
 
 						$second_row_actions['remove'] = [
 							'wrapper_classes' => 'wu-text-red-500 wubox',
 							'icon'            => 'dashicons-wu-trash-2 wu-align-middle wu-mr-1',
 							'label'           => '',
-							'value'           => __('Delete', 'wp-ultimo'),
+							'value'           => __('Delete', 'wp-multisite-waas'),
 							'url'             => $domain['delete_link'],
 						];
 
@@ -96,13 +96,13 @@
 									'wrapper_classes' => $item->is_primary_domain() ? 'wu-text-blue-600' : '',
 									'icon'            => $item->is_primary_domain() ? 'dashicons-wu-filter_1 wu-align-text-bottom wu-mr-1' : 'dashicons-wu-plus-square wu-align-text-bottom wu-mr-1',
 									'label'           => '',
-									'value'           => $item->is_primary_domain() ? __('Primary', 'wp-ultimo') . wu_tooltip(__('All other mapped domains will redirect to the primary domain.', 'wp-ultimo'), 'dashicons-editor-help wu-align-middle wu-ml-1') : __('Alias', 'wp-ultimo'),
+									'value'           => $item->is_primary_domain() ? __('Primary', 'wp-multisite-waas') . wu_tooltip(__('All other mapped domains will redirect to the primary domain.', 'wp-multisite-waas'), 'dashicons-editor-help wu-align-middle wu-ml-1') : __('Alias', 'wp-multisite-waas'),
 								],
 								'secure'  => [
 									'wrapper_classes' => $item->is_secure() ? 'wu-text-green-500' : '',
 									'icon'            => $item->is_secure() ? 'dashicons-wu-lock1 wu-align-text-bottom wu-mr-1' : 'dashicons-wu-lock1 wu-align-text-bottom wu-mr-1',
 									'label'           => '',
-									'value'           => $item->is_secure() ? __('Secure (HTTPS)', 'wp-ultimo') : __('Not Secure (HTTP)', 'wp-ultimo'),
+									'value'           => $item->is_secure() ? __('Secure (HTTPS)', 'wp-multisite-waas') : __('Not Secure (HTTP)', 'wp-multisite-waas'),
 								],
 							],
 							$second_row_actions
@@ -119,7 +119,7 @@
 			<?php else : ?>
 
 			<div class="wu-text-center wu-bg-gray-100 wu-rounded wu-uppercase wu-font-semibold wu-text-xs wu-text-gray-700 wu-p-4 wu-m-4 wu-mt-6">
-				<span><?php echo __('No domains added.', 'wp-ultimo'); ?></span>
+				<span><?php echo __('No domains added.', 'wp-multisite-waas'); ?></span>
 			</div>
 
 			<?php endif; ?>

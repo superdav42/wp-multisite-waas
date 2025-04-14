@@ -36,8 +36,8 @@ class Discount_Code_List_Table extends Base_List_Table {
 
 		parent::__construct(
 			[
-				'singular' => __('Discount Code', 'wp-ultimo'),  // singular name of the listed records
-				'plural'   => __('Discount Codes', 'wp-ultimo'), // plural name of the listed records
+				'singular' => __('Discount Code', 'wp-multisite-waas'),  // singular name of the listed records
+				'plural'   => __('Discount Codes', 'wp-multisite-waas'), // plural name of the listed records
 				'ajax'     => true,                              // does this table support ajax?
 				'add_new'  => [
 					'url'     => wu_network_admin_url('wp-ultimo-edit-discount-code'),
@@ -64,15 +64,15 @@ class Discount_Code_List_Table extends Base_List_Table {
 		$title = sprintf('<a href="%s"><strong>%s</strong></a>', wu_network_admin_url('wp-ultimo-edit-discount-code', $url_atts), $item->get_name());
 
 		$actions = [
-			'edit'   => sprintf('<a href="%s">%s</a>', wu_network_admin_url('wp-ultimo-edit-discount-code', $url_atts), __('Edit', 'wp-ultimo')),
+			'edit'   => sprintf('<a href="%s">%s</a>', wu_network_admin_url('wp-ultimo-edit-discount-code', $url_atts), __('Edit', 'wp-multisite-waas')),
 			'delete' => sprintf(
 				'<a title="%s" class="wubox" href="%s">%s</a>',
-				__('Delete', 'wp-ultimo'),
+				__('Delete', 'wp-multisite-waas'),
 				wu_get_form_url(
 					'delete_modal',
 					$url_atts
 				),
-				__('Delete', 'wp-ultimo')
+				__('Delete', 'wp-multisite-waas')
 			),
 		];
 
@@ -91,7 +91,7 @@ class Discount_Code_List_Table extends Base_List_Table {
 	public function column_value($item) {
 
 		if ( ! $item->get_value()) {
-			return __('No Discount', 'wp-ultimo');
+			return __('No Discount', 'wp-multisite-waas');
 		}
 
 		$value = wu_format_currency($item->get_value());
@@ -101,7 +101,7 @@ class Discount_Code_List_Table extends Base_List_Table {
 		}
 
 		// translators: placeholder is the amount of discount. e.g. 10% or $5.
-		return sprintf(__('%s OFF', 'wp-ultimo'), $value);
+		return sprintf(__('%s OFF', 'wp-multisite-waas'), $value);
 	}
 
 	/**
@@ -116,7 +116,7 @@ class Discount_Code_List_Table extends Base_List_Table {
 	public function column_setup_fee_value($item) {
 
 		if ( ! $item->get_setup_fee_value()) {
-			return __('No Discount', 'wp-ultimo');
+			return __('No Discount', 'wp-multisite-waas');
 		}
 
 		$value = wu_format_currency($item->get_setup_fee_value());
@@ -126,7 +126,7 @@ class Discount_Code_List_Table extends Base_List_Table {
 		}
 
 		// translators: placeholder is the amount of discount. e.g. 10% or $5.
-		return sprintf(__('%s OFF', 'wp-ultimo'), $value);
+		return sprintf(__('%s OFF', 'wp-multisite-waas'), $value);
 	}
 
 	/**
@@ -140,14 +140,14 @@ class Discount_Code_List_Table extends Base_List_Table {
 	public function column_uses($item) {
 
 		// translators: the placeholder is the number of times this coupon was used.
-		$html = sprintf(__('Used %d time(s)', 'wp-ultimo'), $item->get_uses());
+		$html = sprintf(__('Used %d time(s)', 'wp-multisite-waas'), $item->get_uses());
 
 		if ($item->get_max_uses() > 0) {
 
 			// translators: the placeholder is the number of times this coupon can be used before becoming inactive.
-			$html .= '<small class="wu-block">' . sprintf(__('Allowed uses: %d', 'wp-ultimo'), $item->get_max_uses()) . '</span>';
+			$html .= '<small class="wu-block">' . sprintf(__('Allowed uses: %d', 'wp-multisite-waas'), $item->get_max_uses()) . '</span>';
 		} else {
-			$html .= '<small class="wu-block">' . __('No Limits', 'wp-ultimo') . '</span>';
+			$html .= '<small class="wu-block">' . __('No Limits', 'wp-multisite-waas') . '</span>';
 		}
 
 		return $html;
@@ -170,7 +170,7 @@ class Discount_Code_List_Table extends Base_List_Table {
 		$valid = $item->is_valid();
 
 		if (is_wp_error($valid)) {
-			$html .= sprintf('<small class="wu-block wu-sans" %s>%s</small>', wu_tooltip_text($valid->get_error_message()), __('Inactive', 'wp-ultimo'));
+			$html .= sprintf('<small class="wu-block wu-sans" %s>%s</small>', wu_tooltip_text($valid->get_error_message()), __('Inactive', 'wp-multisite-waas'));
 		}
 
 		return $html;
@@ -186,12 +186,12 @@ class Discount_Code_List_Table extends Base_List_Table {
 
 		$columns = [
 			'cb'              => '<input type="checkbox" />',
-			'name'            => __('Name', 'wp-ultimo'),
-			'coupon_code'     => __('Code', 'wp-ultimo'),
-			'uses'            => __('Uses', 'wp-ultimo'),
-			'value'           => __('Value', 'wp-ultimo'),
-			'setup_fee_value' => __('Setup Fee Value', 'wp-ultimo'),
-			'date_expiration' => __('Dates', 'wp-ultimo'),
+			'name'            => __('Name', 'wp-multisite-waas'),
+			'coupon_code'     => __('Code', 'wp-multisite-waas'),
+			'uses'            => __('Uses', 'wp-multisite-waas'),
+			'value'           => __('Value', 'wp-multisite-waas'),
+			'setup_fee_value' => __('Setup Fee Value', 'wp-multisite-waas'),
+			'date_expiration' => __('Dates', 'wp-multisite-waas'),
 		];
 
 		return $columns;

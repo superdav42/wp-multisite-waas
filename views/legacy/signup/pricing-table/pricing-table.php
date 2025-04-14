@@ -60,7 +60,7 @@ $accent_color_2 = wu_color($accent_color->darken(4));
  */
 if ( ! isset($is_shortcode) || ! $is_shortcode || $atts['show_selector']) {
 	wu_get_template('/legacy/signup/pricing-table/frequency-selector');
-} // end if;
+}
 
 /**
  * Displays error message if there are no plans
@@ -103,7 +103,7 @@ if (empty($plans)) {
 					'current_plan' => $current_plan,
 				]
 			);
-		} // end foreach;
+		}
 
 		?>
 

@@ -3,8 +3,8 @@
  * Plugin Name: WP Multisite WaaS
  * Description: The WordPress Multisite Website as a Service (WaaS) plugin.
  * Plugin URI: https://wpmultisitewaas.org
- * Text Domain: wp-ultimo
- * Version: 2.3.4
+ * Text Domain: wp-multisite-waas
+ * Version: 2.4.0
  * Author: WP Multisite Community
  * Author URI: https://github.com/superdav42/wp-multisite-waas
  * GitHub Plugin URI: https://github.com/superdav42/wp-multisite-waas
@@ -27,10 +27,10 @@
  * You should have received a copy of the GNU General Public License
  * along with WP Multisite WaaS. If not, see <http://www.gnu.org/licenses/>.
  *
- * @author   Arindo Duque and NextPress
+ * @author   Arindo Duque and NextPress and WP Multisite Community
  * @category Core
  * @package  WP_Ultimo
- * @version  2.3.4
+ * @version  2.4.0
  */
 
 // Exit if accessed directly
@@ -81,9 +81,9 @@ if ( ! function_exists('WP_Ultimo')) {
 	 * @return WP_Ultimo
 	 * @since 2.0.0
 	 */
-	function WP_Ultimo() { // phpcs:ignore
+	function WP_Ultimo() { // phpcs:ignore WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid
 		return WP_Ultimo::get_instance();
-	} // end WP_Ultimo;
+	}
 }
 // Initialize and set to global for back-compat
 $GLOBALS['WP_Ultimo'] = WP_Ultimo();

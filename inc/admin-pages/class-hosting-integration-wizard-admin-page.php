@@ -93,7 +93,7 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 		}
 
 		if ( ! $this->integration) {
-			wp_redirect(network_admin_url('admin.php?page=wp-ultimo-settings'));
+			wp_safe_redirect(network_admin_url('admin.php?page=wp-ultimo-settings'));
 
 			exit;
 		}
@@ -109,7 +109,7 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 	 */
 	public function get_title(): string {
 
-		return sprintf(__('Integration Setup', 'wp-ultimo'));
+		return sprintf(__('Integration Setup', 'wp-multisite-waas'));
 	}
 
 	/**
@@ -120,7 +120,7 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Host Provider Integration', 'wp-ultimo');
+		return __('Host Provider Integration', 'wp-multisite-waas');
 	}
 
 	/**
@@ -133,25 +133,25 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 		$sections = [
 			'activation'   => [
-				'title'   => __('Activation', 'wp-ultimo'),
+				'title'   => __('Activation', 'wp-multisite-waas'),
 				'view'    => [$this, 'section_activation'],
 				'handler' => [$this, 'handle_activation'],
 			],
 			'instructions' => [
-				'title' => __('Instructions', 'wp-ultimo'),
+				'title' => __('Instructions', 'wp-multisite-waas'),
 				'view'  => [$this, 'section_instructions'],
 			],
 			'config'       => [
-				'title'   => __('Configuration', 'wp-ultimo'),
+				'title'   => __('Configuration', 'wp-multisite-waas'),
 				'view'    => [$this, 'section_configuration'],
 				'handler' => [$this, 'handle_configuration'],
 			],
 			'testing'      => [
-				'title' => __('Testing Integration', 'wp-ultimo'),
+				'title' => __('Testing Integration', 'wp-multisite-waas'),
 				'view'  => [$this, 'section_test'],
 			],
 			'done'         => [
-				'title' => __('Ready!', 'wp-ultimo'),
+				'title' => __('Ready!', 'wp-multisite-waas'),
 				'view'  => [$this, 'section_ready'],
 			],
 		];
@@ -294,7 +294,7 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 		$this->integration->enable();
 
-		wp_redirect($this->get_next_section_link());
+		wp_safe_redirect($this->get_next_section_link());
 
 		exit;
 	}
@@ -316,7 +316,7 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 				]
 			);
 
-			wp_redirect($redirect_url);
+			wp_safe_redirect($redirect_url);
 
 			exit;
 		}
@@ -332,7 +332,7 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 		$redirect_url = remove_query_arg('manual', $redirect_url);
 
-		wp_redirect($redirect_url);
+		wp_safe_redirect($redirect_url);
 
 		exit;
 	}

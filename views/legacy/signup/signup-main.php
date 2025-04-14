@@ -45,9 +45,9 @@ foreach ($admin_actions as $action => $handlers) {
 	foreach ($handlers as $handler => $priority) {
 		if ( ! has_action($action, $handler) && function_exists($handler)) {
 			add_action($action, $handler, $priority);
-		} // end foreach;
-	} // end foreach;
-} // end foreach;
+		}
+	}
+}
 
 do_action('wu_checkout_scripts');
 
@@ -60,7 +60,7 @@ do_action('wu_checkout_scripts');
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 	<title>
-		<?php echo apply_filters('wu_signup_page_title', sprintf(__('%s - Signup', 'wp-ultimo'), get_bloginfo('Name'), get_bloginfo('Name'))); ?>
+		<?php echo apply_filters('wu_signup_page_title', sprintf(__('%s - Signup', 'wp-multisite-waas'), get_bloginfo('Name'), get_bloginfo('Name'))); ?>
 	</title>
 
 	<?php // Signup do action, like the default ?>
@@ -97,7 +97,7 @@ do_action('wu_checkout_scripts');
 
 			<h1 id="wu-setup-logo">
 			<a href="<?php echo get_site_url(get_current_site()->blog_id); ?>">
-				<?php printf(__('%s - Signup', 'wp-ultimo'), get_bloginfo('Name')); ?>
+				<?php printf(__('%s - Signup', 'wp-multisite-waas'), get_bloginfo('Name')); ?>
 			</a>
 			</h1>
 

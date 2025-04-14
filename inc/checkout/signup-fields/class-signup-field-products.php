@@ -53,7 +53,7 @@ class Signup_Field_Products extends Base_Signup_Field {
 	 */
 	public function get_title() {
 
-		return __('Product', 'wp-ultimo');
+		return __('Product', 'wp-multisite-waas');
 	}
 
 	/**
@@ -66,7 +66,7 @@ class Signup_Field_Products extends Base_Signup_Field {
 	 */
 	public function get_description() {
 
-		return __('Hidden field used to pre-select products. This is useful when you have a signup page for specific offering/bundles and do not want your customers to be able to choose plans and products manually.', 'wp-ultimo');
+		return __('Hidden field used to pre-select products. This is useful when you have a signup page for specific offering/bundles and do not want your customers to be able to choose plans and products manually.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -79,7 +79,7 @@ class Signup_Field_Products extends Base_Signup_Field {
 	 */
 	public function get_tooltip() {
 
-		return __('Hidden field used to pre-select products. This is useful when you have a signup page for specific offering/bundles and do not want your customers to be able to choose plans and products manually.', 'wp-ultimo');
+		return __('Hidden field used to pre-select products. This is useful when you have a signup page for specific offering/bundles and do not want your customers to be able to choose plans and products manually.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -130,7 +130,7 @@ class Signup_Field_Products extends Base_Signup_Field {
 	public function force_attributes() {
 
 		return [
-			'name' => __('Pre-selected Products', 'wp-ultimo'),
+			'name' => __('Pre-selected Products', 'wp-multisite-waas'),
 			'id'   => 'products',
 		];
 	}
@@ -146,9 +146,9 @@ class Signup_Field_Products extends Base_Signup_Field {
 		return [
 			'products' => [
 				'type'        => 'model',
-				'title'       => __('Products', 'wp-ultimo'),
-				'placeholder' => __('Products', 'wp-ultimo'),
-				'desc'        => __('Use this field to pre-select products. This is useful when you have a signup page for specific offering/bundles and do not want your customers to be able to choose plans and other products manually.', 'wp-ultimo'),
+				'title'       => __('Products', 'wp-multisite-waas'),
+				'placeholder' => __('Products', 'wp-multisite-waas'),
+				'desc'        => __('Use this field to pre-select products. This is useful when you have a signup page for specific offering/bundles and do not want your customers to be able to choose plans and other products manually.', 'wp-multisite-waas'),
 				'tooltip'     => '',
 				'html_attr'   => [
 					'data-model'        => 'product',
@@ -216,7 +216,7 @@ class Signup_Field_Products extends Base_Signup_Field {
 		});";
 
 		if (did_action('wu-checkout')) {
-			wp_add_inline_script('wu-checkout', sprintf($script, json_encode($products)), 'before');
+			wp_add_inline_script('wu-checkout', sprintf($script, wp_json_encode($products)), 'before');
 
 			return;
 		}
@@ -225,7 +225,7 @@ class Signup_Field_Products extends Base_Signup_Field {
 			'wp_enqueue_scripts',
 			function () use ($script, $products) {
 
-				wp_add_inline_script('wu-checkout', sprintf($script, json_encode($products)), 'before');
+				wp_add_inline_script('wu-checkout', sprintf($script, wp_json_encode($products)), 'before');
 			},
 			11
 		);

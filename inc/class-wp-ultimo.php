@@ -29,7 +29,7 @@ final class WP_Ultimo {
 	 * @since 2.1.0
 	 * @var string
 	 */
-	const VERSION = '2.3.4';
+	const VERSION = '2.4.0';
 
 	/**
 	 * Version of the Plugin.
@@ -37,7 +37,7 @@ final class WP_Ultimo {
 	 * @deprecated use the const version instead.
 	 * @var string
 	 */
-	public $version = '2.3.4';
+	public $version = self::VERSION;
 
 	/**
 	 * Tables registered by WP Multisite WaaS.
@@ -176,11 +176,6 @@ final class WP_Ultimo {
 		$this->scripts = WP_Ultimo\Scripts::get_instance();
 
 		/*
-		 * Checks Sunrise versions
-		 */
-		WP_Ultimo\Sunrise::manage_sunrise_updates();
-
-		/*
 		 * Loads tables
 		 */
 		$this->setup_tables();
@@ -205,11 +200,20 @@ final class WP_Ultimo {
 		 */
 		do_action('wp_ultimo_load');
 
+		add_action('init', [$this, 'after_init']);
+	}
+
+	public function after_init() {
 		/*
 		 * Loads admin pages
 		 * @todo: move this to a manager in the future?
 		 */
 		$this->load_admin_pages();
+
+		/*
+		 * Checks Sunrise versions
+		 */
+		WP_Ultimo\Sunrise::manage_sunrise_updates();
 	}
 
 	/**

@@ -93,14 +93,14 @@ class Domain_List_Admin_Page extends List_Admin_Page {
 		);
 
 		// translators: %s is the URL to the add-on.
-		$note_desc = sprintf(__('To activate this feature you need to install the <a href="%s" target="_blank" class="wu-no-underline">WP Multisite WaaS: Domain Seller</a> add-on.', 'wp-ultimo'), $addon_url);
+		$note_desc = sprintf(__('To activate this feature you need to install the <a href="%s" target="_blank" class="wu-no-underline">WP Multisite WaaS: Domain Seller</a> add-on.', 'wp-multisite-waas'), $addon_url);
 
 		$fields = [
 			'type'                   => [
 				'type'      => 'tab-select',
 				'options'   => [
-					'add'      => __('Add Existing Domain', 'wp-ultimo'),
-					'register' => __('Register New', 'wp-ultimo'),
+					'add'      => __('Add Existing Domain', 'wp-multisite-waas'),
+					'register' => __('Register New', 'wp-multisite-waas'),
 				],
 				'html_attr' => [
 					'v-model' => 'type',
@@ -108,18 +108,18 @@ class Domain_List_Admin_Page extends List_Admin_Page {
 			],
 			'domain'                 => [
 				'type'              => 'text',
-				'title'             => __('Domain', 'wp-ultimo'),
-				'placeholder'       => __('E.g. mydomain.com', 'wp-ultimo'),
-				'desc'              => __('Be sure the domain has the right DNS setup in place before adding it.', 'wp-ultimo'),
+				'title'             => __('Domain', 'wp-multisite-waas'),
+				'placeholder'       => __('E.g. mydomain.com', 'wp-multisite-waas'),
+				'desc'              => __('Be sure the domain has the right DNS setup in place before adding it.', 'wp-multisite-waas'),
 				'wrapper_html_attr' => [
 					'v-show' => "require('type', 'add')",
 				],
 			],
 			'blog_id'                => [
 				'type'              => 'model',
-				'title'             => __('Apply to Site', 'wp-ultimo'),
-				'placeholder'       => __('Search Sites...', 'wp-ultimo'),
-				'desc'              => __('The target site of the domain being added.', 'wp-ultimo'),
+				'title'             => __('Apply to Site', 'wp-multisite-waas'),
+				'placeholder'       => __('Search Sites...', 'wp-multisite-waas'),
+				'desc'              => __('The target site of the domain being added.', 'wp-multisite-waas'),
 				'html_attr'         => [
 					'data-model'        => 'site',
 					'data-value-field'  => 'blog_id',
@@ -133,30 +133,30 @@ class Domain_List_Admin_Page extends List_Admin_Page {
 			],
 			'stage'                  => [
 				'type'        => 'select',
-				'title'       => __('Stage', 'wp-ultimo'),
-				'placeholder' => __('Select Stage', 'wp-ultimo'),
-				'desc'        => __('The stage in the domain check lifecycle. Leave "Checking DNS" to have the domain go through WP Multisite WaaS\'s automated tests.', 'wp-ultimo'),
+				'title'       => __('Stage', 'wp-multisite-waas'),
+				'placeholder' => __('Select Stage', 'wp-multisite-waas'),
+				'desc'        => __('The stage in the domain check lifecycle. Leave "Checking DNS" to have the domain go through WP Multisite WaaS\'s automated tests.', 'wp-multisite-waas'),
 				'options'     => Domain_Stage::to_array(),
 				'value'       => Domain_Stage::CHECKING_DNS,
 			],
 			'primary_domain'         => [
 				'type'      => 'toggle',
-				'title'     => __('Primary Domain', 'wp-ultimo'),
-				'desc'      => __('Check to set this domain as the primary', 'wp-ultimo'),
+				'title'     => __('Primary Domain', 'wp-multisite-waas'),
+				'desc'      => __('Check to set this domain as the primary', 'wp-multisite-waas'),
 				'html_attr' => [
 					'v-model' => 'primary_domain',
 				],
 			],
 			'primary_note'           => [
 				'type'              => 'note',
-				'desc'              => __('By making this the primary domain, we will convert the previous primary domain for this site, if one exists, into an alias domain.', 'wp-ultimo'),
+				'desc'              => __('By making this the primary domain, we will convert the previous primary domain for this site, if one exists, into an alias domain.', 'wp-multisite-waas'),
 				'wrapper_html_attr' => [
 					'v-show' => "require('primary_domain', true)",
 				],
 			],
 			'submit_button_new'      => [
 				'type'              => 'submit',
-				'title'             => __('Add Existing Domain', 'wp-ultimo'),
+				'title'             => __('Add Existing Domain', 'wp-multisite-waas'),
 				'value'             => 'save',
 				'classes'           => 'button button-primary wu-w-full',
 				'wrapper_classes'   => 'wu-items-end',
@@ -174,7 +174,7 @@ class Domain_List_Admin_Page extends List_Admin_Page {
 			],
 			'submit_button_register' => [
 				'type'              => 'submit',
-				'title'             => __('Register and Add Domain (soon)', 'wp-ultimo'),
+				'title'             => __('Register and Add Domain (soon)', 'wp-multisite-waas'),
 				'value'             => 'save',
 				'classes'           => 'button button-primary wu-w-full',
 				'wrapper_classes'   => 'wu-items-end',
@@ -196,7 +196,7 @@ class Domain_List_Admin_Page extends List_Admin_Page {
 				'field_wrapper_classes' => 'wu-w-full wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid',
 				'html_attr'             => [
 					'data-wu-app' => 'add_new_domain',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'type'           => 'add',
 							'primary_domain' => false,
@@ -281,8 +281,8 @@ class Domain_List_Admin_Page extends List_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'deleted_message' => __('Domains removed successfully.', 'wp-ultimo'),
-			'search_label'    => __('Search Domains', 'wp-ultimo'),
+			'deleted_message' => __('Domains removed successfully.', 'wp-multisite-waas'),
+			'search_label'    => __('Search Domains', 'wp-multisite-waas'),
 		];
 	}
 
@@ -294,7 +294,7 @@ class Domain_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('Domains', 'wp-ultimo');
+		return __('Domains', 'wp-multisite-waas');
 	}
 
 	/**
@@ -305,7 +305,7 @@ class Domain_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Domains', 'wp-ultimo');
+		return __('Domains', 'wp-multisite-waas');
 	}
 
 	/**
@@ -316,7 +316,7 @@ class Domain_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_submenu_title() {
 
-		return __('Domains', 'wp-ultimo');
+		return __('Domains', 'wp-multisite-waas');
 	}
 
 	/**

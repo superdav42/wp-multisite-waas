@@ -66,7 +66,7 @@ class Payment_Manager extends Base_Manager {
 			function () {
 				Event_Manager::register_model_events(
 					'payment',
-					__('Payment', 'wp-ultimo'),
+					__('Payment', 'wp-multisite-waas'),
 					['created', 'updated']
 				);
 			}
@@ -169,7 +169,7 @@ class Payment_Manager extends Base_Manager {
 		wp_enqueue_style('wu-admin');
 		add_wubox();
 
-		$form_title = __('Pending Payments', 'wp-ultimo');
+		$form_title = __('Pending Payments', 'wp-multisite-waas');
 		$form_url   = wu_get_form_url('pending_payments');
 
 		wp_add_inline_script('wubox', "document.addEventListener('DOMContentLoaded', function(){wubox.show('$form_title', '$form_url');});");
@@ -225,7 +225,7 @@ class Payment_Manager extends Base_Manager {
 			}
 		}
 
-		$message = ! empty($pending_payments) ? __('You have pending payments on your account!', 'wp-ultimo') : __('You do not have pending payments on your account!', 'wp-ultimo');
+		$message = ! empty($pending_payments) ? __('You have pending payments on your account!', 'wp-multisite-waas') : __('You do not have pending payments on your account!', 'wp-multisite-waas');
 
 		/**
 		 * Allow user to change the message about the pending payments.
@@ -252,7 +252,7 @@ class Payment_Manager extends Base_Manager {
 
 			$url = $payment->get_payment_url();
 
-			$html = sprintf('<a href="%s" class="button-primary">%s</a>', $url, __('Pay Now', 'wp-ultimo'));
+			$html = sprintf('<a href="%s" class="button-primary">%s</a>', $url, __('Pay Now', 'wp-multisite-waas'));
 
 			$title = $slug;
 
@@ -291,13 +291,13 @@ class Payment_Manager extends Base_Manager {
 			 */
 			if ( ! wp_verify_nonce(wu_request('key'), 'see_invoice')) {
 
-				// wp_die(__('You do not have permissions to access this file.', 'wp-ultimo'));
+				// wp_die(__('You do not have permissions to access this file.', 'wp-multisite-waas'));
 			}
 
 			$payment = wu_get_payment_by_hash(wu_request('reference'));
 
 			if ( ! $payment) {
-				wp_die(__('This invoice does not exist.', 'wp-ultimo'));
+				wp_die(__('This invoice does not exist.', 'wp-multisite-waas'));
 			}
 
 			$invoice = new Invoice($payment);
@@ -329,7 +329,7 @@ class Payment_Manager extends Base_Manager {
 		$target_customer = wu_get_customer($target_customer_id);
 
 		if ( ! $payment || ! $target_customer || $payment->get_customer_id() === $target_customer->get_id()) {
-			return new \WP_Error('error', __('An unexpected error happened.', 'wp-ultimo'));
+			return new \WP_Error('error', __('An unexpected error happened.', 'wp-multisite-waas'));
 		}
 
 		$wpdb->query('START TRANSACTION');
@@ -374,7 +374,7 @@ class Payment_Manager extends Base_Manager {
 		$payment = wu_get_payment($payment_id);
 
 		if ( ! $payment) {
-			return new \WP_Error('error', __('An unexpected error happened.', 'wp-ultimo'));
+			return new \WP_Error('error', __('An unexpected error happened.', 'wp-multisite-waas'));
 		}
 
 		$wpdb->query('START TRANSACTION');

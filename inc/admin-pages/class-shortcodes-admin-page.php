@@ -91,7 +91,7 @@ class Shortcodes_Admin_Page extends Base_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('Available Shortcodes', 'wp-ultimo');
+		return __('Available Shortcodes', 'wp-multisite-waas');
 	}
 
 	/**
@@ -102,7 +102,7 @@ class Shortcodes_Admin_Page extends Base_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Available Shortcodes', 'wp-ultimo');
+		return __('Available Shortcodes', 'wp-multisite-waas');
 	}
 
 	/**
@@ -113,7 +113,7 @@ class Shortcodes_Admin_Page extends Base_Admin_Page {
 	 */
 	public function get_submenu_title() {
 
-		return __('Dashboard', 'wp-ultimo');
+		return __('Dashboard', 'wp-multisite-waas');
 	}
 
 	/**
@@ -165,16 +165,16 @@ class Shortcodes_Admin_Page extends Base_Admin_Page {
 						$params[ $key ]['options'] = implode(' | ', array_keys(wu_get_isset($value, 'options', [])));
 						break;
 					case 'int':
-						$params[ $key ]['options'] = __('integer', 'wp-ultimo');
+						$params[ $key ]['options'] = __('integer', 'wp-multisite-waas');
 						break;
 					case 'number':
-						$params[ $key ]['options'] = __('number', 'wp-ultimo');
+						$params[ $key ]['options'] = __('number', 'wp-multisite-waas');
 						break;
 					case 'text':
-						$params[ $key ]['options'] = __('text', 'wp-ultimo');
+						$params[ $key ]['options'] = __('text', 'wp-multisite-waas');
 						break;
 					case 'textarea':
-						$params[ $key ]['options'] = __('text', 'wp-ultimo');
+						$params[ $key ]['options'] = __('text', 'wp-multisite-waas');
 						break;
 					default:
 						$params[ $key ]['options'] = $value['type'];

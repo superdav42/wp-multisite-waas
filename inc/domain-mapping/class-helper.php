@@ -230,7 +230,7 @@ class Helper {
 			// Log the error message.
 			wu_log_add(
 				'domain-ssl-checks',
-				sprintf(__('Certificate Invalid: %s', 'wp-ultimo'), $e->getMessage()),
+				sprintf(__('Certificate Invalid: %s', 'wp-multisite-waas'), $e->getMessage()),
 				LogLevel::ERROR
 			);
 		}

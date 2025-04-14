@@ -21,9 +21,9 @@ function wu_mock_site($seed = false) {
 	$atts = apply_filters(
 		'wu_mock_site',
 		[
-			'title'       => __('Example Site', 'wp-ultimo'),
-			'description' => __('This is an example of a site description.', 'wp-ultimo'),
-			'domain'      => __('examplesite.dev', 'wp-ultimo'),
+			'title'       => __('Example Site', 'wp-multisite-waas'),
+			'description' => __('This is an example of a site description.', 'wp-multisite-waas'),
+			'domain'      => __('examplesite.dev', 'wp-multisite-waas'),
 			'path'        => '/',
 		]
 	);
@@ -66,7 +66,7 @@ function wu_mock_product() {
 
 	$product = new \WP_Ultimo\Models\Product(
 		[
-			'name' => __('Test Product', 'wp-ultimo'),
+			'name' => __('Test Product', 'wp-multisite-waas'),
 		]
 	);
 

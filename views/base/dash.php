@@ -6,10 +6,9 @@
  */
 ?>
 <div id="wp-ultimo-wrap" class="<?php wu_wrap_use_container(); ?> wrap wu-styling">
-
 	<h1 class="wp-heading-inline">
 
-	<?php echo $page_title; ?>
+	<?php echo esc_html($page_title); ?>
 
 	<?php
 	/**
@@ -32,7 +31,7 @@
 
 		<?php endif; ?>
 
-		<?php echo $action_link['label']; ?>
+		<?php echo esc_html($action_link['label']); ?>
 
 		</a>
 
@@ -49,11 +48,8 @@
 	?>
 
 	</h1>
-
 	<hr class="wp-header-end">
-
 	<?php do_action('wu_dash_before_metaboxes', $page); ?>
-
 	<?php if (apply_filters('wu_dashboard_display_widgets', true)) : ?>
 
 	<div id="dashboard-widgets-wrap">

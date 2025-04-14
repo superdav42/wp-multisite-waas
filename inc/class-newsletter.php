@@ -17,8 +17,8 @@ class Newsletter {
 			'general',
 			self::SETTING_FIELD_SLUG,
 			[
-				'title' => __('Signup for WP Multisite WaaS Newsletter', 'wp-ultimo'),
-				'desc'  => __('Be informed of new releases and all things related to running a WaaS Network.', 'wp-ultimo'),
+				'title' => __('Signup for WP Multisite WaaS Newsletter', 'wp-multisite-waas'),
+				'desc'  => __('Be informed of new releases and all things related to running a WaaS Network.', 'wp-multisite-waas'),
 				'type'  => 'toggle',
 				'value' => '1',
 			],
@@ -39,7 +39,7 @@ class Newsletter {
 	 */
 	public function maybe_update_newsletter_subscription($settings, $settings_to_save, $saved_settings) {
 
-		if ( isset($settings_to_save[ self::SETTING_FIELD_SLUG ]) && $settings_to_save[ self::SETTING_FIELD_SLUG ] && $settings_to_save[ self::SETTING_FIELD_SLUG ] != $saved_settings[ self::SETTING_FIELD_SLUG ] ) {
+		if ( isset($settings_to_save[ self::SETTING_FIELD_SLUG ]) && $settings_to_save[ self::SETTING_FIELD_SLUG ] && $settings_to_save[ self::SETTING_FIELD_SLUG ] !== $saved_settings[ self::SETTING_FIELD_SLUG ] ) {
 			$response = wp_remote_post(
 				'https://wpmultisitewaas.org/wp-json/newsletter/v2/subscribers',
 				[
@@ -55,7 +55,7 @@ class Newsletter {
 					'headers' => [
 						'Accept'        => 'application/json',
 						'Content-Type'  => 'application/json',
-						'Authorization' => 'Basic ' . base64_encode('30220d7fb4ec49a7410b3a309b9346c18410bd56:0407cd731d6f074cd0b96f2643b7619e89af1ed2'),
+						'Authorization' => 'Basic ' . base64_encode('30220d7fb4ec49a7410b3a309b9346c18410bd56:0407cd731d6f074cd0b96f2643b7619e89af1ed2'), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 					],
 				]
 			);
@@ -73,7 +73,7 @@ class Newsletter {
 					'headers' => [
 						'Accept'        => 'application/json',
 						'Content-Type'  => 'application/json',
-						'Authorization' => 'Basic ' . base64_encode('30220d7fb4ec49a7410b3a309b9346c18410bd56:0407cd731d6f074cd0b96f2643b7619e89af1ed2'),
+						'Authorization' => 'Basic ' . base64_encode('30220d7fb4ec49a7410b3a309b9346c18410bd56:0407cd731d6f074cd0b96f2643b7619e89af1ed2'), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 					],
 				]
 			);

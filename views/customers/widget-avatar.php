@@ -44,13 +44,13 @@
 	<div class="">
 
 		<div class="wu-block wu-my-1 wu-text-base wu-font-semibold">
-		<?php echo $user->display_name; ?>
+		<?php echo esc_html($user->display_name); ?>
 		</div>
 
 		<div class="wu-block wu-my-2">
 
-		<a href="mailto:<?php echo esc_attr($user->user_email); ?>" class="wu-no-underline" <?php echo wu_tooltip_text(__('Send an email to this customer.', 'wp-ultimo')); ?>>
-			<?php echo $user->user_email; ?>
+		<a href="mailto:<?php echo esc_attr($user->user_email); ?>" class="wu-no-underline" <?php echo wu_tooltip_text(esc_html__('Send an email to this customer.', 'wp-multisite-waas')); ?>>
+			<?php echo esc_html($user->user_email); ?>
 		</a>
 
 		</div>
@@ -62,16 +62,16 @@
 			<a 
 			href="<?php echo \WP_Ultimo\User_Switching::get_instance()->render($user->ID); ?>" 
 			class="button wu-w-full <?php echo \WP_Ultimo\User_Switching::get_instance()->check_user_switching_is_activated() ? '' : 'wubox'; ?> wu-block wu-text-center"
-			title="<?php echo \WP_Ultimo\User_Switching::get_instance()->check_user_switching_is_activated() ? '' : __('Install User Switching', 'wp-ultimo'); ?>"
+			title="<?php echo \WP_Ultimo\User_Switching::get_instance()->check_user_switching_is_activated() ? '' : esc_attr__('Install User Switching', 'wp-multisite-waas'); ?>"
 			>
-			<?php _e('Switch To &rarr;', 'wp-ultimo'); ?>
+			<?php esc_html_e('Switch To &rarr;', 'wp-multisite-waas'); ?>
 			</a>
 
 		<?php else : ?>
 
 			<button class="button wu-w-full" disabled="disabled">
-			<span <?php echo wu_tooltip_text(__('Switching to your own account is not possible.', 'wp-ultimo')); ?>>
-				<?php _e('Switch To &rarr;', 'wp-ultimo'); ?>
+			<span <?php echo wu_tooltip_text(esc_html__('Switching to your own account is not possible.', 'wp-multisite-waas')); ?>>
+				<?php esc_html_e('Switch To &rarr;', 'wp-multisite-waas'); ?>
 			</span>
 			</button>
 
@@ -79,7 +79,7 @@
 
 		<a href="<?php echo get_edit_user_link($user->ID); ?>" target="_blank" class="wu-w-full wu-block wu-text-center wu-no-underline wu-mt-4">
 
-			<?php _e('Visit Profile &rarr;', 'wp-ultimo'); ?>
+			<?php esc_html_e('Visit Profile &rarr;', 'wp-multisite-waas'); ?>
 
 		</a>
 

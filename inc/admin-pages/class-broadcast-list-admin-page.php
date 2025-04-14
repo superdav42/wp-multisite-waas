@@ -176,7 +176,7 @@ class Broadcast_List_Admin_Page extends List_Admin_Page {
 					}
 
 					// translators: %s is the number of customers.
-					$description = sprintf(__('%s customer(s) targeted.', 'wp-ultimo'), $customer_count);
+					$description = sprintf(__('%s customer(s) targeted.', 'wp-multisite-waas'), $customer_count);
 
 					$display_targets[ $key ] = [
 						'link'         => $link,
@@ -267,8 +267,8 @@ class Broadcast_List_Admin_Page extends List_Admin_Page {
 		$fields = [
 			'type'             => [
 				'type'              => 'select-icon',
-				'title'             => __('Broadcast Type', 'wp-ultimo'),
-				'desc'              => __('Select the type of message you want to send.', 'wp-ultimo'),
+				'title'             => __('Broadcast Type', 'wp-multisite-waas'),
+				'desc'              => __('Select the type of message you want to send.', 'wp-multisite-waas'),
 				'placeholder'       => '',
 				'tooltip'           => '',
 				'value'             => '',
@@ -281,29 +281,29 @@ class Broadcast_List_Admin_Page extends List_Admin_Page {
 				],
 				'options'           => [
 					'broadcast_notice' => [
-						'title'   => __('Message', 'wp-ultimo'),
-						'tooltip' => __('Display a message on your customers\' dashboard.', 'wp-ultimo'),
+						'title'   => __('Message', 'wp-multisite-waas'),
+						'tooltip' => __('Display a message on your customers\' dashboard.', 'wp-multisite-waas'),
 						'icon'    => 'dashicons-before dashicons-excerpt-view',
 					],
 					'broadcast_email'  => [
-						'title'   => __('Email', 'wp-ultimo'),
-						'tooltip' => __('Send an email to your customers.', 'wp-ultimo'),
+						'title'   => __('Email', 'wp-multisite-waas'),
+						'tooltip' => __('Send an email to your customers.', 'wp-multisite-waas'),
 						'icon'    => 'dashicons-before dashicons-email',
 					],
 				],
 			],
 			'step_note'        => [
 				'type'              => 'note',
-				'desc'              => sprintf('<a href="#" class="wu-no-underline wu-mt-1 wu-uppercase wu-text-2xs wu-font-semibold wu-text-gray-600" v-show="step === 2" v-on:click.prevent="step = 1">%s</a>', __('&larr; Back to Type Selection', 'wp-ultimo')),
+				'desc'              => sprintf('<a href="#" class="wu-no-underline wu-mt-1 wu-uppercase wu-text-2xs wu-font-semibold wu-text-gray-600" v-show="step === 2" v-on:click.prevent="step = 1">%s</a>', __('&larr; Back to Type Selection', 'wp-multisite-waas')),
 				'wrapper_html_attr' => [
 					'v-show' => 'step === 2',
 				],
 			],
 			'target_customers' => [
 				'type'              => 'model',
-				'title'             => __('Target Customers', 'wp-ultimo'),
-				'desc'              => __('This broadcast will be sent to the user or users that are selected here. You can select more than one.', 'wp-ultimo'),
-				'placeholder'       => __('Search a customer...', 'wp-ultimo'),
+				'title'             => __('Target Customers', 'wp-multisite-waas'),
+				'desc'              => __('This broadcast will be sent to the user or users that are selected here. You can select more than one.', 'wp-multisite-waas'),
+				'placeholder'       => __('Search a customer...', 'wp-multisite-waas'),
 				'min'               => 1,
 				'html_attr'         => [
 					'v-model'           => 'target_customers',
@@ -319,9 +319,9 @@ class Broadcast_List_Admin_Page extends List_Admin_Page {
 			],
 			'target_products'  => [
 				'type'              => 'model',
-				'title'             => __('Target Product', 'wp-ultimo'),
-				'desc'              => __('This broadcast will be sent to the users that have this product. You can select more than one.', 'wp-ultimo'),
-				'placeholder'       => __('Search for a product..', 'wp-ultimo'),
+				'title'             => __('Target Product', 'wp-multisite-waas'),
+				'desc'              => __('This broadcast will be sent to the users that have this product. You can select more than one.', 'wp-multisite-waas'),
+				'placeholder'       => __('Search for a product..', 'wp-multisite-waas'),
 				'html_attr'         => [
 					'v-model'           => 'target_products',
 					'data-model'        => 'product',
@@ -335,15 +335,15 @@ class Broadcast_List_Admin_Page extends List_Admin_Page {
 				],
 			],
 			'notice_type'      => [
-				'title'             => __('Message Type', 'wp-ultimo'),
-				'desc'              => __('The color of the notice is based on the type.', 'wp-ultimo'),
+				'title'             => __('Message Type', 'wp-multisite-waas'),
+				'desc'              => __('The color of the notice is based on the type.', 'wp-multisite-waas'),
 				'type'              => 'select',
 				'default'           => 'success',
 				'options'           => [
-					'success' => __('Success (green)', 'wp-ultimo'),
-					'info'    => __('Info (blue)', 'wp-ultimo'),
-					'warning' => __('Warning (orange)', 'wp-ultimo'),
-					'error'   => __('Error (red)', 'wp-ultimo'),
+					'success' => __('Success (green)', 'wp-multisite-waas'),
+					'info'    => __('Info (blue)', 'wp-multisite-waas'),
+					'warning' => __('Warning (orange)', 'wp-multisite-waas'),
+					'error'   => __('Error (red)', 'wp-multisite-waas'),
 				],
 				'wrapper_html_attr' => [
 					'v-show'  => "step === 2 && require('type', 'broadcast_notice')",
@@ -352,16 +352,16 @@ class Broadcast_List_Admin_Page extends List_Admin_Page {
 			],
 			'step_note_2'      => [
 				'type'              => 'note',
-				'desc'              => sprintf('<a href="#" class="wu-no-underline wu-mt-1 wu-uppercase wu-text-2xs wu-font-semibold wu-text-gray-600" v-show="step === 3" v-on:click.prevent="step = 2">%s</a>', __('&larr; Back to Target Selection', 'wp-ultimo')),
+				'desc'              => sprintf('<a href="#" class="wu-no-underline wu-mt-1 wu-uppercase wu-text-2xs wu-font-semibold wu-text-gray-600" v-show="step === 3" v-on:click.prevent="step = 2">%s</a>', __('&larr; Back to Target Selection', 'wp-multisite-waas')),
 				'wrapper_html_attr' => [
 					'v-show' => 'step === 3',
 				],
 			],
 			'subject'          => [
 				'type'              => 'text',
-				'title'             => __('Message Subject', 'wp-ultimo'),
-				'desc'              => __('The title will appear above the main content in the notice or used as subject of the email.', 'wp-ultimo'),
-				'placeholder'       => __('Enter a title for your broadcast.', 'wp-ultimo'),
+				'title'             => __('Message Subject', 'wp-multisite-waas'),
+				'desc'              => __('The title will appear above the main content in the notice or used as subject of the email.', 'wp-multisite-waas'),
+				'placeholder'       => __('Enter a title for your broadcast.', 'wp-multisite-waas'),
 				'html_attr'         => [
 					'v-model' => 'subject',
 				],
@@ -371,8 +371,8 @@ class Broadcast_List_Admin_Page extends List_Admin_Page {
 			],
 			'content'          => [
 				'id'                => 'content',
-				'title'             => __('Content', 'wp-ultimo'),
-				'desc'              => __('The main content of your broadcast.', 'wp-ultimo'),
+				'title'             => __('Content', 'wp-multisite-waas'),
+				'desc'              => __('The main content of your broadcast.', 'wp-multisite-waas'),
 				'type'              => 'wp-editor',
 				'settings'          => [
 					'tinymce' => ['toolbar1' => 'bold,italic,strikethrough,link,unlink,undo,redo,pastetext'],
@@ -386,7 +386,7 @@ class Broadcast_List_Admin_Page extends List_Admin_Page {
 			],
 			'submit_button'    => [
 				'type'              => 'submit',
-				'title'             => __('Next Step &rarr;', 'wp-ultimo'),
+				'title'             => __('Next Step &rarr;', 'wp-multisite-waas'),
 				'value'             => 'save',
 				'classes'           => 'button button-primary wu-w-full',
 				'wrapper_classes'   => 'wu-items-end',
@@ -400,7 +400,7 @@ class Broadcast_List_Admin_Page extends List_Admin_Page {
 			],
 			'submit_button_2'  => [
 				'type'              => 'submit',
-				'title'             => __('Next Step &rarr;', 'wp-ultimo'),
+				'title'             => __('Next Step &rarr;', 'wp-multisite-waas'),
 				'value'             => 'save',
 				'classes'           => 'button button-primary wu-w-full',
 				'wrapper_classes'   => 'wu-items-end',
@@ -414,7 +414,7 @@ class Broadcast_List_Admin_Page extends List_Admin_Page {
 			],
 			'submit_button_3'  => [
 				'type'              => 'submit',
-				'title'             => __('Send &rarr;', 'wp-ultimo'),
+				'title'             => __('Send &rarr;', 'wp-multisite-waas'),
 				'value'             => 'save',
 				'classes'           => 'button button-primary wu-w-full',
 				'wrapper_classes'   => 'wu-items-end',
@@ -484,8 +484,8 @@ class Broadcast_List_Admin_Page extends List_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'deleted_message' => __('Broadcast removed successfully.', 'wp-ultimo'),
-			'search_label'    => __('Search Broadcast', 'wp-ultimo'),
+			'deleted_message' => __('Broadcast removed successfully.', 'wp-multisite-waas'),
+			'search_label'    => __('Search Broadcast', 'wp-multisite-waas'),
 		];
 	}
 
@@ -497,7 +497,7 @@ class Broadcast_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('Broadcast', 'wp-ultimo');
+		return __('Broadcast', 'wp-multisite-waas');
 	}
 
 	/**
@@ -508,7 +508,7 @@ class Broadcast_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Broadcasts', 'wp-ultimo');
+		return __('Broadcasts', 'wp-multisite-waas');
 	}
 
 	/**
@@ -519,7 +519,7 @@ class Broadcast_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_submenu_title() {
 
-		return __('Broadcasts', 'wp-ultimo');
+		return __('Broadcasts', 'wp-multisite-waas');
 	}
 
 	/**
@@ -532,7 +532,7 @@ class Broadcast_List_Admin_Page extends List_Admin_Page {
 
 		return [
 			[
-				'label'   => __('Add Broadcast', 'wp-ultimo'),
+				'label'   => __('Add Broadcast', 'wp-multisite-waas'),
 				'icon'    => 'wu-circle-with-plus',
 				'classes' => 'wubox',
 				'url'     => wu_get_form_url('add_new_broadcast_message'),

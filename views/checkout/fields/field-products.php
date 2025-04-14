@@ -5,10 +5,9 @@
  * @since 2.0.0
  */
 ?>
-<div class="<?php echo esc_attr(trim($field->wrapper_classes)); ?>" <?php echo $field->get_wrapper_html_attributes(); ?>>
+<div class="<?php echo esc_attr(trim($field->wrapper_classes)); ?>" <?php echo $field->get_wrapper_html_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 
 	<?php
-
 	/**
 	 * Adds the partial title template.
 	 *
@@ -20,23 +19,16 @@
 			'field' => $field,
 		]
 	);
-
 	?>
 
 	<?php foreach (wu_get_plans() as $option) : ?>
-
-	<label class="wu-block" for="field-<?php echo esc_attr($field->id); ?>-<?php echo esc_attr($option->get_id()); ?>">
-
-		<input id="field-products-<?php echo esc_attr($option->get_id()); ?>" type="checkbox" name="products[]" value="<?php echo esc_attr($option->get_id()); ?>" <?php echo $field->get_html_attributes(); ?> <?php checked($option->get_id() == $field->value); ?> v-model="products">
-
-		<?php echo $option->get_name(); ?>
-
-	</label>
-
+		<label class="wu-block" for="field-<?php echo esc_attr($field->id); ?>-<?php echo esc_attr($option->get_id()); ?>">
+			<input id="field-products-<?php echo esc_attr($option->get_id()); ?>" type="checkbox" name="products[]" value="<?php echo esc_attr($option->get_id()); ?>" <?php checked($option->get_id() == $field->value); ?> v-model="products">
+			<?php echo esc_html($option->get_name()); ?>
+		</label>
 	<?php endforeach; ?>
 
 	<?php
-
 	/**
 	 * Adds the partial error template.
 	 *
@@ -48,7 +40,5 @@
 			'field' => $field,
 		]
 	);
-
 	?>
-
 </div>

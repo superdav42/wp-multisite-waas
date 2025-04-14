@@ -61,7 +61,7 @@ class Field_Templates_Manager extends Base_Manager {
 		$template_class = $this->get_template_class($template_parts[0], $template_parts[1]);
 
 		if ( ! $template_class) {
-			wp_send_json_error(new \WP_Error('template', __('Template not found.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('template', __('Template not found.', 'wp-multisite-waas')));
 		}
 
 		$key = $template_parts[0];

@@ -108,8 +108,8 @@ class Checkout_Pages {
 
     <div class="misc-pub-section misc-pub-section-last" style="margin-top: 12px; margin-bottom: 6px; display: flex; align-items: center;">
 				<label for="wu-compat-mode">
-						<span style="display: block; font-weight: 600; margin-bottom: 3px;"><?php _e('WP Multisite WaaS Compatibility Mode', 'wp-ultimo'); ?></span>
-						<small style="display: block; line-height: 1.8em;"><?php _e('Toggle this option on if WP Multisite WaaS elements are not loading correctly or at all.', 'wp-ultimo'); ?></small>
+						<span style="display: block; font-weight: 600; margin-bottom: 3px;"><?php esc_html_e('WP Multisite WaaS Compatibility Mode', 'wp-multisite-waas'); ?></span>
+						<small style="display: block; line-height: 1.8em;"><?php esc_html_e('Toggle this option on if WP Multisite WaaS elements are not loading correctly or at all.', 'wp-multisite-waas'); ?></small>
 				</label>
 				<div style="margin-left: 6px;">
 					<input id="wu-compat-mode" type="checkbox" value="1" <?php checked($value, true, true); ?> name="_wu_force_elements_loading" />
@@ -190,7 +190,7 @@ class Checkout_Pages {
 	public function get_error_message($error_code, $username = '') {
 
 		$messages = [
-			'incorrect_password'         => sprintf(__('<strong>Error:</strong> The password you entered is incorrect.', 'wp-ultimo')),
+			'incorrect_password'         => sprintf(__('<strong>Error:</strong> The password you entered is incorrect.', 'wp-multisite-waas')),
 			// From here we are using the same messages as WordPress core.
 			'expired'                    => __('Your session has expired. Please log in to continue where you left off.'),
 			'confirm'                    => sprintf(__('Check your email for the confirmation link, then visit the <a href="%s">login page</a>.'), wp_login_url()),
@@ -217,7 +217,7 @@ class Checkout_Pages {
 		 */
 		$messages = apply_filters('wu_checkout_pages_error_messages', $messages);
 
-		return wu_get_isset($messages, $error_code, __('Something went wrong', 'wp-ultimo'));
+		return wu_get_isset($messages, $error_code, __('Something went wrong', 'wp-multisite-waas'));
 	}
 
 	/**
@@ -243,7 +243,7 @@ class Checkout_Pages {
 				wp_login_url()
 			);
 
-			wp_redirect($url);
+			wp_safe_redirect($url);
 
 			exit;
 		}
@@ -263,7 +263,7 @@ class Checkout_Pages {
 	public function maybe_redirect_to_confirm_screen(): void {
 
 		if (wu_request('redirect_to')) {
-			wp_redirect(wu_request('redirect_to'));
+			wp_safe_redirect(wu_request('redirect_to'));
 
 			exit;
 		}
@@ -395,7 +395,7 @@ class Checkout_Pages {
 			return;
 		}
 
-		wp_redirect($redirect_to);
+		wp_safe_redirect($redirect_to);
 
 		exit;
 	}
@@ -415,9 +415,9 @@ class Checkout_Pages {
 		if ($payment->get_total() == 0 && $customer->get_email_verification() === 'pending') {
 			$html = '<div class="wu-p-4 wu-bg-yellow-200 wu-mb-2 wu-text-yellow-700 wu-rounded">%s</div>';
 
-			$message = __('Your email address is not yet verified. Your site <strong>will only be activated</strong> after your email address is verified. Check your inbox and verify your email address.', 'wp-ultimo');
+			$message = __('Your email address is not yet verified. Your site <strong>will only be activated</strong> after your email address is verified. Check your inbox and verify your email address.', 'wp-multisite-waas');
 
-			$message .= sprintf('<br><a href="#" class="wu-resend-verification-email wu-text-gray-700">%s</a>', __('Resend verification email &rarr;', 'wp-ultimo'));
+			$message .= sprintf('<br><a href="#" class="wu-resend-verification-email wu-text-gray-700">%s</a>', __('Resend verification email &rarr;', 'wp-multisite-waas'));
 
 			printf($html, $message);
 		}
@@ -472,7 +472,7 @@ class Checkout_Pages {
 
 			die;
 		} else {
-			wp_redirect($new_login_url);
+			wp_safe_redirect($new_login_url);
 
 			exit;
 		}
@@ -489,7 +489,7 @@ class Checkout_Pages {
 		$registration_url = $this->get_page_url('register');
 
 		if ($registration_url) {
-			wp_redirect($registration_url);
+			wp_safe_redirect($registration_url);
 
 			exit;
 		}
@@ -618,11 +618,11 @@ class Checkout_Pages {
 		}
 
 		$labels = [
-			'register'       => __('WP Multisite WaaS - Register Page', 'wp-ultimo'),
-			'login'          => __('WP Multisite WaaS - Login Page', 'wp-ultimo'),
-			'block_frontend' => __('WP Multisite WaaS - Site Blocked Page', 'wp-ultimo'),
-			'update'         => __('WP Multisite WaaS - Membership Update Page', 'wp-ultimo'),
-			'new_site'       => __('WP Multisite WaaS - New Site Page', 'wp-ultimo'),
+			'register'       => __('WP Multisite WaaS - Register Page', 'wp-multisite-waas'),
+			'login'          => __('WP Multisite WaaS - Login Page', 'wp-multisite-waas'),
+			'block_frontend' => __('WP Multisite WaaS - Site Blocked Page', 'wp-multisite-waas'),
+			'update'         => __('WP Multisite WaaS - Membership Update Page', 'wp-multisite-waas'),
+			'new_site'       => __('WP Multisite WaaS - New Site Page', 'wp-multisite-waas'),
 		];
 
 		$pages = array_map('absint', $this->get_signup_pages());

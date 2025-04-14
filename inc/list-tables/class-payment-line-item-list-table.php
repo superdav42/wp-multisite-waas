@@ -49,12 +49,12 @@ class Payment_Line_Item_List_Table extends Line_Item_List_Table {
 		$first_row = [
 			'quantity'   => [
 				'icon'  => 'dashicons-wu-package wu-align-middle wu-mr-1',
-				'label' => __('Quantity', 'wp-ultimo'),
-				'value' => sprintf(__('x%d', 'wp-ultimo'), $item->get_quantity()),
+				'label' => __('Quantity', 'wp-multisite-waas'),
+				'value' => sprintf(__('x%d', 'wp-multisite-waas'), $item->get_quantity()),
 			],
 			'unit_price' => [
 				'icon'  => 'dashicons-wu-info1 wu-align-middle wu-mr-1',
-				'label' => __('Unit Price', 'wp-ultimo'),
+				'label' => __('Unit Price', 'wp-multisite-waas'),
 				'value' => wu_format_currency($item->get_unit_price()),
 			],
 		];
@@ -70,7 +70,7 @@ class Payment_Line_Item_List_Table extends Line_Item_List_Table {
 			'wrapper_classes' => 'wubox',
 			'icon'            => 'dashicons-wu-edit1 wu-align-middle wu-mr-1',
 			'label'           => '',
-			'value'           => __('Edit', 'wp-ultimo'),
+			'value'           => __('Edit', 'wp-multisite-waas'),
 			'url'             => wu_get_form_url('edit_line_item', $url_atts),
 		];
 
@@ -78,7 +78,7 @@ class Payment_Line_Item_List_Table extends Line_Item_List_Table {
 			'wrapper_classes' => 'wu-text-red-500 wubox',
 			'icon'            => 'dashicons-wu-trash-2 wu-align-middle wu-mr-1',
 			'label'           => '',
-			'value'           => __('Remove', 'wp-ultimo'),
+			'value'           => __('Remove', 'wp-multisite-waas'),
 			'url'             => wu_get_form_url('delete_line_item', $url_atts),
 		];
 
@@ -90,21 +90,22 @@ class Payment_Line_Item_List_Table extends Line_Item_List_Table {
 				$tax_rate = $item->get_discount_rate() . '%';
 			}
 
-			$tax_label = $item->get_discount_rate() ? ($item->get_discount_label() ?: __('Discount', 'wp-ultimo')) : __('No discount', 'wp-ultimo');
+			$tax_label = $item->get_discount_rate() ? ($item->get_discount_label() ?: __('Discount', 'wp-multisite-waas')) : __('No discount', 'wp-multisite-waas');
 
 			$tooltip = sprintf('%s (%s)', $tax_rate, $tax_label);
 
 			$first_row['discounts_total'] = [
 				'icon'  => 'dashicons-wu-percent wu-align-middle wu-mr-1',
 				'label' => $tooltip,
-				'value' => sprintf(__('Discounts: %s', 'wp-ultimo'), wu_format_currency($item->get_discount_total())),
+				'value' => sprintf(__('Discounts: %s', 'wp-multisite-waas'), wu_format_currency($item->get_discount_total())),
 			];
 		}
 
 		$first_row['subtotal'] = [
 			'icon'  => 'dashicons-wu-info1 wu-align-middle wu-mr-1',
 			'label' => '',
-			'value' => sprintf(__('Subtotal: %s', 'wp-ultimo'), wu_format_currency($item->get_subtotal())),
+			/* translators: %s is a currency amount */
+			'value' => sprintf(__('Subtotal: %s', 'wp-multisite-waas'), wu_format_currency($item->get_subtotal())),
 		];
 
 		/*
@@ -115,24 +116,24 @@ class Payment_Line_Item_List_Table extends Line_Item_List_Table {
 				$tax_rate = $item->get_tax_rate() . '%';
 			}
 
-			$tax_label = $item->get_tax_rate() ? ($item->get_tax_label() ?: __('Tax Applied', 'wp-ultimo')) : __('No Taxes Applied', 'wp-ultimo');
+			$tax_label = $item->get_tax_rate() ? ($item->get_tax_label() ?: __('Tax Applied', 'wp-multisite-waas')) : __('No Taxes Applied', 'wp-multisite-waas');
 
 			$tooltip = sprintf('%s (%s)', $tax_rate, $tax_label);
 
 			$first_row['tax_total'] = [
 				'icon'  => 'dashicons-wu-percent wu-align-middle wu-mr-1',
 				'label' => $tooltip,
-				'value' => sprintf(__('Taxes: %s', 'wp-ultimo'), wu_format_currency($item->get_tax_total())),
+				'value' => sprintf(__('Taxes: %s', 'wp-multisite-waas'), wu_format_currency($item->get_tax_total())),
 			];
 		}
 
 		$first_row['description'] = [
 			'icon'  => 'dashicons-wu-file-text wu-align-middle wu-mr-1',
-			'label' => __('Item Description', 'wp-ultimo'),
+			'label' => __('Item Description', 'wp-multisite-waas'),
 			'value' => $item->get_description(),
 		];
 
-		echo wu_responsive_table_row(
+		echo wu_responsive_table_row( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			[
 				'id'     => '',
 				'title'  => $item->get_title(),

@@ -124,12 +124,12 @@ abstract class Wizard_Admin_Page extends Base_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'edit_label'        => __('Edit Object', 'wp-ultimo'),
-			'add_new_label'     => __('Add New Object', 'wp-ultimo'),
-			'updated_message'   => __('Object updated with success!', 'wp-ultimo'),
-			'title_placeholder' => __('Enter Object Name', 'wp-ultimo'),
+			'edit_label'        => __('Edit Object', 'wp-multisite-waas'),
+			'add_new_label'     => __('Add New Object', 'wp-multisite-waas'),
+			'updated_message'   => __('Object updated with success!', 'wp-multisite-waas'),
+			'title_placeholder' => __('Enter Object Name', 'wp-multisite-waas'),
 			'title_description' => '',
-			'save_button_label' => __('Save', 'wp-ultimo'),
+			'save_button_label' => __('Save', 'wp-multisite-waas'),
 			'save_description'  => '',
 		];
 	}
@@ -152,7 +152,7 @@ abstract class Wizard_Admin_Page extends Base_Admin_Page {
 			return;
 		}
 
-		add_meta_box('wp-ultimo-wizard-body', wu_get_isset($this->current_section, 'title', __('Section', 'wp-ultimo')), [$this, 'output_default_widget_body'], $screen->id, 'normal', null);
+		add_meta_box('wp-ultimo-wizard-body', wu_get_isset($this->current_section, 'title', __('Section', 'wp-multisite-waas')), [$this, 'output_default_widget_body'], $screen->id, 'normal', null);
 	}
 
 	/**
@@ -299,7 +299,7 @@ abstract class Wizard_Admin_Page extends Base_Admin_Page {
 	 */
 	public function default_handler(): void {
 
-		wp_redirect($this->get_next_section_link());
+		wp_safe_redirect($this->get_next_section_link());
 
 		exit;
 	}
@@ -319,9 +319,9 @@ abstract class Wizard_Admin_Page extends Base_Admin_Page {
 				'description' => '',
 				'content'     => '',
 				'fields'      => [],
-				'next_label'  => __('Continue &rarr;', 'wp-ultimo'),
-				'back_label'  => __('&larr; Go Back', 'wp-ultimo'),
-				'skip_label'  => __('Skip this Step', 'wp-ultimo'),
+				'next_label'  => __('Continue &rarr;', 'wp-multisite-waas'),
+				'back_label'  => __('&larr; Go Back', 'wp-multisite-waas'),
+				'skip_label'  => __('Skip this Step', 'wp-multisite-waas'),
 				'back'        => false,
 				'skip'        => false,
 				'next'        => true,

@@ -12,7 +12,7 @@
 
 	<div class="wu-jumper-icon-container wu-relative wu-w-full wu-bg-gray-100 wu-rounded">
 
-	<select id="wu-jumper-select" data-placeholder="<?php esc_attr_e('Search Anything...', 'wp-ultimo'); ?>">
+	<select id="wu-jumper-select" data-placeholder="<?php esc_attr_e('Search Anything...', 'wp-multisite-waas'); ?>">
 
 		<option></option>
 
@@ -20,11 +20,11 @@
 
 		<option></option>
 
-		<optgroup label="<?php esc_attr_e('Error', 'wp-ultimo'); ?>">
+		<optgroup label="<?php esc_attr_e('Error', 'wp-multisite-waas'); ?>">
 
 			<option value="<?php echo network_admin_url('?wu-rebuild-jumper=1'); ?>">
 
-			<?php _e('Click to rebuild menu list', 'wp-ultimo'); ?>
+			<?php esc_html_e('Click to rebuild menu list', 'wp-multisite-waas'); ?>
 
 			</option>
 
@@ -34,7 +34,7 @@
 
 		<?php foreach ($menu_groups as $optgroup => $menus) : ?>
 
-		<optgroup label="<?php esc_attr_e('Menu', 'wp-ultimo'); ?> - <?php echo esc_attr($optgroup); ?>" value="<?php esc_attr_e('Menu', 'wp-ultimo'); ?> - <?php echo esc_attr($optgroup); ?>">
+		<optgroup label="<?php esc_attr_e('Menu', 'wp-multisite-waas'); ?> - <?php echo esc_attr($optgroup); ?>" value="<?php esc_attr_e('Menu', 'wp-multisite-waas'); ?> - <?php echo esc_attr($optgroup); ?>">
 
 			<?php foreach ($menus as $url => $menu) : ?>
 
@@ -50,29 +50,29 @@
 
 		<?php endforeach; ?>
 
-		<optgroup label="<?php esc_attr_e('Settings', 'wp-ultimo'); ?>" value="setting"></optgroup>
+		<optgroup label="<?php esc_attr_e('Settings', 'wp-multisite-waas'); ?>" value="setting"></optgroup>
 
-		<optgroup label="<?php esc_attr_e('Users', 'wp-ultimo'); ?>" value="user"></optgroup>
+		<optgroup label="<?php esc_attr_e('Users', 'wp-multisite-waas'); ?>" value="user"></optgroup>
 
-		<optgroup label="<?php esc_attr_e('Customers', 'wp-ultimo'); ?>" value="customer"></optgroup>
+		<optgroup label="<?php esc_attr_e('Customers', 'wp-multisite-waas'); ?>" value="customer"></optgroup>
 
-		<optgroup label="<?php esc_attr_e('Products', 'wp-ultimo'); ?>" value="product"></optgroup>
+		<optgroup label="<?php esc_attr_e('Products', 'wp-multisite-waas'); ?>" value="product"></optgroup>
 
-		<optgroup label="<?php esc_attr_e('Domains', 'wp-ultimo'); ?>" value="domain"></optgroup>
+		<optgroup label="<?php esc_attr_e('Domains', 'wp-multisite-waas'); ?>" value="domain"></optgroup>
 
-		<optgroup label="<?php esc_attr_e('Sites', 'wp-ultimo'); ?>" value="site"></optgroup>
+		<optgroup label="<?php esc_attr_e('Sites', 'wp-multisite-waas'); ?>" value="site"></optgroup>
 
-		<optgroup label="<?php esc_attr_e('Memberships', 'wp-ultimo'); ?>" value="membership"></optgroup>
+		<optgroup label="<?php esc_attr_e('Memberships', 'wp-multisite-waas'); ?>" value="membership"></optgroup>
 
-		<optgroup label="<?php esc_attr_e('Payments', 'wp-ultimo'); ?>" value="payment"></optgroup>
+		<optgroup label="<?php esc_attr_e('Payments', 'wp-multisite-waas'); ?>" value="payment"></optgroup>
 
-		<optgroup label="<?php esc_attr_e('Discount Codes', 'wp-ultimo'); ?>" value="discount-code"></optgroup>
+		<optgroup label="<?php esc_attr_e('Discount Codes', 'wp-multisite-waas'); ?>" value="discount-code"></optgroup>
 
-		<optgroup label="<?php esc_attr_e('Webhooks', 'wp-ultimo'); ?>" value="webhook"></optgroup>
+		<optgroup label="<?php esc_attr_e('Webhooks', 'wp-multisite-waas'); ?>" value="webhook"></optgroup>
 
-		<optgroup label="<?php esc_attr_e('Broadcasts', 'wp-ultimo'); ?>" value="broadcast"></optgroup>
+		<optgroup label="<?php esc_attr_e('Broadcasts', 'wp-multisite-waas'); ?>" value="broadcast"></optgroup>
 
-		<optgroup label="<?php esc_attr_e('Checkout Forms', 'wp-ultimo'); ?>" value="checkout-form"></optgroup>
+		<optgroup label="<?php esc_attr_e('Checkout Forms', 'wp-multisite-waas'); ?>" value="checkout-form"></optgroup>
 
 		<?php
 
@@ -91,13 +91,13 @@
 
 	<div class="wu-jumper-redirecting wu-bg-gray-200">
 
-	<?php _e('Redirecting you to the target page...', 'wp-ultimo'); ?>
+	<?php esc_html_e('Redirecting you to the target page...', 'wp-multisite-waas'); ?>
 
 	</div>
 
 	<div class="wu-jumper-loading wu-bg-gray-200">
 
-	<?php _e('Searching Results...', 'wp-ultimo'); ?>
+	<?php esc_html_e('Searching Results...', 'wp-multisite-waas'); ?>
 
 	</div>
 

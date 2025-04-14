@@ -116,9 +116,9 @@ class Cloudflare_Host_Provider extends Base_Host_Provider {
 			);
 
 			if ( ! empty($dns_entries->result)) {
-				$proxied_tag = sprintf('<span class="wu-bg-orange-500 wu-text-white wu-p-1 wu-rounded wu-text-3xs wu-uppercase wu-ml-2 wu-font-bold" %s>%s</span>', wu_tooltip_text(__('Proxied', 'wp-ultimo')), __('Cloudflare', 'wp-ultimo'));
+				$proxied_tag = sprintf('<span class="wu-bg-orange-500 wu-text-white wu-p-1 wu-rounded wu-text-3xs wu-uppercase wu-ml-2 wu-font-bold" %s>%s</span>', wu_tooltip_text(__('Proxied', 'wp-multisite-waas')), __('Cloudflare', 'wp-multisite-waas'));
 
-				$not_proxied_tag = sprintf('<span class="wu-bg-gray-700 wu-text-white wu-p-1 wu-rounded wu-text-3xs wu-uppercase wu-ml-2 wu-font-bold" %s>%s</span>', wu_tooltip_text(__('Not Proxied', 'wp-ultimo')), __('Cloudflare', 'wp-ultimo'));
+				$not_proxied_tag = sprintf('<span class="wu-bg-gray-700 wu-text-white wu-p-1 wu-rounded wu-text-3xs wu-uppercase wu-ml-2 wu-font-bold" %s>%s</span>', wu_tooltip_text(__('Not Proxied', 'wp-multisite-waas')), __('Cloudflare', 'wp-multisite-waas'));
 
 				foreach ($dns_entries->result as $entry) {
 					$dns_records[] = [
@@ -163,12 +163,12 @@ class Cloudflare_Host_Provider extends Base_Host_Provider {
 
 		return [
 			'WU_CLOUDFLARE_ZONE_ID' => [
-				'title'       => __('Zone ID', 'wp-ultimo'),
-				'placeholder' => __('e.g. 644c7705723d62e31f700bb798219c75', 'wp-ultimo'),
+				'title'       => __('Zone ID', 'wp-multisite-waas'),
+				'placeholder' => __('e.g. 644c7705723d62e31f700bb798219c75', 'wp-multisite-waas'),
 			],
 			'WU_CLOUDFLARE_API_KEY' => [
-				'title'       => __('API Key', 'wp-ultimo'),
-				'placeholder' => __('e.g. xKGbxxVDpdcUv9dUzRf4i4ngv0QNf1wCtbehiec_o', 'wp-ultimo'),
+				'title'       => __('API Key', 'wp-multisite-waas'),
+				'placeholder' => __('e.g. xKGbxxVDpdcUv9dUzRf4i4ngv0QNf1wCtbehiec_o', 'wp-multisite-waas'),
 			],
 		];
 	}
@@ -423,7 +423,7 @@ class Cloudflare_Host_Provider extends Base_Host_Provider {
 	 */
 	public function get_description() {
 
-		return __('Cloudflare secures and ensures the reliability of your external-facing resources such as websites, APIs, and applications. It protects your internal resources such as behind-the-firewall applications, teams, and devices. And it is your platform for developing globally-scalable applications.', 'wp-ultimo');
+		return __('Cloudflare secures and ensures the reliability of your external-facing resources such as websites, APIs, and applications. It protects your internal resources such as behind-the-firewall applications, teams, and devices. And it is your platform for developing globally-scalable applications.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -451,12 +451,12 @@ class Cloudflare_Host_Provider extends Base_Host_Provider {
 		];
 
 		if (is_subdomain_install()) {
-			$explainer_lines['will']['send_sub_domains'] = __('Add a new proxied subdomain to the configured CloudFlare zone whenever a new site gets created', 'wp-ultimo');
+			$explainer_lines['will']['send_sub_domains'] = __('Add a new proxied subdomain to the configured CloudFlare zone whenever a new site gets created', 'wp-multisite-waas');
 		} else {
-			$explainer_lines['will']['subdirectory'] = __('Do nothing! The CloudFlare integration has no effect in subdirectory multisite installs such as this one', 'wp-ultimo');
+			$explainer_lines['will']['subdirectory'] = __('Do nothing! The CloudFlare integration has no effect in subdirectory multisite installs such as this one', 'wp-multisite-waas');
 		}
 
-		$explainer_lines['will_not']['send_domain'] = __('Add domain mappings as new CloudFlare zones', 'wp-ultimo');
+		$explainer_lines['will_not']['send_domain'] = __('Add domain mappings as new CloudFlare zones', 'wp-multisite-waas');
 
 		return $explainer_lines;
 	}

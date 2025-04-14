@@ -71,12 +71,12 @@ class User_Switching {
 			'title' => [
 				'type'          => 'text-display',
 				'title'         => '',
-				'display_value' => __('This feature requires the plugin <strong>User Switching</strong> to be installed and active.', 'wp-ultimo'),
+				'display_value' => __('This feature requires the plugin <strong>User Switching</strong> to be installed and active.', 'wp-multisite-waas'),
 				'tooltip'       => '',
 			],
 			'link'  => [
 				'type'            => 'link',
-				'display_value'   => __('Install User Switching', 'wp-ultimo'),
+				'display_value'   => __('Install User Switching', 'wp-multisite-waas'),
 				'classes'         => 'button button-primary wu-w-full',
 				'wrapper_classes' => 'wu-items-end wu-text-center wu-bg-gray-100',
 				'html_attr'       => [

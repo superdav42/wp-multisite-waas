@@ -94,8 +94,8 @@ class Product_Compat {
 	public function add_legacy_section($sections, $object) {
 
 		$sections['legacy_options_core'] = [
-			'title'  => __('Legacy Options', 'wp-ultimo'),
-			'desc'   => __('Options used by old 1.X versions. ', 'wp-ultimo'),
+			'title'  => __('Legacy Options', 'wp-multisite-waas'),
+			'desc'   => __('Options used by old 1.X versions. ', 'wp-multisite-waas'),
 			'icon'   => 'dashicons-wu-spreadsheet',
 			'state'  => [
 				'legacy_options' => $object->get_legacy_options(),
@@ -104,8 +104,8 @@ class Product_Compat {
 				'legacy_options' => [
 					'type'      => 'toggle',
 					'value'     => $object->get_legacy_options(),
-					'title'     => __('Toggle Legacy Options', 'wp-ultimo'),
-					'desc'      => __('Toggle this option to edit legacy options.', 'wp-ultimo'),
+					'title'     => __('Toggle Legacy Options', 'wp-multisite-waas'),
+					'desc'      => __('Toggle this option to edit legacy options.', 'wp-multisite-waas'),
 					'html_attr' => [
 						'v-model' => 'legacy_options',
 					],
@@ -113,17 +113,17 @@ class Product_Compat {
 				'featured_plan'  => [
 					'type'              => 'toggle',
 					'value'             => $object->is_featured_plan(),
-					'title'             => __('Featured Plan', 'wp-ultimo'),
-					'desc'              => __('Toggle this option to mark this product as featured on the legacy pricing tables.', 'wp-ultimo'),
+					'title'             => __('Featured Plan', 'wp-multisite-waas'),
+					'desc'              => __('Toggle this option to mark this product as featured on the legacy pricing tables.', 'wp-multisite-waas'),
 					'wrapper_html_attr' => [
 						'v-show' => 'legacy_options',
 					],
 				],
 				'feature_list'   => [
 					'type'              => 'textarea',
-					'title'             => __('Features List', 'wp-ultimo'),
-					'placeholder'       => __('E.g. Feature 1', 'wp-ultimo') . PHP_EOL . __('Feature 2', 'wp-ultimo'),
-					'desc'              => __('Add a feature per line. These will be shown on the pricing tables.', 'wp-ultimo'),
+					'title'             => __('Features List', 'wp-multisite-waas'),
+					'placeholder'       => __('E.g. Feature 1', 'wp-multisite-waas') . PHP_EOL . __('Feature 2', 'wp-multisite-waas'),
+					'desc'              => __('Add a feature per line. These will be shown on the pricing tables.', 'wp-multisite-waas'),
 					'value'             => $object->get_feature_list(),
 					'wrapper_html_attr' => [
 						'v-show' => 'legacy_options',

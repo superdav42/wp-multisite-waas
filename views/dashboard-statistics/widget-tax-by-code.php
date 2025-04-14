@@ -14,10 +14,10 @@
 	$data    = [];
 	$slug    = 'taxes_by_code';
 	$headers = [
-		__('Tax', 'wp-ultimo'),
-		__('Rate', 'wp-ultimo'),
-		__('Orders', 'wp-ultimo'),
-		__('Tax Total', 'wp-ultimo'),
+		__('Tax', 'wp-multisite-waas'),
+		__('Rate', 'wp-multisite-waas'),
+		__('Orders', 'wp-multisite-waas'),
+		__('Tax Total', 'wp-multisite-waas'),
 	];
 
 	foreach ($taxes_by_rate as $tax_line) {
@@ -29,7 +29,7 @@
 		];
 
 		$data[] = $line;
-	} // end foreach;
+	}
 
 	$page->render_csv_button(
 		[
@@ -45,10 +45,10 @@
 
 		<thead>
 			<tr>
-			<th><?php _e('Tax', 'wp-ultimo'); ?></th>
-			<th><?php _e('Rate', 'wp-ultimo'); ?></th>
-			<th><?php _e('Orders', 'wp-ultimo'); ?></th>
-			<th><?php _e('Tax Total', 'wp-ultimo'); ?></th>
+			<th><?php esc_html_e('Tax', 'wp-multisite-waas'); ?></th>
+			<th><?php esc_html_e('Rate', 'wp-multisite-waas'); ?></th>
+			<th><?php esc_html_e('Orders', 'wp-multisite-waas'); ?></th>
+			<th><?php esc_html_e('Tax Total', 'wp-multisite-waas'); ?></th>
 			</tr>
 		</thead>
 
@@ -59,18 +59,10 @@
 				<?php foreach ($taxes_by_rate as $tax_line) : ?>
 
 				<tr>
-				<td>
-					<?php echo wu_get_isset($tax_line, 'title', 'No Name'); ?>
-				</td>
-				<td>
-					<?php echo $tax_line['tax_rate']; ?>%
-				</td>
-				<td>
-					<?php echo $tax_line['order_count']; ?>
-				</td>
-				<td>
-					<?php echo wu_format_currency($tax_line['tax_total']); ?>
-				</td>
+					<td><?php echo esc_html(wu_get_isset($tax_line, 'title', 'No Name')); ?></td>
+					<td><?php echo esc_html($tax_line['tax_rate']); ?>%</td>
+					<td><?php echo esc_html($tax_line['order_count']); ?></td>
+					<td><?php echo esc_html(wu_format_currency($tax_line['tax_total'])); ?></td>
 				</tr>
 
 			<?php endforeach; ?>
@@ -79,7 +71,7 @@
 
 				<tr>
 				<td colspan="4">
-					<?php _e('No Taxes found.', 'wp-ultimo'); ?>
+					<?php esc_html_e('No Taxes found.', 'wp-multisite-waas'); ?>
 				</td>
 				</tr>
 

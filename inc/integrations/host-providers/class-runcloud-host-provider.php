@@ -10,7 +10,6 @@
 namespace WP_Ultimo\Integrations\Host_Providers;
 
 use Psr\Log\LogLevel;
-use WP_Ultimo\Integrations\Host_Providers\Base_Host_Provider;
 
 // Exit if accessed directly
 defined('ABSPATH') || exit;
@@ -91,24 +90,24 @@ class Runcloud_Host_Provider extends Base_Host_Provider {
 
 		return [
 			'WU_RUNCLOUD_API_KEY'    => [
-				'title'       => __('RunCloud API Key', 'wp-ultimo'),
-				'desc'        => __('The API Key retrieved in the previous step.', 'wp-ultimo'),
-				'placeholder' => __('e.g. Sx9tHAn5XMrkeyZKS1a7uj8dGTLgKnlEOaJEFRt1m95L', 'wp-ultimo'),
+				'title'       => __('RunCloud API Key', 'wp-multisite-waas'),
+				'desc'        => __('The API Key retrieved in the previous step.', 'wp-multisite-waas'),
+				'placeholder' => __('e.g. Sx9tHAn5XMrkeyZKS1a7uj8dGTLgKnlEOaJEFRt1m95L', 'wp-multisite-waas'),
 			],
 			'WU_RUNCLOUD_API_SECRET' => [
-				'title'       => __('RunCloud API Secret', 'wp-ultimo'),
-				'desc'        => __('The API secret retrieved in the previous step.', 'wp-ultimo'),
-				'placeholder' => __('e.g. ZlAebXp2sa6J5xsrPoiPcMXZRIVsHJ2rEkNCNGknZnF0UK5cSNSePS8GBW9FXIQd', 'wp-ultimo'),
+				'title'       => __('RunCloud API Secret', 'wp-multisite-waas'),
+				'desc'        => __('The API secret retrieved in the previous step.', 'wp-multisite-waas'),
+				'placeholder' => __('e.g. ZlAebXp2sa6J5xsrPoiPcMXZRIVsHJ2rEkNCNGknZnF0UK5cSNSePS8GBW9FXIQd', 'wp-multisite-waas'),
 			],
 			'WU_RUNCLOUD_SERVER_ID'  => [
-				'title'       => __('RunCloud Server ID', 'wp-ultimo'),
-				'desc'        => __('The Server ID retrieved in the previous step.', 'wp-ultimo'),
-				'placeholder' => __('e.g. 11667', 'wp-ultimo'),
+				'title'       => __('RunCloud Server ID', 'wp-multisite-waas'),
+				'desc'        => __('The Server ID retrieved in the previous step.', 'wp-multisite-waas'),
+				'placeholder' => __('e.g. 11667', 'wp-multisite-waas'),
 			],
 			'WU_RUNCLOUD_APP_ID'     => [
-				'title'       => __('RunCloud App ID', 'wp-ultimo'),
-				'desc'        => __('The App ID retrieved in the previous step.', 'wp-ultimo'),
-				'placeholder' => __('e.g. 940288', 'wp-ultimo'),
+				'title'       => __('RunCloud App ID', 'wp-multisite-waas'),
+				'desc'        => __('The App ID retrieved in the previous step.', 'wp-multisite-waas'),
+				'placeholder' => __('e.g. 940288', 'wp-multisite-waas'),
 			],
 		];
 	}
@@ -168,7 +167,7 @@ class Runcloud_Host_Provider extends Base_Host_Provider {
 		$domain_id = $this->get_runcloud_domain_id($domain);
 
 		if ( ! $domain_id) {
-			wu_log_add('integration-runcloud', __('Domain name not found on runcloud', 'wp-ultimo'));
+			wu_log_add('integration-runcloud', __('Domain name not found on runcloud', 'wp-multisite-waas'));
 		}
 
 		$response = $this->send_runcloud_request($this->get_runcloud_base_url("domains/$domain_id"), [], 'DELETE');
@@ -260,7 +259,7 @@ class Runcloud_Host_Provider extends Base_Host_Provider {
 				'body'        => $data,
 				'method'      => $method,
 				'headers'     => [
-					'Authorization' => 'Basic ' . base64_encode($username . ':' . $password),
+					'Authorization' => 'Basic ' . base64_encode($username . ':' . $password), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 				],
 			]
 		);
@@ -325,7 +324,7 @@ class Runcloud_Host_Provider extends Base_Host_Provider {
 		} else {
 			$data = $this->maybe_return_runcloud_body($response);
 
-			wu_log_add('integration-runcloud', json_encode($data));
+			wu_log_add('integration-runcloud', wp_json_encode($data));
 
 			if (property_exists($data, 'id')) {
 				$ssl_id = $data->id;
@@ -372,7 +371,7 @@ class Runcloud_Host_Provider extends Base_Host_Provider {
 	 */
 	public function get_description() {
 
-		return __('With RunCloud, you don’t need to be a Linux expert to build a website powered by DigitalOcean, AWS, or Google Cloud. Use our graphical interface and build a business on the cloud affordably.', 'wp-ultimo');
+		return __('With RunCloud, you don’t need to be a Linux expert to build a website powered by DigitalOcean, AWS, or Google Cloud. Use our graphical interface and build a business on the cloud affordably.', 'wp-multisite-waas');
 	}
 
 	/**

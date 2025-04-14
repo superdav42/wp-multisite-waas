@@ -94,13 +94,13 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_fields_widget(
 			'description',
 			[
-				'title'    => __('Description', 'wp-ultimo'),
+				'title'    => __('Description', 'wp-multisite-waas'),
 				'position' => 'normal',
 				'fields'   => [
 					'description' => [
 						'type'        => 'textarea',
-						'title'       => __('Description', 'wp-ultimo'),
-						'placeholder' => __('Tell your customers what this product is about.', 'wp-ultimo'),
+						'title'       => __('Description', 'wp-multisite-waas'),
+						'placeholder' => __('Tell your customers what this product is about.', 'wp-multisite-waas'),
 						'value'       => $this->get_object()->get_description(),
 						'html_attr'   => [
 							'rows' => 3,
@@ -114,30 +114,30 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 
 		$options = [
 			'general'  => [
-				'title'  => __('Limit Uses', 'wp-ultimo'),
+				'title'  => __('Limit Uses', 'wp-multisite-waas'),
 				'icon'   => 'dashicons-wu-lock',
-				'desc'   => __('Rules and limitations to the applicability of this discount code.', 'wp-ultimo'),
+				'desc'   => __('Rules and limitations to the applicability of this discount code.', 'wp-multisite-waas'),
 				'fields' => [
 					'uses'     => [
-						'title'         => __('Uses', 'wp-ultimo'),
+						'title'         => __('Uses', 'wp-multisite-waas'),
 						'type'          => 'text-display',
 						// translators: %d is the number of times the coupon was used.
-						'display_value' => sprintf(__('This discount code was used %d times.', 'wp-ultimo'), $this->get_object()->get_uses()),
-						'tooltip'       => __('The number of times that this discount code was used so far.', 'wp-ultimo'),
+						'display_value' => sprintf(__('This discount code was used %d times.', 'wp-multisite-waas'), $this->get_object()->get_uses()),
+						'tooltip'       => __('The number of times that this discount code was used so far.', 'wp-multisite-waas'),
 					],
 					'max_uses' => [
-						'title'       => __('Max Uses', 'wp-ultimo'),
-						'desc'        => __('Use this option to set a limit on how many times this discount code can be used. Leave blank or 0 for unlimited uses.', 'wp-ultimo'),
+						'title'       => __('Max Uses', 'wp-multisite-waas'),
+						'desc'        => __('Use this option to set a limit on how many times this discount code can be used. Leave blank or 0 for unlimited uses.', 'wp-multisite-waas'),
 						'type'        => 'number',
 						'min'         => 0,
 						'placeholder' => 0,
-						'value'       => $this->get_object()->has_max_uses() ? $this->get_object()->get_max_uses() : __('Unlimited', 'wp-ultimo'),
+						'value'       => $this->get_object()->has_max_uses() ? $this->get_object()->get_max_uses() : __('Unlimited', 'wp-multisite-waas'),
 					],
 				],
 			],
 			'time'     => [
-				'title'  => __('Start & Expiration Dates', 'wp-ultimo'),
-				'desc'   => __('Define a start and end date for this discount code. Useful when running campaigns for a pre-determined period.', 'wp-ultimo'),
+				'title'  => __('Start & Expiration Dates', 'wp-multisite-waas'),
+				'desc'   => __('Define a start and end date for this discount code. Useful when running campaigns for a pre-determined period.', 'wp-multisite-waas'),
 				'icon'   => 'dashicons-wu-calendar',
 				'state'  => [
 					'enable_date_start'      => $this->get_object()->get_date_start(),
@@ -146,19 +146,19 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 				'fields' => [
 					'enable_date_start'      => [
 						'type'      => 'toggle',
-						'title'     => __('Enable Start Date', 'wp-ultimo'),
-						'desc'      => __('Allows you to set a start date for this coupon code.', 'wp-ultimo'),
+						'title'     => __('Enable Start Date', 'wp-multisite-waas'),
+						'desc'      => __('Allows you to set a start date for this coupon code.', 'wp-multisite-waas'),
 						'value'     => 1,
 						'html_attr' => [
 							'v-model' => 'enable_date_start',
 						],
 					],
 					'date_start'             => [
-						'title'             => __('Start Date', 'wp-ultimo'),
-						'desc'              => __('The discount code will only be good to be used after this date.', 'wp-ultimo') . ' ' . $tz_note,
+						'title'             => __('Start Date', 'wp-multisite-waas'),
+						'desc'              => __('The discount code will only be good to be used after this date.', 'wp-multisite-waas') . ' ' . $tz_note,
 						'type'              => 'text',
 						'date'              => true,
-						'value'             => $this->edit ? $this->get_object()->get_date_start() : __('No date', 'wp-ultimo'),
+						'value'             => $this->edit ? $this->get_object()->get_date_start() : __('No date', 'wp-multisite-waas'),
 						'placeholder'       => 'E.g. 2020-04-04 12:00:00',
 						'wrapper_html_attr' => [
 							'v-cloak' => 1,
@@ -173,19 +173,19 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 					],
 					'enable_date_expiration' => [
 						'type'      => 'toggle',
-						'title'     => __('Enable Expiration Date', 'wp-ultimo'),
-						'desc'      => __('Allows you to set an expiration date for this coupon code.', 'wp-ultimo'),
+						'title'     => __('Enable Expiration Date', 'wp-multisite-waas'),
+						'desc'      => __('Allows you to set an expiration date for this coupon code.', 'wp-multisite-waas'),
 						'value'     => 1,
 						'html_attr' => [
 							'v-model' => 'enable_date_expiration',
 						],
 					],
 					'date_expiration'        => [
-						'title'             => __('Expiration Date', 'wp-ultimo'),
-						'desc'              => __('The discount code will expire after this date.', 'wp-ultimo') . ' ' . $tz_note,
+						'title'             => __('Expiration Date', 'wp-multisite-waas'),
+						'desc'              => __('The discount code will expire after this date.', 'wp-multisite-waas') . ' ' . $tz_note,
 						'type'              => 'text',
 						'date'              => true,
-						'value'             => $this->edit ? $this->get_object()->get_date_expiration() : __('Never Expires', 'wp-ultimo'),
+						'value'             => $this->edit ? $this->get_object()->get_date_expiration() : __('Never Expires', 'wp-multisite-waas'),
 						'placeholder'       => 'E.g. 2020-04-04 12:00:00',
 						'wrapper_html_attr' => [
 							'v-cloak' => 1,
@@ -201,8 +201,8 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 				],
 			],
 			'products' => [
-				'title'  => __('Limit Products', 'wp-ultimo'),
-				'desc'   => __('Determine if you want this discount code to apply to all discountable products or not.', 'wp-ultimo'),
+				'title'  => __('Limit Products', 'wp-multisite-waas'),
+				'desc'   => __('Determine if you want this discount code to apply to all discountable products or not.', 'wp-multisite-waas'),
 				'icon'   => 'dashicons-wu-price-tag',
 				'state'  => [
 					'limit_products' => $this->get_object()->get_limit_products(),
@@ -211,8 +211,8 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 					[
 						'limit_products' => [
 							'type'      => 'toggle',
-							'title'     => __('Select Products', 'wp-ultimo'),
-							'desc'      => __('Manually select to which products this discount code should be applicable.', 'wp-ultimo'),
+							'title'     => __('Select Products', 'wp-multisite-waas'),
+							'desc'      => __('Manually select to which products this discount code should be applicable.', 'wp-multisite-waas'),
 							'value'     => 1,
 							'html_attr' => [
 								'v-model' => 'limit_products',
@@ -227,7 +227,7 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_tabs_widget(
 			'options',
 			[
-				'title'    => __('Advanced Options', 'wp-ultimo'),
+				'title'    => __('Advanced Options', 'wp-multisite-waas'),
 				'position' => 'normal',
 				'sections' => apply_filters('wu_discount_code_options_sections', $options, $this->get_object()),
 			]
@@ -241,7 +241,7 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_list_table_widget(
 			'events',
 			[
-				'title'        => __('Events', 'wp-ultimo'),
+				'title'        => __('Events', 'wp-multisite-waas'),
 				'table'        => new \WP_Ultimo\List_Tables\Inside_Events_List_Table(),
 				'query_filter' => [$this, 'query_filter'],
 			]
@@ -265,10 +265,10 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 				],
 				'fields'    => [
 					'code'                  => [
-						'title'             => __('Coupon Code', 'wp-ultimo'),
+						'title'             => __('Coupon Code', 'wp-multisite-waas'),
 						'type'              => 'text',
-						'placeholder'       => __('E.g. XMAS10OFF', 'wp-ultimo'),
-						'desc'              => __('The actual code your customers will enter during checkout.', 'wp-ultimo'),
+						'placeholder'       => __('E.g. XMAS10OFF', 'wp-multisite-waas'),
+						'desc'              => __('The actual code your customers will enter during checkout.', 'wp-multisite-waas'),
 						'value'             => $this->get_object()->get_code(),
 						'tooltip'           => '',
 						'wrapper_html_attr' => [
@@ -281,7 +281,7 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 					],
 					'value_group'           => [
 						'type'              => 'group',
-						'title'             => __('Discount', 'wp-ultimo'),
+						'title'             => __('Discount', 'wp-multisite-waas'),
 						'wrapper_html_attr' => [
 							'v-cloak' => '1',
 						],
@@ -292,9 +292,9 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 								'placeholder'     => '',
 								'wrapper_classes' => 'wu-w-2/3',
 								'options'         => [
-									'percentage' => __('Percentage (%)', 'wp-ultimo'),
+									'percentage' => __('Percentage (%)', 'wp-multisite-waas'),
 									// translators: %s is the currency symbol. e.g. $
-									'absolute'   => sprintf(__('Absolute (%s)', 'wp-ultimo'), wu_get_currency_symbol()),
+									'absolute'   => sprintf(__('Absolute (%s)', 'wp-multisite-waas'), wu_get_currency_symbol()),
 								],
 								'html_attr'       => [
 									'v-model' => 'type',
@@ -315,8 +315,8 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 					],
 					'apply_to_renewals'     => [
 						'type'              => 'toggle',
-						'title'             => __('Apply to Renewals', 'wp-ultimo'),
-						'desc'              => __('By default, discounts are only applied to the first payment.', 'wp-ultimo'),
+						'title'             => __('Apply to Renewals', 'wp-multisite-waas'),
+						'desc'              => __('By default, discounts are only applied to the first payment.', 'wp-multisite-waas'),
 						'value'             => $this->get_object()->should_apply_to_renewals(),
 						'wrapper_html_attr' => [
 							'v-cloak' => '1',
@@ -324,8 +324,8 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 					],
 					'apply_to_setup_fee'    => [
 						'type'              => 'toggle',
-						'title'             => __('Setup Fee Discount', 'wp-ultimo'),
-						'desc'              => __('Also set a discount for setup fee?', 'wp-ultimo'),
+						'title'             => __('Setup Fee Discount', 'wp-multisite-waas'),
+						'desc'              => __('Also set a discount for setup fee?', 'wp-multisite-waas'),
 						'value'             => $this->get_object()->get_setup_fee_value() > 0,
 						'html_attr'         => [
 							'v-model' => 'apply_to_setup_fee',
@@ -336,7 +336,7 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 					],
 					'setup_fee_value_group' => [
 						'type'              => 'group',
-						'title'             => __('Setup Fee Discount', 'wp-ultimo'),
+						'title'             => __('Setup Fee Discount', 'wp-multisite-waas'),
 						'wrapper_html_attr' => [
 							'v-show'  => 'apply_to_setup_fee',
 							'v-cloak' => '1',
@@ -348,9 +348,9 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 								'placeholder'     => '',
 								'wrapper_classes' => 'wu-w-2/3',
 								'options'         => [
-									'percentage' => __('Percentage (%)', 'wp-ultimo'),
-									// translators: %s is the currency symbol. e.g $
-									'absolute'   => sprintf(__('Absolute (%s)', 'wp-ultimo'), wu_get_currency_symbol()),
+									'percentage' => __('Percentage (%)', 'wp-multisite-waas'),
+									// translators: %s is the currency symbol. e.g. $
+									'absolute'   => sprintf(__('Absolute (%s)', 'wp-multisite-waas'), wu_get_currency_symbol()),
 								],
 								'html_attr'       => [
 									'v-model' => 'setup_fee_type',
@@ -375,12 +375,12 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_fields_widget(
 			'active',
 			[
-				'title'  => __('Active', 'wp-ultimo'),
+				'title'  => __('Active', 'wp-multisite-waas'),
 				'fields' => [
 					'active' => [
 						'type'  => 'toggle',
-						'title' => __('Active', 'wp-ultimo'),
-						'desc'  => __('Use this option to manually enable or disable this discount code for new sign-ups.', 'wp-ultimo'),
+						'title' => __('Active', 'wp-multisite-waas'),
+						'desc'  => __('Use this option to manually enable or disable this discount code for new sign-ups.', 'wp-multisite-waas'),
 						'value' => $this->get_object()->is_active(),
 					],
 				],
@@ -404,12 +404,12 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 			$fields[ "allowed_products_{$product_id}" ] = [
 				'type'              => 'toggle',
 				'title'             => $product->get_name(),
-				'desc'              => __('Make applicable to this product.', 'wp-ultimo'),
+				'desc'              => __('Make applicable to this product.', 'wp-multisite-waas'),
 				'tooltip'           => '',
 				'wrapper_classes'   => '',
 				'html_attr'         => [
 					':name'    => "'allowed_products[]'",
-					':checked' => json_encode(!$this->get_object()->get_limit_products() || in_array($product_id, $this->get_object()->get_allowed_products())), // phpcs:ignore
+					':checked' => wp_json_encode(!$this->get_object()->get_limit_products() || in_array($product_id, $this->get_object()->get_allowed_products())), // phpcs:ignore
 					':value'   => $product_id,
 				],
 				'wrapper_html_attr' => [
@@ -432,7 +432,7 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 			$fields['allowed_products_no_products'] = [
 				'type'              => 'note',
 				'title'             => '',
-				'desc'              => __('You do not have any products at this moment.', 'wp-ultimo'),
+				'desc'              => __('You do not have any products at this moment.', 'wp-multisite-waas'),
 				'wrapper_html_attr' => [
 					'v-cloak' => 1,
 					'v-show'  => 'limit_products',
@@ -453,7 +453,7 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 
 		global $wp_filter;
 
-		$tabs = [__('Legacy Add-ons', 'wp-ultimo')];
+		$tabs = [__('Legacy Add-ons', 'wp-multisite-waas')];
 
 		if ( ! isset($wp_filter['wp_ultimo_coupon_advanced_options'])) {
 			return;
@@ -466,9 +466,9 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 		$fields = [
 			'heading' => [
 				'type'  => 'header',
-				'title' => __('Legacy Options', 'wp-ultimo'),
+				'title' => __('Legacy Options', 'wp-multisite-waas'),
 				// translators: %s is the comma-separated list of legacy add-ons.
-				'desc'  => sprintf(__('Options for %s, and others.', 'wp-ultimo'), implode(', ', $tabs)),
+				'desc'  => sprintf(__('Options for %s, and others.', 'wp-multisite-waas'), implode(', ', $tabs)),
 			],
 		];
 
@@ -488,7 +488,7 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_fields_widget(
 			'legacy-options',
 			[
-				'title'                 => __('Legacy Options', 'wp-ultimo'),
+				'title'                 => __('Legacy Options', 'wp-multisite-waas'),
 				'position'              => 'normal',
 				'fields'                => $fields,
 				'classes'               => 'wu-legacy-options-panel',
@@ -545,7 +545,7 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function get_title() {
 
-		return $this->edit ? __('Edit Discount Code', 'wp-ultimo') : __('Add new Discount Code', 'wp-ultimo');
+		return $this->edit ? __('Edit Discount Code', 'wp-multisite-waas') : __('Add new Discount Code', 'wp-multisite-waas');
 	}
 
 	/**
@@ -556,7 +556,7 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Edit Discount Code', 'wp-ultimo');
+		return __('Edit Discount Code', 'wp-multisite-waas');
 	}
 
 	/**
@@ -579,15 +579,15 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'edit_label'          => __('Edit Discount Code', 'wp-ultimo'),
-			'add_new_label'       => __('Add new Discount Code', 'wp-ultimo'),
-			'updated_message'     => __('Discount Code updated successfully!', 'wp-ultimo'),
-			'title_placeholder'   => __('Enter Discount Code', 'wp-ultimo'),
+			'edit_label'          => __('Edit Discount Code', 'wp-multisite-waas'),
+			'add_new_label'       => __('Add new Discount Code', 'wp-multisite-waas'),
+			'updated_message'     => __('Discount Code updated successfully!', 'wp-multisite-waas'),
+			'title_placeholder'   => __('Enter Discount Code', 'wp-multisite-waas'),
 			'title_description'   => '',
-			'save_button_label'   => __('Save Discount Code', 'wp-ultimo'),
+			'save_button_label'   => __('Save Discount Code', 'wp-multisite-waas'),
 			'save_description'    => '',
-			'delete_button_label' => __('Delete Discount Code', 'wp-ultimo'),
-			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-ultimo'),
+			'delete_button_label' => __('Delete Discount Code', 'wp-multisite-waas'),
+			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-multisite-waas'),
 		];
 	}
 
@@ -609,7 +609,7 @@ class Discount_Code_Edit_Admin_Page extends Edit_Admin_Page {
 			$item = wu_get_discount_code($item_id);
 
 			if ( ! $item) {
-				wp_redirect(wu_network_admin_url('wp-ultimo-discount_codes'));
+				wp_safe_redirect(wu_network_admin_url('wp-ultimo-discount_codes'));
 
 				exit;
 			}

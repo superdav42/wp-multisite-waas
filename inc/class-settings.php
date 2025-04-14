@@ -91,7 +91,7 @@ class Settings {
 			return $status;
 		}
 
-		$status = wu_get_setting('enable_registration') ? 'all' : $status;
+		$status = wu_get_setting('enable_registration', true) ? 'all' : $status;
 
 		return $status;
 	}
@@ -153,13 +153,8 @@ class Settings {
 			$this->settings = wu_get_option(self::KEY);
 		}
 
-		if (false === $this->settings || empty($this->settings)) {
-			if ( ! $this->saving) {
-				$this->saving   = true;
-				$this->settings = $this->save_settings([], true);
-			} else {
-				return [];
-			}
+		if (empty($this->settings)) {
+			return [];
 		}
 
 		if ($check_caps) {} // phpcs:ignore;
@@ -174,20 +169,21 @@ class Settings {
 	 * @since  1.4.0 Now we can filter settings we get.
 	 *
 	 * @param  string $setting Settings name to return.
-	 * @param  mixed  $default Default value for the setting if it doesn't exist.
+	 * @param  mixed  $default_value Default value for the setting if it doesn't exist.
+	 *
 	 * @return mixed The value of that setting
 	 */
-	public function get_setting($setting, $default = false) {
+	public function get_setting($setting, $default_value = false) {
 
 		$settings = $this->get_all();
 
 		if (str_contains($setting, '-')) {
-			_doing_it_wrong($setting, __('Dashes are no longer supported when registering a setting. You should change it to underscores in later versions.', 'wp-ultimo'), '2.0.0');
+			_doing_it_wrong($setting, esc_html__('Dashes are no longer supported when registering a setting. You should change it to underscores in later versions.', 'wp-multisite-waas'), '2.0.0');
 		}
 
-		$setting_value = $settings[ $setting ] ?? $default;
+		$setting_value = $settings[ $setting ] ?? $default_value;
 
-		return apply_filters('wu_get_setting', $setting_value, $setting, $default, $settings);
+		return apply_filters('wu_get_setting', $setting_value, $setting, $default_value, $settings);
 	}
 
 	/**
@@ -234,7 +230,7 @@ class Settings {
 
 		$sections = $this->get_sections();
 
-		$saved_settings = ! $reset ? $this->get_all() : [];
+		$saved_settings = $this->get_all();
 
 		do_action('wu_before_save_settings', $settings_to_save);
 
@@ -253,7 +249,7 @@ class Settings {
 					$new_value = false;
 				}
 
-				$value = $reset ? $field->default : $new_value;
+				$value = $new_value;
 
 				$field->set_value($value);
 
@@ -392,6 +388,7 @@ class Settings {
 	 * @param string $section_slug Section to which this field will be added to.
 	 * @param string $field_slug ID of the field. This is used to later retrieve the value saved on this setting.
 	 * @param array  $atts Field attributes such as title, description, tooltip, default value, etc.
+	 * @param int    $priority Priority of the field. This is used to order the fields.
 	 * @return void
 	 */
 	public function add_field($section_slug, $field_slug, $atts, $priority = 10): void {
@@ -405,7 +402,7 @@ class Settings {
 				* We no longer support settings with hyphens.
 				*/
 				if (str_contains($field_slug, '-')) {
-					_doing_it_wrong($field_slug, __('Dashes are no longer supported when registering a setting. You should change it to underscores in later versions.', 'wp-ultimo'), '2.0.0');
+					_doing_it_wrong($field_slug, esc_html__('Dashes are no longer supported when registering a setting. You should change it to underscores in later versions.', 'wp-multisite-waas'), '2.0.0');
 				}
 
 				$default_order = (count($fields) + 1) * 10;
@@ -470,7 +467,7 @@ class Settings {
 								$new_attrs['data-selected'] = $data_selected->to_search_results();
 							}
 
-							$new_attrs['data-selected'] = json_encode($new_attrs['data-selected']);
+							$new_attrs['data-selected'] = wp_json_encode($new_attrs['data-selected']);
 
 							return array_merge($original_html_attr, $new_attrs);
 						};
@@ -483,7 +480,7 @@ class Settings {
 					foreach ($atts['require'] as $attr => $value) {
 						$attr = str_replace('-', '_', $attr);
 
-						$value = json_encode($value);
+						$value = wp_json_encode($value);
 
 						$require_rules[] = "require('{$attr}', {$value})";
 					}
@@ -500,6 +497,7 @@ class Settings {
 		);
 
 		$settings = $this->get_all();
+
 		/*
 		 * Makes sure we install the default value if it is not set yet.
 		 */
@@ -526,8 +524,8 @@ class Settings {
 		$this->add_section(
 			'general',
 			[
-				'title' => __('General', 'wp-ultimo'),
-				'desc'  => __('General', 'wp-ultimo'),
+				'title' => __('General', 'wp-multisite-waas'),
+				'desc'  => __('General', 'wp-multisite-waas'),
 			]
 		);
 
@@ -535,8 +533,8 @@ class Settings {
 			'general',
 			'company_header',
 			[
-				'title' => __('Your Business', 'wp-ultimo'),
-				'desc'  => __('General information about your business..', 'wp-ultimo'),
+				'title' => __('Your Business', 'wp-multisite-waas'),
+				'desc'  => __('General information about your business..', 'wp-multisite-waas'),
 				'type'  => 'header',
 			],
 			10
@@ -546,8 +544,8 @@ class Settings {
 			'general',
 			'company_name',
 			[
-				'title'   => __('Company Name', 'wp-ultimo'),
-				'desc'    => __('This name is used when generating invoices, for example.', 'wp-ultimo'),
+				'title'   => __('Company Name', 'wp-multisite-waas'),
+				'desc'    => __('This name is used when generating invoices, for example.', 'wp-multisite-waas'),
 				'type'    => 'text',
 				'default' => get_network_option(null, 'site_name'),
 			],
@@ -558,8 +556,8 @@ class Settings {
 			'general',
 			'company_logo',
 			[
-				'title'   => __('Upload Company Logo', 'wp-ultimo'),
-				'desc'    => __('Add your company logo to be used on the login page and other places.', 'wp-ultimo'),
+				'title'   => __('Upload Company Logo', 'wp-multisite-waas'),
+				'desc'    => __('Add your company logo to be used on the login page and other places.', 'wp-multisite-waas'),
 				'type'    => 'image',
 				'default' => '',
 			],
@@ -570,8 +568,8 @@ class Settings {
 			'general',
 			'company_email',
 			[
-				'title'   => __('Company Email Address', 'wp-ultimo'),
-				'desc'    => __('This email is used when generating invoices, for example.', 'wp-ultimo'),
+				'title'   => __('Company Email Address', 'wp-multisite-waas'),
+				'desc'    => __('This email is used when generating invoices, for example.', 'wp-multisite-waas'),
 				'type'    => 'text',
 				'default' => get_network_option(null, 'admin_email'),
 			],
@@ -582,8 +580,8 @@ class Settings {
 			'general',
 			'company_address',
 			[
-				'title'       => __('Company Address', 'wp-ultimo'),
-				'desc'        => __('This address is used when generating invoices.', 'wp-ultimo'),
+				'title'       => __('Company Address', 'wp-multisite-waas'),
+				'desc'        => __('This address is used when generating invoices.', 'wp-multisite-waas'),
 				'type'        => 'textarea',
 				'placeholder' => "350 Fifth Avenue\nManhattan, \nNew York City, NY \n10118",
 				'default'     => '',
@@ -598,8 +596,8 @@ class Settings {
 			'general',
 			'company_country',
 			[
-				'title'   => __('Company Country', 'wp-ultimo'),
-				'desc'    => __('This info is used when generating invoices, as well as for calculating when taxes apply in some contexts.', 'wp-ultimo'),
+				'title'   => __('Company Country', 'wp-multisite-waas'),
+				'desc'    => __('This info is used when generating invoices, as well as for calculating when taxes apply in some contexts.', 'wp-multisite-waas'),
 				'type'    => 'select',
 				'options' => 'wu_get_countries',
 				'default' => [$this, 'get_default_company_country'],
@@ -611,8 +609,8 @@ class Settings {
 			'general',
 			'currency_header',
 			[
-				'title' => __('Currency Options', 'wp-ultimo'),
-				'desc'  => __('The following options affect how prices are displayed on the frontend, the backend and in reports.', 'wp-ultimo'),
+				'title' => __('Currency Options', 'wp-multisite-waas'),
+				'desc'  => __('The following options affect how prices are displayed on the frontend, the backend and in reports.', 'wp-multisite-waas'),
 				'type'  => 'header',
 			],
 			70
@@ -622,8 +620,8 @@ class Settings {
 			'general',
 			'currency_symbol',
 			[
-				'title'   => __('Currency', 'wp-ultimo'),
-				'desc'    => __('Select the currency to be used in WP Multisite WaaS.', 'wp-ultimo'),
+				'title'   => __('Currency', 'wp-multisite-waas'),
+				'desc'    => __('Select the currency to be used in WP Multisite WaaS.', 'wp-multisite-waas'),
 				'type'    => 'select',
 				'default' => 'USD',
 				'options' => 'wu_get_currencies',
@@ -635,16 +633,15 @@ class Settings {
 			'general',
 			'currency_position',
 			[
-				'title'   => __('Currency Position', 'wp-ultimo'),
-				'desc'    => __('This setting affects all prices displayed across the plugin elements.', 'wp-ultimo'),
-				'desc'    => '',
+				'title'   => __('Currency Position', 'wp-multisite-waas'),
+				'desc'    => __('This setting affects all prices displayed across the plugin elements.', 'wp-multisite-waas'),
 				'type'    => 'select',
 				'default' => '%s %v',
 				'options' => [
-					'%s%v'  => __('Left ($99.99)', 'wp-ultimo'),
-					'%v%s'  => __('Right (99.99$)', 'wp-ultimo'),
-					'%s %v' => __('Left with space ($ 99.99)', 'wp-ultimo'),
-					'%v %s' => __('Right with space (99.99 $)', 'wp-ultimo'),
+					'%s%v'  => __('Left ($99.99)', 'wp-multisite-waas'),
+					'%v%s'  => __('Right (99.99$)', 'wp-multisite-waas'),
+					'%s %v' => __('Left with space ($ 99.99)', 'wp-multisite-waas'),
+					'%v %s' => __('Right with space (99.99 $)', 'wp-multisite-waas'),
 				],
 			],
 			90
@@ -654,8 +651,8 @@ class Settings {
 			'general',
 			'decimal_separator',
 			[
-				'title'   => __('Decimal Separator', 'wp-ultimo'),
-				'desc'    => __('This setting affects all prices displayed across the plugin elements.', 'wp-ultimo'),
+				'title'   => __('Decimal Separator', 'wp-multisite-waas'),
+				'desc'    => __('This setting affects all prices displayed across the plugin elements.', 'wp-multisite-waas'),
 				'type'    => 'text',
 				'default' => '.',
 			],
@@ -666,8 +663,8 @@ class Settings {
 			'general',
 			'thousand_separator',
 			[
-				'title'   => __('Thousand Separator', 'wp-ultimo'),
-				'desc'    => __('This setting affects all prices displayed across the plugin elements.', 'wp-ultimo'),
+				'title'   => __('Thousand Separator', 'wp-multisite-waas'),
+				'desc'    => __('This setting affects all prices displayed across the plugin elements.', 'wp-multisite-waas'),
 				'type'    => 'text',
 				'default' => ',',
 				'raw'     => true,
@@ -679,8 +676,8 @@ class Settings {
 			'general',
 			'precision',
 			[
-				'title'   => __('Number of Decimals', 'wp-ultimo'),
-				'desc'    => __('This setting affects all prices displayed across the plugin elements.', 'wp-ultimo'),
+				'title'   => __('Number of Decimals', 'wp-multisite-waas'),
+				'desc'    => __('This setting affects all prices displayed across the plugin elements.', 'wp-multisite-waas'),
 				'type'    => 'number',
 				'default' => '2',
 				'min'     => 0,
@@ -696,8 +693,8 @@ class Settings {
 		$this->add_section(
 			'login-and-registration',
 			[
-				'title' => __('Login & Registration', 'wp-ultimo'),
-				'desc'  => __('Login & Registration', 'wp-ultimo'),
+				'title' => __('Login & Registration', 'wp-multisite-waas'),
+				'desc'  => __('Login & Registration', 'wp-multisite-waas'),
 				'icon'  => 'dashicons-wu-key',
 			]
 		);
@@ -706,8 +703,8 @@ class Settings {
 			'login-and-registration',
 			'registration_header',
 			[
-				'title' => __('Login and Registration Options', 'wp-ultimo'),
-				'desc'  => __('Options related to registration and login behavior.', 'wp-ultimo'),
+				'title' => __('Login and Registration Options', 'wp-multisite-waas'),
+				'desc'  => __('Options related to registration and login behavior.', 'wp-multisite-waas'),
 				'type'  => 'header',
 			]
 		);
@@ -716,8 +713,8 @@ class Settings {
 			'login-and-registration',
 			'enable_registration',
 			[
-				'title'   => __('Enable Registration', 'wp-ultimo'),
-				'desc'    => __('Turning this toggle off will disable registration in all checkout forms across the network.', 'wp-ultimo'),
+				'title'   => __('Enable Registration', 'wp-multisite-waas'),
+				'desc'    => __('Turning this toggle off will disable registration in all checkout forms across the network.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 1,
 			]
@@ -727,8 +724,8 @@ class Settings {
 			'login-and-registration',
 			'enable_email_verification',
 			[
-				'title'   => __('Enable email verification', 'wp-ultimo'),
-				'desc'    => __('Enabling this option will require the customer to verify their email address when subscribing to a free plan or a plan with a trial period. Sites will not be created until the customer email verification status is changed to verified.', 'wp-ultimo'),
+				'title'   => __('Enable email verification', 'wp-multisite-waas'),
+				'desc'    => __('Enabling this option will require the customer to verify their email address when subscribing to a free plan or a plan with a trial period. Sites will not be created until the customer email verification status is changed to verified.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 1,
 			]
@@ -739,9 +736,9 @@ class Settings {
 			'default_registration_page',
 			[
 				'type'        => 'model',
-				'title'       => __('Default Registration Page', 'wp-ultimo'),
-				'placeholder' => __('Search pages on the main site...', 'wp-ultimo'),
-				'desc'        => __('Only published pages on the main site are available for selection, and you need to make sure they contain a [wu_checkout] shortcode.', 'wp-ultimo'),
+				'title'       => __('Default Registration Page', 'wp-multisite-waas'),
+				'placeholder' => __('Search pages on the main site...', 'wp-multisite-waas'),
+				'desc'        => __('Only published pages on the main site are available for selection, and you need to make sure they contain a [wu_checkout] shortcode.', 'wp-multisite-waas'),
 				'tooltip'     => '',
 				'html_attr'   => [
 					'data-base-link'    => get_admin_url(wu_get_main_site_id(), 'post.php?action=edit&post'),
@@ -759,8 +756,8 @@ class Settings {
 			'login-and-registration',
 			'enable_custom_login_page',
 			[
-				'title'   => __('Use Custom Login Page', 'wp-ultimo'),
-				'desc'    => __('Turn this toggle on to select a custom page to be used as the login page.', 'wp-ultimo'),
+				'title'   => __('Use Custom Login Page', 'wp-multisite-waas'),
+				'desc'    => __('Turn this toggle on to select a custom page to be used as the login page.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 0,
 			]
@@ -771,9 +768,9 @@ class Settings {
 			'default_login_page',
 			[
 				'type'        => 'model',
-				'title'       => __('Default Login Page', 'wp-ultimo'),
-				'placeholder' => __('Search pages on the main site...', 'wp-ultimo'),
-				'desc'        => __('Only published pages on the main site are available for selection, and you need to make sure they contain a [wu_login_form] shortcode.', 'wp-ultimo'),
+				'title'       => __('Default Login Page', 'wp-multisite-waas'),
+				'placeholder' => __('Search pages on the main site...', 'wp-multisite-waas'),
+				'desc'        => __('Only published pages on the main site are available for selection, and you need to make sure they contain a [wu_login_form] shortcode.', 'wp-multisite-waas'),
 				'tooltip'     => '',
 				'html_attr'   => [
 					'data-base-link'    => get_admin_url(wu_get_main_site_id(), 'post.php?action=edit&post'),
@@ -793,8 +790,8 @@ class Settings {
 			'login-and-registration',
 			'obfuscate_original_login_url',
 			[
-				'title'   => __('Obfuscate the Original Login URL (wp-login.php)', 'wp-ultimo'),
-				'desc'    => __('If this option is enabled, we will display a 404 error when a user tries to access the original wp-login.php link. This is useful to prevent brute-force attacks.', 'wp-ultimo'),
+				'title'   => __('Obfuscate the Original Login URL (wp-login.php)', 'wp-multisite-waas'),
+				'desc'    => __('If this option is enabled, we will display a 404 error when a user tries to access the original wp-login.php link. This is useful to prevent brute-force attacks.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 0,
 				'require' => [
@@ -807,8 +804,8 @@ class Settings {
 			'login-and-registration',
 			'subsite_custom_login_logo',
 			[
-				'title'   => __('Use Sub-site logo on Login Page', 'wp-ultimo'),
-				'desc'    => __('Toggle this option to replace the WordPress logo on the sub-site login page with the logo set for that sub-site. If unchecked, the network logo will be used instead.', 'wp-ultimo'),
+				'title'   => __('Use Sub-site logo on Login Page', 'wp-multisite-waas'),
+				'desc'    => __('Toggle this option to replace the WordPress logo on the sub-site login page with the logo set for that sub-site. If unchecked, the network logo will be used instead.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 0,
 				'require' => [
@@ -821,8 +818,8 @@ class Settings {
 			'login-and-registration',
 			'force_publish_sites_sync',
 			[
-				'title'   => __('Force Synchronous Site Publication ', 'wp-ultimo'),
-				'desc'    => __('By default, when a new pending site needs to be converted into a real network site, the publishing process happens via Job Queue, asynchronously. Enable this option to force the publication to happen in the same request as the signup. Be careful, as this can cause timeouts depending on the size of the site templates being copied.', 'wp-ultimo'),
+				'title'   => __('Force Synchronous Site Publication ', 'wp-multisite-waas'),
+				'desc'    => __('By default, when a new pending site needs to be converted into a real network site, the publishing process happens via Job Queue, asynchronously. Enable this option to force the publication to happen in the same request as the signup. Be careful, as this can cause timeouts depending on the size of the site templates being copied.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 0,
 			]
@@ -832,8 +829,8 @@ class Settings {
 			'login-and-registration',
 			'other_header',
 			[
-				'title' => __('Other Options', 'wp-ultimo'),
-				'desc'  => __('Other registration-related options.', 'wp-ultimo'),
+				'title' => __('Other Options', 'wp-multisite-waas'),
+				'desc'  => __('Other registration-related options.', 'wp-multisite-waas'),
 				'type'  => 'header',
 			]
 		);
@@ -842,8 +839,8 @@ class Settings {
 			'login-and-registration',
 			'default_role',
 			[
-				'title'   => __('Default Role', 'wp-ultimo'),
-				'desc'    => __('Set the role to be applied to the user during the signup process.', 'wp-ultimo'),
+				'title'   => __('Default Role', 'wp-multisite-waas'),
+				'desc'    => __('Set the role to be applied to the user during the signup process.', 'wp-multisite-waas'),
 				'type'    => 'select',
 				'default' => 'administrator',
 				'options' => 'wu_get_roles_as_options',
@@ -854,8 +851,8 @@ class Settings {
 			'login-and-registration',
 			'add_users_to_main_site',
 			[
-				'title'   => __('Add Users to the Main Site as well?', 'wp-ultimo'),
-				'desc'    => __('Enabling this option will also add the user to the main site of your network.', 'wp-ultimo'),
+				'title'   => __('Add Users to the Main Site as well?', 'wp-multisite-waas'),
+				'desc'    => __('Enabling this option will also add the user to the main site of your network.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 0,
 			]
@@ -865,8 +862,8 @@ class Settings {
 			'login-and-registration',
 			'main_site_default_role',
 			[
-				'title'   => __('Add to Main Site with Role...', 'wp-ultimo'),
-				'desc'    => __('Select the role WP Multisite WaaS should use when adding the user to the main site of your network. Be careful.', 'wp-ultimo'),
+				'title'   => __('Add to Main Site with Role...', 'wp-multisite-waas'),
+				'desc'    => __('Select the role WP Multisite WaaS should use when adding the user to the main site of your network. Be careful.', 'wp-multisite-waas'),
 				'type'    => 'select',
 				'default' => 'subscriber',
 				'options' => 'wu_get_roles_as_options',
@@ -886,8 +883,8 @@ class Settings {
 		$this->add_section(
 			'memberships',
 			[
-				'title' => __('Memberships', 'wp-ultimo'),
-				'desc'  => __('Memberships', 'wp-ultimo'),
+				'title' => __('Memberships', 'wp-multisite-waas'),
+				'desc'  => __('Memberships', 'wp-multisite-waas'),
 				'icon'  => 'dashicons-wu-infinity',
 			]
 		);
@@ -897,9 +894,9 @@ class Settings {
 			'default_update_page',
 			[
 				'type'        => 'model',
-				'title'       => __('Default Membership Update Page', 'wp-ultimo'),
-				'placeholder' => __('Search pages on the main site...', 'wp-ultimo'),
-				'desc'        => __('Only published pages on the main site are available for selection, and you need to make sure they contain a [wu_checkout] shortcode.', 'wp-ultimo'),
+				'title'       => __('Default Membership Update Page', 'wp-multisite-waas'),
+				'placeholder' => __('Search pages on the main site...', 'wp-multisite-waas'),
+				'desc'        => __('Only published pages on the main site are available for selection, and you need to make sure they contain a [wu_checkout] shortcode.', 'wp-multisite-waas'),
 				'tooltip'     => '',
 				'html_attr'   => [
 					'data-base-link'    => get_admin_url(wu_get_main_site_id(), 'post.php?action=edit&post'),
@@ -917,9 +914,9 @@ class Settings {
 			'memberships',
 			'block_frontend',
 			[
-				'title'   => __('Block Frontend Access', 'wp-ultimo'),
-				'desc'    => __('Block the frontend access of network sites after a membership is no longer active.', 'wp-ultimo'),
-				'tooltip' => __('By default, if a user does not pay and the account goes inactive, only the admin panel will be blocked, but the user\'s site will still be accessible on the frontend. If enabled, this option will also block frontend access in those cases.', 'wp-ultimo'),
+				'title'   => __('Block Frontend Access', 'wp-multisite-waas'),
+				'desc'    => __('Block the frontend access of network sites after a membership is no longer active.', 'wp-multisite-waas'),
+				'tooltip' => __('By default, if a user does not pay and the account goes inactive, only the admin panel will be blocked, but the user\'s site will still be accessible on the frontend. If enabled, this option will also block frontend access in those cases.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 0,
 			]
@@ -929,8 +926,8 @@ class Settings {
 			'memberships',
 			'block_frontend_grace_period',
 			[
-				'title'   => __('Frontend Block Grace Period', 'wp-ultimo'),
-				'desc'    => __('Select the number of days WP Multisite WaaS should wait after the membership goes inactive before blocking the frontend access. Leave 0 to block immediately after the membership becomes inactive.', 'wp-ultimo'),
+				'title'   => __('Frontend Block Grace Period', 'wp-multisite-waas'),
+				'desc'    => __('Select the number of days WP Multisite WaaS should wait after the membership goes inactive before blocking the frontend access. Leave 0 to block immediately after the membership becomes inactive.', 'wp-multisite-waas'),
 				'type'    => 'number',
 				'default' => 0,
 				'min'     => 0,
@@ -944,8 +941,8 @@ class Settings {
 			'memberships',
 			'default_block_frontend_page',
 			[
-				'title'     => __('Frontend Block Page', 'wp-ultimo'),
-				'desc'      => __('Select a page on the main site to redirect user if access is blocked', 'wp-ultimo'),
+				'title'     => __('Frontend Block Page', 'wp-multisite-waas'),
+				'desc'      => __('Select a page on the main site to redirect user if access is blocked', 'wp-multisite-waas'),
 				'tooltip'   => '',
 				'html_attr' => [
 					'data-base-link'    => get_admin_url(wu_get_main_site_id(), 'post.php?action=edit&post'),
@@ -965,8 +962,8 @@ class Settings {
 			'memberships',
 			'enable_multiple_memberships',
 			[
-				'title'   => __('Enable Multiple Memberships per Customer', 'wp-ultimo'),
-				'desc'    => __('Enabling this option will allow your users to create more than one membership.', 'wp-ultimo'),
+				'title'   => __('Enable Multiple Memberships per Customer', 'wp-multisite-waas'),
+				'desc'    => __('Enabling this option will allow your users to create more than one membership.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 0,
 			]
@@ -976,8 +973,8 @@ class Settings {
 			'memberships',
 			'enable_multiple_sites',
 			[
-				'title'   => __('Enable Multiple Sites per Membership', 'wp-ultimo'),
-				'desc'    => __('Enabling this option will allow your customers to create more than one site. You can limit how many sites your users can create in a per plan basis.', 'wp-ultimo'),
+				'title'   => __('Enable Multiple Sites per Membership', 'wp-multisite-waas'),
+				'desc'    => __('Enabling this option will allow your customers to create more than one site. You can limit how many sites your users can create in a per plan basis.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 0,
 			]
@@ -987,15 +984,15 @@ class Settings {
 			'memberships',
 			'block_sites_on_downgrade',
 			[
-				'title'   => __('Block Sites on Downgrade', 'wp-ultimo'),
-				'desc'    => __('Choose how WP Multisite WaaS should handle client sites above their plan quota on downgrade.', 'wp-ultimo'),
+				'title'   => __('Block Sites on Downgrade', 'wp-multisite-waas'),
+				'desc'    => __('Choose how WP Multisite WaaS should handle client sites above their plan quota on downgrade.', 'wp-multisite-waas'),
 				'type'    => 'select',
 				'default' => 'none',
 				'options' => [
-					'none'           => __('Keep sites as is (do nothing)', 'wp-ultimo'),
-					'block-frontend' => __('Block only frontend access', 'wp-ultimo'),
-					'block-backend'  => __('Block only backend access', 'wp-ultimo'),
-					'block-both'     => __('Block both frontend and backend access', 'wp-ultimo'),
+					'none'           => __('Keep sites as is (do nothing)', 'wp-multisite-waas'),
+					'block-frontend' => __('Block only frontend access', 'wp-multisite-waas'),
+					'block-backend'  => __('Block only backend access', 'wp-multisite-waas'),
+					'block-both'     => __('Block both frontend and backend access', 'wp-multisite-waas'),
 				],
 				'require' => [
 					'enable_multiple_sites' => true,
@@ -1007,14 +1004,14 @@ class Settings {
 			'memberships',
 			'move_posts_on_downgrade',
 			[
-				'title'   => __('Move Posts on Downgrade', 'wp-ultimo'),
-				'desc'    => __('Select how you want to handle the posts above the quota on downgrade. This will apply to all post types with quotas set.', 'wp-ultimo'),
+				'title'   => __('Move Posts on Downgrade', 'wp-multisite-waas'),
+				'desc'    => __('Select how you want to handle the posts above the quota on downgrade. This will apply to all post types with quotas set.', 'wp-multisite-waas'),
 				'type'    => 'select',
 				'default' => 'none',
 				'options' => [
-					'none'  => __('Keep posts as is (do nothing)', 'wp-ultimo'),
-					'trash' => __('Move posts above the new quota to the Trash', 'wp-ultimo'),
-					'draft' => __('Mark posts above the new quota as Drafts', 'wp-ultimo'),
+					'none'  => __('Keep posts as is (do nothing)', 'wp-multisite-waas'),
+					'trash' => __('Move posts above the new quota to the Trash', 'wp-multisite-waas'),
+					'draft' => __('Mark posts above the new quota as Drafts', 'wp-multisite-waas'),
 				],
 			]
 		);
@@ -1024,8 +1021,8 @@ class Settings {
 			'emulated_post_types_header',
 			[
 				'type'  => 'header',
-				'title' => __('Emulated Post Types', 'wp-ultimo'),
-				'desc'  => __('Emulates the registering of a custom post type to be able to create limits for it without having to activate plugins on the main site.', 'wp-ultimo'),
+				'title' => __('Emulated Post Types', 'wp-multisite-waas'),
+				'desc'  => __('Emulates the registering of a custom post type to be able to create limits for it without having to activate plugins on the main site.', 'wp-multisite-waas'),
 			]
 		);
 
@@ -1034,7 +1031,7 @@ class Settings {
 			'emulated_post_types_explanation',
 			[
 				'type'            => 'note',
-				'desc'            => __('By default, WP Multisite WaaS only allows super admins to limit post types that are registered on the main site. This makes sense from a technical stand-point but it also forces you to have plugins network-activated in order to be able to set limitations for their custom post types. Using this option, you can emulate the registering of a post type. This will register them on the main site and allow you to create limits for them on your products.', 'wp-ultimo'),
+				'desc'            => __('By default, WP Multisite WaaS only allows super admins to limit post types that are registered on the main site. This makes sense from a technical stand-point but it also forces you to have plugins network-activated in order to be able to set limitations for their custom post types. Using this option, you can emulate the registering of a post type. This will register them on the main site and allow you to create limits for them on your products.', 'wp-multisite-waas'),
 				'classes'         => '',
 				'wrapper_classes' => '',
 			]
@@ -1045,7 +1042,7 @@ class Settings {
 			'emulated_post_types_empty',
 			[
 				'type'              => 'note',
-				'desc'              => __('Add the first post type using the button below.', 'wp-ultimo'),
+				'desc'              => __('Add the first post type using the button below.', 'wp-multisite-waas'),
 				'classes'           => 'wu-text-gray-600 wu-text-xs wu-text-center wu-w-full',
 				'wrapper_classes'   => 'wu-bg-gray-100 wu-items-end',
 				'wrapper_html_attr' => [
@@ -1072,13 +1069,13 @@ class Settings {
 				'fields'            => [
 					'emulated_post_types_remove' => [
 						'type'            => 'note',
-						'desc'            => sprintf('<a title="%s" class="wu-no-underline wu-inline-block wu-text-gray-600 wu-mt-2 wu-mr-2" href="#" @click.prevent="() => emulated_post_types.splice(index, 1)"><span class="dashicons-wu-squared-cross"></span></a>', __('Remove', 'wp-ultimo')),
+						'desc'            => sprintf('<a title="%s" class="wu-no-underline wu-inline-block wu-text-gray-600 wu-mt-2 wu-mr-2" href="#" @click.prevent="() => emulated_post_types.splice(index, 1)"><span class="dashicons-wu-squared-cross"></span></a>', __('Remove', 'wp-multisite-waas')),
 						'wrapper_classes' => 'wu-absolute wu-top-0 wu-right-0',
 					],
 					'emulated_post_types_slug'   => [
 						'type'            => 'text',
-						'title'           => __('Post Type Slug', 'wp-ultimo'),
-						'placeholder'     => __('e.g. product', 'wp-ultimo'),
+						'title'           => __('Post Type Slug', 'wp-multisite-waas'),
+						'placeholder'     => __('e.g. product', 'wp-multisite-waas'),
 						'wrapper_classes' => 'wu-w-5/12',
 						'html_attr'       => [
 							'v-model'     => 'emulated_post_type.post_type',
@@ -1087,8 +1084,8 @@ class Settings {
 					],
 					'emulated_post_types_label'  => [
 						'type'            => 'text',
-						'title'           => __('Post Type Label', 'wp-ultimo'),
-						'placeholder'     => __('e.g. Products', 'wp-ultimo'),
+						'title'           => __('Post Type Label', 'wp-multisite-waas'),
+						'placeholder'     => __('e.g. Products', 'wp-multisite-waas'),
 						'wrapper_classes' => 'wu-w-7/12 wu-ml-2',
 						'html_attr'       => [
 							'v-model'     => 'emulated_post_type.label',
@@ -1104,7 +1101,7 @@ class Settings {
 			'emulated_post_types_repeat',
 			[
 				'type'              => 'submit',
-				'title'             => __('+ Add Post Type', 'wp-ultimo'),
+				'title'             => __('+ Add Post Type', 'wp-multisite-waas'),
 				'classes'           => 'wu-uppercase wu-text-2xs wu-text-blue-700 wu-border-none wu-bg-transparent wu-font-bold wu-text-right wu-w-full wu-cursor-pointer',
 				'wrapper_classes'   => 'wu-bg-gray-100 wu-items-end',
 				'wrapper_html_attr' => [
@@ -1131,8 +1128,8 @@ class Settings {
 		$this->add_section(
 			'sites',
 			[
-				'title' => __('Sites', 'wp-ultimo'),
-				'desc'  => __('Sites', 'wp-ultimo'),
+				'title' => __('Sites', 'wp-multisite-waas'),
+				'desc'  => __('Sites', 'wp-multisite-waas'),
 				'icon'  => 'dashicons-wu-browser',
 			]
 		);
@@ -1141,8 +1138,8 @@ class Settings {
 			'sites',
 			'sites_features_heading',
 			[
-				'title' => __('Site Options', 'wp-ultimo'),
-				'desc'  => __('Configure certain aspects of how network Sites behave.', 'wp-ultimo'),
+				'title' => __('Site Options', 'wp-multisite-waas'),
+				'desc'  => __('Configure certain aspects of how network Sites behave.', 'wp-multisite-waas'),
 				'type'  => 'header',
 			]
 		);
@@ -1152,9 +1149,9 @@ class Settings {
 			'default_new_site_page',
 			[
 				'type'        => 'model',
-				'title'       => __('Default New Site Page', 'wp-ultimo'),
-				'placeholder' => __('Search pages on the main site...', 'wp-ultimo'),
-				'desc'        => __('Only published pages on the main site are available for selection, and you need to make sure they contain a [wu_checkout] shortcode.', 'wp-ultimo'),
+				'title'       => __('Default New Site Page', 'wp-multisite-waas'),
+				'placeholder' => __('Search pages on the main site...', 'wp-multisite-waas'),
+				'desc'        => __('Only published pages on the main site are available for selection, and you need to make sure they contain a [wu_checkout] shortcode.', 'wp-multisite-waas'),
 				'tooltip'     => '',
 				'html_attr'   => [
 					'data-base-link'    => get_admin_url(wu_get_main_site_id(), 'post.php?action=edit&post'),
@@ -1172,8 +1169,8 @@ class Settings {
 			'sites',
 			'enable_visits_limiting',
 			[
-				'title'   => __('Enable Visits Limitation & Counting', 'wp-ultimo'),
-				'desc'    => __('Enabling this option will add visits limitation settings to the plans and add the functionality necessary to count site visits on the front-end.', 'wp-ultimo'),
+				'title'   => __('Enable Visits Limitation & Counting', 'wp-multisite-waas'),
+				'desc'    => __('Enabling this option will add visits limitation settings to the plans and add the functionality necessary to count site visits on the front-end.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 1,
 			]
@@ -1183,8 +1180,8 @@ class Settings {
 			'sites',
 			'enable_screenshot_generator',
 			[
-				'title'   => __('Enable Screenshot Generator', 'wp-ultimo'),
-				'desc'    => __('With this option is enabled, WP Multisite WaaS will take a screenshot for every newly created site on your network and set the resulting image as that site\'s featured image. This features requires a valid license key to work and it is not supported for local sites.', 'wp-ultimo'),
+				'title'   => __('Enable Screenshot Generator', 'wp-multisite-waas'),
+				'desc'    => __('With this option is enabled, WP Multisite WaaS will take a screenshot for every newly created site on your network and set the resulting image as that site\'s featured image. This features requires a valid license key to work and it is not supported for local sites.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 1,
 			]
@@ -1194,8 +1191,8 @@ class Settings {
 			'sites',
 			'wordpress_features_heading',
 			[
-				'title' => __('WordPress Features', 'wp-ultimo'),
-				'desc'  => __('Override default WordPress settings for network Sites.', 'wp-ultimo'),
+				'title' => __('WordPress Features', 'wp-multisite-waas'),
+				'desc'  => __('Override default WordPress settings for network Sites.', 'wp-multisite-waas'),
 				'type'  => 'header',
 			]
 		);
@@ -1204,9 +1201,9 @@ class Settings {
 			'sites',
 			'menu_items_plugin',
 			[
-				'title'   => __('Enable Plugins Menu', 'wp-ultimo'),
-				'desc'    => __('Do you want to let users on the network to have access to the Plugins page, activating plugins for their sites? If this option is disabled, the customer will not be able to manage the site plugins.', 'wp-ultimo'),
-				'tooltip' => __('You can select which plugins the user will be able to use for each plan.', 'wp-ultimo'),
+				'title'   => __('Enable Plugins Menu', 'wp-multisite-waas'),
+				'desc'    => __('Do you want to let users on the network to have access to the Plugins page, activating plugins for their sites? If this option is disabled, the customer will not be able to manage the site plugins.', 'wp-multisite-waas'),
+				'tooltip' => __('You can select which plugins the user will be able to use for each plan.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 1,
 			]
@@ -1216,9 +1213,9 @@ class Settings {
 			'sites',
 			'add_new_users',
 			[
-				'title'   => __('Add New Users', 'wp-ultimo'),
-				'desc'    => __('Allow site administrators to add new users to their site via the "Users → Add New" page.', 'wp-ultimo'),
-				'tooltip' => __('You can limit the number of users allowed for each plan.', 'wp-ultimo'),
+				'title'   => __('Add New Users', 'wp-multisite-waas'),
+				'desc'    => __('Allow site administrators to add new users to their site via the "Users → Add New" page.', 'wp-multisite-waas'),
+				'tooltip' => __('You can limit the number of users allowed for each plan.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 1,
 			]
@@ -1228,8 +1225,8 @@ class Settings {
 			'sites',
 			'site_template_features_heading',
 			[
-				'title' => __('Site Template Options', 'wp-ultimo'),
-				'desc'  => __('Configure certain aspects of how Site Templates behave.', 'wp-ultimo'),
+				'title' => __('Site Template Options', 'wp-multisite-waas'),
+				'desc'  => __('Configure certain aspects of how Site Templates behave.', 'wp-multisite-waas'),
 				'type'  => 'header',
 			]
 		);
@@ -1238,8 +1235,8 @@ class Settings {
 			'sites',
 			'allow_template_switching',
 			[
-				'title'   => __('Allow Template Switching', 'wp-ultimo'),
-				'desc'    => __("Enabling this option will add an option on your client's dashboard to switch their site template to another one available on the catalog of available templates. The data is lost after a switch as the data from the new template is copied over.", 'wp-ultimo'),
+				'title'   => __('Allow Template Switching', 'wp-multisite-waas'),
+				'desc'    => __("Enabling this option will add an option on your client's dashboard to switch their site template to another one available on the catalog of available templates. The data is lost after a switch as the data from the new template is copied over.", 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 1,
 			]
@@ -1249,8 +1246,8 @@ class Settings {
 			'sites',
 			'allow_own_site_as_template',
 			[
-				'title'   => __('Allow Users to use their own Sites as Templates', 'wp-ultimo'),
-				'desc'    => __('Enabling this option will add the user own sites to the template screen, allowing them to create a new site based on the content and customizations they made previously.', 'wp-ultimo'),
+				'title'   => __('Allow Users to use their own Sites as Templates', 'wp-multisite-waas'),
+				'desc'    => __('Enabling this option will add the user own sites to the template screen, allowing them to create a new site based on the content and customizations they made previously.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 0,
 				'require' => [
@@ -1263,8 +1260,8 @@ class Settings {
 			'sites',
 			'copy_media',
 			[
-				'title'   => __('Copy Media on Template Duplication?', 'wp-ultimo'),
-				'desc'    => __('Checking this option will copy the media uploaded on the template site to the newly created site. This can be overridden on each of the plans.', 'wp-ultimo'),
+				'title'   => __('Copy Media on Template Duplication?', 'wp-multisite-waas'),
+				'desc'    => __('Checking this option will copy the media uploaded on the template site to the newly created site. This can be overridden on each of the plans.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 1,
 			]
@@ -1274,8 +1271,8 @@ class Settings {
 			'sites',
 			'stop_template_indexing',
 			[
-				'title'   => __('Prevent Search Engines from indexing Site Templates', 'wp-ultimo'),
-				'desc'    => __('Checking this option will discourage search engines from indexing all the Site Templates on your network.', 'wp-ultimo'),
+				'title'   => __('Prevent Search Engines from indexing Site Templates', 'wp-multisite-waas'),
+				'desc'    => __('Checking this option will discourage search engines from indexing all the Site Templates on your network.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 0,
 			]
@@ -1291,8 +1288,8 @@ class Settings {
 		$this->add_section(
 			'payment-gateways',
 			[
-				'title' => __('Payments', 'wp-ultimo'),
-				'desc'  => __('Payments', 'wp-ultimo'),
+				'title' => __('Payments', 'wp-multisite-waas'),
+				'desc'  => __('Payments', 'wp-multisite-waas'),
 				'icon'  => 'dashicons-wu-credit-card',
 			]
 		);
@@ -1301,8 +1298,8 @@ class Settings {
 			'payment-gateways',
 			'main_header',
 			[
-				'title'           => __('Payment Settings', 'wp-ultimo'),
-				'desc'            => __('The following options affect how prices are displayed on the frontend, the backend and in reports.', 'wp-ultimo'),
+				'title'           => __('Payment Settings', 'wp-multisite-waas'),
+				'desc'            => __('The following options affect how prices are displayed on the frontend, the backend and in reports.', 'wp-multisite-waas'),
 				'type'            => 'header',
 				'show_as_submenu' => true,
 			]
@@ -1312,8 +1309,8 @@ class Settings {
 			'payment-gateways',
 			'force_auto_renew',
 			[
-				'title'   => __('Force Auto-Renew', 'wp-ultimo'),
-				'desc'    => __('Enable this option if you want to make sure memberships are created with auto-renew activated whenever the selected gateway supports it. Disabling this option will show an auto-renew option during checkout.', 'wp-ultimo'),
+				'title'   => __('Force Auto-Renew', 'wp-multisite-waas'),
+				'desc'    => __('Enable this option if you want to make sure memberships are created with auto-renew activated whenever the selected gateway supports it. Disabling this option will show an auto-renew option during checkout.', 'wp-multisite-waas'),
 				'tooltip' => '',
 				'type'    => 'toggle',
 				'default' => 1,
@@ -1324,8 +1321,8 @@ class Settings {
 			'payment-gateways',
 			'allow_trial_without_payment_method',
 			[
-				'title'   => __('Allow Trials without Payment Method', 'wp-ultimo'),
-				'desc'    => __('By default, WP Multisite WaaS asks customers to add a payment method on sign-up even if a trial period is present. Enable this option to only ask for a payment method when the trial period is over.', 'wp-ultimo'),
+				'title'   => __('Allow Trials without Payment Method', 'wp-multisite-waas'),
+				'desc'    => __('By default, WP Multisite WaaS asks customers to add a payment method on sign-up even if a trial period is present. Enable this option to only ask for a payment method when the trial period is over.', 'wp-multisite-waas'),
 				'tooltip' => '',
 				'type'    => 'toggle',
 				'default' => 0,
@@ -1336,9 +1333,9 @@ class Settings {
 			'payment-gateways',
 			'attach_invoice_pdf',
 			[
-				'title'   => __('Send Invoice on Payment Confirmation', 'wp-ultimo'),
-				'desc'    => __('Enabling this option will attach a PDF invoice (marked paid) with the payment confirmation email. This option does not apply to the Manual Gateway, which sends invoices regardless of this option.', 'wp-ultimo'),
-				'tooltip' => __('The invoice files will be saved on the wp-content/uploads/wu-invoices folder.', 'wp-ultimo'),
+				'title'   => __('Send Invoice on Payment Confirmation', 'wp-multisite-waas'),
+				'desc'    => __('Enabling this option will attach a PDF invoice (marked paid) with the payment confirmation email. This option does not apply to the Manual Gateway, which sends invoices regardless of this option.', 'wp-multisite-waas'),
+				'tooltip' => __('The invoice files will be saved on the wp-content/uploads/wu-invoices folder.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 1,
 			]
@@ -1348,14 +1345,14 @@ class Settings {
 			'payment-gateways',
 			'invoice_numbering_scheme',
 			[
-				'title'   => __('Invoice Numbering Scheme', 'wp-ultimo'),
-				'desc'    => __('What should WP Multisite WaaS use as the invoice number?', 'wp-ultimo'),
+				'title'   => __('Invoice Numbering Scheme', 'wp-multisite-waas'),
+				'desc'    => __('What should WP Multisite WaaS use as the invoice number?', 'wp-multisite-waas'),
 				'type'    => 'select',
 				'default' => 'reference_code',
 				'tooltip' => '',
 				'options' => [
-					'reference_code'    => __('Payment Reference Code', 'wp-ultimo'),
-					'sequential_number' => __('Sequential Number', 'wp-ultimo'),
+					'reference_code'    => __('Payment Reference Code', 'wp-multisite-waas'),
+					'sequential_number' => __('Sequential Number', 'wp-multisite-waas'),
 				],
 			]
 		);
@@ -1364,8 +1361,8 @@ class Settings {
 			'payment-gateways',
 			'next_invoice_number',
 			[
-				'title'   => __('Next Invoice Number', 'wp-ultimo'),
-				'desc'    => __('This number will be used as the invoice number for the next invoice generated on the system. It is incremented by one every time a new invoice is created. You can change it and save it to reset the invoice sequential number to a specific value.', 'wp-ultimo'),
+				'title'   => __('Next Invoice Number', 'wp-multisite-waas'),
+				'desc'    => __('This number will be used as the invoice number for the next invoice generated on the system. It is incremented by one every time a new invoice is created. You can change it and save it to reset the invoice sequential number to a specific value.', 'wp-multisite-waas'),
 				'type'    => 'number',
 				'default' => '1',
 				'min'     => 0,
@@ -1379,9 +1376,9 @@ class Settings {
 			'payment-gateways',
 			'invoice_prefix',
 			[
-				'title'       => __('Invoice Number Prefix', 'wp-ultimo'),
-				'placeholder' => __('INV00', 'wp-ultimo'),
-			'desc'        => sprintf(__('Use %%YEAR%%, %%MONTH%%, and %%DAY%% to create a dynamic placeholder. E.g. %%YEAR%%-%%MONTH%%-INV will become %s.', 'wp-ultimo'), date('Y') . '-' . date('m') . '-INV'), // phpcs:ignore
+				'title'       => __('Invoice Number Prefix', 'wp-multisite-waas'),
+				'placeholder' => __('INV00', 'wp-multisite-waas'),
+			'desc'        => sprintf(__('Use %%YEAR%%, %%MONTH%%, and %%DAY%% to create a dynamic placeholder. E.g. %%YEAR%%-%%MONTH%%-INV will become %s.', 'wp-multisite-waas'), date('Y') . '-' . date('m') . '-INV'), // phpcs:ignore
 			'default'         => '',
 			'type'            => 'text',
 			'raw'             => true, // Necessary to prevent the removal of the %% tags.
@@ -1395,8 +1392,8 @@ class Settings {
 			'payment-gateways',
 			'gateways_header',
 			[
-				'title'           => __('Payment Gateways', 'wp-ultimo'),
-				'desc'            => __('Activate and configure the installed payment gateways in this section.', 'wp-ultimo'),
+				'title'           => __('Payment Gateways', 'wp-multisite-waas'),
+				'desc'            => __('Activate and configure the installed payment gateways in this section.', 'wp-multisite-waas'),
 				'type'            => 'header',
 				'show_as_submenu' => true,
 			]
@@ -1411,8 +1408,8 @@ class Settings {
 		$this->add_section(
 			'emails',
 			[
-				'title' => __('Emails', 'wp-ultimo'),
-				'desc'  => __('Emails', 'wp-ultimo'),
+				'title' => __('Emails', 'wp-multisite-waas'),
+				'desc'  => __('Emails', 'wp-multisite-waas'),
 				'icon'  => 'dashicons-wu-email',
 			]
 		);
@@ -1427,8 +1424,8 @@ class Settings {
 		$this->add_section(
 			'domain-mapping',
 			[
-				'title' => __('Domain Mapping', 'wp-ultimo'),
-				'desc'  => __('Domain Mapping', 'wp-ultimo'),
+				'title' => __('Domain Mapping', 'wp-multisite-waas'),
+				'desc'  => __('Domain Mapping', 'wp-multisite-waas'),
 				'icon'  => 'dashicons-wu-link',
 			]
 		);
@@ -1443,8 +1440,8 @@ class Settings {
 		$this->add_section(
 			'sso',
 			[
-				'title' => __('Single Sign-On', 'wp-ultimo'),
-				'desc'  => __('Single Sign-On', 'wp-ultimo'),
+				'title' => __('Single Sign-On', 'wp-multisite-waas'),
+				'desc'  => __('Single Sign-On', 'wp-multisite-waas'),
 				'icon'  => 'dashicons-wu-add-user',
 			]
 		);
@@ -1459,8 +1456,8 @@ class Settings {
 		$this->add_section(
 			'integrations',
 			[
-				'title' => __('Integrations', 'wp-ultimo'),
-				'desc'  => __('Integrations', 'wp-ultimo'),
+				'title' => __('Integrations', 'wp-multisite-waas'),
+				'desc'  => __('Integrations', 'wp-multisite-waas'),
 				'icon'  => 'dashicons-wu-power-plug',
 			]
 		);
@@ -1469,8 +1466,8 @@ class Settings {
 			'integrations',
 			'hosting_providers_header',
 			[
-				'title'           => __('Hosting or Panel Providers', 'wp-ultimo'),
-				'desc'            => __('Configure and manage the integration with your Hosting or Panel Provider.', 'wp-ultimo'),
+				'title'           => __('Hosting or Panel Providers', 'wp-multisite-waas'),
+				'desc'            => __('Configure and manage the integration with your Hosting or Panel Provider.', 'wp-multisite-waas'),
 				'type'            => 'header',
 				'show_as_submenu' => true,
 			]
@@ -1486,8 +1483,8 @@ class Settings {
 		$this->add_section(
 			'other',
 			[
-				'title' => __('Other Options', 'wp-ultimo'),
-				'desc'  => __('Other Options', 'wp-ultimo'),
+				'title' => __('Other Options', 'wp-multisite-waas'),
+				'desc'  => __('Other Options', 'wp-multisite-waas'),
 				'icon'  => 'dashicons-wu-switch',
 				'order' => 1000,
 			]
@@ -1497,8 +1494,8 @@ class Settings {
 			'other',
 			'Other_header',
 			[
-				'title' => __('Miscellaneous', 'wp-ultimo'),
-				'desc'  => __('Other options that do not fit anywhere else.', 'wp-ultimo'),
+				'title' => __('Miscellaneous', 'wp-multisite-waas'),
+				'desc'  => __('Other options that do not fit anywhere else.', 'wp-multisite-waas'),
 				'type'  => 'header',
 			]
 		);
@@ -1509,8 +1506,8 @@ class Settings {
 			'other',
 			'hide_tours',
 			[
-				'title'   => __('Hide UI Tours', 'wp-ultimo') . $preview_image,
-				'desc'    => __('The UI tours showed by WP Multisite WaaS should permanently hide themselves after being seen but if they persist for whatever reason, toggle this option to force them into their viewed state - which will prevent them from showing up again.', 'wp-ultimo'),
+				'title'   => __('Hide UI Tours', 'wp-multisite-waas') . $preview_image,
+				'desc'    => __('The UI tours showed by WP Multisite WaaS should permanently hide themselves after being seen but if they persist for whatever reason, toggle this option to force them into their viewed state - which will prevent them from showing up again.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 0,
 			]
@@ -1522,8 +1519,8 @@ class Settings {
 			'other',
 			'disable_image_zoom',
 			[
-				'title'   => __('Disable "Hover to Zoom"', 'wp-ultimo') . $preview_image_2,
-				'desc'    => __('By default, WP Multisite WaaS adds a "hover to zoom" feature, allowing network admins to see larger version of site screenshots and other images across the UI in full-size when hovering over them. You can disable that feature here. Preview tags like the above are not affected.', 'wp-ultimo'),
+				'title'   => __('Disable "Hover to Zoom"', 'wp-multisite-waas') . $preview_image_2,
+				'desc'    => __('By default, WP Multisite WaaS adds a "hover to zoom" feature, allowing network admins to see larger version of site screenshots and other images across the UI in full-size when hovering over them. You can disable that feature here. Preview tags like the above are not affected.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 0,
 			]
@@ -1533,8 +1530,8 @@ class Settings {
 			'other',
 			'error_reporting_header',
 			[
-				'title' => __('Logging', 'wp-ultimo'),
-				'desc'  => __('Log WP Multisite WaaS data. This is useful for debugging purposes.', 'wp-ultimo'),
+				'title' => __('Logging', 'wp-multisite-waas'),
+				'desc'  => __('Log WP Multisite WaaS data. This is useful for debugging purposes.', 'wp-multisite-waas'),
 				'type'  => 'header',
 			]
 		);
@@ -1543,15 +1540,15 @@ class Settings {
 			'other',
 			'error_logging_level',
 			[
-				'title'   => __('Logging Level', 'wp-ultimo'),
-				'desc'    => __('Select the level of logging you want to use.', 'wp-ultimo'),
+				'title'   => __('Logging Level', 'wp-multisite-waas'),
+				'desc'    => __('Select the level of logging you want to use.', 'wp-multisite-waas'),
 				'type'    => 'select',
 				'default' => 'default',
 				'options' => [
-					'default'  => __('PHP Default', 'wp-ultimo'),
-					'disabled' => __('Disabled', 'wp-ultimo'),
-					'errors'   => __('Errors Only', 'wp-ultimo'),
-					'all'      => __('Everything', 'wp-ultimo'),
+					'default'  => __('PHP Default', 'wp-multisite-waas'),
+					'disabled' => __('Disabled', 'wp-multisite-waas'),
+					'errors'   => __('Errors Only', 'wp-multisite-waas'),
+					'all'      => __('Everything', 'wp-multisite-waas'),
 				],
 			]
 		);
@@ -1560,8 +1557,8 @@ class Settings {
 			'other',
 			'enable_error_reporting',
 			[
-				'title'   => __('Send Error Data to WP Multisite WaaS Developers', 'wp-ultimo'),
-				'desc'    => __('With this option enabled, every time your installation runs into an error related to WP Multisite WaaS, that error data will be sent to us. No sensitive data gets collected, only environmental stuff (e.g. if this is this is a subdomain network, etc).', 'wp-ultimo'),
+				'title'   => __('Send Error Data to WP Multisite WaaS Developers', 'wp-multisite-waas'),
+				'desc'    => __('With this option enabled, every time your installation runs into an error related to WP Multisite WaaS, that error data will be sent to us. No sensitive data gets collected, only environmental stuff (e.g. if this is this is a subdomain network, etc).', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 1,
 			]
@@ -1571,8 +1568,8 @@ class Settings {
 			'other',
 			'advanced_header',
 			[
-				'title' => __('Advanced Options', 'wp-ultimo'),
-				'desc'  => __('Change the plugin and wordpress behavior.', 'wp-ultimo'),
+				'title' => __('Advanced Options', 'wp-multisite-waas'),
+				'desc'  => __('Change the plugin and wordpress behavior.', 'wp-multisite-waas'),
 				'type'  => 'header',
 			]
 		);
@@ -1587,15 +1584,15 @@ class Settings {
 		if ( ! empty($plans)) {
 			$url = wu_network_admin_url('wp-ultimo-migration-alert');
 
-			$title = __('Run Migration Again', 'wp-ultimo') . sprintf(
+			$title = __('Run Migration Again', 'wp-multisite-waas') . sprintf(
 				"<span class='wu-normal-case wu-block wu-text-xs wu-font-normal wu-mt-1'>%s</span>",
-				__('Rerun the Migration Wizard if you experience data-loss after migrate.', 'wp-ultimo')
+				__('Rerun the Migration Wizard if you experience data-loss after migrate.', 'wp-multisite-waas')
 			) . sprintf(
 				"<span class='wu-normal-case wu-block wu-text-xs wu-font-normal wu-mt-2'>%s</span>",
-				__('<b>Important:</b> This process can have unexpected behavior with your current Ultimo models.<br>We recommend that you create a backup before continue.', 'wp-ultimo')
+				__('<b>Important:</b> This process can have unexpected behavior with your current Ultimo models.<br>We recommend that you create a backup before continue.', 'wp-multisite-waas')
 			);
 
-			$html = sprintf('<a href="%s" class="button-primary">%s</a>', $url, __('Migrate', 'wp-ultimo'));
+			$html = sprintf('<a href="%s" class="button-primary">%s</a>', $url, __('Migrate', 'wp-multisite-waas'));
 
 			$this->add_field(
 				'other',
@@ -1618,9 +1615,9 @@ class Settings {
 				'other',
 				'security_mode',
 				[
-					'title'   => __('Security Mode', 'wp-ultimo'),
+					'title'   => __('Security Mode', 'wp-multisite-waas'),
 					// Translators: Placeholder adds the security mode key and current site url with query string
-					'desc'    => sprintf(__('Only WP Multisite WaaS and other must-use plugins will run on your WordPress install while this option is enabled.<div class="wu-mt-2"><b>Important:</b> Copy the following URL to disable security mode if something goes wrong and this page becomes unavailable:<code>%2$s</code></div>', 'wp-ultimo'), $security_mode_key, get_site_url() . $security_mode_key),
+					'desc'    => sprintf(__('Only WP Multisite WaaS and other must-use plugins will run on your WordPress install while this option is enabled.<div class="wu-mt-2"><b>Important:</b> Copy the following URL to disable security mode if something goes wrong and this page becomes unavailable:<code>%2$s</code></div>', 'wp-multisite-waas'), $security_mode_key, get_site_url() . $security_mode_key),
 					'type'    => 'toggle',
 					'default' => 0,
 				]
@@ -1631,8 +1628,8 @@ class Settings {
 			'other',
 			'uninstall_wipe_tables',
 			[
-				'title'   => __('Remove Data on Uninstall', 'wp-ultimo'),
-				'desc'    => __('Remove all saved data for WP Multisite WaaS when the plugin is uninstalled.', 'wp-ultimo'),
+				'title'   => __('Remove Data on Uninstall', 'wp-multisite-waas'),
+				'desc'    => __('Remove all saved data for WP Multisite WaaS when the plugin is uninstalled.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 0,
 			]

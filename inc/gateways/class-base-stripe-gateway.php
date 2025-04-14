@@ -214,7 +214,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 
 			if ( ! empty($s_subscription_id)) {
 				$actions['change_payment_method'] = [
-					'label'        => __('Change Payment Method', 'wp-ultimo'),
+					'label'        => __('Change Payment Method', 'wp-multisite-waas'),
 					'icon_classes' => 'dashicons-wu-edit wu-align-middle',
 					'href'         => add_query_arg(
 						[
@@ -250,7 +250,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 		$customer = wu_get_current_customer();
 
 		if ( ! is_super_admin() && (! $customer || $customer->get_id() !== $membership->get_customer_id())) {
-			wp_die(__('You are not allowed to modify this membership.', 'wp-ultimo'));
+			wp_die(__('You are not allowed to modify this membership.', 'wp-multisite-waas'));
 		}
 
 		$gateway_id = $membership->get_gateway();
@@ -315,7 +315,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 						],
 					],
 					'business_profile' => [
-						'headline' => __('Manage your membership payment methods.', 'wp-ultimo'),
+						'headline' => __('Manage your membership payment methods.', 'wp-multisite-waas'),
 					],
 				]
 			);
@@ -348,7 +348,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 
 		$gateway_id = wu_replace_dashes($this->id);
 
-		return wu_get_setting("{$gateway_id}_public_title", __('Credit Card', 'wp-ultimo'));
+		return wu_get_setting("{$gateway_id}_public_title", __('Credit Card', 'wp-multisite-waas'));
 	}
 
 	/**
@@ -365,7 +365,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 			'payment-gateways',
 			"{$gateway_id}_enable_portal",
 			[
-				'title'      => __('Use Stripe Billing Portal', 'wp-ultimo'),
+				'title'      => __('Use Stripe Billing Portal', 'wp-multisite-waas'),
 				'desc'       => 'Add a link to the Billing Portal in the site actions widget so your customer can change the payment method used in Stripe (additional charges from Stripe could be applied).',
 				'type'       => 'toggle',
 				'default'    => 0,
@@ -514,7 +514,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 				 *  The secret key is invalid;
 				 */
 				$t = "{$id}_{$stripe_mode}_sk_key_status";
-				wu_save_setting("{$id}_{$stripe_mode}_sk_key_status", __('Invalid API Key provided', 'wp-ultimo'));
+				wu_save_setting("{$id}_{$stripe_mode}_sk_key_status", __('Invalid API Key provided', 'wp-multisite-waas'));
 			}
 		}
 
@@ -538,7 +538,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 				/**
 				 *  The public key is invalid;
 				 */
-				wu_save_setting("{$id}_{$stripe_mode}_pk_key_status", __('Invalid API Key provided', 'wp-ultimo'));
+				wu_save_setting("{$id}_{$stripe_mode}_pk_key_status", __('Invalid API Key provided', 'wp-multisite-waas'));
 			}
 		}
 	}
@@ -664,7 +664,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 		$gateway_subscription_id = $membership->get_gateway_subscription_id();
 
 		if (empty($gateway_subscription_id)) {
-			return new \WP_Error('wu_stripe_no_subscription_id', __('Error: No gateway subscription ID found for this membership.', 'wp-ultimo'));
+			return new \WP_Error('wu_stripe_no_subscription_id', __('Error: No gateway subscription ID found for this membership.', 'wp-multisite-waas'));
 		}
 
 		$this->setup_api_keys();
@@ -748,7 +748,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 				if (count($credits) > 1) {
 					$credit = [
 						'amount'      => array_sum(wp_list_pluck($credits, 'amount')),
-						'description' => __('Amount adjustment based on custom deal.', 'wp-ultimo'),
+						'description' => __('Amount adjustment based on custom deal.', 'wp-multisite-waas'),
 					];
 				} else {
 					$credit = $credits[0];
@@ -1033,7 +1033,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 		$start_date = $datetime->getTimestamp() - HOUR_IN_SECONDS; // Reduce by 60 seconds to account for inaccurate server times.
 
 		if (empty($payment_method)) {
-			throw new \Exception(__('Invalid payment method', 'wp-ultimo'));
+			throw new \Exception(__('Invalid payment method', 'wp-multisite-waas'));
 		}
 
 		/*
@@ -1238,7 +1238,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 
 		$coupon_data = [
 			'id'         => sprintf('%s-%s-%s', $s_amount, $currency, 'once'),
-			'name'       => __('Account credit and other discounts', 'wp-ultimo'),
+			'name'       => __('Account credit and other discounts', 'wp-multisite-waas'),
 			'amount_off' => $s_amount,
 			'duration'   => 'once',
 			'currency'   => $currency,
@@ -1707,7 +1707,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 		$gateway_payment_id = $payment->get_gateway_payment_id();
 
 		if (empty($gateway_payment_id)) {
-			throw new \Exception(__('Gateway payment ID not found. Cannot process refund automatically.', 'wp-ultimo'));
+			throw new \Exception(__('Gateway payment ID not found. Cannot process refund automatically.', 'wp-multisite-waas'));
 		}
 
 		/**
@@ -1726,7 +1726,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 
 			$gateway_payment_id = $invoice->charge;
 		} else {
-			throw new Exception(__('Gateway payment ID not valid.', 'wp-ultimo'));
+			throw new Exception(__('Gateway payment ID not valid.', 'wp-multisite-waas'));
 		}
 
 		/*
@@ -1859,7 +1859,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 
 			$wp_error->add($error['code'], $this->get_localized_error_message($error['code'], $e->getMessage()));
 		} else {
-			$wp_error->add('unknown_error', __('An unknown error has occurred.', 'wp-ultimo'));
+			$wp_error->add('unknown_error', __('An unknown error has occurred.', 'wp-multisite-waas'));
 		}
 
 		return $wp_error;
@@ -1886,7 +1886,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 		} else {
 
 			// translators: 1 is the error code and 2 the message.
-			return sprintf(__('An error has occurred (code: %1$s; message: %2$s).', 'wp-ultimo'), $error_code, $error_message);
+			return sprintf(__('An error has occurred (code: %1$s; message: %2$s).', 'wp-multisite-waas'), $error_code, $error_message);
 		}
 	}
 
@@ -1928,7 +1928,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 
 		// for extra security, retrieve from the Stripe API
 		if ( ! isset($received_event->id)) {
-			throw new \Exception(__('Event ID not found.', 'wp-ultimo'));
+			throw new \Exception(__('Event ID not found.', 'wp-multisite-waas'));
 		}
 
 		// Set the right mode for this request
@@ -2031,7 +2031,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 		if ($this->get_id() !== $membership->get_gateway()) {
 
 			// translators: %s is the customer ID.
-			throw new Ignorable_Exception(sprintf(__('Exiting Stripe webhook - This call must be handled by %s webhook', 'wp-ultimo'), $membership->get_gateway()));
+			throw new Ignorable_Exception(sprintf(__('Exiting Stripe webhook - This call must be handled by %s webhook', 'wp-multisite-waas'), $membership->get_gateway()));
 		}
 
 		/*
@@ -2309,7 +2309,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 				 * Throws to inform that
 				 * we have a duplicate payment.
 				 */
-				throw new Ignorable_Exception(__('Duplicate payment.', 'wp-ultimo'));
+				throw new Ignorable_Exception(__('Duplicate payment.', 'wp-multisite-waas'));
 			}
 		}
 
@@ -2326,13 +2326,13 @@ class Base_Stripe_Gateway extends Base_Gateway {
 			$payment = wu_get_payment($payment_id);
 
 			if (empty($payment)) {
-				throw new Ignorable_Exception(__('Payment not found on refund webhook call.', 'wp-ultimo'));
+				throw new Ignorable_Exception(__('Payment not found on refund webhook call.', 'wp-multisite-waas'));
 			}
 
 			$is_refundable = in_array($payment->get_status(), wu_get_refundable_payment_types(), true);
 
 			if ( ! $is_refundable) {
-				throw new Ignorable_Exception(__('Payment is not refundable.', 'wp-ultimo'));
+				throw new Ignorable_Exception(__('Payment is not refundable.', 'wp-multisite-waas'));
 			}
 
 			/*
@@ -2383,7 +2383,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 				if ($membership->is_active()) {
 					$membership->cancel();
 
-					$membership->add_note(__('Membership cancelled via Stripe webhook.', 'wp-ultimo'));
+					$membership->add_note(__('Membership cancelled via Stripe webhook.', 'wp-multisite-waas'));
 				} else {
 					wu_log_add('stripe', sprintf('Membership #%d is not active - not cancelling account.', $membership->get_id()));
 				}
@@ -2416,7 +2416,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 		foreach ($saved_payment_methods as $saved_payment_method) {
 			$options[ $saved_payment_method->id ] = sprintf(
 				// translators: 1 is the card brand (e.g. VISA), and 2 is the last 4 digits.
-				__('%1$s ending in %2$s', 'wp-ultimo'),
+				__('%1$s ending in %2$s', 'wp-multisite-waas'),
 				strtoupper((string) $saved_payment_method->card->brand),
 				$saved_payment_method->card->last4
 			);
@@ -2446,7 +2446,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 
 			<fieldset id="wu-card-name-wrapper" class="wu_card_fieldset">
 				<p id="wu_card_name_wrap">
-					<label for="wu-update-card-name"><?php _e('Name on Card', 'wp-ultimo'); ?></label>
+					<label for="wu-update-card-name"><?php esc_html_e('Name on Card', 'wp-multisite-waas'); ?></label>
 					<input type="text" size="20" id="wu-update-card-name" name="wu_card_name" class="wu_card_name card-name" />
 				</p>
 			</fieldset>
@@ -2592,7 +2592,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 
 		// Name and price are required.
 		if (empty($args['name']) || empty($args['price'])) {
-			return new \WP_Error('missing_name_price', __('Missing plan name or price.', 'wp-ultimo'));
+			return new \WP_Error('missing_name_price', __('Missing plan name or price.', 'wp-multisite-waas'));
 		}
 
 		/*
@@ -2613,7 +2613,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 		}
 
 		if (empty($plan_id)) {
-			return new \WP_Error('empty_plan_id', __('Empty plan ID.', 'wp-ultimo'));
+			return new \WP_Error('empty_plan_id', __('Empty plan ID.', 'wp-multisite-waas'));
 		}
 
 		// Convert price to Stripe format.
@@ -2694,7 +2694,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 
 		// Name are required.
 		if (empty($name)) {
-			return new \WP_Error('missing_name', __('Missing product name.', 'wp-ultimo'));
+			return new \WP_Error('missing_name', __('Missing product name.', 'wp-multisite-waas'));
 		}
 
 		if (empty($id)) {
@@ -2706,7 +2706,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 		}
 
 		if (empty($product_id)) {
-			return new \WP_Error('empty_product_id', __('Empty product ID.', 'wp-ultimo'));
+			return new \WP_Error('empty_product_id', __('Empty product ID.', 'wp-multisite-waas'));
 		}
 
 		// First check to see if a product exists with this ID. If so, return that.

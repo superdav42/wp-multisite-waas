@@ -84,7 +84,6 @@ class Whitelabel {
 			add_action('wp_user_dashboard_setup', [$this, 'remove_dashboard_widgets'], 11);
 
 			add_action('wp_dashboard_setup', [$this, 'remove_dashboard_widgets'], 11);
-
 		}
 
 		if (wu_get_setting('hide_sites_menu', true)) {
@@ -198,8 +197,8 @@ class Whitelabel {
 		wu_register_settings_section(
 			'whitelabel',
 			[
-				'title' => __('Whitelabel', 'wp-ultimo'),
-				'desc'  => __('Basic Whitelabel', 'wp-ultimo'),
+				'title' => __('Whitelabel', 'wp-multisite-waas'),
+				'desc'  => __('Basic Whitelabel', 'wp-multisite-waas'),
 				'icon'  => 'dashicons-wu-eye',
 			]
 		);
@@ -208,8 +207,8 @@ class Whitelabel {
 			'whitelabel',
 			'whitelabel_header',
 			[
-				'title' => __('Whitelabel', 'wp-ultimo'),
-				'desc'  => __('Hide a couple specific WordPress elements and rename others.', 'wp-ultimo'),
+				'title' => __('Whitelabel', 'wp-multisite-waas'),
+				'desc'  => __('Hide a couple specific WordPress elements and rename others.', 'wp-multisite-waas'),
 				'type'  => 'header',
 			]
 		);
@@ -220,8 +219,8 @@ class Whitelabel {
 			'whitelabel',
 			'hide_wordpress_logo',
 			[
-				'title'   => __('Hide WordPress Logo', 'wp-ultimo') . $preview_image,
-				'desc'    => __('Hide the WordPress logo from the top-bar and replace the same logo on the My Sites top-bar item with a more generic icon.', 'wp-ultimo'),
+				'title'   => __('Hide WordPress Logo', 'wp-multisite-waas') . $preview_image,
+				'desc'    => __('Hide the WordPress logo from the top-bar and replace the same logo on the My Sites top-bar item with a more generic icon.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 1,
 			]
@@ -231,8 +230,8 @@ class Whitelabel {
 			'whitelabel',
 			'hide_sites_menu',
 			[
-				'title'   => __('Hide Sites Admin Menu', 'wp-ultimo'),
-				'desc'    => __('We recommend that you manage all of your sites using the WP Multisite WaaS &rarr; Sites page. To avoid confusion, you can hide the default "Sites" item from the WordPress admin menu by toggling this option.', 'wp-ultimo'),
+				'title'   => __('Hide Sites Admin Menu', 'wp-multisite-waas'),
+				'desc'    => __('We recommend that you manage all of your sites using the WP Multisite WaaS &rarr; Sites page. To avoid confusion, you can hide the default "Sites" item from the WordPress admin menu by toggling this option.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 0,
 			]
@@ -242,9 +241,9 @@ class Whitelabel {
 			'whitelabel',
 			'rename_wordpress',
 			[
-				'title'       => __('Replace the word "WordPress"', 'wp-ultimo'),
-				'placeholder' => __('e.g. My App', 'wp-ultimo'),
-				'desc'        => __('Replace all occurrences of the word "WordPress" with a different word.', 'wp-ultimo'),
+				'title'       => __('Replace the word "WordPress"', 'wp-multisite-waas'),
+				'placeholder' => __('e.g. My App', 'wp-multisite-waas'),
+				'desc'        => __('Replace all occurrences of the word "WordPress" with a different word.', 'wp-multisite-waas'),
 				'type'        => 'text',
 				'default'     => '',
 			]
@@ -254,9 +253,9 @@ class Whitelabel {
 			'whitelabel',
 			'rename_site_singular',
 			[
-				'title'           => __('Replace the word "Site" (singular)', 'wp-ultimo'),
-				'placeholder'     => __('e.g. App', 'wp-ultimo'),
-				'desc'            => __('Replace all occurrences of the word "Site" with a different word.', 'wp-ultimo'),
+				'title'           => __('Replace the word "Site" (singular)', 'wp-multisite-waas'),
+				'placeholder'     => __('e.g. App', 'wp-multisite-waas'),
+				'desc'            => __('Replace all occurrences of the word "Site" with a different word.', 'wp-multisite-waas'),
 				'type'            => 'text',
 				'default'         => '',
 				'wrapper_classes' => 'wu-w-1/2',
@@ -267,9 +266,9 @@ class Whitelabel {
 			'whitelabel',
 			'rename_site_plural',
 			[
-				'title'           => __('Replace the word "Sites" (plural)', 'wp-ultimo'),
-				'placeholder'     => __('e.g. Apps', 'wp-ultimo'),
-				'desc'            => __('Replace all occurrences of the word "Sites" with a different word.', 'wp-ultimo'),
+				'title'           => __('Replace the word "Sites" (plural)', 'wp-multisite-waas'),
+				'placeholder'     => __('e.g. Apps', 'wp-multisite-waas'),
+				'desc'            => __('Replace all occurrences of the word "Sites" with a different word.', 'wp-multisite-waas'),
 				'type'            => 'text',
 				'default'         => '',
 				'wrapper_classes' => 'wu-w-1/2',
@@ -338,16 +337,11 @@ class Whitelabel {
 
 		global $menu;
 
-		$index = '';
-
 		foreach ($menu as $i => $menu_item) {
 			if ('sites.php' === $menu_item[2]) {
-				$index = $i;
-
-				continue;
+				unset($menu[ $i ]);
+				break;
 			}
 		}
-
-		unset($menu[ $index ]);
 	}
 }

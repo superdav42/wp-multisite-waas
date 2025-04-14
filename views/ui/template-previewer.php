@@ -18,7 +18,7 @@
 if ( ! defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 
-} // end if;
+}
 
 /**
  * Allow developers to run code before the template previewer is loaded.
@@ -85,7 +85,7 @@ do_action('wu_template_previewer_before');
 
 						<a id="template_selector" href="#">
 
-									<?php _e('Select template...', 'wp-ultimo'); ?>
+									<?php esc_html_e('Select template...', 'wp-multisite-waas'); ?>
 
 							<span style="float: right; margin-top:  -3px" class="dashicons dashicons-arrow-down-alt2"></span>
 
@@ -126,15 +126,15 @@ do_action('wu_template_previewer_before');
 
 				<div class="responsive">
 
-					<a href="#" class="desktop active dashicons-before dashicons-desktop" title="<?php esc_attr_e('View Desktop Version', 'wp-ultimo'); ?>"></a>
+					<a href="#" class="desktop active dashicons-before dashicons-desktop" title="<?php esc_attr_e('View Desktop Version', 'wp-multisite-waas'); ?>"></a>
 
-					<a href="#" class="tabletlandscape dashicons-before dashicons-tablet" title="<?php esc_attr_e('View Tablet Landscape (1024x768)', 'wp-ultimo'); ?>"></a>
+					<a href="#" class="tabletlandscape dashicons-before dashicons-tablet" title="<?php esc_attr_e('View Tablet Landscape (1024x768)', 'wp-multisite-waas'); ?>"></a>
 
-					<a href="#" class="tabletportrait dashicons-before dashicons-tablet" title="<?php esc_attr_e('View Tablet Portrait (768x1024)', 'wp-ultimo'); ?>"></a>
+					<a href="#" class="tabletportrait dashicons-before dashicons-tablet" title="<?php esc_attr_e('View Tablet Portrait (768x1024)', 'wp-multisite-waas'); ?>"></a>
 
-					<a href="#" class="mobilelandscape dashicons-before dashicons-smartphone" title="<?php esc_attr_e('View Mobile Landscape (480x320)', 'wp-ultimo'); ?>"></a>
+					<a href="#" class="mobilelandscape dashicons-before dashicons-smartphone" title="<?php esc_attr_e('View Mobile Landscape (480x320)', 'wp-multisite-waas'); ?>"></a>
 
-					<a href="#" class="mobileportrait dashicons-before dashicons-smartphone" title="<?php esc_attr_e('View Mobile Portrait (320x480)', 'wp-ultimo'); ?>"></a>
+					<a href="#" class="mobileportrait dashicons-before dashicons-smartphone" title="<?php esc_attr_e('View Mobile Portrait (320x480)', 'wp-multisite-waas'); ?>"></a>
 
 				</div>
 
@@ -202,7 +202,7 @@ do_action('wu_template_previewer_before');
 
 			<div class="wu-text-xl wu-rounded wu-font-bold wu-uppercase wu-inline-block wu-p-8 wu-opacity-50" style="margin-top: 62px; background-color: #000; color: #666;">
 
-				<?php _e('Site Template Preview will go here!', 'wp-ultimo'); ?>
+				<?php esc_html_e('Site Template Preview will go here!', 'wp-multisite-waas'); ?>
 
 			</div>
 

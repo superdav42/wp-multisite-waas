@@ -138,7 +138,7 @@ class Account_Admin_Page extends Base_Customer_Facing_Admin_Page {
 			return;
 		}
 
-		$update_message = apply_filters('wu_account_update_message', __('Your account was successfully updated.', 'wp-ultimo'), $update_type);
+		$update_message = apply_filters('wu_account_update_message', __('Your account was successfully updated.', 'wp-multisite-waas'), $update_type);
 
 		WP_Ultimo()->notices->add($update_message);
 	}
@@ -197,7 +197,7 @@ class Account_Admin_Page extends Base_Customer_Facing_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('Account', 'wp-ultimo');
+		return __('Account', 'wp-multisite-waas');
 	}
 
 	/**
@@ -208,7 +208,7 @@ class Account_Admin_Page extends Base_Customer_Facing_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Account', 'wp-ultimo');
+		return __('Account', 'wp-multisite-waas');
 	}
 
 	/**
@@ -219,7 +219,7 @@ class Account_Admin_Page extends Base_Customer_Facing_Admin_Page {
 	 */
 	public function get_submenu_title() {
 
-		return __('Account', 'wp-ultimo');
+		return __('Account', 'wp-multisite-waas');
 	}
 
 	/**

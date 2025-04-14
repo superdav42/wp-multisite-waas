@@ -5,7 +5,7 @@
  * @since 2.0.0
  */
 ?>
-<li class="<?php echo esc_attr(trim($field->wrapper_classes)); ?> wu-bg-gray-200" style="margin-bottom: -1px;" <?php echo $field->get_wrapper_html_attributes(); ?>>
+<li class="<?php echo esc_attr(trim($field->wrapper_classes)); ?> wu-bg-gray-200" style="margin-bottom: -1px;" <?php echo $field->get_wrapper_html_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 
 	<div class="wu--m-4 wu-px-1">
 
@@ -16,9 +16,9 @@
 		v-bind:class="'<?php echo esc_attr($option_value); ?>' == <?php echo esc_attr($field->id); ?> ? 'wu-bg-white wu-text-gray-600 wu-border-gray-300' : ''"
 		>
 
-		<?php echo $option_label; ?>
+		<?php echo esc_html($option_label); ?>
 
-		<input class="wu-w-0 wu-h-0 wu-overflow-hidden wu-hidden" type="radio" name="<?php echo esc_attr($field->id); ?>" value="<?php echo esc_attr($option_value); ?>" <?php echo $field->get_html_attributes(); ?>>
+		<input class="wu-w-0 wu-h-0 wu-overflow-hidden wu-hidden" type="radio" name="<?php echo esc_attr($field->id); ?>" value="<?php echo esc_attr($option_value); ?>" <?php echo $field->get_html_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 
 		</label>
 

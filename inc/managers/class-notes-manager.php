@@ -11,8 +11,6 @@
 
 namespace WP_Ultimo\Managers;
 
-use WP_Ultimo\Managers\Base_Manager;
-
 // Exit if accessed directly
 defined('ABSPATH') || exit;
 
@@ -110,11 +108,11 @@ class Notes_Manager extends Base_Manager {
 	 * @since 2.0.0
 	 *
 	 * @param array  $sections Array sections.
-	 * @param object $object   The object.
+	 * @param object $obj   The object.
 	 *
 	 * @return array
 	 */
-	public function add_notes_options_section($sections, $object) {
+	public function add_notes_options_section($sections, $obj) {
 
 		if ( ! current_user_can('read_notes') && ! current_user_can('edit_notes')) {
 			return $sections;
@@ -131,8 +129,8 @@ class Notes_Manager extends Base_Manager {
 			'content'           => wu_get_template_contents(
 				'base/edit/display-notes',
 				[
-					'notes' => $object->get_notes(),
-					'model' => $object->model,
+					'notes' => $obj->get_notes(),
+					'model' => $obj->model,
 				]
 			),
 		];
@@ -142,18 +140,18 @@ class Notes_Manager extends Base_Manager {
 		if (current_user_can('delete_notes')) {
 			$fields_buttons['button_clear_notes'] = [
 				'type'            => 'link',
-				'display_value'   => __('Clear Notes', 'wp-ultimo'),
+				'display_value'   => __('Clear Notes', 'wp-multisite-waas'),
 				'wrapper_classes' => 'wu-mb-0',
 				'classes'         => 'button wubox',
 				'html_attr'       => [
 					'href'  => wu_get_form_url(
 						'clear_notes',
 						[
-							'object_id' => $object->get_id(),
-							'model'     => $object->model,
+							'object_id' => $obj->get_id(),
+							'model'     => $obj->model,
 						]
 					),
-					'title' => __('Clear Notes', 'wp-ultimo'),
+					'title' => __('Clear Notes', 'wp-multisite-waas'),
 				],
 			];
 		}
@@ -161,19 +159,19 @@ class Notes_Manager extends Base_Manager {
 		if (current_user_can('edit_notes')) {
 			$fields_buttons['button_add_note'] = [
 				'type'            => 'link',
-				'display_value'   => __('Add new Note', 'wp-ultimo'),
+				'display_value'   => __('Add new Note', 'wp-multisite-waas'),
 				'wrapper_classes' => 'wu-mb-0',
 				'classes'         => 'button button-primary wubox wu-absolute wu-right-5',
 				'html_attr'       => [
 					'href'  => wu_get_form_url(
 						'add_note',
 						[
-							'object_id' => $object->get_id(),
-							'model'     => $object->model,
+							'object_id' => $obj->get_id(),
+							'model'     => $obj->model,
 							'height'    => 306,
 						]
 					),
-					'title' => __('Add new Note', 'wp-ultimo'),
+					'title' => __('Add new Note', 'wp-multisite-waas'),
 				],
 			];
 		}
@@ -185,8 +183,8 @@ class Notes_Manager extends Base_Manager {
 		];
 
 		$sections['notes'] = [
-			'title'  => __('Notes', 'wp-ultimo'),
-			'desc'   => __('Add notes to this model.', 'wp-ultimo'),
+			'title'  => __('Notes', 'wp-multisite-waas'),
+			'desc'   => __('Add notes to this model.', 'wp-multisite-waas'),
 			'icon'   => 'dashicons-wu-text-document',
 			'order'  => 1001,
 			'fields' => $fields,
@@ -207,8 +205,8 @@ class Notes_Manager extends Base_Manager {
 			'content'         => [
 				'id'        => 'content',
 				'type'      => 'wp-editor',
-				'title'     => __('Note Content', 'wp-ultimo'),
-				'desc'      => __('Basic formatting is supported.', 'wp-ultimo'),
+				'title'     => __('Note Content', 'wp-multisite-waas'),
+				'desc'      => __('Basic formatting is supported.', 'wp-multisite-waas'),
 				'settings'  => [
 					'tinymce' => [
 						'toolbar1' => 'bold,italic,strikethrough,link,unlink,undo,redo,pastetext',
@@ -220,8 +218,8 @@ class Notes_Manager extends Base_Manager {
 			],
 			'submit_add_note' => [
 				'type'            => 'submit',
-				'title'           => __('Add Note', 'wp-ultimo'),
-				'placeholder'     => __('Add Note', 'wp-ultimo'),
+				'title'           => __('Add Note', 'wp-multisite-waas'),
+				'placeholder'     => __('Add Note', 'wp-multisite-waas'),
 				'value'           => 'save',
 				'classes'         => 'wu-w-full button button-primary',
 				'wrapper_classes' => 'wu-items-end',
@@ -308,16 +306,16 @@ class Notes_Manager extends Base_Manager {
 		$fields = [
 			'confirm_clear_notes' => [
 				'type'      => 'toggle',
-				'title'     => __('Confirm clear all notes?', 'wp-ultimo'),
-				'desc'      => __('This action can not be undone.', 'wp-ultimo'),
+				'title'     => __('Confirm clear all notes?', 'wp-multisite-waas'),
+				'desc'      => __('This action can not be undone.', 'wp-multisite-waas'),
 				'html_attr' => [
 					'v-model' => 'confirmed',
 				],
 			],
 			'submit_clear_notes'  => [
 				'type'            => 'submit',
-				'title'           => __('Clear Notes', 'wp-ultimo'),
-				'placeholder'     => __('Clear Notes', 'wp-ultimo'),
+				'title'           => __('Clear Notes', 'wp-multisite-waas'),
+				'placeholder'     => __('Clear Notes', 'wp-multisite-waas'),
 				'value'           => 'save',
 				'classes'         => 'wu-w-full button button-primary',
 				'wrapper_classes' => 'wu-items-end',
@@ -403,16 +401,16 @@ class Notes_Manager extends Base_Manager {
 		$fields = [
 			'confirm_delete_note' => [
 				'type'      => 'toggle',
-				'title'     => __('Confirm clear the note?', 'wp-ultimo'),
-				'desc'      => __('This action can not be undone.', 'wp-ultimo'),
+				'title'     => __('Confirm clear the note?', 'wp-multisite-waas'),
+				'desc'      => __('This action can not be undone.', 'wp-multisite-waas'),
 				'html_attr' => [
 					'v-model' => 'confirmed',
 				],
 			],
 			'submit_delete_note'  => [
 				'type'            => 'submit',
-				'title'           => __('Clear Note', 'wp-ultimo'),
-				'placeholder'     => __('Clear Note', 'wp-ultimo'),
+				'title'           => __('Clear Note', 'wp-multisite-waas'),
+				'placeholder'     => __('Clear Note', 'wp-multisite-waas'),
 				'value'           => 'save',
 				'classes'         => 'wu-w-full button button-primary',
 				'wrapper_classes' => 'wu-items-end',
@@ -475,7 +473,7 @@ class Notes_Manager extends Base_Manager {
 		$status = $object->delete_note($note_id);
 
 		if (is_wp_error($status) || false === $status) {
-			wp_send_json_error(new \WP_Error('not-found', __('Note not found', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('not-found', __('Note not found', 'wp-multisite-waas')));
 		}
 
 		wp_send_json_success(

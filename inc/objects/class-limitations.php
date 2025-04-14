@@ -30,7 +30,7 @@ class Limitations {
 	 * @since 2.0.0
 	 * @var array
 	 */
-	static $limitations_cache = [];
+	private static $limitations_cache = [];
 
 	/**
 	 * Version of the limitation schema.

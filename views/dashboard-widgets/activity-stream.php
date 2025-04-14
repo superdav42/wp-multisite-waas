@@ -11,11 +11,11 @@
 
 	<div v-if="loading"
 		class="wu-text-center wu-bg-gray-100 wu-rounded wu-uppercase wu-font-semibold wu-text-xs wu-text-gray-700 wu-p-4">
-		<span class="wu-blinking-animation"><?php _e('Loading...', 'wp-ultimo'); ?></span>
+		<span class="wu-blinking-animation"><?php esc_html_e('Loading...', 'wp-multisite-waas'); ?></span>
 	</div>
 
 	<div v-if='!queried.count && !loading' v-cloak class='wu-feed-loading wu-mb-6'>
-		<?php _e('No more items to display', 'wp-ultimo'); ?>
+		<?php esc_html_e('No more items to display', 'wp-multisite-waas'); ?>
 	</div>
 
 	<div v-if="!loading" class="wu-widget-inset">
@@ -58,7 +58,7 @@
 					<div class="wu-flex wu-font-medium wu-text-gray-700 wu-truncate">
 					<p class="wu-m-0 wu-p-0 wu-capitalize">{{ event.object_type }}</p>
 					<p class="wu-p-0 wu-m-0 wu-ml-1 wu-font-normal wu-text-gray-600">
-						<?php printf(__('with %s', 'wp-ultimo'), '{{ event.slug }}'); ?>
+						<?php printf(__('with %s', 'wp-multisite-waas'), '{{ event.slug }}'); ?>
 					</p>
 					</div>
 					<div class="wu-mt-1">
@@ -67,7 +67,7 @@
 						<p class="wu-p-0 wu-m-0">
 						<span v-html="event.message"></span>
 						<span class="wu-text-gray-700 wu-ml-2"><span class="dashicons-wu-clock wu-mr-1 wu-align-middle"></span>{{ $moment(event.date_created, "YYYYMMDD").fromNow() }}</span>
-						<span v-if="event.author.display_name" class="wu-text-gray-700"><?php printf(__('by %s', 'wp-ultimo'), '{{ event.author.display_name }}'); ?></span>
+						<span v-if="event.author.display_name" class="wu-text-gray-700"><?php printf(__('by %s', 'wp-multisite-waas'), '{{ event.author.display_name }}'); ?></span>
 						</p>
 					</div>
 					</div>
@@ -91,17 +91,17 @@
 			class='wu-feed-pagination wu-m-0 wu-flex wu-justify-between'>
 			<li class="wu-w-1/3 wu-m-0">
 			<a href="#" class="wu-block" v-on:click.prevent="refresh">
-				<?php _e('Refresh', 'wp-ultimo'); ?>
+				<?php esc_html_e('Refresh', 'wp-multisite-waas'); ?>
 			</a>
 			</li>
 			<li v-if="page > 1" class="wu-w-1/3 wu-text-center wu-m-0">
 			<a href="#" v-on:click.prevent="navigatePrev" class="wu-block">
-				&larr; <?php _e('Previous Page', 'wp-ultimo'); ?>
+				&larr; <?php esc_html_e('Previous Page', 'wp-multisite-waas'); ?>
 			</a>
 			</li>
 			<li v-if="hasMore() && !loading" class="wu-w-1/3 wu-text-right wu-m-0">
 			<a href="#" v-on:click.prevent="navigateNext" class="wu-block">
-				<?php _e('Next Page', 'wp-ultimo'); ?>
+				<?php esc_html_e('Next Page', 'wp-multisite-waas'); ?>
 				&rarr;
 			</a>
 			</li>
@@ -173,7 +173,7 @@
 
 				Vue.set(wuActivityStream, 'queried', data.data);
 
-				} // end if;
+				}
 
 			},
 			})

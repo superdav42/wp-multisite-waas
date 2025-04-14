@@ -89,7 +89,16 @@ abstract class Customizer_Admin_Page extends Edit_Admin_Page {
 
 		parent::register_scripts();
 
-		wp_enqueue_script('wu-customizer', wu_get_asset('customizer.js', 'js'), ['jquery', 'wu-vue', 'wu-block-ui']);
+		wp_enqueue_script(
+			'wu-customizer',
+			wu_get_asset('customizer.js', 'js'),
+			['jquery', 'wu-vue', 'wu-block-ui'],
+			\WP_Ultimo::VERSION,
+			[
+				'async'     => true,
+				'in_footer' => true,
+			]
+		);
 
 		wp_enqueue_style('wp-color-picker');
 

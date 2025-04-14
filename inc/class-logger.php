@@ -65,7 +65,7 @@ class Logger extends AbstractLogger {
 			 *
 			 * Here we are converting the PHP error reporting level to the PSR-3 log level.
 			 */
-			$reporting_level = error_reporting();
+			$reporting_level = error_reporting(); // phpcs:ignore WordPress.PHP
 
 			$psr_log_levels = [
 				E_ERROR             => LogLevel::ERROR,
@@ -131,7 +131,7 @@ class Logger extends AbstractLogger {
 		}
 
 		// read file
-		$content = file_get_contents($file);
+		$content = file_get_contents($file); // phpcs:ignore WordPress.WP.AlternativeFunctions
 
 		// split into lines
 		$arr_content = explode(PHP_EOL, $content);
@@ -181,7 +181,7 @@ class Logger extends AbstractLogger {
 		$time_elapsed = microtime(true) - $start;
 
 		// translators: the placeholder %s will be replaced by the time in seconds (float).
-		$message .= ' - ' . sprintf(__('This action took %s seconds.', 'wp-ultimo'), $time_elapsed);
+		$message .= ' - ' . sprintf(__('This action took %s seconds.', 'wp-multisite-waas'), $time_elapsed);
 
 		self::add($handle, $message);
 
@@ -280,13 +280,13 @@ class Logger extends AbstractLogger {
 	protected function write_to_file($message) {
 
 		if ( ! file_exists($this->log_file)) {
-			touch($this->log_file);
+			touch($this->log_file); // phpcs:ignore WordPress.WP.AlternativeFunctions
 		}
 
-		if ( ! is_writable($this->log_file)) {
+		if ( ! is_writable($this->log_file)) { // phpcs:ignore WordPress.WP.AlternativeFunctions
 			return;
 		}
 
-		file_put_contents($this->log_file, $message, FILE_APPEND | LOCK_EX);
+		file_put_contents($this->log_file, $message, FILE_APPEND | LOCK_EX); // phpcs:ignore WordPress.WP.AlternativeFunctions
 	}
 }

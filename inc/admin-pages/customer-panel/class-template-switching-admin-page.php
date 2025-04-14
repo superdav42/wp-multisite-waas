@@ -103,7 +103,7 @@ class Template_Switching_Admin_Page extends \WP_Ultimo\Admin_Pages\Base_Customer
 	 */
 	public function get_title() {
 
-		return __('Switch Template', 'wp-ultimo');
+		return __('Switch Template', 'wp-multisite-waas');
 	}
 
 	/**
@@ -114,7 +114,7 @@ class Template_Switching_Admin_Page extends \WP_Ultimo\Admin_Pages\Base_Customer
 	 */
 	public function get_menu_title() {
 
-		return __('Switch Template', 'wp-ultimo');
+		return __('Switch Template', 'wp-multisite-waas');
 	}
 
 	/**
@@ -158,7 +158,7 @@ class Template_Switching_Admin_Page extends \WP_Ultimo\Admin_Pages\Base_Customer
 				'page'    => $this,
 				'content' => '',
 				'labels'  => [
-					'updated_message' => __('Template switched successfully!', 'wp-ultimo'),
+					'updated_message' => __('Template switched successfully!', 'wp-multisite-waas'),
 				],
 			]
 		);

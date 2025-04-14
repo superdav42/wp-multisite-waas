@@ -83,7 +83,7 @@ class Screenshot {
 		 * Check if the results contain a PNG header.
 		 */
 		if (! str_starts_with($response['body'], "\x89\x50\x4e\x47\x0d\x0a\x1a\x0a")) {
-			wu_log_add('screenshot-generator', $log_prefix . __('Result is not a PNG file.', 'wp-ultimo'), LogLevel::ERROR);
+			wu_log_add('screenshot-generator', $log_prefix . __('Result is not a PNG file.', 'wp-multisite-waas'), LogLevel::ERROR);
 
 			return false;
 		}
@@ -91,7 +91,7 @@ class Screenshot {
 		$upload = wp_upload_bits('screenshot-' . gmdate('Y-m-d-H-i-s') . '.png', null, $response['body']);
 
 		if ( ! empty($upload['error'])) {
-			wu_log_add('screenshot-generator', $log_prefix . json_encode($upload['error']), LogLevel::ERROR);
+			wu_log_add('screenshot-generator', $log_prefix . wp_json_encode($upload['error']), LogLevel::ERROR);
 
 			return false;
 		}
@@ -122,7 +122,7 @@ class Screenshot {
 		// Assign metadata to attachment
 		wp_update_attachment_metadata($attach_id, $attach_data);
 
-		wu_log_add('screenshot-generator', $log_prefix . __('Success!', 'wp-ultimo'));
+		wu_log_add('screenshot-generator', $log_prefix . __('Success!', 'wp-multisite-waas'));
 
 		return $attach_id;
 	}

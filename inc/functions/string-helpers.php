@@ -12,14 +12,14 @@ defined('ABSPATH') || exit;
 /**
  * Converts a string (e.g. 'yes' or 'no' or '1' or '0') to a bool.
  *
- * @since 2.0.0
+ * @param string $input_string The string to convert.
  *
- * @param string $string The string to convert.
  * @return bool
+ * @since 2.0.0
  */
-function wu_string_to_bool($string) {
+function wu_string_to_bool($input_string) {
 
-	return is_bool($string) ? $string : ('on' === strtolower($string) || 'yes' === strtolower($string) || 1 === $string || 'true' === strtolower($string) || '1' === $string);
+	return is_bool($input_string) ? $input_string : ('on' === strtolower($input_string) || 'yes' === strtolower($input_string) || 1 === $input_string || 'true' === strtolower($input_string) || '1' === $input_string);
 }
 
 /**
@@ -59,13 +59,13 @@ function wu_replace_dashes($str) {
  *
  * @since 2.0.0
  *
- * @param string  $string String to process.
+ * @param string  $str String to process.
  * @param integer $max_size Number of initials to return.
  * @return string
  */
-function wu_get_initials($string, $max_size = 2) {
+function wu_get_initials($str, $max_size = 2) {
 
-	$words = explode(' ', $string);
+	$words = explode(' ', $str);
 
 	$initials = '';
 

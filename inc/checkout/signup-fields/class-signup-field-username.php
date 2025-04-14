@@ -69,7 +69,7 @@ class Signup_Field_Username extends Base_Signup_Field {
 	 */
 	public function get_title() {
 
-		return __('Username', 'wp-ultimo');
+		return __('Username', 'wp-multisite-waas');
 	}
 
 	/**
@@ -82,7 +82,7 @@ class Signup_Field_Username extends Base_Signup_Field {
 	 */
 	public function get_description() {
 
-		return __('Adds an username field. This username will be used to create the WordPress user.', 'wp-ultimo');
+		return __('Adds an username field. This username will be used to create the WordPress user.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -95,7 +95,7 @@ class Signup_Field_Username extends Base_Signup_Field {
 	 */
 	public function get_tooltip() {
 
-		return __('Adds an username field. This username will be used to create the WordPress user.', 'wp-ultimo');
+		return __('Adds an username field. This username will be used to create the WordPress user.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -167,8 +167,8 @@ class Signup_Field_Username extends Base_Signup_Field {
 		return [
 			'auto_generate_username' => [
 				'type'      => 'toggle',
-				'title'     => __('Auto-generate', 'wp-ultimo'),
-				'desc'      => __('Check this option to auto-generate this field based on the email address of the customer.', 'wp-ultimo'),
+				'title'     => __('Auto-generate', 'wp-multisite-waas'),
+				'desc'      => __('Check this option to auto-generate this field based on the email address of the customer.', 'wp-multisite-waas'),
 				'tooltip'   => '',
 				'value'     => 0,
 				'html_attr' => [

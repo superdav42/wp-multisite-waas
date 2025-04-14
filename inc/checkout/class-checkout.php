@@ -645,7 +645,7 @@ class Checkout {
 		if ($cart->should_collect_payment() === false) {
 			$gateway = wu_get_gateway('free');
 		} elseif ( ! $gateway || $gateway->get_id() === 'free') {
-			$this->errors = new \WP_Error('no-gateway', __('Payment gateway not registered.', 'wp-ultimo'));
+			$this->errors = new \WP_Error('no-gateway', __('Payment gateway not registered.', 'wp-multisite-waas'));
 
 			return false;
 		}
@@ -655,7 +655,7 @@ class Checkout {
 		 * we need to bail.
 		 */
 		if ( ! $gateway) {
-			return new \WP_Error('no-gateway', __('Payment gateway not registered.', 'wp-ultimo'));
+			return new \WP_Error('no-gateway', __('Payment gateway not registered.', 'wp-multisite-waas'));
 		}
 
 		$this->gateway_id = $gateway->get_id();
@@ -962,7 +962,7 @@ class Checkout {
 					'email_verification' => 'verified',
 				];
 			} elseif (isset($customer_data['email']) && get_user_by('email', $customer_data['email'])) {
-				return new \WP_Error('email_exists', __('The email address you entered is already in use.', 'wp-ultimo'));
+				return new \WP_Error('email_exists', __('The email address you entered is already in use.', 'wp-multisite-waas'));
 			}
 
 			/*
@@ -1020,7 +1020,7 @@ class Checkout {
 		 * wrong with the customer update, we return a general error.
 		 */
 		if ( ! $address_saved) {
-			return new \WP_Error('address_failure', __('Something wrong happened while attempting to save the customer billing address', 'wp-ultimo'));
+			return new \WP_Error('address_failure', __('Something wrong happened while attempting to save the customer billing address', 'wp-multisite-waas'));
 		}
 
 		/*
@@ -1549,9 +1549,9 @@ class Checkout {
 		 * Localized strings.
 		 */
 		$i18n = [
-			'loading'        => __('Loading...', 'wp-ultimo'),
-			'added_to_order' => __('The item was added!', 'wp-ultimo'),
-			'weak_password'  => __('The Password entered is too weak.', 'wp-ultimo'),
+			'loading'        => __('Loading...', 'wp-multisite-waas'),
+			'added_to_order' => __('The item was added!', 'wp-multisite-waas'),
+			'weak_password'  => __('The Password entered is too weak.', 'wp-multisite-waas'),
 		];
 
 		/*
@@ -1847,11 +1847,11 @@ class Checkout {
 		// Add some hidden or compound fields ids
 		$validation_aliases = array_merge(
 			[
-				'password_conf'  => __('Password confirmation', 'wp-ultimo'),
-				'template_id'    => __('Template ID', 'wp-ultimo'),
-				'valid_password' => __('Valid password', 'wp-ultimo'),
-				'products'       => __('Products', 'wp-ultimo'),
-				'gateway'        => __('Payment Gateway', 'wp-ultimo'),
+				'password_conf'  => __('Password confirmation', 'wp-multisite-waas'),
+				'template_id'    => __('Template ID', 'wp-multisite-waas'),
+				'valid_password' => __('Valid password', 'wp-multisite-waas'),
+				'products'       => __('Products', 'wp-multisite-waas'),
+				'gateway'        => __('Payment Gateway', 'wp-multisite-waas'),
 			],
 			$base_aliases
 		);
@@ -1960,7 +1960,7 @@ class Checkout {
 				/*
 				 * Redirect go burrr!
 				 */
-				wp_redirect($redirect_url);
+				wp_safe_redirect($redirect_url);
 
 				exit;
 			}
@@ -2002,7 +2002,7 @@ class Checkout {
 				*/
 				$next_step = $this->get_next_step_name();
 
-				wp_redirect(add_query_arg('step', $next_step));
+				wp_safe_redirect(add_query_arg('step', $next_step));
 
 				exit;
 			}
@@ -2068,13 +2068,13 @@ class Checkout {
 			} elseif ($this->order->should_collect_payment() === false) {
 				$gateway = wu_get_gateway('free');
 			} elseif ($gateway->get_id() === 'free') {
-					$this->errors = new \WP_Error('no-gateway', __('Payment gateway not registered.', 'wp-ultimo'));
+					$this->errors = new \WP_Error('no-gateway', __('Payment gateway not registered.', 'wp-multisite-waas'));
 
 					return false;
 			}
 
 			if ( ! $gateway) {
-				$this->errors = new \WP_Error('no-gateway', __('Payment gateway not registered.', 'wp-ultimo'));
+				$this->errors = new \WP_Error('no-gateway', __('Payment gateway not registered.', 'wp-multisite-waas'));
 
 				return false;
 			}
@@ -2165,13 +2165,13 @@ class Checkout {
 				);
 			}
 
-			wp_redirect($redirect_url);
+			wp_safe_redirect($redirect_url);
 
 			exit;
 		} catch (\Throwable $e) {
 			$membership_id = $this->order->get_membership() ? $this->order->get_membership()->get_id() : 'unknown';
 
-			$log_message  = sprintf(__('Checkout failed for customer %s: ', 'wp-ultimo'), $membership_id);
+			$log_message  = sprintf(__('Checkout failed for customer %s: ', 'wp-multisite-waas'), $membership_id);
 			$log_message .= $e->getMessage();
 
 			wu_log_add('checkout', $log_message, LogLevel::ERROR);
@@ -2286,12 +2286,12 @@ class Checkout {
 	 * @since 2.0.0
 	 *
 	 * @param string $key Key to retrieve the value for.
-	 * @param mixed  $default The default value to return, when nothing is found.
+	 * @param mixed  $default_value The default value to return, when nothing is found.
 	 * @return mixed
 	 */
-	public function request_or_session($key, $default = false) {
+	public function request_or_session($key, $default_value = false) {
 
-		$value = $default;
+		$value = $default_value;
 
 		if (null !== $this->session) {
 			$session = $this->session->get('signup');

@@ -137,17 +137,17 @@ class Dashboard_Admin_Page extends Base_Admin_Page {
 		if ('wp-ultimo' === $page->id) {
 			$preset_options = [
 				'last_7_days'  => [
-					'label'      => __('Last 7 days', 'wp-ultimo'),
+					'label'      => __('Last 7 days', 'wp-multisite-waas'),
 					'start_date' => date_i18n('Y-m-d', strtotime('-7 days')),
 					'end_date'   => date_i18n('Y-m-d'),
 				],
 				'last_30_days' => [
-					'label'      => __('Last 30 days', 'wp-ultimo'),
+					'label'      => __('Last 30 days', 'wp-multisite-waas'),
 					'start_date' => date_i18n('Y-m-d', strtotime('-30 days')),
 					'end_date'   => date_i18n('Y-m-d'),
 				],
 				'year_to_date' => [
-					'label'      => __('Year to date', 'wp-ultimo'),
+					'label'      => __('Year to date', 'wp-multisite-waas'),
 					'start_date' => date_i18n('Y-m-d', strtotime('first day of january this year')),
 					'end_date'   => date_i18n('Y-m-d'),
 				],
@@ -180,7 +180,7 @@ class Dashboard_Admin_Page extends Base_Admin_Page {
 			'general' => [
 				'field' => 'type',
 				'url'   => add_query_arg('tab', 'general'),
-				'label' => __('General', 'wp-ultimo'),
+				'label' => __('General', 'wp-multisite-waas'),
 				'count' => 0,
 			],
 		];
@@ -230,16 +230,16 @@ class Dashboard_Admin_Page extends Base_Admin_Page {
 				[
 					[
 						'id'    => 'your-dashboard',
-						'title' => __('Our dashboard', 'wp-ultimo'),
+						'title' => __('Our dashboard', 'wp-multisite-waas'),
 						'text'  => [
-							__('This is the <strong>WP Multisite WaaS Dashboard</strong>, where you will find most of the important information you will need regarding your business\' performance.', 'wp-ultimo'),
+							__('This is the <strong>WP Multisite WaaS Dashboard</strong>, where you will find most of the important information you will need regarding your business\' performance.', 'wp-multisite-waas'),
 						],
 					],
 					[
 						'id'       => 'documentation',
-						'title'    => __('Learning more', 'wp-ultimo'),
+						'title'    => __('Learning more', 'wp-multisite-waas'),
 						'text'     => [
-							__('Most of the WP Multisite WaaS admin pages will contain a link like this one at the top. These will link directly to the relevant knowledge base page on the WP Multisite WaaS site.', 'wp-ultimo'),
+							__('Most of the WP Multisite WaaS admin pages will contain a link like this one at the top. These will link directly to the relevant knowledge base page on the WP Multisite WaaS site.', 'wp-multisite-waas'),
 						],
 						'attachTo' => [
 							'element' => '#wp-ultimo-wrap > h1 > a:last-child',
@@ -248,9 +248,9 @@ class Dashboard_Admin_Page extends Base_Admin_Page {
 					],
 					[
 						'id'       => 'mrr-growth',
-						'title'    => __('It\'s all about growth!', 'wp-ultimo'),
+						'title'    => __('It\'s all about growth!', 'wp-multisite-waas'),
 						'text'     => [
-							__('This graph allows you to follow how your monthly recurring revenue is growing this year.', 'wp-ultimo'),
+							__('This graph allows you to follow how your monthly recurring revenue is growing this year.', 'wp-multisite-waas'),
 						],
 						'attachTo' => [
 							'element' => '#wp-ultimo-mrr-growth',
@@ -259,10 +259,10 @@ class Dashboard_Admin_Page extends Base_Admin_Page {
 					],
 					[
 						'id'       => 'tailor-made',
-						'title'    => __('Date-range support', 'wp-ultimo'),
+						'title'    => __('Date-range support', 'wp-multisite-waas'),
 						'text'     => [
-							__('Checking statistics and comparing data for different periods is key in maintaining a good grasp on your business.', 'wp-ultimo'),
-							__('You can use the date-range selectors to have access to just the data you need and nothing more.', 'wp-ultimo'),
+							__('Checking statistics and comparing data for different periods is key in maintaining a good grasp on your business.', 'wp-multisite-waas'),
+							__('You can use the date-range selectors to have access to just the data you need and nothing more.', 'wp-multisite-waas'),
 						],
 						'attachTo' => [
 							'element' => '#dashboard-filters',
@@ -286,18 +286,18 @@ class Dashboard_Admin_Page extends Base_Admin_Page {
 	public function register_general_tab_widgets($tab, $screen): void {
 
 		if (current_user_can('wu_read_financial')) {
-			add_meta_box('wp-ultimo-mrr-growth', __('Monthly Recurring Revenue Growth', 'wp-ultimo'), [$this, 'output_widget_mrr_growth'], $screen->id, 'full', 'high');
+			add_meta_box('wp-ultimo-mrr-growth', __('Monthly Recurring Revenue Growth', 'wp-multisite-waas'), [$this, 'output_widget_mrr_growth'], $screen->id, 'full', 'high');
 
-			add_meta_box('wp-ultimo-revenue', __('Revenue', 'wp-ultimo'), [$this, 'output_widget_revenues'], $screen->id, 'normal', 'high');
+			add_meta_box('wp-ultimo-revenue', __('Revenue', 'wp-multisite-waas'), [$this, 'output_widget_revenues'], $screen->id, 'normal', 'high');
 		}
 
-		add_meta_box('wp-ultimo-countries', __('Signups by Countries', 'wp-ultimo'), [$this, 'output_widget_countries'], $screen->id, 'side', 'high');
+		add_meta_box('wp-ultimo-countries', __('Signups by Countries', 'wp-multisite-waas'), [$this, 'output_widget_countries'], $screen->id, 'side', 'high');
 
-		add_meta_box('wp-ultimo-signups', __('Signups by Form', 'wp-ultimo'), [$this, 'output_widget_forms'], $screen->id, 'side', 'high');
+		add_meta_box('wp-ultimo-signups', __('Signups by Form', 'wp-multisite-waas'), [$this, 'output_widget_forms'], $screen->id, 'side', 'high');
 
-		add_meta_box('wp-ultimo-most-visited-sites', __('Most Visited Sites', 'wp-ultimo'), [$this, 'output_widget_most_visited_sites'], $screen->id, 'side', 'low');
+		add_meta_box('wp-ultimo-most-visited-sites', __('Most Visited Sites', 'wp-multisite-waas'), [$this, 'output_widget_most_visited_sites'], $screen->id, 'side', 'low');
 
-		add_meta_box('wp-ultimo-new-accounts', __('New Memberships', 'wp-ultimo'), [$this, 'output_widget_new_accounts'], $screen->id, 'normal', 'low');
+		add_meta_box('wp-ultimo-new-accounts', __('New Memberships', 'wp-multisite-waas'), [$this, 'output_widget_new_accounts'], $screen->id, 'normal', 'low');
 	}
 
 	/**
@@ -449,7 +449,7 @@ class Dashboard_Admin_Page extends Base_Admin_Page {
 		 * Add edge case for no plan.
 		 */
 		$products['none'] = (object) [
-			'name'  => __('No Product', 'wp-ultimo'),
+			'name'  => __('No Product', 'wp-multisite-waas'),
 			'count' => 0,
 		];
 
@@ -514,8 +514,8 @@ class Dashboard_Admin_Page extends Base_Admin_Page {
 				'today'      => date_i18n('Y-m-d', strtotime('tomorrow')),
 				'month_list' => $month_list,
 				'i18n'       => [
-					'new_mrr'       => __('New MRR', 'wp-ultimo'),
-					'cancellations' => __('Cancellations', 'wp-ultimo'),
+					'new_mrr'       => __('New MRR', 'wp-multisite-waas'),
+					'cancellations' => __('Cancellations', 'wp-multisite-waas'),
 				],
 			]
 		);
@@ -525,6 +525,8 @@ class Dashboard_Admin_Page extends Base_Admin_Page {
 		wp_enqueue_style('wu-apex-charts', wu_get_asset('apexcharts.css', 'css'), [], wu_get_version());
 
 		wp_enqueue_style('wu-flags');
+
+		wp_enqueue_script_module('wu-flags-polyfill');
 	}
 
 	/**
@@ -535,7 +537,7 @@ class Dashboard_Admin_Page extends Base_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('Dashboard', 'wp-ultimo');
+		return __('Dashboard', 'wp-multisite-waas');
 	}
 
 	/**
@@ -546,7 +548,7 @@ class Dashboard_Admin_Page extends Base_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Multisite WaaS', 'wp-ultimo');
+		return __('Multisite WaaS', 'wp-multisite-waas');
 	}
 
 	/**
@@ -557,7 +559,7 @@ class Dashboard_Admin_Page extends Base_Admin_Page {
 	 */
 	public function get_submenu_title() {
 
-		return __('Dashboard', 'wp-ultimo');
+		return __('Dashboard', 'wp-multisite-waas');
 	}
 
 	/**
@@ -602,9 +604,9 @@ class Dashboard_Admin_Page extends Base_Admin_Page {
 
 		$slug = $args['slug'];
 
-		$header_strings = json_encode($args['headers']);
+		$header_strings = wp_json_encode($args['headers']);
 
-		$data_strings = json_encode($args['data']);
+		$data_strings = wp_json_encode($args['data']);
 
 		$html = "<div class='wu-bg-gray-100 wu-p-2 wu-text-right wu-border-0 wu-border-b wu-border-solid wu-border-gray-400'>
 
@@ -620,6 +622,6 @@ class Dashboard_Admin_Page extends Base_Admin_Page {
 
 		$html = apply_filters('wu_export_html_render', $html, $html);
 
-		printf($html, apply_filters('wu_export_data_table_label', __('CSV', 'wp-ultimo')));
+		printf($html, apply_filters('wu_export_data_table_label', __('CSV', 'wp-multisite-waas')));
 	}
 }
