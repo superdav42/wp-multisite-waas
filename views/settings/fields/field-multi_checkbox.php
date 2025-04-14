@@ -35,13 +35,13 @@
 					unset($_settings[ $key ]);
 
 					continue;
-				} // end if;
+				}
 
 				$value = $field['options'][ $key ];
-			} // end foreach;
+			}
 
 			$field['options'] = $_settings + $field['options'];
-		} // end if;
+		}
 
 		?>
 
@@ -71,7 +71,7 @@
 
 		</div>
 
-		<button type="button" data-select-all="multiselect-<?php echo $field_slug; ?>" class="button wu-select-all"><?php _e('Check / Uncheck All', 'wp-ultimo'); ?></button>
+		<button type="button" data-select-all="multiselect-<?php echo $field_slug; ?>" class="button wu-select-all"><?php esc_html_e('Check / Uncheck All', 'wp-multisite-waas'); ?></button>
 
 		<br>
 

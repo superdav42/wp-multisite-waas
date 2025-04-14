@@ -75,7 +75,7 @@ if ( ! class_exists('MUCD_Functions') ) {
 				return true;
 			}
 
-            return get_blog_option($blog_id, 'mucd_duplicable', 'no') == 'yes';
+			return get_blog_option($blog_id, 'mucd_duplicable', 'no') == 'yes';
 		}
 
 		/**

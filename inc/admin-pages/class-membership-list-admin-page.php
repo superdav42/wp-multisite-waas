@@ -88,9 +88,9 @@ class Membership_List_Admin_Page extends List_Admin_Page {
 		$fields = [
 			'customer_id'     => [
 				'type'        => 'model',
-				'title'       => __('Customer', 'wp-ultimo'),
-				'placeholder' => __('Search Customer...', 'wp-ultimo'),
-				'desc'        => __('The customer to attach this membership to.', 'wp-ultimo'),
+				'title'       => __('Customer', 'wp-multisite-waas'),
+				'placeholder' => __('Search Customer...', 'wp-multisite-waas'),
+				'desc'        => __('The customer to attach this membership to.', 'wp-multisite-waas'),
 				'html_attr'   => [
 					'data-model'        => 'customer',
 					'data-value-field'  => 'id',
@@ -101,9 +101,9 @@ class Membership_List_Admin_Page extends List_Admin_Page {
 			],
 			'product_ids'     => [
 				'type'        => 'model',
-				'title'       => __('Products', 'wp-ultimo'),
-				'placeholder' => __('Search Products...', 'wp-ultimo'),
-				'desc'        => __('You can add multiples products to this membership.', 'wp-ultimo'),
+				'title'       => __('Products', 'wp-multisite-waas'),
+				'placeholder' => __('Search Products...', 'wp-multisite-waas'),
+				'desc'        => __('You can add multiples products to this membership.', 'wp-multisite-waas'),
 				'tooltip'     => '',
 				'html_attr'   => [
 					'data-model'        => 'product',
@@ -115,25 +115,25 @@ class Membership_List_Admin_Page extends List_Admin_Page {
 			],
 			'status'          => [
 				'type'        => 'select',
-				'title'       => __('Status', 'wp-ultimo'),
-				'placeholder' => __('Status', 'wp-ultimo'),
-				'desc'        => __('The membership status.', 'wp-ultimo'),
+				'title'       => __('Status', 'wp-multisite-waas'),
+				'placeholder' => __('Status', 'wp-multisite-waas'),
+				'desc'        => __('The membership status.', 'wp-multisite-waas'),
 				'tooltip'     => '',
 				'value'       => Membership_Status::PENDING,
 				'options'     => Membership_Status::to_array(),
 			],
 			'lifetime'        => [
 				'type'      => 'toggle',
-				'title'     => __('Lifetime', 'wp-ultimo'),
-				'desc'      => __('Activate this toggle to mark the newly created membership as lifetime.', 'wp-ultimo'),
+				'title'     => __('Lifetime', 'wp-multisite-waas'),
+				'desc'      => __('Activate this toggle to mark the newly created membership as lifetime.', 'wp-multisite-waas'),
 				'value'     => 1,
 				'html_attr' => [
 					'v-model' => 'lifetime',
 				],
 			],
 			'date_expiration' => [
-				'title'             => __('Expiration Date', 'wp-ultimo'),
-				'desc'              => __('Set the expiration date of the membership to be created.', 'wp-ultimo'),
+				'title'             => __('Expiration Date', 'wp-multisite-waas'),
+				'desc'              => __('Set the expiration date of the membership to be created.', 'wp-multisite-waas'),
 				'type'              => 'text',
 				'date'              => true,
 				'value'             => gmdate('Y-m-d', strtotime('+1 month')),
@@ -150,7 +150,7 @@ class Membership_List_Admin_Page extends List_Admin_Page {
 			],
 			'submit_button'   => [
 				'type'            => 'submit',
-				'title'           => __('Create Membership', 'wp-ultimo'),
+				'title'           => __('Create Membership', 'wp-multisite-waas'),
 				'value'           => 'save',
 				'classes'         => 'button button-primary wu-w-full',
 				'wrapper_classes' => 'wu-items-end',
@@ -197,7 +197,7 @@ class Membership_List_Admin_Page extends List_Admin_Page {
 			wp_send_json_error(
 				new \WP_Error(
 					'empty-products',
-					__('Products can not be empty.', 'wp-ultimo')
+					__('Products can not be empty.', 'wp-multisite-waas')
 				)
 			);
 		}
@@ -208,7 +208,7 @@ class Membership_List_Admin_Page extends List_Admin_Page {
 			wp_send_json_error(
 				new \WP_Error(
 					'customer-not-found',
-					__('The selected customer does not exist.', 'wp-ultimo')
+					__('The selected customer does not exist.', 'wp-multisite-waas')
 				)
 			);
 		}
@@ -263,8 +263,8 @@ class Membership_List_Admin_Page extends List_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'deleted_message' => __('Membership removed successfully.', 'wp-ultimo'),
-			'search_label'    => __('Search Membership', 'wp-ultimo'),
+			'deleted_message' => __('Membership removed successfully.', 'wp-multisite-waas'),
+			'search_label'    => __('Search Membership', 'wp-multisite-waas'),
 		];
 	}
 
@@ -276,7 +276,7 @@ class Membership_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('Memberships', 'wp-ultimo');
+		return __('Memberships', 'wp-multisite-waas');
 	}
 
 	/**
@@ -287,7 +287,7 @@ class Membership_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Memberships', 'wp-ultimo');
+		return __('Memberships', 'wp-multisite-waas');
 	}
 
 	/**
@@ -298,7 +298,7 @@ class Membership_List_Admin_Page extends List_Admin_Page {
 	 */
 	public function get_submenu_title() {
 
-		return __('Memberships', 'wp-ultimo');
+		return __('Memberships', 'wp-multisite-waas');
 	}
 
 	/**

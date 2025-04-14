@@ -16,7 +16,7 @@
 
 		<h3 class="wu-m-0 <?php echo wu_env_picker('', 'wu-widget-title'); ?>">
 
-			<?php echo $title; ?>
+			<?php echo esc_html($title); ?>
 
 		</h3>
 
@@ -37,7 +37,7 @@
 
 				if (is_array($items_to_display) && ! in_array($post_type_slug, $items_to_display, true)) {
 					continue;
-				} // end if;
+				}
 
 				if ($post_type_limits->{$post_type_slug}->enabled) :
 					$post_count = $post_type_limits->get_post_count($post_type_slug);
@@ -48,11 +48,11 @@
 						$width = 5;
 					} else {
 						$width = ($post_count / $post_type_limits->{$post_type_slug}->number * 100);
-					} // end if;
+					}
 
 					if ($width > 100) {
 						$width = 100;
-					} // end if;
+					}
 
 					?>
 
@@ -60,7 +60,7 @@
 
 				<span class="">
 
-					<?php echo $post_type->label; ?>
+					<?php echo esc_html($post_type->label); ?>
 
 				</span>
 
@@ -72,9 +72,9 @@
 
 				<div class="wu-text-xs wu-text-gray-600 wu-align-middle">
 
-					<?php echo $post_count; ?>
+					<?php echo esc_html($post_count); ?>
 					/
-					<?php echo empty($post_type_limits->{$post_type_slug}->number) ? __('Unlimited', 'wp-ultimo') : $post_type_limits->{$post_type_slug}->number; ?>
+					<?php echo empty($post_type_limits->{$post_type_slug}->number) ? esc_html__('Unlimited', 'wp-multisite-waas') : esc_html($post_type_limits->{$post_type_slug}->number); ?>
 
 				</div>
 
@@ -113,9 +113,9 @@ endforeach;
 
 			<div class="">
 
-			<?php _e('Unique Visits', 'wp-ultimo'); ?>
+			<?php esc_html_e('Unique Visits', 'wp-multisite-waas'); ?>
 
-			<?php echo wu_tooltip(sprintf(__('Next Reset: %s', 'wp-ultimo'), date_i18n(get_option('date_format', 'd/m/Y'), strtotime('last day of this month')))); ?>
+			<?php echo wu_tooltip(sprintf(__('Next Reset: %s', 'wp-multisite-waas'), date_i18n(get_option('date_format', 'd/m/Y'), strtotime('last day of this month')))); ?>
 
 			</div>
 
@@ -129,7 +129,7 @@ endforeach;
 
 			<?php echo number_format($visits_count); ?>
 			/
-			<?php echo $visit_limitations->get_limit() == 0 ? __('Unlimited', 'wp-ultimo') : number_format((int) $visit_limitations->get_limit()); ?>
+			<?php echo $visit_limitations->get_limit() == 0 ? __('Unlimited', 'wp-multisite-waas') : number_format((int) $visit_limitations->get_limit()); ?>
 
 			</div>
 

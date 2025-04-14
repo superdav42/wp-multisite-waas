@@ -12,9 +12,9 @@ namespace WP_Ultimo\Models;
 use WP_Ultimo\Models\Base_Model;
 use WP_Ultimo\Database\Payments\Payment_Status;
 use WP_Ultimo\Checkout\Line_Item;
-use WP_Ultimo\Models\Product;
 use WP_Ultimo\Models\Customer;
 use WP_Ultimo\Models\Membership;
+use WP_Ultimo\Models\Product;
 
 // Exit if accessed directly
 defined('ABSPATH') || exit;
@@ -192,7 +192,7 @@ class Payment extends Base_Model {
 			return wu_format_currency($this->{"$method_key"}(), $this->get_currency());
 		}
 
-		throw new \BadMethodCallException($name);
+		throw new \BadMethodCallException(esc_html($name));
 	}
 
 	/**
@@ -548,13 +548,13 @@ class Payment extends Base_Model {
 		$gateway = $this->get_gateway();
 
 		if ( ! $gateway) {
-			return __('None', 'wp-ultimo');
+			return __('None', 'wp-multisite-waas');
 		}
 
 		$gateway_class = wu_get_gateway($gateway);
 
 		if ( ! $gateway_class) {
-			return __('None', 'wp-ultimo');
+			return __('None', 'wp-multisite-waas');
 		}
 
 		$title = $gateway_class->get_public_title();
@@ -905,7 +905,7 @@ class Payment extends Base_Model {
 		if (false === $this->invoice_number) {
 			$provisional = true;
 
-			$this->invoice_number = wu_get_setting('next_invoice_number');
+			$this->invoice_number = wu_get_setting('next_invoice_number', 1);
 		}
 
 		$prefix = wu_get_setting('invoice_prefix', '');
@@ -930,7 +930,7 @@ class Payment extends Base_Model {
 
 		$prefix = str_replace($search, $replace, (string) $prefix);
 
-		return sprintf('%s%s %s', $prefix, $this->invoice_number, $provisional ? __('(provisional)', 'wp-ultimo') : '');
+		return sprintf('%s%s %s', $prefix, $this->invoice_number, $provisional ? __('(provisional)', 'wp-multisite-waas') : '');
 	}
 
 	/**
@@ -1050,11 +1050,11 @@ class Payment extends Base_Model {
 		 * it is a partial refund.
 		 */
 		if ($amount >= $this->get_total()) {
-			$title = __('Full Refund', 'wp-ultimo');
+			$title = __('Full Refund', 'wp-multisite-waas');
 
 			$new_status = Payment_Status::REFUND;
 		} else {
-			$title = __('Partial Refund', 'wp-ultimo');
+			$title = __('Partial Refund', 'wp-multisite-waas');
 
 			$new_status = Payment_Status::PARTIAL_REFUND;
 		}
@@ -1064,7 +1064,7 @@ class Payment extends Base_Model {
 		$formatted_value = date_i18n(get_option('date_format'), $time);
 
 		// translators: %s is the date of processing.
-		$description = sprintf(__('Processed on %s', 'wp-ultimo'), $formatted_value);
+		$description = sprintf(__('Processed on %s', 'wp-multisite-waas'), $formatted_value);
 
 		$line_item_data = [
 			'type'         => 'refund',
@@ -1110,7 +1110,7 @@ class Payment extends Base_Model {
 	 * Creates a copy of the given model adn resets it's id to a 'new' state.
 	 *
 	 * @since 2.0.0
-	 * @return \WP_Ultimo\Model\Base_Model
+	 * @return Base_Model
 	 */
 	public function duplicate() {
 

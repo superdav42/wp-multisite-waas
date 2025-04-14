@@ -127,7 +127,7 @@ class Broadcast_Manager extends Base_Manager {
 		$target_products = wu_request('target_products', '');
 
 		if ( ! $target_customers && ! $target_products) {
-			wp_send_json_error(new \WP_Error('error', __('No product or customer target was selected.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('error', __('No product or customer target was selected.', 'wp-multisite-waas')));
 		}
 
 		$broadcast_type = wu_request('type', 'broadcast_notice');
@@ -248,7 +248,7 @@ class Broadcast_Manager extends Base_Manager {
 			}
 		}
 
-		$error = new \WP_Error('mail-error', __('Something wrong happened.', 'wp-ultimo'));
+		$error = new \WP_Error('mail-error', __('Something wrong happened.', 'wp-multisite-waas'));
 
 		wp_send_json_error($error);
 	}

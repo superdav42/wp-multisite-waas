@@ -148,8 +148,8 @@ class Thank_You_Element extends Base_Element {
 				'resend_verification_email_nonce' => wp_create_nonce('wu_resend_verification_email_nonce'),
 				'membership_hash'                 => $this->membership ? $this->membership->get_hash() : false,
 				'i18n'                            => [
-					'resending_verification_email' => __('Resending verification email...', 'wp-ultimo'),
-					'email_sent'                   => __('Verification email sent!', 'wp-ultimo'),
+					'resending_verification_email' => __('Resending verification email...', 'wp-multisite-waas'),
+					'email_sent'                   => __('Verification email sent!', 'wp-multisite-waas'),
 				],
 			]
 		);
@@ -162,14 +162,14 @@ class Thank_You_Element extends Base_Element {
 	 *
 	 * This is used on the Blocks list of Gutenberg.
 	 * You should return a string with the localized title.
-	 * e.g. return __('My Element', 'wp-ultimo').
+	 * e.g. return __('My Element', 'wp-multisite-waas').
 	 *
 	 * @since 2.0.0
 	 * @return string
 	 */
 	public function get_title() {
 
-		return __('Thank You', 'wp-ultimo');
+		return __('Thank You', 'wp-multisite-waas');
 	}
 
 	/**
@@ -178,14 +178,14 @@ class Thank_You_Element extends Base_Element {
 	 * This is also used on the Gutenberg block list
 	 * to explain what this block is about.
 	 * You should return a string with the localized title.
-	 * e.g. return __('Adds a checkout form to the page', 'wp-ultimo').
+	 * e.g. return __('Adds a checkout form to the page', 'wp-multisite-waas').
 	 *
 	 * @since 2.0.0
 	 * @return string
 	 */
 	public function get_description() {
 
-		return __('Adds a checkout form block to the page.', 'wp-ultimo');
+		return __('Adds a checkout form block to the page.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -210,24 +210,24 @@ class Thank_You_Element extends Base_Element {
 		$fields = [];
 
 		$fields['header'] = [
-			'title' => __('General', 'wp-ultimo'),
-			'desc'  => __('General', 'wp-ultimo'),
+			'title' => __('General', 'wp-multisite-waas'),
+			'desc'  => __('General', 'wp-multisite-waas'),
 			'type'  => 'header',
 		];
 
 		$fields['title'] = [
 			'type'    => 'text',
-			'title'   => __('Title', 'wp-ultimo'),
-			'value'   => __('Thank You', 'wp-ultimo'),
-			'desc'    => __('Leave blank to hide the title completely.', 'wp-ultimo'),
+			'title'   => __('Title', 'wp-multisite-waas'),
+			'value'   => __('Thank You', 'wp-multisite-waas'),
+			'desc'    => __('Leave blank to hide the title completely.', 'wp-multisite-waas'),
 			'tooltip' => '',
 		];
 
 		$fields['thank_you_message'] = [
 			'type'      => 'textarea',
-			'title'     => __('Thank You Message', 'wp-ultimo'),
-			'desc'      => __('Shortcodes are supported.', 'wp-ultimo'),
-			'value'     => __('Thank you for your payment! Your transaction has been completed and a receipt for your purchase has been emailed to you.', 'wp-ultimo'),
+			'title'     => __('Thank You Message', 'wp-multisite-waas'),
+			'desc'      => __('Shortcodes are supported.', 'wp-multisite-waas'),
+			'value'     => __('Thank you for your payment! Your transaction has been completed and a receipt for your purchase has been emailed to you.', 'wp-multisite-waas'),
 			'tooltip'   => '',
 			'html_attr' => [
 				'rows' => 4,
@@ -236,17 +236,17 @@ class Thank_You_Element extends Base_Element {
 
 		$fields['title_pending'] = [
 			'type'    => 'text',
-			'title'   => __('Title (Pending)', 'wp-ultimo'),
-			'value'   => __('Thank You', 'wp-ultimo'),
-			'desc'    => __('Leave blank to hide the title completely. This title is used when the payment was not yet confirmed.', 'wp-ultimo'),
+			'title'   => __('Title (Pending)', 'wp-multisite-waas'),
+			'value'   => __('Thank You', 'wp-multisite-waas'),
+			'desc'    => __('Leave blank to hide the title completely. This title is used when the payment was not yet confirmed.', 'wp-multisite-waas'),
 			'tooltip' => '',
 		];
 
 		$fields['thank_you_message_pending'] = [
 			'type'      => 'textarea',
-			'title'     => __('Thank You Message (Pending)', 'wp-ultimo'),
-			'desc'      => __('This content is used when the payment was not yet confirmed. Shortcodes are supported.', 'wp-ultimo'),
-			'value'     => __('Thank you for your order! We are waiting on the payment processor to confirm your payment, which can take up to 5 minutes. We will notify you via email when your site is ready.', 'wp-ultimo'),
+			'title'     => __('Thank You Message (Pending)', 'wp-multisite-waas'),
+			'desc'      => __('This content is used when the payment was not yet confirmed. Shortcodes are supported.', 'wp-multisite-waas'),
+			'value'     => __('Thank you for your order! We are waiting on the payment processor to confirm your payment, which can take up to 5 minutes. We will notify you via email when your site is ready.', 'wp-multisite-waas'),
 			'tooltip'   => '',
 			'html_attr' => [
 				'rows' => 4,
@@ -255,9 +255,9 @@ class Thank_You_Element extends Base_Element {
 
 		$fields['no_sites_message'] = [
 			'type'      => 'textarea',
-			'title'     => __('No Sites Message', 'wp-ultimo'),
-			'desc'      => __('A message to show if membership has no sites. Shortcodes are supported.', 'wp-ultimo'),
-			'value'     => __('No sites found', 'wp-ultimo'),
+			'title'     => __('No Sites Message', 'wp-multisite-waas'),
+			'desc'      => __('A message to show if membership has no sites. Shortcodes are supported.', 'wp-multisite-waas'),
+			'value'     => __('No sites found', 'wp-multisite-waas'),
 			'tooltip'   => '',
 			'html_attr' => [
 				'rows' => 4,
@@ -312,11 +312,11 @@ class Thank_You_Element extends Base_Element {
 	public function defaults() {
 
 		return [
-			'title'                     => __('Thank You', 'wp-ultimo'),
-			'thank_you_message'         => __('Thank you for your payment! Your transaction has been completed and a receipt for your purchase has been emailed to you.', 'wp-ultimo'),
-			'title_pending'             => __('Thank You', 'wp-ultimo'),
-			'thank_you_message_pending' => __('Thank you for your order! We are waiting on the payment processor to confirm your payment, which can take up to 5 minutes. We will notify you via email when your site is ready.', 'wp-ultimo'),
-			'no_sites_message'          => __('No sites found', 'wp-ultimo'),
+			'title'                     => __('Thank You', 'wp-multisite-waas'),
+			'thank_you_message'         => __('Thank you for your payment! Your transaction has been completed and a receipt for your purchase has been emailed to you.', 'wp-multisite-waas'),
+			'title_pending'             => __('Thank You', 'wp-multisite-waas'),
+			'thank_you_message_pending' => __('Thank you for your order! We are waiting on the payment processor to confirm your payment, which can take up to 5 minutes. We will notify you via email when your site is ready.', 'wp-multisite-waas'),
+			'no_sites_message'          => __('No sites found', 'wp-multisite-waas'),
 		];
 	}
 
@@ -392,7 +392,7 @@ class Thank_You_Element extends Base_Element {
 		/*
 		 * Deal with conversion tracking
 		 */
-		$conversion_snippets = $atts['checkout_form']->get_conversion_snippets();
+		$conversion_snippets = $atts['checkout_form'] ? $atts['checkout_form']->get_conversion_snippets() : false;
 
 		if ( ! empty($conversion_snippets)) {
 			$product_ids = [];
@@ -419,7 +419,7 @@ class Thank_You_Element extends Base_Element {
 			);
 
 			foreach ($conversion_placeholders as $placeholder => $value) {
-				$conversion_snippets = preg_replace('/\%\%\s?' . $placeholder . '\s?\%\%/', json_encode($value), (string) $conversion_snippets);
+				$conversion_snippets = preg_replace('/\%\%\s?' . $placeholder . '\s?\%\%/', wp_json_encode($value), (string) $conversion_snippets);
 			}
 
 			add_action(

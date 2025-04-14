@@ -56,7 +56,7 @@ class Signup_Field_Payment extends Base_Signup_Field {
 	 */
 	public function get_title() {
 
-		return __('Payment', 'wp-ultimo');
+		return __('Payment', 'wp-multisite-waas');
 	}
 
 	/**
@@ -69,7 +69,7 @@ class Signup_Field_Payment extends Base_Signup_Field {
 	 */
 	public function get_description() {
 
-		return __('Adds the payment options and the additional fields required to complete a purchase (e.g. credit card field).', 'wp-ultimo');
+		return __('Adds the payment options and the additional fields required to complete a purchase (e.g. credit card field).', 'wp-multisite-waas');
 	}
 
 	/**
@@ -82,7 +82,7 @@ class Signup_Field_Payment extends Base_Signup_Field {
 	 */
 	public function get_tooltip() {
 
-		return __('Adds the payment options and the additional fields required to complete a purchase (e.g. credit card field).', 'wp-ultimo');
+		return __('Adds the payment options and the additional fields required to complete a purchase (e.g. credit card field).', 'wp-multisite-waas');
 	}
 
 	/**
@@ -190,7 +190,7 @@ class Signup_Field_Payment extends Base_Signup_Field {
 			$fields['auto_renew'] = [
 				'type'              => 'toggle',
 				'id'                => 'auto_renew',
-				'name'              => __('Auto-renew', 'wp-ultimo'),
+				'name'              => __('Auto-renew', 'wp-multisite-waas'),
 				'tooltip'           => '',
 				'value'             => '1',
 				'html_attr'         => [
@@ -200,7 +200,7 @@ class Signup_Field_Payment extends Base_Signup_Field {
 				],
 				'wrapper_html_attr' => [
 					'v-cloak' => 1,
-					'v-show'  => sprintf('%s.includes(gateway) && order.should_collect_payment && order.has_recurring', json_encode($auto_renewable_gateways)),
+					'v-show'  => sprintf('%s.includes(gateway) && order.should_collect_payment && order.has_recurring', wp_json_encode($auto_renewable_gateways)),
 				],
 			];
 		}

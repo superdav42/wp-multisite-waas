@@ -2,7 +2,7 @@
     "name": "devstone/wp-multisite-waas",
     "url": "https://wpmultisitewaas.org",
     "description": "The WordPress Multisite Website as a Service (WaaS) plugin.",
-    "version": "2.3.3",
+    "version": "2.4.0",
     "authors": [
         {
             "name": "Arindo Duque",
@@ -51,7 +51,7 @@
         "symfony/polyfill-php82": "^1.31.0",
         "symfony/polyfill-php83": "^1.31.0",
         "symfony/polyfill-php84": "^1.31.0",
-      "ext-curl": "*"
+        "ext-curl": "*"
     },
     "require-dev": {
         "composer/installers": "^1.9.0",
@@ -93,7 +93,11 @@
             "build.sh",
             "package.json",
             "package-lock.json",
-            "setuptest.sh"
+            "setuptest.sh",
+            "utils",
+            "update.sh",
+            "phpstan.neon.dist",
+            "rector.php"
         ]
     },
     "extra": {
@@ -113,7 +117,8 @@
         }
     },
     "scripts": {
-        "post-update-cmd": "cd vendor/mpdf/mpdf/ttfonts && rm -f AboriginalSansREGULAR.ttf Aegean.otf Aegyptus.otf Akkadian.otf ayar.ttf damase_v.2.ttf DBSILBR.ttf DejaVuSerif.ttf Dhyana-Regular.ttf DejaVuSansMono-Oblique.ttf DejaVuSerif-BoldItalic.ttf DhyanaOFL.txt DejaVuSerifCondensed-BoldItalic.ttf DejaVuSansMono-Bold.ttf DejaVuSerif-Italic.ttf DejaVuSansMono.ttf DejaVuSansMono-BoldOblique.ttf DejaVuSerif-Bold.ttf Dhyana-Bold.ttf DejaVuSerifCondensed-Italic.ttf DejaVuSansCondensed-BoldOblique.ttf DejaVuSansCondensed-Oblique.ttf DejaVuSans-Oblique.ttf DejaVuSans-BoldOblique.ttf DejaVuSans-Bold.ttf DejaVuSans.ttf FreeMonoBoldOblique.ttf FreeMonoOblique.ttf FreeSans.ttf FreeSansBold.ttf FreeSansBoldOblique.ttf FreeSansOblique.ttf FreeSerif.ttf FreeSerifBold.ttf FreeSerifBoldItalic.ttf FreeSerifItalic.ttf Garuda.ttf Garuda-Bold.ttf Garuda-BoldOblique.ttf Garuda-Oblique.ttf GNUFreeFontinfo.txt Jomolhari.ttf Jomolhari-OFL.txt kaputaunicode.ttf KhmerOFL.txt KhmerOS.ttf lannaalif-v1-03.ttf 'Lateef font OFL.txt' LateefRegOT.ttf Lohit-Kannada.ttf LohitKannadaOFL.txt ocrb10.ttf ocrbinfo.txt Padauk-book.ttf Pothana2000.ttf Quivira.otf Sun-ExtA.ttf Sun-ExtB.ttf SundaneseUnicode-1.0.5.ttf SyrCOMEdessa.otf SyrCOMEdessa_license.txt TaameyDavidCLM-LICENSE.txt TaameyDavidCLM-Medium.ttf TaiHeritagePro.ttf Tharlon-Regular.ttf TharlonOFL.txt UnBatang_0613.ttf Uthman.otf 'XB Riyaz.ttf' 'XB RiyazBd.ttf' 'XB RiyazBdIt.ttf' 'XB RiyazIt.ttf' 'XW Zar Font Info.txt' ZawgyiOne.ttf Abyssinica_SIL.ttf"
+        "post-update-cmd": "cd vendor/mpdf/mpdf/ttfonts && rm -f AboriginalSansREGULAR.ttf Aegean.otf Aegyptus.otf Akkadian.otf ayar.ttf damase_v.2.ttf DBSILBR.ttf DejaVuSerif.ttf Dhyana-Regular.ttf DejaVuSansMono-Oblique.ttf DejaVuSerif-BoldItalic.ttf DhyanaOFL.txt DejaVuSerifCondensed-BoldItalic.ttf DejaVuSansMono-Bold.ttf DejaVuSerif-Italic.ttf DejaVuSansMono.ttf DejaVuSansMono-BoldOblique.ttf DejaVuSerif-Bold.ttf Dhyana-Bold.ttf DejaVuSerifCondensed-Italic.ttf DejaVuSansCondensed-BoldOblique.ttf DejaVuSansCondensed-Oblique.ttf DejaVuSans-Oblique.ttf DejaVuSans-BoldOblique.ttf DejaVuSans-Bold.ttf DejaVuSans.ttf FreeMonoBoldOblique.ttf FreeMonoOblique.ttf FreeSans.ttf FreeSansBold.ttf FreeSansBoldOblique.ttf FreeSansOblique.ttf FreeSerif.ttf FreeSerifBold.ttf FreeSerifBoldItalic.ttf FreeSerifItalic.ttf Garuda.ttf Garuda-Bold.ttf Garuda-BoldOblique.ttf Garuda-Oblique.ttf GNUFreeFontinfo.txt Jomolhari.ttf Jomolhari-OFL.txt kaputaunicode.ttf KhmerOFL.txt KhmerOS.ttf lannaalif-v1-03.ttf 'Lateef font OFL.txt' LateefRegOT.ttf Lohit-Kannada.ttf LohitKannadaOFL.txt ocrb10.ttf ocrbinfo.txt Padauk-book.ttf Pothana2000.ttf Quivira.otf Sun-ExtA.ttf Sun-ExtB.ttf SundaneseUnicode-1.0.5.ttf SyrCOMEdessa.otf SyrCOMEdessa_license.txt TaameyDavidCLM-LICENSE.txt TaameyDavidCLM-Medium.ttf TaiHeritagePro.ttf Tharlon-Regular.ttf TharlonOFL.txt UnBatang_0613.ttf Uthman.otf 'XB Riyaz.ttf' 'XB RiyazBd.ttf' 'XB RiyazBdIt.ttf' 'XB RiyazIt.ttf' 'XW Zar Font Info.txt' ZawgyiOne.ttf Abyssinica_SIL.ttf",
+        "post-install-cmd": "cd vendor/mpdf/mpdf/ttfonts && rm -f AboriginalSansREGULAR.ttf Aegean.otf Aegyptus.otf Akkadian.otf ayar.ttf damase_v.2.ttf DBSILBR.ttf DejaVuSerif.ttf Dhyana-Regular.ttf DejaVuSansMono-Oblique.ttf DejaVuSerif-BoldItalic.ttf DhyanaOFL.txt DejaVuSerifCondensed-BoldItalic.ttf DejaVuSansMono-Bold.ttf DejaVuSerif-Italic.ttf DejaVuSansMono.ttf DejaVuSansMono-BoldOblique.ttf DejaVuSerif-Bold.ttf Dhyana-Bold.ttf DejaVuSerifCondensed-Italic.ttf DejaVuSansCondensed-BoldOblique.ttf DejaVuSansCondensed-Oblique.ttf DejaVuSans-Oblique.ttf DejaVuSans-BoldOblique.ttf DejaVuSans-Bold.ttf DejaVuSans.ttf FreeMonoBoldOblique.ttf FreeMonoOblique.ttf FreeSans.ttf FreeSansBold.ttf FreeSansBoldOblique.ttf FreeSansOblique.ttf FreeSerif.ttf FreeSerifBold.ttf FreeSerifBoldItalic.ttf FreeSerifItalic.ttf Garuda.ttf Garuda-Bold.ttf Garuda-BoldOblique.ttf Garuda-Oblique.ttf GNUFreeFontinfo.txt Jomolhari.ttf Jomolhari-OFL.txt kaputaunicode.ttf KhmerOFL.txt KhmerOS.ttf lannaalif-v1-03.ttf 'Lateef font OFL.txt' LateefRegOT.ttf Lohit-Kannada.ttf LohitKannadaOFL.txt ocrb10.ttf ocrbinfo.txt Padauk-book.ttf Pothana2000.ttf Quivira.otf Sun-ExtA.ttf Sun-ExtB.ttf SundaneseUnicode-1.0.5.ttf SyrCOMEdessa.otf SyrCOMEdessa_license.txt TaameyDavidCLM-LICENSE.txt TaameyDavidCLM-Medium.ttf TaiHeritagePro.ttf Tharlon-Regular.ttf TharlonOFL.txt UnBatang_0613.ttf Uthman.otf 'XB Riyaz.ttf' 'XB RiyazBd.ttf' 'XB RiyazBdIt.ttf' 'XB RiyazIt.ttf' 'XW Zar Font Info.txt' ZawgyiOne.ttf Abyssinica_SIL.ttf"
     },
     "autoload-dev": {
         "psr-4": {

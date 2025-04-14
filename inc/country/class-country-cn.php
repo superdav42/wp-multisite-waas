@@ -95,7 +95,7 @@ class Country_CN extends Country {
 	 */
 	public function get_name() {
 
-		return __('China', 'wp-ultimo');
+		return __('China', 'wp-multisite-waas');
 	}
 
 	/**
@@ -107,40 +107,40 @@ class Country_CN extends Country {
 	protected function states() {
 
 		return [
-			'AH' => __('Anhui', 'wp-ultimo'),
-			'BJ' => __('Beijing', 'wp-ultimo'),
-			'CQ' => __('Chongqing', 'wp-ultimo'),
-			'FJ' => __('Fujian', 'wp-ultimo'),
-			'GS' => __('Gansu', 'wp-ultimo'),
-			'GD' => __('Guangdong', 'wp-ultimo'),
-			'GX' => __('Guangxi Zhuang', 'wp-ultimo'),
-			'GZ' => __('Guizhou', 'wp-ultimo'),
-			'HI' => __('Hainan', 'wp-ultimo'),
-			'HE' => __('Hebei', 'wp-ultimo'),
-			'HL' => __('Heilongjiang', 'wp-ultimo'),
-			'HA' => __('Henan', 'wp-ultimo'),
-			'HK' => __('Hong Kong SAR', 'wp-ultimo'),
-			'HB' => __('Hubei', 'wp-ultimo'),
-			'HN' => __('Hunan', 'wp-ultimo'),
-			'NM' => __('Inner Mongolia', 'wp-ultimo'),
-			'JS' => __('Jiangsu', 'wp-ultimo'),
-			'JX' => __('Jiangxi', 'wp-ultimo'),
-			'JL' => __('Jilin', 'wp-ultimo'),
-			'LN' => __('Liaoning', 'wp-ultimo'),
-			'MO' => __('Macau SAR', 'wp-ultimo'),
-			'NX' => __('Ningxia Huizu', 'wp-ultimo'),
-			'QH' => __('Qinghai', 'wp-ultimo'),
-			'SN' => __('Shaanxi', 'wp-ultimo'),
-			'SD' => __('Shandong', 'wp-ultimo'),
-			'SH' => __('Shanghai', 'wp-ultimo'),
-			'SX' => __('Shanxi', 'wp-ultimo'),
-			'SC' => __('Sichuan', 'wp-ultimo'),
-			'TW' => __('Taiwan', 'wp-ultimo'),
-			'TJ' => __('Tianjin', 'wp-ultimo'),
-			'XJ' => __('Xinjiang', 'wp-ultimo'),
-			'XZ' => __('Xizang', 'wp-ultimo'),
-			'YN' => __('Yunnan', 'wp-ultimo'),
-			'ZJ' => __('Zhejiang', 'wp-ultimo'),
+			'AH' => __('Anhui', 'wp-multisite-waas'),
+			'BJ' => __('Beijing', 'wp-multisite-waas'),
+			'CQ' => __('Chongqing', 'wp-multisite-waas'),
+			'FJ' => __('Fujian', 'wp-multisite-waas'),
+			'GS' => __('Gansu', 'wp-multisite-waas'),
+			'GD' => __('Guangdong', 'wp-multisite-waas'),
+			'GX' => __('Guangxi Zhuang', 'wp-multisite-waas'),
+			'GZ' => __('Guizhou', 'wp-multisite-waas'),
+			'HI' => __('Hainan', 'wp-multisite-waas'),
+			'HE' => __('Hebei', 'wp-multisite-waas'),
+			'HL' => __('Heilongjiang', 'wp-multisite-waas'),
+			'HA' => __('Henan', 'wp-multisite-waas'),
+			'HK' => __('Hong Kong SAR', 'wp-multisite-waas'),
+			'HB' => __('Hubei', 'wp-multisite-waas'),
+			'HN' => __('Hunan', 'wp-multisite-waas'),
+			'NM' => __('Inner Mongolia', 'wp-multisite-waas'),
+			'JS' => __('Jiangsu', 'wp-multisite-waas'),
+			'JX' => __('Jiangxi', 'wp-multisite-waas'),
+			'JL' => __('Jilin', 'wp-multisite-waas'),
+			'LN' => __('Liaoning', 'wp-multisite-waas'),
+			'MO' => __('Macau SAR', 'wp-multisite-waas'),
+			'NX' => __('Ningxia Huizu', 'wp-multisite-waas'),
+			'QH' => __('Qinghai', 'wp-multisite-waas'),
+			'SN' => __('Shaanxi', 'wp-multisite-waas'),
+			'SD' => __('Shandong', 'wp-multisite-waas'),
+			'SH' => __('Shanghai', 'wp-multisite-waas'),
+			'SX' => __('Shanxi', 'wp-multisite-waas'),
+			'SC' => __('Sichuan', 'wp-multisite-waas'),
+			'TW' => __('Taiwan', 'wp-multisite-waas'),
+			'TJ' => __('Tianjin', 'wp-multisite-waas'),
+			'XJ' => __('Xinjiang', 'wp-multisite-waas'),
+			'XZ' => __('Xizang', 'wp-multisite-waas'),
+			'YN' => __('Yunnan', 'wp-multisite-waas'),
+			'ZJ' => __('Zhejiang', 'wp-multisite-waas'),
 		];
 	}
 }

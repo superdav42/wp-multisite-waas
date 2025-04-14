@@ -12,23 +12,24 @@
 	<span class="dashicons dashicons-yes-alt wu-text-green-400 wu-w-auto wu-h-auto wu-text-5xl wu-mb-2"></span>
 
 	<h1 class="wu-text-gray-800">
-		<?php printf(__('We are ready, %s!', 'wp-ultimo'), apply_filters('wu_setup_step_done_name', $page->customer->first ?? __('my friend', 'wp-ultimo'))); ?>
+		<?php // translators: %s customer's name ?>
+		<?php echo esc_html(sprintf(__('We are ready, %s!', 'wp-multisite-waas'), apply_filters('wu_setup_step_done_name', $page->customer->first ?? __('my friend', 'wp-multisite-waas')))); ?>
 	</h1>
 
 	<p class="wu-text-lg wu-text-gray-600 wu-my-4">
-		<?php _e('WP Multisite WaaS would not be possible without the work of <a href="https://wpultimo.com/" target="_blank">Arindo Duque</a> and <a href="https://nextpress.co" target="_blank">NextPress</a>.', 'wp-ultimo'); ?>
+		<?php esc_html_e('WP Multisite WaaS would not be possible without the work of <a href="https://wpultimo.com/" target="_blank">Arindo Duque</a> and <a href="https://nextpress.co" target="_blank">NextPress</a>.', 'wp-multisite-waas'); ?>
 	</p>
 
 	<p class="wu-text-lg wu-text-gray-600 wu-my-4">
-		<?php _e('WP Multisite WaaS is maintained by volunteer open source developers. Please consider sponsoring the project on <a href="https://github.com/superdav42/wp-multisite-waas" target="_blank">GitHub</a>', 'wp-ultimo'); ?>
+		<?php esc_html_e('WP Multisite WaaS is maintained by volunteer open source developers. Please consider sponsoring the project on <a href="https://github.com/superdav42/wp-multisite-waas" target="_blank">GitHub</a>', 'wp-multisite-waas'); ?>
 	</p>
 
 	<p class="wu-text-lg wu-text-gray-600 wu-my-4">
-		<?php _e('Paid support is available. Go to <a href="https://wpmultisitewaas.org/support" target="_blank">The Support Page</a> to find an expert who can assist in setting up WP Multisite WaaS or custom development.', 'wp-ultimo'); ?>
+		<?php esc_html_e('Paid support is available. Go to <a href="https://wpmultisitewaas.org/support" target="_blank">The Support Page</a> to find an expert who can assist in setting up WP Multisite WaaS or custom development.', 'wp-multisite-waas'); ?>
 	</p>
 
 	<p class="wu-text-lg wu-text-gray-600 wu-my-4">
-		<?php _e('You now have everything you need in place to start building your Website as a Service business!', 'wp-ultimo'); ?>
+		<?php esc_html_e('You now have everything you need in place to start building your Website as a Service business!', 'wp-multisite-waas'); ?>
 	</p>
 
 	<p>
@@ -46,7 +47,7 @@
 	<span class="wu-float-right">
 
 	<a href="<?php echo esc_url(network_admin_url('index.php')); ?>" class="button button-primary button-large">
-	<?php _e('Thanks!', 'wp-ultimo'); ?>
+	<?php esc_html_e('Thanks!', 'wp-multisite-waas'); ?>
 	</a>
 
 	</span>

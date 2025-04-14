@@ -38,8 +38,8 @@ class Membership_List_Table_Widget extends Base_List_Table {
 
 		parent::__construct(
 			[
-				'singular' => __('Membership', 'wp-ultimo'),  // singular name of the listed records
-				'plural'   => __('Memberships', 'wp-ultimo'), // plural name of the listed records
+				'singular' => __('Membership', 'wp-multisite-waas'),  // singular name of the listed records
+				'plural'   => __('Memberships', 'wp-multisite-waas'), // plural name of the listed records
 				'ajax'     => true,                         // does this table support ajax?
 			]
 		);
@@ -104,10 +104,7 @@ class Membership_List_Table_Widget extends Base_List_Table {
 	 */
 	public function get_extra_query_fields() {
 
-		$_filter_fields = parent::get_extra_query_fields();
-
-		$search = isset($_GET['s']) ? sanitize_text_field($_GET['s']) : false;
-
+		$_filter_fields                = parent::get_extra_query_fields();
 		$_filter_fields['customer_id'] = wu_request('customer_id');
 
 		return $_filter_fields;
@@ -129,8 +126,8 @@ class Membership_List_Table_Widget extends Base_List_Table {
 		$code = sprintf('<a href="%s">%s</a>', wu_network_admin_url('wp-ultimo-edit-membership', $url_atts), $item->get_hash());
 
 		$actions = [
-			'edit'   => sprintf('<a href="%s">%s</a>', wu_network_admin_url('wp-ultimo-edit-membership', $url_atts), __('Edit', 'wp-ultimo')),
-			'delete' => sprintf('<a href="%s">%s</a>', '', __('Delete', 'wp-ultimo')),
+			'edit'   => sprintf('<a href="%s">%s</a>', wu_network_admin_url('wp-ultimo-edit-membership', $url_atts), __('Edit', 'wp-multisite-waas')),
+			'delete' => sprintf('<a href="%s">%s</a>', '', __('Delete', 'wp-multisite-waas')),
 		];
 
 		$html = "<span class='wu-font-mono'><strong>{$code}</strong></span>";
@@ -143,7 +140,7 @@ class Membership_List_Table_Widget extends Base_List_Table {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_Ultimo\Models\Membership $item Membership object.
+	 * @param \WP_Ultimo\Models\Membership $item Membership object.
 	 * @return string
 	 */
 	public function column_status($item) {
@@ -160,13 +157,13 @@ class Membership_List_Table_Widget extends Base_List_Table {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_Ultimo\Models\Membership $item Membership object.
+	 * @param \WP_Ultimo\Models\Membership $item Membership object.
 	 * @return string
 	 */
 	public function column_amount($item) {
 
 		if (empty($item->get_amount())) {
-			return __('Free', 'wp-ultimo');
+			return __('Free', 'wp-multisite-waas');
 		}
 
 		$amount = wu_format_currency($item->get_amount(), $item->get_currency());
@@ -176,7 +173,7 @@ class Membership_List_Table_Widget extends Base_List_Table {
 
 			$message = sprintf(
 				// translators: %1$s is the formatted price, %2$s the duration, and %3$s the duration unit (day, week, month, etc)
-        _n('every %2$s', 'every %1$s %2$s', $duration, 'wp-ultimo'), // phpcs:ignore
+                _n('every %2$s', 'every %1$s %2$s', $duration, 'wp-multisite-waas'), // phpcs:ignore
 				$duration,
 				$item->get_duration_unit()
 			);
@@ -184,14 +181,14 @@ class Membership_List_Table_Widget extends Base_List_Table {
 			if ( ! $item->is_forever_recurring()) {
 				$billing_cycles_message = sprintf(
 					// translators: %s is the number of billing cycles.
-					_n('for %s cycle', 'for %s cycles', $item->get_billing_cycles(), 'wp-ultimo'),
+					_n('for %s cycle', 'for %s cycles', $item->get_billing_cycles(), 'wp-multisite-waas'),
 					$item->get_billing_cycles()
 				);
 
 				$message .= ' ' . $billing_cycles_message;
 			}
 		} else {
-			$message = __('one time payment', 'wp-ultimo');
+			$message = __('one time payment', 'wp-multisite-waas');
 		}
 
 		return sprintf('%s<br><small>%s</small>', $amount, $message);
@@ -210,7 +207,7 @@ class Membership_List_Table_Widget extends Base_List_Table {
 		$customer = $item->get_customer();
 
 		if ( ! $customer) {
-			$not_found = __('No customer found', 'wp-ultimo');
+			$not_found = __('No customer found', 'wp-multisite-waas');
 
 			return "<div class='wu-py-1 wu-px-2 wu-flex-grow wu-block wu-rounded wu-items-center wu-border wu-border-solid wu-border-gray-300 wu-bg-gray-100 wu-relative wu-overflow-hidden'>
 				<span class='dashicons dashicons-wu-block wu-text-gray-600 wu-px-1 wu-pr-3'>&nbsp;</span>
@@ -262,10 +259,10 @@ class Membership_List_Table_Widget extends Base_List_Table {
 	public function get_columns() {
 
 		$columns = [
-			'hash'     => __('Ref.', 'wp-ultimo'),
-			'status'   => __('Status', 'wp-ultimo'),
-			'customer' => __('Customer', 'wp-ultimo'),
-			'amount'   => __('Price', 'wp-ultimo'),
+			'hash'     => __('Ref.', 'wp-multisite-waas'),
+			'status'   => __('Status', 'wp-multisite-waas'),
+			'customer' => __('Customer', 'wp-multisite-waas'),
+			'amount'   => __('Price', 'wp-multisite-waas'),
 		];
 
 		return $columns;

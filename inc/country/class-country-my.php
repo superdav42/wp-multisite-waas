@@ -79,7 +79,7 @@ class Country_MY extends Country {
 	 */
 	public function get_name() {
 
-		return __('Malaysia', 'wp-ultimo');
+		return __('Malaysia', 'wp-multisite-waas');
 	}
 
 	/**
@@ -91,22 +91,22 @@ class Country_MY extends Country {
 	protected function states() {
 
 		return [
-			'10' => __('Selangor', 'wp-ultimo'),
-			'11' => __('Terengganu', 'wp-ultimo'),
-			'12' => __('Sabah', 'wp-ultimo'),
-			'13' => __('Sarawak', 'wp-ultimo'),
-			'14' => __('Kuala Lumpur', 'wp-ultimo'),
-			'15' => __('Labuan', 'wp-ultimo'),
-			'16' => __('Putrajaya', 'wp-ultimo'),
-			'01' => __('Johor', 'wp-ultimo'),
-			'02' => __('Kedah', 'wp-ultimo'),
-			'03' => __('Kelantan', 'wp-ultimo'),
-			'04' => __('Malacca', 'wp-ultimo'),
-			'05' => __('Negeri Sembilan', 'wp-ultimo'),
-			'06' => __('Pahang', 'wp-ultimo'),
-			'07' => __('Penang', 'wp-ultimo'),
-			'08' => __('Perak', 'wp-ultimo'),
-			'09' => __('Perlis', 'wp-ultimo'),
+			'10' => __('Selangor', 'wp-multisite-waas'),
+			'11' => __('Terengganu', 'wp-multisite-waas'),
+			'12' => __('Sabah', 'wp-multisite-waas'),
+			'13' => __('Sarawak', 'wp-multisite-waas'),
+			'14' => __('Kuala Lumpur', 'wp-multisite-waas'),
+			'15' => __('Labuan', 'wp-multisite-waas'),
+			'16' => __('Putrajaya', 'wp-multisite-waas'),
+			'01' => __('Johor', 'wp-multisite-waas'),
+			'02' => __('Kedah', 'wp-multisite-waas'),
+			'03' => __('Kelantan', 'wp-multisite-waas'),
+			'04' => __('Malacca', 'wp-multisite-waas'),
+			'05' => __('Negeri Sembilan', 'wp-multisite-waas'),
+			'06' => __('Pahang', 'wp-multisite-waas'),
+			'07' => __('Penang', 'wp-multisite-waas'),
+			'08' => __('Perak', 'wp-multisite-waas'),
+			'09' => __('Perlis', 'wp-multisite-waas'),
 		];
 	}
 }

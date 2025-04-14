@@ -97,9 +97,9 @@ class Webhook_Edit_Admin_Page extends Edit_Admin_Page {
 			'wu_webhook_page',
 			[
 				'i18n' => [
-					'error_title'   => __('Webhook Test', 'wp-ultimo'),
-					'error_message' => __('An error occurred when sending the test webhook, please try again.', 'wp-ultimo'),
-					'copied'        => __('Copied!', 'wp-ultimo'),
+					'error_title'   => __('Webhook Test', 'wp-multisite-waas'),
+					'error_message' => __('An error occurred when sending the test webhook, please try again.', 'wp-multisite-waas'),
+					'copied'        => __('Copied!', 'wp-multisite-waas'),
 				],
 			]
 		);
@@ -138,22 +138,22 @@ class Webhook_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_fields_widget(
 			'domain-url',
 			[
-				'title'    => __('Webhook URL', 'wp-ultimo'),
+				'title'    => __('Webhook URL', 'wp-multisite-waas'),
 				'position' => 'normal',
 				'fields'   => [
 					'webhook_url' => [
 						'type'        => 'url',
-						'title'       => __('Webhook URL', 'wp-ultimo'),
-						'desc'        => __('The URL where we will send the payload when the event triggers.', 'wp-ultimo'),
-						'placeholder' => __('https://example.com', 'wp-ultimo'),
+						'title'       => __('Webhook URL', 'wp-multisite-waas'),
+						'desc'        => __('The URL where we will send the payload when the event triggers.', 'wp-multisite-waas'),
+						'placeholder' => __('https://example.com', 'wp-multisite-waas'),
 						'value'       => $this->get_object()->get_webhook_url(),
 					],
 					'actions'     => [
 						'type'            => 'actions',
-						'tooltip'         => __('The event .', 'wp-ultimo'),
+						'tooltip'         => __('The event .', 'wp-multisite-waas'),
 						'actions'         => [
 							'send_test_event' => [
-								'title'        => __('Send Test Event', 'wp-ultimo'),
+								'title'        => __('Send Test Event', 'wp-multisite-waas'),
 								'action'       => 'wu_send_test_event',
 								'object_id'    => $this->get_object()->get_id(),
 								'loading_text' => 'Sending Test...',
@@ -168,12 +168,12 @@ class Webhook_Edit_Admin_Page extends Edit_Admin_Page {
 			]
 		);
 
-		add_meta_box('wp-ultimo-payload', __('Event Payload', 'wp-ultimo'), [$this, 'output_default_widget_payload'], get_current_screen()->id, 'normal');
+		add_meta_box('wp-ultimo-payload', __('Event Payload', 'wp-multisite-waas'), [$this, 'output_default_widget_payload'], get_current_screen()->id, 'normal');
 
 		$this->add_list_table_widget(
 			'events',
 			[
-				'title'        => __('Events', 'wp-ultimo'),
+				'title'        => __('Events', 'wp-multisite-waas'),
 				'table'        => new \WP_Ultimo\List_Tables\Inside_Events_List_Table(),
 				'query_filter' => [$this, 'query_filter'],
 			]
@@ -191,9 +191,9 @@ class Webhook_Edit_Admin_Page extends Edit_Admin_Page {
 				'fields' => [
 					'event' => [
 						'type'        => 'select',
-						'title'       => __('Event', 'wp-ultimo'),
-						'desc'        => __('The event that triggers this webhook.', 'wp-ultimo'),
-						'placeholder' => __('Select Event', 'wp-ultimo'),
+						'title'       => __('Event', 'wp-multisite-waas'),
+						'desc'        => __('The event that triggers this webhook.', 'wp-multisite-waas'),
+						'placeholder' => __('Select Event', 'wp-multisite-waas'),
 						'options'     => $event_list,
 						'value'       => $this->get_object()->get_event(),
 					],
@@ -204,13 +204,13 @@ class Webhook_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_fields_widget(
 			'active',
 			[
-				'title'  => __('Active', 'wp-ultimo'),
+				'title'  => __('Active', 'wp-multisite-waas'),
 				'fields' => [
 					'active' => [
 						'type'    => 'toggle',
-						'title'   => __('Active', 'wp-ultimo'),
-						'tooltip' => __('Deactivate will end the event trigger for this webhook.', 'wp-ultimo'),
-						'desc'    => __('Use this option to manually enable or disable this webhook.', 'wp-ultimo'),
+						'title'   => __('Active', 'wp-multisite-waas'),
+						'tooltip' => __('Deactivate will end the event trigger for this webhook.', 'wp-multisite-waas'),
+						'desc'    => __('Use this option to manually enable or disable this webhook.', 'wp-multisite-waas'),
 						'value'   => $this->get_object()->is_active(),
 					],
 				],
@@ -220,27 +220,27 @@ class Webhook_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_fields_widget(
 			'options',
 			[
-				'title'  => __('Options', 'wp-ultimo'),
+				'title'  => __('Options', 'wp-multisite-waas'),
 				'fields' => [
 					'integration' => [
 						'edit'          => true,
-						'title'         => __('Integration', 'wp-ultimo'),
+						'title'         => __('Integration', 'wp-multisite-waas'),
 						'type'          => 'text-edit',
 						'placeholder'   => 'manual',
 						'value'         => $this->get_object()->get_integration(),
 						'display_value' => ucwords((string) $this->get_object()->get_integration()),
-						'tooltip'       => __('Name of the service responsible for creating this webhook. If you are manually creating this webhook, use the value "manual".', 'wp-ultimo'),
+						'tooltip'       => __('Name of the service responsible for creating this webhook. If you are manually creating this webhook, use the value "manual".', 'wp-multisite-waas'),
 					],
 					'event_count' => [
-						'title'         => __('Run Count', 'wp-ultimo'),
+						'title'         => __('Run Count', 'wp-multisite-waas'),
 						'type'          => 'text-edit',
 						'min'           => 0,
 						'placeholder'   => 0,
 						'edit'          => true,
 						'value'         => $this->get_object()->get_event_count(),
 						// translators: %d is the number of times that this webhook was triggered.
-						'display_value' => sprintf(__('This webhook was triggered %d time(s).', 'wp-ultimo'), $this->get_object()->get_event_count()),
-						'tooltip'       => __('The number of times that this webhook was triggered so far. It includes test runs.', 'wp-ultimo'),
+						'display_value' => sprintf(__('This webhook was triggered %d time(s).', 'wp-multisite-waas'), $this->get_object()->get_event_count()),
+						'tooltip'       => __('The number of times that this webhook was triggered so far. It includes test runs.', 'wp-multisite-waas'),
 					],
 				],
 			]
@@ -259,13 +259,13 @@ class Webhook_Edit_Admin_Page extends Edit_Admin_Page {
 
 		$event = wu_get_event_type($object_event_slug);
 
-		$payload = isset($event['payload']) ? json_encode(wu_maybe_lazy_load_payload($event['payload']), JSON_PRETTY_PRINT) : '{}';
+		$payload = isset($event['payload']) ? wp_json_encode(wu_maybe_lazy_load_payload($event['payload']), JSON_PRETTY_PRINT) : '{}';
 
 		wu_get_template(
 			'events/widget-payload',
 			[
-				'title'        => __('Event Payload', 'wp-ultimo'),
-				'loading_text' => __('Loading Payload', 'wp-ultimo'),
+				'title'        => __('Event Payload', 'wp-multisite-waas'),
+				'loading_text' => __('Loading Payload', 'wp-multisite-waas'),
 				'payload'      => $payload,
 			]
 		);
@@ -297,7 +297,7 @@ class Webhook_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function get_title() {
 
-		return $this->edit ? __('Edit Webhook', 'wp-ultimo') : __('Add new Webhook', 'wp-ultimo');
+		return $this->edit ? __('Edit Webhook', 'wp-multisite-waas') : __('Add new Webhook', 'wp-multisite-waas');
 	}
 
 	/**
@@ -308,7 +308,7 @@ class Webhook_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Edit Webhook', 'wp-ultimo');
+		return __('Edit Webhook', 'wp-multisite-waas');
 	}
 
 	/**
@@ -331,15 +331,15 @@ class Webhook_Edit_Admin_Page extends Edit_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'edit_label'          => __('Edit Webhook', 'wp-ultimo'),
-			'add_new_label'       => __('Add new Webhook', 'wp-ultimo'),
-			'updated_message'     => __('Webhook updated successfully!', 'wp-ultimo'),
-			'title_placeholder'   => __('Enter Webhook', 'wp-ultimo'),
+			'edit_label'          => __('Edit Webhook', 'wp-multisite-waas'),
+			'add_new_label'       => __('Add new Webhook', 'wp-multisite-waas'),
+			'updated_message'     => __('Webhook updated successfully!', 'wp-multisite-waas'),
+			'title_placeholder'   => __('Enter Webhook', 'wp-multisite-waas'),
 			'title_description'   => '',
-			'save_button_label'   => __('Save Webhook', 'wp-ultimo'),
+			'save_button_label'   => __('Save Webhook', 'wp-multisite-waas'),
 			'save_description'    => '',
-			'delete_button_label' => __('Delete Webhook', 'wp-ultimo'),
-			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-ultimo'),
+			'delete_button_label' => __('Delete Webhook', 'wp-multisite-waas'),
+			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-multisite-waas'),
 		];
 	}
 
@@ -357,7 +357,7 @@ class Webhook_Edit_Admin_Page extends Edit_Admin_Page {
 			$item = $query->get_item_by('id', wu_request('id'));
 
 			if ( ! $item) {
-				wp_redirect(wu_network_admin_url('wp-ultimo-webhooks'));
+				wp_safe_redirect(wu_network_admin_url('wp-ultimo-webhooks'));
 
 				exit;
 			}
@@ -407,7 +407,7 @@ class Webhook_Edit_Admin_Page extends Edit_Admin_Page {
 
 			$url = add_query_arg($array_params);
 
-			wp_redirect($url);
+			wp_safe_redirect($url);
 
 			exit;
 		}

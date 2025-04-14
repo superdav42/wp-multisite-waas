@@ -16,7 +16,7 @@
 
 		<h3 class="wu-m-0 <?php echo wu_env_picker('', 'wu-widget-title'); ?>">
 
-			<?php echo $title; ?>
+			<?php echo esc_html($title); ?>
 
 		</h3>
 
@@ -27,12 +27,12 @@
 		<div class="wu-ml-auto">
 
 			<a 
-			title="<?php esc_attr_e('See More', 'wp-ultimo'); ?>" 
+			title="<?php esc_attr_e('See More', 'wp-multisite-waas'); ?>"
 			class="wu-text-sm wu-no-underline button" 
 			href="<?php echo $element->get_manage_url($site->get_id()); ?>"
 			>
 
-			<?php _e('See More', 'wp-ultimo'); ?>
+			<?php esc_html_e('See More', 'wp-multisite-waas'); ?>
 
 			</a>
 
@@ -53,15 +53,15 @@
 
 			<strong class="wu-text-gray-800 wu-text-base">
 
-				<?php echo $product->get_name(); ?>
+				<?php echo esc_html($product->get_name()); ?>
 
 			</strong>
 
 		</div>
 
 		<div class="wu-text-sm wu-text-gray-600">
-			<span class="wu-block"><?php _e('Your current plan', 'wp-ultimo'); ?></span>
-			<!-- <a href="#" class="wu-no-underline"><?php _e('Manage &rarr;', 'wp-ultimo'); ?></a> -->
+			<span class="wu-block"><?php esc_html_e('Your current plan', 'wp-multisite-waas'); ?></span>
+			<!-- <a href="#" class="wu-no-underline"><?php esc_html_e('Manage →', 'wp-multisite-waas'); ?></a> -->
 		</div>
 
 		</li>
@@ -75,14 +75,14 @@
 		<div>
 
 		<strong class="wu-text-gray-800 wu-text-base">
-				<?php printf(_n('%s day', '%s days', $site_trial, 'wp-ultimo'), $site_trial); ?>
+				<?php printf(esc_html(_n('%s day', '%s days', $site_trial, 'wp-multisite-waas')), esc_html($site_trial)); ?>
 		</strong>
 
 		</div>
 
 		<div class="wu-text-sm wu-text-gray-600">
-		<span class="wu-block"><?php _e('Remaining time in trial', 'wp-ultimo'); ?></span>
-		<!-- <a href="#" class="wu-no-underline"><?php _e('Upgrade &rarr;', 'wp-ultimo'); ?></a> -->
+		<span class="wu-block"><?php esc_html_e('Remaining time in trial', 'wp-multisite-waas'); ?></span>
+		<!-- <a href="#" class="wu-no-underline"><?php esc_html_e('Upgrade →', 'wp-multisite-waas'); ?></a> -->
 		</div>
 
 	</li>
@@ -98,7 +98,7 @@
 			/**
 			 * Display space used
 			 */
-			printf($message, size_format($space_used), size_format($space_allowed));
+			printf(esc_html($message), esc_html(size_format($space_used)), esc_html(size_format($space_allowed)));
 			?>
 		</strong>
 
@@ -113,8 +113,8 @@
 		</div>
 
 		<div class="wu-text-sm wu-text-gray-600">
-		<span class="wu-block"><?php _e('Disk space used', 'wp-ultimo'); ?></span>
-		<!-- <a href="#" class="wu-no-underline"><?php _e('Upgrade &rarr;', 'wp-ultimo'); ?></a> -->
+		<span class="wu-block"><?php esc_html_e('Disk space used', 'wp-multisite-waas'); ?></span>
+		<!-- <a href="#" class="wu-no-underline"><?php esc_html_e('Upgrade →', 'wp-multisite-waas'); ?></a> -->
 		</div>
 
 	</li>

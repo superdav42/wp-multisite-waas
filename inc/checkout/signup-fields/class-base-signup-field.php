@@ -308,7 +308,7 @@ abstract class Base_Signup_Field {
 			$final_field_list[ '_site_notice_field_' . uniqid() ] = [
 				'type'    => 'note',
 				'classes' => 'wu--mt-px',
-				'desc'    => sprintf('<div class="wu-p-4 wu--m-4 wu-bg-blue-100 wu-text-blue-600 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid">%s</div>', __('This is a site-related field. For that reason, this field will not show up when no plans are present on the shopping cart.', 'wp-ultimo')),
+				'desc'    => sprintf('<div class="wu-p-4 wu--m-4 wu-bg-blue-100 wu-text-blue-600 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid">%s</div>', __('This is a site-related field. For that reason, this field will not show up when no plans are present on the shopping cart.', 'wp-multisite-waas')),
 				'order'   => 98.5,
 			];
 		}
@@ -320,7 +320,7 @@ abstract class Base_Signup_Field {
 			$final_field_list[ '_user_notice_field_' . uniqid() ] = [
 				'type'    => 'note',
 				'classes' => 'wu--mt-px',
-				'desc'    => sprintf('<div class="wu-p-4 wu--m-4 wu-bg-blue-100 wu-text-blue-600 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid">%s</div>', __('This is a customer-related field. For that reason, this field will not show up when the user is logged and already has a customer on file.', 'wp-ultimo')),
+				'desc'    => sprintf('<div class="wu-p-4 wu--m-4 wu-bg-blue-100 wu-text-blue-600 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid">%s</div>', __('This is a customer-related field. For that reason, this field will not show up when the user is logged and already has a customer on file.', 'wp-multisite-waas')),
 				'order'   => 98.5,
 			];
 		}
@@ -360,7 +360,7 @@ abstract class Base_Signup_Field {
 
 					$selected = array_filter($selected);
 
-					$field['html_attr']['data-selected'] = json_encode($selected);
+					$field['html_attr']['data-selected'] = wp_json_encode($selected);
 				}
 			}
 
@@ -440,10 +440,10 @@ abstract class Base_Signup_Field {
 
 		$fields['id'] = [
 			'type'        => 'text',
-			'title'       => __('Field ID', 'wp-ultimo'),
-			'placeholder' => __('e.g. info-name', 'wp-ultimo'),
-			'tooltip'     => __('Only alpha-numeric and hyphens allowed.', 'wp-ultimo'),
-			'desc'        => __('The ID of the field. This is used to reference the field.', 'wp-ultimo'),
+			'title'       => __('Field ID', 'wp-multisite-waas'),
+			'placeholder' => __('e.g. info-name', 'wp-multisite-waas'),
+			'tooltip'     => __('Only alpha-numeric and hyphens allowed.', 'wp-multisite-waas'),
+			'desc'        => __('The ID of the field. This is used to reference the field.', 'wp-multisite-waas'),
 			'value'       => wu_request('id', ''),
 			'html_attr'   => [
 				'v-on:input'   => 'id = $event.target.value.toLowerCase().replace(/[^a-z0-9-_]+/g, "")',
@@ -453,10 +453,10 @@ abstract class Base_Signup_Field {
 
 		$fields['name'] = [
 			'type'        => 'text',
-			'title'       => __('Field Label', 'wp-ultimo'),
-			'placeholder' => __('e.g. Your Name', 'wp-ultimo'),
-			'desc'        => __('This is what your customer see as the field title.', 'wp-ultimo'),
-			'tooltip'     => __('Leave blank to hide the field label. You can also set a placeholder value and tip in the "Additional Settings" tab.', 'wp-ultimo'),
+			'title'       => __('Field Label', 'wp-multisite-waas'),
+			'placeholder' => __('e.g. Your Name', 'wp-multisite-waas'),
+			'desc'        => __('This is what your customer see as the field title.', 'wp-multisite-waas'),
+			'tooltip'     => __('Leave blank to hide the field label. You can also set a placeholder value and tip in the "Additional Settings" tab.', 'wp-multisite-waas'),
 			'value'       => '',
 			'html_attr'   => [
 				'v-model' => 'name',
@@ -465,9 +465,9 @@ abstract class Base_Signup_Field {
 
 		$fields['placeholder'] = [
 			'type'        => 'text',
-			'title'       => __('Field Placeholder', 'wp-ultimo'),
-			'placeholder' => __('e.g. Placeholder value', 'wp-ultimo'),
-			'desc'        => __('This value appears inside the field, as an example of how to fill it.', 'wp-ultimo'),
+			'title'       => __('Field Placeholder', 'wp-multisite-waas'),
+			'placeholder' => __('e.g. Placeholder value', 'wp-multisite-waas'),
+			'desc'        => __('This value appears inside the field, as an example of how to fill it.', 'wp-multisite-waas'),
 			'tooltip'     => '',
 			'value'       => '',
 			'tab'         => 'advanced',
@@ -478,10 +478,10 @@ abstract class Base_Signup_Field {
 
 		$fields['tooltip'] = [
 			'type'        => 'textarea',
-			'title'       => __('Field Tooltip', 'wp-ultimo'),
-			'placeholder' => __('e.g. This field is great, be sure to fill it.', 'wp-ultimo'),
+			'title'       => __('Field Tooltip', 'wp-multisite-waas'),
+			'placeholder' => __('e.g. This field is great, be sure to fill it.', 'wp-multisite-waas'),
 			// translators: %is is the icon for a question mark.
-			'desc'        => sprintf(__('Any text entered here will be shown when the customer hovers the %s icon next to the field label.', 'wp-ultimo'), wu_tooltip(__('Just like this!', 'wp-ultimo'))),
+			'desc'        => sprintf(__('Any text entered here will be shown when the customer hovers the %s icon next to the field label.', 'wp-multisite-waas'), wu_tooltip(__('Just like this!', 'wp-multisite-waas'))),
 			'tooltip'     => '',
 			'value'       => '',
 			'tab'         => 'advanced',
@@ -493,8 +493,8 @@ abstract class Base_Signup_Field {
 
 		$fields['default_value'] = [
 			'type'        => 'text',
-			'title'       => __('Default Value', 'wp-ultimo'),
-			'placeholder' => __('e.g. None', 'wp-ultimo'),
+			'title'       => __('Default Value', 'wp-multisite-waas'),
+			'placeholder' => __('e.g. None', 'wp-multisite-waas'),
 			'value'       => '',
 			'html_attr'   => [
 				'v-model' => 'default_value',
@@ -503,7 +503,7 @@ abstract class Base_Signup_Field {
 
 		$fields['note'] = [
 			'type'        => 'textarea',
-			'title'       => __('Content', 'wp-ultimo'),
+			'title'       => __('Content', 'wp-multisite-waas'),
 			'placeholder' => '',
 			'tooltip'     => '',
 			'value'       => '',
@@ -514,13 +514,13 @@ abstract class Base_Signup_Field {
 
 		$fields['limits'] = [
 			'type'    => 'group',
-			'title'   => __('Field Length', 'wp-ultimo'),
+			'title'   => __('Field Length', 'wp-multisite-waas'),
 			'tooltip' => '',
 			'fields'  => [
 				'min' => [
 					'type'            => 'number',
 					'value'           => '',
-					'placeholder'     => __('Min', 'wp-ultimo'),
+					'placeholder'     => __('Min', 'wp-multisite-waas'),
 					'wrapper_classes' => 'wu-w-1/2',
 					'html_attr'       => [
 						'v-model' => 'min',
@@ -529,7 +529,7 @@ abstract class Base_Signup_Field {
 				'max' => [
 					'type'            => 'number',
 					'value'           => '',
-					'placeholder'     => __('Max', 'wp-ultimo'),
+					'placeholder'     => __('Max', 'wp-multisite-waas'),
 					'wrapper_classes' => 'wu-ml-2 wu-w-1/2',
 					'html_attr'       => [
 						'v-model' => 'max',
@@ -540,18 +540,18 @@ abstract class Base_Signup_Field {
 
 		$fields['save_as'] = [
 			'type'        => 'select',
-			'title'       => __('Save As', 'wp-ultimo'),
-			'desc'        => __('Select how you want to save this piece of meta data. You can attach it to the customer or the site as site meta or as site option.', 'wp-ultimo'),
+			'title'       => __('Save As', 'wp-multisite-waas'),
+			'desc'        => __('Select how you want to save this piece of meta data. You can attach it to the customer or the site as site meta or as site option.', 'wp-multisite-waas'),
 			'placeholder' => '',
 			'tooltip'     => '',
 			'value'       => 'customer_meta',
 			'order'       => 99.5,
 			'options'     => [
-				'customer_meta' => __('Customer Meta', 'wp-ultimo'),
-				'user_meta'     => __('User Meta', 'wp-ultimo'),
-				'site_meta'     => __('Site Meta', 'wp-ultimo'),
-				'site_option'   => __('Site Option', 'wp-ultimo'),
-				'nothing'       => __('Do not save', 'wp-ultimo'),
+				'customer_meta' => __('Customer Meta', 'wp-multisite-waas'),
+				'user_meta'     => __('User Meta', 'wp-multisite-waas'),
+				'site_meta'     => __('Site Meta', 'wp-multisite-waas'),
+				'site_option'   => __('Site Option', 'wp-multisite-waas'),
+				'nothing'       => __('Do not save', 'wp-multisite-waas'),
 			],
 			'html_attr'   => [
 				'v-model' => 'save_as',
@@ -560,8 +560,8 @@ abstract class Base_Signup_Field {
 
 		$fields['required'] = [
 			'type'      => 'toggle',
-			'title'     => __('Required', 'wp-ultimo'),
-			'desc'      => __('Mark this field as required. The checkout will not proceed unless this field is filled.', 'wp-ultimo'),
+			'title'     => __('Required', 'wp-multisite-waas'),
+			'desc'      => __('Mark this field as required. The checkout will not proceed unless this field is filled.', 'wp-multisite-waas'),
 			'value'     => 0,
 			'order'     => 98,
 			'html_attr' => [

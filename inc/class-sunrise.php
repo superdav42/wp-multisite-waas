@@ -26,14 +26,15 @@ class Sunrise {
 	 *
 	 * @var string
 	 */
-	static $version = '2.0.0.8';
+
+	public static $version = '2.0.0.8';
 
 	/**
 	 * Keeps the sunrise meta cached after the first read.
 	 *
 	 * @var null|array
 	 */
-	static $sunrise_meta;
+	public static $sunrise_meta;
 
 	/**
 	 * Initializes sunrise and loads additional elements if needed.
@@ -104,29 +105,28 @@ class Sunrise {
 	 */
 	public static function load_dependencies(): void {
 
+		// We can't use JetPack autoloader because WordPress is not fully loaded yet.
 		require_once __DIR__ . '/deprecated/early-deprecated.php';
-
 		require_once __DIR__ . '/deprecated/mercator.php';
-
-		require_once __DIR__ . '/class-autoloader.php';
-
 		require_once __DIR__ . '/functions/site.php';
-
 		require_once __DIR__ . '/functions/debug.php';
-
 		require_once __DIR__ . '/functions/url.php';
-
 		require_once __DIR__ . '/functions/number-helpers.php';
-
 		require_once __DIR__ . '/functions/array-helpers.php';
-
 		require_once __DIR__ . '/traits/trait-singleton.php';
 		require_once __DIR__ . '/objects/class-limitations.php';
+		require_once __DIR__ . '/models/interface-limitable.php';
 		require_once __DIR__ . '/models/traits/trait-limitable.php';
 		require_once __DIR__ . '/models/traits/trait-notable.php';
+		require_once __DIR__ . '/models/traits/trait-billable.php';
+		require_once __DIR__ . '/traits/trait-wp-ultimo-subscription-deprecated.php';
 		require_once __DIR__ . '/traits/trait-wp-ultimo-site-deprecated.php';
 		require_once __DIR__ . '/database/engine/class-enum.php';
 		require_once __DIR__ . '/database/sites/class-site-type.php';
+		require_once __DIR__ . '/../vendor/berlindb/core/src/Database/Base.php';
+		require_once __DIR__ . '/../vendor/berlindb/core/src/Database/Query.php';
+		require_once __DIR__ . '/database/engine/class-query.php';
+		require_once __DIR__ . '/database/sites/class-site-query.php';
 		require_once __DIR__ . '/models/class-base-model.php';
 		require_once __DIR__ . '/models/class-domain.php';
 		require_once __DIR__ . '/models/class-site.php';
@@ -137,6 +137,9 @@ class Sunrise {
 		require_once __DIR__ . '/class-settings.php';
 		require_once __DIR__ . '/limits/class-plugin-limits.php';
 		require_once __DIR__ . '/limits/class-theme-limits.php';
+		require_once __DIR__ . '/limits/class-theme-limits.php';
+		require_once __DIR__ . '/models/class-membership.php';
+
 	}
 
 	/**
@@ -211,7 +214,7 @@ class Sunrise {
 					 */
 					add_filter('option_active_plugins', fn() => []);
 
-					add_filter('site_option_active_sitewide_plugins', fn($plugins) => [basename(dirname(__DIR__)) . '/wp-ultimo.php' => 1]);
+					add_filter('site_option_active_sitewide_plugins', fn() => [basename(dirname(__DIR__)) . '/wp-ultimo.php' => 1], 10, 0);
 				}
 			}
 		}
@@ -260,49 +263,21 @@ class Sunrise {
 	 */
 	public static function try_upgrade() {
 
-		$possible_sunrises = [
-			WP_PLUGIN_DIR . '/wp-multisite-waas/sunrise.php',
-			WPMU_PLUGIN_DIR . '/wp-multisite-waas/sunrise.php',
-		];
+		$copy_results = copy(
+			dirname(WP_ULTIMO_PLUGIN_FILE) . '/sunrise.php',
+			WP_CONTENT_DIR . '/sunrise.php'
+		); // phpcs:ignore
 
-		$sunrise_found = false;
-
-		$error = false;
-
-		$location = WP_CONTENT_DIR . '/sunrise.php';
-
-		foreach ($possible_sunrises as $new_file) {
-			if ( ! file_exists($new_file)) {
-				continue;
-			}
-
-			$sunrise_found = true;
-
-			$copy_results = @copy($new_file, $location); // phpcs:ignore
-
-			if ( ! $copy_results) {
-				$error = error_get_last();
-
-				continue;
-			}
-
-			wu_log_add('sunrise', __('Sunrise upgrade attempt succeeded.', 'wp-ultimo'));
-
-			return true;
-		}
-
-		if (false === $sunrise_found) {
-			$error = [
-				'message' => __('File not found.', 'wp-ultimo'),
-			];
-		}
-
-		if ( ! empty($error)) {
+		if ( ! $copy_results) {
+			$error = error_get_last();
 			wu_log_add('sunrise', $error['message'], LogLevel::ERROR);
 
 			/* translators: the placeholder is an error message */
-			return new \WP_Error('error', sprintf(__('Sunrise copy failed: %s', 'wp-ultimo'), $error['message']));
+			return new \WP_Error('error', sprintf(__('Sunrise copy failed: %s', 'wp-multisite-waas'), $error['message']));
 		}
+
+		wu_log_add('sunrise', __('Sunrise upgrade attempt succeeded.', 'wp-multisite-waas'));
+		return true;
 	}
 
 	/**

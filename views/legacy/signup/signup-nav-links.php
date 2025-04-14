@@ -31,14 +31,14 @@ if ( ! defined('ABSPATH')) {
 $nav_links = apply_filters(
 	'wu_signup_form_nav_links',
 	[
-		home_url()     => __('Return to Home', 'wp-ultimo'),
-		wp_login_url() => sprintf('<strong>%s</strong>', __('Log In', 'wp-ultimo')),
+		home_url()     => __('Return to Home', 'wp-multisite-waas'),
+		wp_login_url() => sprintf('<strong>%s</strong>', __('Log In', 'wp-multisite-waas')),
 	]
 );
 
 if ( ! isset($signup->step)) {
 	return;
-} // end if;
+}
 
 ?>
 

@@ -10,11 +10,11 @@
 
 	<span class="wu-my-1 wu-text-2xs wu-uppercase wu-font-bold wu-block">
 
-	<?php echo $field->title; ?>
+	<?php echo $field->title; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 	<?php if ($field->tooltip) : ?>
 
-		<?php echo wu_tooltip($field->tooltip); ?>
+		<?php echo wu_tooltip($field->tooltip); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 	<?php endif; ?>
 

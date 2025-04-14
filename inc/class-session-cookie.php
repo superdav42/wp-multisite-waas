@@ -137,7 +137,7 @@ class Session_Cookie implements Session {
 			$expire = HOUR_IN_SECONDS;
 		}
 
-		$value = json_encode($this->data, JSON_UNESCAPED_UNICODE);
+		$value = wp_json_encode($this->data, JSON_UNESCAPED_UNICODE);
 
 		$cookie = new Cookie($this->get_cookie_name());
 		$cookie->setValue($value);

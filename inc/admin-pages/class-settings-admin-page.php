@@ -137,7 +137,7 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 		wu_register_settings_side_panel(
 			'login-and-registration',
 			[
-				'title'  => __('Checkout Forms', 'wp-ultimo'),
+				'title'  => __('Checkout Forms', 'wp-multisite-waas'),
 				'render' => [$this, 'render_checkout_forms_side_panel'],
 			]
 		);
@@ -145,7 +145,7 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 		wu_register_settings_side_panel(
 			'sites',
 			[
-				'title'  => __('Template Previewer', 'wp-ultimo'),
+				'title'  => __('Template Previewer', 'wp-multisite-waas'),
 				'render' => [$this, 'render_site_template_side_panel'],
 			]
 		);
@@ -153,7 +153,7 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 		wu_register_settings_side_panel(
 			'sites',
 			[
-				'title'  => __('Placeholder Editor', 'wp-ultimo'),
+				'title'  => __('Placeholder Editor', 'wp-multisite-waas'),
 				'render' => [$this, 'render_site_placeholders_side_panel'],
 			]
 		);
@@ -161,7 +161,7 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 		wu_register_settings_side_panel(
 			'payment-gateways',
 			[
-				'title'  => __('Invoices', 'wp-ultimo'),
+				'title'  => __('Invoices', 'wp-multisite-waas'),
 				'render' => [$this, 'render_invoice_side_panel'],
 			]
 		);
@@ -169,7 +169,7 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 		wu_register_settings_side_panel(
 			'emails',
 			[
-				'title'  => __('System Emails', 'wp-ultimo'),
+				'title'  => __('System Emails', 'wp-multisite-waas'),
 				'render' => [$this, 'render_system_emails_side_panel'],
 			]
 		);
@@ -177,7 +177,7 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 		wu_register_settings_side_panel(
 			'emails',
 			[
-				'title'  => __('Email Template', 'wp-ultimo'),
+				'title'  => __('Email Template', 'wp-multisite-waas'),
 				'render' => [$this, 'render_email_template_side_panel'],
 			]
 		);
@@ -197,15 +197,15 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 			<div class="wu-p-4">
 
 				<span class="wu-text-gray-700 wu-font-bold wu-uppercase wu-tracking-wide wu-text-xs">
-					<?php _e('Checkout Forms', 'wp-ultimo'); ?>
+					<?php esc_html_e('Checkout Forms', 'wp-multisite-waas'); ?>
 				</span>
 
 				<div class="wu-py-2">
-					<img class="wu-w-full" alt="<?php esc_attr_e('Checkout Forms', 'wp-ultimo'); ?>" src="<?php echo wu_get_asset('sidebar/checkout-forms.webp'); ?>">
+					<img class="wu-w-full" alt="<?php esc_attr_e('Checkout Forms', 'wp-multisite-waas'); ?>" src="<?php echo esc_attr(wu_get_asset('sidebar/checkout-forms.webp')); ?>">
 				</div>
 
 				<p class="wu-text-gray-600 wu-p-0 wu-m-0">
-					<?php _e('You can create multiple Checkout Forms for different occasions (seasonal campaigns, launches, etc)!', 'wp-ultimo'); ?>
+					<?php esc_html_e('You can create multiple Checkout Forms for different occasions (seasonal campaigns, launches, etc)!', 'wp-multisite-waas'); ?>
 				</p>
 
 			</div>
@@ -213,8 +213,8 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 			<?php if (current_user_can('wu_edit_checkout_forms')) : ?>
 
 				<div class="wu-p-4 wu-bg-gray-100 wu-border-solid wu-border-0 wu-border-t wu-border-gray-300">
-					<a class="button wu-w-full wu-text-center" href="<?php echo wu_network_admin_url('wp-ultimo-checkout-forms'); ?>">
-						<?php _e('Manage Checkout Forms &rarr;', 'wp-ultimo'); ?>
+					<a class="button wu-w-full wu-text-center" href="<?php echo esc_attr(wu_network_admin_url('wp-ultimo-checkout-forms')); ?>">
+						<?php esc_html_e('Manage Checkout Forms &rarr;', 'wp-multisite-waas'); ?>
 					</a>
 				</div>
 
@@ -240,15 +240,15 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 			<div class="wu-p-4">
 
 				<span class="wu-text-gray-700 wu-font-bold wu-uppercase wu-tracking-wide wu-text-xs">
-					<?php _e('Customize the Template Previewer', 'wp-ultimo'); ?>
+					<?php esc_html_e('Customize the Template Previewer', 'wp-multisite-waas'); ?>
 				</span>
 
 				<div class="wu-py-2">
-					<img class="wu-w-full" alt="<?php esc_attr_e('Customize the Template Previewer', 'wp-ultimo'); ?>" src="<?php echo wu_get_asset('sidebar/site-template.webp'); ?>">
+					<img class="wu-w-full" alt="<?php esc_attr_e('Customize the Template Previewer', 'wp-multisite-waas'); ?>" src="<?php echo esc_attr(wu_get_asset('sidebar/site-template.webp')); ?>">
 				</div>
 
 				<p class="wu-text-gray-600 wu-p-0 wu-m-0">
-					<?php _e('Did you know that you can customize colors, logos, and more options of the Site Template Previewer top-bar?', 'wp-ultimo'); ?>
+					<?php esc_html_e('Did you know that you can customize colors, logos, and more options of the Site Template Previewer top-bar?', 'wp-multisite-waas'); ?>
 				</p>
 
 			</div>
@@ -256,8 +256,8 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 			<?php if (current_user_can('wu_edit_sites')) : ?>
 
 				<div class="wu-p-4 wu-bg-gray-100 wu-border-solid wu-border-0 wu-border-t wu-border-gray-300">
-					<a class="button wu-w-full wu-text-center" target="_blank" href="<?php echo wu_network_admin_url('wp-ultimo-customize-template-previewer'); ?>">
-						<?php _e('Go to Customizer &rarr;', 'wp-ultimo'); ?>
+					<a class="button wu-w-full wu-text-center" target="_blank" href="<?php echo esc_attr(wu_network_admin_url('wp-ultimo-customize-template-previewer')); ?>">
+						<?php esc_html_e('Go to Customizer &rarr;', 'wp-multisite-waas'); ?>
 					</a>
 				</div>
 
@@ -283,15 +283,15 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 			<div class="wu-p-4">
 
 				<span class="wu-text-gray-700 wu-font-bold wu-uppercase wu-tracking-wide wu-text-xs">
-					<?php _e('Customize the Template Placeholders', 'wp-ultimo'); ?>
+					<?php esc_html_e('Customize the Template Placeholders', 'wp-multisite-waas'); ?>
 				</span>
 
 				<div class="wu-py-2">
-					<img class="wu-w-full" alt="<?php esc_attr_e('Customize the Template Placeholders', 'wp-ultimo'); ?>" src="<?php echo wu_get_asset('sidebar/template-placeholders.webp'); ?>">
+					<img class="wu-w-full" alt="<?php esc_attr_e('Customize the Template Placeholders', 'wp-multisite-waas'); ?>" src="<?php echo esc_attr(wu_get_asset('sidebar/template-placeholders.webp')); ?>">
 				</div>
 
 				<p class="wu-text-gray-600 wu-p-0 wu-m-0">
-					<?php _e('If you are using placeholder substitutions inside your site templates, use this tool to add, remove, or change the default content of those placeholders.', 'wp-ultimo'); ?>
+					<?php esc_html_e('If you are using placeholder substitutions inside your site templates, use this tool to add, remove, or change the default content of those placeholders.', 'wp-multisite-waas'); ?>
 				</p>
 
 			</div>
@@ -299,8 +299,8 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 			<?php if (current_user_can('wu_edit_sites')) : ?>
 
 				<div class="wu-p-4 wu-bg-gray-100 wu-border-solid wu-border-0 wu-border-t wu-border-gray-300">
-					<a class="button wu-w-full wu-text-center" target="_blank" href="<?php echo wu_network_admin_url('wp-ultimo-template-placeholders'); ?>">
-						<?php _e('Edit Placeholders &rarr;', 'wp-ultimo'); ?>
+					<a class="button wu-w-full wu-text-center" target="_blank" href="<?php echo esc_attr(wu_network_admin_url('wp-ultimo-template-placeholders')); ?>">
+						<?php esc_html_e('Edit Placeholders &rarr;', 'wp-multisite-waas'); ?>
 					</a>
 				</div>
 
@@ -326,15 +326,15 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 			<div class="wu-p-4">
 
 				<span class="wu-text-gray-700 wu-font-bold wu-uppercase wu-tracking-wide wu-text-xs">
-					<?php _e('Customize the Invoice Template', 'wp-ultimo'); ?>
+					<?php esc_html_e('Customize the Invoice Template', 'wp-multisite-waas'); ?>
 				</span>
 
 				<div class="wu-py-2">
-					<img class="wu-w-full" alt="<?php esc_attr_e('Customize the Invoice Template', 'wp-ultimo'); ?>" src="<?php echo wu_get_asset('sidebar/invoice-template.webp'); ?>">
+					<img class="wu-w-full" alt="<?php esc_attr_e('Customize the Invoice Template', 'wp-multisite-waas'); ?>" src="<?php echo esc_attr(wu_get_asset('sidebar/invoice-template.webp')); ?>">
 				</div>
 
 				<p class="wu-text-gray-600 wu-p-0 wu-m-0">
-					<?php _e('Did you know that you can customize colors, logos, and more options of the Invoice PDF template?', 'wp-ultimo'); ?>
+					<?php esc_html_e('Did you know that you can customize colors, logos, and more options of the Invoice PDF template?', 'wp-multisite-waas'); ?>
 				</p>
 
 			</div>
@@ -342,8 +342,8 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 			<?php if (current_user_can('wu_edit_payments')) : ?>
 
 				<div class="wu-p-4 wu-bg-gray-100 wu-border-solid wu-border-0 wu-border-t wu-border-gray-300">
-					<a class="button wu-w-full wu-text-center" target="_blank" href="<?php echo wu_network_admin_url('wp-ultimo-customize-invoice-template'); ?>">
-						<?php _e('Go to Customizer &rarr;', 'wp-ultimo'); ?>
+					<a class="button wu-w-full wu-text-center" target="_blank" href="<?php echo esc_attr(wu_network_admin_url('wp-ultimo-customize-invoice-template')); ?>">
+						<?php esc_html_e('Go to Customizer &rarr;', 'wp-multisite-waas'); ?>
 					</a>
 				</div>
 
@@ -369,15 +369,15 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 			<div class="wu-p-4">
 
 				<span class="wu-text-gray-700 wu-font-bold wu-uppercase wu-tracking-wide wu-text-xs">
-					<?php _e('Customize System Emails', 'wp-ultimo'); ?>
+					<?php esc_html_e('Customize System Emails', 'wp-multisite-waas'); ?>
 				</span>
 
 				<div class="wu-py-2">
-					<img class="wu-w-full" alt="<?php esc_attr_e('Customize System Emails', 'wp-ultimo'); ?>" src="<?php echo wu_get_asset('sidebar/system-emails.webp'); ?>">
+					<img class="wu-w-full" alt="<?php esc_attr_e('Customize System Emails', 'wp-multisite-waas'); ?>" src="<?php echo esc_attr(wu_get_asset('sidebar/system-emails.webp')); ?>">
 				</div>
 
 				<p class="wu-text-gray-600 wu-p-0 wu-m-0">
-					<?php _e('You can completely customize the contents of the emails sent out by WP Multisite WaaS when particular events occur, such as Account Creation, Payment Failures, etc.', 'wp-ultimo'); ?>
+					<?php esc_html_e('You can completely customize the contents of the emails sent out by WP Multisite WaaS when particular events occur, such as Account Creation, Payment Failures, etc.', 'wp-multisite-waas'); ?>
 				</p>
 
 			</div>
@@ -385,8 +385,8 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 			<?php if (current_user_can('wu_edit_broadcasts')) : ?>
 
 				<div class="wu-p-4 wu-bg-gray-100 wu-border-solid wu-border-0 wu-border-t wu-border-gray-300">
-					<a class="button wu-w-full wu-text-center" target="_blank" href="<?php echo wu_network_admin_url('wp-ultimo-emails'); ?>">
-						<?php _e('Customize System Emails &rarr;', 'wp-ultimo'); ?>
+					<a class="button wu-w-full wu-text-center" target="_blank" href="<?php echo esc_attr(wu_network_admin_url('wp-ultimo-emails')); ?>">
+						<?php esc_html_e('Customize System Emails &rarr;', 'wp-multisite-waas'); ?>
 					</a>
 				</div>
 
@@ -412,15 +412,15 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 			<div class="wu-p-4">
 
 				<span class="wu-text-gray-700 wu-font-bold wu-uppercase wu-tracking-wide wu-text-xs">
-					<?php _e('Customize Email Template', 'wp-ultimo'); ?>
+					<?php esc_html_e('Customize Email Template', 'wp-multisite-waas'); ?>
 				</span>
 
 				<div class="wu-py-2">
-					<img class="wu-w-full" alt="<?php esc_attr_e('Customize Email Template', 'wp-ultimo'); ?>" src="<?php echo wu_get_asset('sidebar/email-template.webp'); ?>">
+					<img class="wu-w-full" alt="<?php esc_attr_e('Customize Email Template', 'wp-multisite-waas'); ?>" src="<?php echo esc_attr(wu_get_asset('sidebar/email-template.webp')); ?>">
 				</div>
 
 				<p class="wu-text-gray-600 wu-p-0 wu-m-0">
-					<?php _e('If your network is using the HTML email option, you can customize the look and feel of the email template.', 'wp-ultimo'); ?>
+					<?php esc_html_e('If your network is using the HTML email option, you can customize the look and feel of the email template.', 'wp-multisite-waas'); ?>
 				</p>
 
 			</div>
@@ -428,8 +428,8 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 			<?php if (current_user_can('wu_edit_broadcasts')) : ?>
 
 				<div class="wu-p-4 wu-bg-gray-100 wu-border-solid wu-border-0 wu-border-t wu-border-gray-300">
-					<a class="button wu-w-full wu-text-center" target="_blank" href="<?php echo wu_network_admin_url('wp-ultimo-customize-email-template'); ?>">
-						<?php _e('Customize Email Template &rarr;', 'wp-ultimo'); ?>
+					<a class="button wu-w-full wu-text-center" target="_blank" href="<?php echo esc_attr(wu_network_admin_url('wp-ultimo-customize-email-template')); ?>">
+						<?php esc_html_e('Customize Email Template &rarr;', 'wp-multisite-waas'); ?>
 					</a>
 				</div>
 
@@ -450,7 +450,7 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('Settings', 'wp-ultimo');
+		return __('Settings', 'wp-multisite-waas');
 	}
 
 	/**
@@ -461,7 +461,7 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Settings', 'wp-ultimo');
+		return __('Settings', 'wp-multisite-waas');
 	}
 
 	/**
@@ -481,6 +481,7 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 		wp_enqueue_script('media');
 		wp_enqueue_script('wu-vue');
 		wp_enqueue_script('wu-selectizer');
+		wp_enqueue_script('wu-settings-loader', wu_get_asset('settings-loader.js', 'js'), ['wu-functions'], wu_get_version(), true);
 
 		do_action('wu_render_settings');
 
@@ -517,7 +518,7 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 	public function default_handler(): void {
 
 		if ( ! current_user_can('wu_edit_settings')) {
-			wp_die(__('You do not have the permissions required to change settings.', 'wp-ultimo'));
+			wp_die(esc_html__('You do not have the permissions required to change settings.', 'wp-multisite-waas'));
 		}
 
 		if ( ! isset($_POST['active_gateways']) && 'payment-gateways' === wu_request('tab')) {
@@ -526,7 +527,7 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 
 		WP_Ultimo()->settings->save_settings($_POST);
 
-		wp_redirect(add_query_arg('updated', 1, wu_get_current_url()));
+		wp_safe_redirect(add_query_arg('updated', 1, wu_get_current_url()));
 
 		exit;
 	}
@@ -554,7 +555,7 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 		 */
 		$fields['save'] = [
 			'type'            => 'submit',
-			'title'           => __('Save Settings', 'wp-ultimo'),
+			'title'           => __('Save Settings', 'wp-multisite-waas'),
 			'classes'         => 'button button-primary button-large wu-ml-auto wu-w-full md:wu-w-auto',
 			'wrapper_classes' => 'wu-sticky wu-bottom-0 wu-save-button wu-mr-px wu-w-full md:wu-w-auto',
 			'html_attr'       => [
@@ -577,7 +578,7 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 					'style'        => '',
 					'data-on-load' => 'remove_block_ui',
 					'data-wu-app'  => str_replace('-', '_', $section_slug),
-					'data-state'   => json_encode(wu_array_map_keys('wu_replace_dashes', Settings::get_instance()->get_all(true))),
+					'data-state'   => wp_json_encode(wu_array_map_keys('wu_replace_dashes', Settings::get_instance()->get_all(true))),
 				],
 			]
 		);

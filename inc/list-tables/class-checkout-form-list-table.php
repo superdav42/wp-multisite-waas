@@ -36,8 +36,8 @@ class Checkout_Form_List_Table extends Base_List_Table {
 
 		parent::__construct(
 			[
-				'singular' => __('Checkout Form', 'wp-ultimo'),  // singular name of the listed records
-				'plural'   => __('Checkout Forms', 'wp-ultimo'), // plural name of the listed records
+				'singular' => __('Checkout Form', 'wp-multisite-waas'),  // singular name of the listed records
+				'plural'   => __('Checkout Forms', 'wp-multisite-waas'), // plural name of the listed records
 				'ajax'     => true,                              // does this table support ajax?
 				'add_new'  => [
 					'url'     => wu_get_form_url('add_new_checkout_form'),
@@ -65,7 +65,7 @@ class Checkout_Form_List_Table extends Base_List_Table {
 		$title = sprintf('<strong><a href="%s">%s</a></strong>', wu_network_admin_url('wp-ultimo-edit-checkout-form', $url_atts), $item->get_name());
 
 		$actions = [
-			'edit'          => sprintf('<a href="%s">%s</a>', wu_network_admin_url('wp-ultimo-edit-checkout-form', $url_atts), __('Edit', 'wp-ultimo')),
+			'edit'          => sprintf('<a href="%s">%s</a>', wu_network_admin_url('wp-ultimo-edit-checkout-form', $url_atts), __('Edit', 'wp-multisite-waas')),
 			'duplicate'     => sprintf(
 				'<a href="%s">%s</a>',
 				wu_network_admin_url(
@@ -75,10 +75,10 @@ class Checkout_Form_List_Table extends Base_List_Table {
 						'id'     => $item->get_id(),
 					]
 				),
-				__('Duplicate', 'wp-ultimo')
+				__('Duplicate', 'wp-multisite-waas')
 			),
-			'get_shortcode' => sprintf('<a title="%s" class="wubox" href="%s">%s</a>', __('Shortcode', 'wp-ultimo'), wu_get_form_url('shortcode_checkout', $url_atts), __('Shortcode', 'wp-ultimo')),
-			'delete'        => sprintf('<a title="%s" class="wubox" href="%s">%s</a>', __('Delete', 'wp-ultimo'), wu_get_form_url('delete_modal', $url_atts), __('Delete', 'wp-ultimo')),
+			'get_shortcode' => sprintf('<a title="%s" class="wubox" href="%s">%s</a>', __('Shortcode', 'wp-multisite-waas'), wu_get_form_url('shortcode_checkout', $url_atts), __('Shortcode', 'wp-multisite-waas')),
+			'delete'        => sprintf('<a title="%s" class="wubox" href="%s">%s</a>', __('Delete', 'wp-multisite-waas'), wu_get_form_url('delete_modal', $url_atts), __('Delete', 'wp-multisite-waas')),
 		];
 
 		return $title . $this->row_actions($actions);
@@ -108,7 +108,7 @@ class Checkout_Form_List_Table extends Base_List_Table {
 	 */
 	public function column_steps($item): string {
 
-		return sprintf(__('%1$d Step(s) and %2$d Field(s)', 'wp-ultimo'), $item->get_step_count(), $item->get_field_count());
+		return sprintf(__('%1$d Step(s) and %2$d Field(s)', 'wp-multisite-waas'), $item->get_step_count(), $item->get_field_count());
 	}
 
 	/**
@@ -125,7 +125,7 @@ class Checkout_Form_List_Table extends Base_List_Table {
 		<button type="button" data-clipboard-action="copy" data-clipboard-target="#hidden_textarea" class="btn-clipboard" title="%s">
       <span class="dashicons-wu-copy"></span>
     </button>',
-			__('Copy to the Clipboard', 'wp-ultimo')
+			__('Copy to the Clipboard', 'wp-multisite-waas')
 		);
 
 		return sprintf('<input class="wu-bg-gray-200 wu-border-none wu-text-gray-700 wu-py-1 wu-px-2 wu-rounded-sm wu-text-xs wu-font-mono" value="%s">', esc_attr($item->get_shortcode()), '');
@@ -147,14 +147,15 @@ class Checkout_Form_List_Table extends Base_List_Table {
 			$checkout_form = wu_get_checkout_form($checkout_form_id);
 
 			if ( ! $checkout_form) {
-				WP_Ultimo()->notices->add(__('Checkout form not found.', 'wp-ultimo'), 'error', 'network-admin');
+				WP_Ultimo()->notices->add(__('Checkout form not found.', 'wp-multisite-waas'), 'error', 'network-admin');
 
 				return;
 			}
 
 			$new_checkout_form = $checkout_form->duplicate();
 
-			$new_name = sprintf(__('Copy of %s', 'wp-ultimo'), $checkout_form->get_name());
+			// translators: the %s is the thing copied.
+			$new_name = sprintf(__('Copy of %s', 'wp-multisite-waas'), $checkout_form->get_name());
 
 			$new_checkout_form->set_name($new_name);
 
@@ -178,7 +179,7 @@ class Checkout_Form_List_Table extends Base_List_Table {
 				]
 			);
 
-			wp_redirect($redirect_url);
+			wp_safe_redirect($redirect_url);
 
 			exit;
 		}
@@ -194,10 +195,10 @@ class Checkout_Form_List_Table extends Base_List_Table {
 
 		$columns = [
 			'cb'    => '<input type="checkbox" />',
-			'name'  => __('Form Name', 'wp-ultimo'),
-			'slug'  => __('Form Slug', 'wp-ultimo'),
-			'steps' => __('Steps', 'wp-ultimo'),
-			'id'    => __('ID', 'wp-ultimo'),
+			'name'  => __('Form Name', 'wp-multisite-waas'),
+			'slug'  => __('Form Slug', 'wp-multisite-waas'),
+			'steps' => __('Steps', 'wp-multisite-waas'),
+			'id'    => __('ID', 'wp-multisite-waas'),
 		];
 
 		return $columns;

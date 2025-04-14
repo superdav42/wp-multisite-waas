@@ -26,17 +26,17 @@ class Site_Type extends Enum {
 	 */
 	const __default = 'default'; // phpcs:ignore
 
-	const REGULAR        = 'default';
+	const REGULAR = 'default';
 
-	const SITE_TEMPLATE  = 'site_template';
+	const SITE_TEMPLATE = 'site_template';
 
 	const CUSTOMER_OWNED = 'customer_owned';
 
-	const PENDING        = 'pending';
+	const PENDING = 'pending';
 
-	const EXTERNAL       = 'external';
+	const EXTERNAL = 'external';
 
-	const MAIN           = 'main';
+	const MAIN = 'main';
 
 	/**
 	 * Returns an array with values => CSS Classes.
@@ -65,11 +65,11 @@ class Site_Type extends Enum {
 	protected function labels() {
 
 		return [
-			static::REGULAR        => __('Regular Site', 'wp-ultimo'),
-			static::SITE_TEMPLATE  => __('Site Template', 'wp-ultimo'),
-			static::CUSTOMER_OWNED => __('Customer-Owned', 'wp-ultimo'),
-			static::PENDING        => __('Pending', 'wp-ultimo'),
-			static::MAIN           => __('Main Site', 'wp-ultimo'),
+			static::REGULAR        => __('Regular Site', 'wp-multisite-waas'),
+			static::SITE_TEMPLATE  => __('Site Template', 'wp-multisite-waas'),
+			static::CUSTOMER_OWNED => __('Customer-Owned', 'wp-multisite-waas'),
+			static::PENDING        => __('Pending', 'wp-multisite-waas'),
+			static::MAIN           => __('Main Site', 'wp-multisite-waas'),
 		];
 	}
 }

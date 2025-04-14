@@ -18,21 +18,19 @@ use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 /**
  * @see \Rector\Tests\TypeDeclaration\Rector\YodaConditionsRector\YodaConditionsRectorTest
  */
-final class YodaConditionsRector extends AbstractRector
-{
-    /**
-     * @return array<class-string<Node>>
-     */
-    public function getNodeTypes(): array
-    {
-	    return [Equal::class, NotEqual::class, Identical::class, NotIdentical::class];
-    }
+final class YodaConditionsRector extends AbstractRector {
 
-    /**
-     * @param \PhpParser\Node\Stmt\Class_ $node
-     */
-    public function refactor(Node $node): ?Node
-    {
+	/**
+	 * @return array<class-string<Node>>
+	 */
+	public function getNodeTypes(): array {
+		return [Equal::class, NotEqual::class, Identical::class, NotIdentical::class];
+	}
+
+	/**
+	 * @param \PhpParser\Node\Stmt\Class_ $node
+	 */
+	public function refactor(Node $node): ?Node {
 		// Ensure the left operand is not a constant
 		if ((
 			$node->left instanceof Node\Expr\Variable ||
@@ -47,6 +45,6 @@ final class YodaConditionsRector extends AbstractRector
 			$this->mirrorComments($node->right, $node->left);
 			[$node->left, $node->right] = [$node->right, $node->left];
 		}
-        return $node;
-    }
+		return $node;
+	}
 }

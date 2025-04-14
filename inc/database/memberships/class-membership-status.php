@@ -26,15 +26,15 @@ class Membership_Status extends Enum {
 	 */
 	const __default = 'pending'; // phpcs:ignore
 
-	const PENDING   = 'pending';
+	const PENDING = 'pending';
 
-	const ACTIVE    = 'active';
+	const ACTIVE = 'active';
 
-	const TRIALING  = 'trialing';
+	const TRIALING = 'trialing';
 
-	const EXPIRED   = 'expired';
+	const EXPIRED = 'expired';
 
-	const ON_HOLD   = 'on-hold';
+	const ON_HOLD = 'on-hold';
 
 	const CANCELLED = 'cancelled';
 
@@ -65,12 +65,12 @@ class Membership_Status extends Enum {
 	protected function labels() {
 
 		return [
-			static::PENDING   => __('Pending', 'wp-ultimo'),
-			static::ACTIVE    => __('Active', 'wp-ultimo'),
-			static::TRIALING  => __('Trialing', 'wp-ultimo'),
-			static::ON_HOLD   => __('On Hold', 'wp-ultimo'),
-			static::EXPIRED   => __('Expired', 'wp-ultimo'),
-			static::CANCELLED => __('Cancelled', 'wp-ultimo'),
+			static::PENDING   => __('Pending', 'wp-multisite-waas'),
+			static::ACTIVE    => __('Active', 'wp-multisite-waas'),
+			static::TRIALING  => __('Trialing', 'wp-multisite-waas'),
+			static::ON_HOLD   => __('On Hold', 'wp-multisite-waas'),
+			static::EXPIRED   => __('Expired', 'wp-multisite-waas'),
+			static::CANCELLED => __('Cancelled', 'wp-multisite-waas'),
 		];
 	}
 }

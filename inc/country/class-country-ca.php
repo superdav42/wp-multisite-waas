@@ -76,7 +76,7 @@ class Country_CA extends Country {
 	 */
 	public function get_name() {
 
-		return __('Canada', 'wp-ultimo');
+		return __('Canada', 'wp-multisite-waas');
 	}
 
 	/**
@@ -88,19 +88,19 @@ class Country_CA extends Country {
 	protected function states() {
 
 		return [
-			'AB' => __('Alberta', 'wp-ultimo'),
-			'BC' => __('British Columbia', 'wp-ultimo'),
-			'MB' => __('Manitoba', 'wp-ultimo'),
-			'NB' => __('New Brunswick', 'wp-ultimo'),
-			'NL' => __('Newfoundland and Labrador', 'wp-ultimo'),
-			'NT' => __('Northwest Territories', 'wp-ultimo'),
-			'NS' => __('Nova Scotia', 'wp-ultimo'),
-			'NU' => __('Nunavut', 'wp-ultimo'),
-			'ON' => __('Ontario', 'wp-ultimo'),
-			'PE' => __('Prince Edward Island', 'wp-ultimo'),
-			'QC' => __('Quebec', 'wp-ultimo'),
-			'SK' => __('Saskatchewan', 'wp-ultimo'),
-			'YT' => __('Yukon', 'wp-ultimo'),
+			'AB' => __('Alberta', 'wp-multisite-waas'),
+			'BC' => __('British Columbia', 'wp-multisite-waas'),
+			'MB' => __('Manitoba', 'wp-multisite-waas'),
+			'NB' => __('New Brunswick', 'wp-multisite-waas'),
+			'NL' => __('Newfoundland and Labrador', 'wp-multisite-waas'),
+			'NT' => __('Northwest Territories', 'wp-multisite-waas'),
+			'NS' => __('Nova Scotia', 'wp-multisite-waas'),
+			'NU' => __('Nunavut', 'wp-multisite-waas'),
+			'ON' => __('Ontario', 'wp-multisite-waas'),
+			'PE' => __('Prince Edward Island', 'wp-multisite-waas'),
+			'QC' => __('Quebec', 'wp-multisite-waas'),
+			'SK' => __('Saskatchewan', 'wp-multisite-waas'),
+			'YT' => __('Yukon', 'wp-multisite-waas'),
 		];
 	}
 }

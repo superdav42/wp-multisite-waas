@@ -156,7 +156,7 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 				'site_url'          => get_site_url(),
 				'logo_url'          => wu_get_network_logo(),
 				'content'           => $content,
-				'subject'           => __('Sample Subject', 'wp-ultimo'),
+				'subject'           => __('Sample Subject', 'wp-multisite-waas'),
 				'is_editor'         => true,
 				'template_settings' => [
 					'use_custom_logo'         => wu_string_to_bool(wu_request('use_custom_logo', $first_request ? $object->get_setting('use_custom_logo', false) : false)),
@@ -218,7 +218,7 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 				'fields'    => [
 					'note' => [
 						'type' => 'note',
-						'desc' => __('System emails and broadcasts will be sent using this template.', 'wp-ultimo'),
+						'desc' => __('System emails and broadcasts will be sent using this template.', 'wp-multisite-waas'),
 					],
 				],
 			]
@@ -243,15 +243,15 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 					'v-model' => 'tab',
 				],
 				'options'           => [
-					'header'  => __('Header', 'wp-ultimo'),
-					'content' => __('Content', 'wp-ultimo'),
-					'footer'  => __('Footer', 'wp-ultimo'),
+					'header'  => __('Header', 'wp-multisite-waas'),
+					'content' => __('Content', 'wp-multisite-waas'),
+					'footer'  => __('Footer', 'wp-multisite-waas'),
 				],
 			],
 			'use_custom_logo'         => [
 				'type'              => 'toggle',
-				'title'             => __('Use Custom Logo', 'wp-ultimo'),
-				'desc'              => __('You can set a different logo to be used on the system emails.', 'wp-ultimo'),
+				'title'             => __('Use Custom Logo', 'wp-multisite-waas'),
+				'desc'              => __('You can set a different logo to be used on the system emails.', 'wp-multisite-waas'),
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "header")',
 					'v-cloak' => 1,
@@ -263,8 +263,8 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 			'custom_logo'             => [
 				'type'              => 'image',
 				'stacked'           => true,
-				'title'             => __('Custom Logo', 'wp-ultimo'),
-				'desc'              => __('The custom logo is used in the email header, if HTML emails are used.', 'wp-ultimo'),
+				'title'             => __('Custom Logo', 'wp-multisite-waas'),
+				'desc'              => __('The custom logo is used in the email header, if HTML emails are used.', 'wp-multisite-waas'),
 				'value'             => $custom_logo,
 				'img'               => $custom_logo_url,
 				'wrapper_html_attr' => [
@@ -277,8 +277,8 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 			],
 			'background_color'        => [
 				'type'              => 'color-picker',
-				'title'             => __('Background Color', 'wp-ultimo'),
-				'tooltip'           => __('The cover background color of the email.', 'wp-ultimo'),
+				'title'             => __('Background Color', 'wp-multisite-waas'),
+				'tooltip'           => __('The cover background color of the email.', 'wp-multisite-waas'),
 				'value'             => '#00a1ff',
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "header")',
@@ -290,7 +290,7 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 			],
 			'title_color'             => [
 				'type'              => 'color-picker',
-				'title'             => __('Title Color', 'wp-ultimo'),
+				'title'             => __('Title Color', 'wp-multisite-waas'),
 				'value'             => '#00a1ff',
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "header")',
@@ -302,14 +302,14 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 			],
 			'title_size'              => [
 				'type'              => 'select',
-				'title'             => __('Title Size', 'wp-ultimo'),
+				'title'             => __('Title Size', 'wp-multisite-waas'),
 				'value'             => wu_get_isset($settings, 'title_size'),
 				'options'           => [
-					'h1' => __('h1', 'wp-ultimo'),
-					'h2' => __('h2', 'wp-ultimo'),
-					'h3' => __('h3', 'wp-ultimo'),
-					'h4' => __('h4', 'wp-ultimo'),
-					'h5' => __('h5', 'wp-ultimo'),
+					'h1' => __('h1', 'wp-multisite-waas'),
+					'h2' => __('h2', 'wp-multisite-waas'),
+					'h3' => __('h3', 'wp-multisite-waas'),
+					'h4' => __('h4', 'wp-multisite-waas'),
+					'h5' => __('h5', 'wp-multisite-waas'),
 				],
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "header")',
@@ -321,13 +321,13 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 			],
 			'title_align'             => [
 				'type'              => 'select',
-				'title'             => __('Title Align', 'wp-ultimo'),
-				'tooltip'           => __('Aligment of the font in the title.', 'wp-ultimo'),
+				'title'             => __('Title Align', 'wp-multisite-waas'),
+				'tooltip'           => __('Aligment of the font in the title.', 'wp-multisite-waas'),
 				'value'             => wu_get_isset($settings, 'title_align', ''),
 				'options'           => [
-					'left'   => __('Left', 'wp-ultimo'),
-					'center' => __('Center', 'wp-ultimo'),
-					'right'  => __('Right', 'wp-ultimo'),
+					'left'   => __('Left', 'wp-multisite-waas'),
+					'center' => __('Center', 'wp-multisite-waas'),
+					'right'  => __('Right', 'wp-multisite-waas'),
 				],
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "header")',
@@ -339,13 +339,13 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 			],
 			'title_font'              => [
 				'type'              => 'select',
-				'title'             => __('Title Font-Family', 'wp-ultimo'),
+				'title'             => __('Title Font-Family', 'wp-multisite-waas'),
 				'value'             => wu_get_isset($settings, 'title_font', ''),
 				'options'           => [
-					'Helvetica Neue, Helvetica, Helvetica, Arial, sans-serif' => __('Helvetica', 'wp-ultimo'),
-					'Arial, Helvetica, sans-serif'       => __('Arial', 'wp-ultimo'),
-					'Times New Roman, Times, serif'      => __('Times New Roman', 'wp-ultimo'),
-					'Lucida Console, Courier, monospace' => __('Lucida', 'wp-ultimo'),
+					'Helvetica Neue, Helvetica, Helvetica, Arial, sans-serif' => __('Helvetica', 'wp-multisite-waas'),
+					'Arial, Helvetica, sans-serif'       => __('Arial', 'wp-multisite-waas'),
+					'Times New Roman, Times, serif'      => __('Times New Roman', 'wp-multisite-waas'),
+					'Lucida Console, Courier, monospace' => __('Lucida', 'wp-multisite-waas'),
 				],
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "header")',
@@ -357,7 +357,7 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 			],
 			'content_color'           => [
 				'type'              => 'color-picker',
-				'title'             => __('Content Color', 'wp-ultimo'),
+				'title'             => __('Content Color', 'wp-multisite-waas'),
 				'value'             => '#000000',
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "content")',
@@ -369,13 +369,13 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 			],
 			'content_align'           => [
 				'type'              => 'select',
-				'title'             => __('Content Alignment', 'wp-ultimo'),
-				'tooltip'           => __('Alignment of the font in the main email content.', 'wp-ultimo'),
+				'title'             => __('Content Alignment', 'wp-multisite-waas'),
+				'tooltip'           => __('Alignment of the font in the main email content.', 'wp-multisite-waas'),
 				'value'             => wu_get_isset($settings, 'content_align', ''),
 				'options'           => [
-					'left'   => __('Left', 'wp-ultimo'),
-					'center' => __('Center', 'wp-ultimo'),
-					'right'  => __('Right', 'wp-ultimo'),
+					'left'   => __('Left', 'wp-multisite-waas'),
+					'center' => __('Center', 'wp-multisite-waas'),
+					'right'  => __('Right', 'wp-multisite-waas'),
 				],
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "content")',
@@ -387,13 +387,13 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 			],
 			'content_font'            => [
 				'type'              => 'select',
-				'title'             => __('Content Font-Family', 'wp-ultimo'),
+				'title'             => __('Content Font-Family', 'wp-multisite-waas'),
 				'value'             => wu_get_isset($settings, 'content_font', ''),
 				'options'           => [
-					'Helvetica Neue, Helvetica, Helvetica, Arial, sans-serif' => __('Helvetica', 'wp-ultimo'),
-					'Arial, Helvetica, sans-serif'       => __('Arial', 'wp-ultimo'),
-					'Times New Roman, Times, serif'      => __('Times New Roman', 'wp-ultimo'),
-					'Lucida Console, Courier, monospace' => __('Lucida', 'wp-ultimo'),
+					'Helvetica Neue, Helvetica, Helvetica, Arial, sans-serif' => __('Helvetica', 'wp-multisite-waas'),
+					'Arial, Helvetica, sans-serif'       => __('Arial', 'wp-multisite-waas'),
+					'Times New Roman, Times, serif'      => __('Times New Roman', 'wp-multisite-waas'),
+					'Lucida Console, Courier, monospace' => __('Lucida', 'wp-multisite-waas'),
 				],
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "content")',
@@ -405,8 +405,8 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 			],
 			'display_company_address' => [
 				'type'              => 'toggle',
-				'title'             => __('Display Company Address', 'wp-ultimo'),
-				'desc'              => __('Toggle to show/hide your company address.', 'wp-ultimo'),
+				'title'             => __('Display Company Address', 'wp-multisite-waas'),
+				'desc'              => __('Toggle to show/hide your company address.', 'wp-multisite-waas'),
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "footer")',
 					'v-cloak' => 1,
@@ -417,8 +417,8 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 			],
 			'footer_text'             => [
 				'type'              => 'textarea',
-				'title'             => __('Footer Content', 'wp-ultimo'),
-				'placeholder'       => __('e.g. Extra info in the email footer.', 'wp-ultimo'),
+				'title'             => __('Footer Content', 'wp-multisite-waas'),
+				'placeholder'       => __('e.g. Extra info in the email footer.', 'wp-multisite-waas'),
 				'value'             => wu_get_isset($settings, 'footer_text', ''),
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "footer")',
@@ -430,13 +430,13 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 			],
 			'footer_font'             => [
 				'type'              => 'select',
-				'title'             => __('Footer Font-Family', 'wp-ultimo'),
+				'title'             => __('Footer Font-Family', 'wp-multisite-waas'),
 				'value'             => wu_get_isset($settings, 'footer_font', ''),
 				'options'           => [
-					'Helvetica Neue, Helvetica, Helvetica, Arial, sans-serif' => __('Helvetica', 'wp-ultimo'),
-					'Arial, Helvetica, sans-serif'       => __('Arial', 'wp-ultimo'),
-					'Times New Roman, Times, serif'      => __('Times New Roman', 'wp-ultimo'),
-					'Lucida Console, Courier, monospace' => __('Lucida', 'wp-ultimo'),
+					'Helvetica Neue, Helvetica, Helvetica, Arial, sans-serif' => __('Helvetica', 'wp-multisite-waas'),
+					'Arial, Helvetica, sans-serif'       => __('Arial', 'wp-multisite-waas'),
+					'Times New Roman, Times, serif'      => __('Times New Roman', 'wp-multisite-waas'),
+					'Lucida Console, Courier, monospace' => __('Lucida', 'wp-multisite-waas'),
 				],
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "footer")',
@@ -448,7 +448,7 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 			],
 			'footer_color'            => [
 				'type'              => 'color-picker',
-				'title'             => __('Footer Color', 'wp-ultimo'),
+				'title'             => __('Footer Color', 'wp-multisite-waas'),
 				'value'             => '#000000',
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "footer")',
@@ -460,13 +460,13 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 			],
 			'footer_align'            => [
 				'type'              => 'select',
-				'title'             => __('Footer Alignment', 'wp-ultimo'),
-				'tooltip'           => __('Alignment of the font in the main email footer.', 'wp-ultimo'),
+				'title'             => __('Footer Alignment', 'wp-multisite-waas'),
+				'tooltip'           => __('Alignment of the font in the main email footer.', 'wp-multisite-waas'),
 				'value'             => wu_get_isset($settings, 'footer_align', ''),
 				'options'           => [
-					'left'   => __('Left', 'wp-ultimo'),
-					'center' => __('Center', 'wp-ultimo'),
-					'right'  => __('Right', 'wp-ultimo'),
+					'left'   => __('Left', 'wp-multisite-waas'),
+					'center' => __('Center', 'wp-multisite-waas'),
+					'right'  => __('Right', 'wp-multisite-waas'),
 				],
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "footer")',
@@ -489,14 +489,14 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 		$this->add_fields_widget(
 			'customizer',
 			[
-				'title'     => __('Customizer', 'wp-ultimo'),
+				'title'     => __('Customizer', 'wp-multisite-waas'),
 				'position'  => 'side',
 				'fields'    => $fields,
 				'html_attr' => [
 					'style'                    => 'margin-top: -6px;',
 					'data-wu-app'              => 'email_template_customizer',
 					'data-wu-customizer-panel' => true,
-					'data-state'               => json_encode($state),
+					'data-state'               => wp_json_encode($state),
 				],
 			]
 		);
@@ -510,7 +510,7 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('Customize Email Template:', 'wp-ultimo');
+		return __('Customize Email Template:', 'wp-multisite-waas');
 	}
 
 	/**
@@ -521,7 +521,7 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Customize Email Template', 'wp-ultimo');
+		return __('Customize Email Template', 'wp-multisite-waas');
 	}
 
 	/**
@@ -544,16 +544,16 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'customize_label'     => __('Customize Email Template', 'wp-ultimo'),
-			'add_new_label'       => __('Customize Email Template', 'wp-ultimo'),
-			'edit_label'          => __('Edit Email Template', 'wp-ultimo'),
-			'updated_message'     => __('Email Template updated with success!', 'wp-ultimo'),
-			'title_placeholder'   => __('Enter Email Template Name', 'wp-ultimo'),
-			'title_description'   => __('This name is used for internal reference only.', 'wp-ultimo'),
-			'save_button_label'   => __('Save Template', 'wp-ultimo'),
+			'customize_label'     => __('Customize Email Template', 'wp-multisite-waas'),
+			'add_new_label'       => __('Customize Email Template', 'wp-multisite-waas'),
+			'edit_label'          => __('Edit Email Template', 'wp-multisite-waas'),
+			'updated_message'     => __('Email Template updated with success!', 'wp-multisite-waas'),
+			'title_placeholder'   => __('Enter Email Template Name', 'wp-multisite-waas'),
+			'title_description'   => __('This name is used for internal reference only.', 'wp-multisite-waas'),
+			'save_button_label'   => __('Save Template', 'wp-multisite-waas'),
 			'save_description'    => '',
-			'delete_button_label' => __('Delete Email Template', 'wp-ultimo'),
-			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-ultimo'),
+			'delete_button_label' => __('Delete Email Template', 'wp-multisite-waas'),
+			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-multisite-waas'),
 		];
 	}
 
@@ -577,7 +577,7 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 
 		$url = add_query_arg('updated', '1');
 
-		wp_redirect($url);
+		wp_safe_redirect($url);
 
 		exit;
 	}

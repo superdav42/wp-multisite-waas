@@ -10,7 +10,6 @@
 namespace WP_Ultimo\Integrations\Host_Providers;
 
 use Psr\Log\LogLevel;
-use WP_Ultimo\Integrations\Host_Providers\Base_Host_Provider;
 use WP_Ultimo\Integrations\Host_Providers\CPanel_API\CPanel_API;
 
 // Exit if accessed directly
@@ -85,7 +84,7 @@ class CPanel_Host_Provider extends Base_Host_Provider {
 	 * Holds the API object.
 	 *
 	 * @since 2.0.0
-	 * @var WP_Ultimo\Integrations\Host_Providers\CPanel_API\CPanel_API
+	 * @var \WP_Ultimo\Integrations\Host_Providers\CPanel_API\CPanel_API
 	 */
 	protected $api = null;
 
@@ -112,26 +111,26 @@ class CPanel_Host_Provider extends Base_Host_Provider {
 
 		return [
 			'WU_CPANEL_USERNAME' => [
-				'title'       => __('cPanel Username', 'wp-ultimo'),
-				'placeholder' => __('e.g. username', 'wp-ultimo'),
+				'title'       => __('cPanel Username', 'wp-multisite-waas'),
+				'placeholder' => __('e.g. username', 'wp-multisite-waas'),
 			],
 			'WU_CPANEL_PASSWORD' => [
 				'type'        => 'password',
-				'title'       => __('cPanel Password', 'wp-ultimo'),
-				'placeholder' => __('password', 'wp-ultimo'),
+				'title'       => __('cPanel Password', 'wp-multisite-waas'),
+				'placeholder' => __('password', 'wp-multisite-waas'),
 			],
 			'WU_CPANEL_HOST'     => [
-				'title'       => __('cPanel Host', 'wp-ultimo'),
-				'placeholder' => __('e.g. yourdomain.com', 'wp-ultimo'),
+				'title'       => __('cPanel Host', 'wp-multisite-waas'),
+				'placeholder' => __('e.g. yourdomain.com', 'wp-multisite-waas'),
 			],
 			'WU_CPANEL_PORT'     => [
-				'title'       => __('cPanel Port', 'wp-ultimo'),
-				'placeholder' => __('Defaults to 2083', 'wp-ultimo'),
+				'title'       => __('cPanel Port', 'wp-multisite-waas'),
+				'placeholder' => __('Defaults to 2083', 'wp-multisite-waas'),
 				'value'       => 2083,
 			],
 			'WU_CPANEL_ROOT_DIR' => [
-				'title'       => __('Root Directory', 'wp-ultimo'),
-				'placeholder' => __('Defaults to /public_html', 'wp-ultimo'),
+				'title'       => __('Root Directory', 'wp-multisite-waas'),
+				'placeholder' => __('Defaults to /public_html', 'wp-multisite-waas'),
 				'value'       => '/public_html',
 			],
 		];
@@ -237,7 +236,7 @@ class CPanel_Host_Provider extends Base_Host_Provider {
 	 * Load the CPanel API.
 	 *
 	 * @since 2.0.0
-	 * @return WU_CPanel
+	 * @return CPanel_API
 	 */
 	public function load_api() {
 
@@ -293,17 +292,19 @@ class CPanel_Host_Provider extends Base_Host_Provider {
 	 *
 	 * @since 1.6.2
 	 * @param object $results Results of the cPanel call.
-	 * @return bool
+	 * @return void
 	 */
 	public function log_calls($results) {
 
 		if (is_object($results->cpanelresult->data)) {
-			return wu_log_add('integration-cpanel', $results->cpanelresult->data->reason);
+			wu_log_add('integration-cpanel', $results->cpanelresult->data->reason);
+			return;
 		} elseif ( ! isset($results->cpanelresult->data[0])) {
-			return wu_log_add('integration-cpanel', __('Unexpected error ocurred trying to sync domains with CPanel', 'wp-ultimo'), LogLevel::ERROR);
+			wu_log_add('integration-cpanel', __('Unexpected error ocurred trying to sync domains with CPanel', 'wp-multisite-waas'), LogLevel::ERROR);
+			return;
 		}
 
-		return wu_log_add('integration-cpanel', $results->cpanelresult->data[0]->reason);
+		wu_log_add('integration-cpanel', $results->cpanelresult->data[0]->reason);
 	}
 
 	/**
@@ -314,7 +315,7 @@ class CPanel_Host_Provider extends Base_Host_Provider {
 	 */
 	public function get_description() {
 
-		return __('cPanel is the management panel being used on a large number of shared and dedicated hosts across the globe.', 'wp-ultimo');
+		return __('cPanel is the management panel being used on a large number of shared and dedicated hosts across the globe.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -359,13 +360,13 @@ class CPanel_Host_Provider extends Base_Host_Provider {
 
 		$explainer_lines = [
 			'will'     => [
-				'send_domains' => __('Add a new Addon Domain on cPanel whenever a new domain mapping gets created on your network', 'wp-ultimo'),
+				'send_domains' => __('Add a new Addon Domain on cPanel whenever a new domain mapping gets created on your network', 'wp-multisite-waas'),
 			],
 			'will_not' => [],
 		];
 
 		if (is_subdomain_install()) {
-			$explainer_lines['will']['send_sub_domains'] = __('Add a new SubDomain on cPanel whenever a new site gets created on your network', 'wp-ultimo');
+			$explainer_lines['will']['send_sub_domains'] = __('Add a new SubDomain on cPanel whenever a new site gets created on your network', 'wp-multisite-waas');
 		}
 
 		return $explainer_lines;

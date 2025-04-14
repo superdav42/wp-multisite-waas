@@ -39,7 +39,7 @@ class Notification_Manager {
 	 */
 	public function init(): void {
 
-		add_action('wp_ultimo_load', [$this, 'add_settings']);
+		add_action('init', [$this, 'add_settings']);
 
 		if (is_admin() && ! is_network_admin()) {
 			add_action('admin_init', [$this, 'hide_notifications_subsites']);
@@ -121,8 +121,8 @@ class Notification_Manager {
 			'sites',
 			'hide_notifications_subsites',
 			[
-				'title'   => __('Hide Admin Notices on Sites', 'wp-ultimo'),
-				'desc'    => __('Hide all admin notices on network sites, except for WP Multisite WaaS broadcasts.', 'wp-ultimo'),
+				'title'   => __('Hide Admin Notices on Sites', 'wp-multisite-waas'),
+				'desc'    => __('Hide all admin notices on network sites, except for WP Multisite WaaS broadcasts.', 'wp-multisite-waas'),
 				'type'    => 'toggle',
 				'default' => 0,
 				'order'   => 25,

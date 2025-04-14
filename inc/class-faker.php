@@ -351,7 +351,7 @@ class Faker {
 				);
 
 				if (is_wp_error($customer)) {
-					throw new \Exception($customer->get_error_message());
+					throw new \Exception(esc_html($customer->get_error_message()));
 				} else {
 					$this->set_fake_data_generated('customers', $customer);
 				}
@@ -411,7 +411,7 @@ class Faker {
 			$product = wu_create_product($product_data);
 
 			if (is_wp_error($product)) {
-				throw new \Exception($product->get_error_message());
+				throw new \Exception(esc_html($product->get_error_message()));
 			} else {
 				$this->set_fake_data_generated('products', $product);
 			}
@@ -460,7 +460,7 @@ class Faker {
 			$membership = wu_create_membership($membership_data);
 
 			if (is_wp_error($membership)) {
-				throw new \Exception($membership->get_error_message());
+				throw new \Exception(esc_html($membership->get_error_message()));
 			} else {
 				$this->set_fake_data_generated('memberships', $membership);
 			}
@@ -502,7 +502,7 @@ class Faker {
 			);
 
 			if (is_wp_error($domain)) {
-				throw new \Exception($domain->get_error_message());
+				throw new \Exception(esc_html($domain->get_error_message()));
 			} else {
 				$this->set_fake_data_generated('domains', $domain);
 			}
@@ -550,7 +550,7 @@ class Faker {
 			$event_data = wu_create_event($event_data);
 
 			if (is_wp_error($event_data)) {
-				throw new \Exception($event_data->get_error_message());
+				throw new \Exception(esc_html($event_data->get_error_message()));
 			} else {
 				$this->set_fake_data_generated('events', $event_data);
 			}
@@ -599,7 +599,7 @@ class Faker {
 			);
 
 			if (is_wp_error($discount_code)) {
-				throw new \Exception($discount_code->get_error_message());
+				throw new \Exception(esc_html($discount_code->get_error_message()));
 			} else {
 				$this->set_fake_data_generated('discount_codes', $discount_code);
 			}
@@ -635,7 +635,7 @@ class Faker {
 			$checkout_form = wu_create_checkout_form($checkout_form_data);
 
 			if (is_wp_error($checkout_form)) {
-				throw new \Exception($checkout_form->get_error_message());
+				throw new \Exception(esc_html($checkout_form->get_error_message()));
 			} else {
 				$this->set_fake_data_generated('checkout_forms', $checkout_form);
 			}
@@ -691,7 +691,7 @@ class Faker {
 			$email = wu_create_email($email_data);
 
 			if (is_wp_error($email)) {
-				throw new \Exception($email->get_error_message());
+				throw new \Exception(esc_html($email->get_error_message()));
 			} else {
 				$this->set_fake_data_generated('emails', $email);
 			}
@@ -734,7 +734,7 @@ class Faker {
 			$broadcast = wu_create_broadcast($broadcast_data);
 
 			if (is_wp_error($broadcast)) {
-				throw new \Exception($broadcast->get_error_message());
+				throw new \Exception(esc_html($broadcast->get_error_message()));
 			} else {
 				$this->set_fake_data_generated('broadcasts', $broadcast);
 			}
@@ -777,7 +777,7 @@ class Faker {
 			$webhook = wu_create_webhook($webhook_data);
 
 			if (is_wp_error($webhook)) {
-				throw new \Exception($webhook->get_error_message());
+				throw new \Exception(esc_html($webhook->get_error_message()));
 			} else {
 				$this->set_fake_data_generated('webhooks', $webhook);
 			}
@@ -839,7 +839,7 @@ class Faker {
 			$payment = wu_create_payment($payment_data);
 
 			if (is_wp_error($payment)) {
-				throw new \Exception($payment->get_error_message());
+				throw new \Exception(esc_html($payment->get_error_message()));
 			} else {
 				$payment->recalculate_totals()->save();
 
@@ -892,7 +892,7 @@ class Faker {
 			$site = wu_create_site($site_data);
 
 			if (is_wp_error($site)) {
-				throw new \Exception($site->get_error_message());
+				throw new \Exception(esc_html($site->get_error_message()));
 			} else {
 				$this->set_fake_data_generated('sites', $site);
 			}

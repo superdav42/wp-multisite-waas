@@ -36,8 +36,8 @@ class Line_Item_List_Table extends Payment_List_Table {
 
 		parent::__construct(
 			[
-				'singular' => __('Line Item', 'wp-ultimo'),  // singular name of the listed records
-				'plural'   => __('Line Items', 'wp-ultimo'), // plural name of the listed records
+				'singular' => __('Line Item', 'wp-multisite-waas'),  // singular name of the listed records
+				'plural'   => __('Line Items', 'wp-multisite-waas'), // plural name of the listed records
 				'ajax'     => true,                         // does this table support ajax?
 			]
 		);
@@ -99,8 +99,8 @@ class Line_Item_List_Table extends Payment_List_Table {
 		];
 
 		$actions = [
-			'edit'   => sprintf('<a title="%s" class="wubox" href="%s">%s</a>', __('Edit Item', 'wp-ultimo'), wu_get_form_url('edit_line_item', $url_atts), __('Edit', 'wp-ultimo')),
-			'delete' => sprintf('<a title="%s" class="wubox" href="%s">%s</a>', __('Delete Item', 'wp-ultimo'), wu_get_form_url('delete_line_item', $url_atts), __('Delete', 'wp-ultimo')),
+			'edit'   => sprintf('<a title="%s" class="wubox" href="%s">%s</a>', __('Edit Item', 'wp-multisite-waas'), wu_get_form_url('edit_line_item', $url_atts), __('Edit', 'wp-multisite-waas')),
+			'delete' => sprintf('<a title="%s" class="wubox" href="%s">%s</a>', __('Delete Item', 'wp-multisite-waas'), wu_get_form_url('delete_line_item', $url_atts), __('Delete', 'wp-multisite-waas')),
 		];
 
 		$html = sprintf('<span class="wu-block wu-text-gray-700">%s</span>', $item->get_title());
@@ -122,7 +122,7 @@ class Line_Item_List_Table extends Payment_List_Table {
 
 		$html = wu_format_currency($item->get_unit_price());
 
-		$quantity = sprintf(__('Quantity: %s', 'wp-ultimo'), $item->get_quantity()); // phpcs:ignore
+		$quantity = sprintf(__('Quantity: %s', 'wp-multisite-waas'), $item->get_quantity()); // phpcs:ignore
 
 		return $html . sprintf('<small class="wu-block">%s</small>', $quantity);
 	}
@@ -145,7 +145,7 @@ class Line_Item_List_Table extends Payment_List_Table {
 			$tax_rate = $item->get_tax_rate() . '%';
 		}
 
-		$tax_label = $item->get_tax_rate() ? ($item->get_tax_label() ?: __('Tax Applied', 'wp-ultimo')) : __('No Taxes Applied', 'wp-ultimo');
+		$tax_label = $item->get_tax_rate() ? ($item->get_tax_label() ?: __('Tax Applied', 'wp-multisite-waas')) : __('No Taxes Applied', 'wp-multisite-waas');
 
 		return $html . sprintf('<small class="wu-block">%s (%s)</small>', $tax_rate, $tax_label);
 	}
@@ -168,7 +168,7 @@ class Line_Item_List_Table extends Payment_List_Table {
 			$tax_rate = $item->get_discount_rate() . '%';
 		}
 
-		$tax_label = $item->get_discount_rate() ? ($item->get_discount_label() ?: __('Discount', 'wp-ultimo')) : __('No discount', 'wp-ultimo');
+		$tax_label = $item->get_discount_rate() ? ($item->get_discount_label() ?: __('Discount', 'wp-multisite-waas')) : __('No discount', 'wp-multisite-waas');
 
 		return $html . sprintf('<small class="wu-block">%s (%s)</small>', $tax_rate, $tax_label);
 	}
@@ -208,12 +208,12 @@ class Line_Item_List_Table extends Payment_List_Table {
 	public function get_columns() {
 
 		$columns = [
-			'service'         => __('Service', 'wp-ultimo'),
-			'unit_price'      => __('Unit Price', 'wp-ultimo'),
-			'discounts_total' => __('discounts', 'wp-ultimo'),
-			'subtotal'        => __('Subtotal', 'wp-ultimo'),
-			'tax_total'       => __('Taxes', 'wp-ultimo'),
-			'total'           => __('Total', 'wp-ultimo'),
+			'service'         => __('Service', 'wp-multisite-waas'),
+			'unit_price'      => __('Unit Price', 'wp-multisite-waas'),
+			'discounts_total' => __('discounts', 'wp-multisite-waas'),
+			'subtotal'        => __('Subtotal', 'wp-multisite-waas'),
+			'tax_total'       => __('Taxes', 'wp-multisite-waas'),
+			'total'           => __('Total', 'wp-multisite-waas'),
 		];
 
 		return $columns;

@@ -23,7 +23,7 @@ defined('ABSPATH') || exit;
  *
  * @since 2.0.0
  */
-class Site extends Base_Model {
+class Site extends Base_Model implements Limitable {
 
 	use Traits\Limitable;
 	use \WP_Ultimo\Traits\WP_Ultimo_Site_Deprecated;
@@ -1255,14 +1255,14 @@ class Site extends Base_Model {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param mixed $object Object containing the parameters.
+	 * @param mixed $object_model Object containing the parameters.
 	 */
-	public function __construct($object = null) {
+	public function __construct($object_model = null) {
 
-		parent::__construct($object);
+		parent::__construct($object_model);
 
-		if (is_array($object)) {
-			$object = (object) $object;
+		if (is_array($object_model)) {
+			$object_model = (object) $object_model;
 		}
 
 		$details = get_blog_details($this->get_blog_id());
@@ -1274,11 +1274,11 @@ class Site extends Base_Model {
 		/*
 		 * Quick fix for WP CLI, since it uses the --path arg to do other things.
 		 */
-		if ( ! $this->path && is_object($object) && isset($object->site_path)) {
-			$this->path = $object->site_path;
+		if ( ! $this->path && is_object($object_model) && isset($object_model->site_path)) {
+			$this->path = $object_model->site_path;
 		}
 
-		$object = (object) $object;
+		$object_model = (object) $object_model;
 	}
 
 	/**
@@ -1437,7 +1437,7 @@ class Site extends Base_Model {
 	public function delete() {
 
 		if ( ! $this->get_id()) {
-			return new \WP_Error("wu_{$this->model}_delete_unsaved_item", __('Item not found.', 'wp-ultimo'));
+			return new \WP_Error("wu_{$this->model}_delete_unsaved_item", __('Item not found.', 'wp-multisite-waas'));
 		}
 
 		/**

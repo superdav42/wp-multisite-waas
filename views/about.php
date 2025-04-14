@@ -4,6 +4,7 @@
  *
  * @since 2.0.0
  */
+
 ?>
 
 <style>
@@ -21,7 +22,7 @@
 </style>
 
 <a class="wu-fixed wu-inline-block wu-bottom-0 wu-left-1/2 wu-transform wu--translate-x-1/2 wu-bg-white wu-p-4 wu-rounded-full wu-shadow wu-m-4 wu-no-underline wu-z-10 wu-border-gray-300 wu-border-solid wu-border" href="<?php echo esc_attr(network_admin_url()); ?>">
-	<?php _e('&larr; Back to the Dashboard', 'wp-ultimo'); ?>
+	<?php esc_html_e('← Back to the Dashboard', 'wp-multisite-waas'); ?>
 </a>
 
 <div id="wp-ultimo-wrap" class="wrap wu-about-content">
@@ -88,7 +89,7 @@
 			'arindo@wpultimo.com',
 			64,
 			'',
-			'Arindo Duque',
+			esc_attr('Arindo Duque'),
 			[
 				'class' => 'wu-rounded-full',
 			]
@@ -111,7 +112,7 @@
 		'arindo'         => [
 			'email'     => 'arindo@wpultimo.com',
 			'signature' => 'arindo.png',
-			'name'      => 'Arindo Duque',
+			'name'      => esc_attr('Arindo Duque'),
 			'position'  => 'Founder and CEO',
 		],
 		'allyson'        => [
@@ -165,14 +166,14 @@
 				$person['email'],
 				64,
 				'',
-				'Arindo Duque',
+				esc_attr('Arindo Duque'),
 				[
 					'class' => 'wu-rounded-full',
 				]
 			);
 			?>
-			<strong class="wu-text-base wu-block"><?php echo $person['name']; ?></strong>
-			<small class="wu-text-xs wu-block"><?php echo $person['position']; ?></small>
+			<strong class="wu-text-base wu-block"><?php echo esc_html($person['name']); ?></strong>
+			<small class="wu-text-xs wu-block"><?php echo esc_html($person['position']); ?></small>
 
 		</div>
 

@@ -26,26 +26,12 @@ trait Limitable {
 	protected $_limitations = [];
 
 	/**
-	 * List of limitations that need to be merged.
-	 *
-	 * Every model that is limitable (imports this trait)
-	 * needs to declare explicitly the limitations that need to be
-	 * merged. This allows us to chain the merges, and gives us
-	 * a final list of limitations at the end of the process.
-	 *
-	 * @since 2.0.0
-	 * @return array
+	 * @inheritDoc
 	 */
 	abstract public function limitations_to_merge();
 
 	/**
-	 * Returns the limitations of this particular blog.
-	 *
-	 * @since 2.0.0
-	 *
-	 * @param bool $waterfall If we should construct the limitations object recursively.
-	 * @param bool $skip_self If we should skip the current limitations.
-	 * @return \WP_Ultimo\Objects\Limitations
+	 * @inheritdoc
 	 */
 	public function get_limitations($waterfall = true, $skip_self = false) {
 
@@ -104,10 +90,7 @@ trait Limitable {
 	}
 
 	/**
-	 * Checks if this site has limitations or not.
-	 *
-	 * @since 2.0.0
-	 * @return boolean
+	 * @inheritdoc
 	 */
 	public function has_limitations() {
 
@@ -191,15 +174,7 @@ trait Limitable {
 	}
 
 	/**
-	 * Makes sure we save limitations when we are supposed to.
-	 *
-	 * This is called on the handle_save method of the inc/admin-pages/class-edit-admin-page.php
-	 * for all models that have the trait Limitable.
-	 *
-	 * @see inc/admin-pages/class-edit-admin-page.php
-	 *
-	 * @since 2.0.0
-	 * @return void
+	 * @inheritdoc
 	 */
 	public function handle_limitations(): void {
 		/*
@@ -247,7 +222,7 @@ trait Limitable {
 			 * Set the new permissions, based on the diff.
 			 */
 			$limitations = wu_array_recursive_diff($modules_to_save, $current_limitations->to_array());
-		} elseif ('product' === $this->model && $this->get_type() !== 'plan') {
+		} elseif ($this->get_type() !== 'plan') {
 			$limitations = wu_array_recursive_diff($modules_to_save, Limitations::get_empty()->to_array());
 		} else {
 			$limitations = $modules_to_save;
@@ -257,10 +232,7 @@ trait Limitable {
 	}
 
 	/**
-	 * Returns the list of product slugs associated with this model.
-	 *
-	 * @since 2.0.0
-	 * @return array
+	 * @inheritdoc
 	 */
 	public function get_applicable_product_slugs() {
 

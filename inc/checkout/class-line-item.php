@@ -1080,6 +1080,13 @@ class Line_Item implements \JsonSerializable {
 	}
 
 	/**
+	 * @return string
+	 */
+	public function get_date_created(): string {
+		return $this->date_created;
+	}
+
+	/**
 	 * Returns the amount recurring in a human-friendly way.
 	 *
 	 * @since 2.0.8
@@ -1093,7 +1100,7 @@ class Line_Item implements \JsonSerializable {
 
 		$description = sprintf(
 			// translators: %1$s the duration, and %2$s the duration unit (day, week, month, etc)
-			_n('%2$s', 'every %1$s %2$s', $this->get_duration(), 'wp-ultimo'), // phpcs:ignore
+			_n('%2$s', 'every %1$s %2$s', $this->get_duration(), 'wp-multisite-waas'), // phpcs:ignore
 			$this->get_duration(),
 			wu_get_translatable_string(($this->get_duration() <= 1 ? $this->get_duration_unit() : $this->get_duration_unit() . 's'))
 		);
@@ -1164,7 +1171,7 @@ class Line_Item implements \JsonSerializable {
 		}
 
 		// phpcs:disable;
-		$query = $wpdb->prepare("
+		$query = $wpdb->prepare( "
 			SELECT m.wu_payment_id, m.meta_value as line_items, p.date_created
 			FROM {$wpdb->base_prefix}wu_paymentmeta as m
 			JOIN {$wpdb->base_prefix}wu_payments as p

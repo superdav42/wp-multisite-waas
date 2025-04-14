@@ -30,19 +30,19 @@
 
 			<span class="wu-font-bold wu-block wu-text-xs wu-uppercase wu-text-gray-700">
 
-				<?php echo $site_template->get_title(); ?>
+				<?php echo esc_html($site_template->get_title()); ?>
 
 			</span>
 
 			<span class="wu-mt-2 wu-block">
 
-				<?php echo wp_trim_words(strip_tags($site_template->get_description()), 40); ?>
+				<?php echo esc_html(wp_trim_words(wp_strip_all_tags($site_template->get_description()), 40)); ?>
 
 			</span>
 
 			<span class="wu-mt-2 wu-block wu-text-xs">
 
-				<?php echo ! $site_template->get_categories() ? __('No categories', 'wp-ultimo') : implode(', ', $site_template->get_categories()); ?>
+				<?php echo ! $site_template->get_categories() ? esc_html__('No categories', 'wp-multisite-waas') : esc_html(implode(', ', $site_template->get_categories())); ?>
 
 			</span>
 
@@ -52,7 +52,7 @@
 
 			<h3 class="wu-my-1 wu-text-2xs wu-uppercase wu-text-gray-600">
 
-				<?php _e('Behavior', 'wp-ultimo'); ?>
+				<?php esc_html_e('Behavior', 'wp-multisite-waas'); ?>
 
 			</h3>
 
@@ -61,9 +61,9 @@
 				name="modules[site_templates][limit][<?php echo esc_attr($site_template->get_id()); ?>][behavior]"
 				class="wu-w-full"
 			>
-				<option <?php selected('available' === $template_settings->behavior); ?> value="available"><?php _e('Available', 'wp-ultimo'); ?></option>
-				<option <?php selected('not_available' === $template_settings->behavior); ?> value="not_available"><?php _e('Not Available', 'wp-ultimo'); ?></option>
-				<option :disabled="pre_selected_template !== '' && pre_selected_template !== false && pre_selected_template != '<?php echo esc_attr($site_template->get_id()); ?>'" <?php selected('pre_selected' === $template_settings->behavior); ?> value="pre_selected"><?php _e('Pre-Selected', 'wp-ultimo'); ?></option>
+				<option <?php selected('available' === $template_settings->behavior); ?> value="available"><?php esc_html_e('Available', 'wp-multisite-waas'); ?></option>
+				<option <?php selected('not_available' === $template_settings->behavior); ?> value="not_available"><?php esc_html_e('Not Available', 'wp-multisite-waas'); ?></option>
+				<option :disabled="pre_selected_template !== '' && pre_selected_template !== false && pre_selected_template != '<?php echo esc_attr($site_template->get_id()); ?>'" <?php selected('pre_selected' === $template_settings->behavior); ?> value="pre_selected"><?php esc_html_e('Pre-Selected', 'wp-multisite-waas'); ?></option>
 			</select>
 
 			</div>

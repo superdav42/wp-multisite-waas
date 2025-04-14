@@ -76,14 +76,14 @@ class Simple_Text_Element extends Base_Element {
 	 *
 	 * This is used on the Blocks list of Gutenberg.
 	 * You should return a string with the localized title.
-	 * e.g. return __('My Element', 'wp-ultimo').
+	 * e.g. return __('My Element', 'wp-multisite-waas').
 	 *
 	 * @since 2.0.0
 	 * @return string
 	 */
 	public function get_title() {
 
-		return __('Simple Text', 'wp-ultimo');
+		return __('Simple Text', 'wp-multisite-waas');
 	}
 
 	/**
@@ -92,14 +92,14 @@ class Simple_Text_Element extends Base_Element {
 	 * This is also used on the Gutenberg block list
 	 * to explain what this block is about.
 	 * You should return a string with the localized title.
-	 * e.g. return __('Adds a checkout form to the page', 'wp-ultimo').
+	 * e.g. return __('Adds a checkout form to the page', 'wp-multisite-waas').
 	 *
 	 * @since 2.0.0
 	 * @return string
 	 */
 	public function get_description() {
 
-		return __('Adds a simple text block to the page.', 'wp-ultimo');
+		return __('Adds a simple text block to the page.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -124,16 +124,16 @@ class Simple_Text_Element extends Base_Element {
 		$fields = [];
 
 		$fields['header'] = [
-			'title' => __('General', 'wp-ultimo'),
-			'desc'  => __('General', 'wp-ultimo'),
+			'title' => __('General', 'wp-multisite-waas'),
+			'desc'  => __('General', 'wp-multisite-waas'),
 			'type'  => 'header',
 		];
 
 		$fields['simple_text'] = [
 			'type'        => 'textarea',
-			'title'       => __('Content', 'wp-ultimo'),
-			'placeholder' => __('E.g. Text, HTML or shortcode.', 'wp-ultimo'),
-			'desc'        => __('You can insert plain text, HTML or a shortcode in this block.', 'wp-ultimo'),
+			'title'       => __('Content', 'wp-multisite-waas'),
+			'placeholder' => __('E.g. Text, HTML or shortcode.', 'wp-multisite-waas'),
+			'desc'        => __('You can insert plain text, HTML or a shortcode in this block.', 'wp-multisite-waas'),
 			'tooltip'     => '',
 			'html_attr'   => [
 				'rows' => 6,
@@ -200,7 +200,7 @@ class Simple_Text_Element extends Base_Element {
 	public function defaults() {
 
 		return [
-			'simple_text' => __('Text, HTML or shortcode.', 'wp-ultimo'),
+			'simple_text' => __('Text, HTML or shortcode.', 'wp-multisite-waas'),
 		];
 	}
 

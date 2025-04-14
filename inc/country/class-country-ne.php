@@ -70,7 +70,7 @@ class Country_NE extends Country {
 	 */
 	public function get_name() {
 
-		return __('Niger', 'wp-ultimo');
+		return __('Niger', 'wp-multisite-waas');
 	}
 
 	/**
@@ -82,13 +82,13 @@ class Country_NE extends Country {
 	protected function states() {
 
 		return [
-			'1' => __('Agadez Region', 'wp-ultimo'),
-			'2' => __('Diffa Region', 'wp-ultimo'),
-			'3' => __('Dosso Region', 'wp-ultimo'),
-			'4' => __('Maradi Region', 'wp-ultimo'),
-			'5' => __('Tahoua Region', 'wp-ultimo'),
-			'6' => __('Tillabéri Region', 'wp-ultimo'),
-			'7' => __('Zinder Region', 'wp-ultimo'),
+			'1' => __('Agadez Region', 'wp-multisite-waas'),
+			'2' => __('Diffa Region', 'wp-multisite-waas'),
+			'3' => __('Dosso Region', 'wp-multisite-waas'),
+			'4' => __('Maradi Region', 'wp-multisite-waas'),
+			'5' => __('Tahoua Region', 'wp-multisite-waas'),
+			'6' => __('Tillabéri Region', 'wp-multisite-waas'),
+			'7' => __('Zinder Region', 'wp-multisite-waas'),
 		];
 	}
 }

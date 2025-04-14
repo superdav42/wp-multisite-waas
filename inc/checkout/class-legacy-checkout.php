@@ -95,7 +95,7 @@ class Legacy_Checkout {
 		$this->session = wu_get_session('signup');
 
 		$this->templates = [
-			'signup-main.php' => __('WP Multisite WaaS Legacy Signup', 'wp-ultimo'),
+			'signup-main.php' => __('WP Multisite WaaS Legacy Signup', 'wp-multisite-waas'),
 		];
 
 		// add_filter('request', array($this, 'maybe_render_legacy_signup'));
@@ -388,7 +388,7 @@ class Legacy_Checkout {
 
 		if (isset($location['country']) && $location['country'] && $allowed_countries) {
 			if ( ! in_array($location['country'], $allowed_countries, true)) {
-				wp_die(apply_filters('wu_geolocation_error_message', __('Sorry. Our service is not allowed in your country.', 'wp-ultimo')));
+				wp_die(apply_filters('wu_geolocation_error_message', __('Sorry. Our service is not allowed in your country.', 'wp-multisite-waas')));
 			}
 		}
 	}
@@ -630,8 +630,8 @@ class Legacy_Checkout {
 
 		// Plan Selector
 		$steps['plan'] = [
-			'name'    => __('Pick a Plan', 'wp-ultimo'),
-			'desc'    => __('Which one of our amazing plans you want to get?', 'wp-ultimo'),
+			'name'    => __('Pick a Plan', 'wp-multisite-waas'),
+			'desc'    => __('Which one of our amazing plans you want to get?', 'wp-multisite-waas'),
 			'view'    => 'step-plans',
 			'handler' => [$this, 'plans_save'],
 			'order'   => 10,
@@ -646,8 +646,8 @@ class Legacy_Checkout {
 		// We add template selection if this has template
 		if ($site_templates) {
 			$steps['template'] = [
-				'name'    => __('Template Selection', 'wp-ultimo'),
-				'desc'    => __('Select the base template of your new site.', 'wp-ultimo'),
+				'name'    => __('Template Selection', 'wp-multisite-waas'),
+				'desc'    => __('Select the base template of your new site.', 'wp-multisite-waas'),
 				'view'    => 'step-template',
 				'order'   => 20,
 				'handler' => false,
@@ -657,8 +657,8 @@ class Legacy_Checkout {
 
 		// Domain registering
 		$steps['domain'] = [
-			'name'    => __('Site Details', 'wp-ultimo'),
-			'desc'    => __('Ok, now it\'s time to pick your site url and title!', 'wp-ultimo'),
+			'name'    => __('Site Details', 'wp-multisite-waas'),
+			'desc'    => __('Ok, now it\'s time to pick your site url and title!', 'wp-multisite-waas'),
 			'handler' => [$this, 'domain_save'],
 			'view'    => false,
 			'order'   => 30,
@@ -668,34 +668,34 @@ class Legacy_Checkout {
 				[
 					'blog_title'  => [
 						'order'       => 10,
-						'name'        => apply_filters('wu_signup_site_title_label', __('Site Title', 'wp-ultimo')),
+						'name'        => apply_filters('wu_signup_site_title_label', __('Site Title', 'wp-multisite-waas')),
 						'type'        => 'text',
 						'default'     => '',
 						'placeholder' => '',
-						'tooltip'     => apply_filters('wu_signup_site_title_tooltip', __('Select the title your site is going to have.', 'wp-ultimo')),
+						'tooltip'     => apply_filters('wu_signup_site_title_tooltip', __('Select the title your site is going to have.', 'wp-multisite-waas')),
 						'required'    => true,
 						'core'        => true,
 					],
 					'blogname'    => [
 						'order'       => 20,
-						'name'        => apply_filters('wu_signup_site_url_label', __('URL', 'wp-ultimo')),
+						'name'        => apply_filters('wu_signup_site_url_label', __('URL', 'wp-multisite-waas')),
 						'type'        => 'text',
 						'default'     => '',
 						'placeholder' => '',
-						'tooltip'     => apply_filters('wu_signup_site_url_tooltip', __('Site urls can only contain lowercase letters (a-z) and numbers and must be at least 4 characters. .', 'wp-ultimo')),
+						'tooltip'     => apply_filters('wu_signup_site_url_tooltip', __('Site urls can only contain lowercase letters (a-z) and numbers and must be at least 4 characters. .', 'wp-multisite-waas')),
 						'required'    => true,
 						'core'        => true,
 					],
 					'url_preview' => [
 						'order'   => 30,
-						'name'    => __('Site URL Preview', 'wp-ultimo'),
+						'name'    => __('Site URL Preview', 'wp-multisite-waas'),
 						'type'    => 'html',
 						'content' => wu_get_template_contents('legacy/signup/steps/step-domain-url-preview'),
 					],
 					'submit'      => [
 						'order' => 100,
 						'type'  => 'submit',
-						'name'  => __('Continue to the next step', 'wp-ultimo'),
+						'name'  => __('Continue to the next step', 'wp-multisite-waas'),
 						'core'  => true,
 					],
 				]
@@ -710,18 +710,18 @@ class Legacy_Checkout {
 
 			'user_name'      => [
 				'order'       => 10,
-				'name'        => apply_filters('wu_signup_username_label', __('Username', 'wp-ultimo')),
+				'name'        => apply_filters('wu_signup_username_label', __('Username', 'wp-multisite-waas')),
 				'type'        => 'text',
 				'default'     => '',
 				'placeholder' => '',
-				'tooltip'     => apply_filters('wu_signup_username_tooltip', __('Username must be at least 4 characters.', 'wp-ultimo')),
+				'tooltip'     => apply_filters('wu_signup_username_tooltip', __('Username must be at least 4 characters.', 'wp-multisite-waas')),
 				'required'    => true,
 				'core'        => true,
 			],
 
 			'user_email'     => [
 				'order'       => 20,
-				'name'        => apply_filters('wu_signup_email_label', __('Email', 'wp-ultimo')),
+				'name'        => apply_filters('wu_signup_email_label', __('Email', 'wp-multisite-waas')),
 				'type'        => 'email',
 				'default'     => '',
 				'placeholder' => '',
@@ -732,18 +732,18 @@ class Legacy_Checkout {
 
 			'user_pass'      => [
 				'order'       => 30,
-				'name'        => apply_filters('wu_signup_password_label', __('Password', 'wp-ultimo')),
+				'name'        => apply_filters('wu_signup_password_label', __('Password', 'wp-multisite-waas')),
 				'type'        => 'password',
 				'default'     => '',
 				'placeholder' => '',
-				'tooltip'     => apply_filters('wu_signup_password_tooltip', __('Your password should be at least 6 characters long.', 'wp-ultimo')),
+				'tooltip'     => apply_filters('wu_signup_password_tooltip', __('Your password should be at least 6 characters long.', 'wp-multisite-waas')),
 				'required'    => true,
 				'core'        => true,
 			],
 
 			'user_pass_conf' => [
 				'order'       => 40,
-				'name'        => apply_filters('wu_signup_password_conf_label', __('Confirm Password', 'wp-ultimo')),
+				'name'        => apply_filters('wu_signup_password_conf_label', __('Confirm Password', 'wp-multisite-waas')),
 				'type'        => 'password',
 				'default'     => '',
 				'placeholder' => '',
@@ -757,7 +757,7 @@ class Legacy_Checkout {
 			 */
 			'site_url'       => [
 				'order'              => random_int(1, 59), // Use random order for Honeypot
-				'name'               => __('Site URL', 'wp-ultimo'),
+				'name'               => __('Site URL', 'wp-multisite-waas'),
 				'type'               => 'text',
 				'default'            => '',
 				'placeholder'        => '',
@@ -786,18 +786,18 @@ class Legacy_Checkout {
 		// $account_fields['has_coupon'] = array(
 		// 'order'         => 50,
 		// 'type'          => 'checkbox',
-		// 'name'         => __('Have a coupon code?', 'wp-ultimo'),
+		// 'name'         => __('Have a coupon code?', 'wp-multisite-waas'),
 		// 'core'          => true,
 		// 'check_if'      => 'coupon', // Check if the input with this name is selected
 		// 'checked'       => $coupon ? true : false,
 		// );
 		// $account_fields['coupon'] = array(
 		// 'order'         => 60,
-		// 'name'         => __('Coupon Code', 'wp-ultimo'),
+		// 'name'         => __('Coupon Code', 'wp-multisite-waas'),
 		// 'type'          => 'text',
 		// 'default'       => '',
 		// 'placeholder'   => '',
-		// 'tooltip'       => __('The code should be an exact match. This field is case-sensitive.', 'wp-ultimo'),
+		// 'tooltip'       => __('The code should be an exact match. This field is case-sensitive.', 'wp-multisite-waas'),
 		// 'requires'      => array('has_coupon' => true),
 		// 'core'          => true,
 		// );
@@ -811,7 +811,7 @@ class Legacy_Checkout {
 		// 'order'         => 70,
 		// 'type'          => 'checkbox',
 		// 'checked'       => false,
-		// 'name'         => sprintf(__('I agree with the <a href="%s" target="_blank">Terms of Service</a>', 'wp-ultimo'), $this->get_terms_url()),
+		// 'name'         => sprintf(__('I agree with the <a href="%s" target="_blank">Terms of Service</a>', 'wp-multisite-waas'), $this->get_terms_url()),
 		// 'core'          => true,
 		// );
 		// }
@@ -822,13 +822,13 @@ class Legacy_Checkout {
 		$account_fields['submit'] = [
 			'order' => 100,
 			'type'  => 'submit',
-			'name'  => __('Create Account', 'wp-ultimo'),
+			'name'  => __('Create Account', 'wp-multisite-waas'),
 			'core'  => true,
 		];
 
 		// Account registering
 		$steps['account'] = [
-			'name'    => __('Account Details', 'wp-ultimo'),
+			'name'    => __('Account Details', 'wp-multisite-waas'),
 			'view'    => false,
 			'handler' => [$this, 'account_save'],
 			'order'   => 40,
@@ -867,7 +867,7 @@ class Legacy_Checkout {
 		 */
 		$begin_signup = [
 			'begin-signup' => [
-				'name'    => __('Begin Signup Process', 'wp-ultimo'),
+				'name'    => __('Begin Signup Process', 'wp-multisite-waas'),
 				'handler' => [$this, 'begin_signup'],
 				'view'    => false,
 				'hidden'  => true,
@@ -883,7 +883,7 @@ class Legacy_Checkout {
 		 */
 		$create_account = [
 			'create-account' => [
-				'name'    => __('Creating Account', 'wp-ultimo'),
+				'name'    => __('Creating Account', 'wp-multisite-waas'),
 				'handler' => [$this, 'create_account'],
 				'view'    => false,
 				'hidden'  => true,
@@ -932,7 +932,7 @@ class Legacy_Checkout {
 
 		if ($die && empty($transient)) {
 
-			// wp_die(__('Try again', 'wp-ultimo'));
+			// wp_die(__('Try again', 'wp-multisite-waas'));
 		}
 
 		if (is_null($transient)) {
@@ -959,7 +959,7 @@ class Legacy_Checkout {
 	public function has_plan_step(): bool {
 
 		$transient = static::get_transient();
-        return !(isset($transient['skip_plan']) && isset($transient['plan_id']) && isset($transient['plan_freq']));
+		return ! (isset($transient['skip_plan']) && isset($transient['plan_id']) && isset($transient['plan_freq']));
 	}
 
 	/**
@@ -1018,7 +1018,7 @@ class Legacy_Checkout {
 	public function next_step($args = []): void {
 
 		/** Redirect the user to the next step */
-		wp_redirect(esc_url_raw($this->get_next_step_link($args)));
+		wp_safe_redirect(esc_url_raw($this->get_next_step_link($args)));
 
 		/** Kill the execution after the redirect */
 		exit;
@@ -1161,13 +1161,13 @@ class Legacy_Checkout {
 
 		// We need now to check for plan
 		if ( ! isset($_POST['plan_id'])) {
-			$this->results['errors']->add('plan_id', __('You don\'t have any plan selected.', 'wp-ultimo'));
+			$this->results['errors']->add('plan_id', __('You don\'t have any plan selected.', 'wp-multisite-waas'));
 		} else {
 			// We need now to check if the plan exists
 			$plan = wu_get_product($_POST['plan_id']);
 
 			if ( ! $plan->exists()) {
-				$this->results['errors']->add('plan_id', __('The plan you\'ve selected doesn\'t exist.', 'wp-ultimo'));
+				$this->results['errors']->add('plan_id', __('The plan you\'ve selected doesn\'t exist.', 'wp-multisite-waas'));
 			}
 		}
 
@@ -1328,7 +1328,7 @@ class Legacy_Checkout {
 
 				// Checks for honey-trap id
 				if ('site_url' === $id) {
-					wp_die(__('Please, do not use the "site_url" as one of your custom fields\' ids. We use it as a honeytrap field to prevent spam registration. Consider alternatives such as "url" or "website".', 'wp-ultimo'));
+					wp_die(__('Please, do not use the "site_url" as one of your custom fields\' ids. We use it as a honeytrap field to prevent spam registration. Consider alternatives such as "url" or "website".', 'wp-multisite-waas'));
 				}
 
 				// Saves the order

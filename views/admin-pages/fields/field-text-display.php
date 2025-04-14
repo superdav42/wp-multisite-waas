@@ -5,7 +5,7 @@
  * @since 2.0.0
  */
 ?>
-<li class="<?php echo esc_attr(trim($field->wrapper_classes)); ?>" <?php echo $field->get_wrapper_html_attributes(); ?>>
+<li class="<?php echo esc_attr(trim($field->wrapper_classes)); ?>" <?php echo $field->get_wrapper_html_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 
 	<div class="wu-block">
 
@@ -36,12 +36,12 @@
 
 			$formatted_value = date_i18n(get_option('date_format'), $time);
 
-          $placeholder = wu_get_current_time('timestamp') > $time ? __('%s ago', 'wp-ultimo') : __('In %s', 'wp-ultimo'); // phpcs:ignore
+			$placeholder = wu_get_current_time('timestamp') > $time ? esc_html__('%s ago', 'wp-multisite-waas') : esc_html__('In %s', 'wp-multisite-waas'); // phpcs:ignore
 
-			printf('<time datetime="%3$s">%1$s</time><br><small>%2$s</small>', $formatted_value, sprintf($placeholder, human_time_diff($time, wu_get_current_time('timestamp'))), get_date_from_gmt($date));
+			printf('<time datetime="%3$s">%1$s</time><br><small>%2$s</small>', esc_html($formatted_value), esc_html(sprintf($placeholder, human_time_diff($time, wu_get_current_time('timestamp')))), esc_attr(get_date_from_gmt($date)));
 		} else {
-			_e('None', 'wp-ultimo');
-		} // end if;
+			esc_html_e('None', 'wp-multisite-waas');
+		}
 
 		?>
 
@@ -49,11 +49,11 @@
 
 		<span class="wu-my-1 wu-inline-block">
 
-		<span id="<?php echo $field->id; ?>_value"><?php echo $field->display_value; ?></span>
+		<span id="<?php echo esc_attr($field->id); ?>_value"><?php echo $field->display_value; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 
 		<?php if ($field->copy) : ?>
 
-			<a <?php echo wu_tooltip_text(__('Copy', 'wp-ultimo')); ?> class="wu-no-underline wp-ui-text-highlight wu-copy"  data-clipboard-action="copy" data-clipboard-target="#<?php echo $field->id; ?>_value">
+			<a <?php echo wu_tooltip_text(esc_html__('Copy', 'wp-multisite-waas')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> class="wu-no-underline wp-ui-text-highlight wu-copy"  data-clipboard-action="copy" data-clipboard-target="#<?php echo esc_attr($field->id); ?>_value">
 
 			<span class="dashicons-wu-copy wu-align-middle"></span>
 

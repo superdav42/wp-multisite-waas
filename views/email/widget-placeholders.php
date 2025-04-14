@@ -9,11 +9,11 @@
 
 	<div class="wu-widget-inside md:wu-flex wu-flex-none md:wu--mx-3 md:wu--mb-3 wu--m-2">
 
-		<div class="" v-show="!loading" v-cloak>
+		<div v-show="!loading" v-cloak>
 
 			<div class="wu-p-2 wu-border wu-border-solid wu-border-gray-400 wu-border-t-0 wu-border-l-0 wu-border-r-0 wu-bg-gray-100">
 
-				<input class="wu-w-full wu-border-gray-400" type="text" placeholder="<?php _e('Search Placeholders', 'wp-ultimo'); ?>" v-model="search" />
+				<input class="wu-w-full wu-border-gray-400" type="text" placeholder="<?php esc_attr_e('Search Placeholders', 'wp-multisite-waas'); ?>" v-model="search" />
 
 			</div>
 
@@ -23,45 +23,33 @@
 
 					<thead>
 
-						<tr>
+					<tr>
 
-							<th style="width: 30%;">
+						<th style="width: 30%;"><?php echo esc_html__('Name', 'wp-multisite-waas'); ?></th>
 
-								<?php echo __('Name', 'wp-ultimo'); ?>
+						<th style="width: 30%;"><?php echo esc_html__('Placeholder', 'wp-multisite-waas'); ?></th>
 
-							</th>
-
-							<th style="width: 30%;">
-
-								<?php echo __('Placeholder', 'wp-ultimo'); ?>
-
-							</th>
-
-						</tr>
+					</tr>
 
 					</thead>
 
 					<tbody id="placeholders_table" class="wu-align-baseline">
 
-						<tr v-for="placeholder in filtered_placeholders">
+					<tr v-for="placeholder in filtered_placeholders">
 
-							<td class="wu-align-left wu-text-xs">
+						<td class="wu-align-left wu-text-xs">
 
-									<span :id="'payload_event_name_' + placeholder.placeholder" class="wu-rounded-sm wu-text-xs">
+							<span :id="'payload_event_name_' + placeholder.placeholder" class="wu-rounded-sm wu-text-xs"><?php echo esc_html(str_replace(['Id', 'Url'], ['ID', 'URL'], $placeholder['name'])); ?></span>
 
-										{{ placeholder.name.replace('Id', 'ID').replace('Url', 'URL') }}
+						</td>
 
-									</span>
+						<td class="wu-align-middle wu-text-xs">
 
-							</td>
-
-							<td class="wu-align-middle wu-text-xs">
-
-									<a @click.prevent="" <?php echo wu_tooltip_text(__('Copy', 'wp-ultimo')); ?> class="wu-no-underline wp-ui-text-highlight wu-copy" href="#" data-clipboard-action="copy" :data-clipboard-target="'#payload_event_placeholder_' + placeholder.placeholder">
+									<a @click.prevent="" <?php echo wu_tooltip_text(__('Copy', 'wp-multisite-waas')); ?> class="wu-no-underline wp-ui-text-highlight wu-copy" href="#" data-clipboard-action="copy" :data-clipboard-target="'#payload_event_placeholder_' + placeholder.placeholder">
 
 										<span class="dashicons-wu-copy wu-align-middle"></span>
 
-									</a>
+							</a>
 
 									<span v-html="'{{' + placeholder.placeholder + '}}'" :id="'payload_event_placeholder_' + placeholder.placeholder" class="wu-rounded-sm wu-text-xs wu-font-mono">
 
@@ -69,9 +57,9 @@
 
 									</span>
 
-							</td>
+						</td>
 
-						</tr>
+					</tr>
 
 					</tbody>
 
@@ -87,7 +75,7 @@
 
 		<span class="wu-blinking-animation wu-text-gray-600 wu-my-1 wu-mb-0 wu-text-2xs wu-uppercase wu-font-semibold" >
 
-				<?php echo $loading_text; ?>
+				<?php echo esc_html($loading_text); ?>
 
 		</span>
 

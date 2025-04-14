@@ -10,10 +10,6 @@
 namespace WP_Ultimo\Integrations\Host_Providers;
 
 use Psr\Log\LogLevel;
-use WP_Ultimo\Integrations\Host_Providers\Base_Host_Provider;
-
-// Exit if accessed directly
-defined('ABSPATH') || exit;
 
 /**
  * This base class should be extended to implement new host integrations for SSL and domains.
@@ -91,19 +87,19 @@ class ServerPilot_Host_Provider extends Base_Host_Provider {
 
 		return [
 			'WU_SERVER_PILOT_CLIENT_ID' => [
-				'title'       => __('ServerPilot Client ID', 'wp-ultimo'),
-				'desc'        => __('Your ServerPilot Client ID.', 'wp-ultimo'),
-				'placeholder' => __('e.g. cid_lSmjevkdoSOpasYVqm', 'wp-ultimo'),
+				'title'       => __('ServerPilot Client ID', 'wp-multisite-waas'),
+				'desc'        => __('Your ServerPilot Client ID.', 'wp-multisite-waas'),
+				'placeholder' => __('e.g. cid_lSmjevkdoSOpasYVqm', 'wp-multisite-waas'),
 			],
 			'WU_SERVER_PILOT_API_KEY'   => [
-				'title'       => __('ServerPilot API Key', 'wp-ultimo'),
-				'desc'        => __('The API Key retrieved in the previous step.', 'wp-ultimo'),
-				'placeholder' => __('e.g. eYP0Jo3Fzzm5SOZCi5nLR0Mki2lbYZ', 'wp-ultimo'),
+				'title'       => __('ServerPilot API Key', 'wp-multisite-waas'),
+				'desc'        => __('The API Key retrieved in the previous step.', 'wp-multisite-waas'),
+				'placeholder' => __('e.g. eYP0Jo3Fzzm5SOZCi5nLR0Mki2lbYZ', 'wp-multisite-waas'),
 			],
 			'WU_SERVER_PILOT_APP_ID'    => [
-				'title'       => __('ServerPilot App ID', 'wp-ultimo'),
-				'desc'        => __('The App ID retrieved in the previous step.', 'wp-ultimo'),
-				'placeholder' => __('e.g. 940288', 'wp-ultimo'),
+				'title'       => __('ServerPilot App ID', 'wp-multisite-waas'),
+				'desc'        => __('The App ID retrieved in the previous step.', 'wp-multisite-waas'),
+				'placeholder' => __('e.g. 940288', 'wp-multisite-waas'),
 			],
 		];
 	}
@@ -219,9 +215,9 @@ class ServerPilot_Host_Provider extends Base_Host_Provider {
 			'timeout'  => 45,
 			'blocking' => true,
 			'method'   => $method,
-			'body'     => $data ? json_encode($data) : [],
+			'body'     => $data ? wp_json_encode($data) : [],
 			'headers'  => [
-				'Authorization' => 'Basic ' . base64_encode(WU_SERVER_PILOT_CLIENT_ID . ':' . WU_SERVER_PILOT_API_KEY),
+				'Authorization' => 'Basic ' . base64_encode(WU_SERVER_PILOT_CLIENT_ID . ':' . WU_SERVER_PILOT_API_KEY), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 				'Content-Type'  => 'application/json',
 			],
 		];
@@ -243,7 +239,7 @@ class ServerPilot_Host_Provider extends Base_Host_Provider {
 	 * Makes sure ServerPilot autoSSL is always on, when possible.
 	 *
 	 * @since 1.7.4
-	 * @return bool
+	 * @return object
 	 */
 	public function turn_server_pilot_auto_ssl_on() {
 
@@ -273,8 +269,8 @@ class ServerPilot_Host_Provider extends Base_Host_Provider {
 		 * Log response so we can see what went wrong
 		 */
 
-		// translators: %s is the json_encode of the error.
-		wu_log_add('integration-serverpilot', sprintf(__('An error occurred while trying to get the current list of domains: %s', 'wp-ultimo'), json_encode($app_info)), LogLevel::ERROR);
+		// translators: %s is the wp_json_encode of the error.
+		wu_log_add('integration-serverpilot', sprintf(__('An error occurred while trying to get the current list of domains: %s', 'wp-multisite-waas'), wp_json_encode($app_info)), LogLevel::ERROR);
 
 		return false;
 	}
@@ -315,7 +311,7 @@ class ServerPilot_Host_Provider extends Base_Host_Provider {
 	 */
 	public function get_description() {
 
-		return __('ServerPilot is a cloud service for hosting WordPress and other PHP websites on servers at DigitalOcean, Amazon, Google, or any other server provider. You can think of ServerPilot as a modern, centralized hosting control panel.', 'wp-ultimo');
+		return __('ServerPilot is a cloud service for hosting WordPress and other PHP websites on servers at DigitalOcean, Amazon, Google, or any other server provider. You can think of ServerPilot as a modern, centralized hosting control panel.', 'wp-multisite-waas');
 	}
 
 	/**

@@ -123,8 +123,8 @@ abstract class List_Admin_Page extends Base_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'deleted_message' => __('Object removed successfully.', 'wp-ultimo'),
-			'search_label'    => __('Search Object', 'wp-ultimo'),
+			'deleted_message' => __('Object removed successfully.', 'wp-multisite-waas'),
+			'search_label'    => __('Search Object', 'wp-multisite-waas'),
 		];
 	}
 

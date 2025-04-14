@@ -19,16 +19,16 @@ trait Singleton {
 	 *
 	 * @var object
 	 */
-	public static $instance;
+	public static object $instance;
 
 	/**
 	 * Returns the instance of WP_Ultimo
 	 *
 	 * @return object
 	 */
-	public static function get_instance() {
+	public static function get_instance(): object {
 
-		if ( ! static::$instance instanceof static) {
+		if ( ! isset(static::$instance) || ! static::$instance instanceof static) {
 			static::$instance = new static();
 
 			static::$instance->init();
@@ -54,7 +54,7 @@ trait Singleton {
 	 * @since 2.0.11
 	 * @return boolean
 	 */
-	public function has_parents() {
+	public function has_parents(): bool {
 
 		return (bool) class_parents($this);
 	}

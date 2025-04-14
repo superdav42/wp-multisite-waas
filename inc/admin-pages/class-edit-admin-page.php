@@ -141,11 +141,11 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 		if ($locked && $this->edit) {
 
 			// translators: %s is the date, using the site format options
-			$message = sprintf(__('This item is locked from editions.<br />This is probably due to a background action being performed (like a transfer between different accounts, for example). You can manually unlock it, but be careful. The lock should be released automatically in %s seconds.', 'wp-ultimo'), wu_get_next_queue_run() + 10);
+			$message = sprintf(__('This item is locked from editions.<br />This is probably due to a background action being performed (like a transfer between different accounts, for example). You can manually unlock it, but be careful. The lock should be released automatically in %s seconds.', 'wp-multisite-waas'), wu_get_next_queue_run() + 10);
 
 			$actions = [
 				'preview' => [
-					'title' => __('Unlock', 'wp-ultimo'),
+					'title' => __('Unlock', 'wp-multisite-waas'),
 					'url'   => add_query_arg(
 						[
 							'remove-lock'           => 1,
@@ -184,7 +184,7 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 			 */
 			$this->get_object()->unlock();
 
-			wp_redirect(
+			wp_safe_redirect(
 				remove_query_arg(
 					[
 						'remove-lock',
@@ -264,15 +264,15 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 	public function get_labels() {
 
 		$default_labels = [
-			'edit_label'          => __('Edit Object', 'wp-ultimo'),
-			'add_new_label'       => __('Add New Object', 'wp-ultimo'),
-			'updated_message'     => __('Object updated with success!', 'wp-ultimo'),
-			'title_placeholder'   => __('Enter Object Name', 'wp-ultimo'),
+			'edit_label'          => __('Edit Object', 'wp-multisite-waas'),
+			'add_new_label'       => __('Add New Object', 'wp-multisite-waas'),
+			'updated_message'     => __('Object updated with success!', 'wp-multisite-waas'),
+			'title_placeholder'   => __('Enter Object Name', 'wp-multisite-waas'),
 			'title_description'   => '',
-			'save_button_label'   => __('Save', 'wp-ultimo'),
+			'save_button_label'   => __('Save', 'wp-multisite-waas'),
 			'save_description'    => '',
-			'delete_button_label' => __('Delete', 'wp-ultimo'),
-			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-ultimo'),
+			'delete_button_label' => __('Delete', 'wp-multisite-waas'),
+			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-multisite-waas'),
 		];
 
 		return apply_filters('wu_edit_admin_page_labels', $default_labels);
@@ -320,7 +320,7 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 		$this->add_info_widget(
 			'info',
 			[
-				'title'    => __('Timestamps', 'wp-ultimo'),
+				'title'    => __('Timestamps', 'wp-multisite-waas'),
 				'position' => 'side-bottom',
 			]
 		);
@@ -350,7 +350,7 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 		$created_value = call_user_func([$this->get_object(), "get_$created_key"]);
 
 		$atts['fields'][ $created_key ] = [
-			'title'         => __('Created at', 'wp-ultimo'),
+			'title'         => __('Created at', 'wp-multisite-waas'),
 			'type'          => 'text-display',
 			'date'          => true,
 			'display_value' => $this->edit ? $created_value : false,
@@ -367,10 +367,10 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 
 		if ($this->edit && true === $show_modified) {
 			$atts['fields']['date_modified'] = [
-				'title'         => __('Last Modified at', 'wp-ultimo'),
+				'title'         => __('Last Modified at', 'wp-multisite-waas'),
 				'type'          => 'text-display',
 				'date'          => true,
-				'display_value' => $this->edit ? $this->get_object()->get_date_modified() : __('No date', 'wp-ultimo'),
+				'display_value' => $this->edit ? $this->get_object()->get_date_modified() : __('No date', 'wp-multisite-waas'),
 				'value'         => $this->get_object()->get_date_modified(),
 				'placeholder'   => '2020-04-04 12:00:00',
 				'html_attr'     => [
@@ -401,7 +401,7 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 				'widget_id'    => $id,
 				'before'       => '',
 				'after'        => '',
-				'title'        => __('List Table', 'wp-ultimo'),
+				'title'        => __('List Table', 'wp-multisite-waas'),
 				'position'     => 'advanced',
 				'screen'       => get_current_screen(),
 				'page'         => $this,
@@ -466,7 +466,7 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 				'widget_id'             => $id,
 				'before'                => '',
 				'after'                 => '',
-				'title'                 => __('Fields', 'wp-ultimo'),
+				'title'                 => __('Fields', 'wp-multisite-waas'),
 				'position'              => 'side',
 				'screen'                => get_current_screen(),
 				'fields'                => [],
@@ -484,7 +484,7 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 				if (wu_get_isset($atts['html_attr'], 'data-wu-app')) {
 					$atts['fields']['loading'] = [
 						'type'              => 'note',
-						'desc'              => sprintf('<div class="wu-block wu-text-center wu-blinking-animation wu-text-gray-600 wu-my-1 wu-text-2xs wu-uppercase wu-font-semibold">%s</div>', __('Loading...', 'wp-ultimo')),
+						'desc'              => sprintf('<div class="wu-block wu-text-center wu-blinking-animation wu-text-gray-600 wu-my-1 wu-text-2xs wu-uppercase wu-font-semibold">%s</div>', __('Loading...', 'wp-multisite-waas')),
 						'wrapper_html_attr' => [
 							'v-if' => 0,
 						],
@@ -535,7 +535,7 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 				'widget_id' => $id,
 				'before'    => '',
 				'after'     => '',
-				'title'     => __('Tabs', 'wp-ultimo'),
+				'title'     => __('Tabs', 'wp-multisite-waas'),
 				'position'  => 'advanced',
 				'screen'    => get_current_screen(),
 				'sections'  => [],
@@ -651,7 +651,7 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 				'widget_id' => $id,
 				'before'    => '',
 				'after'     => '',
-				'title'     => __('Fields', 'wp-ultimo'),
+				'title'     => __('Fields', 'wp-multisite-waas'),
 				'screen'    => get_current_screen(),
 				'position'  => 'side',
 				'display'   => '__return_empty_string',
@@ -674,7 +674,7 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 
 		$labels = $this->get_labels();
 
-		$atts['title'] = __('Save', 'wp-ultimo');
+		$atts['title'] = __('Save', 'wp-multisite-waas');
 
 		/**
 		 * Adds Submit Button
@@ -694,7 +694,7 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 		}
 
 		if ($this->get_object() && $this->edit && $this->get_object()->is_locked()) {
-			$atts['fields']['submit_save']['title']                 = __('Locked', 'wp-ultimo');
+			$atts['fields']['submit_save']['title']                 = __('Locked', 'wp-multisite-waas');
 			$atts['fields']['submit_save']['value']                 = 'none';
 			$atts['fields']['submit_save']['html_attr']['disabled'] = 'disabled';
 		}
@@ -716,7 +716,7 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 		$labels = $this->get_labels();
 
 		$atts_default = [
-			'title'    => __('Delete', 'wp-ultimo'),
+			'title'    => __('Delete', 'wp-multisite-waas'),
 			'position' => 'side-bottom',
 		];
 		$atts         = array_merge($atts_default, $atts);
@@ -856,7 +856,7 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 
 			$url = add_query_arg($array_params);
 
-			wp_redirect($url);
+			wp_safe_redirect($url);
 
 			return true;
 		}
@@ -885,7 +885,7 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 		$url = str_replace('_', '-', (string) $object->model);
 		$url = wu_network_admin_url("wp-ultimo-{$url}s");
 
-		wp_redirect($url);
+		wp_safe_redirect($url);
 
 		exit;
 	}

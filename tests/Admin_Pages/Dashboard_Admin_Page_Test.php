@@ -36,7 +36,6 @@ class Dashboard_Admin_Page_Test extends WP_UnitTestCase {
 
 		// Verify localized script data is correct
 		$localized_vars = wp_scripts()->get_data('wu-dashboard-stats', 'data');
-		echo($localized_vars);
 		$this->assertStringContainsString('"month_list":["Jan ', $localized_vars);
 		$this->assertStringContainsString('"today":"', $localized_vars); // Check that today is included
 		$this->assertStringContainsString('"new_mrr":"New MRR"', $localized_vars);

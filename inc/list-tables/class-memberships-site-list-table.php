@@ -44,9 +44,9 @@ class Memberships_Site_List_Table extends Customers_Site_List_Table {
 	 */
 	public function column_responsive($item): void {
 
-		$redirect = current_user_can('wu_edit_sites') ? 'wp-ultimo-edit-site' : 'wp-ultimo-sites';
+		$redirect = current_user_can('edit_others_posts') ? 'wp-ultimo-edit-site' : 'wp-ultimo-sites';
 
-		echo wu_responsive_table_row(
+		echo wu_responsive_table_row( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			[
 				'id'     => $item->get_id(),
 				'title'  => $item->get_title(),
@@ -62,14 +62,14 @@ class Memberships_Site_List_Table extends Customers_Site_List_Table {
 			[
 				'link'      => [
 					'icon'  => 'dashicons-wu-link1 wu-align-middle wu-mr-1',
-					'label' => __('Visit Site', 'wp-ultimo'),
-					'value' => __('Homepage', 'wp-ultimo'),
+					'label' => __('Visit Site', 'wp-multisite-waas'),
+					'value' => __('Homepage', 'wp-multisite-waas'),
 					'url'   => $item->get_active_site_url(),
 				],
 				'dashboard' => [
 					'icon'  => 'dashicons-wu-browser wu-align-middle wu-mr-1',
-					'label' => __('Go to the Dashboard', 'wp-ultimo'),
-					'value' => __('Dashboard', 'wp-ultimo'),
+					'label' => __('Go to the Dashboard', 'wp-multisite-waas'),
+					'value' => __('Dashboard', 'wp-multisite-waas'),
 					'url'   => get_admin_url($item->get_id()),
 				],
 			],
@@ -77,7 +77,7 @@ class Memberships_Site_List_Table extends Customers_Site_List_Table {
 				'date_created' => [
 					'icon'  => 'dashicons-wu-calendar1 wu-align-middle wu-mr-1',
 					'label' => '',
-					'value' => $item->get_type() === 'pending' ? __('Not Available', 'wp-ultimo') : sprintf(__('Created %s', 'wp-ultimo'), wu_human_time_diff(strtotime((string) $item->get_date_registered()))),
+					'value' => $item->get_type() === 'pending' ? __('Not Available', 'wp-multisite-waas') : sprintf(__('Created %s', 'wp-multisite-waas'), wu_human_time_diff(strtotime((string) $item->get_date_registered()))),
 				],
 			]
 		);

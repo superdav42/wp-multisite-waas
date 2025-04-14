@@ -107,7 +107,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function add_width_control_script(): void {
 
-		wp_enqueue_script('wu-checkout-form-edit-modal', wu_get_asset('checkout-form-editor-modal.js', 'js'), [], wu_get_version());
+		wp_enqueue_script('wu-checkout-form-edit-modal', wu_get_asset('checkout-form-editor-modal.js', 'js'), [], wu_get_version(), true);
 	}
 
 	/**
@@ -212,7 +212,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			);
 
 			if ($index < $count - 1) {
-				$content .= sprintf('<hr class="sm:wu-bg-transparent wu-hr-text wu-font-semibold wu-my-4 wu-mt-6 wu-text-gray-600 wu-text-sm" data-content="%s">', __('Step Separator', 'wp-ultimo'));
+				$content .= sprintf('<hr class="sm:wu-bg-transparent wu-hr-text wu-font-semibold wu-my-4 wu-mt-6 wu-text-gray-600 wu-text-sm" data-content="%s">', __('Step Separator', 'wp-multisite-waas'));
 			}
 		}
 
@@ -380,9 +380,9 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 					'v-model' => 'tab',
 				],
 				'options'           => [
-					'content'  => __('Field', 'wp-ultimo'),
-					'advanced' => __('Additional Settings', 'wp-ultimo'),
-					'style'    => __('Style', 'wp-ultimo'),
+					'content'  => __('Field', 'wp-multisite-waas'),
+					'advanced' => __('Additional Settings', 'wp-multisite-waas'),
+					'style'    => __('Style', 'wp-multisite-waas'),
 				],
 				'wrapper_html_attr' => [
 					'v-show' => 'type',
@@ -392,8 +392,8 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			// Content Tab
 			'type'                    => [
 				'type'              => 'select-icon',
-				'title'             => __('Field Type', 'wp-ultimo'),
-				'desc'              => __('Select the type of field you want to add to the checkout form.', 'wp-ultimo'),
+				'title'             => __('Field Type', 'wp-multisite-waas'),
+				'desc'              => __('Select the type of field you want to add to the checkout form.', 'wp-multisite-waas'),
 				'placeholder'       => '',
 				'tooltip'           => '',
 				'value'             => '',
@@ -410,7 +410,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			'type_note'               => [
 				'type'              => 'note',
 				'order'             => 0,
-				'desc'              => sprintf('<a href="#" class="wu-no-underline wu-mt-1 wu-uppercase wu-text-2xs wu-font-semibold wu-text-gray-600" v-on:click.prevent="type = \'\'">%s</a>', __('&larr; Back to Field Type Selection', 'wp-ultimo')),
+				'desc'              => sprintf('<a href="#" class="wu-no-underline wu-mt-1 wu-uppercase wu-text-2xs wu-font-semibold wu-text-gray-600" v-on:click.prevent="type = \'\'">%s</a>', __('&larr; Back to Field Type Selection', 'wp-multisite-waas')),
 				'wrapper_html_attr' => [
 					'v-show'  => 'type && (!saved && !name)',
 					'v-cloak' => '1',
@@ -428,9 +428,9 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			// Advanced Tab
 			'from_request'            => [
 				'type'              => 'toggle',
-				'title'             => __('Pre-fill from Request', 'wp-ultimo'),
-				'tooltip'           => __('The key is the field slug. If your field has the slug "my-color" for example, adding ?my-color=blue will pre-fill this field with the value "blue".', 'wp-ultimo'),
-				'desc'              => __('Enable this to allow this field to be pre-filled based on the request parameters.', 'wp-ultimo'),
+				'title'             => __('Pre-fill from Request', 'wp-multisite-waas'),
+				'tooltip'           => __('The key is the field slug. If your field has the slug "my-color" for example, adding ?my-color=blue will pre-fill this field with the value "blue".', 'wp-multisite-waas'),
+				'desc'              => __('Enable this to allow this field to be pre-filled based on the request parameters.', 'wp-multisite-waas'),
 				'value'             => 1,
 				'order'             => 100,
 				'html_attr'         => [
@@ -446,12 +446,12 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			'logged'                  => [
 				'type'              => 'select',
 				'value'             => 'always',
-				'title'             => __('Field Visibility', 'wp-ultimo'),
-				'desc'              => __('Select the visibility of this field.', 'wp-ultimo'),
+				'title'             => __('Field Visibility', 'wp-multisite-waas'),
+				'desc'              => __('Select the visibility of this field.', 'wp-multisite-waas'),
 				'options'           => [
-					'always'      => __('Always show', 'wp-ultimo'),
-					'logged_only' => __('Only show for logged in users', 'wp-ultimo'),
-					'guests_only' => __('Only show for guests', 'wp-ultimo'),
+					'always'      => __('Always show', 'wp-multisite-waas'),
+					'logged_only' => __('Only show for logged in users', 'wp-multisite-waas'),
+					'guests_only' => __('Only show for guests', 'wp-multisite-waas'),
 				],
 				'html_attr'         => [
 					'v-model' => 'logged',
@@ -473,9 +473,9 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			// Style Tab
 			'width'                   => [
 				'type'              => 'number',
-				'title'             => __('Wrapper Width', 'wp-ultimo'),
-				'placeholder'       => __('100', 'wp-ultimo'),
-				'desc'              => __('Set the width of this field wrapper (in %).', 'wp-ultimo'),
+				'title'             => __('Wrapper Width', 'wp-multisite-waas'),
+				'placeholder'       => __('100', 'wp-multisite-waas'),
+				'desc'              => __('Set the width of this field wrapper (in %).', 'wp-multisite-waas'),
 				'min'               => 0,
 				'max'               => 100,
 				'value'             => 100,
@@ -490,9 +490,9 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			],
 			'wrapper_element_classes' => [
 				'type'              => 'text',
-				'title'             => __('Wrapper CSS Classes', 'wp-ultimo'),
-				'placeholder'       => __('e.g. custom-field example-class', 'wp-ultimo'),
-				'desc'              => __('You can enter multiple CSS classes separated by spaces. These will be applied to the field wrapper element.', 'wp-ultimo'),
+				'title'             => __('Wrapper CSS Classes', 'wp-multisite-waas'),
+				'placeholder'       => __('e.g. custom-field example-class', 'wp-multisite-waas'),
+				'desc'              => __('You can enter multiple CSS classes separated by spaces. These will be applied to the field wrapper element.', 'wp-multisite-waas'),
 				'value'             => '',
 				'order'             => 54,
 				'html_attr'         => [
@@ -505,9 +505,9 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			],
 			'element_classes'         => [
 				'type'              => 'text',
-				'title'             => __('Field CSS Classes', 'wp-ultimo'),
-				'placeholder'       => __('e.g. custom-field example-class', 'wp-ultimo'),
-				'desc'              => __('You can enter multiple CSS classes separated by spaces. These will be applied to the field element itself, when possible.', 'wp-ultimo'),
+				'title'             => __('Field CSS Classes', 'wp-multisite-waas'),
+				'placeholder'       => __('e.g. custom-field example-class', 'wp-multisite-waas'),
+				'desc'              => __('You can enter multiple CSS classes separated by spaces. These will be applied to the field element itself, when possible.', 'wp-multisite-waas'),
 				'value'             => '',
 				'order'             => 56,
 				'html_attr'         => [
@@ -544,7 +544,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			$default_field['wrapper_html_attr'] = array_merge(
 				wu_get_isset($default_field, 'wrapper_html_attr', []),
 				[
-					'v-if'    => sprintf('type && require("type", %s) && require("tab", "%s")', json_encode($reqs), $tab),
+					'v-if'    => sprintf('type && require("type", %s) && require("tab", "%s")', wp_json_encode($reqs), $tab),
 					'v-cloak' => '1',
 				]
 			);
@@ -552,11 +552,11 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			if ('name' === $default_field_slug || 'id' === $default_field_slug || 'default_value' === $default_field_slug) {
 				unset($default_field['wrapper_html_attr']['v-if']);
 
-				$default_field['wrapper_html_attr']['v-show'] = sprintf('type && require("type", %s) && require("tab", "%s")', json_encode($reqs), $tab);
+				$default_field['wrapper_html_attr']['v-show'] = sprintf('type && require("type", %s) && require("tab", "%s")', wp_json_encode($reqs), $tab);
 			}
 
 			if ('id' === $default_field_slug) {
-				$default_field['html_attr']['v-bind:required'] = sprintf('type && require("type", %s) && require("tab", "content")', json_encode($reqs));
+				$default_field['html_attr']['v-bind:required'] = sprintf('type && require("type", %s) && require("tab", "content")', wp_json_encode($reqs));
 			}
 		}
 
@@ -567,7 +567,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			[
 				'submit_button' => [
 					'type'              => 'submit',
-					'title'             => empty($attributes) ? __('Add Field', 'wp-ultimo') : __('Save Field', 'wp-ultimo'),
+					'title'             => empty($attributes) ? __('Add Field', 'wp-multisite-waas') : __('Save Field', 'wp-multisite-waas'),
 					'value'             => 'save',
 					'order'             => 100,
 					'classes'           => 'button button-primary wu-w-full',
@@ -777,7 +777,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			wp_send_json_error(
 				new \WP_Error(
 					'checkout-form-not-found',
-					__('The checkout form could not be found.', 'wp-ultimo')
+					__('The checkout form could not be found.', 'wp-multisite-waas')
 				)
 			);
 		}
@@ -855,18 +855,18 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 					'v-model' => 'tab',
 				],
 				'options'   => [
-					'content'    => __('Content', 'wp-ultimo'),
-					'visibility' => __('Visibility', 'wp-ultimo'),
-					'style'      => __('Style', 'wp-ultimo'),
+					'content'    => __('Content', 'wp-multisite-waas'),
+					'visibility' => __('Visibility', 'wp-multisite-waas'),
+					'style'      => __('Style', 'wp-multisite-waas'),
 				],
 			],
 
 			// Content Tab
 			'id'            => [
 				'type'              => 'text',
-				'title'             => __('Step ID', 'wp-ultimo'),
-				'placeholder'       => __('e.g. step-name', 'wp-ultimo'),
-				'desc'              => __('This will be used on the URL. Only alpha-numeric and hyphens allowed.', 'wp-ultimo'),
+				'title'             => __('Step ID', 'wp-multisite-waas'),
+				'placeholder'       => __('e.g. step-name', 'wp-multisite-waas'),
+				'desc'              => __('This will be used on the URL. Only alpha-numeric and hyphens allowed.', 'wp-multisite-waas'),
 				'value'             => '',
 				'html_attr'         => [
 					'v-on:input'   => 'id = $event.target.value.toLowerCase().replace(/[^a-z0-9-_]+/g, "")',
@@ -887,9 +887,9 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			],
 			'name'          => [
 				'type'              => 'text',
-				'title'             => __('Step Title', 'wp-ultimo'),
-				'placeholder'       => __('e.g. My Extra Step', 'wp-ultimo'),
-				'desc'              => __('Mostly used internally, but made available for templates.', 'wp-ultimo'),
+				'title'             => __('Step Title', 'wp-multisite-waas'),
+				'placeholder'       => __('e.g. My Extra Step', 'wp-multisite-waas'),
+				'desc'              => __('Mostly used internally, but made available for templates.', 'wp-multisite-waas'),
 				'tooltip'           => '',
 				'value'             => '',
 				'html_attr'         => [
@@ -903,9 +903,9 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			],
 			'desc'          => [
 				'type'              => 'textarea',
-				'title'             => __('Step Description', 'wp-ultimo'),
-				'placeholder'       => __('e.g. This is the last step!', 'wp-ultimo'),
-				'desc'              => __('Mostly used internally, but made available for templates.', 'wp-ultimo'),
+				'title'             => __('Step Description', 'wp-multisite-waas'),
+				'placeholder'       => __('e.g. This is the last step!', 'wp-multisite-waas'),
+				'desc'              => __('Mostly used internally, but made available for templates.', 'wp-multisite-waas'),
 				'tooltip'           => '',
 				'value'             => '',
 				'html_attr'         => [
@@ -922,12 +922,12 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			'logged'        => [
 				'type'              => 'select',
 				'value'             => 'always',
-				'title'             => __('Logged Status', 'wp-ultimo'),
-				'desc'              => __('Select the visibility of this step.', 'wp-ultimo'),
+				'title'             => __('Logged Status', 'wp-multisite-waas'),
+				'desc'              => __('Select the visibility of this step.', 'wp-multisite-waas'),
 				'options'           => [
-					'always'      => __('Always show', 'wp-ultimo'),
-					'logged_only' => __('Only show for logged in users', 'wp-ultimo'),
-					'guests_only' => __('Only show for guests', 'wp-ultimo'),
+					'always'      => __('Always show', 'wp-multisite-waas'),
+					'logged_only' => __('Only show for logged in users', 'wp-multisite-waas'),
+					'guests_only' => __('Only show for guests', 'wp-multisite-waas'),
 				],
 				'html_attr'         => [
 					'v-model' => 'logged',
@@ -941,9 +941,9 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			// Style Tab
 			'element_id'    => [
 				'type'              => 'text',
-				'title'             => __('Element ID', 'wp-ultimo'),
-				'placeholder'       => __('myfield', 'wp-ultimo'),
-				'desc'              => __('A custom ID to be added to the form element. Do not add the # symbol.', 'wp-ultimo'),
+				'title'             => __('Element ID', 'wp-multisite-waas'),
+				'placeholder'       => __('myfield', 'wp-multisite-waas'),
+				'desc'              => __('A custom ID to be added to the form element. Do not add the # symbol.', 'wp-multisite-waas'),
 				'value'             => '',
 				'html_attr'         => [
 					'v-model' => 'element_id',
@@ -956,9 +956,9 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 
 			'classes'       => [
 				'type'              => 'text',
-				'title'             => __('Extra CSS Classes', 'wp-ultimo'),
-				'placeholder'       => __('custom-field example-class', 'wp-ultimo'),
-				'desc'              => __('You can enter multiple CSS classes separated by spaces.', 'wp-ultimo'),
+				'title'             => __('Extra CSS Classes', 'wp-multisite-waas'),
+				'placeholder'       => __('custom-field example-class', 'wp-multisite-waas'),
+				'desc'              => __('You can enter multiple CSS classes separated by spaces.', 'wp-multisite-waas'),
 				'value'             => '',
 				'html_attr'         => [
 					'v-model' => 'classes',
@@ -972,7 +972,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			// Submit Button
 			'submit_button' => [
 				'type'              => 'submit',
-				'title'             => empty($_step) ? __('Add Step', 'wp-ultimo') : __('Save Step', 'wp-ultimo'),
+				'title'             => empty($_step) ? __('Add Step', 'wp-multisite-waas') : __('Save Step', 'wp-multisite-waas'),
 				'value'             => 'save',
 				'classes'           => 'button button-primary wu-w-full',
 				'wrapper_classes'   => 'wu-items-end',
@@ -1033,7 +1033,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			wp_send_json_error(
 				new \WP_Error(
 					'checkout-form-not-found',
-					__('The checkout form could not be found.', 'wp-ultimo')
+					__('The checkout form could not be found.', 'wp-multisite-waas')
 				)
 			);
 		}
@@ -1150,10 +1150,10 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 				'register_page' => wu_get_registration_url(),
 				'steps'         => $steps,
 				'headers'       => [
-					'order' => __('Order', 'wp-ultimo'),
-					'name'  => __('Label', 'wp-ultimo'),
-					'type'  => __('Type', 'wp-ultimo'),
-					'slug'  => __('Slug', 'wp-ultimo'),
+					'order' => __('Order', 'wp-multisite-waas'),
+					'name'  => __('Label', 'wp-multisite-waas'),
+					'type'  => __('Type', 'wp-multisite-waas'),
+					'slug'  => __('Slug', 'wp-multisite-waas'),
 					'move'  => '',
 				],
 			]
@@ -1161,10 +1161,10 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 
 		wp_enqueue_script('wu-checkout-form-editor');
 
-		wp_enqueue_script('wu-vue-sortable', '//cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js', [], wu_get_version());
-		wp_enqueue_script('wu-vue-draggable', '//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js', [], wu_get_version());
+		wp_enqueue_script('wu-vue-sortable', '//cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js', [], wu_get_version(), true);
+		wp_enqueue_script('wu-vue-draggable', '//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js', [], wu_get_version(), true);
 
-		wp_enqueue_style('wu-checkout-form-editor', wu_get_asset('checkout-editor.css', 'css'));
+		wp_enqueue_style('wu-checkout-form-editor', wu_get_asset('checkout-editor.css', 'css'), [], wu_get_version());
 	}
 
 	/**
@@ -1209,9 +1209,9 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 
 		$new_fields['conversion_snippets'] = [
 			'type'  => 'code-editor',
-			'title' => __('Conversion Snippets', 'wp-ultimo'),
+			'title' => __('Conversion Snippets', 'wp-multisite-waas'),
 			// translators: %s is a list of placeholders.
-			'desc'  => sprintf(__('Add custom snippets in HTML (with javascript support) to add conversion tracking pixels and such. This code is only run on the successful Thank You step.<br> Available placeholders are: %s', 'wp-ultimo'), $fields_placeholder),
+			'desc'  => sprintf(__('Add custom snippets in HTML (with javascript support) to add conversion tracking pixels and such. This code is only run on the successful Thank You step.<br> Available placeholders are: %s', 'wp-multisite-waas'), $fields_placeholder),
 			'value' => $this->get_object()->get_conversion_snippets(),
 			'lang'  => 'htmlmixed',
 		];
@@ -1247,15 +1247,15 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_tabs_widget(
 			'advanced',
 			[
-				'title'     => __('Advanced Options', 'wp-ultimo'),
+				'title'     => __('Advanced Options', 'wp-multisite-waas'),
 				'position'  => 'advanced',
 				'html_attr' => [
 					'data-on-load' => 'wu_initialize_code_editors',
 				],
 				'sections'  => [
 					'thank-you'    => [
-						'title'  => __('Thank You', 'wp-ultimo'),
-						'desc'   => __('Configure the Thank You page for this Checkout Form.', 'wp-ultimo'),
+						'title'  => __('Thank You', 'wp-multisite-waas'),
+						'desc'   => __('Configure the Thank You page for this Checkout Form.', 'wp-multisite-waas'),
 						'icon'   => 'dashicons-wu-emoji-happy',
 						'state'  => [
 							'enable_thank_you_page' => $this->get_object()->has_thank_you_page(),
@@ -1264,8 +1264,8 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 						'fields' => $this->get_thank_you_page_fields(),
 					],
 					'scripts'      => [
-						'title'  => __('Scripts', 'wp-ultimo'),
-						'desc'   => __('Configure the Thank You page for this Checkout Form.', 'wp-ultimo'),
+						'title'  => __('Scripts', 'wp-multisite-waas'),
+						'desc'   => __('Configure the Thank You page for this Checkout Form.', 'wp-multisite-waas'),
 						'icon'   => 'dashicons-wu-code',
 						'state'  => [
 							'enable_thank_you_page' => $this->get_object()->has_thank_you_page(),
@@ -1274,16 +1274,16 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 						'fields' => [
 							'custom_css' => [
 								'type'  => 'code-editor',
-								'title' => __('Custom CSS', 'wp-ultimo'),
-								'desc'  => __('Add custom CSS code to your checkout form. SCSS syntax is supported.', 'wp-ultimo'),
+								'title' => __('Custom CSS', 'wp-multisite-waas'),
+								'desc'  => __('Add custom CSS code to your checkout form. SCSS syntax is supported.', 'wp-multisite-waas'),
 								'value' => $this->get_object()->get_custom_css(),
 								'lang'  => 'css',
 							],
 						],
 					],
 					'restrictions' => [
-						'title'  => __('Restrictions', 'wp-ultimo'),
-						'desc'   => __('Control the access to this checkout form.', 'wp-ultimo'),
+						'title'  => __('Restrictions', 'wp-multisite-waas'),
+						'desc'   => __('Control the access to this checkout form.', 'wp-multisite-waas'),
 						'icon'   => 'dashicons-wu-block',
 						'state'  => [
 							'restrict_by_country' => $this->get_object()->has_country_lock(),
@@ -1291,17 +1291,17 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 						'fields' => [
 							'restrict_by_country' => [
 								'type'      => 'toggle',
-								'title'     => __('Restrict by Country', 'wp-ultimo'),
-								'desc'      => __('Restrict this checkout form to specific countries.', 'wp-ultimo'),
+								'title'     => __('Restrict by Country', 'wp-multisite-waas'),
+								'desc'      => __('Restrict this checkout form to specific countries.', 'wp-multisite-waas'),
 								'html_attr' => [
 									'v-model' => 'restrict_by_country',
 								],
 							],
 							'allowed_countries'   => [
 								'type'              => 'select',
-								'title'             => __('Allowed Countries', 'wp-ultimo'),
-								'desc'              => __('Select the allowed countries.', 'wp-ultimo'),
-								'placeholder'       => __('Type to search countries...', 'wp-ultimo'),
+								'title'             => __('Allowed Countries', 'wp-multisite-waas'),
+								'desc'              => __('Select the allowed countries.', 'wp-multisite-waas'),
+								'placeholder'       => __('Type to search countries...', 'wp-multisite-waas'),
 								'options'           => 'wu_get_countries',
 								'value'             => $this->get_object()->get_allowed_countries(),
 								'wrapper_html_attr' => [
@@ -1322,7 +1322,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_list_table_widget(
 			'events',
 			[
-				'title'        => __('Events', 'wp-ultimo'),
+				'title'        => __('Events', 'wp-multisite-waas'),
 				'table'        => new \WP_Ultimo\List_Tables\Inside_Events_List_Table(),
 				'query_filter' => [$this, 'query_filter'],
 				'position'     => 'advanced',
@@ -1344,8 +1344,8 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 				'fields'    => [
 					'slug'             => [
 						'type'              => 'text',
-						'title'             => __('Checkout Form Slug', 'wp-ultimo'),
-						'desc'              => __('This is used to create shortcodes and more.', 'wp-ultimo'),
+						'title'             => __('Checkout Form Slug', 'wp-multisite-waas'),
+						'desc'              => __('This is used to create shortcodes and more.', 'wp-multisite-waas'),
 						'value'             => $this->get_object()->get_slug(),
 						'wrapper_html_attr' => [
 							'v-cloak' => '1',
@@ -1358,7 +1358,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 					],
 					'slug_change_note' => [
 						'type'              => 'note',
-						'desc'              => __('You are changing the form slug. If you save this change, all the shortcodes and blocks referencing this slug will stop working until you update them with the new slug.', 'wp-ultimo'),
+						'desc'              => __('You are changing the form slug. If you save this change, all the shortcodes and blocks referencing this slug will stop working until you update them with the new slug.', 'wp-multisite-waas'),
 						'classes'           => 'wu-p-2 wu-bg-yellow-200 wu-text-yellow-700 wu-rounded wu-w-full',
 						'wrapper_html_attr' => [
 							'v-show'  => '(original_slug != slug) && slug',
@@ -1372,12 +1372,12 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_fields_widget(
 			'active',
 			[
-				'title'  => __('Active', 'wp-ultimo'),
+				'title'  => __('Active', 'wp-multisite-waas'),
 				'fields' => [
 					'active' => [
 						'type'  => 'toggle',
-						'title' => __('Active', 'wp-ultimo'),
-						'desc'  => __('Use this option to manually enable or disable this checkout form.', 'wp-ultimo'),
+						'title' => __('Active', 'wp-multisite-waas'),
+						'desc'  => __('Use this option to manually enable or disable this checkout form.', 'wp-multisite-waas'),
 						'value' => $this->get_object()->is_active(),
 					],
 				],
@@ -1389,17 +1389,17 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			[
 				[
 					'id'    => 'checkout-form-editor',
-					'title' => __('Welcome to the Checkout Form builder!', 'wp-ultimo'),
+					'title' => __('Welcome to the Checkout Form builder!', 'wp-multisite-waas'),
 					'text'  => [
-						__('You should be able to create registration forms in any way, shape, and form you desire. This editor allows you to do just that 😃', 'wp-ultimo'),
-						__('Want a registration form with multiple steps? Check! A single step? Check! Control the visibility of certain steps and fields based on the context of the customer? Check!', 'wp-ultimo'),
+						__('You should be able to create registration forms in any way, shape, and form you desire. This editor allows you to do just that 😃', 'wp-multisite-waas'),
+						__('Want a registration form with multiple steps? Check! A single step? Check! Control the visibility of certain steps and fields based on the context of the customer? Check!', 'wp-multisite-waas'),
 					],
 				],
 				[
 					'id'       => 'add-new-step',
-					'title'    => __('Adding new Steps', 'wp-ultimo'),
+					'title'    => __('Adding new Steps', 'wp-multisite-waas'),
 					'text'     => [
-						__('To add a new step to the registration form, use this button here.', 'wp-ultimo'),
+						__('To add a new step to the registration form, use this button here.', 'wp-multisite-waas'),
 					],
 					'attachTo' => [
 						'element' => '#wp-ultimo-list-table-add-new-1 > div > div.wu-w-1\/2.wu-text-right > ul > li:nth-child(2) > a',
@@ -1408,10 +1408,10 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 				],
 				[
 					'id'       => 'add-new-field',
-					'title'    => __('Adding new Fields', 'wp-ultimo'),
+					'title'    => __('Adding new Fields', 'wp-multisite-waas'),
 					'text'     => [
-						__('To add a new field to a step, use this button here. You can add fields to capture additional data from your customers and use that data to populate site templates.', 'wp-ultimo'),
-						sprintf('<a class="wu-no-underline" href="%s" target="_blank">%s</a>', wu_get_documentation_url('wp-ultimo-populate-site-template'), __('You can learn more about that here &rarr;', 'wp-ultimo')),
+						__('To add a new field to a step, use this button here. You can add fields to capture additional data from your customers and use that data to populate site templates.', 'wp-multisite-waas'),
+						sprintf('<a class="wu-no-underline" href="%s" target="_blank">%s</a>', wu_get_documentation_url('wp-ultimo-populate-site-template'), __('You can learn more about that here &rarr;', 'wp-multisite-waas')),
 					],
 					'attachTo' => [
 						'element' => '#wp-ultimo-list-table-checkout > div.inside > div.wu-bg-gray-100.wu-px-4.wu-py-3.wu--m-3.wu-mt-3.wu-border-t.wu-border-l-0.wu-border-r-0.wu-border-b-0.wu-border-gray-400.wu-border-solid.wu-text-right > ul > li:nth-child(3) > a',
@@ -1430,7 +1430,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function get_title() {
 
-		return $this->edit ? __('Edit Checkout Form', 'wp-ultimo') : __('Add new Checkout Form', 'wp-ultimo');
+		return $this->edit ? __('Edit Checkout Form', 'wp-multisite-waas') : __('Add new Checkout Form', 'wp-multisite-waas');
 	}
 
 	/**
@@ -1441,7 +1441,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Edit Checkout_Form', 'wp-ultimo');
+		return __('Edit Checkout_Form', 'wp-multisite-waas');
 	}
 
 	/**
@@ -1453,15 +1453,15 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'edit_label'          => __('Edit Checkout Form', 'wp-ultimo'),
-			'add_new_label'       => __('Add new Checkout Form', 'wp-ultimo'),
-			'updated_message'     => __('Checkout Form updated with success!', 'wp-ultimo'),
-			'title_placeholder'   => __('Enter Checkout Form Name', 'wp-ultimo'),
-			'title_description'   => __('This name is used for internal reference only.', 'wp-ultimo'),
-			'save_button_label'   => __('Save Checkout Form', 'wp-ultimo'),
+			'edit_label'          => __('Edit Checkout Form', 'wp-multisite-waas'),
+			'add_new_label'       => __('Add new Checkout Form', 'wp-multisite-waas'),
+			'updated_message'     => __('Checkout Form updated with success!', 'wp-multisite-waas'),
+			'title_placeholder'   => __('Enter Checkout Form Name', 'wp-multisite-waas'),
+			'title_description'   => __('This name is used for internal reference only.', 'wp-multisite-waas'),
+			'save_button_label'   => __('Save Checkout Form', 'wp-multisite-waas'),
 			'save_description'    => '',
-			'delete_button_label' => __('Delete Checkout Form', 'wp-ultimo'),
-			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-ultimo'),
+			'delete_button_label' => __('Delete Checkout Form', 'wp-multisite-waas'),
+			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-multisite-waas'),
 		];
 	}
 
@@ -1500,7 +1500,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 		$item = wu_get_checkout_form($item_id);
 
 		if ( ! $item) {
-			wp_redirect(wu_network_admin_url('wp-ultimo-checkout-forms'));
+			wp_safe_redirect(wu_network_admin_url('wp-ultimo-checkout-forms'));
 
 			exit;
 		}

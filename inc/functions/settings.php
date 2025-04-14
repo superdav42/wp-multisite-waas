@@ -6,6 +6,8 @@
  * @since   2.0.0
  */
 
+use WP_Ultimo\Dependencies\Intervention\Image\ImageManagerStatic as Image;
+
 // Exit if accessed directly
 defined('ABSPATH') || exit;
 
@@ -107,7 +109,7 @@ function wu_register_settings_side_panel($section_slug, $atts) {
 	$atts = wp_parse_args(
 		$atts,
 		[
-			'title'  => __('Side Panel', 'wp-ultimo'),
+			'title'  => __('Side Panel', 'wp-multisite-waas'),
 			'render' => '__return_false',
 			'show'   => '__return_true',
 		]
@@ -146,7 +148,7 @@ function wu_get_network_logo($size = 'full') {
 
 	switch_to_blog(wu_get_main_site_id());
 
-		$settings_logo = wp_get_attachment_image_src(wu_get_setting('company_logo'), $size); // phpcs:ignore
+	$settings_logo = wp_get_attachment_image_src(wu_get_setting('company_logo', ''), $size); // phpcs:ignore
 
 	restore_current_blog();
 
@@ -154,12 +156,36 @@ function wu_get_network_logo($size = 'full') {
 		return $settings_logo[0];
 	}
 
-	$logo = wu_get_asset('logo.webp', 'img');
+	$logo = wu_get_asset('logo.png', 'img');
 
 	$custom_logo = wp_get_attachment_image_src(get_theme_mod('custom_logo'), $size);
 
 	if ( ! empty($custom_logo)) {
 		$logo = $custom_logo[0];
+	}
+
+	return apply_filters('wu_get_logo', $logo);
+}
+
+/**
+ * Retrieve the network custom logo attachement id.
+ *
+ * @return int With the logo's id.
+ */
+function wu_get_network_logo_attachement_id() {
+
+	$settings_logo = wu_get_setting('company_logo');
+
+	if ($settings_logo) {
+		return $settings_logo;
+	}
+
+	$logo = wu_get_asset('logo.png', 'img');
+
+	$custom_logo = get_theme_mod('custom_logo');
+
+	if ( ! empty($custom_logo)) {
+		$logo = $custom_logo;
 	}
 
 	return apply_filters('wu_get_logo', $logo);

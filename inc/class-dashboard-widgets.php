@@ -87,28 +87,28 @@ class Dashboard_Widgets {
 	 */
 	public function register_network_widgets(): void {
 
-		add_meta_box('wp-ultimo-setup', __('WP Multisite WaaS - First Steps', 'wp-ultimo'), [$this, 'output_widget_first_steps'], $this->screen_id, 'normal', 'high');
+		add_meta_box('wp-ultimo-setup', __('WP Multisite WaaS - First Steps', 'wp-multisite-waas'), [$this, 'output_widget_first_steps'], $this->screen_id, 'normal', 'high');
 
-		add_meta_box('wp-ultimo-summary', __('WP Multisite WaaS - Summary', 'wp-ultimo'), [$this, 'output_widget_summary'], $this->screen_id, 'normal', 'high');
+		add_meta_box('wp-ultimo-summary', __('WP Multisite WaaS - Summary', 'wp-multisite-waas'), [$this, 'output_widget_summary'], $this->screen_id, 'normal', 'high');
 
-		add_meta_box('wp-ultimo-activity-stream', __('WP Multisite WaaS - Activity Stream', 'wp-ultimo'), [$this, 'output_widget_activity_stream'], $this->screen_id, 'normal', 'high');
+		add_meta_box('wp-ultimo-activity-stream', __('WP Multisite WaaS - Activity Stream', 'wp-multisite-waas'), [$this, 'output_widget_activity_stream'], $this->screen_id, 'normal', 'high');
 
 		\WP_Ultimo\UI\Tours::get_instance()->create_tour(
 			'dashboard',
 			[
 				[
 					'id'    => 'welcome',
-					'title' => __('Welcome!', 'wp-ultimo'),
+					'title' => __('Welcome!', 'wp-multisite-waas'),
 					'text'  => [
-						__('Welcome to your new network dashboard!', 'wp-ultimo'),
-						__('You will notice that <strong>WP Multisite WaaS</strong> adds a couple of useful widgets here so you can keep an eye on how your network is doing.', 'wp-ultimo'),
+						__('Welcome to your new network dashboard!', 'wp-multisite-waas'),
+						__('You will notice that <strong>WP Multisite WaaS</strong> adds a couple of useful widgets here so you can keep an eye on how your network is doing.', 'wp-multisite-waas'),
 					],
 				],
 				[
 					'id'       => 'finish-your-setup',
-					'title'    => __('Finish your setup', 'wp-ultimo'),
+					'title'    => __('Finish your setup', 'wp-multisite-waas'),
 					'text'     => [
-						__('You still have a couple of things to do configuration-wise. Check the steps on this list and make sure you complete them all.', 'wp-ultimo'),
+						__('You still have a couple of things to do configuration-wise. Check the steps on this list and make sure you complete them all.', 'wp-multisite-waas'),
 					],
 					'attachTo' => [
 						'element' => '#wp-ultimo-setup',
@@ -117,9 +117,9 @@ class Dashboard_Widgets {
 				],
 				[
 					'id'       => 'wp-ultimo-menu',
-					'title'    => __('Our home', 'wp-ultimo'),
+					'title'    => __('Our home', 'wp-multisite-waas'),
 					'text'     => [
-						__('You can always find WP Multisite WaaS settings and other pages under our menu item, here on the Network-level dashboard. 😃', 'wp-ultimo'),
+						__('You can always find WP Multisite WaaS settings and other pages under our menu item, here on the Network-level dashboard. 😃', 'wp-multisite-waas'),
 					],
 					'attachTo' => [
 						'element' => '.toplevel_page_wp-ultimo',
@@ -182,16 +182,16 @@ class Dashboard_Widgets {
 
 		$steps = [
 			'inital-setup'        => [
-				'title'        => __('Initial Setup', 'wp-ultimo'),
-				'desc'         => __('Go through the initial Setup Wizard to configure the basic settings of your network.', 'wp-ultimo'),
-				'action_label' => __('Finish the Setup Wizard', 'wp-ultimo'),
+				'title'        => __('Initial Setup', 'wp-multisite-waas'),
+				'desc'         => __('Go through the initial Setup Wizard to configure the basic settings of your network.', 'wp-multisite-waas'),
+				'action_label' => __('Finish the Setup Wizard', 'wp-multisite-waas'),
 				'action_link'  => wu_network_admin_url('wp-ultimo-setup'),
 				'done'         => wu_string_to_bool($initial_setup_done),
 			],
 			'payment-method'      => [
-				'title'        => __('Payment Method', 'wp-ultimo'),
-				'desc'         => __('You will need to configure at least one payment gateway to be able to receive money from your customers.', 'wp-ultimo'),
-				'action_label' => __('Add a Payment Method', 'wp-ultimo'),
+				'title'        => __('Payment Method', 'wp-multisite-waas'),
+				'desc'         => __('You will need to configure at least one payment gateway to be able to receive money from your customers.', 'wp-multisite-waas'),
+				'action_label' => __('Add a Payment Method', 'wp-multisite-waas'),
 				'action_link'  => wu_network_admin_url(
 					'wp-ultimo-settings',
 					[
@@ -202,10 +202,10 @@ class Dashboard_Widgets {
 			],
 			'your-first-customer' => [
 				'done'         => ! empty(wu_get_customers()),
-				'title'        => __('Your First Customer', 'wp-ultimo'),
-				'desc'         => __('Open the link below in an incognito tab and go through your newly created signup form.', 'wp-ultimo'),
+				'title'        => __('Your First Customer', 'wp-multisite-waas'),
+				'desc'         => __('Open the link below in an incognito tab and go through your newly created signup form.', 'wp-multisite-waas'),
 				'action_link'  => wp_registration_url(),
-				'action_label' => __('Create a test Account', 'wp-ultimo'),
+				'action_label' => __('Create a test Account', 'wp-multisite-waas'),
 			],
 		];
 
@@ -281,10 +281,10 @@ class Dashboard_Widgets {
 	public function process_ajax_fetch_rss(): void {
 
 		$atts = wp_parse_args(
-			$_GET,
+			$_GET, // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			[
 				'url'          => 'https://community.wpultimo.com/topics/feed',
-				'title'        => __('Forum Discussions', 'wp-ultimo'),
+				'title'        => __('Forum Discussions', 'wp-multisite-waas'),
 				'items'        => 3,
 				'show_summary' => 1,
 				'show_author'  => 0,

@@ -39,8 +39,8 @@ class Domain_List_Table extends Base_List_Table {
 
 		parent::__construct(
 			[
-				'singular' => __('Domain', 'wp-ultimo'),  // singular name of the listed records
-				'plural'   => __('Domains', 'wp-ultimo'), // plural name of the listed records
+				'singular' => __('Domain', 'wp-multisite-waas'),  // singular name of the listed records
+				'plural'   => __('Domains', 'wp-multisite-waas'), // plural name of the listed records
 				'ajax'     => true,                       // does this table support ajax?
 				'add_new'  => [
 					'url'     => wu_get_form_url('add_new_domain'),
@@ -86,8 +86,8 @@ class Domain_List_Table extends Base_List_Table {
 		$html = "<span class='wu-font-mono'><strong>{$domain}</strong></span>";
 
 		$actions = [
-			'edit'   => sprintf('<a href="%s">%s</a>', wu_network_admin_url('wp-ultimo-edit-domain', $url_atts), __('Edit', 'wp-ultimo')),
-			'delete' => sprintf('<a title="%s" class="wubox" href="%s">%s</a>', __('Delete', 'wp-ultimo'), wu_get_form_url('delete_modal', $url_atts), __('Delete', 'wp-ultimo')),
+			'edit'   => sprintf('<a href="%s">%s</a>', wu_network_admin_url('wp-ultimo-edit-domain', $url_atts), __('Edit', 'wp-multisite-waas')),
+			'delete' => sprintf('<a title="%s" class="wubox" href="%s">%s</a>', __('Delete', 'wp-multisite-waas'), wu_get_form_url('delete_modal', $url_atts), __('Delete', 'wp-multisite-waas')),
 		];
 
 		return $html . $this->row_actions($actions);
@@ -103,7 +103,7 @@ class Domain_List_Table extends Base_List_Table {
 	 */
 	public function column_active($item) {
 
-		return $item->is_active() ? __('Yes', 'wp-ultimo') : __('No', 'wp-ultimo');
+		return $item->is_active() ? __('Yes', 'wp-multisite-waas') : __('No', 'wp-multisite-waas');
 	}
 
 	/**
@@ -116,7 +116,7 @@ class Domain_List_Table extends Base_List_Table {
 	 */
 	public function column_primary_domain($item) {
 
-		return $item->is_primary_domain() ? __('Yes', 'wp-ultimo') : __('No', 'wp-ultimo');
+		return $item->is_primary_domain() ? __('Yes', 'wp-multisite-waas') : __('No', 'wp-multisite-waas');
 	}
 
 	/**
@@ -129,7 +129,7 @@ class Domain_List_Table extends Base_List_Table {
 	 */
 	public function column_secure($item) {
 
-		return $item->is_secure() ? __('Yes', 'wp-ultimo') : __('No', 'wp-ultimo');
+		return $item->is_secure() ? __('Yes', 'wp-multisite-waas') : __('No', 'wp-multisite-waas');
 	}
 
 	/**
@@ -159,13 +159,13 @@ class Domain_List_Table extends Base_List_Table {
 
 		$columns = [
 			'cb'             => '<input type="checkbox" />',
-			'domain'         => __('Domain', 'wp-ultimo'),
-			'stage'          => __('Stage', 'wp-ultimo'),
-			'blog_id'        => __('Site', 'wp-ultimo'),
-			'active'         => __('Active', 'wp-ultimo'),
-			'primary_domain' => __('Primary', 'wp-ultimo'),
-			'secure'         => __('HTTPS', 'wp-ultimo'),
-			'id'             => __('ID', 'wp-ultimo'),
+			'domain'         => __('Domain', 'wp-multisite-waas'),
+			'stage'          => __('Stage', 'wp-multisite-waas'),
+			'blog_id'        => __('Site', 'wp-multisite-waas'),
+			'active'         => __('Active', 'wp-multisite-waas'),
+			'primary_domain' => __('Primary', 'wp-multisite-waas'),
+			'secure'         => __('HTTPS', 'wp-multisite-waas'),
+			'id'             => __('ID', 'wp-multisite-waas'),
 		];
 
 		return $columns;
@@ -185,10 +185,10 @@ class Domain_List_Table extends Base_List_Table {
 				 * Active
 				 */
 				'active'         => [
-					'label'   => __('Active', 'wp-ultimo'),
+					'label'   => __('Active', 'wp-multisite-waas'),
 					'options' => [
-						0 => __('Inactive', 'wp-ultimo'),
-						1 => __('Active', 'wp-ultimo'),
+						0 => __('Inactive', 'wp-multisite-waas'),
+						1 => __('Active', 'wp-multisite-waas'),
 					],
 				],
 
@@ -196,10 +196,10 @@ class Domain_List_Table extends Base_List_Table {
 				 * Primay
 				 */
 				'primary_domain' => [
-					'label'   => __('Is Primary', 'wp-ultimo'),
+					'label'   => __('Is Primary', 'wp-multisite-waas'),
 					'options' => [
-						0 => __('Not Primary Domain', 'wp-ultimo'),
-						1 => __('Primary Domain', 'wp-ultimo'),
+						0 => __('Not Primary Domain', 'wp-multisite-waas'),
+						1 => __('Primary Domain', 'wp-multisite-waas'),
 					],
 				],
 
@@ -207,10 +207,10 @@ class Domain_List_Table extends Base_List_Table {
 				 * Secure (HTTPS)
 				 */
 				'secure'         => [
-					'label'   => __('HTTPS', 'wp-ultimo'),
+					'label'   => __('HTTPS', 'wp-multisite-waas'),
 					'options' => [
-						0 => __('Non-HTTPS', 'wp-ultimo'),
-						1 => __('HTTPS', 'wp-ultimo'),
+						0 => __('Non-HTTPS', 'wp-multisite-waas'),
+						1 => __('HTTPS', 'wp-multisite-waas'),
 					],
 				],
 
@@ -218,7 +218,7 @@ class Domain_List_Table extends Base_List_Table {
 				 * Stage
 				 */
 				'stage'          => [
-					'label'   => __('Verification Stage', 'wp-ultimo'),
+					'label'   => __('Verification Stage', 'wp-multisite-waas'),
 					'options' => Domain_Stage::to_array(),
 				],
 

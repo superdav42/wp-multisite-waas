@@ -75,7 +75,7 @@ class Checkout_Steps extends Rule {
 
 		foreach ($required_fields_list as $field_slug) {
 			if (! in_array($field_slug, $all_fields_list, true)) {
-				$this->message = sprintf(__('The %s field must be present in at least one of the checkout form steps.', 'wp-ultimo'), wu_slug_to_name($field_slug));
+				$this->message = sprintf(__('The %s field must be present in at least one of the checkout form steps.', 'wp-multisite-waas'), wu_slug_to_name($field_slug));
 
 				return false;
 			}
@@ -111,7 +111,7 @@ class Checkout_Steps extends Rule {
 			);
 
 			if (empty($found_submittable_field_types)) {
-				$this->message = sprintf(__('The %s step is missing a submit field', 'wp-ultimo'), $step['name']);
+				$this->message = sprintf(__('The %s step is missing a submit field', 'wp-multisite-waas'), $step['name']);
 
 				return false;
 			}

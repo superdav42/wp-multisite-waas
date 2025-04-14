@@ -25,11 +25,11 @@ class Event extends Base_Model {
 
 	const SEVERITY_NEUTRAL = 2;
 
-	const SEVERITY_INFO    = 3;
+	const SEVERITY_INFO = 3;
 
 	const SEVERITY_WARNING = 4;
 
-	const SEVERITY_FATAL   = 5;
+	const SEVERITY_FATAL = 5;
 
 	/**
 	 * Severity of the problem.
@@ -156,14 +156,14 @@ class Event extends Base_Model {
 	public function get_severity_label() {
 
 		$labels = [
-			self::SEVERITY_SUCCESS => __('Success', 'wp-ultimo'),
-			self::SEVERITY_NEUTRAL => __('Neutral', 'wp-ultimo'),
-			self::SEVERITY_INFO    => __('Info', 'wp-ultimo'),
-			self::SEVERITY_WARNING => __('Warning', 'wp-ultimo'),
-			self::SEVERITY_FATAL   => __('Fatal', 'wp-ultimo'),
+			self::SEVERITY_SUCCESS => __('Success', 'wp-multisite-waas'),
+			self::SEVERITY_NEUTRAL => __('Neutral', 'wp-multisite-waas'),
+			self::SEVERITY_INFO    => __('Info', 'wp-multisite-waas'),
+			self::SEVERITY_WARNING => __('Warning', 'wp-multisite-waas'),
+			self::SEVERITY_FATAL   => __('Fatal', 'wp-multisite-waas'),
 		];
 
-		return $labels[ $this->get_severity() ] ?? __('Note', 'wp-ultimo');
+		return $labels[ $this->get_severity() ] ?? __('Note', 'wp-multisite-waas');
 	}
 
 	/**
@@ -303,12 +303,12 @@ class Event extends Base_Model {
 
 		$default_messages = [];
 
-		$default_messages['changed'] = __('The <strong>{{model}}</strong> #{{object_id}} was changed: {{payload}}', 'wp-ultimo');
-		$default_messages['created'] = __('The <strong>{{model}}</strong> #{{object_id}} was created.', 'wp-ultimo');
+		$default_messages['changed'] = __('The <strong>{{model}}</strong> #{{object_id}} was changed: {{payload}}', 'wp-multisite-waas');
+		$default_messages['created'] = __('The <strong>{{model}}</strong> #{{object_id}} was created.', 'wp-multisite-waas');
 
 		$default_messages = apply_filters('wu_get_default_system_messages', $default_messages);
 
-		return wu_get_isset($default_messages, $slug, __('No Message', 'wp-ultimo'));
+		return wu_get_isset($default_messages, $slug, __('No Message', 'wp-multisite-waas'));
 	}
 
 

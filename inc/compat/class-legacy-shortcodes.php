@@ -215,7 +215,7 @@ class Legacy_Shortcodes {
 		$atts['plan_id'] = ! empty($atts['product_id']) ? $atts['product_id'] : $atts['plan_id'];
 
 		if (empty($atts) || ! $atts['plan_id']) {
-			return __('You need to pass a valid plan ID.', 'wp-ultimo');
+			return __('You need to pass a valid plan ID.', 'wp-multisite-waas');
 		}
 
 		$query_products = get_query_var('products', []);
@@ -349,17 +349,17 @@ class Legacy_Shortcodes {
 					[
 						'duration'      => 1,
 						'duration_unit' => 'month',
-						'label'         => __('Monthly', 'wp-ultimo'),
+						'label'         => __('Monthly', 'wp-multisite-waas'),
 					],
 					[
 						'duration'      => 3,
 						'duration_unit' => 'month',
-						'label'         => __('Quarterly', 'wp-ultimo'),
+						'label'         => __('Quarterly', 'wp-multisite-waas'),
 					],
 					[
 						'duration'      => 1,
 						'duration_unit' => 'year',
-						'label'         => __('Yearly', 'wp-ultimo'),
+						'label'         => __('Yearly', 'wp-multisite-waas'),
 					],
 				],
 			];
@@ -369,7 +369,7 @@ class Legacy_Shortcodes {
 
 		$fields[] = [
 			'step'                   => 'checkout',
-			'name'                   => __('Plans', 'wp-ultimo'),
+			'name'                   => __('Plans', 'wp-multisite-waas'),
 			'type'                   => 'pricing_table',
 			'id'                     => 'pricing_table',
 			'required'               => true,
@@ -385,7 +385,7 @@ class Legacy_Shortcodes {
 		if ('legacy' !== $layout) {
 			$fields[] = [
 				'step' => 'checkout',
-				'name' => __('Get Started &rarr;', 'wp-ultimo'),
+				'name' => __('Get Started &rarr;', 'wp-multisite-waas'),
 				'type' => 'submit_button',
 				'id'   => 'checkout',
 			];
@@ -394,7 +394,7 @@ class Legacy_Shortcodes {
 		$steps = [
 			[
 				'id'     => 'checkout',
-				'name'   => __('Checkout', 'wp-ultimo'),
+				'name'   => __('Checkout', 'wp-multisite-waas'),
 				'desc'   => '',
 				'fields' => $fields,
 			],
@@ -522,7 +522,7 @@ class Legacy_Shortcodes {
 
 		$fields[] = [
 			'step'                        => 'checkout',
-			'name'                        => __('Templates', 'wp-ultimo'),
+			'name'                        => __('Templates', 'wp-multisite-waas'),
 			'type'                        => 'template_selection',
 			'id'                          => 'template_selection',
 			'template_selection_sites'    => implode(',', $templates ?: wu_get_site_templates($search_arguments)),
@@ -534,7 +534,7 @@ class Legacy_Shortcodes {
 		$steps = [
 			[
 				'id'     => 'checkout',
-				'name'   => __('Checkout', 'wp-ultimo'),
+				'name'   => __('Checkout', 'wp-multisite-waas'),
 				'desc'   => '',
 				'fields' => $fields,
 			],

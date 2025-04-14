@@ -11,7 +11,7 @@
 
 namespace WP_Ultimo\Managers;
 
-use WP_Ultimo\Managers\Base_Manager;
+use WP_Ultimo\Checkout\Checkout;
 use WP_Ultimo\Models\Customer;
 use WP_Ultimo\Database\Memberships\Membership_Status;
 
@@ -62,7 +62,7 @@ class Customer_Manager extends Base_Manager {
 			function () {
 				Event_Manager::register_model_events(
 					'customer',
-					__('Customer', 'wp-ultimo'),
+					__('Customer', 'wp-multisite-waas'),
 					['created', 'updated']
 				);
 			}
@@ -89,7 +89,7 @@ class Customer_Manager extends Base_Manager {
 	public function handle_resend_verification_email(): void {
 
 		if ( ! check_ajax_referer('wu_resend_verification_email_nonce', false, false)) {
-			wp_send_json_error(new \WP_Error('not-allowed', __('Error: you are not allowed to perform this action.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('not-allowed', __('Error: you are not allowed to perform this action.', 'wp-multisite-waas')));
 
 			exit;
 		}
@@ -97,7 +97,7 @@ class Customer_Manager extends Base_Manager {
 		$customer = wu_get_current_customer();
 
 		if ( ! $customer) {
-			wp_send_json_error(new \WP_Error('customer-not-found', __('Error: customer not found.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('customer-not-found', __('Error: customer not found.', 'wp-multisite-waas')));
 
 			exit;
 		}
@@ -129,7 +129,7 @@ class Customer_Manager extends Base_Manager {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_User $user The WP User object of the user that logged in.
+	 * @param \WP_User $user The WP User object of the user that logged in.
 	 * @return void
 	 */
 	public function log_ip_and_last_login($user): void {
@@ -200,13 +200,15 @@ class Customer_Manager extends Base_Manager {
 			wp_die(
 				sprintf(
 					/* translators: the placeholder is the login URL */
-					__('You must be authenticated in order to verify your email address. <a href=%s>Click here</a> to access your account.', 'wp-ultimo'),
-					wp_login_url(
-						add_query_arg(
-							[
-								'email-verification-key' => $email_verify_key,
-								'customer'               => $customer_hash,
-							]
+					wp_kses_post(__('You must be authenticated in order to verify your email address. <a href=%s>Click here</a> to access your account.', 'wp-multisite-waas')),
+					esc_attr(
+						wp_login_url(
+							add_query_arg(
+								[
+									'email-verification-key' => $email_verify_key,
+									'customer' => $customer_hash,
+								]
+							)
 						)
 					)
 				)
@@ -214,31 +216,31 @@ class Customer_Manager extends Base_Manager {
 		}
 
 		if ( ! $customer_to_verify) {
-			wp_die(__('Invalid verification key.', 'wp-ultimo'));
+			wp_die(wp_kses_post(__('<strong>ERROR:</strong> Invalid verification key.', 'wp-multisite-waas')));
 		}
 
 		$current_customer = wu_get_current_customer();
 
 		if ( ! $current_customer) {
-			wp_die(__('Invalid verification key.', 'wp-ultimo'));
+			wp_die(wp_kses_post(__('<strong>Error:</strong> Invalid verification key.', 'wp-multisite-waas')));
 		}
 
 		if ($current_customer->get_id() !== $customer_to_verify->get_id()) {
-			wp_die(__('Invalid verification key.', 'wp-ultimo'));
+			wp_die(esc_html__('Invalid verification key.', 'wp-multisite-waas'));
 		}
 
 		if ($customer_to_verify->get_email_verification() !== 'pending') {
-			wp_die(__('Invalid verification key.', 'wp-ultimo'));
+			wp_die(esc_html__('Invalid verification key.', 'wp-multisite-waas'));
 		}
 
 		$key = $customer_to_verify->get_verification_key();
 
 		if ( ! $key) {
-			wp_die(__('Invalid verification key.', 'wp-ultimo'));
+			wp_die(wp_kses_post(__('<strong>Error:</strong> Invalid verification key.', 'wp-multisite-waas')));
 		}
 
 		if ($key !== $email_verify_key) {
-			wp_die(__('Invalid verification key.', 'wp-ultimo'));
+			wp_die(esc_html__('Invalid verification key.', 'wp-multisite-waas'));
 		}
 
 		/*
@@ -287,13 +289,13 @@ class Customer_Manager extends Base_Manager {
 					wu_get_registration_url()
 				);
 
-				wp_redirect($redirect_url);
+				wp_safe_redirect($redirect_url);
 
 				exit;
 			}
 		}
 
-		wp_redirect(get_admin_url($customer_to_verify->get_primary_site_id()));
+		wp_safe_redirect(get_admin_url($customer_to_verify->get_primary_site_id()));
 
 		exit;
 	}

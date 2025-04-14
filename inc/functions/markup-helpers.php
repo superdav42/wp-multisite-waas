@@ -21,7 +21,7 @@ function wu_convert_to_state($state_array = []) {
 
 	$object = (object) $state_array; // Force object to prevent issues with Vue.
 
-	return json_encode($object);
+	return wp_json_encode($object);
 }
 
 /**
@@ -132,7 +132,7 @@ function wu_tooltip_text($tooltip): string {
 function wu_preview_image($image_url, $label = false): string {
 
 	if (empty($label)) {
-		$label = __('Preview', 'wp-ultimo');
+		$label = __('Preview', 'wp-multisite-waas');
 	}
 
 	return sprintf(' <span class="wu-image-preview wu-text-gray-600 wu-bg-gray-200 wu-p-1 wu-px-2 wu-ml-1 wu-inline-block wu-text-2xs wu-uppercase wu-font-bold wu-rounded wu-cursor-pointer wu-border-gray-300 wu-border wu-border-solid" data-image="%s">%s %s</span>', $image_url, "<span class='dashicons-wu-image wu-align-middle wu-mr-1'></span>", $label);
@@ -765,4 +765,28 @@ function wu_is_block_theme() {
 	}
 
 	return false;
+}
+
+/**
+ * Generate flag emoji from a two-character country code.
+ *
+ * @param string $country_code The two-letter uppercase country code (e.g., "US", "GB").
+ * @return string The flag emoji or empty string if invalid input.
+ */
+function wu_get_flag_emoji(string $country_code): string {
+	// Ensure the country code is uppercase.
+	$country_code = strtoupper($country_code);
+
+	// Validate that the input is exactly two letters.
+	if (strlen($country_code) !== 2 || ! ctype_alpha($country_code)) {
+		return ''; // Return an empty string for invalid input.
+	}
+
+	// Convert the country code to regional indicator symbols.
+	$emoji = '';
+	foreach (str_split($country_code) as $char) {
+		$emoji .= mb_chr(0x1F1E6 - ord('A') + ord($char), 'UTF-8');
+	}
+
+	return $emoji;
 }

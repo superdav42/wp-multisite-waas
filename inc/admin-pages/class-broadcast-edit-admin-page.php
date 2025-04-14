@@ -93,7 +93,7 @@ class Broadcast_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_list_table_widget(
 			'events',
 			[
-				'title'        => __('Events', 'wp-ultimo'),
+				'title'        => __('Events', 'wp-multisite-waas'),
 				'table'        => new \WP_Ultimo\List_Tables\Inside_Events_List_Table(),
 				'query_filter' => [$this, 'events_query_filter'],
 			]
@@ -113,12 +113,12 @@ class Broadcast_Edit_Admin_Page extends Edit_Admin_Page {
 				'fields'    => [
 					'type'        => [
 						'type'        => 'select',
-						'title'       => __('Broadcast Type', 'wp-ultimo'),
-						'placeholder' => __('Type', 'wp-ultimo'),
-						'desc'        => __('Broadcast type cannot be edited.', 'wp-ultimo'),
+						'title'       => __('Broadcast Type', 'wp-multisite-waas'),
+						'placeholder' => __('Type', 'wp-multisite-waas'),
+						'desc'        => __('Broadcast type cannot be edited.', 'wp-multisite-waas'),
 						'options'     => [
-							'broadcast_email'  => __('Email', 'wp-ultimo'),
-							'broadcast_notice' => __('Admin Notice', 'wp-ultimo'),
+							'broadcast_email'  => __('Email', 'wp-multisite-waas'),
+							'broadcast_notice' => __('Admin Notice', 'wp-multisite-waas'),
 						],
 						'value'       => $this->get_object()->get_type(),
 						'tooltip'     => '',
@@ -129,14 +129,14 @@ class Broadcast_Edit_Admin_Page extends Edit_Admin_Page {
 					],
 					'notice_type' => [
 						'type'              => 'select',
-						'title'             => __('Broadcast Status', 'wp-ultimo'),
-						'placeholder'       => __('Status', 'wp-ultimo'),
-						'desc'              => __('This option determines the color of the admin notice.', 'wp-ultimo'),
+						'title'             => __('Broadcast Status', 'wp-multisite-waas'),
+						'placeholder'       => __('Status', 'wp-multisite-waas'),
+						'desc'              => __('This option determines the color of the admin notice.', 'wp-multisite-waas'),
 						'options'           => [
-							'info'    => __('Info (blue)', 'wp-ultimo'),
-							'success' => __('Success (green)', 'wp-ultimo'),
-							'warning' => __('Warning (yellow)', 'wp-ultimo'),
-							'error'   => __('Error (red)', 'wp-ultimo'),
+							'info'    => __('Info (blue)', 'wp-multisite-waas'),
+							'success' => __('Success (green)', 'wp-multisite-waas'),
+							'warning' => __('Warning (yellow)', 'wp-multisite-waas'),
+							'error'   => __('Error (red)', 'wp-multisite-waas'),
 						],
 						'value'             => $this->get_object()->get_notice_type(),
 						'tooltip'           => '',
@@ -149,9 +149,9 @@ class Broadcast_Edit_Admin_Page extends Edit_Admin_Page {
 			]
 		);
 
-		add_meta_box('wp-ultimo-broadcast-customer-targets', __('Customer Targets', 'wp-ultimo'), [$this, 'output_default_widget_customer_targets'], get_current_screen()->id, 'side');
+		add_meta_box('wp-ultimo-broadcast-customer-targets', __('Customer Targets', 'wp-multisite-waas'), [$this, 'output_default_widget_customer_targets'], get_current_screen()->id, 'side');
 
-		add_meta_box('wp-ultimo-broadcast-product-targets', __('Product Targets', 'wp-ultimo'), [$this, 'output_default_widget_product_targets'], get_current_screen()->id, 'side');
+		add_meta_box('wp-ultimo-broadcast-product-targets', __('Product Targets', 'wp-multisite-waas'), [$this, 'output_default_widget_product_targets'], get_current_screen()->id, 'side');
 	}
 
 	/**
@@ -187,7 +187,7 @@ class Broadcast_Edit_Admin_Page extends Edit_Admin_Page {
 
 		switch ($targets) {
 			case $targets_count < 0:
-				$not_found = __('No customer found', 'wp-ultimo');
+				$not_found = __('No customer found', 'wp-multisite-waas');
 
 				$html .= "<span class='dashicons dashicons-wu-block wu-text-gray-600 wu-px-1 wu-pr-3'>&nbsp;</span>
 									<div class=''>
@@ -270,9 +270,9 @@ class Broadcast_Edit_Admin_Page extends Edit_Admin_Page {
 										<a href="%s" title="%s" class="wubox wu-no-underline"><span class="wu-ml-6 wu-uppercase wu-text-xs wu-text-gray-600 wu-font-bold"> %s %s</span></a>
 										</div>',
 						wu_get_form_url('view_broadcast_targets', $modal_atts),
-						__('Targets', 'wp-ultimo'),
+						__('Targets', 'wp-multisite-waas'),
 						$targets_count,
-						__('Targets', 'wp-ultimo')
+						__('Targets', 'wp-multisite-waas')
 					);
 				} else {
 					$count = $targets_count - 6;
@@ -290,9 +290,9 @@ class Broadcast_Edit_Admin_Page extends Edit_Admin_Page {
 									<a href="%s" title="%s" class="wubox wu-no-underline"><span class="wu-pl-2 wu-uppercase wu-text-xs wu-font-bold"> %s %s</span></a>
 									</div>',
 						wu_get_form_url('view_broadcast_targets', $modal_atts),
-						__('Targets', 'wp-ultimo'),
+						__('Targets', 'wp-multisite-waas'),
 						$targets_count,
-						__('Targets', 'wp-ultimo')
+						__('Targets', 'wp-multisite-waas')
 					);
 				}
 
@@ -345,7 +345,7 @@ class Broadcast_Edit_Admin_Page extends Edit_Admin_Page {
 					}
 
 					// translators: %s is the number of customers.
-					$description = sprintf(__('%s customer(s) targeted.', 'wp-ultimo'), $customer_count);
+					$description = sprintf(__('%s customer(s) targeted.', 'wp-multisite-waas'), $customer_count);
 
 					$product_targets[ $key ] = [
 						'link'         => $link,
@@ -360,7 +360,7 @@ class Broadcast_Edit_Admin_Page extends Edit_Admin_Page {
 
 		$args = [
 			'targets'       => $product_targets,
-			'loading_text'  => __('Loading...', 'wp-ultimo'),
+			'loading_text'  => __('Loading...', 'wp-multisite-waas'),
 			'wrapper_class' => 'wu-bg-gray-100 wu--mt-3 wu--mb-6 wu--mx-3',
 			'modal_class'   => 'wubox',
 		];
@@ -376,7 +376,7 @@ class Broadcast_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function get_title() {
 
-		return $this->edit ? __('Edit Broadcast', 'wp-ultimo') : __('Add new Broadcast', 'wp-ultimo');
+		return $this->edit ? __('Edit Broadcast', 'wp-multisite-waas') : __('Add new Broadcast', 'wp-multisite-waas');
 	}
 
 	/**
@@ -387,7 +387,7 @@ class Broadcast_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Edit Broadcast', 'wp-ultimo');
+		return __('Edit Broadcast', 'wp-multisite-waas');
 	}
 
 	/**
@@ -410,15 +410,15 @@ class Broadcast_Edit_Admin_Page extends Edit_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'edit_label'          => __('Edit Broadcast', 'wp-ultimo'),
-			'add_new_label'       => __('Add new Broadcast', 'wp-ultimo'),
-			'updated_message'     => __('Broadcast updated with success!', 'wp-ultimo'),
-			'title_placeholder'   => __('Enter Broadcast Title', 'wp-ultimo'),
-			'title_description'   => __('This title is used on the message itself, and in the case of a broadcast email, it will be used as the subject.', 'wp-ultimo'),
-			'save_button_label'   => __('Save Broadcast', 'wp-ultimo'),
+			'edit_label'          => __('Edit Broadcast', 'wp-multisite-waas'),
+			'add_new_label'       => __('Add new Broadcast', 'wp-multisite-waas'),
+			'updated_message'     => __('Broadcast updated with success!', 'wp-multisite-waas'),
+			'title_placeholder'   => __('Enter Broadcast Title', 'wp-multisite-waas'),
+			'title_description'   => __('This title is used on the message itself, and in the case of a broadcast email, it will be used as the subject.', 'wp-multisite-waas'),
+			'save_button_label'   => __('Save Broadcast', 'wp-multisite-waas'),
 			'save_description'    => '',
-			'delete_button_label' => __('Delete Broadcast', 'wp-ultimo'),
-			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-ultimo'),
+			'delete_button_label' => __('Delete Broadcast', 'wp-multisite-waas'),
+			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-multisite-waas'),
 		];
 	}
 
@@ -454,7 +454,7 @@ class Broadcast_Edit_Admin_Page extends Edit_Admin_Page {
 			$item = $query->get_item_by('id', $_GET['id']);
 
 			if ( ! $item) {
-				wp_redirect(wu_network_admin_url('wp-ultimo-broadcasts'));
+				wp_safe_redirect(wu_network_admin_url('wp-ultimo-broadcasts'));
 
 				exit;
 			}

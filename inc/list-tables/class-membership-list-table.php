@@ -36,8 +36,8 @@ class Membership_List_Table extends Base_List_Table {
 
 		parent::__construct(
 			[
-				'singular' => __('Membership', 'wp-ultimo'),  // singular name of the listed records
-				'plural'   => __('Memberships', 'wp-ultimo'), // plural name of the listed records
+				'singular' => __('Membership', 'wp-multisite-waas'),  // singular name of the listed records
+				'plural'   => __('Memberships', 'wp-multisite-waas'), // plural name of the listed records
 				'ajax'     => true,                           // does this table support ajax?
 				'add_new'  => [
 					'url'     => wu_get_form_url('add_new_membership'),
@@ -55,10 +55,7 @@ class Membership_List_Table extends Base_List_Table {
 	 */
 	public function get_extra_query_fields() {
 
-		$_filter_fields = parent::get_extra_query_fields();
-
-		$search = isset($_GET['s']) ? sanitize_text_field($_GET['s']) : false;
-
+		$_filter_fields                = parent::get_extra_query_fields();
 		$_filter_fields['customer_id'] = wu_request('customer_id');
 
 		return $_filter_fields;
@@ -82,15 +79,15 @@ class Membership_List_Table extends Base_List_Table {
 		$code = sprintf('<a href="%s">%s</a>', wu_network_admin_url('wp-ultimo-edit-membership', $url_atts), $item->get_hash());
 
 		$actions = [
-			'edit'   => sprintf('<a href="%s">%s</a>', wu_network_admin_url('wp-ultimo-edit-membership', $url_atts), __('Edit', 'wp-ultimo')),
+			'edit'   => sprintf('<a href="%s">%s</a>', wu_network_admin_url('wp-ultimo-edit-membership', $url_atts), __('Edit', 'wp-multisite-waas')),
 			'delete' => sprintf(
 				'<a title="%s" class="wubox" href="%s">%s</a>',
-				__('Delete', 'wp-ultimo'),
+				__('Delete', 'wp-multisite-waas'),
 				wu_get_form_url(
 					'delete_modal',
 					$url_atts
 				),
-				__('Delete', 'wp-ultimo')
+				__('Delete', 'wp-multisite-waas')
 			),
 		];
 
@@ -129,7 +126,7 @@ class Membership_List_Table extends Base_List_Table {
 	public function column_amount($item) {
 
 		if (empty($item->get_amount()) && empty($item->get_initial_amount())) {
-			return __('Free', 'wp-ultimo');
+			return __('Free', 'wp-multisite-waas');
 		}
 
 		if ($item->is_recurring()) {
@@ -139,7 +136,7 @@ class Membership_List_Table extends Base_List_Table {
 
 			$message = sprintf(
 				// translators: %1$s is the formatted price, %2$s the duration, and %3$s the duration unit (day, week, month, etc)
-				_n('every %2$s', 'every %1$s %2$s', $duration, 'wp-ultimo'), // phpcs:ignore
+				_n('every %2$s', 'every %1$s %2$s', $duration, 'wp-multisite-waas'), // phpcs:ignore
 				$duration,
 				$item->get_duration_unit()
 			);
@@ -147,7 +144,7 @@ class Membership_List_Table extends Base_List_Table {
 			if ( ! $item->is_forever_recurring()) {
 				$billing_cycles_message = sprintf(
 					// translators: %s is the number of billing cycles.
-					_n('for %s cycle', 'for %s cycles', $item->get_billing_cycles(), 'wp-ultimo'),
+					_n('for %s cycle', 'for %s cycles', $item->get_billing_cycles(), 'wp-multisite-waas'),
 					$item->get_billing_cycles()
 				);
 
@@ -156,7 +153,7 @@ class Membership_List_Table extends Base_List_Table {
 		} else {
 			$amount = wu_format_currency($item->get_initial_amount(), $item->get_currency());
 
-			$message = __('one time payment', 'wp-ultimo');
+			$message = __('one time payment', 'wp-multisite-waas');
 		}
 
 		return sprintf('%s<br><small>%s</small>', $amount, $message);
@@ -172,15 +169,14 @@ class Membership_List_Table extends Base_List_Table {
 
 		$columns = [
 			'cb'              => '<input type="checkbox" />',
-			'hash'            => wu_tooltip(__('Reference Code', 'wp-ultimo'), 'dashicons-wu-hash wu-text-xs'),
-			'status'          => __('Status', 'wp-ultimo'),
-			'customer'        => __('Customer', 'wp-ultimo'),
-			'product'         => __('Product', 'wp-ultimo'),
-			'amount'          => __('Price', 'wp-ultimo'),
-			// 'sites'              => __('Sites', 'wp-ultimo'),
-			'date_created'    => __('Created at', 'wp-ultimo'),
-			'date_expiration' => __('Expiration', 'wp-ultimo'),
-			'id'              => __('ID', 'wp-ultimo'),
+			'hash'            => wu_tooltip(__('Reference Code', 'wp-multisite-waas'), 'dashicons-wu-hash wu-text-xs'),
+			'status'          => __('Status', 'wp-multisite-waas'),
+			'customer'        => __('Customer', 'wp-multisite-waas'),
+			'product'         => __('Product', 'wp-multisite-waas'),
+			'amount'          => __('Price', 'wp-multisite-waas'),
+			'date_created'    => __('Created at', 'wp-multisite-waas'),
+			'date_expiration' => __('Expiration', 'wp-multisite-waas'),
+			'id'              => __('ID', 'wp-multisite-waas'),
 		];
 
 		return $columns;
@@ -199,18 +195,18 @@ class Membership_List_Table extends Base_List_Table {
 		$date = $item->get_date_expiration();
 
 		if (empty($date) || '0000-00-00 00:00:00' === $date) {
-			return sprintf('<span>%s</span><br><small>%s</small>', __('Lifetime', 'wp-ultimo'), __('It never expires', 'wp-ultimo'));
+			return sprintf('<span>%s</span><br><small>%s</small>', __('Lifetime', 'wp-multisite-waas'), __('It never expires', 'wp-multisite-waas'));
 		}
 
 		if ( ! wu_validate_date($date)) {
-			return __('--', 'wp-ultimo');
+			return __('--', 'wp-multisite-waas');
 		}
 
 		$time = strtotime(get_date_from_gmt($date));
 
 		$formatted_value = date_i18n(get_option('date_format'), $time);
 
-		$placeholder = wu_get_current_time('timestamp') > $time ? __('%s ago', 'wp-ultimo') : __('In %s', 'wp-ultimo'); // phpcs:ignore
+		$placeholder = wu_get_current_time('timestamp') > $time ? __('%s ago', 'wp-multisite-waas') : __('In %s', 'wp-multisite-waas'); // phpcs:ignore
 
 		$text = $formatted_value . sprintf('<br><small>%s</small>', sprintf($placeholder, human_time_diff($time)));
 
@@ -233,7 +229,7 @@ class Membership_List_Table extends Base_List_Table {
 				 * Status
 				 */
 				'status' => [
-					'label'   => __('Status', 'wp-ultimo'),
+					'label'   => __('Status', 'wp-multisite-waas'),
 					'options' => $membership_status::to_array(),
 				],
 
@@ -244,7 +240,7 @@ class Membership_List_Table extends Base_List_Table {
 				 * Created At
 				 */
 				'date_created'    => [
-					'label'   => __('Created At', 'wp-ultimo'),
+					'label'   => __('Created At', 'wp-multisite-waas'),
 					'options' => $this->get_default_date_filter_options(),
 				],
 
@@ -252,7 +248,7 @@ class Membership_List_Table extends Base_List_Table {
 				 * Expiration Date
 				 */
 				'date_expiration' => [
-					'label'   => __('Expiration Date', 'wp-ultimo'),
+					'label'   => __('Expiration Date', 'wp-multisite-waas'),
 					'options' => $this->get_default_date_filter_options(),
 				],
 
@@ -260,7 +256,7 @@ class Membership_List_Table extends Base_List_Table {
 				 * Renewal Date
 				 */
 				'date_renewed'    => [
-					'label'   => __('Renewal Date', 'wp-ultimo'),
+					'label'   => __('Renewal Date', 'wp-multisite-waas'),
 					'options' => $this->get_default_date_filter_options(),
 				],
 			],
@@ -279,43 +275,43 @@ class Membership_List_Table extends Base_List_Table {
 			'all'       => [
 				'field' => 'status',
 				'url'   => add_query_arg('status', 'all'),
-				'label' => __('All Memberships', 'wp-ultimo'),
+				'label' => __('All Memberships', 'wp-multisite-waas'),
 				'count' => 0,
 			],
 			'active'    => [
 				'field' => 'status',
 				'url'   => add_query_arg('status', 'active'),
-				'label' => __('Active', 'wp-ultimo'),
+				'label' => __('Active', 'wp-multisite-waas'),
 				'count' => 0,
 			],
 			'trialing'  => [
 				'field' => 'status',
 				'url'   => add_query_arg('status', 'trialing'),
-				'label' => __('Trialing', 'wp-ultimo'),
+				'label' => __('Trialing', 'wp-multisite-waas'),
 				'count' => 0,
 			],
 			'pending'   => [
 				'field' => 'status',
 				'url'   => add_query_arg('status', 'pending'),
-				'label' => __('Pending', 'wp-ultimo'),
+				'label' => __('Pending', 'wp-multisite-waas'),
 				'count' => 0,
 			],
 			'on-hold'   => [
 				'field' => 'status',
 				'url'   => add_query_arg('status', 'on-hold'),
-				'label' => __('On Hold', 'wp-ultimo'),
+				'label' => __('On Hold', 'wp-multisite-waas'),
 				'count' => 0,
 			],
 			'expired'   => [
 				'field' => 'status',
 				'url'   => add_query_arg('status', 'expired'),
-				'label' => __('Expired', 'wp-ultimo'),
+				'label' => __('Expired', 'wp-multisite-waas'),
 				'count' => 0,
 			],
 			'cancelled' => [
 				'field' => 'status',
 				'url'   => add_query_arg('status', 'cancelled'),
-				'label' => __('Cancelled', 'wp-ultimo'),
+				'label' => __('Cancelled', 'wp-multisite-waas'),
 				'count' => 0,
 			],
 		];

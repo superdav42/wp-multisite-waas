@@ -219,7 +219,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 	public function redirect_to_wizard(): void {
 
 		if ( ! \WP_Ultimo\Requirements::run_setup() && wu_request('page') !== 'wp-ultimo-setup') {
-			wp_redirect(wu_network_admin_url('wp-ultimo-setup'));
+			wp_safe_redirect(wu_network_admin_url('wp-ultimo-setup'));
 
 			exit;
 		}
@@ -236,7 +236,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 		global $wpdb;
 
 		if ( ! current_user_can('manage_network')) {
-			wp_send_json_error(new \WP_Error('not-allowed', __('Permission denied.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('not-allowed', __('Permission denied.', 'wp-multisite-waas')));
 
 			exit;
 		}
@@ -290,7 +290,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 	 */
 	public function get_title(): string {
 
-		return sprintf(__('Installation', 'wp-ultimo'));
+		return sprintf(__('Installation', 'wp-multisite-waas'));
 	}
 
 	/**
@@ -301,7 +301,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return WP_Ultimo()->is_loaded() ? __('WP Multisite WaaS Install', 'wp-ultimo') : __('WP Multisite WaaS', 'wp-ultimo');
+		return WP_Ultimo()->is_loaded() ? __('WP Multisite WaaS Install', 'wp-multisite-waas') : __('WP Multisite WaaS', 'wp-multisite-waas');
 	}
 
 	/**
@@ -314,22 +314,22 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 		$sections = [
 			'welcome'      => [
-				'title'       => __('Welcome', 'wp-ultimo'),
+				'title'       => __('Welcome', 'wp-multisite-waas'),
 				'description' => implode(
 					'<br><br>',
 					[
-						__('...and thanks for choosing WP Multisite WaaS!', 'wp-ultimo'),
-						__('This quick setup wizard will make sure your server is correctly setup, help you configure your new network, and migrate data from previous WP Multisite WaaS versions if necessary.', 'wp-ultimo'),
-						__('You will also have the option of importing default content. It should take 10 minutes or less!', 'wp-ultimo'),
+						__('...and thanks for choosing WP Multisite WaaS!', 'wp-multisite-waas'),
+						__('This quick setup wizard will make sure your server is correctly setup, help you configure your new network, and migrate data from previous WP Multisite WaaS versions if necessary.', 'wp-multisite-waas'),
+						__('You will also have the option of importing default content. It should take 10 minutes or less!', 'wp-multisite-waas'),
 					]
 				),
-				'next_label'  => __('Get Started &rarr;', 'wp-ultimo'),
+				'next_label'  => __('Get Started &rarr;', 'wp-multisite-waas'),
 				'back'        => false,
 			],
 			'checks'       => [
-				'title'       => __('Pre-install Checks', 'wp-ultimo'),
-				'description' => __('Now it is time to see if this machine has what it takes to run WP Multisite WaaS well!', 'wp-ultimo'),
-				'next_label'  => \WP_Ultimo\Requirements::met() ? __('Go to the Next Step &rarr;', 'wp-ultimo') : __('Check Again', 'wp-ultimo'),
+				'title'       => __('Pre-install Checks', 'wp-multisite-waas'),
+				'description' => __('Now it is time to see if this machine has what it takes to run WP Multisite WaaS well!', 'wp-multisite-waas'),
+				'next_label'  => \WP_Ultimo\Requirements::met() ? __('Go to the Next Step &rarr;', 'wp-multisite-waas') : __('Check Again', 'wp-multisite-waas'),
 				'handler'     => [$this, 'handle_checks'],
 				'back'        => false,
 				'fields'      => [
@@ -340,9 +340,9 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 				],
 			],
 			'installation' => [
-				'title'       => __('Installation', 'wp-ultimo'),
-				'description' => __('Now, let\'s update your database and install the Sunrise.php file, which are necessary for the correct functioning of WP Multisite WaaS.', 'wp-ultimo'),
-				'next_label'  => Core_Installer::get_instance()->all_done() ? __('Go to the Next Step &rarr;', 'wp-ultimo') : __('Install', 'wp-ultimo'),
+				'title'       => __('Installation', 'wp-multisite-waas'),
+				'description' => __('Now, let\'s update your database and install the Sunrise.php file, which are necessary for the correct functioning of WP Multisite WaaS.', 'wp-multisite-waas'),
+				'next_label'  => Core_Installer::get_instance()->all_done() ? __('Go to the Next Step &rarr;', 'wp-multisite-waas') : __('Install', 'wp-multisite-waas'),
 				'fields'      => [
 					'terms' => [
 						'type' => 'note',
@@ -364,14 +364,14 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 			$back_traces = Migrator::get_instance()->get_back_traces();
 
-			$next_label = __('Migrate!', 'wp-ultimo');
+			$next_label = __('Migrate!', 'wp-multisite-waas');
 
-			$description = __('No errors found during dry run! Now it is time to actually migrate! <br><br><strong>We strongly recommend creating a backup of your database before moving forward with the migration.</strong>', 'wp-ultimo');
+			$description = __('No errors found during dry run! Now it is time to actually migrate! <br><br><strong>We strongly recommend creating a backup of your database before moving forward with the migration.</strong>', 'wp-multisite-waas');
 
 			if ($dry_run) {
-				$next_label = __('Run Check', 'wp-ultimo');
+				$next_label = __('Run Check', 'wp-multisite-waas');
 
-				$description = __('It seems that you were running WP Multisite WaaS 1.X on this network. This migrator will convert the data from the old version to the new one.', 'wp-ultimo') . '<br><br>' . __('First, let\'s run a test migration to see if we can spot any potential errors.', 'wp-ultimo');
+				$description = __('It seems that you were running WP Multisite WaaS 1.X on this network. This migrator will convert the data from the old version to the new one.', 'wp-multisite-waas') . '<br><br>' . __('First, let\'s run a test migration to see if we can spot any potential errors.', 'wp-multisite-waas');
 			}
 
 			$fields = [
@@ -398,17 +398,17 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 				$message = implode(PHP_EOL . PHP_EOL, $message_lines);
 
-				$description = __('The dry run test detected issues during the test migration. Please, <a class="wu-trigger-support" href="#">contact our support team</a> to get help migrating from 1.X to version 2.', 'wp-ultimo');
+				$description = __('The dry run test detected issues during the test migration. Please, <a class="wu-trigger-support" href="#">contact our support team</a> to get help migrating from 1.X to version 2.', 'wp-multisite-waas');
 
 				$next = true;
 
-				$next_label = __('Try Again!', 'wp-ultimo');
+				$next_label = __('Try Again!', 'wp-multisite-waas');
 
-				$error_list = '<strong>' . __('List of errors detected:', 'wp-ultimo') . '</strong><br><br>';
+				$error_list = '<strong>' . __('List of errors detected:', 'wp-multisite-waas') . '</strong><br><br>';
 
 				$errors[] = sprintf(
 					'<br><a href="%2$s" class="wu-no-underline wu-text-red-500 wu-font-bold"><span class="dashicons-wu-download wu-mr-2"></span>%1$s</a>',
-					__('Download migration error log', 'wp-ultimo'),
+					__('Download migration error log', 'wp-multisite-waas'),
 					add_query_arg(
 						[
 							'action' => 'download_migration_logs',
@@ -420,7 +420,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 				$errors[] = sprintf(
 					'<br><a href="%2$s" class="wu-no-underline wu-text-red-500 wu-font-bold"><span class="dashicons-wu-back-in-time wu-mr-2"></span>%1$s</a>',
-					__('Rollback to version 1.10.13', 'wp-ultimo'),
+					__('Rollback to version 1.10.13', 'wp-multisite-waas'),
 					add_query_arg(
 						[
 							'page'    => 'wp-ultimo-rollback',
@@ -452,7 +452,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 			}
 
 			$sections['migration'] = [
-				'title'       => __('Migration', 'wp-ultimo'),
+				'title'       => __('Migration', 'wp-multisite-waas'),
 				'description' => $description,
 				'next_label'  => $next_label,
 				'skip'        => false,
@@ -462,16 +462,16 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 			];
 		} else {
 			$sections['your-company'] = [
-				'title'       => __('Your Company', 'wp-ultimo'),
-				'description' => __('Before we move on, let\'s configure the basic settings of your network, shall we?', 'wp-ultimo'),
+				'title'       => __('Your Company', 'wp-multisite-waas'),
+				'description' => __('Before we move on, let\'s configure the basic settings of your network, shall we?', 'wp-multisite-waas'),
 				'handler'     => [$this, 'handle_save_settings'],
 				'fields'      => [$this, 'get_general_settings'],
 			];
 
 			$sections['defaults'] = [
-				'title'       => __('Default Content', 'wp-ultimo'),
-				'description' => __('Starting from scratch can be scarry, specially when first starting out. In this step, you can create default content to have a starting point for your network. Everything can be customized later.', 'wp-ultimo'),
-				'next_label'  => Default_Content_Installer::get_instance()->all_done() ? __('Go to the Next Step &rarr;', 'wp-ultimo') : __('Install', 'wp-ultimo'),
+				'title'       => __('Default Content', 'wp-multisite-waas'),
+				'description' => __('Starting from scratch can be scarry, specially when first starting out. In this step, you can create default content to have a starting point for your network. Everything can be customized later.', 'wp-multisite-waas'),
+				'next_label'  => Default_Content_Installer::get_instance()->all_done() ? __('Go to the Next Step &rarr;', 'wp-multisite-waas') : __('Install', 'wp-multisite-waas'),
 				'fields'      => [
 					'terms' => [
 						'type' => 'note',
@@ -482,7 +482,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 		}
 
 		$sections['done'] = [
-			'title' => __('Ready!', 'wp-ultimo'),
+			'title' => __('Ready!', 'wp-multisite-waas'),
 			'view'  => [$this, 'section_ready'],
 		];
 
@@ -580,7 +580,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 			'wu_setup_settings',
 			[
 				'dry_run'               => wu_request('dry-run', true),
-				'generic_error_message' => __('A server error happened while processing this item.', 'wp-ultimo'),
+				'generic_error_message' => __('A server error happened while processing this item.', 'wp-multisite-waas'),
 			]
 		);
 
@@ -619,7 +619,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 		$requirements = [
 			'php'       => [
-				'name'                => __('PHP', 'wp-ultimo'),
+				'name'                => __('PHP', 'wp-multisite-waas'),
 				'help'                => wu_get_documentation_url('wp-ultimo-requirements'),
 				'required_version'    => \WP_Ultimo\Requirements::$php_version,
 				'recommended_version' => \WP_Ultimo\Requirements::$php_recommended_version,
@@ -628,7 +628,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 				'pass_recommendation' => version_compare(phpversion(), \WP_Ultimo\Requirements::$php_recommended_version, '>='),
 			],
 			'wordpress' => [
-				'name'                => __('WordPress', 'wp-ultimo'),
+				'name'                => __('WordPress', 'wp-multisite-waas'),
 				'help'                => wu_get_documentation_url('wp-ultimo-requirements'),
 				'required_version'    => \WP_Ultimo\Requirements::$wp_version,
 				'recommended_version' => \WP_Ultimo\Requirements::$wp_recommended_version,
@@ -640,21 +640,21 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 		$plugin_requirements = [
 			'multisite' => [
-				'name'              => __('WordPress Multisite', 'wp-ultimo'),
+				'name'              => __('WordPress Multisite', 'wp-multisite-waas'),
 				'help'              => wu_get_documentation_url('wp-ultimo-requirements'),
-				'condition'         => __('Installed & Activated', 'wp-ultimo'),
+				'condition'         => __('Installed & Activated', 'wp-multisite-waas'),
 				'pass_requirements' => is_multisite(),
 			],
 			'wp-ultimo' => [
-				'name'              => __('WP Multisite WaaS', 'wp-ultimo'),
+				'name'              => __('WP Multisite WaaS', 'wp-multisite-waas'),
 				'help'              => wu_get_documentation_url('wp-ultimo-requirements'),
-				'condition'         => apply_filters('wp_ultimo_skip_network_active_check', false) ? __('Bypassed via filter', 'wp-ultimo') : __('Network Activated', 'wp-ultimo'),
+				'condition'         => apply_filters('wp_ultimo_skip_network_active_check', false) ? __('Bypassed via filter', 'wp-multisite-waas') : __('Network Activated', 'wp-multisite-waas'),
 				'pass_requirements' => \WP_Ultimo\Requirements::is_network_active(),
 			],
 			'wp-cron'   => [
-				'name'              => __('WordPress Cron', 'wp-ultimo'),
+				'name'              => __('WordPress Cron', 'wp-multisite-waas'),
 				'help'              => wu_get_documentation_url('wp-ultimo-requirements'),
-				'condition'         => __('Activated', 'wp-ultimo'),
+				'condition'         => __('Activated', 'wp-multisite-waas'),
 				'pass_requirements' => \WP_Ultimo\Requirements::check_wp_cron(),
 			],
 		];
@@ -713,12 +713,12 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 	public function handle_checks(): void {
 
 		if (\WP_Ultimo\Requirements::met() === false) {
-			wp_redirect(add_query_arg());
+			wp_safe_redirect(add_query_arg());
 
 			exit;
 		}
 
-		wp_redirect($this->get_next_section_link());
+		wp_safe_redirect($this->get_next_section_link());
 
 		exit;
 	}
@@ -747,7 +747,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 		\WP_Ultimo\Settings::get_instance()->save_settings($settings_to_save);
 
-		wp_redirect($this->get_next_section_link());
+		wp_safe_redirect($this->get_next_section_link());
 
 		exit;
 	}
@@ -772,7 +772,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 			$url = add_query_arg('dry-run', 0);
 		}
 
-		wp_redirect($url);
+		wp_safe_redirect($url);
 
 		exit;
 	}
@@ -790,7 +790,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 			$redirect_url = $this->get_next_section_link();
 
-			wp_redirect($redirect_url);
+			wp_safe_redirect($redirect_url);
 
 			exit;
 		}
@@ -850,8 +850,8 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 				'wu_fields',
 				[
 					'l10n' => [
-						'image_picker_title'       => __('Select an Image.', 'wp-ultimo'),
-						'image_picker_button_text' => __('Use this image', 'wp-ultimo'),
+						'image_picker_title'       => __('Select an Image.', 'wp-multisite-waas'),
+						'image_picker_button_text' => __('Use this image', 'wp-multisite-waas'),
 					],
 				]
 			);

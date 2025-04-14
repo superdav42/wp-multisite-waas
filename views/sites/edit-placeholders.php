@@ -9,7 +9,7 @@
 
 	<h1 class="wp-heading-inline">
 
-	<?php _e('Template Placeholders', 'wp-ultimo'); ?>
+		<?php esc_html_e('Template Placeholders', 'wp-multisite-waas'); ?>
 
 	</h1>
 
@@ -19,251 +19,250 @@
 
 	<div class="wu-advanced-filters">
 
-	<form id="posts-filter" method="get">
+		<form id="posts-filter" method="get">
 
-		<div class="tablenav">
+			<div class="tablenav">
 
-		<div class="tablenav-pages one-page">
+				<div class="tablenav-pages one-page">
 
 			<span v-cloak class="displaying-num">
 
-			{{data.placeholders.length}} <?php _e('item(s)', 'wp-ultimo'); ?>
+			{{data.placeholders.length}} <?php esc_html_e('item(s)', 'wp-multisite-waas'); ?>
 
 			</span>
 
-		</div>
-
-		<br class="clear">
-		</div>
-
-		<table class="wp-list-table widefat fixed striped">
-
-		<thead>
-
-			<tr>
-
-			<th id="cb" class="manage-column column-cb" style="width: 50px;">
-
-				<label class="screen-reader-text" for="wu-select-2">
-				<?php _e('Select All'); ?>
-				</label>
-
-				<input v-bind:disabled="!data.placeholders" v-model="toggle" v-on:click="select_all" id="wu-select-2"
-				type="checkbox">
-
-			</th>
-
-			<?php foreach ($columns as $key => $label) : ?>
-
-			<th scope="col" id="<?php echo $key; ?>" class="manage-column sortable asc column-<?php echo $key; ?>">
-				<?php echo $label; ?>
-			</th>
-
-			<?php endforeach; ?>
-
-			</tr>
-
-		</thead>
-
-		<tbody id="the-list">
-
-			<tr v-if="loading && !data.placeholders.length" class="wu-text-center">
-
-			<td colspan="<?php echo count($columns) + 1; ?>">
-
-				<div class="wu-p-4">
-
-				<?php _e('Loading Template Placeholders...', 'wp-ultimo'); ?>
-
 				</div>
 
-			</td>
+				<br class="clear">
+			</div>
 
-			</tr>
+			<table class="wp-list-table widefat fixed striped">
 
-			<tr v-cloak v-if="!loading && !data.placeholders.length" class="wu-text-center">
+				<thead>
 
-			<td colspan="<?php echo count($columns) + 1; ?>">
+				<tr>
 
-				<div class="wu-p-4">
+					<th id="cb" class="manage-column column-cb" style="width: 50px;">
 
-				<?php _e('No items to display', 'wp-ultimo'); ?>
+						<label class="screen-reader-text" for="wu-select-2">
+							<?php esc_attr_e('Select All'); ?>
+						</label>
 
-				</div>
+						<input v-bind:disabled="!data.placeholders" v-model="toggle" v-on:click="select_all" id="wu-select-2"
+								type="checkbox">
 
-			</td>
+					</th>
 
-			</tr>
+					<?php foreach ($columns as $key => $label) : ?>
 
-			<tr v-if="data" v-cloak v-for="item in data.placeholders" :id="'tax-rate' + item.id" v-bind:class="{selected: item.selected}">
+					<th scope="col" id="<?php echo esc_attr($key); ?>" class="manage-column sortable asc column-<?php echo esc_attr($key); ?>">
+						<?php echo esc_html($label); ?>
+					</th>
 
-			<th scope="row" class="check-column">
+					<?php endforeach; ?>
 
-				<label class="screen-reader-text" for="wu-select-1">
+				</tr>
 
-				<?php _e('Select'); ?> {{item.title}}
+				</thead>
 
-				</label>
+				<tbody id="the-list">
 
-				<input type="checkbox" v-model="item.selected">
+				<tr v-if="loading && !data.placeholders.length" class="wu-text-center">
 
-			</th>
+					<td colspan="<?php echo count($columns) + 1; ?>">
 
-			<?php foreach ($columns as $key => $label) : ?>
+						<div class="wu-p-4">
 
-			<td class="date column-<?php echo $key; ?>" data-colname="<?php echo $key; ?>">
+							<?php esc_html_e('Loading Template Placeholders...', 'wp-multisite-waas'); ?>
 
-				<?php
+						</div>
 
-				/**
-				 * Switch for some of the fields
-				 */
-				switch ($key) :
-					case 'compound':
+					</td>
+
+				</tr>
+
+				<tr v-cloak v-if="!loading && !data.placeholders.length" class="wu-text-center">
+
+					<td colspan="<?php echo count($columns) + 1; ?>">
+
+						<div class="wu-p-4">
+
+							<?php esc_html_e('No items to display', 'wp-multisite-waas'); ?>
+
+						</div>
+
+					</td>
+
+				</tr>
+
+				<tr v-if="data" v-cloak v-for="item in data.placeholders" :id="'tax-rate' + item.id" v-bind:class="{selected: item.selected}">
+
+					<th scope="row" class="check-column">
+
+						<label class="screen-reader-text" for="wu-select-1">
+
+							<?php echo esc_html_e('Select', 'your-textdomain'); ?> {{item.title}}
+
+						</label>
+
+						<input type="checkbox" v-model="item.selected">
+
+					</th>
+
+					<?php foreach ($columns as $key => $label) : ?>
+
+					<td class="date column-<?php echo esc_attr($key); ?>" data-colname="<?php echo esc_attr($key); ?>">
+
+						<?php
+
+						/**
+						 * Switch for some of the fields
+						 */
+						switch ($key) :
+							case 'compound':
+								?>
+
+								<input type="checkbox" v-model="item.compound">
+
+								<?php
+								break;
+							case 'placeholder':
+								?>
+
+								<input
+								class="wu-bg-transparent wu-p-4 wu-border-none wu-w-full hover:wu-bg-gray-200 hover:wu-border hover:wu-border-solid hover:wu-border-gray-400 hover:wu-cursor-pointer"
+								name="" placeholder="e.g. placeholder" v-on:input="item.<?php echo esc_attr($key); ?> = $event.target.value.toLowerCase().replace(/[^a-z0-9-_]+/g, '')" v-bind:value= "item.<?php echo esc_attr($key); ?>">
+
+								<?php
+								break;
+							case 'content':
+								?>
+
+								<textarea
+								class="wu-bg-transparent wu-p-4 wu-m-0 wu-border-none wu-w-full wu-float-left hover:wu-bg-gray-200 hover:wu-border hover:wu-border-solid hover:wu-border-gray-400 hover:wu-cursor-pointer"
+								name="" placeholder="e.g. Content" v-model="item.<?php echo esc_attr($key); ?>" rows="1"></textarea>
+
+								<?php
+								break;
+							default:
+								?>
+
+								<input
+										class="wu-bg-transparent wu-p-4 wu-border-none wu-w-full hover:wu-bg-gray-200 hover:wu-border hover:wu-border-solid hover:wu-border-gray-400 hover:wu-cursor-pointer"
+										name="" placeholder="*" v-model="item.<?php esc_attr_e($key); ?>">
+
+								<?php
+								break;
+							endswitch;
 						?>
 
-				<input type="checkbox" v-model="item.compound">
+						</td>
 
-				<?php break; ?>
+					<?php endforeach; ?>
 
-					<?php
-					case 'placeholder':
-						?>
+				</tr>
 
-				<input
-				class="wu-bg-transparent wu-p-4 wu-border-none wu-w-full hover:wu-bg-gray-200 hover:wu-border hover:wu-border-solid hover:wu-border-gray-400 hover:wu-cursor-pointer"
-				name="" placeholder="e.g. placeholder" v-on:input="item.<?php echo $key; ?> = $event.target.value.toLowerCase().replace(/[^a-z0-9-_]+/g, '')" v-bind:value= "item.<?php echo $key; ?>">
+				</tbody>
 
-					<?php break; ?>
+				<tfoot>
 
-					<?php
-					case 'content':
-						?>
+				<tr>
 
-				<textarea
-				class="wu-bg-transparent wu-p-4 wu-m-0 wu-border-none wu-w-full wu-float-left hover:wu-bg-gray-200 hover:wu-border hover:wu-border-solid hover:wu-border-gray-400 hover:wu-cursor-pointer"
-				name="" placeholder="e.g. Content" v-model="item.<?php echo $key; ?>" rows="1"></textarea>
+					<th id="cb" class="manage-column column-cb">
 
-					<?php break; ?>
+						<label class="screen-reader-text" for="wu-select">
 
-					<?php
-					default:
-						?>
 
-				<input
-				class="wu-bg-transparent wu-p-4 wu-border-none wu-w-full hover:wu-bg-gray-200 hover:wu-border hover:wu-border-solid hover:wu-border-gray-400 hover:wu-cursor-pointer"
-				name="" placeholder="*" v-model="item.<?php echo $key; ?>">
+							<?php esc_html_e('Select All'); ?>
 
-					<?php break; ?>
+						</label>
 
-				<?php endswitch; ?>
+						<input v-bind:disabled="!data.placeholders.length" v-model="toggle" v-on:click="select_all" id="wu-select"
+								type="checkbox">
 
-			</td>
+					</th>
 
-			<?php endforeach; ?>
+					<?php foreach ($columns as $key => $label) : ?>
 
-			</tr>
+						<th scope="col" id="<?php echo esc_attr($key); ?>" class="manage-column sortable asc column-<?php echo esc_attr($key); ?>">
 
-		</tbody>
+							<?php echo esc_html($label); ?>
 
-		<tfoot>
+						</th>
 
-			<tr>
+					<?php endforeach; ?>
 
-			<th id="cb" class="manage-column column-cb">
+				</tr>
 
-				<label class="screen-reader-text" for="wu-select">
+				</tfoot>
 
-				<?php _e('Select All'); ?>
-
-				</label>
-
-				<input v-bind:disabled="!data.placeholders.length" v-model="toggle" v-on:click="select_all" id="wu-select"
-				type="checkbox">
-
-			</th>
-
-			<?php foreach ($columns as $key => $label) : ?>
-
-			<th scope="col" id="<?php echo $key; ?>" class="manage-column sortable asc column-<?php echo $key; ?>">
-
-				<?php echo $label; ?>
-
-			</th>
-
-			<?php endforeach; ?>
-
-			</tr>
-
-		</tfoot>
-
-		</table>
+			</table>
 	</div>
 
 	<div class="tablenav bottom wu-bg-gray-100 wu-p-4" v-cloak v-show="!creating">
 
-	<div class="alignleft actions">
+		<div class="alignleft actions">
 
-		<button v-on:click.prevent="add_row" class="button">
+			<button v-on:click.prevent="add_row" class="button">
 
-		<?php _e('Add new Row', 'wp-ultimo'); ?>
+				<?php esc_html_e('Add new Row', 'wp-multisite-waas'); ?>
 
-		</button>
+			</button>
 
-		<button v-on:click.prevent="delete_rows" class="button">
+			<button v-on:click.prevent="delete_rows" class="button">
 
-		<?php _e('Delete Selected Rows', 'wp-ultimo'); ?>
+				<?php esc_html_e('Delete Selected Rows', 'wp-multisite-waas'); ?>
 
-		</button>
+			</button>
 
-	</div>
+		</div>
 
-	<div class="alignleft actions">
+		<div class="alignleft actions">
 
-		<?php
+			<?php
 
-		/**
-		 * Let developers print additional buttons to this screen
-		 * Our very on EU VAT functions hook on this to display our VAT helper button
-		 *
-		 * @since 2.0.0
-		 */
-		do_action('wu_edit_placeholders_screen_additional_actions');
+			/**
+			 * Let developers print additional buttons to this screen
+			 * Our very on EU VAT functions hook on this to display our VAT helper button
+			 *
+			 * @since 2.0.0
+			 */
+			do_action('wu_edit_placeholders_screen_additional_actions');
 
-		?>
+			?>
 
-	</div>
+		</div>
 
-	<div class="alignright actions">
+		<div class="alignright actions">
 
 		<span v-if="changed && !saveMessage && !saving" class="description"
-		style="display: inline-block; line-height: 28px; margin-right: 10px;">
-		<?php _e('Save your changes!', 'wp-ultimo'); ?>
+				style="display: inline-block; line-height: 28px; margin-right: 10px;">
+		<?php esc_html_e('Save your changes!', 'wp-multisite-waas'); ?>
 		</span>
 
-		<span v-if="saving" class="description" style="display: inline-block; line-height: 28px; margin-right: 10px;">
-		<?php _e('Saving...', 'wp-ultimo'); ?>
+			<span v-if="saving" class="description" style="display: inline-block; line-height: 28px; margin-right: 10px;">
+		<?php esc_html_e('Saving...', 'wp-multisite-waas'); ?>
 		</span>
 
-		<span v-if="saveMessage" class="description"
-		style="display: inline-block; line-height: 28px; margin-right: 10px;">
+			<span v-if="saveMessage" class="description"
+					style="display: inline-block; line-height: 28px; margin-right: 10px;">
 		{{saveMessage}}
 		</span>
 
-		<button v-on:click.prevent="save" v-bind:disabled="saving" class="button button-primary">
-		<?php _e('Save Template Placeholders'); ?>
-		</button>
-	</div>
+			<button v-on:click.prevent="save" v-bind:disabled="saving" class="button button-primary">
+				<?php esc_html_e('Save Template Placeholders'); ?>
+			</button>
+		</div>
 
-	<br class="clear">
+		<br class="clear">
 
-	</form>
+		</form>
 
 	</div>
 
 	<form id="nonce_form">
 
-	<?php wp_nonce_field('wu_edit_placeholders_editing'); ?>
+		<?php wp_nonce_field('wu_edit_placeholders_editing'); ?>
 
 	</form>
 

@@ -100,7 +100,7 @@ class Ajax {
 		}
 
 		$args = wp_parse_args(
-			$_REQUEST,
+			$_REQUEST, // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			[
 				'model'   => 'membership',
 				'query'   => [],

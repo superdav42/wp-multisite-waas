@@ -19,11 +19,11 @@
 				<img
 					style="opacity: 0.6; height: 16rem;"
 					class="wu-w-full"
-					src="<?php echo $featured_image; ?>"
+					src="<?php echo esc_url($featured_image); ?>"
 				/>
 
 				<div class="wu-my-4 wu-mx-3 wu-inline-block wu-absolute wu-bottom-0 wu-right-0 wu-rounded wu-px-2 wu-py-1 wu-uppercase wu-text-xs wu-font-bold <?php echo esc_attr($item->get_type_class()); ?>">
-					<?php echo $item->get_type_label(); ?>
+					<?php echo esc_html($item->get_type_label()); ?>
 				</div>
 				<?php
 			} else {
@@ -33,7 +33,7 @@
 				</div>
 
 				<div class="wu-my-4 wu-mx-3 wu-inline-block wu-absolute wu-bottom-0 wu-right-0 wu-rounded wu-px-2 wu-py-1 wu-uppercase wu-text-xs wu-font-bold <?php echo esc_attr($item->get_type_class()); ?>">
-					<?php echo $item->get_type_label(); ?>
+					<?php echo esc_html($item->get_type_label()); ?>
 				</div>
 				<?php
 			}
@@ -45,7 +45,7 @@
 	<div class="wu-text-base wu-mt-1 wu-px-3 wu-mt-3">
 
 		<div>
-		<span class="wu-font-semibold"><?php echo $item->get_name(); ?></span>
+		<span class="wu-font-semibold"><?php echo esc_html($item->get_name()); ?></span>
 		<!-- <small><?php echo $item->get_price_description(); ?></small> -->
 		</div>
 
@@ -61,11 +61,11 @@
 
 		<!-- <label>
 			<input class="wu-rounded-none" type="checkbox" name="bulk-delete[]" value="<?php echo $item->get_id(); ?>" />
-			<?php _e('Select Site', 'wp-ultimo'); ?>
+			<?php esc_html_e('Select Site', 'wp-multisite-waas'); ?>
 		</label> -->
 
 		<a href="<?php echo wu_network_admin_url('wp-ultimo-edit-product', ['id' => $item->get_id()]); ?>" class="button button-primary">
-			<?php _e('Read More', 'wp-ultimo'); ?>
+			<?php esc_html_e('Read More', 'wp-multisite-waas'); ?>
 		</a>
 
 	</div>

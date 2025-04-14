@@ -11,7 +11,7 @@
 		'product-fields',
 		$product_fields,
 		[
-			'title' => __('Products', 'wp-ultimo'),
+			'title' => __('Products', 'wp-multisite-waas'),
 			'views' => 'checkout/fields',
 		]
 	);

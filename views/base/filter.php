@@ -47,11 +47,11 @@
 			class="button drawer-toggle"
 			v-bind:aria-expanded="open ? 'true' : 'false'"
 		>
-			<?php _e('Advanced Filters', 'wp-ultimo'); ?>
+			<?php esc_html_e('Advanced Filters', 'wp-multisite-waas'); ?>
 		</button>
 
 		<div class="wu-py-3 wu-px-2 wu-inline-block wu-uppercase wu-font-semibold wu-text-gray-600 wu-text-xs" v-show="open" v-cloak>
-			<?php _e('Advanced Filters', 'wp-ultimo'); ?>
+			<?php esc_html_e('Advanced Filters', 'wp-multisite-waas'); ?>
 		</div>
 
 		<button
@@ -60,7 +60,7 @@
 			type="button"
 			class="button drawer-toggle"
 		>
-			<?php _e('Close', 'wp-ultimo'); ?>
+			<?php esc_html_e('Close', 'wp-multisite-waas'); ?>
 		</button>
 
 	<?php endif; ?>
@@ -110,7 +110,7 @@
 						class="wu-uppercase wu-font-semibold wu-text-gray-600 wu-text-xs"
 						v-if="index === 0"
 					>
-						<?php _e('Where', 'wp-ultimo'); ?>
+						<?php esc_html_e('Where', 'wp-multisite-waas'); ?>
 					</span>
 
 					<select
@@ -118,16 +118,16 @@
 						v-if="index === 1"
 						v-model="relation"
 					>
-						<option value="and"><?php _e('and', 'wp-ultimo'); ?></option>
-						<option value="or"><?php _e('or', 'wp-ultimo'); ?></option>
+						<option value="and"><?php esc_html_e('and', 'wp-multisite-waas'); ?></option>
+						<option value="or"><?php esc_html_e('or', 'wp-multisite-waas'); ?></option>
 					</select>
 
 					<span
 						class="wu-uppercase wu-font-semibold wu-text-gray-600 wu-text-xs"
 						v-if="index > 1"
 					>
-						<span v-show="relation === 'and'"><?php _e('and', 'wp-ultimo'); ?></span>
-						<span v-show="relation === 'or'"><?php _e('or', 'wp-ultimo'); ?></span>
+						<span v-show="relation === 'and'"><?php esc_html_e('and', 'wp-multisite-waas'); ?></span>
+						<span v-show="relation === 'or'"><?php esc_html_e('or', 'wp-multisite-waas'); ?></span>
 					</span>
 
 				</div>
@@ -151,24 +151,24 @@
 				<div class="wu-w-2/12 wu-mx-2">
 
 					<select class="form-control wu-w-full" v-if="get_filter_type(filter.field) == 'bool'" v-model="filter.value">
-						<option value="1"><?php _e('is true.', 'wp-ultimo'); ?></option>
-						<option value="0"><?php _e('is false.', 'wp-ultimo'); ?></option>
+						<option value="1"><?php esc_html_e('is true.', 'wp-multisite-waas'); ?></option>
+						<option value="0"><?php esc_html_e('is false.', 'wp-multisite-waas'); ?></option>
 					</select>
 
 					<select class="form-control wu-w-full" v-if="get_filter_type(filter.field) == 'text'" v-bind:value="get_filter_rule(filter.field)">
-						<option value="is"><?php _e('is', 'wp-ultimo'); ?></option>
-						<option value="is_not"><?php _e('is not', 'wp-ultimo'); ?></option>
-						<option value="contains"><?php _e('contains', 'wp-ultimo'); ?></option>
-						<option value="does_not_contain"><?php _e('does not contain', 'wp-ultimo'); ?></option>
-						<option value="starts_with"><?php _e('starts with', 'wp-ultimo'); ?></option>
-						<option value="ends_with"><?php _e('ends with', 'wp-ultimo'); ?></option>
-						<option value="is_empty"><?php _e('is empty.', 'wp-ultimo'); ?></option>
-						<option value="is_not_empty"><?php _e('is not empty.', 'wp-ultimo'); ?></option>
+						<option value="is"><?php esc_html_e('is', 'wp-multisite-waas'); ?></option>
+						<option value="is_not"><?php esc_html_e('is not', 'wp-multisite-waas'); ?></option>
+						<option value="contains"><?php esc_html_e('contains', 'wp-multisite-waas'); ?></option>
+						<option value="does_not_contain"><?php esc_html_e('does not contain', 'wp-multisite-waas'); ?></option>
+						<option value="starts_with"><?php esc_html_e('starts with', 'wp-multisite-waas'); ?></option>
+						<option value="ends_with"><?php esc_html_e('ends with', 'wp-multisite-waas'); ?></option>
+						<option value="is_empty"><?php esc_html_e('is empty.', 'wp-multisite-waas'); ?></option>
+						<option value="is_not_empty"><?php esc_html_e('is not empty.', 'wp-multisite-waas'); ?></option>
 					</select>
 
 					<select class="form-control wu-w-full" v-if="get_filter_type(filter.field) == 'date'" v-bind:value="get_filter_rule(filter.field)">
-						<option value="before"><?php _e('is before', 'wp-ultimo'); ?></option>
-						<option value="after"><?php _e('is after', 'wp-ultimo'); ?></option>
+						<option value="before"><?php esc_html_e('is before', 'wp-multisite-waas'); ?></option>
+						<option value="after"><?php esc_html_e('is after', 'wp-multisite-waas'); ?></option>
 					</select>
 
 				</div>
@@ -178,7 +178,7 @@
 					<input
 						type="text"
 						class="form-control wu-w-full"
-						placeholder="<?php esc_attr_e('Value', 'wp-ultimo'); ?>"
+						placeholder="<?php esc_attr_e('Value', 'wp-multisite-waas'); ?>"
 						v-if="_.contains(['text', 'date'], get_filter_type(filter.field)) && !_.contains(['is_empty', 'is_not_empty'], filter.rule)"
 						v-model="filter.value"
 					/>
@@ -193,7 +193,7 @@
 						class="button"
 						v-show="index > 0"
 					>
-						<?php _e('Remove Filter', 'wp-ultimo'); ?>
+						<?php esc_html_e('Remove Filter', 'wp-multisite-waas'); ?>
 					</a>
 
 				</div>
@@ -206,7 +206,7 @@
 						class="button button-primary wu-float-right"
 						v-show="index === filters.length - 1"
 					>
-						<?php _e('Add new Filter', 'wp-ultimo'); ?>
+						<?php esc_html_e('Add new Filter', 'wp-multisite-waas'); ?>
 					</a>
 
 				</div>

@@ -44,7 +44,7 @@ class Requirements {
 	 * @since 2.0.0
 	 * @var string
 	 */
-	public static $php_recommended_version = '7.4.1';
+	public static $php_recommended_version = '8.2.27';
 
 	/**
 	 * Minimum WordPress version required to run WP Multisite WaaS.
@@ -60,7 +60,7 @@ class Requirements {
 	 * @since 2.0.0
 	 * @var string
 	 */
-	public static $wp_recommended_version = '6.4.1';
+	public static $wp_recommended_version = '6.7.2';
 
 	/**
 	 * Static-only class.
@@ -280,10 +280,19 @@ class Requirements {
 	 */
 	public static function notice_unsupported_php_version(): void {
 
-		// translators: the %1$s placeholder is the required PHP version, while the %2$s is the current PHP version.
-		$message = sprintf(__('WP Multisite WaaS requires at least PHP version %1$s to run. Your current PHP version is <strong>%2$s</strong>. Please, contact your hosting company support to upgrade your PHP version. If you want maximum performance consider upgrading your PHP to version 7.0 or later.', 'wp-ultimo'), self::$php_version, phpversion());
-
-		printf('<div class="notice notice-error"><p>%s</p></div>', $message);
+		printf(
+			'<div class="notice notice-error"><p>%s</p></div>',
+			sprintf(
+				// translators: the %1$s placeholder is the required PHP version, while the %2$s is the current PHP version, and %3$s is the recommended PHP version.
+				esc_html__(
+					'WP Multisite WaaS requires at least PHP version %1$s to run. Your current PHP version is %2$s. Please, contact your hosting company support to upgrade your PHP version. If you want maximum performance consider upgrading your PHP to version %3$s or later.',
+					'wp-multisite-waas'
+				),
+				esc_html(self::$php_version),
+				'<strong>' . esc_html(phpversion()) . '</strong>',
+				esc_html(self::$php_recommended_version)
+			)
+		);
 	}
 
 	/**
@@ -296,10 +305,18 @@ class Requirements {
 
 		global $wp_version;
 
-		// translators: the %1$s placeholder is the required WP version, while the %2$s is the current WP version.
-		$message = sprintf(__('WP Multisite WaaS requires at least WordPress version %1$s to run. Your current WordPress version is <strong>%2$s</strong>.', 'wp-ultimo'), self::$wp_version, $wp_version);
-
-		printf('<div class="notice notice-error"><p>%s</p></div>', $message);
+		printf(
+			'<div class="notice notice-error"><p>%s</p></div>',
+			sprintf(
+				// translators: the %1$s placeholder is the required WP version, while the %2$s is the current WP version.
+				esc_html__(
+					'WP Multisite WaaS requires at least WordPress version %1$s to run. Your current WordPress version is %2$s.',
+					'wp-multisite-waas'
+				),
+				esc_html(self::$wp_version),
+				'<strong>' . esc_html($wp_version) . '</strong>'
+			)
+		);
 	}
 
 	/**
@@ -310,9 +327,7 @@ class Requirements {
 	 */
 	public static function notice_not_multisite(): void {
 
-		$message = __('WP Multisite WaaS requires a multisite install to run properly. To know more about WordPress Networks, visit this link: <a href="https://wordpress.org/support/article/create-a-network/">Create a Network &rarr;</a>', 'wp-ultimo');
-
-		printf('<div class="notice notice-error"><p>%s</p></div>', $message);
+		printf('<div class="notice notice-error"><p>%s <a href="https://wordpress.org/support/article/create-a-network/">%s &rarr;</a></p></div>', esc_html__('WP Multisite WaaS requires a multisite install to run properly. To know more about WordPress Networks, visit this link:', 'wp-multisite-waas'), esc_html__('Create a Network', 'wp-multisite-waas'));
 	}
 
 	/**
@@ -323,9 +338,13 @@ class Requirements {
 	 */
 	public static function notice_not_network_active(): void {
 
-		// translators: %s is a placeholder for the Network Admin plugins page URL.
-		$message = sprintf(__('WP Multisite WaaS needs to be network active to run properly. You can "Network Activate" it <a href="%s">here</a>', 'wp-ultimo'), network_admin_url('plugins.php'));
-
-		printf('<div class="notice notice-error"><p>%s</p></div>', $message);
+		printf(
+			'<div class="notice notice-error"><p>%s</p></div>',
+			sprintf(
+				// translators: %s is a placeholder for the Network Admin plugins page URL with link text.
+				esc_html__('WP Multisite WaaS needs to be network active to run properly. You can "Network Activate" it %s', 'wp-multisite-waas'),
+				'<a href="' . esc_attr(network_admin_url('plugins.php')) . '">' . esc_html__('here', 'wp-multisite-waas') . '</a>'
+			)
+		);
 	}
 }

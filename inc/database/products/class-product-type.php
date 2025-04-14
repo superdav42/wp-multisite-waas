@@ -26,7 +26,7 @@ class Product_Type extends Enum {
 	 */
 	const __default = 'plan'; // phpcs:ignore
 
-	const PLAN    = 'plan';
+	const PLAN = 'plan';
 
 	const PACKAGE = 'package';
 
@@ -56,9 +56,9 @@ class Product_Type extends Enum {
 	protected function labels() {
 
 		return [
-			static::PLAN    => __('Plan', 'wp-ultimo'),
-			static::PACKAGE => __('Package', 'wp-ultimo'),
-			static::SERVICE => __('Service', 'wp-ultimo'),
+			static::PLAN    => __('Plan', 'wp-multisite-waas'),
+			static::PACKAGE => __('Package', 'wp-multisite-waas'),
+			static::SERVICE => __('Service', 'wp-multisite-waas'),
 		];
 	}
 }

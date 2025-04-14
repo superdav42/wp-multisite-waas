@@ -56,7 +56,7 @@ class Hooks {
 	 */
 	public static function on_activation(): void {
 
-		wu_log_add('wp-ultimo-core', __('Activating WP Multisite WaaS...', 'wp-ultimo'));
+		wu_log_add('wp-ultimo-core', __('Activating WP Multisite WaaS...', 'wp-multisite-waas'));
 
 		/*
 		 * Set the activation flag
@@ -100,7 +100,7 @@ class Hooks {
 	 */
 	public static function on_deactivation(): void {
 
-		wu_log_add('wp-ultimo-core', __('Deactivating WP Multisite WaaS...', 'wp-ultimo'));
+		wu_log_add('wp-ultimo-core', __('Deactivating WP Multisite WaaS...', 'wp-multisite-waas'));
 
 		/*
 		 * Update the sunrise meta file.

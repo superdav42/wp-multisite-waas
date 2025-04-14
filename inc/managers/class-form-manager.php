@@ -64,7 +64,7 @@ class Form_Manager extends Base_Manager {
 	 */
 	public function display_form_unavailable($error = false): void {
 
-		$message = __('Form not available', 'wp-ultimo');
+		$message = __('Form not available', 'wp-multisite-waas');
 
 		if (is_wp_error($error)) {
 			$message = $error->get_error_message();
@@ -352,7 +352,7 @@ class Form_Manager extends Base_Manager {
 			$object = apply_filters("wu_delete_form_get_object_{$model}", $object, $id, $model);
 
 			if ( ! $object) {
-				$this->display_form_unavailable(new \WP_Error('not-found', __('Object not found.', 'wp-ultimo')));
+				$this->display_form_unavailable(new \WP_Error('not-found', __('Object not found.', 'wp-multisite-waas')));
 
 				return;
 			}
@@ -362,16 +362,16 @@ class Form_Manager extends Base_Manager {
 				[
 					'confirm'       => [
 						'type'      => 'toggle',
-						'title'     => __('Confirm Deletion', 'wp-ultimo'),
-						'desc'      => __('This action can not be undone.', 'wp-ultimo'),
+						'title'     => __('Confirm Deletion', 'wp-multisite-waas'),
+						'desc'      => __('This action can not be undone.', 'wp-multisite-waas'),
 						'html_attr' => [
 							'v-model' => 'confirmed',
 						],
 					],
 					'submit_button' => [
 						'type'            => 'submit',
-						'title'           => __('Delete', 'wp-ultimo'),
-						'placeholder'     => __('Delete', 'wp-ultimo'),
+						'title'           => __('Delete', 'wp-multisite-waas'),
+						'placeholder'     => __('Delete', 'wp-multisite-waas'),
 						'value'           => 'save',
 						'classes'         => 'button button-primary wu-w-full',
 						'wrapper_classes' => 'wu-items-end',
@@ -471,7 +471,7 @@ class Form_Manager extends Base_Manager {
 			$object = apply_filters("wu_delete_form_get_object_{$model}", $object, $id, $model);
 
 			if ( ! $object) {
-				wp_send_json_error(new \WP_Error('not-found', __('Object not found.', 'wp-ultimo')));
+				wp_send_json_error(new \WP_Error('not-found', __('Object not found.', 'wp-multisite-waas')));
 			}
 
 			/*
@@ -496,7 +496,7 @@ class Form_Manager extends Base_Manager {
 
 			wp_send_json_success($data_json_success);
 		} else {
-			wp_send_json_error(new \WP_Error('model-not-found', __('Something went wrong.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('model-not-found', __('Something went wrong.', 'wp-multisite-waas')));
 		}
 	}
 
@@ -517,8 +517,8 @@ class Form_Manager extends Base_Manager {
 			[
 				'confirm'       => [
 					'type'      => 'toggle',
-					'title'     => __('Confirm Action', 'wp-ultimo'),
-					'desc'      => __('Review this action carefully.', 'wp-ultimo'),
+					'title'     => __('Confirm Action', 'wp-multisite-waas'),
+					'desc'      => __('Review this action carefully.', 'wp-multisite-waas'),
 					'html_attr' => [
 						'v-model' => 'confirmed',
 					],

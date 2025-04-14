@@ -144,7 +144,7 @@ class Invoice_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 				'fields' => [
 					'note' => [
 						'type' => 'note',
-						'desc' => __('Changes to this template will be applied to all PDF invoices generated after the change. <br><br>Existing PDF Invoices will not be affected unless explicitly re-generated', 'wp-ultimo'),
+						'desc' => __('Changes to this template will be applied to all PDF invoices generated after the change. <br><br>Existing PDF Invoices will not be affected unless explicitly re-generated', 'wp-multisite-waas'),
 					],
 				],
 			]
@@ -167,17 +167,17 @@ class Invoice_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 					'v-model' => 'tab',
 				],
 				'options'           => [
-					'general' => __('General', 'wp-ultimo'),
-					'colors'  => __('Colors', 'wp-ultimo'),
-					'images'  => __('Images', 'wp-ultimo'),
+					'general' => __('General', 'wp-multisite-waas'),
+					'colors'  => __('Colors', 'wp-multisite-waas'),
+					'images'  => __('Images', 'wp-multisite-waas'),
 				],
 			],
 
 			'paid_tag_text'   => [
 				'type'              => 'text',
-				'title'             => __('Paid Tag', 'wp-ultimo'),
-				'placeholder'       => __('e.g. Paid.', 'wp-ultimo'),
-				'value'             => wu_get_isset($settings, 'paid_tag_text', __('Paid', 'wp-ultimo')),
+				'title'             => __('Paid Tag', 'wp-multisite-waas'),
+				'placeholder'       => __('e.g. Paid.', 'wp-multisite-waas'),
+				'value'             => wu_get_isset($settings, 'paid_tag_text', __('Paid', 'wp-multisite-waas')),
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "general")',
 					'v-cloak' => 1,
@@ -188,12 +188,12 @@ class Invoice_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 			],
 			'font'            => [
 				'type'              => 'select',
-				'title'             => __('Font-Family', 'wp-ultimo'),
+				'title'             => __('Font-Family', 'wp-multisite-waas'),
 				'value'             => wu_get_isset($settings, 'font', ''),
 				'options'           => [
-					'DejaVuSansCondensed'  => __('Sans-Serif', 'wp-ultimo'),
-					'DejaVuSerifCondensed' => __('Serif', 'wp-ultimo'),
-					'FreeMono'             => __('Mono', 'wp-ultimo'),
+					'DejaVuSansCondensed'  => __('Sans-Serif', 'wp-multisite-waas'),
+					'DejaVuSerifCondensed' => __('Serif', 'wp-multisite-waas'),
+					'FreeMono'             => __('Mono', 'wp-multisite-waas'),
 				],
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "general")',
@@ -205,8 +205,8 @@ class Invoice_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 			],
 			'footer_message'  => [
 				'type'              => 'textarea',
-				'title'             => __('Footer Content', 'wp-ultimo'),
-				'placeholder'       => __('e.g. Extra Info about the Invoice.', 'wp-ultimo'),
+				'title'             => __('Footer Content', 'wp-multisite-waas'),
+				'placeholder'       => __('e.g. Extra Info about the Invoice.', 'wp-multisite-waas'),
 				'value'             => wu_get_isset($settings, 'footer_message', ''),
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "general")',
@@ -219,7 +219,7 @@ class Invoice_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 
 			'primary_color'   => [
 				'type'              => 'color-picker',
-				'title'             => __('Primary Color', 'wp-ultimo'),
+				'title'             => __('Primary Color', 'wp-multisite-waas'),
 				'value'             => '#00a1ff',
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "colors")',
@@ -232,8 +232,8 @@ class Invoice_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 
 			'use_custom_logo' => [
 				'type'              => 'toggle',
-				'title'             => __('Use Custom Logo', 'wp-ultimo'),
-				'desc'              => __('You can set a different logo to be used on the invoice.', 'wp-ultimo'),
+				'title'             => __('Use Custom Logo', 'wp-multisite-waas'),
+				'desc'              => __('You can set a different logo to be used on the invoice.', 'wp-multisite-waas'),
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "images")',
 					'v-cloak' => 1,
@@ -244,8 +244,8 @@ class Invoice_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 			],
 			'custom_logo'     => [
 				'type'              => 'image',
-				'title'             => __('Custom Logo', 'wp-ultimo'),
-				'desc'              => __('This will be added to the top of the generated PDF.', 'wp-ultimo'),
+				'title'             => __('Custom Logo', 'wp-multisite-waas'),
+				'desc'              => __('This will be added to the top of the generated PDF.', 'wp-multisite-waas'),
 				'value'             => '',
 				'img'               => $custom_logo_url,
 				'stacked'           => true,
@@ -261,7 +261,7 @@ class Invoice_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 
 		$settings = [
 			'footer_message'  => wu_get_isset($settings, 'footer_message', ''),
-			'paid_tag_text'   => wu_get_isset($settings, 'paid_tag_text', __('Paid', 'wp-ultimo')),
+			'paid_tag_text'   => wu_get_isset($settings, 'paid_tag_text', __('Paid', 'wp-multisite-waas')),
 			'primary_color'   => wu_get_isset($settings, 'primary_color', '00a1ff'),
 			'use_custom_logo' => wu_get_isset($settings, 'use_custom_logo'),
 			'custom_logo'     => wu_get_isset($settings, 'custom_logo'),
@@ -279,14 +279,14 @@ class Invoice_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 		$this->add_fields_widget(
 			'customizer',
 			[
-				'title'     => __('Customizer', 'wp-ultimo'),
+				'title'     => __('Customizer', 'wp-multisite-waas'),
 				'position'  => 'side',
 				'fields'    => $fields,
 				'html_attr' => [
 					'style'                    => 'margin-top: -6px;',
 					'data-wu-app'              => 'invoice_customizer',
 					'data-wu-customizer-panel' => true,
-					'data-state'               => json_encode($state),
+					'data-state'               => wp_json_encode($state),
 				],
 			]
 		);
@@ -300,7 +300,7 @@ class Invoice_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('Customize Invoice Template', 'wp-ultimo');
+		return __('Customize Invoice Template', 'wp-multisite-waas');
 	}
 
 	/**
@@ -311,7 +311,7 @@ class Invoice_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Customize Invoice Template', 'wp-ultimo');
+		return __('Customize Invoice Template', 'wp-multisite-waas');
 	}
 
 	/**
@@ -334,14 +334,14 @@ class Invoice_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'customize_label'   => __('Customize Invoice Template', 'wp-ultimo'),
-			'add_new_label'     => __('Customize Invoice Template', 'wp-ultimo'),
-			'edit_label'        => __('Edit Invoice Template', 'wp-ultimo'),
-			'updated_message'   => __('Invoice Template updated with success!', 'wp-ultimo'),
-			'title_placeholder' => __('Enter Invoice Template Name', 'wp-ultimo'),
-			'title_description' => __('This name is used for internal reference only.', 'wp-ultimo'),
-			'save_button_label' => __('Save Invoice Template', 'wp-ultimo'),
-			'save_description'  => __('Save Invoice Template', 'wp-ultimo'),
+			'customize_label'   => __('Customize Invoice Template', 'wp-multisite-waas'),
+			'add_new_label'     => __('Customize Invoice Template', 'wp-multisite-waas'),
+			'edit_label'        => __('Edit Invoice Template', 'wp-multisite-waas'),
+			'updated_message'   => __('Invoice Template updated with success!', 'wp-multisite-waas'),
+			'title_placeholder' => __('Enter Invoice Template Name', 'wp-multisite-waas'),
+			'title_description' => __('This name is used for internal reference only.', 'wp-multisite-waas'),
+			'save_button_label' => __('Save Invoice Template', 'wp-multisite-waas'),
+			'save_description'  => __('Save Invoice Template', 'wp-multisite-waas'),
 		];
 	}
 
@@ -357,7 +357,7 @@ class Invoice_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 
 		$url = add_query_arg('updated', '1');
 
-		wp_redirect($url);
+		wp_safe_redirect($url);
 
 		exit;
 	}

@@ -17,7 +17,7 @@
 
 			<nav 
 			class="wu-border wu-rounded wu-border-solid wu-flex wu-px-4 <?php echo wu_env_picker('wu-border-gray-300', 'wu-border-gray-400'); ?>" 
-			aria-label="<?php esc_attr_e('Breadcrumb', 'wp-ultimo'); ?>"
+			aria-label="<?php esc_attr_e('Breadcrumb', 'wp-multisite-waas'); ?>"
 			>
 
 			<ol class="wu-p-0 wu-m-0 wu-w-full wu-mx-auto wu-flex">
@@ -42,7 +42,7 @@
 					<path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
 					</svg>
 					<a href="<?php echo esc_url($my_sites_url); ?>" class="wu-mx-4 wu-text-sm wu-font-medium wu-text-gray-500 hover:wu-text-gray-700 wu-no-underline">
-						<?php _e('Your Sites', 'wp-ultimo'); ?>
+						<?php esc_html_e('Your Sites', 'wp-multisite-waas'); ?>
 					</a>
 				</div>
 				</li>
@@ -78,7 +78,7 @@
 				style="max-width: <?php echo esc_attr($screenshot_size); ?>px;"
 				class="wu-w-full wu-rounded wu-border wu-border-solid <?php echo wu_env_picker('wu-border-gray-300', 'wu-border-gray-400'); ?>" 
 				src="<?php echo $current_site->get_featured_image(); ?>" 
-				alt="<?php printf(esc_attr__('Site Image: %s', 'wp-ultimo'), $current_site->get_title()); ?>"
+				alt="<?php printf(esc_attr__('Site Image: %s', 'wp-multisite-waas'), $current_site->get_title()); ?>"
 			>
 
 			</div>

@@ -133,7 +133,7 @@ class Email_Manager extends Base_Manager {
 			$to = $email->get_target_list($payload);
 
 			if (empty($to)) {
-				wu_log_add('mailer', __('No targets found.', 'wp-ultimo'));
+				wu_log_add('mailer', __('No targets found.', 'wp-multisite-waas'));
 
 				return;
 			}
@@ -218,8 +218,8 @@ class Email_Manager extends Base_Manager {
 			'emails',
 			'sender_header',
 			[
-				'title' => __('Sender Settings', 'wp-ultimo'),
-				'desc'  => __('Change the settings of the email headers, like from and name.', 'wp-ultimo'),
+				'title' => __('Sender Settings', 'wp-multisite-waas'),
+				'desc'  => __('Change the settings of the email headers, like from and name.', 'wp-multisite-waas'),
 				'type'  => 'header',
 			]
 		);
@@ -228,8 +228,8 @@ class Email_Manager extends Base_Manager {
 			'emails',
 			'from_name',
 			[
-				'title'       => __('"From" Name', 'wp-ultimo'),
-				'desc'        => __('How the sender name will appear in emails sent by WP Multisite WaaS.', 'wp-ultimo'),
+				'title'       => __('"From" Name', 'wp-multisite-waas'),
+				'desc'        => __('How the sender name will appear in emails sent by WP Multisite WaaS.', 'wp-multisite-waas'),
 				'type'        => 'text',
 				'placeholder' => get_network_option(null, 'site_name'),
 				'default'     => get_network_option(null, 'site_name'),
@@ -243,8 +243,8 @@ class Email_Manager extends Base_Manager {
 			'emails',
 			'from_email',
 			[
-				'title'       => __('"From" E-mail', 'wp-ultimo'),
-				'desc'        => __('How the sender email will appear in emails sent by WP Multisite WaaS.', 'wp-ultimo'),
+				'title'       => __('"From" E-mail', 'wp-multisite-waas'),
+				'desc'        => __('How the sender email will appear in emails sent by WP Multisite WaaS.', 'wp-multisite-waas'),
 				'type'        => 'email',
 				'placeholder' => get_network_option(null, 'admin_email'),
 				'default'     => get_network_option(null, 'admin_email'),
@@ -258,8 +258,8 @@ class Email_Manager extends Base_Manager {
 			'emails',
 			'template_header',
 			[
-				'title' => __('Template Settings', 'wp-ultimo'),
-				'desc'  => __('Change the settings of the email templates.', 'wp-ultimo'),
+				'title' => __('Template Settings', 'wp-multisite-waas'),
+				'desc'  => __('Change the settings of the email templates.', 'wp-multisite-waas'),
 				'type'  => 'header',
 			]
 		);
@@ -268,13 +268,13 @@ class Email_Manager extends Base_Manager {
 			'emails',
 			'email_template_type',
 			[
-				'title'     => __('Email Templates Style', 'wp-ultimo'),
-				'desc'      => __('Choose if email body will be sent using the HTML template or in plain text.', 'wp-ultimo'),
+				'title'     => __('Email Templates Style', 'wp-multisite-waas'),
+				'desc'      => __('Choose if email body will be sent using the HTML template or in plain text.', 'wp-multisite-waas'),
 				'type'      => 'select',
 				'default'   => 'html',
 				'options'   => [
-					'html'  => __('HTML Emails', 'wp-ultimo'),
-					'plain' => __('Plain Emails', 'wp-ultimo'),
+					'html'  => __('HTML Emails', 'wp-multisite-waas'),
+					'plain' => __('Plain Emails', 'wp-multisite-waas'),
 				],
 				'html_attr' => [
 					'v-model' => 'emails_template',
@@ -286,8 +286,8 @@ class Email_Manager extends Base_Manager {
 			'emails',
 			'expiring_header',
 			[
-				'title' => __('Expiring Notification Settings', 'wp-ultimo'),
-				'desc'  => __('Change the settings for the expiring notification (trials and subscriptions) emails.', 'wp-ultimo'),
+				'title' => __('Expiring Notification Settings', 'wp-multisite-waas'),
+				'desc'  => __('Change the settings for the expiring notification (trials and subscriptions) emails.', 'wp-multisite-waas'),
 				'type'  => 'header',
 			]
 		);
@@ -296,10 +296,10 @@ class Email_Manager extends Base_Manager {
 			'emails',
 			'expiring_days',
 			[
-				'title'       => __('Days to Expire', 'wp-ultimo'),
-				'desc'        => __('Select when we should send the notification email. If you select 3 days, for example, a notification email will be sent to every membership (or trial period) expiring in the next 3 days. Memberships are checked hourly.', 'wp-ultimo'),
+				'title'       => __('Days to Expire', 'wp-multisite-waas'),
+				'desc'        => __('Select when we should send the notification email. If you select 3 days, for example, a notification email will be sent to every membership (or trial period) expiring in the next 3 days. Memberships are checked hourly.', 'wp-multisite-waas'),
 				'type'        => 'number',
-				'placeholder' => __('e.g. 3', 'wp-ultimo'),
+				'placeholder' => __('e.g. 3', 'wp-multisite-waas'),
 				'html_attr'   => [
 					'v-model' => 'expiring_days',
 				],
@@ -383,6 +383,9 @@ class Email_Manager extends Base_Manager {
 	 * @return void
 	 */
 	public function register_all_default_system_emails(): void {
+
+		// TODO: Don't render every email until they are used.
+
 		/*
 		 * Payment Successful - Admin
 		 */
@@ -391,7 +394,7 @@ class Email_Manager extends Base_Manager {
 				'event'   => 'payment_received',
 				'slug'    => 'payment_received_admin',
 				'target'  => 'admin',
-				'title'   => __('You got a new payment!', 'wp-ultimo'),
+				'title'   => __('You got a new payment!', 'wp-multisite-waas'),
 				'content' => wu_get_template_contents('emails/admin/payment-received'),
 			]
 		);
@@ -404,7 +407,7 @@ class Email_Manager extends Base_Manager {
 				'event'   => 'payment_received',
 				'slug'    => 'payment_received_customer',
 				'target'  => 'customer',
-				'title'   => __('We got your payment!', 'wp-ultimo'),
+				'title'   => __('We got your payment!', 'wp-multisite-waas'),
 				'content' => wu_get_template_contents('emails/customer/payment-received'),
 			]
 		);
@@ -417,7 +420,7 @@ class Email_Manager extends Base_Manager {
 				'event'   => 'site_published',
 				'target'  => 'admin',
 				'slug'    => 'site_published_admin',
-				'title'   => __('A new site was created on your Network!', 'wp-ultimo'),
+				'title'   => __('A new site was created on your Network!', 'wp-multisite-waas'),
 				'content' => wu_get_template_contents('emails/admin/site-published'),
 			]
 		);
@@ -430,7 +433,7 @@ class Email_Manager extends Base_Manager {
 				'event'   => 'site_published',
 				'target'  => 'customer',
 				'slug'    => 'site_published_customer',
-				'title'   => __('Your site is ready!', 'wp-ultimo'),
+				'title'   => __('Your site is ready!', 'wp-multisite-waas'),
 				'content' => wu_get_template_contents('emails/customer/site-published'),
 			]
 		);
@@ -443,7 +446,7 @@ class Email_Manager extends Base_Manager {
 				'event'   => 'confirm_email_address',
 				'target'  => 'customer',
 				'slug'    => 'confirm_email_address',
-				'title'   => __('Confirm your email address!', 'wp-ultimo'),
+				'title'   => __('Confirm your email address!', 'wp-multisite-waas'),
 				'content' => wu_get_template_contents('emails/customer/confirm-email-address'),
 			]
 		);
@@ -456,7 +459,7 @@ class Email_Manager extends Base_Manager {
 				'event'   => 'domain_created',
 				'target'  => 'admin',
 				'slug'    => 'domain_created_admin',
-				'title'   => __('A new domain was added to your Network!', 'wp-ultimo'),
+				'title'   => __('A new domain was added to your Network!', 'wp-multisite-waas'),
 				'content' => wu_get_template_contents('emails/admin/domain-created'),
 			]
 		);
@@ -469,7 +472,7 @@ class Email_Manager extends Base_Manager {
 				'event'   => 'renewal_payment_created',
 				'target'  => 'customer',
 				'slug'    => 'renewal_payment_created',
-				'title'   => __('You have a new pending payment!', 'wp-ultimo'),
+				'title'   => __('You have a new pending payment!', 'wp-multisite-waas'),
 				'content' => wu_get_template_contents('emails/customer/renewal-payment-created'),
 			]
 		);

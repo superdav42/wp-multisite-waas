@@ -60,14 +60,14 @@ class Payment_Methods_Element extends Base_Element {
 	 *
 	 * This is used on the Blocks list of Gutenberg.
 	 * You should return a string with the localized title.
-	 * e.g. return __('My Element', 'wp-ultimo').
+	 * e.g. return __('My Element', 'wp-multisite-waas').
 	 *
 	 * @since 2.0.0
 	 * @return string
 	 */
 	public function get_title() {
 
-		return __('Payment Methods', 'wp-ultimo');
+		return __('Payment Methods', 'wp-multisite-waas');
 	}
 
 	/**
@@ -76,14 +76,14 @@ class Payment_Methods_Element extends Base_Element {
 	 * This is also used on the Gutenberg block list
 	 * to explain what this block is about.
 	 * You should return a string with the localized title.
-	 * e.g. return __('Adds a checkout form to the page', 'wp-ultimo').
+	 * e.g. return __('Adds a checkout form to the page', 'wp-multisite-waas').
 	 *
 	 * @since 2.0.0
 	 * @return string
 	 */
 	public function get_description() {
 
-		return __('Adds a checkout form block to the page.', 'wp-ultimo');
+		return __('Adds a checkout form block to the page.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -108,23 +108,23 @@ class Payment_Methods_Element extends Base_Element {
 		$fields = [];
 
 		$fields['header'] = [
-			'title' => __('General', 'wp-ultimo'),
-			'desc'  => __('General', 'wp-ultimo'),
+			'title' => __('General', 'wp-multisite-waas'),
+			'desc'  => __('General', 'wp-multisite-waas'),
 			'type'  => 'header',
 		];
 
 		$fields['password_strength'] = [
 			'type'    => 'toggle',
-			'title'   => __('Password Strength Meter', 'wp-ultimo'),
-			'desc'    => __('Set this customer as a VIP.', 'wp-ultimo'),
+			'title'   => __('Password Strength Meter', 'wp-multisite-waas'),
+			'desc'    => __('Set this customer as a VIP.', 'wp-multisite-waas'),
 			'tooltip' => '',
 			'value'   => 1,
 		];
 
 		$fields['apply_styles'] = [
 			'type'    => 'toggle',
-			'title'   => __('Apply Styles', 'wp-ultimo'),
-			'desc'    => __('Set this customer as a VIP.', 'wp-ultimo'),
+			'title'   => __('Apply Styles', 'wp-multisite-waas'),
+			'desc'    => __('Set this customer as a VIP.', 'wp-multisite-waas'),
 			'tooltip' => '',
 			'value'   => 1,
 		];

@@ -100,7 +100,7 @@ class View_Logs_Admin_Page extends Edit_Admin_Page {
 			'wu_view_logs',
 			[
 				'i18n' => [
-					'copied' => __('Copied!', 'wp-ultimo'),
+					'copied' => __('Copied!', 'wp-multisite-waas'),
 				],
 			]
 		);
@@ -118,7 +118,7 @@ class View_Logs_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('View Log', 'wp-ultimo');
+		return __('View Log', 'wp-multisite-waas');
 	}
 
 	/**
@@ -129,7 +129,7 @@ class View_Logs_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('View Log', 'wp-ultimo');
+		return __('View Log', 'wp-multisite-waas');
 	}
 
 	/**
@@ -152,7 +152,7 @@ class View_Logs_Admin_Page extends Edit_Admin_Page {
 		$logs_list = array_combine(array_values($logs_list), array_map(fn($file) => str_replace(Logger::get_logs_folder(), '', (string) $file), $logs_list));
 
 		if (empty($logs_list)) {
-			$logs_list[''] = __('No log files found', 'wp-ultimo');
+			$logs_list[''] = __('No log files found', 'wp-multisite-waas');
 		}
 
 		$file = wu_request('file');
@@ -163,7 +163,7 @@ class View_Logs_Admin_Page extends Edit_Admin_Page {
 
 		// Security check
 		if ($file && ! stristr((string) $file, Logger::get_logs_folder())) {
-			wp_die(__('You can see files that are not WP Multisite WaaS\'s logs', 'wp-ultimo'));
+			wp_die(__('You can see files that are not WP Multisite WaaS\'s logs', 'wp-multisite-waas'));
 		}
 
 		if ( ! $file && ! empty($logs_list)) {
@@ -172,7 +172,7 @@ class View_Logs_Admin_Page extends Edit_Admin_Page {
 
 		$file_name = str_replace(Logger::get_logs_folder(), '', (string) $file);
 
-		$default_content = wu_request('return_ascii', 'yes') === 'yes' ? wu_get_template_contents('events/ascii-badge') : __('No log entries found.', 'wp-ultimo');
+		$default_content = wu_request('return_ascii', 'yes') === 'yes' ? wu_get_template_contents('events/ascii-badge') : __('No log entries found.', 'wp-multisite-waas');
 
 		$contents = $file && file_exists($file) ? file_get_contents($file) : $default_content;
 
@@ -200,24 +200,24 @@ class View_Logs_Admin_Page extends Edit_Admin_Page {
 
 		$info = $this->handle_view_logs();
 
-		add_meta_box('wp-ultimo-log-contents', __('Log Contents', 'wp-ultimo'), [$this, 'output_default_widget_payload'], get_current_screen()->id, 'normal', null, $info);
+		add_meta_box('wp-ultimo-log-contents', __('Log Contents', 'wp-multisite-waas'), [$this, 'output_default_widget_payload'], get_current_screen()->id, 'normal', null, $info);
 
 		$this->add_fields_widget(
 			'file-selector',
 			[
-				'title'  => __('Log Files', 'wp-ultimo'),
+				'title'  => __('Log Files', 'wp-multisite-waas'),
 				'fields' => [
 					'log_file' => [
 						'type'        => 'select',
-						'title'       => __('Select Log File', 'wp-ultimo'),
-						'placeholder' => __('Select Log File', 'wp-ultimo'),
+						'title'       => __('Select Log File', 'wp-multisite-waas'),
+						'placeholder' => __('Select Log File', 'wp-multisite-waas'),
 						'value'       => wu_request('file'),
 						'tooltip'     => '',
 						'options'     => $info['logs_list'],
 					],
 					'download' => [
 						'type'    => 'submit',
-						'title'   => __('Download Log', 'wp-ultimo'),
+						'title'   => __('Download Log', 'wp-multisite-waas'),
 						'value'   => 'download',
 						'classes' => 'button button-primary wu-w-full',
 					],
@@ -228,11 +228,11 @@ class View_Logs_Admin_Page extends Edit_Admin_Page {
 		$this->add_fields_widget(
 			'info',
 			[
-				'title'    => __('Timestamps', 'wp-ultimo'),
+				'title'    => __('Timestamps', 'wp-multisite-waas'),
 				'position' => 'side',
 				'fields'   => [
 					'date_modified' => [
-						'title'         => __('Last Modified at', 'wp-ultimo'),
+						'title'         => __('Last Modified at', 'wp-multisite-waas'),
 						'type'          => 'text-edit',
 						'date'          => true,
 						'value'         => date_i18n('Y-m-d H:i:s', filemtime($info['file'])),
@@ -257,8 +257,8 @@ class View_Logs_Admin_Page extends Edit_Admin_Page {
 		wu_get_template(
 			'events/widget-payload',
 			[
-				'title'        => __('Event Payload', 'wp-ultimo'),
-				'loading_text' => __('Loading Payload', 'wp-ultimo'),
+				'title'        => __('Event Payload', 'wp-multisite-waas'),
+				'loading_text' => __('Loading Payload', 'wp-multisite-waas'),
 				'payload'      => $data['args']['contents'],
 			]
 		);
@@ -273,12 +273,12 @@ class View_Logs_Admin_Page extends Edit_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'edit_label'          => __('View Log', 'wp-ultimo'),
-			'add_new_label'       => __('View Log', 'wp-ultimo'),
-			'title_placeholder'   => __('Enter Customer', 'wp-ultimo'),
-			'title_description'   => __('Viewing file: ', 'wp-ultimo'),
-			'delete_button_label' => __('Delete Log File', 'wp-ultimo'),
-			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-ultimo'),
+			'edit_label'          => __('View Log', 'wp-multisite-waas'),
+			'add_new_label'       => __('View Log', 'wp-multisite-waas'),
+			'title_placeholder'   => __('Enter Customer', 'wp-multisite-waas'),
+			'title_description'   => __('Viewing file: ', 'wp-multisite-waas'),
+			'delete_button_label' => __('Delete Log File', 'wp-multisite-waas'),
+			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-multisite-waas'),
 		];
 	}
 
@@ -323,7 +323,7 @@ class View_Logs_Admin_Page extends Edit_Admin_Page {
 		$action = wu_request('submit_button', 'none');
 
 		if ('none' === $action) {
-			WP_Ultimo()->notices->add(__('Something wrong happened', 'wp-ultimo'), 'error', 'network-admin');
+			WP_Ultimo()->notices->add(__('Something wrong happened', 'wp-multisite-waas'), 'error', 'network-admin');
 
 			return;
 		}
@@ -331,7 +331,7 @@ class View_Logs_Admin_Page extends Edit_Admin_Page {
 		$file = wu_request('log_file', false);
 
 		if ( ! file_exists($file)) {
-			WP_Ultimo()->notices->add(__('File not found', 'wp-ultimo'), 'error', 'network-admin');
+			WP_Ultimo()->notices->add(__('File not found', 'wp-multisite-waas'), 'error', 'network-admin');
 
 			return;
 		}
@@ -350,7 +350,7 @@ class View_Logs_Admin_Page extends Edit_Admin_Page {
 			$status = unlink($file);
 
 			if ( ! $status) {
-				WP_Ultimo()->notices->add(__('We were unable to delete file', 'wp-ultimo'), 'error', 'network-admin');
+				WP_Ultimo()->notices->add(__('We were unable to delete file', 'wp-multisite-waas'), 'error', 'network-admin');
 
 				return;
 			}
@@ -358,7 +358,7 @@ class View_Logs_Admin_Page extends Edit_Admin_Page {
 
 		$url = remove_query_arg('log_file');
 
-		wp_redirect(add_query_arg('deleted', 1, $url));
+		wp_safe_redirect(add_query_arg('deleted', 1, $url));
 
 		exit;
 	}

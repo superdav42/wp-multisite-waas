@@ -252,7 +252,7 @@ class General_Compat {
 	 */
 	public function add_wp_typography_warning_message(): void {
 
-		WP_Ultimo()->notices->add(__('WP Typography "Smart Quotes" replacement is not compatible with WP Multisite WaaS and will be automatically disabled.', 'wp-ultimo'), 'warning');
+		WP_Ultimo()->notices->add(__('WP Typography "Smart Quotes" replacement is not compatible with WP Multisite WaaS and will be automatically disabled.', 'wp-multisite-waas'), 'warning');
 	}
 
 	/**

@@ -19,9 +19,9 @@ $first_recurring_product = array_reduce(
 	$products_to_reduce,
 	function ($chosen_product, $product) {
 
-		if ($product && $product->is_recurring() && false == $chosen_product) {
+		if ($product && $product->is_recurring() && ! $chosen_product) {
 			$chosen_product = $product;
-		} // end if;
+		}
 
 		return $chosen_product;
 	}
@@ -32,8 +32,8 @@ $legacy_mode = array_reduce(
 	function ($all_have_same_duration, $product) use ($first_recurring_product) {
 
 		if ($product && $product->is_recurring()) {
-			$all_have_same_duration = $first_recurring_product->get_recurring_description() == $product->get_recurring_description();
-		} // end if;
+			$all_have_same_duration = $first_recurring_product->get_recurring_description() === $product->get_recurring_description();
+		}
 
 		return $all_have_same_duration;
 	}
@@ -52,8 +52,8 @@ wp_add_inline_script(
   window.wu_legacy_mode = %s;
 
 ',
-		json_encode($force_different_durations),
-		json_encode($legacy_mode)
+		wp_json_encode($force_different_durations),
+		wp_json_encode($legacy_mode)
 	),
 	'after'
 );
@@ -76,21 +76,21 @@ if (null !== $first_recurring_product) {
 
         data.duration = %s;
 
-      } // end if;
+      }
 
       if (!data.duration_unit && !wu_force_different_durations) {
 
         data.duration_unit = %s;
 
-      } // end if;
+      }
 
       return data;
 
     });
 
   ",
-			json_encode($first_recurring_product->get_duration()),
-			json_encode($first_recurring_product->get_duration_unit())
+			wp_json_encode($first_recurring_product->get_duration()),
+			wp_json_encode($first_recurring_product->get_duration_unit())
 		),
 		'after'
 	);
@@ -101,7 +101,7 @@ if (null !== $first_recurring_product) {
 
 <div class="wu-text-center wu-bg-gray-100 wu-rounded wu-uppercase wu-font-semibold wu-text-xs wu-text-gray-700 wu-p-4">
 
-	<?php _e('No Products Found.', 'wp-ultimo'); ?>
+	<?php esc_html_e('No Products Found.', 'wp-multisite-waas'); ?>
 
 </div>
 
@@ -115,8 +115,8 @@ if (null !== $first_recurring_product) {
 
 		<div 
 			id="plan-<?php echo esc_attr($product->get_id()); ?>"
-			class="<?php echo "wu-product-{$product->get_id()}"; ?> lift wu-plan plan-tier wu-flex-1 <?php echo esc_attr($product->is_featured_plan() ? 'callout' : ''); ?> wu-flex wu-flex-col wu-justify-between"
-			v-show="wu_force_different_durations || (duration && wu_legacy_mode) || (( (!duration) || duration == <?php echo $product->get_duration(); ?> && duration_unit == '<?php echo $product->get_duration_unit(); ?>' ) || <?php echo json_encode($product->get_pricing_type() !== 'paid'); ?>)"
+			class="<?php echo esc_attr("wu-product-{$product->get_id()}"); ?> lift wu-plan plan-tier wu-flex-1 <?php echo esc_attr($product->is_featured_plan() ? 'callout' : ''); ?> wu-flex wu-flex-col wu-justify-between"
+			v-show="wu_force_different_durations || (duration && wu_legacy_mode) || (( (!duration) || duration == <?php echo esc_attr($product->get_duration()); ?> && duration_unit == '<?php echo esc_attr($product->get_duration_unit()); ?>' ) || <?php echo wp_json_encode($product->get_pricing_type() !== 'paid'); ?>)"
 		>
 
 			<div class="wu-relative">
@@ -130,7 +130,7 @@ if (null !== $first_recurring_product) {
 					/**
 					 * Featured tag.
 					 */
-					echo apply_filters('wu_featured_plan_label', __('Featured Plan', 'wp-ultimo'), $product);
+					echo esc_html(apply_filters('wu_featured_plan_label', __('Featured Plan', 'wp-multisite-waas'), $product));
 
 				?>
 
@@ -140,7 +140,7 @@ if (null !== $first_recurring_product) {
 
 			<h4 class="wp-ui-primary">
 
-				<?php echo $product->get_name(); ?>
+				<?php echo esc_html($product->get_name()); ?>
 
 			</h4>
 
@@ -158,7 +158,7 @@ if (null !== $first_recurring_product) {
 
 				<span class="plan-price">
 
-				<?php _e('Free!', 'wp-ultimo'); ?>
+				<?php esc_html_e('Free!', 'wp-multisite-waas'); ?>
 
 				</span>
 
@@ -178,7 +178,7 @@ if (null !== $first_recurring_product) {
 
 				<span class="plan-price">
 
-					<?php echo apply_filters('wu_plan_contact_us_price_line', __('--', 'wp-ultimo')); ?>
+					<?php echo esc_html(apply_filters('wu_plan_contact_us_price_line', __('--', 'wp-multisite-waas'))); ?>
 
 				</span>
 
@@ -195,7 +195,7 @@ if (null !== $first_recurring_product) {
 					 * Price display.
 					 */
 
-					$symbol_left = in_array(wu_get_setting('currency_position', '%s%v'), ['%s%v', '%s %v']);
+					$symbol_left = in_array(wu_get_setting('currency_position', '%s%v'), ['%s%v', '%s %v'], true);
 
 				?>
 
@@ -203,19 +203,19 @@ if (null !== $first_recurring_product) {
 
 					<sup class="superscript">
 
-					<?php echo wu_get_currency_symbol($product->get_currency()); ?>
+					<?php esc_html(wu_get_currency_symbol($product->get_currency())); ?>
 
 					</sup>
 
 				<?php endif; ?>
 
-				<span class="plan-price" v-if="wu_force_different_durations || (duration == <?php echo $product->get_duration(); ?> && duration_unit == '<?php echo $product->get_duration_unit(); ?>')">
+				<span class="plan-price" v-if="wu_force_different_durations || (duration == <?php echo esc_attr($product->get_duration()); ?> && duration_unit == '<?php echo esc_attr($product->get_duration_unit()); ?>')">
 
 					<?php
 
 					$n = $product->get_amount();
 
-					echo str_replace(wu_get_currency_symbol(), '', wu_format_currency($n));
+					echo esc_html(str_replace(wu_get_currency_symbol(), '', wu_format_currency($n)));
 
 					?>
 
@@ -227,21 +227,21 @@ if (null !== $first_recurring_product) {
 
 					if ( ! $price_variation) {
 						continue;
-					} // end if;
+					}
 
 					?>
 
-					<span class="plan-price" v-cloak v-if="duration == <?php echo $price_variation['duration']; ?> && duration_unit == '<?php echo $price_variation['duration_unit']; ?>'">
+					<span class="plan-price" v-cloak v-if="duration == <?php echo esc_attr($price_variation['duration']); ?> && duration_unit == '<?php echo esc_attr($price_variation['duration_unit']); ?>'">
 
 					<?php
 
 						$n = $price_variation ? $price_variation['monthly_amount'] : false;
 
 					if ($n) {
-						echo str_replace(wu_get_currency_symbol(), '', wu_format_currency($n));
+						echo esc_html(str_replace(wu_get_currency_symbol(), '', wu_format_currency($n)));
 					} else {
 						echo '--';
-					} // end if;
+					}
 
 					?>
 
@@ -249,14 +249,14 @@ if (null !== $first_recurring_product) {
 
 <?php endforeach; ?>
 
-				<sub v-if="1 == <?php echo $product->get_duration(); ?> && 'month' == '<?php echo $product->get_duration_unit(); ?>'">
+				<sub v-if="1 == <?php echo esc_attr($product->get_duration()); ?> && 'month' == '<?php echo $product->get_duration_unit(); ?>'">
 
 					<?php
 
 					/**
 					 * Period Unit.
 					 */
-					$symbol = $product->is_recurring() ? __('/mo', 'wp-ultimo') : '';
+					$symbol = $product->is_recurring() ? __('/mo', 'wp-multisite-waas') : '';
 
 					echo (! $symbol_left ? wu_get_currency_symbol() : '') . ' ' . $symbol;
 
@@ -304,27 +304,27 @@ if (null !== $first_recurring_product) {
 				 * Display quarterly and Annually plans, to be hidden.
 				 */
 				$prices_total = [
-					3  => __('every 3 months', 'wp-ultimo'),
-					12 => __('yearly', 'wp-ultimo'),
+					3  => __('every 3 months', 'wp-multisite-waas'),
+					12 => __('yearly', 'wp-multisite-waas'),
 				];
 
 				foreach ($prices_total as $freq => $string) {
 					$price_variation = $product->get_price_variation($freq, 'month');
 
 					if ( ! $price_variation || $product->get_pricing_type() == 'free' || $product->get_pricing_type() == 'contact_us') {
-						echo "<li v-cloak v-show='duration == " . $freq . "' class='total-price total-price-$freq'>-</li>";
+						echo "<li v-cloak v-show='duration == " . esc_attr($freq) . "' class='total-price total-price-($freq)'>-</li>";
 					} else {
-						$text = sprintf(__('%1$s, billed %2$s', 'wp-ultimo'), wu_format_currency($price_variation['amount']), $string);
+						$text = sprintf(__('%1$s, billed %2$s', 'wp-multisite-waas'), wu_format_currency($price_variation['amount']), $string);
 
 						$extra_check_for_annual = '';
 
 						if (12 === $freq) {
 							$extra_check_for_annual = ' || (duration == "1" && duration_unit == "year")';
-						} // end if;
+						}
 
 						echo "<li v-cloak v-show='duration == " . $freq . $extra_check_for_annual . "' class='total-price total-price-$freq'>$text</li>";
-					} // end if;
-				} // end foreach;
+					}
+				}
 
 				?>
 
@@ -337,14 +337,14 @@ if (null !== $first_recurring_product) {
 			<li class="wu-cta">
 
 				<button 
-				v-if="<?php echo json_encode($product->get_pricing_type() !== 'contact_us'); ?>" 
+				v-if="<?php echo wp_json_encode($product->get_pricing_type() !== 'contact_us'); ?>" 
 				v-on:click="add_plan(<?php echo $product->get_id(); ?>)" 
 				type="button" 
 				name="products[]" 
 				value="<?php echo $product->get_id(); ?>" 
 				class="button button-primary button-next"
 				>
-				<?php _e('Select Plan', 'wp-ultimo'); ?>
+				<?php esc_html_e('Select Plan', 'wp-multisite-waas'); ?>
 				</button>
 
 				<button 
@@ -354,7 +354,7 @@ if (null !== $first_recurring_product) {
 				value="<?php echo $product->get_id(); ?>" 
 				class="button button-primary button-next"
 				>
-				<?php _e('Select Plan', 'wp-ultimo'); ?>
+				<?php esc_html_e('Select Plan', 'wp-multisite-waas'); ?>
 				</button>
 
 			</li>

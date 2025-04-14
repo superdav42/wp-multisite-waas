@@ -11,10 +11,10 @@
 
 	<thead>
 		<tr>
-		<th class="wu-w-4/12"><?php _e('Host', 'wp-ultimo'); ?></th>
-		<th class="wu-w-2/12"><?php _e('Type', 'wp-ultimo'); ?></th>
-		<th class="wu-w-4/12"><?php _e('IP / Target', 'wp-ultimo'); ?></th>
-		<th class="wu-w-2/12"><?php _e('TTL', 'wp-ultimo'); ?></th>
+		<th class="wu-w-4/12"><?php esc_html_e('Host', 'wp-multisite-waas'); ?></th>
+		<th class="wu-w-2/12"><?php esc_html_e('Type', 'wp-multisite-waas'); ?></th>
+		<th class="wu-w-4/12"><?php esc_html_e('IP / Target', 'wp-multisite-waas'); ?></th>
+		<th class="wu-w-2/12"><?php esc_html_e('TTL', 'wp-multisite-waas'); ?></th>
 		</tr>
 	</thead>
 
@@ -24,7 +24,7 @@
 
 		<td colspan="4">
 
-			<?php _e('Loading DNS entries...', 'wp-ultimo'); ?>
+			<?php esc_html_e('Loading DNS entries...', 'wp-multisite-waas'); ?>
 
 		</td>
 
@@ -70,7 +70,7 @@
 		</tr>
 
 		<tr>
-		<td colspan="2"><?php _e('Your Network IP', 'wp-ultimo'); ?></td>
+		<td colspan="2"><?php esc_html_e('Your Network IP', 'wp-multisite-waas'); ?></td>
 		<td colspan="2" class="wu-text-left">{{ results.network_ip }}</td>
 		</tr>
 
@@ -79,53 +79,3 @@
 	</table>
 
 </div>
-
-<script>
-
-(function($) {
-
-	wu_dns_table = new Vue({
-	el: '#wu-dns-table',
-	data: {
-		error: null,
-		results: {},
-		loading: true,
-	},
-	updated() {
-		this.$nextTick(function() {
-
-		window.wu_initialize_tooltip();
-
-		});
-	}
-	})
-
-	$(document).ready(function() {
-
-	$.ajax({
-		url: ajaxurl,
-		data: {
-		action: 'wu_get_dns_records',
-		domain: '<?php echo esc_js($domain->get_domain()); ?>',
-		},
-		success: function(data) {
-
-		Vue.set(wu_dns_table, 'loading', false);
-
-		if (data.success) {
-
-			Vue.set(wu_dns_table, 'results', data.data);
-
-		} else {
-
-			Vue.set(wu_dns_table, 'error', data.data);
-
-		} // end if;
-
-		},
-	})
-
-	});
-})(jQuery);
-
-</script>

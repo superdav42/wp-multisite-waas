@@ -87,8 +87,8 @@ class Manual_Gateway extends Base_Gateway {
 			'payment-gateways',
 			'manual_header',
 			[
-				'title'           => __('Manual', 'wp-ultimo'),
-				'desc'            => __('Use the settings section below to configure the manual payment method. This method allows your customers to manually pay for their memberships, but those payments require manual confirmation on your part.', 'wp-ultimo'),
+				'title'           => __('Manual', 'wp-multisite-waas'),
+				'desc'            => __('Use the settings section below to configure the manual payment method. This method allows your customers to manually pay for their memberships, but those payments require manual confirmation on your part.', 'wp-multisite-waas'),
 				'type'            => 'header',
 				'show_as_submenu' => true,
 				'require'         => [
@@ -101,11 +101,11 @@ class Manual_Gateway extends Base_Gateway {
 			'payment-gateways',
 			'manual_payment_instructions',
 			[
-				'title'      => __('Payment Instructions', 'wp-ultimo'),
-				'desc'       => __('This instructions will be shown to the customer on the thank you page, as well as be sent via email.', 'wp-ultimo'),
+				'title'      => __('Payment Instructions', 'wp-multisite-waas'),
+				'desc'       => __('This instructions will be shown to the customer on the thank you page, as well as be sent via email.', 'wp-multisite-waas'),
 				'type'       => 'wp_editor',
 				'allow_html' => true,
-				'default'    => __('Payment instructions here.', 'wp-ultimo'),
+				'default'    => __('Payment instructions here.', 'wp-multisite-waas'),
 				'require'    => [
 					'active_gateways' => 'manual',
 				],
@@ -141,9 +141,9 @@ class Manual_Gateway extends Base_Gateway {
 	public function get_amount_update_message($to_customer = false) {
 
 		if ($to_customer) {
-			$message = __('You will receive a updated invoice on the next billing cycle.', 'wp-ultimo');
+			$message = __('You will receive a updated invoice on the next billing cycle.', 'wp-multisite-waas');
 		} else {
-			$message = __('The customer will receive a updated invoice on the next billing cycle.', 'wp-ultimo');
+			$message = __('The customer will receive a updated invoice on the next billing cycle.', 'wp-multisite-waas');
 		}
 
 		return $message;
@@ -352,7 +352,7 @@ class Manual_Gateway extends Base_Gateway {
 	 */
 	public function fields() {
 
-		$message = __('After you finish signing up, we will send you an email with instructions to finalize the payment. Your account will be pending until the payment is finalized and confirmed.', 'wp-ultimo');
+		$message = __('After you finish signing up, we will send you an email with instructions to finalize the payment. Your account will be pending until the payment is finalized and confirmed.', 'wp-multisite-waas');
 
 		return sprintf('<p v-if="!order.has_trial" class="wu-p-4 wu-bg-yellow-200">%s</p>', $message);
 	}
@@ -385,7 +385,7 @@ class Manual_Gateway extends Base_Gateway {
 
 					<h4 class="wu-m-0 <?php echo wu_env_picker('', 'wu-widget-title'); ?>">
 
-						<?php _e('Instructions for Payment', 'wp-ultimo'); ?>
+						<?php esc_html_e('Instructions for Payment', 'wp-multisite-waas'); ?>
 
 					</h4>
 

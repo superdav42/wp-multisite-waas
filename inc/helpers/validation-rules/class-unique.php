@@ -46,6 +46,9 @@ class Unique extends Rule {
 	 */
 	public function check($value): bool {
 
+		if (empty($value)) {
+			return true;
+		}
 		$this->requireParameters(
 			[
 				'model',
@@ -78,7 +81,7 @@ class Unique extends Rule {
 		* Customize the error message for the customer.
 		*/
 		if (in_array($model, $user_models, true)) {
-			$this->message = __('A customer with the same email address or username already exists.', 'wp-ultimo');
+			$this->message = __('A customer with the same email address or username already exists.', 'wp-multisite-waas');
 		}
 
 		if ( ! $existing) {

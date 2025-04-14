@@ -22,5 +22,5 @@ if ( ! defined('ABSPATH')) {
 ?>
 
 <div class="wu-setup-content-error">
-	<p><?php _e('There are no Plans created in the platform.', 'wp-ultimo'); ?></p><br>
+	<p><?php esc_html_e('There are no Plans created in the platform.', 'wp-multisite-waas'); ?></p><br>
 </div>

@@ -13,7 +13,7 @@
 
 		<span class="wu-self-center wu-blinking-animation wu-text-gray-600 wu-my-1 wu-text-2xs wu-uppercase wu-font-semibold">
 
-		<?php echo _e('Loading Preview...', 'wp-ultimo'); ?>
+		<?php esc_html_e('Loading Preview...', 'wp-multisite-waas'); ?>
 
 		</span>
 
@@ -31,7 +31,7 @@
 
 			<span class="wu-text-gray-600 wu-my-1 wu-text-2xs wu-uppercase wu-font-semibold">
 
-			<?php echo __('Template Preview', 'wp-ultimo'); ?>
+			<?php echo esc_html__('Template Preview', 'wp-multisite-waas'); ?>
 
 			</span>
 
@@ -43,7 +43,7 @@
 
 	<div id="preview_content" class="wu-block wu-bg-gray wu-text-center wu-mb-5 wu-border wu-border-t-0 wu-border-solid wu-rounded wu-border-gray-400">
 
-		<iframe id="preview-stage-iframe" class="preview-stage-iframe" width="100%" style="height: <?php echo $preview_height; ?>;" frameborder="0" data-src="<?php echo esc_url($preview_iframe_url); ?>" src="<?php echo esc_url($preview_iframe_url); ?>"></iframe>
+		<iframe id="preview-stage-iframe" class="preview-stage-iframe" width="100%" style="height: <?php echo esc_attr($preview_height); ?>;" frameborder="0" data-src="<?php echo esc_url($preview_iframe_url); ?>" src="<?php echo esc_url($preview_iframe_url); ?>"></iframe>
 
 	</div>
 

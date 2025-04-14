@@ -20,22 +20,22 @@ defined('ABSPATH') || exit;
  */
 return [
 	'severity'         => [
-		'description' => __('Severity of the problem.', 'wp-ultimo'),
+		'description' => __('Severity of the problem.', 'wp-multisite-waas'),
 		'type'        => 'integer',
 		'required'    => true,
 	],
 	'date_created'     => [
-		'description' => __('Date when the event was created.', 'wp-ultimo'),
+		'description' => __('Date when the event was created.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'payload'          => [
-		'description' => __('Payload of the event.', 'wp-ultimo'),
+		'description' => __('Payload of the event.', 'wp-multisite-waas'),
 		'type'        => 'object',
 		'required'    => true,
 	],
 	'initiator'        => [
-		'description' => __('The type of user responsible for initiating the event. There are two options: Manual and System. By default, the event is saved as manual.', 'wp-ultimo'),
+		'description' => __('The type of user responsible for initiating the event. There are two options: Manual and System. By default, the event is saved as manual.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => true,
 		'enum'        => [
@@ -44,32 +44,32 @@ return [
 		],
 	],
 	'object_type'      => [
-		'description' => __("The type of object related to this event. It's usually the model name.", 'wp-ultimo'),
+		'description' => __("The type of object related to this event. It's usually the model name.", 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => true,
 	],
 	'slug'             => [
-		'description' => __('The event slug. It needs to be unique and preferably make it clear what it is about. Example: account_created is about creating an account.', 'wp-ultimo'),
+		'description' => __('The event slug. It needs to be unique and preferably make it clear what it is about. Example: account_created is about creating an account.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => true,
 	],
 	'object_id'        => [
-		'description' => __('The ID of the related objects.', 'wp-ultimo'),
+		'description' => __('The ID of the related objects.', 'wp-multisite-waas'),
 		'type'        => 'integer',
 		'required'    => false,
 	],
 	'date_modified'    => [
-		'description' => __('Model last modification date.', 'wp-ultimo'),
+		'description' => __('Model last modification date.', 'wp-multisite-waas'),
 		'type'        => 'string',
 		'required'    => false,
 	],
 	'migrated_from_id' => [
-		'description' => __('The ID of the original 1.X model that was used to generate this item on migration.', 'wp-ultimo'),
+		'description' => __('The ID of the original 1.X model that was used to generate this item on migration.', 'wp-multisite-waas'),
 		'type'        => 'integer',
 		'required'    => false,
 	],
 	'skip_validation'  => [
-		'description' => __('Set true to have field information validation bypassed when saving this event.', 'wp-ultimo'),
+		'description' => __('Set true to have field information validation bypassed when saving this event.', 'wp-multisite-waas'),
 		'type'        => 'boolean',
 		'required'    => false,
 	],

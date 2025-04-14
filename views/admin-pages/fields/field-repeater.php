@@ -9,7 +9,7 @@
 <?php if ( $field->title ) : ?>
 
 	<li id=""
-		class="<?php echo esc_attr(trim($field->wrapper_classes)); ?>" <?php echo $field->get_wrapper_html_attributes(); ?>>
+		class="<?php echo esc_attr(trim($field->wrapper_classes)); ?>" <?php echo $field->get_wrapper_html_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 
 		<div class="wu-w-full wu-block">
 
@@ -81,7 +81,7 @@ if (is_array($field->values)) {
 		++$position;
 		?>
 		<li id="<?php echo esc_attr($field_id); ?>-line"
-			class="field-repeater wu-bg-gray-100 <?php echo esc_attr($field->wrapper_classes); ?>" <?php echo $field->get_wrapper_html_attributes(); ?>>
+			class="field-repeater wu-bg-gray-100 <?php echo esc_attr($field->wrapper_classes); ?>" <?php echo $field->get_wrapper_html_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 			<div class="wu-w-full <?php echo esc_attr($field->classes); ?>">
 				<?php
 				foreach ($value as $field_name => $field_value) {
@@ -105,7 +105,7 @@ if (is_array($field->values)) {
 } else {
 	?>
 	<li id="<?php echo esc_attr($field->id); ?>-line"
-		class="field-repeater wu-bg-gray-100 <?php echo esc_attr($field->wrapper_classes); ?>" <?php echo $field->get_wrapper_html_attributes(); ?>>
+		class="field-repeater wu-bg-gray-100 <?php echo esc_attr($field->wrapper_classes); ?>" <?php echo $field->get_wrapper_html_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 
 		<div class="wu-w-full <?php echo esc_attr($field->classes); ?>">
 
@@ -135,11 +135,11 @@ if (is_array($field->values)) {
 
 ?>
 
-<li class="<?php echo esc_attr($field->wrapper_classes); ?>" <?php echo $field->get_wrapper_html_attributes(); ?>>
+<li class="<?php echo esc_attr($field->wrapper_classes); ?>" <?php echo $field->get_wrapper_html_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 
 	<a class="button wu-w-full wu-text-center" href="#"
 		v-on:click.prevent="duplicate_and_clean($event, '.field-repeater')">
-		<?php esc_html_e('Add new Line', 'wp-ultimo'); ?>
+		<?php esc_html_e('Add new Line', 'wp-multisite-waas'); ?>
 	</a>
 
 </li>

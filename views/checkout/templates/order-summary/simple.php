@@ -9,7 +9,7 @@
 
 	<div v-show="!order" class="wu-bg-gray-100 wu-p-4 wu-text-center wu-border wu-border-solid wu-border-gray-300">
 
-	<?php _e('Generating Order Summary...', 'wp-ultimo'); ?>
+	<?php esc_html_e('Generating Order Summary...', 'wp-multisite-waas'); ?>
 
 	</div>
 
@@ -22,31 +22,31 @@
 		<tr class="">
 
 			<th class="col-description">
-			<?php _e('Description', 'wp-ultimo'); ?>
+			<?php esc_html_e('Description', 'wp-multisite-waas'); ?>
 			</th>
 
 			<?php if ('simple' === $table_columns) : ?>
 
 			<th class="col-total-gross">
-				<?php _e('Subtotal', 'wp-ultimo'); ?>
+				<?php esc_html_e('Subtotal', 'wp-multisite-waas'); ?>
 			</th>
 
 			<?php else : ?>
 
 			<th class="col-total-net">
-				<?php _e('Net Total', 'wp-ultimo'); ?>
+				<?php esc_html_e('Net Total', 'wp-multisite-waas'); ?>
 			</th>
 
 			<th class="col-total-vat-percentage">
-				<?php _e('Discounts', 'wp-ultimo'); ?>
+				<?php esc_html_e('Discounts', 'wp-multisite-waas'); ?>
 			</th>
 
 			<th class="col-total-tax">
-				<?php _e('Tax', 'wp-ultimo'); ?>
+				<?php esc_html_e('Tax', 'wp-multisite-waas'); ?>
 			</th>
 
 			<th class="col-total-gross">
-				<?php _e('Gross Total', 'wp-ultimo'); ?>
+				<?php esc_html_e('Gross Total', 'wp-multisite-waas'); ?>
 			</th>
 
 			<?php endif; ?>
@@ -61,7 +61,7 @@
 
 			<td class="" colspan="<?php echo esc_attr('simple' === $table_columns) ? 2 : 5; ?>" class="col-description">
 
-			<?php _e('No products in shopping cart.', 'wp-ultimo'); ?>
+			<?php esc_html_e('No products in shopping cart.', 'wp-multisite-waas'); ?>
 
 			</td>
 
@@ -71,13 +71,13 @@
 
 			<td class="wu-py-2 col-description" v-show="line_item.recurring">
 
-			<?php printf(__('Subscription - %s', 'wp-ultimo'), '{{ line_item.title }}'); ?>
+			<?php printf(esc_html__('Subscription - %s', 'wp-multisite-waas'), '{{ line_item.title }}'); ?>
 
 			<small v-if="line_item.type == 'product'" class="wu-ml-3 wu-text-xs">
 
 				<a href="#" class="wu-no-underline" v-on:click.prevent="remove_product(line_item.product_id, line_item.product_slug)">
 
-				<?php _e('Remove', 'wp-ultimo'); ?>
+				<?php esc_html_e('Remove', 'wp-multisite-waas'); ?>
 
 				</a>
 
@@ -93,7 +93,7 @@
 
 				<a href="#" class="wu-no-underline" v-on:click.prevent="remove_product(line_item.product_id, line_item.product_slug)">
 
-				<?php _e('Remove', 'wp-ultimo'); ?>
+				<?php esc_html_e('Remove', 'wp-multisite-waas'); ?>
 
 				</a>
 
@@ -167,7 +167,7 @@
 
 			<td>
 
-				<?php _e('Discounts', 'wp-ultimo'); ?>
+				<?php esc_html_e('Discounts', 'wp-multisite-waas'); ?>
 
 			</td>
 
@@ -183,7 +183,7 @@
 
 			<td>
 
-				<?php _e('Taxes', 'wp-ultimo'); ?>
+				<?php esc_html_e('Taxes', 'wp-multisite-waas'); ?>
 
 			</td>
 
@@ -201,7 +201,7 @@
 
 			<td class="" colspan="<?php echo esc_attr('simple' === $table_columns) ? 1 : 4; ?>">
 
-			<strong><?php _e("Today's Grand Total", 'wp-ultimo'); ?></strong>
+			<strong><?php esc_html_e("Today's Grand Total", 'wp-multisite-waas'); ?></strong>
 
 			</td>
 
@@ -224,7 +224,7 @@
 			<td class="" colspan="<?php echo esc_attr('simple' === $table_columns) ? 1 : 4; ?>">
 
 			<small>
-				<?php printf(__('Total in %1$s - end of trial period.', 'wp-ultimo'), '{{ $moment.unix(order.dates.date_trial_end).format(`LL`) }}'); ?>
+				<?php printf(esc_html__('Total in %1$s - end of trial period.', 'wp-multisite-waas'), '{{ $moment.unix(order.dates.date_trial_end).format(`LL`) }}'); ?>
 			</small>
 
 			</td>
@@ -245,7 +245,7 @@
 
 		<li v-if="!order.has_trial && order.has_recurring">
 
-		<?php printf(__('Next fee of %1$s will be billed in %2$s.', 'wp-ultimo'), '{{ wu_format_money(order.totals.recurring.total) }}', '{{ $moment.unix(order.dates.date_next_charge).format(`LL`) }}'); ?>
+		<?php printf(esc_html__('Next fee of %1$s will be billed in %2$s.', 'wp-multisite-waas'), '{{ wu_format_money(order.totals.recurring.total) }}', '{{ $moment.unix(order.dates.date_next_charge).format(`LL`) }}'); ?>
 
 		</li>
 
@@ -253,12 +253,12 @@
 
 		<?php
 		// translators: 1 is the discount name (e.g. Launch Promo). 2 is the coupon code (e.g PROMO10), 3 is the coupon amount and 4 is the discount total.
-		printf(__('Discount applied: %1$s - %2$s (%3$s) %4$s', 'wp-ultimo'), '{{ order.discount_code.name }}', '{{ order.discount_code.code }}', '{{ order.discount_code.discount_description }}', '{{ wu_format_money(-order.totals.total_discounts) }}');
+		printf(esc_html__('Discount applied: %1$s - %2$s (%3$s) %4$s', 'wp-multisite-waas'), '{{ order.discount_code.name }}', '{{ order.discount_code.code }}', '{{ order.discount_code.discount_description }}', '{{ wu_format_money(-order.totals.total_discounts) }}');
 		?>
 
 		<a class="wu-no-underline wu-ml-2" href="#" v-on:click.prevent="discount_code = ''">
 
-			<?php _e('Remove', 'wp-ultimo'); ?>
+			<?php esc_html_e('Remove', 'wp-multisite-waas'); ?>
 
 		</a>
 

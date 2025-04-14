@@ -16,7 +16,7 @@
 
 		<span class="wu-text-gray-600 wu-my-1 wu-text-2xs wu-uppercase wu-font-semibold">
 
-			<?php printf(__('%1$s steps and %2$s fields', 'wp-ultimo'), '{{ steps.length }}', '{{ field_count }}'); ?>
+			<?php echo esc_html(sprintf(__('%1$s steps and %2$s fields', 'wp-multisite-waas'), '{{ steps.length }}', '{{ field_count }}')); ?>
 
 		</span>
 
@@ -28,36 +28,27 @@
 
 			<li class="wu-m-0 wu-ml-4">
 			<a
-				title="<?php _e('Preview', 'wp-ultimo'); ?>"
+				title="<?php esc_attr_e('Preview', 'wp-multisite-waas'); ?>"
 				href="#"
 				type="button"
 				class="wu-uppercase wu-text-2xs wu-font-semibold wu-no-underline wu-outline-none hover:wu-shadow-none focus:wu-shadow-none wu-text-gray-600 hover:wu-text-gray-800"
 				@click.prevent="get_preview()"
 			>
 				<span class="dashicons-wu-eye wu-align-middle"></span>
-				<span v-show="!preview"><?php _e('Preview', 'wp-ultimo'); ?></span>
-				<span v-cloak v-show="preview"><?php _e('Editor', 'wp-ultimo'); ?></span>
+				<span v-show="!preview"><?php esc_html_e('Preview', 'wp-multisite-waas'); ?></span>
+				<span v-cloak v-show="preview"><?php esc_html_e('Editor', 'wp-multisite-waas'); ?></span>
 			</a>
 			</li>
 
 			<li class="wu-m-0 wu-ml-4" v-show="!preview">
 			<a
-				title="<?php _e('Add new Checkout Step', 'wp-ultimo'); ?>"
-				href="
-				<?php
-				echo wu_get_form_url(
-					'add_new_form_step',
-					[
-						'checkout_form' => $checkout_form,
-					]
-				);
-				?>
-				"
+				title="<?php esc_attr_e('Add new Checkout Step', 'wp-multisite-waas'); ?>"
+				href="<?php echo esc_url(wu_get_form_url('add_new_form_step', array('checkout_form' => $checkout_form))); ?>"
 				type="button"
 				class="wubox wu-uppercase wu-text-2xs wu-font-semibold wu-no-underline wu-outline-none hover:wu-shadow-none focus:wu-shadow-none wu-text-gray-600 hover:wu-text-gray-800"
 			>
 				<span class="dashicons-wu-circle-with-plus wu-align-middle"></span>
-				<?php _e('Add new Checkout Step', 'wp-ultimo'); ?>
+				<?php esc_html_e('Add new Checkout Step', 'wp-multisite-waas'); ?>
 			</a>
 			</li>
 
@@ -100,7 +91,7 @@
 		<div class="postbox-header">
 			<h2 class="hndle ui-sortable-handle">
 			<span class="wu-text-gray-700 ">
-				<span class="wu-text-2xs wu-font-mono wu-uppercase wu-mr-4"><?php printf(__('Step %s', 'wp-ultimo'), '{{ idx + 1 }}'); ?></span> {{ step.name }}
+				<span class="wu-text-2xs wu-font-mono wu-uppercase wu-mr-4"><?php printf(esc_html__('Step %s', 'wp-multisite-waas'), '{{ idx + 1 }}'); ?></span> {{ step.name }}
 			</span>
 			</h2>
 		</div>
@@ -113,11 +104,11 @@
 				<span class="dashicons-wu-eye wu-mr-1 wu-align-middle"></span>
 
 				<span v-if="step.logged == 'guests_only'">
-				<?php _e('This step is only visible for <strong>guests</strong>', 'wp-ultimo'); ?>  
+				<?php echo wp_kses_post(__('This step is only visible for <strong>guests</strong>', 'wp-multisite-waas')); ?>  
 				</span>
 
 				<span v-else>
-				<?php _e('This step is only visible for <strong>logged-in users</strong>', 'wp-ultimo'); ?>
+				<?php echo wp_kses_post(__('This step is only visible for <strong>logged-in users</strong>', 'wp-multisite-waas')); ?>
 				</span>
 
 			</div>
@@ -147,28 +138,28 @@
 				<a
 					v-show="delete_step_id !== step.id"
 					v-on:click.prevent="delete_step_id = step.id"
-					title="<?php _e('Delete'); ?>"
+					title="<?php esc_html_e('Delete', 'wp-multisite-waas'); ?>"
 					href="#"
 					class="wu-text-red-500 wu-uppercase wu-text-2xs wu-font-semibold wu-no-underline wu-outline-none hover:wu-shadow-none focus:wu-shadow-none wu-p-4 md:wu-p-0 wu-inline-block"
 				>
-					<?php _e('Delete Step'); ?>
+					<?php esc_html_e('Delete Step', 'wp-multisite-waas'); ?>
 				</a>
 
 				<a
 					v-show="delete_step_id === step.id"
 					v-on:click.prevent="remove_step(step.id)"
-					title="<?php _e('Delete'); ?>"
+					title="<?php esc_html_e('Delete', 'wp-multisite-waas'); ?>"
 					href="#"
 					class="wu-text-red-700 wu-uppercase wu-text-2xs wu-font-bold wu-no-underline wu-outline-none hover:wu-shadow-none focus:wu-shadow-none wu-p-4 md:wu-p-0 wu-inline-block"
 				>
-					<?php _e('Confirm?', 'wp-ultimo'); ?>
+					<?php esc_html_e('Confirm?', 'wp-multisite-waas'); ?>
 				</a>
 
 				</li>
 
 				<li class="wu-m-0 md:wu-ml-4 wu-text-center">
 
-				<a title="<?php _e('Edit Section', 'wp-ultimo'); ?>"
+				<a title="<?php esc_html_e('Edit Section', 'wp-multisite-waas'); ?>"
 					:href="'
 					<?php
 					echo wu_get_form_url(
@@ -183,14 +174,14 @@
 					type="button" 
 					class="wu-uppercase wu-text-2xs wu-font-semibold wu-no-underline wu-outline-none hover:wu-shadow-none focus:wu-shadow-none wu-text-gray-600 hover:wu-text-gray-800 wubox wu-p-4 md:wu-p-0 wu-inline-block"
 				>
-					<?php _e('Edit Section', 'wp-ultimo'); ?>
+					<?php esc_html_e('Edit Section', 'wp-multisite-waas'); ?>
 				</a>
 
 				</li>
 
 				<li class="wu-m-0 md:wu-ml-4 wu-text-center">
 
-				<a title="<?php _e('Add new Field', 'wp-ultimo'); ?>"
+				<a title="<?php esc_html_e('Add new Field', 'wp-multisite-waas'); ?>"
 					:href="'
 					<?php
 					echo wu_get_form_url(
@@ -205,7 +196,7 @@
 					=' + step.id"
 					type="button" class="wu-uppercase wu-text-2xs wu-font-semibold wu-no-underline wu-outline-none hover:wu-shadow-none focus:wu-shadow-none wu-text-gray-600 hover:wu-text-gray-800 wubox wu-p-4 md:wu-p-0 wu-inline-block">
 					<span class="dashicons-wu-circle-with-plus wu-align-text-bottom"></span>
-					<?php _e('Add new Field', 'wp-ultimo'); ?>
+					<?php esc_html_e('Add new Field', 'wp-multisite-waas'); ?>
 				</a>
 
 				</li>
@@ -227,11 +218,11 @@
 		<div v-show="!loading_preview && !preview_error" class="wu-text-center wu-mt-3">
 
 		<a @click.prevent="get_preview('user')" href="#" class="wu-m-2 wu-uppercase wu-text-2xs wu-font-semibold wu-no-underline wu-outline-none hover:wu-shadow-none focus:wu-shadow-none wu-text-gray-600 hover:wu-text-gray-800">
-			<?php _e('See as existing user', 'wp-ultimo'); ?>
+			<?php esc_html_e('See as existing user', 'wp-multisite-waas'); ?>
 		</a>
 
 		<a @click.prevent="get_preview('visitor')" href="#" class="wu-m-2 wu-uppercase wu-text-2xs wu-font-semibold wu-no-underline wu-outline-none hover:wu-shadow-none focus:wu-shadow-none wu-text-gray-600 hover:wu-text-gray-800">
-			<?php _e('See as visitor', 'wp-ultimo'); ?>
+			<?php esc_html_e('See as visitor', 'wp-multisite-waas'); ?>
 		</a>
 
 		</div>
@@ -240,7 +231,7 @@
 		<div v-show="loading_preview" class="wu-block wu-p-4 wu-py-8 wu-bg-white wu-text-center wu-my-4 wu-border wu-border-solid wu-rounded wu-border-gray-400">
 
 		<span class="wu-blinking-animation wu-text-gray-600 wu-my-1 wu-text-2xs wu-uppercase wu-font-semibold">
-			<?php _e('Loading Preview...', 'wp-ultimo'); ?>
+			<?php esc_html_e('Loading Preview...', 'wp-multisite-waas'); ?>
 		</span>
 
 		</div>
@@ -250,7 +241,7 @@
 		<div v-show="preview_error" class="wu-block wu-p-4 wu-py-8 wu-bg-white wu-text-center wu-my-4 wu-border wu-border-solid wu-rounded wu-border-gray-400">
 
 		<span class="wu-text-red-600 wu-my-1 wu-text-2xs wu-uppercase wu-font-semibold">
-			<?php _e('Something wrong happened along the way =(', 'wp-ultimo'); ?>
+			<?php esc_html_e('Something wrong happened along the way =(', 'wp-multisite-waas'); ?>
 		</span>
 
 		</div>
@@ -261,7 +252,7 @@
 		<div v-show="!loading_preview && !preview_error" id="wu-iframe-content" class="wu-w-full wu-relative">
 
 		<iframe id="wp-ultimo-checkout-preview" v-bind:src="iframe_preview_url" class="wu-w-full wu-h-full wu-m-0 wu-mt-4 wu-mb-2 wu-p-0 wu-overflow-hidden wu-border-radius wu-border wu-border-solid wu-rounded wu-border-gray-400">
-			<?php _e('Your browser doesn\'t support iframes', 'wp-ultimo'); ?>
+			<?php esc_html_e('Your browser doesn\'t support iframes', 'wp-multisite-waas'); ?>
 		</iframe>
 
 		</div>
@@ -282,7 +273,7 @@
 
 		<span class="wu-text-gray-600 wu-my-1 wu-text-2xs wu-uppercase wu-font-semibold">
 
-			<?php printf(__('%1$s steps and %2$s fields', 'wp-ultimo'), '{{ steps.length }}', '{{ field_count }}'); ?>
+			<?php echo esc_html(sprintf(__('%1$s steps and %2$s fields', 'wp-multisite-waas'), '{{ steps.length }}', '{{ field_count }}')); ?>
 
 		</span>
 
@@ -294,36 +285,27 @@
 
 			<li class="wu-m-0 wu-ml-4">
 			<a
-				title="<?php _e('Preview', 'wp-ultimo'); ?>"
+				title="<?php esc_attr_e('Preview', 'wp-multisite-waas'); ?>"
 				href="#"
 				type="button"
 				class="wu-uppercase wu-text-2xs wu-font-semibold wu-no-underline wu-outline-none hover:wu-shadow-none focus:wu-shadow-none wu-text-gray-600 hover:wu-text-gray-800"
 				@click.prevent="get_preview('user')"
 			>
 				<span class="dashicons-wu-eye wu-align-middle"></span>
-				<span v-show="!preview"><?php _e('Preview', 'wp-ultimo'); ?></span>
-				<span v-cloak v-show="preview"><?php _e('Editor', 'wp-ultimo'); ?></span>
+				<span v-show="!preview"><?php esc_html_e('Preview', 'wp-multisite-waas'); ?></span>
+				<span v-cloak v-show="preview"><?php esc_html_e('Editor', 'wp-multisite-waas'); ?></span>
 			</a>
 			</li>
 
 			<li class="wu-m-0 wu-ml-4" v-show="!preview">
 			<a
-				title="<?php _e('Add new Checkout Step', 'wp-ultimo'); ?>"
-				href="
-				<?php
-				echo wu_get_form_url(
-					'add_new_form_step',
-					[
-						'checkout_form' => $checkout_form,
-					]
-				);
-				?>
-				"
+				title="<?php esc_attr_e('Add new Checkout Step', 'wp-multisite-waas'); ?>"
+				href="<?php echo esc_url(wu_get_form_url('add_new_form_step', array('checkout_form' => $checkout_form))); ?>"
 				type="button"
 				class="wubox wu-uppercase wu-text-2xs wu-font-semibold wu-no-underline wu-outline-none hover:wu-shadow-none focus:wu-shadow-none wu-text-gray-600 hover:wu-text-gray-800"
 			>
 				<span class="dashicons-wu-circle-with-plus wu-align-middle"></span>
-				<?php _e('Add new Checkout Step', 'wp-ultimo'); ?>
+				<?php esc_html_e('Add new Checkout Step', 'wp-multisite-waas'); ?>
 			</a>
 			</li>
 

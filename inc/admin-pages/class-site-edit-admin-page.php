@@ -151,16 +151,16 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 				[
 					[
 						'id'       => 'new-site-template-warning',
-						'title'    => __('On adding a new Site Template...', 'wp-ultimo'),
+						'title'    => __('On adding a new Site Template...', 'wp-multisite-waas'),
 						'text'     => [
-							__("You just successfully added a new site template to your WP Multisite WaaS network and that's awesome!", 'wp-ultimo'),
-							__('Keep in mind that newly created site templates do not appear automatically in your checkout forms.', 'wp-ultimo'),
-							__('To make a site template available on registration, you will need to manually add it to the template selection field of your checkout forms.', 'wp-ultimo'),
+							__("You just successfully added a new site template to your WP Multisite WaaS network and that's awesome!", 'wp-multisite-waas'),
+							__('Keep in mind that newly created site templates do not appear automatically in your checkout forms.', 'wp-multisite-waas'),
+							__('To make a site template available on registration, you will need to manually add it to the template selection field of your checkout forms.', 'wp-multisite-waas'),
 						],
 						'buttons'  => [
 							[
 								'classes' => 'button wu-text-xs sm:wu-normal-case wu-float-left',
-								'text'    => __('Go to Checkout Forms', 'wp-ultimo'),
+								'text'    => __('Go to Checkout Forms', 'wp-multisite-waas'),
 								'url'     => wu_network_admin_url('wp-ultimo-checkout-forms'),
 							],
 						],
@@ -191,16 +191,16 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 		$fields = [
 			'confirm'              => [
 				'type'      => 'toggle',
-				'title'     => __('Confirm Transfer', 'wp-ultimo'),
-				'desc'      => __('This will start the transfer of assets from one membership to another.', 'wp-ultimo'),
+				'title'     => __('Confirm Transfer', 'wp-multisite-waas'),
+				'desc'      => __('This will start the transfer of assets from one membership to another.', 'wp-multisite-waas'),
 				'html_attr' => [
 					'v-model' => 'confirmed',
 				],
 			],
 			'submit_button'        => [
 				'type'            => 'submit',
-				'title'           => __('Start Transfer', 'wp-ultimo'),
-				'placeholder'     => __('Start Transfer', 'wp-ultimo'),
+				'title'           => __('Start Transfer', 'wp-multisite-waas'),
+				'placeholder'     => __('Start Transfer', 'wp-multisite-waas'),
 				'value'           => 'save',
 				'classes'         => 'button button-primary wu-w-full',
 				'wrapper_classes' => 'wu-items-end',
@@ -227,7 +227,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 				'field_wrapper_classes' => 'wu-w-full wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid',
 				'html_attr'             => [
 					'data-wu-app' => 'transfer_site',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'confirmed' => false,
 						]
@@ -254,11 +254,11 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 		$target_membership = wu_get_membership(wu_request('target_membership_id'));
 
 		if ( ! $site) {
-			wp_send_json_error(new \WP_Error('not-found', __('Site not found.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('not-found', __('Site not found.', 'wp-multisite-waas')));
 		}
 
 		if ( ! $target_membership) {
-			wp_send_json_error(new \WP_Error('not-found', __('Membership not found.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('not-found', __('Membership not found.', 'wp-multisite-waas')));
 		}
 
 		$site->set_membership_id($target_membership->get_id());
@@ -305,7 +305,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_fields_widget(
 			'at_a_glance',
 			[
-				'title'                 => __('At a Glance', 'wp-ultimo'),
+				'title'                 => __('At a Glance', 'wp-multisite-waas'),
 				'position'              => 'normal',
 				'classes'               => 'wu-overflow-hidden wu-m-0 wu--mt-1 wu--mx-3 wu--mb-3',
 				'field_wrapper_classes' => 'wu-w-1/4 wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t-0 wu-border-l-0 wu-border-r wu-border-b-0 wu-border-gray-300 wu-border-solid wu-float-left wu-relative',
@@ -315,14 +315,14 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 				'fields'                => [
 					'type' => [
 						'type'          => 'text-display',
-						'title'         => __('Site Type', 'wp-ultimo'),
+						'title'         => __('Site Type', 'wp-multisite-waas'),
 						'display_value' => $tag,
 						'tooltip'       => '',
 					],
 					'id'   => [
 						'type'          => 'text-display',
 						'copy'          => true,
-						'title'         => __('Site ID', 'wp-ultimo'),
+						'title'         => __('Site ID', 'wp-multisite-waas'),
 						'display_value' => $this->get_object()->get_id(),
 						'tooltip'       => '',
 					],
@@ -333,13 +333,13 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_fields_widget(
 			'description',
 			[
-				'title'    => __('Description', 'wp-ultimo'),
+				'title'    => __('Description', 'wp-multisite-waas'),
 				'position' => 'normal',
 				'fields'   => [
 					'description' => [
 						'type'        => 'textarea',
-						'title'       => __('Site Description', 'wp-ultimo'),
-						'placeholder' => __('Tell your customers what this site is about.', 'wp-ultimo'),
+						'title'       => __('Site Description', 'wp-multisite-waas'),
+						'placeholder' => __('Tell your customers what this site is about.', 'wp-multisite-waas'),
 						'value'       => $this->get_object()->get_option_blogdescription(),
 						'html_attr'   => [
 							'rows' => 3,
@@ -352,7 +352,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_tabs_widget(
 			'options',
 			[
-				'title'    => __('Site Options', 'wp-ultimo'),
+				'title'    => __('Site Options', 'wp-multisite-waas'),
 				'position' => 'normal',
 				'sections' => $this->get_site_option_sections(),
 			]
@@ -361,7 +361,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_list_table_widget(
 			'domains',
 			[
-				'title'        => __('Mapped Domains', 'wp-ultimo'),
+				'title'        => __('Mapped Domains', 'wp-multisite-waas'),
 				'table'        => new \WP_Ultimo\List_Tables\Sites_Domain_List_Table(),
 				'query_filter' => [$this, 'domain_query_filter'],
 			]
@@ -371,7 +371,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 			$this->add_list_table_widget(
 				'membership',
 				[
-					'title'        => __('Linked Membership', 'wp-ultimo'),
+					'title'        => __('Linked Membership', 'wp-multisite-waas'),
 					'table'        => new \WP_Ultimo\List_Tables\Customers_Membership_List_Table(),
 					'query_filter' => function ($query) {
 
@@ -385,7 +385,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 			$this->add_list_table_widget(
 				'customer',
 				[
-					'title'        => __('Linked Customer', 'wp-ultimo'),
+					'title'        => __('Linked Customer', 'wp-multisite-waas'),
 					'table'        => new \WP_Ultimo\List_Tables\Site_Customer_List_Table(),
 					'query_filter' => function ($query) {
 
@@ -400,7 +400,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_list_table_widget(
 			'events',
 			[
-				'title'        => __('Events', 'wp-ultimo'),
+				'title'        => __('Events', 'wp-multisite-waas'),
 				'table'        => new \WP_Ultimo\List_Tables\Inside_Events_List_Table(),
 				'query_filter' => [$this, 'query_filter'],
 			]
@@ -414,7 +414,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 			[
 				'html_attr' => [
 					'data-wu-app' => 'site_type',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'type'                   => $this->get_object()->get_type(),
 							'original_membership_id' => $this->get_object()->get_membership_id(),
@@ -426,9 +426,9 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 					// Fields for price
 					'type_main'     => [
 						'type'              => 'text-display',
-						'title'             => __('Site Type', 'wp-ultimo'),
-						'display_value'     => __('Main Site', 'wp-ultimo'),
-						'tooltip'           => __('You can\'t change the main site type.', 'wp-ultimo'),
+						'title'             => __('Site Type', 'wp-multisite-waas'),
+						'display_value'     => __('Main Site', 'wp-multisite-waas'),
+						'tooltip'           => __('You can\'t change the main site type.', 'wp-multisite-waas'),
 						'wrapper_html_attr' => [
 							'v-cloak' => '1',
 							'v-show'  => 'type === "main"',
@@ -436,15 +436,15 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 					],
 					'type'          => [
 						'type'              => 'select',
-						'title'             => __('Site Type', 'wp-ultimo'),
-						'placeholder'       => __('Select Site Type', 'wp-ultimo'),
-						'desc'              => __('Different site types have different options and settings.', 'wp-ultimo'),
+						'title'             => __('Site Type', 'wp-multisite-waas'),
+						'placeholder'       => __('Select Site Type', 'wp-multisite-waas'),
+						'desc'              => __('Different site types have different options and settings.', 'wp-multisite-waas'),
 						'value'             => $this->get_object()->get_type(),
 						'tooltip'           => '',
 						'options'           => [
-							'default'        => __('Regular WordPress', 'wp-ultimo'),
-							'site_template'  => __('Site Template', 'wp-ultimo'),
-							'customer_owned' => __('Customer-owned', 'wp-ultimo'),
+							'default'        => __('Regular WordPress', 'wp-multisite-waas'),
+							'site_template'  => __('Site Template', 'wp-multisite-waas'),
+							'customer_owned' => __('Customer-owned', 'wp-multisite-waas'),
 						],
 						'html_attr'         => [
 							'v-model' => 'type',
@@ -456,9 +456,9 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 					],
 					'categories'    => [
 						'type'              => 'select',
-						'title'             => __('Template Categories', 'wp-ultimo'),
-						'placeholder'       => __('e.g.: Landing Page, Health...', 'wp-ultimo'),
-						'desc'              => __('Customers will be able to filter by categories during signup.', 'wp-ultimo'),
+						'title'             => __('Template Categories', 'wp-multisite-waas'),
+						'placeholder'       => __('e.g.: Landing Page, Health...', 'wp-multisite-waas'),
+						'desc'              => __('Customers will be able to filter by categories during signup.', 'wp-multisite-waas'),
 						'value'             => $this->get_object()->get_categories(),
 						'options'           => Site::get_all_categories(),
 						'html_attr'         => [
@@ -472,9 +472,9 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 					],
 					'membership_id' => [
 						'type'              => 'model',
-						'title'             => __('Associated Membership', 'wp-ultimo'),
-						'placeholder'       => __('Search Membership...', 'wp-ultimo'),
-						'desc'              => __('The membership that owns this site.', 'wp-ultimo'),
+						'title'             => __('Associated Membership', 'wp-multisite-waas'),
+						'placeholder'       => __('Search Membership...', 'wp-multisite-waas'),
+						'desc'              => __('The membership that owns this site.', 'wp-multisite-waas'),
 						'value'             => $this->get_object()->get_membership_id(),
 						'tooltip'           => '',
 						'wrapper_html_attr' => [
@@ -487,12 +487,12 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 							'data-label-field'  => 'reference_code',
 							'data-search-field' => 'reference_code',
 							'data-max-items'    => 1,
-							'data-selected'     => json_encode($membership_selected),
+							'data-selected'     => wp_json_encode($membership_selected),
 						],
 					],
 					'transfer_note' => [
 						'type'              => 'note',
-						'desc'              => __('Changing the membership will transfer the site and all its assets to the new membership.', 'wp-ultimo'),
+						'desc'              => __('Changing the membership will transfer the site and all its assets to the new membership.', 'wp-multisite-waas'),
 						'classes'           => 'wu-p-2 wu-bg-red-100 wu-text-red-600 wu-rounded wu-w-full',
 						'wrapper_html_attr' => [
 							'v-show'  => '(original_membership_id != membership_id) && membership_id',
@@ -501,8 +501,8 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 					],
 					'submit_save'   => [
 						'type'              => 'submit',
-						'title'             => __('Save Site', 'wp-ultimo'),
-						'placeholder'       => __('Save Site', 'wp-ultimo'),
+						'title'             => __('Save Site', 'wp-multisite-waas'),
+						'placeholder'       => __('Save Site', 'wp-multisite-waas'),
 						'value'             => 'save',
 						'classes'           => 'button button-primary wu-w-full',
 						'wrapper_html_attr' => [
@@ -512,7 +512,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 					],
 					'transfer'      => [
 						'type'              => 'link',
-						'display_value'     => __('Transfer Site', 'wp-ultimo'),
+						'display_value'     => __('Transfer Site', 'wp-multisite-waas'),
 						'wrapper_classes'   => 'wu-bg-gray-200',
 						'classes'           => 'button wubox wu-w-full wu-text-center',
 						'wrapper_html_attr' => [
@@ -527,7 +527,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 									'target_membership_id' => '',
 								]
 							) . "=' + membership_id",
-							'title'       => __('Transfer Site', 'wp-ultimo'),
+							'title'       => __('Transfer Site', 'wp-multisite-waas'),
 						],
 					],
 				],
@@ -537,12 +537,12 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_fields_widget(
 			'active',
 			[
-				'title'  => __('Active', 'wp-ultimo'),
+				'title'  => __('Active', 'wp-multisite-waas'),
 				'fields' => [
 					'active' => [
 						'type'  => 'toggle',
-						'title' => __('Active', 'wp-ultimo'),
-						'desc'  => __('Use this option to manually enable or disable this site.', 'wp-ultimo'),
+						'title' => __('Active', 'wp-multisite-waas'),
+						'desc'  => __('Use this option to manually enable or disable this site.', 'wp-multisite-waas'),
 						'value' => $this->get_object()->is_active(),
 					],
 				],
@@ -552,19 +552,19 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 		$this->add_fields_widget(
 			'image',
 			[
-				'title'  => __('Site Image', 'wp-ultimo'),
+				'title'  => __('Site Image', 'wp-multisite-waas'),
 				'fields' => [
 					'featured_image_id' => [
 						'type'    => 'image',
 						'stacked' => true,
-						'title'   => __('Site Image', 'wp-ultimo'),
-						'desc'    => __('This image is used on lists of sites and other places. It can be automatically generated by the screenshot scraper.', 'wp-ultimo'),
+						'title'   => __('Site Image', 'wp-multisite-waas'),
+						'desc'    => __('This image is used on lists of sites and other places. It can be automatically generated by the screenshot scraper.', 'wp-multisite-waas'),
 						'value'   => $this->get_object()->get_featured_image_id(),
 						'img'     => $this->get_object()->get_featured_image(),
 					],
 					'scraper_note'      => [
 						'type'            => 'note',
-						'desc'            => __('You need to save the site for the change to take effect.', 'wp-ultimo'),
+						'desc'            => __('You need to save the site for the change to take effect.', 'wp-multisite-waas'),
 						'wrapper_classes' => 'wu-hidden wu-scraper-note',
 					],
 					'scraper_error'     => [
@@ -574,13 +574,13 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 					],
 					'scraper_message'   => [
 						'type'            => 'note',
-						'desc'            => sprintf('<span class="wu-p-2 wu-bg-red-100 wu-text-red-600 wu-rounded wu-block">%s</span>', __('We detected that this network might be running locally. If that\'s the case, WP Multisite WaaS will not be able to take a screenshot of the site. A site needs to be publicly available to the outside world in order for this feature to work.', 'wp-ultimo')),
+						'desc'            => sprintf('<span class="wu-p-2 wu-bg-red-100 wu-text-red-600 wu-rounded wu-block">%s</span>', __('We detected that this network might be running locally. If that\'s the case, WP Multisite WaaS will not be able to take a screenshot of the site. A site needs to be publicly available to the outside world in order for this feature to work.', 'wp-multisite-waas')),
 						'wrapper_classes' => \WP_Ultimo\Domain_Mapping\Helper::is_development_mode() ? '' : 'wu-hidden',
 					],
 					'scraper'           => [
 						'type'    => 'submit',
-						'title'   => __('Take Screenshot', 'wp-ultimo'),
-						'title'   => __('Take Screenshot', 'wp-ultimo'),
+						'title'   => __('Take Screenshot', 'wp-multisite-waas'),
+						'title'   => __('Take Screenshot', 'wp-multisite-waas'),
 						'classes' => 'button wu-w-full',
 					],
 				],
@@ -615,7 +615,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function get_title() {
 
-		return $this->edit ? __('Edit Site', 'wp-ultimo') : __('Add new Site', 'wp-ultimo');
+		return $this->edit ? __('Edit Site', 'wp-multisite-waas') : __('Add new Site', 'wp-multisite-waas');
 	}
 
 	/**
@@ -626,7 +626,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Edit Site', 'wp-ultimo');
+		return __('Edit Site', 'wp-multisite-waas');
 	}
 
 	/**
@@ -640,17 +640,17 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 		return [
 			[
 				'url'   => network_admin_url('site-settings.php?id=' . $this->get_object()->get_id()),
-				'label' => __('Go to the Default Edit Screen', 'wp-ultimo'),
+				'label' => __('Go to the Default Edit Screen', 'wp-multisite-waas'),
 				'icon'  => 'wu-cog',
 			],
 			[
 				'url'   => get_site_url($this->get_object()->get_id()),
-				'label' => __('Visit Site', 'wp-ultimo'),
+				'label' => __('Visit Site', 'wp-multisite-waas'),
 				'icon'  => 'wu-link',
 			],
 			[
 				'url'   => get_admin_url($this->get_object()->get_id()),
-				'label' => __('Dashboard', 'wp-ultimo'),
+				'label' => __('Dashboard', 'wp-multisite-waas'),
 				'icon'  => 'dashboard',
 			],
 		];
@@ -665,15 +665,15 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 	public function get_labels() {
 
 		return [
-			'edit_label'          => __('Edit Site', 'wp-ultimo'),
-			'add_new_label'       => __('Add new Site', 'wp-ultimo'),
-			'updated_message'     => __('Site updated with success!', 'wp-ultimo'),
-			'title_placeholder'   => __('Enter Site Name', 'wp-ultimo'),
-			'title_description'   => __('This name will be used as the site title.', 'wp-ultimo'),
-			'save_button_label'   => __('Save Site', 'wp-ultimo'),
+			'edit_label'          => __('Edit Site', 'wp-multisite-waas'),
+			'add_new_label'       => __('Add new Site', 'wp-multisite-waas'),
+			'updated_message'     => __('Site updated with success!', 'wp-multisite-waas'),
+			'title_placeholder'   => __('Enter Site Name', 'wp-multisite-waas'),
+			'title_description'   => __('This name will be used as the site title.', 'wp-multisite-waas'),
+			'save_button_label'   => __('Save Site', 'wp-multisite-waas'),
 			'save_description'    => '',
-			'delete_button_label' => __('Delete Site', 'wp-ultimo'),
-			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-ultimo'),
+			'delete_button_label' => __('Delete Site', 'wp-multisite-waas'),
+			'delete_description'  => __('Be careful. This action is irreversible.', 'wp-multisite-waas'),
 		];
 	}
 
@@ -729,7 +729,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 		$item = wu_get_site($item_id);
 
 		if ( ! $item) {
-			wp_redirect(wu_network_admin_url('wp-ultimo-sites'));
+			wp_safe_redirect(wu_network_admin_url('wp-ultimo-sites'));
 
 			exit;
 		}

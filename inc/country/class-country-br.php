@@ -90,7 +90,7 @@ class Country_BR extends Country {
 	 */
 	public function get_name() {
 
-		return __('Brazil', 'wp-ultimo');
+		return __('Brazil', 'wp-multisite-waas');
 	}
 
 	/**
@@ -102,33 +102,33 @@ class Country_BR extends Country {
 	protected function states() {
 
 		return [
-			'AC' => __('Acre', 'wp-ultimo'),
-			'AL' => __('Alagoas', 'wp-ultimo'),
-			'AP' => __('Amapá', 'wp-ultimo'),
-			'AM' => __('Amazonas', 'wp-ultimo'),
-			'BA' => __('Bahia', 'wp-ultimo'),
-			'CE' => __('Ceará', 'wp-ultimo'),
-			'DF' => __('Distrito Federal', 'wp-ultimo'),
-			'ES' => __('Espírito Santo', 'wp-ultimo'),
-			'GO' => __('Goiás', 'wp-ultimo'),
-			'MA' => __('Maranhão', 'wp-ultimo'),
-			'MT' => __('Mato Grosso', 'wp-ultimo'),
-			'MS' => __('Mato Grosso do Sul', 'wp-ultimo'),
-			'MG' => __('Minas Gerais', 'wp-ultimo'),
-			'PR' => __('Paraná', 'wp-ultimo'),
-			'PB' => __('Paraíba', 'wp-ultimo'),
-			'PA' => __('Pará', 'wp-ultimo'),
-			'PE' => __('Pernambuco', 'wp-ultimo'),
-			'PI' => __('Piauí', 'wp-ultimo'),
-			'RN' => __('Rio Grande do Norte', 'wp-ultimo'),
-			'RS' => __('Rio Grande do Sul', 'wp-ultimo'),
-			'RJ' => __('Rio de Janeiro', 'wp-ultimo'),
-			'RO' => __('Rondônia', 'wp-ultimo'),
-			'RR' => __('Roraima', 'wp-ultimo'),
-			'SC' => __('Santa Catarina', 'wp-ultimo'),
-			'SE' => __('Sergipe', 'wp-ultimo'),
-			'SP' => __('São Paulo', 'wp-ultimo'),
-			'TO' => __('Tocantins', 'wp-ultimo'),
+			'AC' => __('Acre', 'wp-multisite-waas'),
+			'AL' => __('Alagoas', 'wp-multisite-waas'),
+			'AP' => __('Amapá', 'wp-multisite-waas'),
+			'AM' => __('Amazonas', 'wp-multisite-waas'),
+			'BA' => __('Bahia', 'wp-multisite-waas'),
+			'CE' => __('Ceará', 'wp-multisite-waas'),
+			'DF' => __('Distrito Federal', 'wp-multisite-waas'),
+			'ES' => __('Espírito Santo', 'wp-multisite-waas'),
+			'GO' => __('Goiás', 'wp-multisite-waas'),
+			'MA' => __('Maranhão', 'wp-multisite-waas'),
+			'MT' => __('Mato Grosso', 'wp-multisite-waas'),
+			'MS' => __('Mato Grosso do Sul', 'wp-multisite-waas'),
+			'MG' => __('Minas Gerais', 'wp-multisite-waas'),
+			'PR' => __('Paraná', 'wp-multisite-waas'),
+			'PB' => __('Paraíba', 'wp-multisite-waas'),
+			'PA' => __('Pará', 'wp-multisite-waas'),
+			'PE' => __('Pernambuco', 'wp-multisite-waas'),
+			'PI' => __('Piauí', 'wp-multisite-waas'),
+			'RN' => __('Rio Grande do Norte', 'wp-multisite-waas'),
+			'RS' => __('Rio Grande do Sul', 'wp-multisite-waas'),
+			'RJ' => __('Rio de Janeiro', 'wp-multisite-waas'),
+			'RO' => __('Rondônia', 'wp-multisite-waas'),
+			'RR' => __('Roraima', 'wp-multisite-waas'),
+			'SC' => __('Santa Catarina', 'wp-multisite-waas'),
+			'SE' => __('Sergipe', 'wp-multisite-waas'),
+			'SP' => __('São Paulo', 'wp-multisite-waas'),
+			'TO' => __('Tocantins', 'wp-multisite-waas'),
 		];
 	}
 }

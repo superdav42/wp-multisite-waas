@@ -1,7 +1,7 @@
 === WP Multisite WaaS ===
 Requires at least: 5.3
 Requires PHP: 7.4.30
-Tested up to: 6.7.1
+Tested up to: 6.7.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Contributors: aanduque, superdav42 
@@ -99,6 +99,20 @@ For support, please open an issue on the [GitHub repository](https://github.com/
 We recommend running this in a staging environment before updating your production environment.
 
 == Changelog ==
+Version [2.4.0] - Released on 2025-XX-XX
+- Improved: Prep Plugin for release on WordPress.org
+- Improved: Update translation text domain
+- Fixed: Escape everything that should be escaped.
+- Fixed: Add nonce checks where needed.
+- Fixed: Sanitize all inputs.
+- Improved: Apply Code style changes across the codebase.
+- Fixed: Many deprecation notices.
+- Improved: Load order of many filters.
+- Improved: Add Proper Build script
+- Improved: Use emojii flags
+- Fixed: i18n deprecation notice for translating too early
+- Improved: Put all scripts in footer and load async
+
 Version [2.3.4] - Released on 2024-01-31
 - Fixed: Unable to checkout with any payment gateway
 - Fixed: Warning Undefined global variable $pagenow

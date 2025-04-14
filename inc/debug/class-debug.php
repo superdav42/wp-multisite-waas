@@ -72,37 +72,37 @@ class Debug {
 			<a  
 				href="<?php wu_network_admin_url('wp-ultimo-debug-pages'); ?>" 
 				class="wu-ml-2 wu-no-underline wu-text-gray-600"
-				title="<?php _e('Pages', 'wp-ultimo'); ?>"
+				title="<?php esc_html_e('Pages', 'wp-multisite-waas'); ?>"
 			>
 				<span class="dashicons-wu-documents"></span>
-				<?php _e('Pages', 'wp-ultimo'); ?>
+				<?php esc_html_e('Pages', 'wp-multisite-waas'); ?>
 			</a>
 
 			<a  
 				href="<?php echo wu_get_form_url('add_debug_generator_form'); ?>" 
 				class="wubox wu-ml-2 wu-no-underline wu-relative wu-text-gray-600"
-				title="<?php _e('Generator', 'wp-ultimo'); ?>"
+				title="<?php esc_html_e('Generator', 'wp-multisite-waas'); ?>"
 			>
 				<span class="dashicons-wu-rocket"></span>
-				<?php _e('Generator', 'wp-ultimo'); ?>
+				<?php esc_html_e('Generator', 'wp-multisite-waas'); ?>
 			</a>
 
 			<a  
 				href="<?php echo wu_get_form_url('add_debug_reset_database_form'); ?>" 
 				class="wubox wu-ml-2 wu-no-underline wu-text-gray-600"
-				title="<?php _e('Reset Database', 'wp-ultimo'); ?>"
+				title="<?php esc_html_e('Reset Database', 'wp-multisite-waas'); ?>"
 			>
 				<span class="dashicons-wu-back-in-time"></span>
-				<?php _e('Reset Database', 'wp-ultimo'); ?>
+				<?php esc_html_e('Reset Database', 'wp-multisite-waas'); ?>
 			</a>
 
 			<a  
 				href="<?php echo wu_get_form_url('add_debug_drop_database_form'); ?>" 
 				class="wubox wu-ml-2 wu-no-underline wu-text-gray-600"
-				title="<?php _e('Drop Database', 'wp-ultimo'); ?>"
+				title="<?php esc_html_e('Drop Database', 'wp-multisite-waas'); ?>"
 			>
 				<span class="dashicons-wu-database"></span>
-				<?php _e('Drop Database', 'wp-ultimo'); ?>
+				<?php esc_html_e('Drop Database', 'wp-multisite-waas'); ?>
 			</a>
 
 		<?php
@@ -162,15 +162,15 @@ class Debug {
 
 		$fields = [
 			'customers'             => [
-				'title'     => __('Customers', 'wp-ultimo'),
-				'desc'      => __('Toggle to generate customers.', 'wp-ultimo'),
+				'title'     => __('Customers', 'wp-multisite-waas'),
+				'desc'      => __('Toggle to generate customers.', 'wp-multisite-waas'),
 				'type'      => 'toggle',
 				'html_attr' => [
 					'v-model' => 'customers',
 				],
 			],
 			'customers_number'      => [
-				'title'             => __('Number of Customers', 'wp-ultimo'),
+				'title'             => __('Number of Customers', 'wp-multisite-waas'),
 				'type'              => 'number',
 				'value'             => 10,
 				'wrapper_html_attr' => [
@@ -179,15 +179,15 @@ class Debug {
 				],
 			],
 			'products'              => [
-				'title'     => __('Products', 'wp-ultimo'),
-				'desc'      => __('Toggle to generate products.', 'wp-ultimo'),
+				'title'     => __('Products', 'wp-multisite-waas'),
+				'desc'      => __('Toggle to generate products.', 'wp-multisite-waas'),
 				'type'      => 'toggle',
 				'html_attr' => [
 					'v-model' => 'products',
 				],
 			],
 			'products_number'       => [
-				'title'             => __('Number of Products', 'wp-ultimo'),
+				'title'             => __('Number of Products', 'wp-multisite-waas'),
 				'type'              => 'number',
 				'value'             => 10,
 				'wrapper_html_attr' => [
@@ -196,15 +196,15 @@ class Debug {
 				],
 			],
 			'memberships'           => [
-				'title'     => __('Memberships', 'wp-ultimo'),
-				'desc'      => __('Toggle to generate memberships.', 'wp-ultimo'),
+				'title'     => __('Memberships', 'wp-multisite-waas'),
+				'desc'      => __('Toggle to generate memberships.', 'wp-multisite-waas'),
 				'type'      => 'toggle',
 				'html_attr' => [
 					'v-model' => 'memberships',
 				],
 			],
 			'memberships_number'    => [
-				'title'             => __('Number of Memberships', 'wp-ultimo'),
+				'title'             => __('Number of Memberships', 'wp-multisite-waas'),
 				'type'              => 'number',
 				'value'             => 10,
 				'wrapper_html_attr' => [
@@ -213,15 +213,15 @@ class Debug {
 				],
 			],
 			'sites'                 => [
-				'title'     => __('Sites', 'wp-ultimo'),
-				'desc'      => __('Toggle to generate sites.', 'wp-ultimo'),
+				'title'     => __('Sites', 'wp-multisite-waas'),
+				'desc'      => __('Toggle to generate sites.', 'wp-multisite-waas'),
 				'type'      => 'toggle',
 				'html_attr' => [
 					'v-model' => 'sites',
 				],
 			],
 			'sites_number'          => [
-				'title'             => __('Number of Sites', 'wp-ultimo'),
+				'title'             => __('Number of Sites', 'wp-multisite-waas'),
 				'type'              => 'number',
 				'value'             => 10,
 				'wrapper_html_attr' => [
@@ -230,15 +230,15 @@ class Debug {
 				],
 			],
 			'domains'               => [
-				'title'     => __('Domains', 'wp-ultimo'),
-				'desc'      => __('Toggle to generate domains.', 'wp-ultimo'),
+				'title'     => __('Domains', 'wp-multisite-waas'),
+				'desc'      => __('Toggle to generate domains.', 'wp-multisite-waas'),
 				'type'      => 'toggle',
 				'html_attr' => [
 					'v-model' => 'domains',
 				],
 			],
 			'domains_number'        => [
-				'title'             => __('Number of Domains', 'wp-ultimo'),
+				'title'             => __('Number of Domains', 'wp-multisite-waas'),
 				'type'              => 'number',
 				'value'             => 10,
 				'wrapper_html_attr' => [
@@ -247,15 +247,15 @@ class Debug {
 				],
 			],
 			'discount_codes'        => [
-				'title'     => __('Discount Codes', 'wp-ultimo'),
-				'desc'      => __('Toggle to generate discount codes.', 'wp-ultimo'),
+				'title'     => __('Discount Codes', 'wp-multisite-waas'),
+				'desc'      => __('Toggle to generate discount codes.', 'wp-multisite-waas'),
 				'type'      => 'toggle',
 				'html_attr' => [
 					'v-model' => 'discount_codes',
 				],
 			],
 			'discount_codes_number' => [
-				'title'             => __('Number of Discount Codes', 'wp-ultimo'),
+				'title'             => __('Number of Discount Codes', 'wp-multisite-waas'),
 				'type'              => 'number',
 				'value'             => 10,
 				'wrapper_html_attr' => [
@@ -264,15 +264,15 @@ class Debug {
 				],
 			],
 			'payments'              => [
-				'title'     => __('Payments', 'wp-ultimo'),
-				'desc'      => __('Toggle to generate payments.', 'wp-ultimo'),
+				'title'     => __('Payments', 'wp-multisite-waas'),
+				'desc'      => __('Toggle to generate payments.', 'wp-multisite-waas'),
 				'type'      => 'toggle',
 				'html_attr' => [
 					'v-model' => 'payments',
 				],
 			],
 			'payments_number'       => [
-				'title'             => __('Number of Payments', 'wp-ultimo'),
+				'title'             => __('Number of Payments', 'wp-multisite-waas'),
 				'type'              => 'number',
 				'value'             => 30,
 				'wrapper_html_attr' => [
@@ -281,7 +281,7 @@ class Debug {
 				],
 			],
 			'submit_button'         => [
-				'title'           => __('Generate Data &rarr;', 'wp-ultimo'),
+				'title'           => __('Generate Data &rarr;', 'wp-multisite-waas'),
 				'type'            => 'submit',
 				'value'           => 'save',
 				'classes'         => 'button button-primary wu-w-full',
@@ -298,7 +298,7 @@ class Debug {
 				'field_wrapper_classes' => 'wu-w-full wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid',
 				'html_attr'             => [
 					'data-wu-app' => 'debug_generator',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'customers'      => false,
 							'products'       => false,
@@ -404,8 +404,8 @@ class Debug {
 
 		$fields = [
 			'reset_only_fake_data' => [
-				'title'     => __('Only reset generated data.', 'wp-ultimo'),
-				'desc'      => __('Toggle this option to only remove data that was added by the generator previously. Untoggling this option will reset ALL data in WP Multisite WaaS tables.', 'wp-ultimo'),
+				'title'     => __('Only reset generated data.', 'wp-multisite-waas'),
+				'desc'      => __('Toggle this option to only remove data that was added by the generator previously. Untoggling this option will reset ALL data in WP Multisite WaaS tables.', 'wp-multisite-waas'),
 				'type'      => 'toggle',
 				'value'     => true,
 				'html_attr' => [
@@ -413,7 +413,7 @@ class Debug {
 				],
 			],
 			'submit_button'        => [
-				'title'           => __('Reset Database &rarr;', 'wp-ultimo'),
+				'title'           => __('Reset Database &rarr;', 'wp-multisite-waas'),
 				'type'            => 'submit',
 				'value'           => 'save',
 				'classes'         => 'button button-primary wu-w-full',
@@ -430,7 +430,7 @@ class Debug {
 				'field_wrapper_classes' => 'wu-w-full wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid',
 				'html_attr'             => [
 					'data-wu-app' => 'debug_reset_database_form',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'reset_only' => true,
 						]
@@ -490,10 +490,10 @@ class Debug {
 		$fields = [
 			'reset_note'    => [
 				'type' => 'note',
-				'desc' => __('This action will drop the WP Multisite WaaS database tables and is irreversable.', 'wp-ultimo'),
+				'desc' => __('This action will drop the WP Multisite WaaS database tables and is irreversable.', 'wp-multisite-waas'),
 			],
 			'submit_button' => [
-				'title'           => __('Drop Database Tables &rarr;', 'wp-ultimo'),
+				'title'           => __('Drop Database Tables &rarr;', 'wp-multisite-waas'),
 				'type'            => 'submit',
 				'value'           => 'save',
 				'classes'         => 'button button-primary wu-w-full',
@@ -510,7 +510,7 @@ class Debug {
 				'field_wrapper_classes' => 'wu-w-full wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid',
 				'html_attr'             => [
 					'data-wu-app' => 'debug_drop_database_form',
-					'data-state'  => json_encode(
+					'data-state'  => wp_json_encode(
 						[
 							'reset_only' => true,
 						]

@@ -56,14 +56,14 @@ class Site_Template extends Rule {
 		$site = wu_get_site($template_id);
 
 		if (! $site || ($site->get_type() !== Site_Type::SITE_TEMPLATE && $site->get_type() !== Site_Type::CUSTOMER_OWNED)) {
-			$this->message = __('The Template ID does not correspond to a valid Template', 'wp-ultimo');
+			$this->message = __('The Template ID does not correspond to a valid Template', 'wp-multisite-waas');
 
 			return false;
 		}
 
 		if ($site->get_type() === Site_Type::CUSTOMER_OWNED) {
 			if (! wu_get_setting('allow_own_site_as_template')) {
-				$this->message = __('You can not use your sites as template', 'wp-ultimo');
+				$this->message = __('You can not use your sites as template', 'wp-multisite-waas');
 
 				return false;
 			}
@@ -71,7 +71,7 @@ class Site_Template extends Rule {
 			$customer = wu_get_current_customer();
 
 			if (! $customer || $site->get_customer_id() !== $customer->get_id()) {
-				$this->message = __('The selected template is not available.', 'wp-ultimo');
+				$this->message = __('The selected template is not available.', 'wp-multisite-waas');
 
 				return false;
 			}
@@ -103,7 +103,7 @@ class Site_Template extends Rule {
 
 		if (is_array($allowed_templates) && !in_array($template_id, $allowed_templates)) { // phpcs:ignore
 
-			$this->message = __('The selected template is not available for this product.', 'wp-ultimo');
+			$this->message = __('The selected template is not available for this product.', 'wp-multisite-waas');
 
 			return false;
 		}

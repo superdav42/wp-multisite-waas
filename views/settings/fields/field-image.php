@@ -11,14 +11,12 @@
 wp_enqueue_media();
 wp_enqueue_script('media');
 
-$suffix = WU_Scripts()->suffix();
-
-wp_enqueue_script('wu-field-button-upload', WP_Ultimo()->get_asset("wu-field-image$suffix.js", 'js'));
+wp_enqueue_script('wu-field-button-upload', wu_get_asset('wu-field-image.js', 'js'), [], wu_get_version(), true);
 
 ?>
 
 <tr>
-	<th scope="row"><label for="<?php echo $field_slug; ?>"><?php echo $field['title']; ?></label></th>
+	<th scope="row"><label for="<?php echo esc_attr($field_slug); ?>"><?php echo esc_html($field['title']); ?></label></th>
 <td>
 
 	<?php
@@ -29,33 +27,32 @@ wp_enqueue_script('wu-field-button-upload', WP_Ultimo()->get_asset("wu-field-ima
 	}
 
 	if ( $image_url ) {
-		$image = '<img id="%s" src="%s" alt="%s" style="width:%s; height:auto">';
 		printf(
-			$image,
-			$field_slug . '-preview',
-			$image_url,
-			get_bloginfo('name'),
-			$field['width'] . 'px'
+			'<img id="%s" src="%s" alt="%s" style="width:%s; height:auto">',
+			esc_attr($field_slug . '-preview'),
+			esc_attr($image_url),
+			esc_attr(get_bloginfo('name')),
+			esc_attr($field['width'] . 'px')
 		);
 	}
 	?>
 
 	<br>
 
-	<a href="#" class="button wu-field-button-upload" data-target="<?php echo $field_slug; ?>">
-	<?php echo $field['button']; ?>
+	<a href="#" class="button wu-field-button-upload" data-target="<?php echo esc_attr($field_slug); ?>">
+		<?php echo esc_html($field['button']); ?>
 	</a>
 
-	<a data-default="<?php echo $field['default']; ?>" href="#" class="button wu-field-button-upload-remove" data-target="<?php echo $field_slug; ?>">
-	<?php _e('Remove Image', 'wp-ultimo'); ?>
+	<a data-default="<?php echo esc_attr($field['default']); ?>" href="#" class="button wu-field-button-upload-remove" data-target="<?php echo esc_attr($field_slug); ?>">
+		<?php esc_html_e('Remove Image', 'wp-multisite-waas'); ?>
 	</a>
 
 	<?php if ( ! empty($field['desc'])) : ?>
-	<p class="description" id="<?php echo $field_slug; ?>-desc">
-		<?php echo $field['desc']; ?>
+	<p class="description" id="<?php echo esc_attr($field_slug); ?>-desc">
+		<?php echo esc_html($field['desc']); ?>
 	</p>
 
-	<input type="hidden" name="<?php echo $field_slug; ?>" id="<?php echo $field_slug; ?>" value="<?php echo wu_get_setting($field_slug) ?: $field['default']; ?>">
+	<input type="hidden" name="<?php echo esc_attr($field_slug); ?>" id="<?php echo esc_attr($field_slug); ?>" value="<?php echo esc_attr(wu_get_setting($field_slug) ?: $field['default']); ?>">
 
 	<?php endif; ?>
 

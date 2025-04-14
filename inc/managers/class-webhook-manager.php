@@ -11,7 +11,6 @@
 
 namespace WP_Ultimo\Managers;
 
-use WP_Ultimo\Managers\Base_Manager;
 use WP_Ultimo\Models\Webhook;
 use WP_Ultimo\Logger;
 
@@ -126,7 +125,7 @@ class Webhook_Manager extends Base_Manager {
 	public function send_webhook($webhook, $data, $blocking = true, $count = true) {
 
 		if ( ! $data) {
-			return;
+			return null;
 		}
 
 		$request = wp_remote_post(
@@ -196,7 +195,7 @@ class Webhook_Manager extends Base_Manager {
 		if ( ! current_user_can('manage_network')) {
 			wp_send_json(
 				[
-					'response' => __('You do not have enough permissions to send a test event.', 'wp-ultimo'),
+					'response' => __('You do not have enough permissions to send a test event.', 'wp-multisite-waas'),
 					'webhooks' => Webhook::get_items_as_array(),
 				]
 			);
@@ -205,9 +204,7 @@ class Webhook_Manager extends Base_Manager {
 		$event = wu_get_event_type($_POST['webhook_event']);
 
 		$webhook_data = [
-			'webhook_url' => $_POST['webhook_url'],
-			'event'       => $_POST['webhook_event'],
-			'active'      => true,
+			'active' => true,
 		];
 
 		$webhook = new Webhook($webhook_data);
@@ -249,8 +246,7 @@ class Webhook_Manager extends Base_Manager {
 		';
 
 		if ( ! current_user_can('manage_network')) {
-			echo __('You do not have enough permissions to read the logs of this webhook.', 'wp-ultimo');
-
+			esc_html_e('You do not have enough permissions to read the logs of this webhook.', 'wp-multisite-waas');
 			exit;
 		}
 
@@ -271,7 +267,7 @@ class Webhook_Manager extends Base_Manager {
 			Logger::read_lines("webhook-$id", 5)
 		);
 
-		echo implode('', $logs);
+		echo implode('', $logs); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 		exit;
 	}
@@ -291,7 +287,7 @@ class Webhook_Manager extends Base_Manager {
 	 */
 	protected function create_event($event_name, $id, $url, $data, $response, $is_error = false) {
 
-		$message = sprintf('Sent a %s event to the URL %s with data: %s ', $event_name, $url, json_encode($data));
+		$message = sprintf('Sent a %s event to the URL %s with data: %s ', $event_name, $url, wp_json_encode($data));
 
 		if ( ! $is_error) {
 			$message .= empty($response) ? sprintf('Got response: %s', $response) : 'To debug the remote server response, turn the "Wait for Response" option on the WP Multisite WaaS Settings > API & Webhooks Tab';

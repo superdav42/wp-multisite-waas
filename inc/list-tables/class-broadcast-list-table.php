@@ -36,8 +36,8 @@ class Broadcast_List_Table extends Base_List_Table {
 
 		parent::__construct(
 			[
-				'singular' => __('Broadcast', 'wp-ultimo'),  // singular name of the listed records
-				'plural'   => __('Broadcasts', 'wp-ultimo'), // plural name of the listed records
+				'singular' => __('Broadcast', 'wp-multisite-waas'),  // singular name of the listed records
+				'plural'   => __('Broadcasts', 'wp-multisite-waas'), // plural name of the listed records
 				'ajax'     => true,                          // does this table support ajax?
 				'add_new'  => [
 					'url'     => wu_get_form_url('add_new_broadcast_message'),
@@ -79,13 +79,13 @@ class Broadcast_List_Table extends Base_List_Table {
 		$class = 'wu-bg-gray-200';
 
 		if ('broadcast_email' === $type) {
-			$label = __('Email', 'wp-ultimo');
+			$label = __('Email', 'wp-multisite-waas');
 		}
 
 		if ('broadcast_notice' === $type) {
 			$status = $item->get_notice_type();
 
-			$label = __('Notice', 'wp-ultimo');
+			$label = __('Notice', 'wp-multisite-waas');
 
 			if ('info' === $status) {
 				$class = 'wu-bg-blue-200';
@@ -121,8 +121,8 @@ class Broadcast_List_Table extends Base_List_Table {
 		];
 
 		$actions = [
-			'edit'   => sprintf('<a href="%s">%s</a>', wu_network_admin_url('wp-ultimo-edit-broadcast', $url_atts), __('Edit', 'wp-ultimo')),
-			'delete' => sprintf('<a title="%s" class="wubox" href="%s">%s</a>', __('Delete', 'wp-ultimo'), wu_get_form_url('delete_modal', $url_atts), __('Delete', 'wp-ultimo')),
+			'edit'   => sprintf('<a href="%s">%s</a>', wu_network_admin_url('wp-ultimo-edit-broadcast', $url_atts), __('Edit', 'wp-multisite-waas')),
+			'delete' => sprintf('<a title="%s" class="wubox" href="%s">%s</a>', __('Delete', 'wp-multisite-waas'), wu_get_form_url('delete_modal', $url_atts), __('Delete', 'wp-multisite-waas')),
 		];
 
 		return $title . $content . $this->row_actions($actions);
@@ -148,7 +148,7 @@ class Broadcast_List_Table extends Base_List_Table {
 
 		switch ($targets_count) {
 			case 0:
-				$not_found = __('No customer found', 'wp-ultimo');
+				$not_found = __('No customer found', 'wp-multisite-waas');
 
 				return "<div class='wu-p-2 wu-mr-1 wu-flex wu-rounded wu-items-center wu-border wu-border-solid wu-border-gray-300 wu-bg-gray-100 wu-relative wu-overflow-hidden'>
 										<span class='dashicons dashicons-wu-block wu-text-gray-600 wu-px-1 wu-pr-3'>&nbsp;</span>
@@ -235,9 +235,9 @@ class Broadcast_List_Table extends Base_List_Table {
 										<a href="%s" title="%s" class="wubox"><span class="wu-ml-6 wu-uppercase wu-text-xs wu-font-bold"> %s %s</span></a>
 										</div>',
 						wu_get_form_url('view_broadcast_targets', $modal_atts),
-						__('Targets', 'wp-ultimo'),
+						__('Targets', 'wp-multisite-waas'),
 						$targets_count,
-						__('Targets', 'wp-ultimo')
+						__('Targets', 'wp-multisite-waas')
 					);
 
 					$html .= '</div>';
@@ -258,9 +258,9 @@ class Broadcast_List_Table extends Base_List_Table {
 								<a href="%s" title="%s" class="wubox"><span class="wu-pl-2 wu-uppercase wu-text-xs wu-font-bold"> %s %s</span></a>
 								</div>',
 					wu_get_form_url('view_broadcast_targets', $modal_atts),
-					__('Targets', 'wp-ultimo'),
+					__('Targets', 'wp-multisite-waas'),
 					$targets_count,
-					__('Targets', 'wp-ultimo')
+					__('Targets', 'wp-multisite-waas')
 				);
 
 				$html .= '</div>';
@@ -291,7 +291,7 @@ class Broadcast_List_Table extends Base_List_Table {
 
 		switch ($product_count) {
 			case 0:
-				$not_found = __('No product found', 'wp-ultimo');
+				$not_found = __('No product found', 'wp-multisite-waas');
 
 				$html = "<div class='wu-p-2 wu-mr-1 wu-flex wu-rounded wu-items-center wu-border wu-border-solid wu-border-gray-300 wu-bg-gray-100 wu-relative wu-overflow-hidden'>
 					<span class='dashicons dashicons-wu-block wu-text-gray-600 wu-px-1 wu-pr-3'>&nbsp;</span>
@@ -325,7 +325,7 @@ class Broadcast_List_Table extends Base_List_Table {
 					$customer_count = count($plan_customers);
 				}
 
-				$description = sprintf(__('%s customer(s) targeted.', 'wp-ultimo'), $customer_count);
+				$description = sprintf(__('%s customer(s) targeted.', 'wp-multisite-waas'), $customer_count);
 
 				$url_atts = [
 					'id' => $product->get_id(),
@@ -384,9 +384,9 @@ class Broadcast_List_Table extends Base_List_Table {
 				'<div class="wu-inline-block wu-ml-4">
 			<a href="%s" title="%s" class="wubox"><span class="wu-pl-2 wu-uppercase wu-text-xs wu-font-bold"> %s %s</span></a></div>',
 				wu_get_form_url('view_broadcast_targets', $modal_atts),
-				__('Targets', 'wp-ultimo'),
+				__('Targets', 'wp-multisite-waas'),
 				$product_count,
-				__('Targets', 'wp-ultimo')
+				__('Targets', 'wp-multisite-waas')
 			);
 
 			$html .= '</div>';
@@ -402,7 +402,7 @@ class Broadcast_List_Table extends Base_List_Table {
 			'target_type' => 'products',
 		];
 
-		$html .= sprintf('<div class="wu-inline-block wu-ml-4"><a href="%s" title="%s" class="wubox"><span class="wu-pl-2 wu-uppercase wu-text-xs wu-font-bold"> %s %s</span></a></div>', wu_get_form_url('view_broadcast_targets', $modal_atts), __('Targets', 'wp-ultimo'), $product_count, __('Targets', 'wp-ultimo'));
+		$html .= sprintf('<div class="wu-inline-block wu-ml-4"><a href="%s" title="%s" class="wubox"><span class="wu-pl-2 wu-uppercase wu-text-xs wu-font-bold"> %s %s</span></a></div>', wu_get_form_url('view_broadcast_targets', $modal_atts), __('Targets', 'wp-multisite-waas'), $product_count, __('Targets', 'wp-multisite-waas'));
 
 		$html .= '</div>';
 
@@ -419,12 +419,12 @@ class Broadcast_List_Table extends Base_List_Table {
 
 		$columns = [
 			'cb'               => '<input type="checkbox" />',
-			'type'             => __('Type', 'wp-ultimo'),
-			'the_content'      => __('Content', 'wp-ultimo'),
-			'target_customers' => __('Target Customers', 'wp-ultimo'),
-			'target_products'  => __('Target Products', 'wp-ultimo'),
-			'date_created'     => __('Date', 'wp-ultimo'),
-			'id'               => __('ID', 'wp-ultimo'),
+			'type'             => __('Type', 'wp-multisite-waas'),
+			'the_content'      => __('Content', 'wp-multisite-waas'),
+			'target_customers' => __('Target Customers', 'wp-multisite-waas'),
+			'target_products'  => __('Target Products', 'wp-multisite-waas'),
+			'date_created'     => __('Date', 'wp-multisite-waas'),
+			'id'               => __('ID', 'wp-multisite-waas'),
 		];
 
 		return $columns;
@@ -440,25 +440,25 @@ class Broadcast_List_Table extends Base_List_Table {
 		return [
 			'filters'      => [
 				'type'   => [
-					'label'   => __('Broadcast Type', 'wp-ultimo'),
+					'label'   => __('Broadcast Type', 'wp-multisite-waas'),
 					'options' => [
-						'broadcast_notice' => __('Email', 'wp-ultimo'),
-						'broadcast_email'  => __('Notices', 'wp-ultimo'),
+						'broadcast_notice' => __('Email', 'wp-multisite-waas'),
+						'broadcast_email'  => __('Notices', 'wp-multisite-waas'),
 					],
 				],
 				'status' => [
-					'label'   => __('Notice Type', 'wp-ultimo'),
+					'label'   => __('Notice Type', 'wp-multisite-waas'),
 					'options' => [
-						'info'    => __('Info - Blue', 'wp-ultimo'),
-						'success' => __('Success - Green', 'wp-ultimo'),
-						'warning' => __('Warning - Yellow', 'wp-ultimo'),
-						'error'   => __('Error - Red', 'wp-ultimo'),
+						'info'    => __('Info - Blue', 'wp-multisite-waas'),
+						'success' => __('Success - Green', 'wp-multisite-waas'),
+						'warning' => __('Warning - Yellow', 'wp-multisite-waas'),
+						'error'   => __('Error - Red', 'wp-multisite-waas'),
 					],
 				],
 			],
 			'date_filters' => [
 				'date_created' => [
-					'label'   => __('Date', 'wp-ultimo'),
+					'label'   => __('Date', 'wp-multisite-waas'),
 					'options' => $this->get_default_date_filter_options(),
 				],
 			],
@@ -488,19 +488,19 @@ class Broadcast_List_Table extends Base_List_Table {
 			'all'              => [
 				'field' => 'status',
 				'url'   => add_query_arg('type', 'all'),
-				'label' => __('All Broadcasts', 'wp-ultimo'),
+				'label' => __('All Broadcasts', 'wp-multisite-waas'),
 				'count' => 0,
 			],
 			'broadcast_email'  => [
 				'field' => 'type',
 				'url'   => add_query_arg('type', 'broadcast_email'),
-				'label' => __('Emails', 'wp-ultimo'),
+				'label' => __('Emails', 'wp-multisite-waas'),
 				'count' => 0,
 			],
 			'broadcast_notice' => [
 				'field' => 'type',
 				'url'   => add_query_arg('type', 'broadcast_notice'),
-				'label' => __('Notices', 'wp-ultimo'),
+				'label' => __('Notices', 'wp-multisite-waas'),
 				'count' => 0,
 			],
 		];

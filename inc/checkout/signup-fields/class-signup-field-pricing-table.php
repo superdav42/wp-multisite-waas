@@ -54,7 +54,7 @@ class Signup_Field_Pricing_Table extends Base_Signup_Field {
 	 */
 	public function get_title() {
 
-		return __('Pricing Table', 'wp-ultimo');
+		return __('Pricing Table', 'wp-multisite-waas');
 	}
 
 	/**
@@ -67,7 +67,7 @@ class Signup_Field_Pricing_Table extends Base_Signup_Field {
 	 */
 	public function get_description() {
 
-		return __('Adds a pricing table section that customers can use to choose a plan to subscribe to.', 'wp-ultimo');
+		return __('Adds a pricing table section that customers can use to choose a plan to subscribe to.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -80,7 +80,7 @@ class Signup_Field_Pricing_Table extends Base_Signup_Field {
 	 */
 	public function get_tooltip() {
 
-		return __('Adds a pricing table section that customers can use to choose a plan to subscribe to.', 'wp-ultimo');
+		return __('Adds a pricing table section that customers can use to choose a plan to subscribe to.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -137,7 +137,7 @@ class Signup_Field_Pricing_Table extends Base_Signup_Field {
 
 		return [
 			'id'       => 'pricing_table',
-			'name'     => __('Plan Selection', 'wp-ultimo'),
+			'name'     => __('Plan Selection', 'wp-multisite-waas'),
 			'required' => true,
 		];
 	}
@@ -167,9 +167,9 @@ class Signup_Field_Pricing_Table extends Base_Signup_Field {
 
 		$editor_fields['pricing_table_products'] = [
 			'type'        => 'model',
-			'title'       => __('Products', 'wp-ultimo'),
-			'placeholder' => __('e.g. Premium', 'wp-ultimo'),
-			'desc'        => __('Be sure to add the products in the order you want them to show up.', 'wp-ultimo'),
+			'title'       => __('Products', 'wp-multisite-waas'),
+			'placeholder' => __('e.g. Premium', 'wp-multisite-waas'),
+			'desc'        => __('Be sure to add the products in the order you want them to show up.', 'wp-multisite-waas'),
 			'tooltip'     => '',
 			'order'       => 20,
 			'html_attr'   => [
@@ -184,8 +184,8 @@ class Signup_Field_Pricing_Table extends Base_Signup_Field {
 
 		$editor_fields['force_different_durations'] = [
 			'type'      => 'toggle',
-			'title'     => __('Force Different Durations', 'wp-ultimo'),
-			'desc'      => __('Check this option to force the display of plans with different recurring durations.', 'wp-ultimo'),
+			'title'     => __('Force Different Durations', 'wp-multisite-waas'),
+			'desc'      => __('Check this option to force the display of plans with different recurring durations.', 'wp-multisite-waas'),
 			'tooltip'   => '',
 			'value'     => 0,
 			'order'     => 22,
@@ -196,9 +196,9 @@ class Signup_Field_Pricing_Table extends Base_Signup_Field {
 
 		$editor_fields['hide_pricing_table_when_pre_selected'] = [
 			'type'      => 'toggle',
-			'title'     => __('Hide when Pre-Selected', 'wp-ultimo'),
-			'desc'      => __('Prevent customers from seeing this field when a plan was already selected via the URL.', 'wp-ultimo'),
-			'tooltip'   => __('If the pricing table field is the only field in the current step, the step will be skipped.', 'wp-ultimo'),
+			'title'     => __('Hide when Pre-Selected', 'wp-multisite-waas'),
+			'desc'      => __('Prevent customers from seeing this field when a plan was already selected via the URL.', 'wp-multisite-waas'),
+			'tooltip'   => __('If the pricing table field is the only field in the current step, the step will be skipped.', 'wp-multisite-waas'),
 			'value'     => 0,
 			'order'     => 24,
 			'html_attr' => [
@@ -213,8 +213,8 @@ class Signup_Field_Pricing_Table extends Base_Signup_Field {
 			'fields' => [
 				'pricing_table_template' => [
 					'type'            => 'select',
-					'title'           => __('Pricing Table Template', 'wp-ultimo'),
-					'placeholder'     => __('Select your Template', 'wp-ultimo'),
+					'title'           => __('Pricing Table Template', 'wp-multisite-waas'),
+					'placeholder'     => __('Select your Template', 'wp-multisite-waas'),
 					'options'         => [$this, 'get_pricing_table_templates'],
 					'wrapper_classes' => 'wu-flex-grow',
 					'html_attr'       => [
@@ -230,7 +230,7 @@ class Signup_Field_Pricing_Table extends Base_Signup_Field {
 		// 'order'           => 99,
 		// 'wrapper_classes' => 'sm:wu-p-0 sm:wu-block',
 		// 'classes'         => '',
-		// 'desc'            => sprintf('<div class="wu-p-4 wu-bg-blue-100 wu-text-grey-600">%s</div>', __('Want to add customized pricing table templates?<br><a target="_blank" class="wu-no-underline" href="https://help.wpultimo.com/article/343-customize-your-checkout-flow-using-field-templates">See how you can do that here</a>.', 'wp-ultimo')),
+		// 'desc'            => sprintf('<div class="wu-p-4 wu-bg-blue-100 wu-text-grey-600">%s</div>', __('Want to add customized pricing table templates?<br><a target="_blank" class="wu-no-underline" href="https://help.wpultimo.com/article/343-customize-your-checkout-flow-using-field-templates">See how you can do that here</a>.', 'wp-multisite-waas')),
 		// );
 
 		return $editor_fields;
@@ -277,7 +277,7 @@ class Signup_Field_Pricing_Table extends Base_Signup_Field {
 
 		$template_class = Field_Templates_Manager::get_instance()->get_template_class('pricing_table', $attributes['pricing_table_template']);
 
-		$content = $template_class ? $template_class->render_container($template_attributes) : __('Template does not exist.', 'wp-ultimo');
+		$content = $template_class ? $template_class->render_container($template_attributes) : __('Template does not exist.', 'wp-multisite-waas');
 
 		$checkout_fields = [];
 

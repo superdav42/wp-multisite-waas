@@ -9,7 +9,6 @@
 
 namespace WP_Ultimo\UI;
 
-use WP_Ultimo\UI\Base_Element;
 use ScssPhp\ScssPhp\Compiler;
 use WP_Ultimo\Database\Memberships\Membership_Status;
 
@@ -101,14 +100,14 @@ class Checkout_Element extends Base_Element {
 	 *
 	 * This is used on the Blocks list of Gutenberg.
 	 * You should return a string with the localized title.
-	 * e.g. return __('My Element', 'wp-ultimo').
+	 * e.g. return __('My Element', 'wp-multisite-waas').
 	 *
 	 * @since 2.0.0
 	 * @return string
 	 */
 	public function get_title() {
 
-		return __('Checkout', 'wp-ultimo');
+		return __('Checkout', 'wp-multisite-waas');
 	}
 
 	/**
@@ -117,14 +116,14 @@ class Checkout_Element extends Base_Element {
 	 * This is also used on the Gutenberg block list
 	 * to explain what this block is about.
 	 * You should return a string with the localized title.
-	 * e.g. return __('Adds a checkout form to the page', 'wp-ultimo').
+	 * e.g. return __('Adds a checkout form to the page', 'wp-multisite-waas').
 	 *
 	 * @since 2.0.0
 	 * @return string
 	 */
 	public function get_description() {
 
-		return __('Adds a checkout form block to the page.', 'wp-ultimo');
+		return __('Adds a checkout form block to the page.', 'wp-multisite-waas');
 	}
 
 	/**
@@ -149,14 +148,14 @@ class Checkout_Element extends Base_Element {
 		$fields = [];
 
 		$fields['header'] = [
-			'title' => __('General', 'wp-ultimo'),
-			'desc'  => __('General', 'wp-ultimo'),
+			'title' => __('General', 'wp-multisite-waas'),
+			'desc'  => __('General', 'wp-multisite-waas'),
 			'type'  => 'header',
 		];
 
 		$fields['slug'] = [
-			'title' => __('Slug', 'wp-ultimo'),
-			'desc'  => __('The checkout form slug.', 'wp-ultimo'),
+			'title' => __('Slug', 'wp-multisite-waas'),
+			'desc'  => __('The checkout form slug.', 'wp-multisite-waas'),
 			'type'  => 'text',
 		];
 
@@ -266,7 +265,7 @@ class Checkout_Element extends Base_Element {
 			}"
 			)->getCss();
 
-			printf('<style>%s</style>', $custom_css);
+			printf('<style>%s</style>', $custom_css); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
 
@@ -316,7 +315,7 @@ class Checkout_Element extends Base_Element {
 		/**
 		 * Allow developers bypass the output and set a new one
 		 *
-		 * @param string|boll $bypass If we should bypass the checkout form or a string to return instead of the form.
+		 * @param string|bool $bypass If we should bypass the checkout form or a string to return instead of the form.
 		 * @param array       $atts   Parameters of the checkout block/shortcode.
 		 */
 		$bypass = apply_filters('wu_bypass_checkout_form', false, $atts);
@@ -336,7 +335,7 @@ class Checkout_Element extends Base_Element {
 				 */
 
 				// Translators: Placeholder receives the customer display name
-				$message = sprintf(__('Hi %s. You have a pending payment for your membership!', 'wp-ultimo'), $customer->get_display_name());
+				$message = sprintf(__('Hi %s. You have a pending payment for your membership!', 'wp-multisite-waas'), $customer->get_display_name());
 
 				$payment_url = add_query_arg(
 					[
@@ -346,7 +345,7 @@ class Checkout_Element extends Base_Element {
 				);
 
 				// Translators: The link to registration url with payment hash
-				$message .= '<br>' . sprintf(__('Click <a href="%s">here</a> to pay.', 'wp-ultimo'), $payment_url);
+				$message .= '<br>' . sprintf(__('Click <a href="%s">here</a> to pay.', 'wp-multisite-waas'), $payment_url);
 
 				$message = '<p>' . $message . '</p>';
 
@@ -354,8 +353,8 @@ class Checkout_Element extends Base_Element {
 				 * Allow developers to change the message if membership have a pending payment
 				 *
 				 * @param string                      $message    The HTML message to print in screen.
-				 * @param WP_Ultimo\Models\Membership $membership The membership in use.
-				 * @param WP_Ultimo\Models\Customer   $customer   The active customer in use.
+				 * @param \WP_Ultimo\Models\Membership $membership The membership in use.
+				 * @param \WP_Ultimo\Models\Customer   $customer   The active customer in use.
 				 */
 				return apply_filters('wu_checkout_pending_payment_error_message', $message, $membership, $customer);
 			}
@@ -367,13 +366,13 @@ class Checkout_Element extends Base_Element {
 			if ( ! $membership->is_active() && $membership->get_status() !== Membership_Status::TRIALING && in_array($atts['slug'], $membership_blocked_forms, true)) {
 
 				// Translators: Placeholder receives the customer display name
-				$message = sprintf(__('Hi %s. You cannot take action on your membership while it is not active!', 'wp-ultimo'), $customer->get_display_name());
+				$message = sprintf(__('Hi %s. You cannot take action on your membership while it is not active!', 'wp-multisite-waas'), $customer->get_display_name());
 
 				if ($membership->get_status() === Membership_Status::PENDING && $customer->get_email_verification() === 'pending') {
 					/**
 					 * Enqueue thank you page scripts to handle resend email verification link
 					 */
-					wp_register_script('wu-thank-you', wu_get_asset('thank-you.js', 'js'), [], wu_get_version());
+					wp_register_script('wu-thank-you', wu_get_asset('thank-you.js', 'js'), [], wu_get_version(), true);
 
 					wp_localize_script(
 						'wu-thank-you',
@@ -383,17 +382,17 @@ class Checkout_Element extends Base_Element {
 							'resend_verification_email_nonce' => wp_create_nonce('wu_resend_verification_email_nonce'),
 							'membership_hash' => $membership->get_hash(),
 							'i18n'            => [
-								'resending_verification_email' => __('Resending verification email...', 'wp-ultimo'),
-								'email_sent' => __('Verification email sent!', 'wp-ultimo'),
+								'resending_verification_email' => __('Resending verification email...', 'wp-multisite-waas'),
+								'email_sent' => __('Verification email sent!', 'wp-multisite-waas'),
 							],
 						]
 					);
 
 					wp_enqueue_script('wu-thank-you');
 
-					$message .= '<p>' . __('Check your inbox and verify your email address.', 'wp-ultimo') . '</p>';
+					$message .= '<p>' . __('Check your inbox and verify your email address.', 'wp-multisite-waas') . '</p>';
 					$message .= '<span class="wu-styling">';
-					$message .= sprintf('<a href="#" class="wu-mr-2 wu-resend-verification-email wu-no-underline button button-primary">%s</a>', __('Resend verification email', 'wp-ultimo'));
+					$message .= sprintf('<a href="#" class="wu-mr-2 wu-resend-verification-email wu-no-underline button button-primary">%s</a>', __('Resend verification email', 'wp-multisite-waas'));
 					$message .= '</span>';
 				}
 
@@ -401,8 +400,8 @@ class Checkout_Element extends Base_Element {
 				 * Allow developers to change the message if membership have a pending payment
 				 *
 				 * @param string                      $message    The HTML message to print in screen.
-				 * @param WP_Ultimo\Models\Membership $membership The membership in use.
-				 * @param WP_Ultimo\Models\Customer   $customer   The active customer in use.
+				 * @param \WP_Ultimo\Models\Membership $membership The membership in use.
+				 * @param \WP_Ultimo\Models\Customer   $customer   The active customer in use.
 				 */
 				return apply_filters('wu_checkout_membership_status_error_message', $message, $membership, $customer);
 			}
@@ -423,11 +422,11 @@ class Checkout_Element extends Base_Element {
 				);
 
 				if ( ! in_array($slug, $allowed_forms, true) && ! wu_request('payment')) {
-					$message = sprintf('<p>%s</p>', __('You already have a membership!', 'wp-ultimo'));
+					$message = sprintf('<p>%s</p>', __('You already have a membership!', 'wp-multisite-waas'));
 
 					if (isset($published_sites[0])) {
 						$account_link = get_admin_url($published_sites[0]->get_id(), 'admin.php?page=account');
-						$button_text  = __('Go to my account', 'wp-ultimo');
+						$button_text  = __('Go to my account', 'wp-multisite-waas');
 
 						$message .= "<p><a class=\"wu-no-underline button button-primary\" href=\"$account_link\">$button_text</a><p>";
 					}
@@ -436,21 +435,21 @@ class Checkout_Element extends Base_Element {
 					 * Allow developers to change the message about the limitation of a single membership for customer.
 					 *
 					 * @param string                      $message    The HTML message to print in screen.
-					 * @param WP_Ultimo\Models\Customer   $customer   The active customer in use.
+					 * @param \WP_Ultimo\Models\Customer   $customer   The active customer in use.
 					 */
 					return apply_filters('wu_checkout_single_membership_message', $message, $customer);
 				}
 			}
 
 			if ($membership && $membership->get_customer_id() !== $customer->get_id()) {
-				$message = sprintf('<p>%s</p>', __('You are not allowed to change this membership!', 'wp-ultimo'));
+				$message = sprintf('<p>%s</p>', __('You are not allowed to change this membership!', 'wp-multisite-waas'));
 
 				/**
 				 * Allow developers to change the message if customer is not part of the membership
 				 *
 				 * @param string                      $message    The HTML message to print in screen.
-				 * @param WP_Ultimo\Models\Membership $membership The membership in use.
-				 * @param WP_Ultimo\Models\Customer   $customer   The active customer in use.
+				 * @param \WP_Ultimo\Models\Membership $membership The membership in use.
+				 * @param \WP_Ultimo\Models\Customer   $customer   The active customer in use.
 				 */
 				return apply_filters('wu_checkout_customer_error_message', $message, $membership, $customer);
 			}
@@ -482,13 +481,13 @@ class Checkout_Element extends Base_Element {
 					if ($used_limit >= $limit_max) {
 
 						// Translators: Placeholder receives the limit name
-						$message = '<p>' . sprintf(__('You reached your membership %s limit!', 'wp-ultimo'), $limitation) . '</p>';
+						$message = '<p>' . sprintf(__('You reached your membership %s limit!', 'wp-multisite-waas'), $limitation) . '</p>';
 
 						$message .= '<span class="wu-styling">';
 
 						if (wu_multiple_memberships_enabled()) {
 							$register_page = wu_get_registration_url();
-							$button_text   = __('Buy a new membership', 'wp-ultimo');
+							$button_text   = __('Buy a new membership', 'wp-multisite-waas');
 
 							$message .= "<a class=\"wu-no-underline button button-primary wu-mr-2\" href=\"$register_page\">$button_text</a>";
 						}
@@ -514,7 +513,7 @@ class Checkout_Element extends Base_Element {
 							}
 
 							if ( ! empty($update_link)) {
-								$button_text = __('Upgrade your account', 'wp-ultimo');
+								$button_text = __('Upgrade your account', 'wp-multisite-waas');
 
 								$message .= "<a class=\"wu-no-underline button button-primary wu-mr-2\" href=\"$update_link\">$button_text</a>";
 							}
@@ -529,8 +528,8 @@ class Checkout_Element extends Base_Element {
 						 * @param string                      $limitation The limitation name.
 						 * @param int                         $limit_max  The allowed limit.
 						 * @param int                         $used_limit The limit used in membership.
-						 * @param WP_Ultimo\Models\Membership $membership The membership in use.
-						 * @param WP_Ultimo\Models\Customer   $customer   The active customer in use.
+						 * @param \WP_Ultimo\Models\Membership $membership The membership in use.
+						 * @param \WP_Ultimo\Models\Customer   $customer   The active customer in use.
 						 */
 						return apply_filters('wu_checkout_membership_limit_message', $message, $limitation, $limit_max, $used_limit, $membership, $customer);
 					}
@@ -538,12 +537,12 @@ class Checkout_Element extends Base_Element {
 			}
 		} elseif ( ! $customer && 'wu-finish-checkout' === $slug) {
 			if (is_user_logged_in()) {
-				$message = __('You need to be the account owner to complete this payment.', 'wp-ultimo');
+				$message = __('You need to be the account owner to complete this payment.', 'wp-multisite-waas');
 			} else {
-				$message = __('You need to be logged in to complete a payment', 'wp-ultimo');
+				$message = __('You need to be logged in to complete a payment', 'wp-multisite-waas');
 
 				// Translators: The link to login url with redirect_to url
-				$message .= '<br>' . sprintf(__('Click <a href="%s">here</a> sign in.', 'wp-ultimo'), wp_login_url(wu_get_current_url()));
+				$message .= '<br>' . sprintf(__('Click <a href="%s">here</a> sign in.', 'wp-multisite-waas'), wp_login_url(wu_get_current_url()));
 			}
 
 			$message = '<p>' . $message . '</p>';
@@ -561,24 +560,24 @@ class Checkout_Element extends Base_Element {
 		if ( ! $checkout_form) {
 
 			// translators: %s is the id of the form. e.g. main-form
-			return sprintf(__('Checkout form %s not found.', 'wp-ultimo'), $slug);
+			return sprintf(__('Checkout form %s not found.', 'wp-multisite-waas'), $slug);
 		}
 
 		if ($checkout_form->get_field_count() === 0) {
 
 			// translators: %s is the id of the form. e.g. main-form
-			return sprintf(__('Checkout form %s contains no fields.', 'wp-ultimo'), $slug);
+			return sprintf(__('Checkout form %s contains no fields.', 'wp-multisite-waas'), $slug);
 		}
 
-		if ( ! $checkout_form->is_active() || ! wu_get_setting('enable_registration')) {
-			return sprintf('<p>%s</p>', __('Registration is not available at this time.', 'wp-ultimo'));
+		if ( ! $checkout_form->is_active() || ! wu_get_setting('enable_registration', true)) {
+			return sprintf('<p>%s</p>', __('Registration is not available at this time.', 'wp-multisite-waas'));
 		}
 
 		if ($checkout_form->has_country_lock()) {
 			$geolocation = \WP_Ultimo\Geolocation::geolocate_ip('', true);
 
 			if ( ! in_array($geolocation['country'], $checkout_form->get_allowed_countries(), true)) {
-				return sprintf('<p>%s</p>', __('Registration is closed for your location.', 'wp-ultimo'));
+				return sprintf('<p>%s</p>', __('Registration is closed for your location.', 'wp-multisite-waas'));
 			}
 		}
 
@@ -683,7 +682,7 @@ class Checkout_Element extends Base_Element {
 				window.wu_auto_submittable_field = %s;
 
 			',
-					json_encode($auto_submittable_field)
+					wp_json_encode($auto_submittable_field)
 				),
 				'after'
 			);

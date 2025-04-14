@@ -11,7 +11,6 @@
 
 namespace WP_Ultimo\Managers;
 
-use WP_Ultimo\Managers\Base_Manager;
 use WP_Ultimo\Models\Base_Model;
 use WP_Ultimo\Models\Event;
 
@@ -93,10 +92,11 @@ class Event_Manager extends Base_Manager {
 	 * @param string     $model The model name.
 	 * @param array      $data The data being saved, serialized.
 	 * @param array      $data_unserialized The data being saved, un-serialized.
-	 * @param Base_Model $object The object being saved.
+	 * @param Base_Model $obj The object being saved.
+	 *
 	 * @return void
 	 */
-	public function log_transitions($model, $data, $data_unserialized, $object) {
+	public function log_transitions($model, $data, $data_unserialized, $obj) {
 
 		if ('event' === $model) {
 			return;
@@ -106,7 +106,7 @@ class Event_Manager extends Base_Manager {
 		 * Editing Model
 		 */
 		if (wu_get_isset($data_unserialized, 'id')) {
-			$original = $object->_get_original();
+			$original = $obj->_get_original();
 
 			$diff = wu_array_recursive_diff($data_unserialized, $original);
 
@@ -147,7 +147,7 @@ class Event_Manager extends Base_Manager {
 					return;
 				}
 
-				if (empty(json_encode($old_value)) && empty(json_encode($new_value))) {
+				if (empty(wp_json_encode($old_value)) && empty(wp_json_encode($new_value))) {
 					return;
 				}
 
@@ -161,7 +161,7 @@ class Event_Manager extends Base_Manager {
 				'severity'    => Event::SEVERITY_INFO,
 				'slug'        => 'changed',
 				'object_type' => $model,
-				'object_id'   => $object->get_id(),
+				'object_id'   => $obj->get_id(),
 				'payload'     => $changed,
 			];
 		} else {
@@ -169,7 +169,7 @@ class Event_Manager extends Base_Manager {
 				'severity'    => Event::SEVERITY_INFO,
 				'slug'        => 'created',
 				'object_type' => $model,
-				'object_id'   => $object->get_id(),
+				'object_id'   => $obj->get_id(),
 				'payload'     => [],
 			];
 		}
@@ -179,7 +179,7 @@ class Event_Manager extends Base_Manager {
 			$event_data['author_id'] = get_current_user_id();
 		}
 
-		return wu_create_event($event_data);
+		wu_create_event($event_data);
 	}
 
 	/**
@@ -191,19 +191,19 @@ class Event_Manager extends Base_Manager {
 	public function event_payload_preview(): void {
 
 		if ( ! wu_request('event')) {
-			wp_send_json_error(new \WP_Error('error', __('No event was selected.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('error', __('No event was selected.', 'wp-multisite-waas')));
 		}
 
 		$slug = wu_request('event');
 
 		if ( ! $slug) {
-			wp_send_json_error(new \WP_Error('not-found', __('Event was not found.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('not-found', __('Event was not found.', 'wp-multisite-waas')));
 		}
 
 		$event = wu_get_event_type($slug);
 
 		if ( ! $event) {
-			wp_send_json_error(new \WP_Error('not-found', __('Data not found.', 'wp-ultimo')));
+			wp_send_json_error(new \WP_Error('not-found', __('Data not found.', 'wp-multisite-waas')));
 		} else {
 			$payload = isset($event['payload']) ? wu_maybe_lazy_load_payload($event['payload']) : '{}';
 
@@ -230,7 +230,6 @@ class Event_Manager extends Base_Manager {
 			'title'      => '$title',
 			'desc'       => '$desc',
 			'class_name' => '$class_name',
-			'active'     => 'in_array($id, $active_gateways, true)',
 			'active'     => 'in_array($id, $active_gateways, true)',
 			'gateway'    => '$class_name', // Deprecated.
 			'hidden'     => false,
@@ -313,7 +312,7 @@ class Event_Manager extends Base_Manager {
 	 * @since 2.0.0
 	 *
 	 * @param string $slug of the event.
-	 * @return array $event with event params.
+	 * @return array|false $event with event params.
 	 */
 	public function get_event($slug) {
 
@@ -367,8 +366,8 @@ class Event_Manager extends Base_Manager {
 		wu_register_event_type(
 			'payment_received',
 			[
-				'name'            => __('Payment Received', 'wp-ultimo'),
-				'desc'            => __('This event is fired every time a new payment is received, regardless of the payment status.', 'wp-ultimo'),
+				'name'            => __('Payment Received', 'wp-multisite-waas'),
+				'desc'            => __('This event is fired every time a new payment is received, regardless of the payment status.', 'wp-multisite-waas'),
 				'payload'         => fn() => array_merge(
 					wu_generate_event_payload('payment'),
 					wu_generate_event_payload('membership'),
@@ -390,8 +389,8 @@ class Event_Manager extends Base_Manager {
 		wu_register_event_type(
 			'site_published',
 			[
-				'name'            => __('Site Published', 'wp-ultimo'),
-				'desc'            => __('This event is fired every time a new site is created tied to a membership, or transitions from a pending state to a published state.', 'wp-ultimo'),
+				'name'            => __('Site Published', 'wp-multisite-waas'),
+				'desc'            => __('This event is fired every time a new site is created tied to a membership, or transitions from a pending state to a published state.', 'wp-multisite-waas'),
 				'payload'         => fn() => array_merge(
 					wu_generate_event_payload('site'),
 					wu_generate_event_payload('customer'),
@@ -407,8 +406,8 @@ class Event_Manager extends Base_Manager {
 		wu_register_event_type(
 			'confirm_email_address',
 			[
-				'name'            => __('Email Verification Needed', 'wp-ultimo'),
-				'desc'            => __('This event is fired every time a new customer is added with an email verification status of pending.', 'wp-ultimo'),
+				'name'            => __('Email Verification Needed', 'wp-multisite-waas'),
+				'desc'            => __('This event is fired every time a new customer is added with an email verification status of pending.', 'wp-multisite-waas'),
 				'payload'         => fn() => array_merge(
 					[
 						'verification_link' => 'https://linktoverifyemail.com',
@@ -425,8 +424,8 @@ class Event_Manager extends Base_Manager {
 		wu_register_event_type(
 			'domain_created',
 			[
-				'name'            => __('New Domain Mapping Added', 'wp-ultimo'),
-				'desc'            => __('This event is fired every time a new domain mapping is added by a customer.', 'wp-ultimo'),
+				'name'            => __('New Domain Mapping Added', 'wp-multisite-waas'),
+				'desc'            => __('This event is fired every time a new domain mapping is added by a customer.', 'wp-multisite-waas'),
 				'payload'         => fn() => array_merge(
 					wu_generate_event_payload('domain'),
 					wu_generate_event_payload('site'),
@@ -449,8 +448,8 @@ class Event_Manager extends Base_Manager {
 		wu_register_event_type(
 			'renewal_payment_created',
 			[
-				'name'            => __('New Renewal Payment Created', 'wp-ultimo'),
-				'desc'            => __('This event is fired every time a new renewal payment is created by WP Multisite WaaS.', 'wp-ultimo'),
+				'name'            => __('New Renewal Payment Created', 'wp-multisite-waas'),
+				'desc'            => __('This event is fired every time a new renewal payment is created by WP Multisite WaaS.', 'wp-multisite-waas'),
 				'payload'         => fn() => array_merge(
 					[
 						'default_payment_url' => 'https://linktopayment.com',
@@ -470,8 +469,8 @@ class Event_Manager extends Base_Manager {
 				wu_register_event_type(
 					$model . '_' . $type,
 					[
-						'name'            => sprintf(__('%1$s %2$s', 'wp-ultimo'), $params['label'], ucfirst($type)),
-						'desc'            => sprintf(__('This event is fired every time a %1$s is %2$s by WP Multisite WaaS.', 'wp-ultimo'), $params['label'], $type),
+						'name'            => sprintf(__('%1$s %2$s', 'wp-multisite-waas'), $params['label'], ucfirst($type)),
+						'desc'            => sprintf(__('This event is fired every time a %1$s is %2$s by WP Multisite WaaS.', 'wp-multisite-waas'), $params['label'], $type),
 						'deprecated_args' => [],
 						'payload'         => fn() => $this->get_model_payload($model),
 					]
@@ -563,13 +562,13 @@ class Event_Manager extends Base_Manager {
 		if (method_exists($obj, 'get_billing_address') || method_exists($obj, 'get_membership')) {
 			if (null !== $model_object) {
 				$payload = method_exists($obj, 'get_billing_address')
-				? array_merge(
-					$payload,
-					$obj->get_billing_address()->to_array()
-				) : array_merge(
-					$payload,
-					$obj->get_membership()->get_billing_address()->to_array()
-				);
+					? array_merge(
+						$payload,
+						$obj->get_billing_address()->to_array()
+					) : array_merge(
+						$payload,
+						$obj->get_membership()->get_billing_address()->to_array()
+					);
 			} else {
 				$payload = array_merge(
 					$payload,
@@ -621,7 +620,8 @@ class Event_Manager extends Base_Manager {
 			}
 		}
 
-		wu_log_add('wu-cron', sprintf(__('Removed %1$d events successfully. Failed to remove %2$d events.', 'wp-ultimo'), $success_count, count($events_to_remove) - $success_count));
+		// Translators:  1: Number of successfully removed events.  2: Number of failed events to remove.
+		wu_log_add('wu-cron', sprintf(__('Removed %1$d events successfully. Failed to remove %2$d events.', 'wp-multisite-waas'), $success_count, count($events_to_remove) - $success_count));
 
 		return true;
 	}
@@ -657,7 +657,7 @@ class Event_Manager extends Base_Manager {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_REST_Request $request The request sent.
+	 * @param \WP_REST_Request $request The request sent.
 	 * @return mixed
 	 */
 	public function get_hooks_rest($request) {

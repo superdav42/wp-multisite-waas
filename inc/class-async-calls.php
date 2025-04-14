@@ -38,13 +38,12 @@ class Async_Calls {
 	/**
 	 * Registers a new listener.
 	 *
+	 * @since 2.0.7
 	 * @param string   $id The id of the listener.
 	 * @param callable $callback A callback to be run.
 	 * @param mixed    ...$args Arguments to be passed to the callback.
 	 *
 	 * @return void
-	 *@since 2.0.7
-	 *
 	 */
 	public static function register_listener($id, $callback, ...$args): void {
 

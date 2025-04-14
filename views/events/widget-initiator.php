@@ -11,7 +11,7 @@
 
 	<li class="wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-400 wu-border-solid">
 
-		<h3 class="wu-mt-0 wu-mb-2 wu-text-2xs wu-uppercase"><?php _e('Initiator', 'wp-ultimo'); ?></h3>
+		<h3 class="wu-mt-0 wu-mb-2 wu-text-2xs wu-uppercase"><?php esc_html_e('Initiator', 'wp-multisite-waas'); ?></h3>
 
 		<?php if ($object->get_initiator() == 'manual') : ?>
 
@@ -46,9 +46,9 @@
 
 			<div class='wu-pl-2'>
 
-			<strong class='wu-block'> <?php echo $object->get_author_display_name(); ?> <small class='wu-font-normal'>(#<?php echo $object->get_author_id(); ?>)</small></strong>
+			<strong class='wu-block'> <?php echo esc_html($object->get_author_display_name()); ?> <small class='wu-font-normal'>(#<?php echo esc_html($object->get_author_id()); ?>)</small></strong>
 
-			<small><?php echo $object->get_author_email_address(); ?></small>
+			<small><?php echo esc_html($object->get_author_email_address()); ?></small>
 
 			</div>
 
@@ -72,9 +72,9 @@
 
 			<div class=''>
 
-			<strong class='wu-block'><?php echo ucfirst($object->get_initiator()); ?></strong>
+			<strong class='wu-block'><?php echo esc_html(ucfirst($object->get_initiator())); ?></strong>
 
-						<small><?php _e('Automatically started', 'wp-ultimo'); ?></small>
+						<small><?php esc_html_e('Automatically started', 'wp-multisite-waas'); ?></small>
 
 			</div>
 
@@ -88,7 +88,7 @@
 
 		<li class="wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid">
 
-		<h3 class="wu-mt-1 wu-mb-2 wu-text-2xs wu-uppercase"><?php printf(__('Target %s', 'wp-ultimo'), wu_slug_to_name($object->get_object_type())); ?></h3>
+		<h3 class="wu-mt-1 wu-mb-2 wu-text-2xs wu-uppercase"><?php printf(esc_html__('Target %s', 'wp-multisite-waas'), esc_html(wu_slug_to_name($object->get_object_type()))); ?></h3>
 
 		<?php
 
@@ -104,7 +104,7 @@
 			case 'payment':
 				echo $base_list_table->column_payment($object);
 				break;
-		} // end switch;
+		}
 
 		?>
 

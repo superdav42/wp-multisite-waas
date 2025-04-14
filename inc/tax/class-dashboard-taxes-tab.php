@@ -60,7 +60,7 @@ class Dashboard_Taxes_Tab {
 
 		$dashboard_filters['taxes'] = [
 			'field' => 'type',
-			'label' => __('Taxes', 'wp-ultimo'),
+			'label' => __('Taxes', 'wp-multisite-waas'),
 			'url'   => add_query_arg('tab', 'taxes'),
 			'count' => 0,
 		];
@@ -80,7 +80,7 @@ class Dashboard_Taxes_Tab {
 			[
 				'message'     => __('You do not have tax support enabled yet...'),
 				'sub_message' => __('If you need to collect taxes, you\'ll be glad to hear that WP Multisite WaaS offers tax support!'),
-				'link_label'  => __('Enable Tax Support', 'wp-ultimo'),
+				'link_label'  => __('Enable Tax Support', 'wp-multisite-waas'),
 				'link_url'    => wu_network_admin_url(
 					'wp-ultimo-settings',
 					[
@@ -104,7 +104,7 @@ class Dashboard_Taxes_Tab {
 		$back_link = [
 			[
 				'url'   => wu_network_admin_url('wp-ultimo'),
-				'label' => __('Go Back', 'wp-ultimo'),
+				'label' => __('Go Back', 'wp-multisite-waas'),
 				'icon'  => 'wu-reply',
 			],
 		];
@@ -148,11 +148,11 @@ class Dashboard_Taxes_Tab {
 
 		$this->dashboard_page = $dashboard_page;
 
-		add_meta_box('wp-ultimo-taxes', __('Taxes', 'wp-ultimo'), [$this, 'output_widget_taxes'], $screen->id, 'full', 'high');
+		add_meta_box('wp-ultimo-taxes', __('Taxes', 'wp-multisite-waas'), [$this, 'output_widget_taxes'], $screen->id, 'full', 'high');
 
-		add_meta_box('wp-ultimo-taxes-by-rate', __('Taxes by Code', 'wp-ultimo'), [$this, 'output_widget_taxes_by_rate'], $screen->id, 'normal', 'high');
+		add_meta_box('wp-ultimo-taxes-by-rate', __('Taxes by Code', 'wp-multisite-waas'), [$this, 'output_widget_taxes_by_rate'], $screen->id, 'normal', 'high');
 
-		add_meta_box('wp-ultimo-taxes-by-day', __('Taxes by Day', 'wp-ultimo'), [$this, 'output_widget_taxes_by_day'], $screen->id, 'side', 'high');
+		add_meta_box('wp-ultimo-taxes-by-day', __('Taxes by Day', 'wp-multisite-waas'), [$this, 'output_widget_taxes_by_day'], $screen->id, 'side', 'high');
 
 		$this->register_scripts();
 	}
@@ -211,8 +211,8 @@ class Dashboard_Taxes_Tab {
 				'today'      => date_i18n('Y-m-d', strtotime('tomorrow')),
 				'month_list' => $month_list,
 				'i18n'       => [
-					'net_profit_label' => __('Net Profit', 'wp-ultimo'),
-					'taxes_label'      => __('Taxes Collected', 'wp-ultimo'),
+					'net_profit_label' => __('Net Profit', 'wp-multisite-waas'),
+					'taxes_label'      => __('Taxes Collected', 'wp-multisite-waas'),
 				],
 			]
 		);

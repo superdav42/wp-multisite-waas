@@ -11,10 +11,6 @@ namespace WP_Ultimo\Integrations\Host_Providers;
 
 use Psr\Log\LogLevel;
 use WP_Ultimo\Domain_Mapping\Helper;
-use WP_Ultimo\Integrations\Host_Providers\Base_Host_Provider;
-
-// Exit if accessed directly
-defined('ABSPATH') || exit;
 
 /**
  * This base class should be extended to implement new host integrations for SSL and domains.
@@ -120,7 +116,7 @@ class Cloudways_Host_Provider extends Base_Host_Provider {
 		if (is_wp_error($ssl_response)) {
 			wu_log_add('integration-cloudways', '[SSL]' . $ssl_response->get_error_message(), LogLevel::ERROR);
 		} else {
-			wu_log_add('integration-cloudways', '[SSL]' . print_r($ssl_response, true));
+			wu_log_add('integration-cloudways', '[SSL]' . print_r($ssl_response, true)); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 		}
 	}
 
@@ -146,30 +142,30 @@ class Cloudways_Host_Provider extends Base_Host_Provider {
 
 		return [
 			'WU_CLOUDWAYS_EMAIL'         => [
-				'title'       => __('Cloudways Account Email', 'wp-ultimo'),
-				'desc'        => __('Your Cloudways account email address.', 'wp-ultimo'),
-				'placeholder' => __('e.g. me@gmail.com', 'wp-ultimo'),
+				'title'       => __('Cloudways Account Email', 'wp-multisite-waas'),
+				'desc'        => __('Your Cloudways account email address.', 'wp-multisite-waas'),
+				'placeholder' => __('e.g. me@gmail.com', 'wp-multisite-waas'),
 			],
 			'WU_CLOUDWAYS_API_KEY'       => [
-				'title'       => __('Cloudways API Key', 'wp-ultimo'),
-				'desc'        => __('The API Key retrieved in the previous step.', 'wp-ultimo'),
-				'placeholder' => __('e.g. eYP0Jo3Fzzm5SOZCi5nLR0Mki2lbYZ', 'wp-ultimo'),
+				'title'       => __('Cloudways API Key', 'wp-multisite-waas'),
+				'desc'        => __('The API Key retrieved in the previous step.', 'wp-multisite-waas'),
+				'placeholder' => __('e.g. eYP0Jo3Fzzm5SOZCi5nLR0Mki2lbYZ', 'wp-multisite-waas'),
 			],
 			'WU_CLOUDWAYS_SERVER_ID'     => [
-				'title'       => __('Cloudways Server ID', 'wp-ultimo'),
-				'desc'        => __('The Server ID retrieved in the previous step.', 'wp-ultimo'),
-				'placeholder' => __('e.g. 11667', 'wp-ultimo'),
+				'title'       => __('Cloudways Server ID', 'wp-multisite-waas'),
+				'desc'        => __('The Server ID retrieved in the previous step.', 'wp-multisite-waas'),
+				'placeholder' => __('e.g. 11667', 'wp-multisite-waas'),
 			],
 			'WU_CLOUDWAYS_APP_ID'        => [
-				'title'       => __('Cloudways App ID', 'wp-ultimo'),
-				'desc'        => __('The App ID retrieved in the previous step.', 'wp-ultimo'),
-				'placeholder' => __('e.g. 940288', 'wp-ultimo'),
+				'title'       => __('Cloudways App ID', 'wp-multisite-waas'),
+				'desc'        => __('The App ID retrieved in the previous step.', 'wp-multisite-waas'),
+				'placeholder' => __('e.g. 940288', 'wp-multisite-waas'),
 			],
 			'WU_CLOUDWAYS_EXTRA_DOMAINS' => [
-				'title'       => __('Cloudways Extra Domains', 'wp-ultimo'),
-				'tooltip'     => __('The Cloudways API is a bit strange in that it doesn’t offer a way to add or remove just one domain, only a way to update the whole domain list. That means that WP Multisite WaaS will replace all domains you might have there with the list of mapped domains of the network every time a new domain is added.', 'wp-ultimo'),
-				'desc'        => __('Comma-separated list of additional domains to add to Cloudways.', 'wp-ultimo'),
-				'placeholder' => __('e.g. *.test.com, test.com', 'wp-ultimo'),
+				'title'       => __('Cloudways Extra Domains', 'wp-multisite-waas'),
+				'tooltip'     => __('The Cloudways API is a bit strange in that it doesn’t offer a way to add or remove just one domain, only a way to update the whole domain list. That means that WP Multisite WaaS will replace all domains you might have there with the list of mapped domains of the network every time a new domain is added.', 'wp-multisite-waas'),
+				'desc'        => __('Comma-separated list of additional domains to add to Cloudways.', 'wp-multisite-waas'),
+				'placeholder' => __('e.g. *.test.com, test.com', 'wp-multisite-waas'),
 			],
 		];
 	}
@@ -246,7 +242,7 @@ class Cloudways_Host_Provider extends Base_Host_Provider {
 		if (is_wp_error($alias_response)) {
 			wu_log_add('integration-cloudways', '[Alias]' . $alias_response->get_error_message(), LogLevel::ERROR);
 		} else {
-			wu_log_add('integration-cloudways', '[Alias]' . print_r($alias_response, true));
+			wu_log_add('integration-cloudways', '[Alias]' . print_r($alias_response, true)); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 		}
 	}
 
@@ -530,7 +526,7 @@ class Cloudways_Host_Provider extends Base_Host_Provider {
 	 */
 	public function get_description() {
 
-		return __('Focus on your business and avoid all the web hosting hassles. Our managed hosting guarantees unmatched performance, reliability and choice with 24/7 support that acts as your extended team, making Cloudways an ultimate choice for growing agencies and e-commerce businesses.', 'wp-ultimo');
+		return __('Focus on your business and avoid all the web hosting hassles. Our managed hosting guarantees unmatched performance, reliability and choice with 24/7 support that acts as your extended team, making Cloudways an ultimate choice for growing agencies and e-commerce businesses.', 'wp-multisite-waas');
 	}
 
 	/**

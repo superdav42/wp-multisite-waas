@@ -11,8 +11,8 @@
 	<?php
 	echo wu_render_empty_state(
 		[
-			'message'                  => __('No notes yet.', 'wp-ultimo'),
-			'sub_message'              => __('Use the "Add new Note" to create the first one.', 'wp-ultimo'),
+			'message'                  => __('No notes yet.', 'wp-multisite-waas'),
+			'sub_message'              => __('Use the "Add new Note" to create the first one.', 'wp-multisite-waas'),
 			'link_url'                 => false,
 			'display_background_image' => false,
 		]
@@ -51,7 +51,7 @@
 						)
 					);
 					?>
-					<?php echo $user->display_name; ?>
+					<?php echo esc_html($user->display_name); ?>
 
 				</div>
 
@@ -77,7 +77,7 @@
 						<span class="wu-ml-2">
 
 							<a class="dashicons-wu-trash wu-p-0 wu-border-none wu-text-red-600 wu-button-delete wu-no-underline wubox" href="<?php echo esc_url(wu_get_form_url('delete_note', $modal_atts)); ?>"
-							title="<?php echo esc_attr__('Clear Note', 'wp-ultimo'); ?>"></a>
+							title="<?php echo esc_attr__('Clear Note', 'wp-multisite-waas'); ?>"></a>
 
 						</span>
 
