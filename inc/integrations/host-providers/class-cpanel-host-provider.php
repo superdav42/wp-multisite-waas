@@ -10,7 +10,6 @@
 namespace WP_Ultimo\Integrations\Host_Providers;
 
 use Psr\Log\LogLevel;
-use WP_Ultimo\Integrations\Host_Providers\Base_Host_Provider;
 use WP_Ultimo\Integrations\Host_Providers\CPanel_API\CPanel_API;
 
 // Exit if accessed directly
@@ -85,7 +84,7 @@ class CPanel_Host_Provider extends Base_Host_Provider {
 	 * Holds the API object.
 	 *
 	 * @since 2.0.0
-	 * @var WP_Ultimo\Integrations\Host_Providers\CPanel_API\CPanel_API
+	 * @var \WP_Ultimo\Integrations\Host_Providers\CPanel_API\CPanel_API
 	 */
 	protected $api = null;
 
@@ -237,7 +236,7 @@ class CPanel_Host_Provider extends Base_Host_Provider {
 	 * Load the CPanel API.
 	 *
 	 * @since 2.0.0
-	 * @return WU_CPanel
+	 * @return CPanel_API
 	 */
 	public function load_api() {
 
@@ -293,17 +292,19 @@ class CPanel_Host_Provider extends Base_Host_Provider {
 	 *
 	 * @since 1.6.2
 	 * @param object $results Results of the cPanel call.
-	 * @return bool
+	 * @return void
 	 */
 	public function log_calls($results) {
 
 		if (is_object($results->cpanelresult->data)) {
-			return wu_log_add('integration-cpanel', $results->cpanelresult->data->reason);
+			wu_log_add('integration-cpanel', $results->cpanelresult->data->reason);
+			return;
 		} elseif ( ! isset($results->cpanelresult->data[0])) {
-			return wu_log_add('integration-cpanel', __('Unexpected error ocurred trying to sync domains with CPanel', 'wp-multisite-waas'), LogLevel::ERROR);
+			wu_log_add('integration-cpanel', __('Unexpected error ocurred trying to sync domains with CPanel', 'wp-multisite-waas'), LogLevel::ERROR);
+			return;
 		}
 
-		return wu_log_add('integration-cpanel', $results->cpanelresult->data[0]->reason);
+		wu_log_add('integration-cpanel', $results->cpanelresult->data[0]->reason);
 	}
 
 	/**

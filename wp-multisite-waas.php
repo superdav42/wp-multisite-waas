@@ -81,9 +81,9 @@ if ( ! function_exists('WP_Ultimo')) {
 	 * @return WP_Ultimo
 	 * @since 2.0.0
 	 */
-	function WP_Ultimo() { // phpcs:ignore
+	function WP_Ultimo() { // phpcs:ignore WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid
 		return WP_Ultimo::get_instance();
-	} // end WP_Ultimo;
+	}
 }
 // Initialize and set to global for back-compat
 $GLOBALS['WP_Ultimo'] = WP_Ultimo();

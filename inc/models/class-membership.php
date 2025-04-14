@@ -317,11 +317,11 @@ class Membership extends Base_Model {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param object $object Std object with model parameters.
+	 * @param object $object_model Std object with model parameters.
 	 */
-	public function __construct($object = null) {
+	public function __construct($object_model = null) {
 
-		parent::__construct($object);
+		parent::__construct($object_model);
 
 		$this->_gateway_info = [
 			'gateway'                 => $this->get_gateway(),
