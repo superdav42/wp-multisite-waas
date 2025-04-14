@@ -28,7 +28,7 @@ trait Singleton {
 	 */
 	public static function get_instance(): object {
 
-		if ( ! static::$instance instanceof static) {
+		if ( ! isset(static::$instance) || ! static::$instance instanceof static) {
 			static::$instance = new static();
 
 			static::$instance->init();
