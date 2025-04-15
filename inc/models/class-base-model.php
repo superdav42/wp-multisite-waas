@@ -306,9 +306,26 @@ abstract class Base_Model implements \JsonSerializable {
 
 		$instance = new static();
 
+		// Generate a cache key based on the ID
+		$cache_key = 'wu_item_' . get_class($instance) . '_' . $item_id;
+
+		// Try to get cached results
+		$cached_item = wp_cache_get($cache_key, 'wu_items');
+
+		if (false !== $cached_item) {
+			return $cached_item;
+		}
+
 		$query_class = new $instance->query_class();
 
-		return $query_class->get_item($item_id);
+		$item = $query_class->get_item($item_id);
+
+		if ($item) {
+			// Cache the item for 10 minutes
+			wp_cache_set($cache_key, $item, 'wu_items', 10 * MINUTE_IN_SECONDS);
+		}
+
+		return $item;
 	}
 
 	/**
@@ -324,11 +341,31 @@ abstract class Base_Model implements \JsonSerializable {
 
 		$instance = new static();
 
+		// Generate a cache key based on the hash
+		$cache_key = 'wu_item_hash_' . get_class($instance) . '_' . $item_hash;
+
+		// Try to get cached results
+		$cached_item = wp_cache_get($cache_key, 'wu_items');
+
+		if (false !== $cached_item) {
+			return $cached_item;
+		}
+
 		$item_id = Hash::decode($item_hash, sanitize_key((new \ReflectionClass(static::class))->getShortName()));
 
-		$query_class = new $instance->query_class();
+		if (!$item_id) {
+			return false;
+		}
 
-		return $query_class->get_item($item_id);
+		// Use the optimized get_by_id method that includes caching
+		$item = static::get_by_id($item_id);
+
+		if ($item) {
+			// Cache the item for 10 minutes
+			wp_cache_set($cache_key, $item, 'wu_items', 10 * MINUTE_IN_SECONDS);
+		}
+
+		return $item;
 	}
 
 	/**
@@ -344,9 +381,26 @@ abstract class Base_Model implements \JsonSerializable {
 
 		$instance = new static();
 
+		// Generate a cache key based on the column and value
+		$cache_key = 'wu_item_by_' . get_class($instance) . '_' . $column . '_' . $value;
+
+		// Try to get cached results
+		$cached_item = wp_cache_get($cache_key, 'wu_items');
+
+		if (false !== $cached_item) {
+			return $cached_item;
+		}
+
 		$query_class = new $instance->query_class();
 
-		return $query_class->get_item_by($column, $value);
+		$item = $query_class->get_item_by($column, $value);
+
+		if ($item) {
+			// Cache the item for 10 minutes
+			wp_cache_set($cache_key, $item, 'wu_items', 10 * MINUTE_IN_SECONDS);
+		}
+
+		return $item;
 	}
 
 	/**
@@ -359,9 +413,8 @@ abstract class Base_Model implements \JsonSerializable {
 	 */
 	public static function get_items($query) {
 
-		$instance = new static();
-
-		return (new $instance->query_class($query))->query();
+		// Use the optimized query method that includes caching
+		return static::query($query);
 	}
 
 	/**
@@ -374,11 +427,26 @@ abstract class Base_Model implements \JsonSerializable {
 	 */
 	public static function get_items_as_array($query = []) {
 
-		$instance = new static();
+		// Generate a cache key based on the query arguments
+		$cache_key = 'wu_query_array_' . md5(serialize($query) . get_class(new static()));
 
-		$list = (new $instance->query_class($query))->query();
+		// Try to get cached results
+		$cached_results = wp_cache_get($cache_key, 'wu_queries');
 
-		return array_map(fn($item) => $item->to_array(), $list);
+		if (false !== $cached_results) {
+			return $cached_results;
+		}
+
+		// Get the items using the optimized query method
+		$list = static::query($query);
+
+		// Convert to array
+		$result = array_map(fn($item) => $item->to_array(), $list);
+
+		// Cache the results for 5 minutes
+		wp_cache_set($cache_key, $result, 'wu_queries', 5 * MINUTE_IN_SECONDS);
+
+		return $result;
 	}
 
 	/**
@@ -572,6 +640,9 @@ abstract class Base_Model implements \JsonSerializable {
 		 */
 		wp_cache_delete($this->get_id(), "wu-{$this->model}s");
 
+		// Clear our custom caches
+		$this->clear_caches();
+
 		/**
 		 * Fires after an object is stored into the database.
 		 *
@@ -623,6 +694,11 @@ abstract class Base_Model implements \JsonSerializable {
 		$query_class = new $this->query_class();
 
 		$result = $query_class->delete_item($this->get_id());
+
+		// Clear caches after deletion
+		if ($result) {
+			$this->clear_caches();
+		}
 
 		/**
 		 * Fires after an object is stored into the database.
@@ -788,6 +864,30 @@ abstract class Base_Model implements \JsonSerializable {
 	}
 
 	/**
+	 * Clears all caches related to this model.
+	 *
+	 * @since 2.0.0
+	 * @return void
+	 */
+	public function clear_caches(): void {
+
+		// Clear item cache
+		$item_cache_key = 'wu_item_' . get_class($this) . '_' . $this->get_id();
+		wp_cache_delete($item_cache_key, 'wu_items');
+
+		// Clear hash cache if hash is available
+		if (method_exists($this, 'get_hash')) {
+			$hash_cache_key = 'wu_item_hash_' . get_class($this) . '_' . $this->get_hash();
+			wp_cache_delete($hash_cache_key, 'wu_items');
+		}
+
+		// We can't clear all query caches efficiently, so we'll rely on cache expiration
+		// But we can clear common queries like get_all
+		$all_cache_key = 'wu_query_' . md5(serialize([]) . get_class($this));
+		wp_cache_delete($all_cache_key, 'wu_queries');
+	}
+
+	/**
 	 * Queries object in the database.
 	 *
 	 * @since 2.0.0
@@ -799,9 +899,22 @@ abstract class Base_Model implements \JsonSerializable {
 
 		$instance = new static();
 
+		// Generate a cache key based on the query arguments
+		$cache_key = 'wu_query_' . md5(serialize($args) . get_class($instance));
+
+		// Try to get cached results
+		$cached_results = wp_cache_get($cache_key, 'wu_queries');
+
+		if (false !== $cached_results) {
+			return $cached_results;
+		}
+
 		$query_class = new $instance->query_class();
 
 		$items = $query_class->query($args);
+
+		// Cache the results for 5 minutes
+		wp_cache_set($cache_key, $items, 'wu_queries', 5 * MINUTE_IN_SECONDS);
 
 		return $items;
 	}
@@ -1026,13 +1139,8 @@ abstract class Base_Model implements \JsonSerializable {
 	 */
 	public static function get_all($query_args = []) {
 
-		$instance = new static();
-
-		$query_class = new $instance->query_class();
-
-		$items = $query_class->query($query_args);
-
-		return $items;
+		// Use the optimized query method that includes caching
+		return static::query($query_args);
 	}
 
 	/**
