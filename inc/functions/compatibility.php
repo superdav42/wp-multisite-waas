@@ -18,7 +18,7 @@ defined('ABSPATH') || exit;
  * @return mixed
  */
 function wu_pre_json_encode($data, $context = '') {
-	
+
 	/**
 	 * Filters data before it's JSON encoded.
 	 *
@@ -40,10 +40,10 @@ function wu_pre_json_encode($data, $context = '') {
  * @return string|false
  */
 function wu_json_encode($data, $options = 0, $context = '') {
-	
+
 	// Filter the data before encoding
 	$data = wu_pre_json_encode($data, $context);
-	
+
 	// Use WordPress's wp_json_encode function
 	return wp_json_encode($data, $options);
 }
@@ -56,11 +56,11 @@ function wu_json_encode($data, $options = 0, $context = '') {
  * @return boolean
  */
 function wu_is_plugin_active($plugin_file) {
-	
+
 	if (!function_exists('is_plugin_active')) {
 		include_once ABSPATH . 'wp-admin/includes/plugin.php';
 	}
-	
+
 	return is_plugin_active($plugin_file);
 }
 
@@ -71,10 +71,10 @@ function wu_is_plugin_active($plugin_file) {
  * @return void
  */
 function wu_load_compatibility_classes() {
-	
-	// Divi Modules Pro Compatibility
-	\WP_Ultimo\Compatibility\Divi_Modules_Pro_Compatibility::get_instance()->init();
-	
+
+	// Load the generic page builder detector
+	\WP_Ultimo\Compatibility\Page_Builder_Detector::get_instance()->init();
+
 	/**
 	 * Fires after compatibility classes are loaded.
 	 *

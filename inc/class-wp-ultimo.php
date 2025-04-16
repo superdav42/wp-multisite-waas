@@ -413,7 +413,7 @@ final class WP_Ultimo {
 		require_once wu_path('inc/functions/color.php');
 		require_once wu_path('inc/functions/danger.php');
 		require_once wu_path('inc/functions/compatibility.php');
-		require_once wu_path('inc/compatibility/class-divi-modules-pro-compatibility.php');
+		require_once wu_path('inc/compatibility/class-page-builder-detector.php');
 
 		/*
 		 * Admin helper functions
