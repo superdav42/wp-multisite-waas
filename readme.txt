@@ -4,7 +4,7 @@ Requires PHP: 7.4.30
 Tested up to: 6.7.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Contributors: aanduque, superdav42 
+Contributors: aanduque, superdav42
 
 The Complete Network Solution for transforming your WordPress Multisite into a Website as a Service (WaaS) platform.
 
@@ -76,6 +76,11 @@ For domain mapping functionality to work properly, you must have the `SUNRISE` c
 2. Add the following line after the `$table_prefix` line:
    ```php
    define('SUNRISE', true);
+   ```
+
+   Alternatively, you can also use:
+   ```php
+   define('SUNRISE', '1');
    ```
 3. Save the file
 

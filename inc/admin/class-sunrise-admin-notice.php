@@ -54,8 +54,8 @@ class Sunrise_Admin_Notice {
      */
     public function check_sunrise_constant() {
 
-        // Check if SUNRISE is defined and true
-        if (defined('SUNRISE') && SUNRISE === true) {
+        // Check if SUNRISE is defined and has a truthy value
+        if (defined('SUNRISE') && (SUNRISE === true || SUNRISE === 1 || SUNRISE === '1' || strtolower(SUNRISE) === 'true')) {
             return;
         }
 
@@ -83,14 +83,14 @@ class Sunrise_Admin_Notice {
                     jQuery(document).ready(function($) {
                         $('#wu-update-sunrise-constant').on('click', function(e) {
                             e.preventDefault();
-                            
+
                             var $button = $(this);
                             var $spinner = $('#wu-sunrise-spinner');
                             var $message = $('#wu-sunrise-message');
-                            
+
                             $button.prop('disabled', true);
                             $spinner.addClass('is-active');
-                            
+
                             $.ajax({
                                 url: ajaxurl,
                                 type: 'POST',
@@ -100,7 +100,7 @@ class Sunrise_Admin_Notice {
                                 },
                                 success: function(response) {
                                     $spinner.removeClass('is-active');
-                                    
+
                                     if (response.success) {
                                         $message.html(response.data.message).css('color', 'green').show();
                                         setTimeout(function() {
@@ -156,8 +156,8 @@ class Sunrise_Admin_Notice {
             return;
         }
 
-        // Check if SUNRISE is already defined
-        if (defined('SUNRISE') && SUNRISE === true) {
+        // Check if SUNRISE is already defined with a truthy value
+        if (defined('SUNRISE') && (SUNRISE === true || SUNRISE === 1 || SUNRISE === '1' || strtolower(SUNRISE) === 'true')) {
             wp_send_json_success(array(
                 'message' => __('SUNRISE constant is already defined.', 'wp-ultimo')
             ));
@@ -186,4 +186,4 @@ class Sunrise_Admin_Notice {
         ));
     }
 
-} 
+}
