@@ -20,6 +20,10 @@ The documentation is organized into the following categories:
 
 You can browse the documentation directly on GitHub by visiting the [Wiki](https://github.com/superdav42/wp-multisite-waas/wiki).
 
+### Automatic Sync
+
+This documentation is automatically synced to the GitHub wiki whenever changes are pushed to the main branch. The sync is handled by a GitHub Action workflow that copies the content of this directory to the wiki repository.
+
 ## Converting HTML to Markdown
 
 This folder includes scripts to convert HTML documentation to Markdown format. To run the conversion:

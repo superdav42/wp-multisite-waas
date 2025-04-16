@@ -1,0 +1,52 @@
+name: Sync Wiki
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.wiki/**'
+
+jobs:
+  sync-wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+
+      - name: Clone Wiki
+        run: |
+          git clone "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.wiki.git" wiki
+
+      - name: Sync Wiki Content
+        run: |
+          # Remove all files from wiki repository (except .git directory)
+          find wiki -mindepth 1 -maxdepth 1 -not -name ".git" -exec rm -rf {} \;
+          
+          # Copy all files from .wiki directory to wiki repository
+          cp -r .wiki/* wiki/
+          
+          # Go to wiki repository
+          cd wiki
+          
+          # Add all files
+          git add .
+          
+          # Check if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          
+          # Commit changes
+          git commit -m "Sync wiki from .wiki directory"
+          
+          # Push changes
+          git push
