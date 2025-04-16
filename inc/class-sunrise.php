@@ -140,7 +140,19 @@ class Sunrise {
 		require_once __DIR__ . '/models/class-membership.php';
 
 		// Make sure we have all the necessary database classes loaded
+		// BerlinDB core classes
+		if (file_exists(__DIR__ . '/../vendor/berlindb/core/src/Database/Base.php')) {
+			require_once __DIR__ . '/../vendor/berlindb/core/src/Database/Base.php';
+			require_once __DIR__ . '/../vendor/berlindb/core/src/Database/Query.php';
+			require_once __DIR__ . '/../vendor/berlindb/core/src/Database/Row.php';
+			require_once __DIR__ . '/../vendor/berlindb/core/src/Database/Schema.php';
+			require_once __DIR__ . '/../vendor/berlindb/core/src/Database/Table.php';
+		}
+
+		// Site database classes
 		require_once __DIR__ . '/database/sites/class-sites-schema.php';
+		require_once __DIR__ . '/database/sites/class-site-query.php';
+		require_once __DIR__ . '/database/sites/class-site.php';
 
 	}
 
