@@ -471,9 +471,22 @@ class Domain_Mapping {
 			$current_mapping = $this->current_mapping;
 		}
 
+		// If we don't have a valid mapping, return the original URL
+		if (!$current_mapping) {
+			return $url;
+		}
+
+		// Get the site associated with the mapping
+		$site = $current_mapping->get_site();
+
+		// If we don't have a valid site, return the original URL
+		if (!$site) {
+			return $url;
+		}
+
 		// Replace the domain
 		$domain_base = wp_parse_url($url, PHP_URL_HOST);
-		$domain      = rtrim($domain_base . '/' . $current_mapping->get_site()->get_path(), '/');
+		$domain      = rtrim($domain_base . '/' . $site->get_path(), '/');
 		$regex       = '#^(\w+://)' . preg_quote($domain, '#') . '#i';
 		$mangled     = preg_replace($regex, '${1}' . $current_mapping->get_domain(), $url);
 
@@ -508,7 +521,13 @@ class Domain_Mapping {
 
 		$current_mapping = $this->current_mapping;
 
+		// Check if we have a valid mapping for this site
 		if (empty($current_mapping) || $current_mapping->get_site_id() !== $site_id) {
+			return $url;
+		}
+
+		// Check if the site exists
+		if (!$current_mapping->get_site()) {
 			return $url;
 		}
 
@@ -523,6 +542,11 @@ class Domain_Mapping {
 	 * @return array
 	 */
 	public function fix_srcset($sources) {
+
+		// Check if we have a valid mapping
+		if (empty($this->current_mapping) || !$this->current_mapping->get_site()) {
+			return $sources;
+		}
 
 		foreach ($sources as &$source) {
 			$sources[ $source['value'] ]['url'] = $this->replace_url($sources[ $source['value'] ]['url']);
