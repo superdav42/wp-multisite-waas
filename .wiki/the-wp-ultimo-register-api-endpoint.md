@@ -14,7 +14,7 @@ The endpoint uses the POST method and is called by the URL _**https://yoursite.c
 
 For this process, you will need your API credentials. To get them, go to your network admin panel, navigate to **WP Ultimo > Settings** > **API & Webhooks,** and look for the API Settings section.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-MzcShcSVgI.png)  
+![](assets/images/f7f3afd8.png)  
 Select the **Enable API** and get your API credentials.
 
 Now, let's explore the endpoint and then create a registration action in Zapier.
@@ -71,27 +71,27 @@ To better illustrate how to use the registration endpoint with Zapier, let's cre
 
 In Google Forms, make a form with the minimum fields necessary to create a new membership in the network.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-xaVRQkloWg.png)
+![](assets/images/5eb17f02.png)
 
 Now in Zapier, make a new Zap and connect the created form in Google through the spreadsheet where the data is saved.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-67iVl1XK46.png)
+![](assets/images/625601a6.png)
 
 Done! The Google Forms form is connected with Zapier and ready to be integrated with the network. Now let's move on to the Action that will result from the Trigger that Google Forms triggers every time it's filled.
 
 Locate the new WP Ultimo app and select it. For this kind of Zap choose the Register option.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-hq2yHGYR31.png)
+![](assets/images/4392cf5e.png)
 
-After this first step, choose the account that will be connected with this Zap.![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-BuyTLt0JUM.png)
+After this first step, choose the account that will be connected with this Zap.![](assets/images/010f69b6.png)
 
 This is the most sensitive part of the whole process. We need to match the fields that came from Google Forms with the minimum fields necessary for the register endpoint, as shown in the previous section of this article.
 
 In this example, we only need to configure the username, email, password, name and URL of the website. The rest is left pre-determined so that all memberships generated on this Google Forms follow the same product and status pattern.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-4pjTVOmauz.png)
+![](assets/images/cebd620e.png)
 
-With the information set up, proceed to the final test. On the last screen you can see all the fields that will be sent to the endpoint, their respective information and the fields that will be sent empty.![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-fD2A9dYbDs.png)
+With the information set up, proceed to the final test. On the last screen you can see all the fields that will be sent to the endpoint, their respective information and the fields that will be sent empty.![](assets/images/e784f3bb.png)
 
 Test your new Zap and it should complete successfully. If any error occurs, check all fields and if they are being sent correctly. As there is a lot of information, some things can go unnoticed.
 

@@ -12,19 +12,19 @@ The default page for registration is [_**yourdomain.com/register**_](http://your
 
 After a user get to your registration page (usually clicking on a **Sign in** or **Buy now** button), they will se your registration form there.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-hDcy7S8pBK.png)
+![](assets/images/9594b392.png)
 
 All they have to do is filling all the mandatory fields - email, username, password, etc... - and pay for the plan or confirm their email address if they are registering for a free plan or a paid plan with trial period without payment information.
 
 On the "Thank you" page, they will see a message telling them if they need to confirm their email address or if their website is already activated and they can start using it.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-FnXxCLt0YW.png)
+![](assets/images/d35f58f2.png)
 
 If an email address confirmation is required, they will need to go to their email inbox and click on the verification link. Their website will not be activated if their email address doesn't get verified.
 
 If they have registered on a paid plan or the email verification is not mandatory on your network, they will have their website activated right after the checkout and will be shown a link to sign in to their dashboard.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-DJwvUqQnQU.png)
+![](assets/images/1e37cbfa.png)
 
 ## Using a Shareable Link:
 
@@ -38,30 +38,30 @@ If you do not want to use PayPal, Stripe or any other payment gateway offered by
 
 The registration process will be exactly the same as above, but on the registration page your customers will see a message stating that they will receive an email with further instructions to complete the payment.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-iSli6MoFGw.png)
+![](assets/images/64433519.png)
 
 And after the registration is completed, they will see the payment instructions that you set (and also receive it on their email).
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-hX0GPWYfEA.png)
+![](assets/images/e9cd769a.png)
 
 The payment instructions can be changed on **WP Ultimo > Settings > Payments** after toggling on the **Manual** payment option:
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-RpPGDd0BZo.png)
+![](assets/images/68b7a30d.png)
 
 After your customers complete the manual payment and send you the confirmation, you need to **manually confirm the payment** to activate the customer membership and website.
 
 To do this, go to **WP Ultimo > Payments** and find the customer payment. It should still show a **Pending** status.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-2rW0tFemEP.png)
+![](assets/images/563203b3.png)
 
 Click on the payment number and you will be able to change its status to **Completed**.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-KiRQKw3wGg.png)
+![](assets/images/c4efb234.png)
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-NPFNchZrUa.png)
+![](assets/images/030c7d24.png)
 
 After changing its status to **Completed** , you should see an **Activate membership** message. Toggle this option **on** to activate the membership and website associated with this customer. Then, click to **Save Payment**.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-e3R91KmnUV.png)
+![](assets/images/047ab46e.png)
 
 Your customer should now be able to access the dashboard and all features that they subscribed to.

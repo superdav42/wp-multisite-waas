@@ -6,7 +6,7 @@ PRO Theme is an admin theme developed to help you when customizing your clients�
 
 After installing it, go to your _Plugins_ page and click to activate it on your Network.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-lWHb8N9jkD.png)
+![](assets/images/9e897f41.png)
 
 _Activate it network-wide on your Plugins page_
 
@@ -14,29 +14,29 @@ _**NOTE:**_ _If you just install it, it will show on your client’s as an optio
 
 Now, you have your admin interface completely redesigned! You also have a new menu on the left column called PRO Theme.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-EYpOnLd8Lm.png)
+![](assets/images/68605abc.png)
 
 _A brand new look for your Admin Panel_
 
 On this menu you’ll have access to five tabs:
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-TayGbcr05t.png)
+![](assets/images/5283f311.png)
 
 _Styling Settings_
 
-_![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-Qp6Gu25dZh.png)_
+_![](assets/images/2d7d1622.png)_
 
 _Functionality_
 
-_![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-Pt0lut5LCT.png)_
+_![](assets/images/f46679ee.png)_
 
 _Custom CSS_
 
-_![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-7Rp59aFAMi.png)_
+_![](assets/images/34a865a6.png)_
 
 _Import/Export_
 
-_![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-ft0eSfhvnR.png)_
+_![](assets/images/297e4721.png)_
 
 _Activate PRO Theme_
 
@@ -44,10 +44,10 @@ In each of them, you can enable and disable styling items, allow or block functi
 
 Here is an example of what you can get after some adjustments:
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-7aCkkF9qQq.png)
+![](assets/images/18dd2292.png)
 
 _Your client's Dashboard_
 
-_![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-HtNfQBNq88.png)_
+_![](assets/images/108c66f4.png)_
 
 _A customized login page_

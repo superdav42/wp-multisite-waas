@@ -8,7 +8,7 @@ Before we start to get into the different settings available, we need a MailChim
 
 Follow this tutorial to get your own MailChimp API key: [About API Keys | MailChimp](https://kb.mailchimp.com/integrations/api-integrations/about-api-keys)
 
-[![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-60212659ac2f834ec53865f3-zimbKYFZo-B4D1E28C-1203-4E9A-AC7B-D8E9B5659B93.png)](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-60212659ac2f834ec53865f3-zimbKYFZo-B4D1E28C-1203-4E9A-AC7B-D8E9B5659B93.png)
+[![](assets/images/519da130.png)](assets/images/519da130.png)
 
 _Add your MailChimp API key on_ _**WP Ultimo Settings - > Add-on Settings -> MailChimp**_
 
@@ -16,7 +16,7 @@ _Add your MailChimp API key on_ _**WP Ultimo Settings - > Add-on Settings -> Mai
 
 The MailChimp Integration add-on offers two “integration modes”, which means there are two different ways you can use the add-on to sync email addresses.
 
-[![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-60212659ac2f834ec53865f3-mc8dVzW5S-B7A9495E-05B8-4FBB-8954-80EBF4A9CB3B.png)](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-60212659ac2f834ec53865f3-mc8dVzW5S-B7A9495E-05B8-4FBB-8954-80EBF4A9CB3B.png)
+[![](assets/images/745fb3a4.png)](assets/images/745fb3a4.png)
 
 _Two integration modes for greater flexibility!_
 
@@ -28,7 +28,7 @@ For example, let’s suppose you have 3 different lists on your MailChimp accoun
 
 To achieve that, you can use the Multiple Lists mode to add both lists **Newsletter** and **Plan A** to the Plan A MailChimp Settings, and **Newsletter** and **Plan B** to the Plan B MailChimp Settings.
 
-[![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-60212659ac2f834ec53865f3-kZS8-S_eh-4145C1B8-B903-4DFF-9D92-AF7E0A61445E.png)](https://s3.amazonaws.com/helpscout.net/docs/assets/6017c85715d41b7c717cdcf9/images/6021265efb34b55df443e4ad/60212659ac2f834ec53865f3-kZS8-S%5Feh-4145C1B8-B903-4DFF-9D92-AF7E0A61445E.png)
+[![](assets/images/d39ba5f2.png)](assets/images/placeholder.svg)
 
 _Select the default lists for new accounts and for canceled accounts_
 
@@ -38,7 +38,7 @@ MailChimp allows you to segment your list into smaller groups of users called **
 
 For example, you can have a single list called **My Network Subscribers,** and inside it have groups for **Plan A** and **Plan B**.
 
-[![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-60212659ac2f834ec53865f3-tOsErbJy6-A468DB31-B539-493E-AF5F-F44A4F90A974.png)](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-60212659ac2f834ec53865f3-tOsErbJy6-A468DB31-B539-493E-AF5F-F44A4F90A974.png)
+[![](assets/images/6726a6d4.png)](assets/images/6726a6d4.png)
 
 _Select the default lists and groups, if using the “single list + multiple groups” integration mode_
 
@@ -52,7 +52,7 @@ You can also select the default list for canceled accounts. Whenever a user term
 
 On the same settings page, you’ll be able to enable **Double Subscription**. This option will add the user to both the default list selected AND the list selected to that user’s plan. If this option is not enabled, the user will only be added to the list selected for the user’s plan. If none is set for that particular plan, then the user will be added to the default list selected.
 
-[![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-60212659ac2f834ec53865f3-OPUDRnO94-5D4C267A-14EB-43B4-B86F-0328D330B521.png)](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-60212659ac2f834ec53865f3-OPUDRnO94-5D4C267A-14EB-43B4-B86F-0328D330B521.png)
+[![](assets/images/92dec7f8.png)](assets/images/92dec7f8.png)
 
 _You can have your users subscribed to both the default list and the plan’s list on sign-up_
 
@@ -62,7 +62,7 @@ Go to your **Plans** and select the plan you want to edit. Note that on the **Ad
 
 On that tab, you’ll be able to select multiple lists or a single list and multiple groups (depending on the integration mode) for that plan.
 
-[![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-60212659ac2f834ec53865f3-BMHjubpN5-C3183A30-687C-4837-8350-842CF959BB06.png)](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-60212659ac2f834ec53865f3-BMHjubpN5-C3183A30-687C-4837-8350-842CF959BB06.png)
+[![](assets/images/31879704.png)](assets/images/31879704.png)
 
 _Select the Lists and Groups you want to use for each of your plans_
 

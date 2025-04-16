@@ -10,11 +10,11 @@ Using the WP Ultimo broadcast feature, you can add **admin notices** to your use
 
 This is extremely helpful should you need to make an announcement like system maintenance or offering new products or services to your existing users. This is how the admin notice will look on your user’s dashboard.
 
-![broadcast account](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-UhCB0zV12U.png)
+![broadcast account](assets/images/5275b26a.png)
 
 To start an admin notice, go to your network admin dashboard and under the **WP Ultimo** menu, you will find the **Broadcasts** option.
 
-![broadcast admin](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-UBLRopntNQ.png)
+![broadcast admin](assets/images/671a99cf.png)
 
 From this page, click the **Add Broadcast** button on top.
 
@@ -22,7 +22,7 @@ This will bring up the Add broadcast modal window where you can choose what type
 
 Go ahead and select **Message** then click the **Next Step** button.
 
-![broadcast admin modal](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-f3MiyZ1DgU.png)
+![broadcast admin modal](assets/images/8329b435.png)
 
 The next window will ask you for either the **Target customer** or **Target product**. Note that you can select more than one user or more than one product.
 
@@ -32,11 +32,11 @@ Under the **Message type** field, you can select the color of the notice. This w
 
 You can then click **Next Step**.
 
-![broadcast admin add new](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-vfXM5mcBCc.png)
+![broadcast admin add new](assets/images/321b4f76.png)
 
 The next window is where you can start composing your message by entering the subject and the content/message you wish to broadcast to the users.
 
-![broadcast admin content](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-i2gpqKv4UG.png)
+![broadcast admin content](assets/images/89459aab.png)
 
 After creating your message, you can then hit the **Send** button.
 
@@ -48,13 +48,13 @@ Using the WP Ultimo broadcast feature, you can send an email to your users. You 
 
 To start an email broadcast, go to your network admin dashboard and under the WP Ultimo menu, you will find the Broadcast option.
 
-![email admin](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-UBLRopntNQ.png)
+![email admin](assets/images/671a99cf.png)
 
 From this page, click the **Add broadcast** button on top.
 
 This will bring up the Add broadcast modal window where you can choose what type of broadcast you wish to send. Go ahead and select **Email** then click the **Next Step** button.
 
-![email admin modal](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-RKZSgug4Hl.png)
+![email admin modal](assets/images/3041cec2.png)
 
 The next window will ask you for either the **Target customer** or **Target produc** t. Note that you can select more than one user or more than one product.
 
@@ -62,11 +62,11 @@ To search either for a user account or product you need to start typing the keyw
 
 Once your target audience is selected, you can click **Next Step**.
 
-![email admin add new](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-X5ZMvVYD8Q.png)
+![email admin add new](assets/images/3f30f5ac.png)
 
 The next window is where you can start composing your email by entering the subject and the content/message you wish to send to the users.
 
-![email admin content](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-us34QLYBi4.png)
+![email admin content](assets/images/91176df6.png)
 
 After creating your message, you can hit the **Send** button.
 
@@ -88,19 +88,19 @@ However, super admins and agents can import this newly registered emails via the
 
 Go to your WP Ultimo Settings page and head to the **Emails** tab.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-yIQvxZcJqk.png)
+![](assets/images/5ad2a304.png)
 
 Then, on the sidebar, click on the **Customize System Emails** button.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-mRSIFOG7eH.png)
+![](assets/images/e2b1a55f.png)
 
 On the System Emails page, you'll see the **Reset & Import** action button on the top. Clicking that button should open the import and reset modal window.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-UWDXL6Jf2d.png)
+![](assets/images/af125d5d.png)
 
 Then, you can toggle the Import Emails options to see which system emails are available to be imported.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-mGER3jSjMu.png)
+![](assets/images/59124d83.png)
 
 #### Reseting System Emails
 
@@ -112,4 +112,4 @@ Or you can use the **Reset & Import tool** to reset that email template.
 
 To reset an email template, you can follow the steps above until you reach the Reset & Import tool, and then, toggle the **Reset** option and select the emails you want to reset back to their default content.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-SMHJQAZWQM.png)
+![](assets/images/af5f165e.png)

@@ -20,8 +20,8 @@ To solve that, we offer the option of setting fake values for the placeholders, 
 
 You can have access to the template placeholders editor by heading to **WP Ultimo > Settings > Sites**, and then, on the sidebar, clicking the Edit Placeholders link.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-aFtnOrska9.png)
+![](assets/images/e3b243d1.png)
 
 That will take you to the placeholders' content editor, where you can add placeholders and their respective content.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-OeMzuyauOW.png)
+![](assets/images/da1abb75.png)

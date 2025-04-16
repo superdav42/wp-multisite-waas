@@ -12,27 +12,27 @@ _WooCommerce_ is a very popular eCommerce plugin. Developers around the world cr
 
 First, you need to install the WooCommerce Integration add-on which is **free for licensed users**. To install it, click on WP Ultimo on your super admin dashboard and select **Add-ons**.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-RRyV5DYA9v.png)
+![](assets/images/b60bbc14.png)
 
 Here you can find all WP Ultimo add-ons. Click on the **WP Ultimo: WooCommerce Integration** add-on.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-4AiiRzTKme.png)
+![](assets/images/fa310d22.png)
 
 A window will pop up with the add-on details. Just click on **Install Now** *.*
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-JMfodJJZN5.png)
+![](assets/images/57dfcf6d.png)
 
 After the installation is done, you will be redirected to the plugins page. Here, just click on **Network Activate** and the _WooCommerce_ add-on will be activated on your network.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-LQkSxAF1Sn.png)
+![](assets/images/c2fbb4d5.png)
 
 After activating it, if you still don't have the WooCommerce plugin installed and activated on your website, **you will receive a reminder**.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-1U4DaZPAiR.png)
+![](assets/images/2db06f8a.png)
 
 Once installed, you will see an additional option under the WP Ultimo payments settings. You can then **enable** the _WooCommerce_ option from there.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-HDQ1SG1pYO.png)
+![](assets/images/65742410.png)
 
 You can configure some basic settings like the display name that will show in the front end and instructions to guide your users in their checkout flow. Then you can go to your **Main site’s _WooCommerce_ settings** to enable and configure the payment gateway you prefer to use.
 

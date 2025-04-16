@@ -52,7 +52,7 @@ In a WordPress Multisite, all network sites share the same database and therefor
 
 Given this understanding it may be undesirable to allow users to be created and for this reason WordPress Multisite removes this capability from the site administrators and moves this capability to that of the network administrator. In turn the network administrator can delegate the necessary privileges to a site administrator to allow them to create user accounts for their own site.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-zg50L2qdJEphzPcgwlo_pqNiYDknE6wiJo4zQUlhQwBCtDeAef2_aTzBBMx76YvTweROsbUH4uvosFRitBj8kgatWzCi_C822oJPWr5bKpwLuoBvTIZ5M9O1nFxOepiav1FkRHNv)
+![](assets/images/bd1c217b.png)
 
 Reiterating the statement above, although the user accounts appear to be related to the site they are in fact allocated to the network and therefore must be unique across the network. There may be instances where usernames are unavailable to be registered due to this reason.
 
@@ -72,11 +72,11 @@ In a _subdirectory_ configuration, the main site (the first site created when th
 
 For posts, a mandatory /blog/ path is added to the main site to prevent clashes with network sites. This means that pretty permalinks such as ‘Post name’ will be presented as domain.name/blog/post-name/
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-QUlDfXAzHqImjngoE7UsJHa6DOl6XbQWV17LYthxpxDBy-k453GE5TlJVBA6-sOootX3Fsi34sHv5nSgi1kZmlUD1iMneztCc_HQvZmXpbZEdX2a1il8GJQqxUT8aVPgW5ikR5uG)
+![](assets/images/b8bb0ff7.png)
 
 In a _subdomain_ configuration this action is not necessary because each network site benefits from complete domain separation and thus need not rely on a single path. They instead maintain their own distinct paths based on their _subdomain_.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-2wgqTosYo3GAa3jwaBlPADbFiMbZ-kKUTuQtk0gv5pvkj81UfxnxSyA8R-jD1EZmRMBLjJFoWZJOirTSe8K9OQKeoSYeDj602XBHRrZeRFABE1sw-JERzJzEzMd7FmvrM9G1L9MP)
+![](assets/images/681a46d1.png)
 
 #### Static Pages
 
@@ -84,7 +84,7 @@ In _subdirectory_ configuration the potential for naming conflicts extends to st
 
 To prevent this, WordPress provides a means to blacklist certain site names so that they do not conflict with the names of the first site. Typically the network administrator would enter the root paths of the main site’s pages.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-sqwI-k_-3krK0_ortenskDcdGrKpgOD6itvwDc2KEuGk1gZO-rqo_OF9yTqclSmQdrOBwsGPiiOc1oF6c0GMyNELJ-7gbyQNE81juSM3IvgTdWqhZ_UEVt06xJRu8Z8oyAKfLLz-)
+![](assets/images/b15acf1f.png)
 
 In _subdomain_ configuration the possibility of naming conflicts are mitigated by the _subdomain_ as it is unique to the network site and not related in any way to the main site.
 
@@ -92,11 +92,11 @@ In _subdomain_ configuration the possibility of naming conflicts are mitigated b
 
 Within the network settings of WordPress Multisite several new user registration options are available, allowing new and existing users to create sites.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-nbH9Ka0YhI7nvo3nnKvOr_FoI_FpdAy5hz-f199CW-PV1D-tNKGawhIK_YwlUvM19TjLnhVb6Ro6J0ZpI6s2TRUaHgyGPc4qQI06eQ2O2jeMb_SaktkKwPUw3BSyaNegZYSjXMVX)
+![](assets/images/b29135a5.png)
 
 As opposed to stand-alone WordPress installations, network sites do not maintain the familiar options to allow user registrations or assign those registrations to roles.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-7I21vdReE43e0Utj_KWdnuWA08ZXz7PX33rjSEjwf6T8NDiCBYbeP9GH0J36ekFNkmsXXLBYAWjQJo4vo_kWqL6hXJuFzd9RyA52zy13lT-mMsaK-JdVivUkd5SJF3UF13r2hj28)
+![](assets/images/d19dddfd.png)
 
 When user accounts are created those accounts are generated at the network level. Thus instead of belonging to any one particular site they instead belong to the network. This has some distinctive advantages and disadvantages.
 
@@ -148,15 +148,15 @@ Thus by leveraging one of these providers or by placing WP Ultimo behind Cloudfl
 
 Agencies who prefer to keep a tight control over the creation of sites will appreciate the ease at which they can create sites and associate sites with customers and plans through WP Ultimo’s streamlined interface.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-4cYCjjZwK0DZhrlY2NLHTL4waL99PANVZmSJ4AN5MXLTxb1pVF0aAtC4dWJP2hW1pD_v6hL8X7G80LRk-NuazRQDkIPCuhuRJgIMjA4DxuQzVjWEz1Ag2RKnkqwkvmSfcgy2PLrS)
+![](assets/images/67a39e6d.png)
 
 Tight control over plugins and themes are maintained on a per-product basis through WP Ultimo’s intuitive interfaces allowing plugins and themes to be made available or hidden as well as their activation state when instantiated for a new site.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-VVpPcr8bvKd2qf9zPB_1SBiVpEYdtmskG_iO0tNCJOm2RXbU6kSC1czyLV1CaU5Mw2fWd-k2r1bnQV_yA4zOL6qnYKLWohnI-EDYhXcpxD_4n-rabGlxjQO8iyjtOgXhuDL5r2y7)
+![](assets/images/8c6f732a.png)
 
 Themes provide similar functionality, allowing for particular themes to be activated or hidden on site creation.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-3CEl6U5CPdKatlXAcG5B9jJux_iWOYpUTI4crCgW15EFkhh4pODF7hYlMyzc3na8QAefadz1kcnY_T7Yn6ZyxbBMJdfRfa16IFZma_-u7NHTtMbLZwJ9f7JbqG1QTh0y1l9WWj5z)
+![](assets/images/459a84a9.png)
 
 Agencies will find peace of mind with WP Ultimo allowing them to do what they do best - design exceptional web sites.
 
@@ -260,7 +260,7 @@ In selecting your plugin, do take care to verify that it is multisite aware. Due
 
 Much has been discussed already regarding domain names in multisite _subdomain_ mode. An almost universal solution for network administrators is to make use of wildcard DNS entries.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-GwkLVUQ9Wb.png)
+![](assets/images/988808a1.png)
 
 This type of DNS entry will successfully resolve _subdomains_ such as ‘site1.domain.com’ and ‘site2.domain.com’ to an IP address of 1.2.3.4 thus supporting WP Ultimo and to a larger extent WordPress Multisite using _subdomain_ mode.
 

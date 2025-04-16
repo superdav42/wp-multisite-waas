@@ -16,15 +16,15 @@ That sounds awesome, but how do I create a new site template? It is as simple as
 
 Site Templates are just normal sites on your network. To create a new template you can simply go to **Network Admin > WP Ultimo > Sites > Add Site.**
 
-**![add site template](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-D1F8SOUTYU.png)**
+**![add site template](assets/images/86bf8f50.png)**
 
 This will open a modal window where it will ask for the **Site title, Site Domain/path,** and **Site type**. Under the **Site Type** drop-down field make sure that you select **Site Template** *.*
 
-_![Add site template modal](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-gGWUnGCS36.png)_
+_![Add site template modal](assets/images/cb7220f8.png)_
 
 At the bottom of the form, you will notice a **Copy Site** toggle switch. This will allow you to create a new site template based on an existing site template as your starting point to help you save time instead of creating a site template from scratch.
 
-![Add site template modal 2](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-DVSq5dgWfa.png)
+![Add site template modal 2](assets/images/be20410f.png)
 
 ### Customizing the contents of a Site Template
 
@@ -54,11 +54,11 @@ In this mode, your clients won’t be able to choose a template when they create
 
 To do that, you’ll need to go to **WP Ultimo > Products > Edit**.
 
-![Assign site template](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-t7UjzQEG5g.png)
+![Assign site template](assets/images/34c38d3c.png)
 
 This will bring you to the **Edit Produc** t page. Under the **Product Options** section, find the **Site template** tab and select the **Assign Site** **Template** option from the drop-down field. This will bring up the list of site templates available and it will allow you to select only one site template dedicated to the product.
 
-![Assign site template](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-HTcetltjLR.png)
+![Assign site template](assets/images/179e0856.png)
 
 #### Mode 2: Choose Available Site Template
 
@@ -66,27 +66,27 @@ In this mode, you’ll give your clients a choice during the sign-up process. Th
 
 On the **Edit Product** page. Under the **Product Options** section, find the **Site template** tab and select the **Choose Available Site Template** option from the drop-down field. This will bring up the list of site templates available and it will allow you to select the site template you wish to be available. You can do this by choosing its Behavior: **Available** if you want the site template to be included on the list. _**Not Available**_ if you want the site template not to show as an option. And **Pre-selected** if you wish one of the site templates listed to be the default selected.
 
-![Assign site template](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-dY8gSreOfG.png)
+![Assign site template](assets/images/f0d7830a.png)
 
 ### Default Mode: Site template selection on the Checkout form
 
 If you wish all your site templates to be available during the registration, or maybe do not prefer doing extra work of assigning or specifying site templates under each product you create. Then you can simply set the site template selection under your **Checkout Form**. To do this, you just need to go to **WP Ultimo > Checkout Forms**. Then click **Edit** under the form you wish to configure.
 
-![Assign site template](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-FaXifuzMu3.png)
+![Assign site template](assets/images/16ee03d8.png)
 
 This will bring up the **Edit Checkout Form** page. Find the **Template Selection** field and click **Edit** under it.
 
-![Assign site template](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-ZDAp4vdnve.png)
+![Assign site template](assets/images/9910742a.png)
 
 A modal window will appear. Under the **Template Sites** field you can select and list down all the site templates you wish to be available during registration. The site templates you specify from here will be available regardless of whatever product the user selected.
 
-![Assign site template](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-pCSfzJkf4d.png)
+![Assign site template](assets/images/d335d353.png)
 
 ### Site Template Options
 
 There are other site templates functions available that you can turn on or off under WP Ultimo settings.
 
-![Site template option](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-wrwT3rqFEf.png)
+![Site template option](assets/images/f9dc7754.png)
 
 #### Allow Template Switching
 
@@ -110,21 +110,21 @@ One of the most powerful features of WP Ultimo is the ability to add arbitrary t
 
 For example, if you wish to get your end-user's company name during registration and automatically put the company name on the home page. On your template site home page you need to add the placeholders, like in the image below (placeholders should be added surrounded by double curly braces - {{placeholder_name}}).
 
-![homepage placeholder](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-yEOlZVv2Gr.png)
+![homepage placeholder](assets/images/da1998e6.png)
 
 Then, you can simply add a matching registration field on your checkout form to capture that data:
 
-![checkout form](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-9adTd73gNT.png)
+![checkout form](assets/images/53298959.png)
 
 Your customer will then be able to fill that field during the registration.
 
-![registration field](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-jHQ9ZOGWlh.png)
+![registration field](assets/images/9ae9d813.png)
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-preview)
+![](assets/images/b7d52e55.png)
 
 WP Ultimo will then replace the placeholders with the data provided by the customer automatically.
 
-![replace placeholder](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-chL5wf7wmY.png)
+![replace placeholder](assets/images/73c071fc.png)
 
 ### Solving the "template full of placeholders" problem
 
@@ -134,8 +134,8 @@ To solve that, we offer the option of setting fake values for the placeholders, 
 
 You can have access to the template placeholders editor by heading to **WP Ultimo > Settings > Sites**, and then, on the sidebar, clicking the **Edit Placeholders** link.
 
-![placeholder settings](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-ztZnAexNEZ.png)
+![placeholder settings](assets/images/f45bd3ea.png)
 
 That will take you to the placeholders' content editor, where you can add placeholders and their respective content.
 
-![template placeholders](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-95QJa1MRGz.png)
+![template placeholders](assets/images/062fdf61.png)

@@ -6,7 +6,7 @@ After [activating your license](1677127280-how-do-i-activate-wp-ultimo-using-my-
 
 Go to your WP Ultimo settings page and then, on the menu on the left, click the _Add-ons_ label.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-rzVqJCVpY1.png)
+![](assets/images/a36c8a39.png)
 
 _Go to Add-ons page to start installing Language Selector_
 
@@ -16,33 +16,33 @@ Free add-ons are available to all our customers, regardless of the subscription 
 
 Click the _Install it Now!_ button bellow the add-on’s thumbnail. Then activate it on Plugins page.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-bJgpO3QvLh.png)
+![](assets/images/c4107c61.png)
 
 _Click the button to install the add-on_
 
-_![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-P5ogwZKKDy.png)_
+_![](assets/images/b34d323f.png)_
 
 _Activate it on your Plugins page_
 
 Now, go to WP Ultimo’s Settings menu and enter the _Network Settings_ tab. There, at the bottom of the page, you will find a new section called _Languages_.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-CaH7BHDh50.png)
+![](assets/images/aa0516ef.png)
 
 _A brand new section appears!_
 
 You can leave it blank to display all the languages as options or select which ones you’d like to make available. The languages are the ones you have installed in your WordPress set up.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-PGljAd4C24.png)
+![](assets/images/3664249a.png)
 
 _List of languages available on this WP install_
 
 After saving the changes you made, a selection menu with the languages you chose will be displayed on the Login page as well as on the Sign-up Flow.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-qUnJL7JHxY.png)
+![](assets/images/dff8ac53.png)
 
 _Language Selector on Login Page_
 
-_![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-HnKLDvxuWU.png)_
+_![](assets/images/b3ef29e8.png)_
 
 _Language Selector on the Sign-up Flow_
 

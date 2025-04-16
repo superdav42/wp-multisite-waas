@@ -18,39 +18,39 @@ After you [install and activate version 2.0](1677127281-installing-wp-ultimo.htm
 
 _**NOTE:** If you have WP Ultimo 1.x installed on your Multisite, you'll have the option to replace the plugin with the version you've just downloaded. Please, go ahead and click to **Replace current with uploaded**._
 
-![](https://support.delta.nextpress.co/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRjIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c2aff9b312e5b7ec95c9e2c5355480d4aa7258fd/Migration.png)
+![](assets/images/61a07cb4.png)
 
 The next page will let you know what legacy add-ons you have installed along with version 1.x. It will have instructions on whether the version you are using is compatible with version 2.0 or if you need to install an upgraded version of the add-on after the migration.
 
-![Message on the top of the plugins page: Thanks for updating to WP Ultimo version 2.0. There's a link below it that leads the user to the version upgrader. Then, there's a list of add-ons that need to be updated.](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-4E9kAFlcb5.png)
+![Message on the top of the plugins page: Thanks for updating to WP Ultimo version 2.0. There's a link below it that leads the user to the version upgrader. Then, there's a list of add-ons that need to be updated.](assets/images/3b396ba7.png)
 
 Once you are ready to proceed, you can click the button that says **Visit the Installer to finish the upgrade**.
 
-![Framed in red: button saying Visit the Installer to finish the upgrade](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-BnJrjt7Drw.png)
+![Framed in red: button saying Visit the Installer to finish the upgrade](assets/images/882493d5.png)
 
 It will then bring you to the installation wizard page with some welcome messages. You just need to click **Get Started** to move to the next page.
 
-![Setup Wizard's welcoming page. Framed in red at the bottom-right corner: Get Started button.](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-1dvRbsEnrN.png)
+![Setup Wizard's welcoming page. Framed in red at the bottom-right corner: Get Started button.](assets/images/19e81a54.png)
 
 After clicking **Get Started** , it will redirect you to the Pre-install Checks_._ This will show you your System Information and WordPress installation and tell you if it meets [WP Ultimo's requirements](https://help.wpultimo.com/article/323-wp-ultimo-requirements).
 
-![Pre-install Checks page showing confirmation messages that the installation meets WP Ultimo's requirements. Framed on red, on the bottom-right corner: Go to the next step button.](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-i0SwDNkaEO.png)
+![Pre-install Checks page showing confirmation messages that the installation meets WP Ultimo's requirements. Framed on red, on the bottom-right corner: Go to the next step button.](assets/images/e889e503.png)
 
 The next step is to key in your WP Ultimo license key and activate the plugin. This will ensure that all the features, including add-ons, will be available on your site.
 
-![License activation page listing what the support includes and what it doesn't. There's a box on the bottom to insert the plugin's license. Framed in red, on the bottom-right corner: Agree and activate button.](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-QAwmR9oLQL.png)
+![License activation page listing what the support includes and what it doesn't. There's a box on the bottom to insert the plugin's license. Framed in red, on the bottom-right corner: Agree and activate button.](assets/images/f6576ded.png)
 
 After putting in your key, click **Agree & Activate**.
 
 After license activation, you can begin the actual installation by clicking **Install** on the next page. This will automatically create the necessary files and database needed for version 2.0 to function.
 
-![Installation page showing what will be updated in order to WP Ultimo to function. Framed in red, on the bottom-right: Install button](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-FCyBH12y4d.png)
+![Installation page showing what will be updated in order to WP Ultimo to function. Framed in red, on the bottom-right: Install button](assets/images/dcbeae90.png)
 
 ## Now, the migration
 
 The migrator has a built-in safety feature wherein it will check your entire multisite to make sure that all your WP Ultimo data can be migrated without any issues. Click the **Run Check** button to start the process.
 
-![Migration page explaining it will run a check to see if all your data from v1 can be converted. Framed in red, on the bottom-right corner: Run check button](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-vXLXFLjogz.png)
+![Migration page explaining it will run a check to see if all your data from v1 can be converted. Framed in red, on the bottom-right corner: Run check button](assets/images/9242dac0.png)
 
 After running the check, you have two possibilities: the result can be either **with** an error or **without an error**.
 
@@ -64,9 +64,9 @@ _**Since the system found an error, you won't be able to proceed to migrate to v
 
 If the system doesn't find any error, you will see a success message and a **Migrate** button at the bottom that will allow you to proceed with the migration. On this page, you will be reminded to create a backup of your database before moving forward, which we strongly recommend. Hit **Migrate** if you already have a backup.
 
-![Migration page showing a success message and a recommendation to create a backup.](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-T5ELIgTX5a.png)
+![Migration page showing a success message and a recommendation to create a backup.](assets/images/7a708c96.png)
 
-![Framed in red, on the bottom-right corner: Migrate button](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-Y2AfV93rpf.png)
+![Framed in red, on the bottom-right corner: Migrate button](assets/images/592231a4.png)
 
 And this is all it takes!
 

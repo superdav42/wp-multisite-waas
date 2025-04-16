@@ -12,7 +12,7 @@ WP Ultimo offers an online tool that allows you to translate WP Ultimo and its a
 
 To be able to translate WP Ultimo you’ll need an account on the translation platform. To create a new account, simply click on the **Register** link at the top-right corner of the page.
 
-[![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-60212b3aa4cefb30ae5c8628-TMyptZIYy-Capto_Capture-2018-08-04_04-32-44_PM.png)](https://s3.amazonaws.com/helpscout.net/docs/assets/6017c85715d41b7c717cdcf9/images/60212b3cac2f834ec538662f/60212b3aa4cefb30ae5c8628-TMyptZIYy-Capto%5FCapture-2018-08-04%5F04-32-44%5FPM.png)
+[![](assets/images/716c3f30.png)](assets/images/placeholder.svg)
 
 _Click the Register Link_
 
@@ -24,13 +24,13 @@ After creating your account, you’ll be redirected to the **translation platfor
 
 Once logged in, you’ll see a list of the active projects on the platform:
 
-[![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-60212b3aa4cefb30ae5c8628-aNMsyioeH-Capto_Capture-2018-08-04_04-36-50_PM.png)](https://s3.amazonaws.com/helpscout.net/docs/assets/6017c85715d41b7c717cdcf9/images/60212b3d1f25b9041bebc7b3/60212b3aa4cefb30ae5c8628-aNMsyioeH-Capto%5FCapture-2018-08-04%5F04-36-50%5FPM.png)
+[![](assets/images/00af4bca.png)](assets/images/placeholder.svg)
 
 _All the add-ons are also present on the translation platform_
 
 Click the WP Ultimo project (or any of the add-ons) to see the available languages and the progress on each of them.
 
-[![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-60212b3aa4cefb30ae5c8628-izWTfyXLY-Capto_Capture-2018-08-04_04-38-01_PM.png)](https://s3.amazonaws.com/helpscout.net/docs/assets/6017c85715d41b7c717cdcf9/images/60212b3fa4cefb30ae5c8629/60212b3aa4cefb30ae5c8628-izWTfyXLY-Capto%5FCapture-2018-08-04%5F04-38-01%5FPM.png)
+[![](assets/images/24a4a464.png)](assets/images/placeholder.svg)
 
 _Help keep translations up to date!_
 
@@ -40,7 +40,7 @@ In this example, let’s suppose we want to help complete the Brazilian Portugue
 
 You can then click on the **Untranslated** link to see all the strings left to be translated and start working on your translation.
 
-[![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-60212b3aa4cefb30ae5c8628-HdSeWze9U-Capto_Capture-2018-08-04_04-41-30_PM.png)](https://s3.amazonaws.com/helpscout.net/docs/assets/6017c85715d41b7c717cdcf9/images/60212b401f25b9041bebc7b4/60212b3aa4cefb30ae5c8628-HdSeWze9U-Capto%5FCapture-2018-08-04%5F04-41-30%5FPM.png)
+[![](assets/images/c629de63.png)](assets/images/placeholder.svg)
 
 _Select the Untranslated Strings_
 

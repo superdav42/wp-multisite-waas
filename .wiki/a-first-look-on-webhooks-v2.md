@@ -10,11 +10,11 @@ This is helpful should you need to integrate or pass certain data from WP Ultimo
 
 To create a webhook, go to your network admin dashboard. Click on **WP Ultimo > Webhooks > Add New Webhook.**
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-7cBdC7uhfX.png)
+![](assets/images/b408d428.png)
 
 When creating a new webhook you will be asked for information like **Name, URL,** and **Event**. You can use any name you want for your webhook. The most important fields are the URL and Event.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-7MmyV3wafK.png)
+![](assets/images/00319bd2.png)
 
 URL is the **endpoint or the destination** to which WP Ultimo will send the **payload or data**. This is the application that will receive the data.
 
@@ -24,28 +24,28 @@ In this article, we will be looking at the basic concept of how a webhook works 
 
 Go to [requestbin.com](https://requestbin.com/) and click Create Request Bin.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-J0e5FzS04g.png)
+![](assets/images/54e84256.png)
 
 After clicking that button, it will ask you to log in if you already have an account or sign up. If you already have an account it will lead you right to their dashboard. On their dashboard, you will immediately see the endpoint or URL you can use in creating your WP Ultimo webhook.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-M40kPMGsji.png)
+![](assets/images/c977395b.png)
 
 Go ahead and copy the URL and go back to WP Ultimo. Place the endpoint on the URL field and select an event from the dropdown. In this example, we will be selecting **Payment Received**.
 
 This event is triggered whenever a user makes a payment. All the events available, their description, and payloads are listed at the bottom of the page. Click the **Add New Webhook** button to save the webhook.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-1NwqQP4bP0.png)
+![](assets/images/9435ee6c.png)
 
 We can now send a test event to the endpoint for us to see if the webhook we created is working. We can do this by clicking **Send Test Event** under the webhook we created.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-zTDhrG4wlP.png)
+![](assets/images/33d536d0.png)
 
 This shows a confirmation window saying that the test was successful.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-9jP9r7yRT9.png)
+![](assets/images/aed9dd77.png)
 
 Now if we go back to the _Requestbin_ site we will see that the payload has been received containing some test data.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-RZke5xnrAg.png)
+![](assets/images/1d33f7fa.png)
 
 This is the basic principle of how webhook and endpoints work. If you are to create a custom endpoint, you will need to create a custom function to process the data your receive from WP Ultimo.

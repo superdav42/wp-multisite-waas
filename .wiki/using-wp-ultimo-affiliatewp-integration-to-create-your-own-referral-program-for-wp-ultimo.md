@@ -12,7 +12,7 @@ Also, you’ll need both **WP Ultimo** and **WP Ultimo: AffiliateWP** **activate
 
 On your main site, head to Affiliates Settings, and on the Integrations tab, check WP Ultimo. This will tell [AffiliateWP](https://affiliatewp.com/) to start tracking visits and conversions from the WP Ultimo sign-up flow.
 
-[![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-602126536867724dfc6f0a54-zkWh3TFms-1F9087E6-928C-4043-94B9-F85966AF05DA.png)](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-602126536867724dfc6f0a54-zkWh3TFms-1F9087E6-928C-4043-94B9-F85966AF05DA.png)
+[![](assets/images/39ce2339.png)](assets/images/39ce2339.png)
 
 _Check the WP Ultimo box at the bottom and save_
 
@@ -24,7 +24,7 @@ Only the first payment received from the newly created user will be tracked, tho
 
 After installing the [AffiliateWP Recurring Referrals Add-on](https://affiliatewp.com/add-ons/pro/recurring-referrals/), head to Affiliates Settings Recurring Referrals tab, and enable the use of recurring referrals.
 
-[![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-602126536867724dfc6f0a54-bmSN5h7Lk-4697DC4E-ABB9-4C34-BFD8-97E4B62C261C.png)](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-602126536867724dfc6f0a54-bmSN5h7Lk-4697DC4E-ABB9-4C34-BFD8-97E4B62C261C.png)
+[![](assets/images/569bc4fc.png)](assets/images/569bc4fc.png)
 
 _As simple as it gets: Enable Recurring Referrals and you’re all set!_
 

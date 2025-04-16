@@ -12,7 +12,7 @@ Note that you need to have a **PayPal Business account** to obtain the API crede
 
 To enable PayPal as an available payment method on your network, go to **WP Ultimo > Settings > Payments** tab and tick the box next to PayPal.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-FhlfHHJLPl.png)
+![](assets/images/4feff2d4.png)
 
 ## Getting the PayPal API credentials
 
@@ -22,17 +22,17 @@ You can get this by logging in to your PayPal [Live](https://www.paypal.com/home
 
 (Remember that you can use the **sandbox mode** to test payments and see if the gateway is correctly setup. Just toggle on the correspondent section.)
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-PgTatIgsIm.png)
+![](assets/images/49b32952.png)
 
 To request API Signature or Certificate credentials for your PayPal account:
 
   1. Go to your [Account Settings](https://www.paypal.com/businessmanage/account/accountAccess).
 
   2. In the **API access** section, click **Update**.  
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-Dx72ARoKzx.png)
+![](assets/images/df75b6e7.png)
 
   3. Under **NVP/SOAP API integration (Classic)** , click **Manage API credentials**.  
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-mUoIzsfpMq.png)
+![](assets/images/927b96c5.png)
 
      * If you have already generated an API Signature or Certificate, you will be redirected to a page where you can find your credentials.
 
@@ -45,7 +45,7 @@ To request API Signature or Certificate credentials for your PayPal account:
      * **Request API Certificate** – Select for API Certificate authentication.
 
   5. PayPal generates your API credentials as follows:  
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-utEMaS5roo.png)
+![](assets/images/d75bc1fc.png)
 
      * **API Signature credentials** include an API Username, API Password, and Signature, which does not expire. These values are hidden by default for added security. Click **Show/Hide** to toggle them on and off. When finished, click **Done**.
 

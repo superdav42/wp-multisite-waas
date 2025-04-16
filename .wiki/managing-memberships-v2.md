@@ -8,26 +8,26 @@ There you can review and edit members subscription details such as plans and pro
 
 To access this page, go to the Memberships tab on the left side of the main menu.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-V8w7KNZjRB.png)
+![](assets/images/e4d35d62.png)
 
 On the Memberships page you can see a list of your customers and the products associated to their account.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-8tSCmN8cJu.png)
+![](assets/images/93ca2e9d.png)
 
 You can also filter your memberships by their status: active, pending, on hold, expired or cancelled.
 
 Click on the membership number to access the page that will allow you to edit the membership details.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-al0S2MFmuJ.png)
+![](assets/images/efbf3f96.png)
 
-You can edit all the options related to the subscription, such as billing info, sites or visits limits etc.![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-JjmPnw23vL.png)
+You can edit all the options related to the subscription, such as billing info, sites or visits limits etc.![](assets/images/d2d2fd3f.png)
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-TBAJVRHja3.png)
+![](assets/images/64c29c28.png)
 
 You can also add new memberships associated with users previously registered on your network. Just click _Add Membership_ and configure the details.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-fU052KbbAN.png)
+![](assets/images/b4c36ab4.png)
 
 Then, click to _Create Membership_. The new membership should appear on the memberships list.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-T0alGARp3v.png)
+![](assets/images/7539dafc.png)

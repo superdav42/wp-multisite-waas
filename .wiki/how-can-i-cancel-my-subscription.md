@@ -4,19 +4,19 @@ If you have a WP Ultimo license, you can cancel its renewal at any time you want
 
 Access your Freemius account page through the link you received in your e-mail after buying WP Ultimo:
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-602125811f25b9041bebc762-kFXPifHWo-Account.png)
+![](assets/images/9bd24327.png)
 
 Use the email you provided during the purchase and your password.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-602125811f25b9041bebc762-sz4pZH3oz-Login.png)
+![](assets/images/c7668877.png)
 
 This is your Account Page inicial screen:
 
-![](https://support.delta.nextpress.co/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3NnIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--157d6544a77090f7ae56e4a26e04a9adddb53f4c/Freemius%20account.png)
+![](assets/images/b7c32c68.png)
 
 To cancel your subscription, on the menu on the left, go to _Renewing & Billing._
 
-![](https://support.delta.nextpress.co/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3dnIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c00d8fe9945900093d923bb60ac1560f6e5edd94/Freemius%20account%202.png)
+![](assets/images/52d8ce74.png)
 
 Click the arrow on the right to open a side window. Then, you should select the option that will cancel the **auto-renew**.
 

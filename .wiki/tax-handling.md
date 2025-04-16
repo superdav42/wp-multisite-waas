@@ -10,7 +10,7 @@ WP Ultimo does not file or remit taxes on your behalf to the government; we simp
 
 Tax collection is not enabled by default. To enable it, you need to go to **WP Ultimo > Settings > Taxes** and toggle to enable the Enable Taxes setting.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-ICSEhm7yhk.png)
+![](assets/images/53e49d57.png)
 
 ### Tax excluded vs. Tax included
 
@@ -18,7 +18,7 @@ By default, all your product prices are tax excluded, meaning that taxes **are n
 
 If you prefer to have taxes included in your product's price, you can do so by enabling the **Inclusive Tax** setting.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-xiiaIXYI2c.png)
+![](assets/images/d95c2a99.png)
 
 Don't forget to **save** the changes you've made.
 
@@ -30,11 +30,11 @@ After you enable Tax Collection, you'll need to create tax rates for specific lo
 
 You can access the editor by clicking the **Manage Tax Rates** button on the sidebar of the Tax settings page.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-UZb6g2rvrs.png)
+![](assets/images/41b02376.png)
 
 On the tax rates editor page, you can add new Tax Rates by clicking the **Add new Row** button.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-ZyJCSI6zLZ.png)
+![](assets/images/6339aff9.png)
 
 You'll need to give each tax rate a **title** (used on invoices). Then you can choose the **country** (required), the **state,** and the **city** (both optional) where this tax will be charged. Finally, add the **tax rate in percents**.
 
@@ -44,19 +44,19 @@ You can also create multiple Tax Categories, to add different tax rates for diff
 
 Click to **Add new Tax Category** , then write your category's name and press **Create**.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-73biI4o8lj.png)
+![](assets/images/6cc97499.png)
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-YhH2hLLvEC.png)
+![](assets/images/86ff99e0.png)
 
 To browse through categories, click **Switch** and select the category to which you want to add new taxes.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-xjghTq6ta4.png)
+![](assets/images/60b1b914.png)
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-E5YLXeIsWH.png)
+![](assets/images/a33dfa53.png)
 
 You can set the tax category for a particular product by going to the [Product edit page](https://help.wpultimo.com/article/373-creating-your-first-subscription-product) and then to the Taxes tab.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-vkh5NXKplU.png)
+![](assets/images/ab7b1152.png)
 
 On that same screen, you can toggle off the **Is Taxable?** toggle to let WP Ultimo know that it should not collect taxes on that given product.
 
@@ -72,21 +72,21 @@ Our VAT tools help with a couple of important things:
 
 To install that add-on, go to **WP Ultimo > Settings** and then click on the **Check our Add-ons** sidebar link.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-AsMyAH5HKC.png)
+![](assets/images/7dc348d7.png)
 
 You'll be redirected to our add-ons page. There, you can search for the **WP Ultimo VAT add-on** and install it.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-AQ6gWfdY5G.png)
+![](assets/images/5be977b7.png)
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-iz8uncHiYa.png)
+![](assets/images/f8f16137.png)
 
 Then, head to **Network Admin > Plugins** and activate that add-on network-wide.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-PkWGMWlgVu.png)
+![](assets/images/6b83e98a.png)
 
 If you head back to the **Tax Settings tab** , you'll see new options available. Toggle the **Enable VAT Support** option to enable the new VAT tools. Don't forget to **save** your settings!
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-Gn1SspQZ0S.png)
+![](assets/images/03a41fe4.png)
 
 ### Pulling on VAT Tax Rates
 
@@ -94,7 +94,7 @@ One of the tools that our integration adds is the ability to load the tax rates 
 
 At the bottom of the page, you'll see the VAT pulling options. Selecting a rate type and clicking the **Update EU VAT Rates** button will pull up and auto-populate the table with the tax rates for each EU member state. Then, you only need to save it.
 
-### ![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-jZKEqPBX5E.png)
+### ![](assets/images/bac24b2e.png)
 
 You can also edit the values after pulling them. To do it, simply edit the table line you need and click to save the new values.
 
@@ -102,6 +102,6 @@ You can also edit the values after pulling them. To do it, simply edit the table
 
 When VAT support is enabled, WP Ultimo will add an additional field to the checkout form, bellow the billing address field. The field will only show up for customers located in the EU.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-ITUbFOIM4r.png)
+![](assets/images/5e0bf720.png)
 
 WP Ultimo will then validate the VAT Number and if it comes back as a valid one, the reverse charge mechanism is applied and the tax rate is set to 0% on that order.

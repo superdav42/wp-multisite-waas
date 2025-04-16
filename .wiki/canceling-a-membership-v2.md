@@ -8,19 +8,19 @@ If your user wants to cancel their membership, they should first access their [*
 
 There, they should click head to the **Danger Zone** , and click to **Delete Account**.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-7IO8WYhID5.png)
+![](assets/images/37a1ff9f.png)
 
 A module will open asking for their confirmation. They should toggle the **Confirm Account Deletion** option on and click to **Delete Account**.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-NavCHgYJYo.png)
+![](assets/images/af2ca48e.png)
 
 This will log them out of the site and cancel their membership on your network, as well as delete their site from your network.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-KFkpD0CRhT.png)
+![](assets/images/1a44e2e2.png)
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-jWkEmpf9ij.png)
+![](assets/images/667a7198.png)
 
 **Important:** Notice that this action will not exclude the customer from your network, since a customer can have more than one membership or none membership linked to them.
 
-![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-MDX2xRZVHu.png) | ![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-5g9qbL4SaT.png)  
+![](assets/images/43bde75e.png) | ![](assets/images/8bc09666.png)  
 ---|---
