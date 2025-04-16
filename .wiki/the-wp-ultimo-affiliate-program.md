@@ -3,17 +3,17 @@
 You can become a WP Ultimo affiliate by joining our Lemon Squeezy affiliate program.
 
 First go to our affiliates page on <https://store.wpultimo.com/affiliates>, and click the button to become an affiliate.  
-![](assets/images/bb8c336a.png)
+![](https://docs.nextpress.us/uploads/d63c485e-f614-4a5a-b86d-4f604036e979.png)
 
 You’ll be asked to complete an affiliate profile that will be first submitted to Lemon Squeezy for approval.  
-![](assets/images/f547f02c.png)
+![](https://docs.nextpress.us/uploads/c1582b70-16b7-4340-b823-728cfb7e0517.png)
 
 After Lemon Squeezy’s review, your application will be sent to us and our team will analyze it.
 
 You will receive a confirmation email from Lemon Squeezy once your application is approved.
 
 You can manage and view all of your affiliate memberships, referrals and payouts on your Affiliate Hub.  
-![](assets/images/4c70d5c4.png)
+![](https://docs.nextpress.us/uploads/ce97a82d-ab63-4a43-bfa3-eb62e10e29bf.png)
 
 ## **How does WP Ultimo’s affiliate program work?**
 

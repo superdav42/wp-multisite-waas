@@ -18,11 +18,11 @@ Gumroad and CodeCanyon licenses are the old ones. Therefore, we strongly recomme
 
 If you purchased WP Ultimo via Freemius, you should have received an email with your license key, some purchase details, and a download link.
 
-![](assets/images/089c2543.png)
+![](https://support.delta.nextpress.co/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VnIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9c6f783ead7aead990f71508c84264c23b9552d4/License%20Key.png)
 
 Alternatively, you can check your license key on your [Freemius panel](https://freemius.com/).
 
-![](assets/images/af881d46.png)
+![](https://support.delta.nextpress.co/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1lnIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7b6bdbc53f4cb7f34830ca13a16cb25dd5d08006/Licence%20Key%202.png)
 
 ## Gumroad
 

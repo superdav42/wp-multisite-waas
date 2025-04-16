@@ -8,19 +8,19 @@ With WP Ultimo you can create discount codes to give your clients discounts on t
 
 To create or edit a discount code, go to **WP Ultimo > Discount Codes**.
 
-![](assets/images/18df2849.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-G2iYAraljI.png)
 
 There you’ll have a list of the discount codes you’ve already created.
 
 You can click on **Add Discount** **Code** to create a new coupon or you can edit the ones you have by hovering over them and clicking **Edit**.
 
-![](assets/images/0f286bcb.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-nl6H0I06Jl.png)
 
-![](assets/images/7b737480.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-3puhU5xCFF.png)
 
 You will be redirected to the page where you will create or edit your coupon code. On this example we will create a new one.
 
-![](assets/images/af4997e4.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-9dup6xM4Cx.png)
 
 Lets take a look at the settings available here:
 
@@ -28,25 +28,25 @@ Lets take a look at the settings available here:
 
 **Description:** Here, you can briefly describe what this coupon is for.
 
-![](assets/images/6401e6fb.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-V97PvPqtmK.png)
 
 **Coupon code:** Here is where you define the code your customers will need to enter during the checkout.
 
-![](assets/images/e0911fec.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-En58UdF3b7.png)
 
 **Discount:** Here, you can set either a **percentage** or a **fixed amount** of money for your discount code.
 
-![](assets/images/49b1f35e.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-96cicxcs7f.png)
 
 **Apply to renewals:** If this option is toggled off, this discount code will only be applied to the **first payment**. All the other payments will have no discount. If this option is toggled on, the discount code will be valid for all future payments.
 
 **Setup fee discount:** If this option is toggled off, the coupon code will **not give any discount for the setup fee** of the order. If this option is toggled on, you can set the discount (percentage or fixed amount) that this coupon code will apply to the setup fee of your plans.
 
-![](assets/images/1ad0fe21.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-zDYmcgHcoq.png)
 
 **Active:** Manually activate or deactivate this coupon code.
 
-![](assets/images/d7a883a5.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-rwNFfGobBB.png)
 
 Under **Advanced Optio** **ns** , we have the following settings:
 
@@ -56,21 +56,21 @@ Under **Advanced Optio** **ns** , we have the following settings:
 
   * **Max uses:** This will limit the amount of times users can use this discount code. For example, if you put 10 here, the coupon could only be used 10 times. After this limit, the coupon code cannot be used anymore.
 
-![](assets/images/854d9d00.png)**Start & expiration dates:** Here you will have the option to add a start date and/or an expiration date to your coupon.
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-zx4xudymt2.png)**Start & expiration dates:** Here you will have the option to add a start date and/or an expiration date to your coupon.
 
-![](assets/images/a9d5394d.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-AyTJkzxz9W.png)
 
 **Limit products:** If you toggle **Select products** on, all your products will be shown to you. You will have the option to manually select (by toggling on or off) which product can accept this coupon code. Products that are toggled off here will not show any change if your customers try to use this coupon code to them.
 
-![](assets/images/220b3e3e.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-OHK9Bgsaq7.png)
 
 After setting up all of these options, click on **Save Discount Code** to save your coupon and it’s done!
 
-![](assets/images/fcb6b7f2.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-wAAoviDov8.png)
 
 The coupon is now on your list and, from there, you can click to **edit or delete** it.
 
-![](assets/images/3eaaf3eb.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-ySn575AxqX.png)
 
 ### 
 
@@ -82,7 +82,7 @@ First, you need to get the shareable link for your plan. To do this, go to **WP 
 
 Click on the **Click to Copy Shareable Link** button. This will give you the shareable link to this specific plan. In our case, the shareable link given was [_**mynetworkdomain.com/register/premium/**_](http://mynetworkdomain.com/register/premium/)_._
 
-![](assets/images/7ef542f8.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-TecoStCUYi.png)
 
 To apply your discount code to this specific plan, just add the parameter **?discount_code=XXX** to the URL. Where **XXX** is the coupon code.
 

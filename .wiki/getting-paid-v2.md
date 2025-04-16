@@ -8,33 +8,33 @@ WP Ultimo has a built-in membership and billing system. For our billing system t
 
 You can configure any of these payment gateways under WP Ultimo payment settings. You can find it by going to **WP Ultimo menu > Settings > Payments.**
 
-![](assets/images/546e7db0.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-42sl37Fn5G.png)
 
 Before you setup your payment gateway, please take a look at the basic payment settings you can configure:
 
 **Force auto-rene** **w:** This will make sure that the payment will automatically recur at the end of every billing cycle depending on the billing frequency the user selected.
 
-![](assets/images/7babc171.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-Og3iJwLdmn.png)
 
 **Allow trials without payment** **method:** With this option enabled your client won't have to add any financial information during the registration process. This will only be required once the trial period expires.
 
-![](assets/images/66c4e30f.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-aA5Olqe9M9.png)
 
 **Send invoice on payment confirmation:** This gives you an option whether or not to send an invoice after payment. Note that users will have access to their payment history under their subsite dashboard. This option doesn't apply to the Manual Gateway.
 
-![](assets/images/02f3f672.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-RGupao7GvW.png)
 
 **Invoice numbering scheme:** Here, you can select either a payment reference code or a sequential number scheme. If you choose to use a payment reference code for your invoices, you don't need to configure anything. If you choose to use a sequential number scheme, you will need to configure the **next invoice number** (This number will be used as the invoice number for the next invoice generated on the system. It is incremented by one every time a new invoice is created. You can change it and save it to reset the invoice sequential number to a specific value) and the **invoice number prefix.**
 
-![](assets/images/54a2881d.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-mP0949Eawa.png)
 
-![](assets/images/db1e11c1.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-oD5LaLaw7t.png)
 
 ## Where to find the gateways:
 
 You can setup the payment gateways on the same page ( **WP Ultimo > Settings > Payments**). Right below **active payment gateways** , you will be able to see: _Stripe_ , _Stripe_ _Checkout_ , _PayPal_ and _Manual_.
 
-![](assets/images/2b2cdee3.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-g9RMYx84r5.png)
 
 We have a dedicated article for each payment gateway that will guide you through the steps of setting it up which you can find on the links below.
 
@@ -54,23 +54,23 @@ _**IMPORTANT:** WP Ultimo: WooCommerce Integration requires WooCommerce to be ac
 
 First, please go to the add-ons page. You can find it by going to **WP Ultimo > Settings**. You should see the **Add-ons** table. Click on **Check our Add-ons**.
 
-![](assets/images/286eb379.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-WtOkJNuCsj.png)
 
 After clicking on **Check our Add-ons** , you will be redirected to the add-ons page. Here you can find all WP Ultimo add-ons. Click on the **WP Ultimo: WooCommerce Integration** add-on.
 
-![](assets/images/1cbeb446.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-BmLWqj4yjt.png)
 
 A window will pop up with the add-on details. Just click on **Install Now**.
 
-![](assets/images/dcd34ac2.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-fGaxHyPtsv.png)
 
 After the installation is done, you will be redirected to the plugins page. Here, just click on **Network Activate** and the WooCommerce add-on will be activated on your network.
 
-![](assets/images/3871dcf8.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-TM2lYtgyM7.png)
 
 After activating it, if you still don't have the WooCommerce plugin installed and activated on your website, you will receive a reminder.
 
-![](assets/images/1420611a.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-VwIGoJhzqc.png)
 
 To read more about the WooCommerce Integration add-on, [click here](https://help.wpultimo.com/article/430-setting-up-the-woocommerce-integration).
 
@@ -78,15 +78,15 @@ To read more about the WooCommerce Integration add-on, [click here](https://help
 
 The steps to install the _GoCardless_ add-on are pretty much the same as the _WooCommerce_ add-on. Please go to the add-ons page and select the **WP Ultimo: GoCardless Gateway** add-on.
 
-![](assets/images/1cbeb446.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-BmLWqj4yjt.png)
 
 The add-on window will pop up. Click on **Install Now**.
 
-![](assets/images/5b99886a.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-YIpPgP4VVo.png)
 
 After the installation is done, you will be redirected to the plugins page. Here, just click on **Network Activate** and the _GoCardless_ add-on will be activated on your network.
 
-![](assets/images/c335190a.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-FGurJpzaF0.png)
 
 To learn how to get started with the _GoCardless_ gateway, [read this article](https://help.wpultimo.com/article/341-getting-started-with-the-gocardless-payment-gateway).
 
@@ -94,12 +94,12 @@ To learn how to get started with the _GoCardless_ gateway, [read this article](h
 
 Go to the add-ons page and select the **WP Ultimo: Payfast Gateway** add-on.
 
-![](assets/images/1cbeb446.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-BmLWqj4yjt.png)
 
 The add-on window will pop up. Click on **Install Now.**
 
-![](assets/images/2d556fc3.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-1jpCakOHNy.png)
 
 After the installation is done, you will be redirected to the plugins page. Here, just click on **Network Activate** and the _Payfast_ add-on will be activated on your network.
 
-![](assets/images/8c41cda5.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-49OQHBwPxk.png)

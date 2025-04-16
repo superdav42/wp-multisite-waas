@@ -22,29 +22,29 @@ Within WP Ultimo the Products tab defines the construct and limitations applicab
 
 This section will guide your understanding of this essential cornerstone of WP Ultimo.
 
-![](assets/images/e56303dc.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-1YccQg0IBG.png)
 
 ## Adding Products
 
 Whether a plan, package, or service the entry point to defining a new item is via **WP Ultimo > Products > Add Product**.
 
-![](assets/images/e6ff1e78.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-C0AmJMeqen.png)
 
 The interface contains two predominant sections. On the left are several tabs which assist with the definition of the product and on the right are a few sections to define the base price of the product, its active state, and product image.
 
-![](assets/images/e1e4b26d.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-WRwYrlk0BS.png)
 
 ### Description
 
 The base product information can be defined by supplying a product name and description. These identifiers are displayed wherever the product information is required such as plan and pricing selection, invoices, upgrades, and the like.
 
-![](assets/images/26cfae2c.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-U9YjF0dghJ.png)
 
 ### Pricing Type
 
 On the right side of the interface, the base pricing can be defined.
 
-![](assets/images/e10b6981.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-oHwhlrBFC9.png)
 
 WP Ultimo supports three different pricing types. The **paid** option prompts the network administrator for information regarding the product’s price and billing frequency.
 
@@ -52,7 +52,7 @@ WP Ultimo supports three different pricing types. The **paid** option prompts th
 
 The price component defines the base product price and billing interval.
 
-![](assets/images/d3ec660f.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-T03WJISsoh.png)
 
 thus an example price of $29.99 with a setting of 1 month will bill $29.99 each month. Similarly, a price of $89.97 with a setting of 3 months will bill that amount each quarter.
 
@@ -60,7 +60,7 @@ thus an example price of $29.99 with a setting of 1 month will bill $29.99 each 
 
 The billing cycles section specifies the frequency of the aforementioned billing interval and is generally understood in the light of contracts or fixed terms.
 
-![](assets/images/787d7140.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-hVVAoxC4Jt.png)
 
 For example, a product price of $29.99 with an interval of 1 month and 12 billing cycles would bill $29.99 per month for the product over the succeeding 12 months. In other words, such a setting would establish a fixed-price term of $29.99 per month for 12 months and then cease billing.
 
@@ -68,7 +68,7 @@ For example, a product price of $29.99 with an interval of 1 month and 12 billin
 
 Enabling the offer trial toggle allows the network administrator to define a trial period for the product.
 
-![](assets/images/2b63819b.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-MzxhWHqJLC.png)
 
 During the trial period, customers are free to use the product and will not be billed until the trial period has been exhausted.
 
@@ -76,7 +76,7 @@ During the trial period, customers are free to use the product and will not be b
 
 You can also apply a setup fee to you plan.
 
-![](assets/images/d26ed6d1.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-8ZA2YvhWyK.png)
 
 This means that your client will pay an extra amount on the first charge (in addition to the price plan) that corresponds to the fee you defined in this section.
 
@@ -84,7 +84,7 @@ This means that your client will pay an extra amount on the first charge (in add
 
 The active toggle effectively defines whether the product is available to customers for new sign-ups.
 
-![](assets/images/bad218b2.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-74ET2mPskK.png)
 
 If there are existing customers on this plan setting the toggle to its disabled state effectively grandfathers the plan removing it from future sign-ups. **Existing customers on the plan will continue to be billed** until they are transitioned to a new plan or removed from the plan.
 
@@ -92,13 +92,13 @@ If there are existing customers on this plan setting the toggle to its disabled 
 
 The **Upload Image** button allows the network administrator to make use of the media library to select or upload a product image.
 
-![](assets/images/2677d420.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-9tHhGvokLA.png)
 
 ### Delete
 
 The **Delete Product** button deletes the product from the system. It appears once the product is published.
 
-![](assets/images/e70bbac6.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-rrmQohvw3S.png)
 
 Unlike other deletions, the product is not placed in any trash state. Thus once deleted the action is irreversible.
 
@@ -110,7 +110,7 @@ Once the base-level product information is defined, the product options aid the 
 
 The **General** tab defines the general attributes of the product not applicable to any of the other product-specific tabs.
 
-![](assets/images/4555903c.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-z32g4XQeyT.png)
 
 The self-explanatory **product slug** defines the slug with which the product is identified in URLs and other areas of WP Ultimo.
 
@@ -118,7 +118,7 @@ WP Ultimo supports several product types namely Plan, Package, and Service. The 
 
 The **Customer Role** specifies the role that the customer is assigned when the site is created. Typically for most network administrators, this will be the WP Ultimo default or Administrator. The WP Ultimo default role can be set in **WP Ultimo > Settings > Login & Registration**.
 
-![](assets/images/a52d307c.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-Ap5I4lXWwB.png)
 
 #### Up & Downgrades
 
@@ -132,7 +132,7 @@ To this extent, it would be undesirable and problematic to allow eLearning custo
 
 Thus to restrict the path of the customer and to prevent incidents the network administrator can define a plan group and within that group specify the plans the customer can transition to.
 
-![](assets/images/529a2cad.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-JnrZ4fWFEC.png)
 
 To define a plan group specify the compatible plans within the **plan group** list. The **product order** determines how the plans are ordered and displayed from the lowest to the highest.
 
@@ -142,25 +142,25 @@ WP Ultimo also includes an **order bump** feature where appropriate add-on produ
 
 Price variations allow the network administrator to specify alternate pricing tiers depending on duration. This setting makes it possible for 3 months, 6 months, or annual pricing tiers to be established or any other duration and frequency as determined by the use case.
 
-![](assets/images/b39d0afc.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-d75YUO3opm.png)
 
 To establish price variations, set the **enable price variations** toggle to active and click the **Add new Price Variation** button.
 
 To enter a variation, set the duration, period, and price of the variation. Additional variations can be entered by clicking the button again.
 
-![](assets/images/45ded8b1.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-x73uxkMU8o.png)
 
 #### Taxes
 
 The **Taxes** tab aligns with the tax settings specified in **WP Ultimo > Settings > Taxes** and more specifically the tax rates defined. To enable taxes and define applicable tax rates please see the documentation at **WP Ultimo: Settings**
 
-**![](assets/images/d91eb3a2.png)**
+**![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-xYLtpFySzL.png)**
 
 In a previous example, we defined a local tax rate of 7.25% applicable to customers in California (United States of America).
 
 Once the tax rate is defined in **WP Ultimo > Settings > Manage Tax Rates** it is selectable at the product level.
 
-![](assets/images/b04b6175.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-Sh1BVGVj6i.png)
 
 To indicate that a product is a taxable item, set the **Is Taxable** toggle to active and select the applicable tax rate from the Tax Category dropdown.
 
@@ -168,7 +168,7 @@ To indicate that a product is a taxable item, set the **Is Taxable** toggle to a
 
 In essence, site templates are complete WordPress websites that are cloned to a customer’s site at the start of their subscription.
 
-![](assets/images/73927fa1.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-llMSMXCDt4.png)
 
 The network administrator creates and configures the template site as a regular WordPress site with activated and configured themes, plugins, and content. The template site is cloned verbatim to the customer.
 
@@ -188,7 +188,7 @@ Ultimately if the network administrator desires template selection to occur in t
 
 The **Sites** tab is part of WP Ultimo’s limitations functionality.
 
-![](assets/images/6e5d81db.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-A8fzNucGyC.png)
 
 This setting specifies the maximum number of sites a customer can create under their membership.
 
@@ -198,7 +198,7 @@ To enable the limitation, set the **limit sites** toggle to its active state and
 
 The **Visits** tab is a further part of WP Ultimo’s limitations system. This setting allows for the accounting and subsequent throttling of unique visitors to a customer’s site.
 
-![](assets/images/349af94b.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-e7f5otg89m.png)
 
 From a marketing perspective network, administrators can make use of this setting as a means to encourage customers to upgrade their plan once limits are reached. This setting can also assist the network administrator to curb and prevent excessive traffic to sites to preserve system resources.
 
@@ -210,7 +210,7 @@ Once this limit is reached WP Ultimo will cease to serve the customer’s site i
 
 WP Ultimo’s ‘Users’ limitations allow the network administrator to impose limits on the number of users that can be created and assigned to roles.
 
-![](assets/images/ca9d7a73.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-maGYqW7WlP.png)
 
 To enable the limitations feature, set the **limit user** toggle to its active state by sliding it to the right.
 
@@ -220,7 +220,7 @@ Next for each role to be limited, set the toggle next to it to an active state a
 
 The **Post Types** tab allows the network administrator to impose granular limits on the extensive array of post types within WordPress.
 
-![](assets/images/6031d299.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-ZELQvvqyvn.png)
 
 Due to the construction of WordPress, posts and post types are a significant component of its core functionality, and thus WP Ultimo’s limitations system is designed to assist the network administrator in establishing and maintaining limits.
 
@@ -232,7 +232,7 @@ Next, for each post type to be limited, toggle it on by sliding it to the right 
 
 The **Disk Space** tab allows network administrators to restrict the space consumed by customers.
 
-![](assets/images/efccc719.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-EqlaLO0ebw.png)
 
 Typically in a WordPress multisite the core files are shared amongst all sites and individual directories created for media files and uploads to which these settings and limitations apply.
 
@@ -244,21 +244,21 @@ Next, specify the maximum upper limit in megabytes in the **disk space allowanc*
 
 By toggling this option you can allow custom domains on this plan specifically.
 
-![](assets/images/f88d6be2.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-KEMuUG76Fg.png)
 
 #### Themes
 
 The **Themes** tab within the product options allows the network administrator to make themes available to customers for selection and to optionally force the state of the theme.
 
-![](assets/images/3a52ce63.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-rkyVSGnDqo.png)
 
 _**Note: For themes to be made available to customers they must be network enabled by the network administrator.**_
 
-![](assets/images/7c4509a9.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-HAQShYB7Y1.png)
 
 The **visibility** option defines whether or not this theme is visible to the customer when viewing their **Appearance > Themes** tab within their site. Setting this option to **Hidden** removes the theme from view and thus restricts the ability to select and activate it.
 
-![](assets/images/4e12b3ad.png)![](assets/images/6b63ceab.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-ivsGIABl55.png)![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-jPTC92eZwc.png)
 
 The **behavior** selection allows the network administrator to define the state of the theme upon the creation of the customer site.
 
@@ -268,13 +268,13 @@ In the **A** **vailable** state the theme is made available to the customer for 
 
 Similar to the Themes tab, WP Ultimo allows the network administrator to define the visibility of plugins to customers as well as their state upon the creation of a new site.
 
-![](assets/images/536a1c77.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-Ipzv31FIb6.png)
 
 The **visibility** drop-down allows for the plugin to either be visible or hidden from the customer when viewed on their site through the Plugins menu option.
 
 The network administrator can further manipulate the behavior of the plugins by making use of the options in the behavior drop-down.
 
-![](assets/images/6b63ceab.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-jPTC92eZwc.png)
 
 The **Default** selection honors the plugin state defined in the site template selected by the customer. Thus plugins that are activated within the template will remain activated when the template is cloned to the customer’s site.
 
@@ -288,17 +288,17 @@ The network administrator may wish to consider the Force Activate & Lock and For
 
 The **Reset Limitations** tab resets all custom limits defined on the product. To reset limitations click on the **reset limitations** button.
 
-![](assets/images/83526ee2.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-UXNQerLby7.png)
 
 To confirm the action slide the **confirm reset** toggle to its active state on the right and click the **reset limitations** button.
 
-![](assets/images/7049b2cc.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-xKySIUIvrI.png)
 
 #### Legacy Options
 
 The **Legacy Options** tab observes certain options and behaviors defined in WP Ultimo 1.x.
 
-![](assets/images/288d2114.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-Fn3BjwTH4r.png)
 
 These options are offered for compatibility and ease of transition and will be deprecated in future releases.
 
@@ -306,7 +306,7 @@ These options are offered for compatibility and ease of transition and will be d
 
 Existing products can be edited, duplicated or deleted by navigating to **WP Ultimo > Products** and hovering over the existing product name.
 
-![](assets/images/58f87920.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-GcHtJl6WmV.png)
 
 ## 
 

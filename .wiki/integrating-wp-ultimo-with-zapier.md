@@ -16,33 +16,33 @@ First, search for WP Ultimo in the Zapier app list. Alternatively, you can click
 
 Go to your dashboard and press the **+** **Create Zap** button on the left sidebar to set up a new Zap.
 
-![](assets/images/16b0fd09.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-kyu5ufUXOv.png)
 
 You will be redirected to the Zap creation page.
 
 In the search box type "wp ultimo". Click to choose the **Beta** version option.
 
-![](assets/images/61643dc5.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-BrOYbp7dSE.png)
 
 After selecting our app, choose the available event: **New WP Ultimo Event**.
 
-![](assets/images/52e2273d.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-srblXqJnQE.png)
 
 Now we need to give Zapier access to **your network**. Clicking in **Sign in** will open a new window requiring the **API credentials**.
 
-![](assets/images/625fb252.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-HcULsQoFpZ.png)
 
 Go to your network admin panel and navigate to **WP Ultimo > Settings** > **API & Webhooks** and look for the API Settings section.
 
 Select the **Enable API** option as it is required for this connection to work.
 
-![](assets/images/e05b5ff6.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-l7KbeKUkPX.png)
 
 Use the **Copy to Clipboard** icon on the API Key and API Secret fields and paste those values on the integration screen.
 
 On the URL field, put your network full URL, including the protocol (HTTP or HTTPS).
 
-![](assets/images/dec38025.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-4UVPQAlzYk.png)
 
 Click the **Yes, Continue** button to move on to the next step. If everything works out, you should be greeted by your new connected account! Click to **Continue** to create a new trigger.
 
@@ -50,15 +50,15 @@ Click the **Yes, Continue** button to move on to the next step. If everything wo
 
 Now that your account is connected you can see available events. Let's choose the **payment_received** event for this tutorial.
 
-![](assets/images/6a4be603.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-jZE7WgSGw8.png)
 
 Once the event has been selected and you click to **continue** , a **test step** will appear.
 
-![](assets/images/9a5e942a.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-SWo5wbMkgZ.png)
 
 In this stage, Zapier will test if your Zap can **fetch the specific payload to that event**. In future events of the same type, information with this same structure will be sent.
 
-![](assets/images/c8963292.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-CVCJxhN3ai.png)
 
 In our tutorial the test was **completed successfully** and returned the payload example information. This example information will be useful to guide us while creating actions. Your trigger is now created and ready to be connected to other applications.
 
@@ -68,26 +68,26 @@ Actions use information from other triggers to create new entries in your networ
 
 In the **creating an action step** you will choose the WP Ultimo **Beta** and the option of **Create Items on WP Ultimo**.
 
-![](assets/images/5f7eb3c2.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-swCbHP8jNG.png)
 
 In the next step you will either create your authentication, just like we did in **How to start** , or select a created authentication. In this tutorial we will choose the same authentication previously created.
 
-![](assets/images/1391d3c3.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-iRSFnhpoHv.png)
 
 ### Setting up the Action
 
 This is the **main step of the action** and here things are a little different. The first information you will choose is the **Item**. Item is the **information model** of your network such as **Customers, Payments, Sites, Emails** and others.
 
-![](assets/images/5fa25d4c.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-GC4iHxBn4e.png)
 
 When selecting an item, the form will **rearrange to bring the required and optional fields** for the selected item.
 
 For example, when selecting the item **Customer** , the form fields will bring everything that is necessary to fill in to create a new Customer in the network.
 
-![](assets/images/30c46262.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-4xpHH5xTaf.png)
 
 After filling in all fields marked as **required** and clicking on continue, a last screen will show you the filled fields and the fields that were left unfilled.
 
-![](assets/images/6e8cf0ba.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-JLPq56npV6.png)
 
 As soon as your test completes and is successful your action is configured. It is also important to check on your network if the item was created with the test of your action.

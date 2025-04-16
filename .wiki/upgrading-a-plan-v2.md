@@ -8,27 +8,27 @@ In this tutorial we will cover how they can upgrade their plan and what happens 
 
 To upgrade their plan, your customers should access their dashboard and go to the **Account** page.
 
-![](assets/images/4df186f5.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-4DK63Wc0iN.png)
 
 On the Account page, they will be shown their current membership and the plan associated with it. To upgrade to another plan, they must click on **Change** on the top-right corner of **Your Membership** section.
 
-![](assets/images/e85fdf63.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-RVPLZjr3nZ.png)
 
 They will be redirected to a checkout form where all the available plans will be displayed.
 
 They will also be able to see the **services and packages available for their current plan** , in case they just want to purchase a specific service or package (like unlimited visits or disk space in our example here), and not upgrade the plan.
 
-![](assets/images/e559c6c0.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-tDdSWzbvoZ.png)
 
 After they choose the product they want to purchase, they will see how much they will need to pay right now - excluding any existing credit - and how much they will be charged on the next billing date.
 
 Usually, if the product is another plan and the payment is going to be made between a membership charge, they will receive a credit for the amount paid on the first plan.
 
-![](assets/images/d7b22cb3.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-Th8i4hZGXz.png)
 
 If they select a plan or package that will not change anything from the current subscription, they will see a message explaining that.
 
-![](assets/images/63ecda5a.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-7PyuRlDmOs.png)
 
 After the checkout is completed, the new product(s) will be added to your customers' account and all the limits or features of the new product(s) will be instantly added to it: visits, disk space, posts, etc...
 
@@ -42,12 +42,12 @@ On each of your products, you'll have an **Up & Downgrades** tab. The first opti
 
 **Plan groups** is what allows you to let WP Ultimo know that certain plans belong to the same "family", and therefore should be used to construct upgrade/downgrade path options.
 
-![](assets/images/99b50002.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-KZFTDp2LlW.png)
 
 For example, you have a **Free plan** , a **Basic Plan** and a **Premium Plan** available. You want users subscribed under the **Free Plan** to be able to upgrade only to the **Premium Plan** and you do not want them to see the "Basic Plan" as an upgrade option. All you need to do is assign the same plan group name for both Free and Premium plans as shown in the screenshots below.
 
-![](assets/images/4c808dbe.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-ZApgTVPiPw.png)
 
-![](assets/images/3d574131.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-dbabo1khAz.png)
 
 What this should do is tell WP Ultimo that there is a "family" of plans in the network called **High End**. When offering upgrades or downgrades, only plans from the same family will be presented as an option for the user.

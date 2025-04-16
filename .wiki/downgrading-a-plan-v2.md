@@ -8,17 +8,17 @@ Downgrading a plan or subscription is a common action your clients might do if t
 
 Your clients can downgrade their plan anytime by logging in to their subsite admin dashboard and clicking **Change** under their account page.
 
-![](assets/images/f7f7968b.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-sprLyB2iMU.png)
 
 Upon clicking the **Change** button, the user/client will be redirected to the checkout page where they can select the plan they want to change their subscription to.
 
-![](assets/images/61a97deb.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-aTnhJPFVFh.png)
 
 In this example, we are downgrading the plan from **Premium** to **Free**.
 
 To proceed the user just need to click the **Complete Checkout** button. It will then bring them back to the account page showing a message about the pending change for the membership. The changes will take effect on the customer's **next billing cycle**.
 
-![](assets/images/41c576af.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-E2qcjxzDDG.png)
 
 ### What happens when a user downgrades their plan
 
@@ -30,7 +30,7 @@ We understand that your main concern would be the limits and quotas you set unde
 
 For the posts exceeding the limit set on the plan, you have 3 different options: **Keep the posts as it** *,* **Move the posts to trash** *,* or **Move the posts to draft** *.* You can configure this under WP Ultimo settings.
 
-![](assets/images/0192496c.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-ztHV8cZDG0.png)
 
 ### What happens to the payment
 

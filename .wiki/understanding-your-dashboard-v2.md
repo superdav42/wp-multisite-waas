@@ -8,35 +8,35 @@ WP Ultimo v2 has a dedicated **Dashboard** under the WP Ultimo menu, but it also
 
 WP Ultimo injects a few useful widgets into the network-level dashboard. This dashboard is found by navigating to **My Sites > Network Admin > Dashboard**. The widgets are designed to provide easy access to information and common operations for the network administrator. This is how the network dashboard should look:
 
-![](assets/images/deb0a500.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-pwJc0Mgd3l.png)
 
 Now, let's take a look at each widget of the network dashboard:
 
 **First Steps:** This widget predominantly appears on a fresh installation of WP Ultimo such as ours and reminds the network administrator to complete additional tasks, like configuring a payment method and create a test account.
 
-![](assets/images/45d71761.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-Jtiq6tiSGk.png)
 
 **Summary:** The summary widget reports the number of signups and the revenue for the day. The MRR (Monthly Recurring Revenue) indicates a projected total across customers with revenue-generating memberships.
 
-![](assets/images/9e52430b.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-169qHa0DyY.png)
 
 **Activity Stream:** This widget reports on events across WP Ultimo for which there is a variety to report on. Events could include aspects such as signups, cancellations, creations, and deletions of sites and other activities.
 
-![](assets/images/66676e02.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-VauK7uGvG4.png)
 
 **Right Now:** This utility widget displays a short summary of users and sites in the network. Handy shortcuts at the top allow for one-click access to create new sites or users.
 
-![](assets/images/8a49106f.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-hDfVORWUys.png)
 
 **News & Discussions:** This widget fetches and displays the latest WP Ultimo news. It is advantageous to keep an eye on this widget for information about updates, critical bugs, and security fixes.
 
-![](assets/images/bbdf217e.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-vywHpdIdHj.png)
 
 ## **The WP Ultimo Dashboard:**
 
 While the network dashboard presents holistic information about the network, the WP Ultimo dashboard located at the top-level of the WP Ultimo menu presents information about the service.
 
-![](assets/images/a83b9161.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-7dcQ9MDkoZ.png)
 
 #### Welcome Tour:
 
@@ -46,19 +46,19 @@ On a fresh installation of WP Ultimo v2 a brief welcome tour is displayed famili
 
 The documentation link is prevalent on most WP Ultimo pages providing contextual help when called upon. Thus when working with sites, for example, the documentation link will provide help related to the creation and management of network sites.
 
-![](assets/images/3cd9734d.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-AvuWqzBqqU.png)
 
 **Monthly Recurring Revenue Growth:** Leading from the network-level widget the MRR (Monthly Recurring Revenue) displays a monthly breakdown of revenue over a 12 month calendar period. New revenue is shown in blue while cancellations, in red.
 
-![](assets/images/a2c9fe3e.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-MEAWe6433p.png)
 
 **Date-range Support:** Depending on the number of customers, activity, and type of information statistics soon become overwhelming, difficult to find, and difficult to interpret. The date-range support built into the dashboard allows the network administrator to focus on only the information and information period required.
 
-![](assets/images/1990ffc6.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-kSDDQabu6f.png)
 
 The date range governs the period of the information displayed by the widgets directly below.
 
-![](assets/images/4a52bfd4.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-mBzZltoWZT.png)
 
 **Revenue:** The total revenue for the period. MRR stands for Monthly Recurring Revenue. You also have a detailed description of the revenue per product.
 

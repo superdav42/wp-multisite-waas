@@ -24,6 +24,10 @@ You can browse the documentation directly on GitHub by visiting the [Wiki](https
 
 This documentation is automatically synced to the GitHub wiki whenever changes are pushed to the main branch. The sync is handled by a GitHub Action workflow that copies the content of this directory to the wiki repository.
 
+## Images
+
+The documentation includes placeholder images for screenshots and diagrams. The original images were hosted on external servers that require authentication to access. See the `assets/images/placeholders/README.md` file for more information.
+
 ## Converting HTML to Markdown
 
 This folder includes scripts to convert HTML documentation to Markdown format. To run the conversion:

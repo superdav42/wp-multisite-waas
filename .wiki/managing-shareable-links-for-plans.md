@@ -2,7 +2,7 @@
 
 WP Ultimo offers you the option to share plan links directly with your clients. In order to do this, go to any of your plans' edit pages and click the _Click to copy the Shareable Link_ button.
 
-![](assets/images/ece57959.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-2DJoMvapXh.png)
 
 _On the Plan's Edit Page, you can find the button to create shareable links_
 

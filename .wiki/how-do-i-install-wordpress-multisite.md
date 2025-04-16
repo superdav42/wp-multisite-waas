@@ -20,7 +20,7 @@ _**IMPORTANT**_ **:** If you are setting up a multisite network on an existing W
 
   * Deactivate all plugins on your site by going to your plugins page and selecting _Deactivate_ from bulk actions and then clicking _Apply_
 
-[![](assets/images/c26a9046.png)](assets/images/c26a9046.png)
+[![](https://downloads.intercomcdn.com/i/o/141065015/09f448a371b8cab63280777c/Multisite+1.png)](https://downloads.intercomcdn.com/i/o/141065015/09f448a371b8cab63280777c/Multisite+1.png)
 
 To enable Multisite, first connect to your site using a FTP client or cPanel file manager, and open your wp-config.php file for editing.
 
@@ -34,7 +34,7 @@ With the multisite feature enabled on your site, now it’s time to setup your n
 
 Go to **Tools » Network Setup**
 
-[![](assets/images/bfa4e80e.png)](assets/images/bfa4e80e.png)
+[![](https://downloads.intercomcdn.com/i/o/141065542/5bb9b19a52ece96c52b659d8/Multisite+3.png)](https://downloads.intercomcdn.com/i/o/141065542/5bb9b19a52ece96c52b659d8/Multisite+3.png)
 
 Now you need to tell WordPress what kind of domain structure you will be using for sites in your network: subdomains or subdirectories.
 
@@ -42,7 +42,7 @@ If you choose subdomains, you must change your DNS settings for domain mapping a
 
 Back to the Network Setup, give a title for your network and be sure that the email address in the Network admin email is correct. Click _Install_ to continue.
 
-[![](assets/images/642624d2.png)](assets/images/642624d2.png)
+[![](https://downloads.intercomcdn.com/i/o/141066037/fd8a063b69988be1c372dac6/Multisite+4.png)](https://downloads.intercomcdn.com/i/o/141066037/fd8a063b69988be1c372dac6/Multisite+4.png)
 
 Add this code, provided by WordPress, to your _**wp-config.php**_ :
 
@@ -84,7 +84,7 @@ To create a subsite:
 
   * Admin Email — Set as the initial admin user for the subsite
 
-![](assets/images/0671cc3a.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-hrA3XtntYQ.png)
 
 After filling up the fields, click the "Add site" button. Once the new subsite is created, go ahead and access it to make sure that the subsite is functional.
 

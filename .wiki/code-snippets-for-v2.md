@@ -40,7 +40,7 @@ To get the ID of a plan, you can go to **WP Ultimo > Products**. The ID of each 
 
 Note that users can only be subscribed to a **Plan** , not a Package or Service, as they are only add-ons for a **Plan**.
 
-![](assets/images/da8c6783.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-LAYTqHqw5w.png)
 
 ## Fixing CORS issues with Font-Icons in mapped domains
 

@@ -12,24 +12,24 @@ This add-on serves three purposes:
 
 After downloading and installing it, a new tab - _Add-on Settings_ \- will show on WP Ultimo Settings page.
 
-![](assets/images/301a52d2.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-4zDOF0uomh.png)
 
 _Here you'll find the global options added by WP Ultimo: Plugin and Theme Manager_
 
 On your network _Plugins_ page you will now be able to edit all the plugins' meta information, such as name, author, and even the plugin's thumbnail.
 
-![](assets/images/a2315208.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-zKiRGmvX1g.png)
 
-![](assets/images/9abf9cae.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-A3d1gDSQDW.png)
 
 _You can also choose wether to show or not specific plugin information_
 
 Plugin and Theme Manager offers two display types: Plugin Style and Theme Style. So, finally, after making the adjustments you need, this is how your customers will see their _Plugins_ page:
 
-![](assets/images/7e1a264f.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-M3ge4NjfYg.png)
 
 _Customer's Plugins page showing the Plugin Style_
 
-_![](assets/images/c566a3ea.png)_
+_![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-06bxSCg1eZ.png)_
 
 _Customer's Plugins page showing the Theme Style_

@@ -12,19 +12,19 @@ However, super admins and agents can import this newly registered emails via the
 
 Go to your WP Ultimo Settings page and head to the Emails tab.
 
-![](assets/images/5ad2a304.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-yIQvxZcJqk.png)
 
 Then, on the sidebar, click on the Customize System Emails button.
 
-![](assets/images/e2b1a55f.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-mRSIFOG7eH.png)
 
 On the System Emails page, you'll see the Reset & Import action button on the top. Clicking that button should open the import and reset modal window.
 
-![](assets/images/af125d5d.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-UWDXL6Jf2d.png)
 
 Then, you can toggle the Import Emails options to see which system emails are available to be imported.
 
-![](assets/images/59124d83.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-mGER3jSjMu.png)
 
 ## Reseting System Emails
 
@@ -36,4 +36,4 @@ Or you can use the Reset & Import tool to reset that email template.
 
 To reset an email template, you can follow the steps above until you reach the Reset & Import tool, and then, toggle the Reset option and select the emails you want to reset back to their default content.
 
-![](assets/images/af5f165e.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-SMHJQAZWQM.png)

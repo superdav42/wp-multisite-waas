@@ -14,7 +14,7 @@ Domain mapping requires some setting up on your part to work. Thankfully, WP Ult
 
 During WP Ultimo installation, the wizard will automatically copy and install the **sunrise.php** to the designated folder. **The wizard won't allow you to proceed until this step is completed**.
 
-![](assets/images/4dce6dcf.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-zrBdFs13Dy.png)
 
 This means that once the WP Ultimo installation wizard has completed setting up your network, you can start mapping the custom domain right away.
 
@@ -22,7 +22,7 @@ Note that domain mapping in WP Ultimo is not mandatory. You have an option to us
 
 Should you need to disable WP Ultimo domain mapping to give way to other domain mapping solutions, you can disable this feature under **WP Ultimo > Settings > Domain Mapping**.
 
-![](assets/images/d445640b.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-bbrC47pTcX.png)
 
 Right below this option, you can also see the option **Force Admin Redirect**. This option allows you to control if your customers will be able to access their admin dashboard both on their custom domain and subdomain or only on one of them.
 
@@ -32,7 +32,7 @@ The option **Force redirect to** **network domain** will do exactly the opposite
 
 And the option **Allow access to the admin by both mapped domain domain and network domain** allows them to access their admin dashboards both on the subdomain and the custom domain.
 
-![](assets/images/c597b507.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-JYwHPWhYwV.png)
 
 There are two ways to map a custom domain. The first is by mapping the domain name from your network admin dashboard as the super adminand the second is through the subsite admin dashboard under the account page.
 
@@ -54,11 +54,11 @@ If you plan to allow your clients to map their own domains, they will have to do
 
 When you are logged in as super admin on your network, you can easily add and manage custom domain names by going under **WP Ultimo > Domains**.
 
-![](assets/images/c1ecaff6.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-5XxtXP622s.png)
 
 Under this page, you can click on the **Add Domain** button on top and this will bring up a modal window where you can set and fill in the **custom domain name** , **the subsite** you wish to apply the custom domain name to, and decide whether you want to set it as the **primary domain** name or not (note that you can map **multiple domain names to one subsite**).
 
-![](assets/images/0eb6164f.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-rD6fnbzRe9.png)
 
 After putting all the information in, you can then click the **Add Existing Domain** button at the bottom.
 
@@ -66,13 +66,13 @@ This will start the process of verifying and fetching the DNS information of the
 
 The **Stage** or the status should change from **Checking DNS** to **Ready** if everything is properly set up.
 
-![](assets/images/34cd2842.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-3g2mkrlk75we98uhscagnr3ini0s)
 
-![](assets/images/5bc09ef8.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-5dIPdYQfZi.png)
 
 If you click on the domain name, you will be able to see some options inside it. Lets take a quick look at them:
 
-![](assets/images/501a10b9.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-5tCiNUIKih.png)
 
 **Stage:** This is the stage that the domain is at. When you first add the domain, it will probably be on the **Checking DNS** stage. The process will check for the DNS entries and confirm they are correct. Then, the domain will be put at the **Checking SSL** stage. WP Ultimo will check if the domain has SSL or not and will categorize your domain as **Ready** or **Ready (without SSL)**.
 
@@ -90,25 +90,25 @@ Subsite administrators can also map custom domain names from their subsite admin
 
 First, you need to make sure that you enable this option under the **Domain mapping** settings. See the screenshot below.
 
-![](assets/images/83a388a7.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-M3MO6RKBWe.png)
 
 You can also set or configure this option under the **Plan** level or product options on **WP Ultimo > Products**.
 
-![](assets/images/19f6d7a0.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-JRqx7Uhqsa.png)
 
 When any of those options are enabled and a subsite user is allowed to map custom domain names, the subsite user should see a metabox under the **Account** page called **Domains**.
 
-![](assets/images/0d7f5184.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-DUeHUY66yP.png)
 
 The user can click the **Add Domain** button and it will bring up a modal window with some instructions.
 
-![](assets/images/a71f20c4.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-n5mNhDpL38.png)
 
 The user can then click **Next Step** and proceed to add the custom domain name. They can also choose if this will be the primary domain or not.
 
-![](assets/images/9e3fd9f1.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-0vlbs2dcaz.png)
 
-![](assets/images/5b6a33aa.png)Click to **Add Domain** will start the process of verifying and fetching the DNS information of the custom domain.
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-zez2zeiqz8mi67o7izkg3d7x43ve)Click to **Add Domain** will start the process of verifying and fetching the DNS information of the custom domain.
 
 ### About Domain Syncing
 
@@ -118,8 +118,8 @@ Domain syncing automatically happens if your hosting provider has integration wi
 
 You will need to activate this integration on WP Ultimo settings under the **Integration** tab.
 
-![](assets/images/c49bfdcf.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-k6i46r4x2yddii0op4x343jizq20)
 
-![](assets/images/9b0a9f0a.png)
+![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-file-JMADuxaH62.png)
 
 _Note that if your hosting provider is not one of those providers mentioned above,**you will need to manually sync or add the domain name** to your hosting account._
