@@ -40,6 +40,41 @@ class Domain_Mapping {
 	public $original_url = null;
 
 	/**
+	 * Initializes the Domain Mapping Class
+	 *
+	 * @since 2.0.0
+	 */
+	public function __construct() {
+
+		if ( ! \WP_Ultimo\Sunrise::should_startup()) {
+			return;
+		}
+
+		// Make sure we got loaded in the sunrise stage.
+		add_filter('pre_get_site_by_path', array($this, 'pre_get_site_by_path'), 10, 4);
+
+		add_action('template_redirect', array($this, 'disable_canonical_redirect'), 1);
+
+		add_filter('network_site_url', array($this, 'network_site_url'), 10, 3);
+
+		add_action('admin_init', array($this, 'load_sunrise_notification'));
+
+	}
+
+	/**
+	 * Load the SUNRISE constant check and notification.
+	 *
+	 * @since 2.0.0
+	 * @return void
+	 */
+	public function load_sunrise_notification() {
+		if (is_network_admin()) {
+			require_once wu_path('inc/admin/class-sunrise-admin-notice.php');
+			\WP_Ultimo\Admin\Sunrise_Admin_Notice::get_instance()->init();
+		}
+	}
+
+	/**
 	 * Runs on singleton instantiation.
 	 *
 	 * @since 2.0.0
