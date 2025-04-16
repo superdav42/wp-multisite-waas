@@ -67,6 +67,19 @@ class Memory_Trap {
 	 */
 	public function setup(): void {
 
+		// Allow plugins to disable the memory trap
+		if (apply_filters('wu_disable_memory_trap', false)) {
+			return;
+		}
+
+		/**
+		 * Fires before the memory trap is set up.
+		 *
+		 * @since 2.0.0
+		 * @param \WP_Ultimo\Internal\Memory_Trap $this The Memory_Trap instance.
+		 */
+		do_action('wu_setup_memory_limit_trap', $this);
+
 		$this->memory_reserve = str_repeat('*', 1024 * 1024);
 
 		!defined('WP_SANDBOX_SCRAPING') && define('WP_SANDBOX_SCRAPING', true); // phpcs:ignore
