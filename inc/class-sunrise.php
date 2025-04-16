@@ -137,8 +137,10 @@ class Sunrise {
 		require_once __DIR__ . '/class-settings.php';
 		require_once __DIR__ . '/limits/class-plugin-limits.php';
 		require_once __DIR__ . '/limits/class-theme-limits.php';
-		require_once __DIR__ . '/limits/class-theme-limits.php';
 		require_once __DIR__ . '/models/class-membership.php';
+
+		// Make sure we have all the necessary database classes loaded
+		require_once __DIR__ . '/database/sites/class-sites-schema.php';
 
 	}
 
