@@ -1,18 +1,18 @@
-# Understanding the WP Ultimo Dashboard
+# Understanding the WP Multisite WaaS Dashboard
 
-Before we immerse ourselves in more advanced configuration options and the operational aspects of WP Ultimo let us take a look at the dashboard.
+Before we immerse ourselves in more advanced configuration options and the operational aspects of WP Multisite WaaS let us take a look at the dashboard.
 
-Like many WordPress plugins, WP Ultimo creates a network-level menu entry titled ‘WP Ultimo’ with a number of children entries underneath.
+Like many WordPress plugins, WP Multisite WaaS creates a network-level menu entry titled ‘WP Multisite WaaS’ with a number of children entries underneath.
 
 ## Network Dashboard Widgets
 
-WP Ultimo injects a few useful widgets into the network-level dashboard. This dashboard is found by navigating to My Sites > Network Admin > Dashboard. The widgets are designed to provide easy access to information and common operations for the network administrator.
+WP Multisite WaaS injects a few useful widgets into the network-level dashboard. This dashboard is found by navigating to My Sites > Network Admin > Dashboard. The widgets are designed to provide easy access to information and common operations for the network administrator.
 
 ### First Steps
 
 ![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-srqWv5VyzOrGTkof9L9a_Mmm8mdsbxSU8znvqjPFOav6rT_fzn3VQRxqqSU6m1216mVWYZTPpY-_1dBufyyPuaWQihxTrAYrwm8gPSN1XqLPuOZEzxC5O992EVxksgF2vy_5wRc0=s0)
 
-This widget predominantly appears on a fresh installation of WP Ultimo such as ours and reminds the network administrator to complete additional tasks.
+This widget predominantly appears on a fresh installation of WP Multisite WaaS such as ours and reminds the network administrator to complete additional tasks.
 
 ### Summary
 
@@ -24,7 +24,7 @@ The summary widget reports on the number of signups and their revenue for the da
 
 ![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-Y8E31QvWTL_xAFuo2fCqibJzQAUu_JZpF5v9g-iPqmnX1YoRgKcshwGup7oLkvPiJLoj1OhWDF3bp8yKR3A5xOAMEYkP2drb1NBDQUDThoPqUCYwhqcVr16CU71D6dHpx66fvmUj=s0)
 
-This widget reports on events across WP Ultimo for which there is a variety to report on. Events could include aspects such as signups, cancellations, creations, and deletions of sites and other activities.
+This widget reports on events across WP Multisite WaaS for which there is a variety to report on. Events could include aspects such as signups, cancellations, creations, and deletions of sites and other activities.
 
 Please refer to the events section of the documentation for a more detailed description.
 
@@ -38,25 +38,25 @@ This utility widget displays a short summary of users and sites in the network. 
 
 ![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-Ovcqef6K5qSXNE6w80HoQGbR7XsJVp3TYicPsbEnn41LuA_USpQj5DGSZScB8oEsbsa7Bsfcl7s1-4BF1sD9axFfJE8Lt5Jg4LiuSSJujJiSP316BDvhyHl5k_WnzI3Endv33F5g=s0)
 
-This widget fetches and displays the latest WP Ultimo news. It is advantageous to keep an eye on this widget for information about updates, critical bugs, and security fixes.
+This widget fetches and displays the latest WP Multisite WaaS news. It is advantageous to keep an eye on this widget for information about updates, critical bugs, and security fixes.
 
-## WP Ultimo Dashboard
+## WP Multisite WaaS Dashboard
 
-Where the network-level dashboard presents holistic information about the network the WP Ultimo dashboard located at the top-level of the WP Ultimo menu presents information about the service.
+Where the network-level dashboard presents holistic information about the network the WP Multisite WaaS dashboard located at the top-level of the WP Multisite WaaS menu presents information about the service.
 
 ![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-Wz5dIEwYk16TZwTWFxYpQdMaUDrm1-I_zmx5d1vHUoJX1ZE38MZYWLaK9QaOTfDKU-J0hTQ_VlEflxKJ9YT3227K8h4XHiZzDVyFFQ-3kLz2klP5j2lZUhxDTRGgvYls8CNS0w0s=s0)
 
 ## Welcome Tour
 
-On a fresh installation of WP Ultimo a brief welcome tour is displayed familiarizing the network administrator with the dashboard and its new functions. Customers of WP Ultimo 1.x will notice the dashboard as a new addition as well as more intuitive navigation and options.
+On a fresh installation of WP Multisite WaaS a brief welcome tour is displayed familiarizing the network administrator with the dashboard and its new functions. Customers of WP Multisite WaaS 1.x will notice the dashboard as a new addition as well as more intuitive navigation and options.
 
 ### Documentation
 
 ![](https://wp-ultimo-space.fra1.cdn.digitaloceanspaces.com/hs-RYcf2DQi6AnVgd85FoU7p4l_F_TVNCVDiERXdjgcYLVwFpA7agYRlewopnQk-MWh6ynKRaM-E7fJYo7IaZHzu-KXtsoIMz9PpMOOV1ixKD-51Moy5n40h-95tQxHNFRW77FCyWnA=s0)
 
-At the top of the dashboard lies the ‘Documentation’ link. The documentation (this documentation) contains a wealth of information regarding the installation, operation, support, and maintenance of WP Ultimo as well as ancillary information designed to be helpful to the network administrator.
+At the top of the dashboard lies the ‘Documentation’ link. The documentation (this documentation) contains a wealth of information regarding the installation, operation, support, and maintenance of WP Multisite WaaS as well as ancillary information designed to be helpful to the network administrator.
 
-The documentation link is prevalent on most WP Ultimo pages providing contextual help when called upon. Thus when working with sites, for example, the documentation link will provide help related to the creation and management of network sites.
+The documentation link is prevalent on most WP Multisite WaaS pages providing contextual help when called upon. Thus when working with sites, for example, the documentation link will provide help related to the creation and management of network sites.
 
 ### Monthly Recurring Revenue Growth
 

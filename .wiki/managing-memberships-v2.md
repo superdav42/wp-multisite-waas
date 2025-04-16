@@ -1,8 +1,8 @@
 # Managing Memberships (v2)
 
-_**IMPORTANT NOTE: This article refers to WP Ultimo version 2.x.**_
+_**IMPORTANT NOTE: This article refers to WP Multisite WaaS version 2.x.**_
 
-In WP Ultimo 2.0 you can manage memberships and access all the subscriptions on your network.
+In WP Multisite WaaS 2.0 you can manage memberships and access all the subscriptions on your network.
 
 There you can review and edit members subscription details such as plans and products included in their subscription, the number of sites, billing amount and frequency, payment history of each member and timestamps.
 
