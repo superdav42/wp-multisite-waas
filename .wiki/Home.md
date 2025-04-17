@@ -2,74 +2,50 @@
 
 Welcome to the WP Multisite WaaS documentation. This wiki contains all the information you need to get started with WP Multisite WaaS.
 
-## Articles
+## Documentation Categories
 
-- [Getting Started with the PayFast Payment Gateway](getting-started-with-the-payfast-payment-gateway)
-- [Activating WP Multisite WaaS: Language Selector](activating-wp-ultimo-language-selector)
-- [Setting Up The PayPal Gateway (v2)](setting-up-the-paypal-gateway-v2)
-- [Setting Up The WooCommerce Integration (v2)](setting-up-the-woocommerce-integration-v2)
-- [Basic Concepts](basic-concepts)
-- [The WP Multisite WaaS Affiliate Program](the-wp-ultimo-affiliate-program)
-- [How to configure domain mapping (v1)](how-to-configure-domain-mapping-v1)
-- [WP Multisite WaaS Requirements](wp-ultimo-requirements)
-- [Your Client's Account Page (v2)](your-client-s-account-page-v2)
-- [Getting Started with the GoCardless Payment Gateway](getting-started-with-the-gocardless-payment-gateway)
-- [Integrating WP Multisite WaaS with Zapier](integrating-wp-ultimo-with-zapier)
-- [WP Multisite WaaS 101](wp-ultimo-101)
-- [Checkout Forms](checkout-forms)
-- [How to join WP Multisite WaaS Community](how-to-join-wp-ultimo-community)
-- [Why is WP Multisite WaaS no longer sold at CodeCanyon?](why-is-wp-ultimo-no-longer-sold-at-codecanyon)
-- [Creating your First Subscription Product (v2)](creating-your-first-subscription-product-v2)
-- [Translating WP Multisite WaaS](translating-wp-ultimo)
-- [Understanding the WP Multisite WaaS Dashboard](understanding-the-wp-ultimo-dashboard)
-- [Customizing your Admin Panel with PRO Theme](customizing-your-admin-panel-with-pro-theme)
-- [How to get help](how-to-get-help)
-- [Canceling a Membership (v2)](canceling-a-membership-v2)
-- [Frequently Asked Questions](frequently-asked-questions)
-- [How do I Install WordPress Multisite?](how-do-i-install-wordpress-multisite)
-- [A First Look on Webhooks (v2)](a-first-look-on-webhooks-v2)
-- [Customizing your Admin Panel with Material WP](customizing-your-admin-panel-with-material-wp)
-- [Site Templates (v2)](site-templates-v2)
-- [Installing WP Multisite WaaS (v2)](installing-wp-ultimo-v2)
-- [Setting the Sunrise constant to true on Closte](setting-the-sunrise-constant-to-true-on-closte)
-- [WP Multisite WaaS Hooks and filters](wp-ultimo-hooks-and-filters)
-- [Customizing your Registration Form](customizing-your-registration-form)
-- [Setting Up The Stripe Gateway (v2)](setting-up-the-stripe-gateway-v2)
-- [Downgrading a plan (v2)](downgrading-a-plan-v2)
-- [Managing Payments and Invoices](managing-payments-and-invoices)
-- [The WP Multisite WaaS Register API endpoint](the-wp-ultimo-register-api-endpoint)
-- [How to Export and Import a Site with WP Multisite WaaS Site Exporter](how-to-export-and-import-a-site-with-wp-ultimo-site-exporter)
-- [How to use WP Multisite WaaS snippets on our GitHub repository](how-to-use-wp-ultimo-snippets-on-our-github-repository)
-- [Editing Plugins and Themes Meta Information with WP Multisite WaaS: Plugin and Theme Manager](editing-plugins-and-themes-meta-information-with-wp-ultimo-plugin-and-theme-manager)
-- [Touring the Admin Panel](touring-the-admin-panel)
-- [Understanding your Dashboard (v2)](understanding-your-dashboard-v2)
-- [Placing Ads on your network with WP Multisite WaaS: Ad Injector](placing-ads-on-your-network-with-wp-ultimo-ad-injector)
-- [How can I access my account page for the first time?](how-can-i-access-my-account-page-for-the-first-time)
-- [Why WP Multisite WaaS](why-wp-ultimo)
-- [Getting Paid (v2)](getting-paid-v2)
-- [Error Installing the Sunrise File](error-installing-the-sunrise-file)
-- [How to Get Custom Development Help from Codeable?](how-to-get-custom-development-help-from-codeable)
-- [Migrating from V1](migrating-from-v1)
-- [Creating Custom Admin Pages and Sub-pages using WP Multisite WaaS: Admin Page Creator](creating-custom-admin-pages-and-sub-pages-using-wp-ultimo-admin-page-creator)
-- [Managing System Emails](managing-system-emails)
-- [How to Configure Domain Mapping (v2)](how-to-configure-domain-mapping-v2)
-- [The Registration Flow (v2)](the-registration-flow-v2)
-- [Sending Emails and Broadcasts (v2)](sending-emails-and-broadcasts-v2)
-- [Event: Register an account via Zapier](event-register-an-account-via-zapier)
-- [Using WP Multisite WaaS: AffiliateWP Integration to create your own referral program for WP Multisite WaaS](using-wp-ultimo-affiliatewp-integration-to-create-your-own-referral-program-for-wp-ultimo)
-- [Setting Up Manual Payments (v2)](setting-up-manual-payments-v2)
-- [Known incompatibilities with other Plugins](known-incompatibilities-with-other-plugins)
-- [Tax Handling](tax-handling)
-- [Auto Search and Replace in Site Templates (v2)](auto-search-and-replace-in-site-templates-v2)
-- [Your Client's Websites (v2)](your-client-s-websites-v2)
-- [Creating Discount Codes (v2)](creating-discount-codes-v2)
-- [How can I cancel my subscription?](how-can-i-cancel-my-subscription)
-- [What is WordPress Multisite?](what-is-wordpress-multisite)
-- [Managing Shareable Links for Plans](managing-shareable-links-for-plans)
-- [Managing Memberships (v2)](managing-memberships-v2)
-- [Re-ordering the WP Multisite WaaS country list](re-ordering-the-wp-ultimo-country-list)
-- [Managing Customers](managing-customers)
-- [Using WP Multisite WaaS: MailChimp Integration](using-wp-ultimo-mailchimp-integration)
-- [Managing Sites](managing-sites)
-- [Upgrading a Plan (v2)](upgrading-a-plan-v2)
-- [Code Snippets for v2](code-snippets-for-v2)
+### Getting Started
+Everything you need to know to get started with WP Multisite WaaS.
+
+- [WP Multisite WaaS 101](wp-ultimo-101) - A comprehensive introduction to WP Multisite WaaS
+- [Basic Concepts](basic-concepts) - Understanding the core concepts
+- [What is WordPress Multisite?](what-is-wordpress-multisite) - Learn about WordPress Multisite
+- [Installing WP Multisite WaaS](installing-wp-ultimo-v2) - How to install WP Multisite WaaS
+
+### Administration
+Manage your WP Multisite WaaS network effectively.
+
+- [Understanding the Dashboard](understanding-the-wp-ultimo-dashboard) - Navigate the admin interface
+- [Managing Customers](managing-customers) - Customer management tools
+- [Managing Sites](managing-sites) - Site management tools
+
+### Configuration
+Configure your WP Multisite WaaS network.
+
+- [Site Templates](site-templates-v2) - Create and manage site templates
+- [Checkout Forms](checkout-forms) - Customize your checkout forms
+- [Creating Products](creating-your-first-subscription-product-v2) - Set up subscription products
+
+### Payment Gateways
+Set up payment processing for your network.
+
+- [Stripe Gateway](setting-up-the-stripe-gateway-v2) - Accept payments with Stripe
+- [PayPal Gateway](setting-up-the-paypal-gateway-v2) - Accept payments with PayPal
+- [Manual Payments](setting-up-manual-payments-v2) - Handle manual payments
+
+### View All Documentation
+Browse all documentation using the sidebar navigation on the right. The documentation is organized into the following categories:
+
+- **Getting Started** - Basic setup and installation guides
+- **Administration** - Managing your network, customers, and sites
+- **Configuration** - Setting up templates, forms, and products
+- **Domain Mapping** - Configure domain mapping for your sites
+- **Payment Gateways** - Set up payment processing
+- **Client Management** - Tools for managing client accounts
+- **Integrations** - Connect with other services
+- **Customization** - Customize the appearance and functionality
+- **Development** - Developer resources and APIs
+- **Localization** - Translate and localize your network
+- **Troubleshooting** - Solve common issues
+- **Migration & Updates** - Migrate from v1 and update your installation
+- **Miscellaneous** - Other useful information
