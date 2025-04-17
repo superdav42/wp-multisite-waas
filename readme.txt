@@ -1,18 +1,82 @@
 === WP Multisite WaaS ===
+Contributors: aanduque, superdav42 
+Donate link: https://github.com/sponsors/superdav42/
+Tags: multisite, waas, membership, domain-mapping, recurring payments, subscription
 Requires at least: 5.3
+
 Requires PHP: 7.4.30
 Tested up to: 6.7.2
+Stable tag: 2.3.4
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Contributors: aanduque, superdav42 
 
 The Complete Network Solution for transforming your WordPress Multisite into a Website as a Service (WaaS) platform.
 
 == Description ==
 
-WP Multisite WaaS helps you transform your WordPress Multisite installation into a powerful Website as a Service (WaaS) platform. This plugin enables you to offer website creation, hosting, and management services to your customers through a streamlined interface.
+**WP Multisite WaaS** helps you transform your WordPress Multisite installation into a powerful Website as a Service (WaaS) platform. This plugin enables you to offer website creation, hosting, and management services to your customers through a streamlined interface.
 
-Now community maintained.
+This plugin was formerly known as WP Ultimo and is now community maintained.
+
+= Key Features =
+
+* **Site Creation** - Allow customers to create their own sites in your network
+* **Domain Mapping** - Support for custom domains with automated DNS verification
+* **Payment Processing** - Integrations with popular payment gateways like Stripe and PayPal
+* **Plan Management** - Create and manage subscription plans with different features and limitations
+* **Template Sites** - Easily clone and use template sites for new customer websites
+* **Customer Dashboard** - Provide a professional management interface for your customers
+* **White Labeling** - Brand the platform as your own
+* **Hosting Integrations** - Connect with popular hosting control panels like cPanel, RunCloud, and more
+
+= Where to find help =
+
+* [GitHub Repository](https://github.com/superdav42/wp-multisite-waas)
+* [Issue Tracker](https://github.com/superdav42/wp-multisite-waas/issues)
+
+= Contributing =
+
+We welcome contributions to WP Multisite WaaS! To contribute effectively:
+
+**Development Workflow:**
+
+1. Fork the repository on GitHub
+2. Create a feature branch from main
+3. Run `npm install` and `composer install` to set up dependencies
+4. Make your changes
+5. Before committing, run `npm run build` to:
+   * Generate translation POT files
+   * Minify CSS and JS assets
+   * Process and optimize other assets
+6. **Important:** Update both README.md and readme.txt files when making changes that affect:
+   * Version numbers
+   * Required WordPress/PHP versions
+   * Feature additions or changes
+   * Installation instructions
+   * Documentation
+   * Changelog entries
+7. Open a Pull Request with your changes
+
+**Pull Request Guidelines:**
+
+Please include a clear description of your changes and their purpose, reference any related issues, and ensure your code follows existing style conventions. Always verify that both README.md and readme.txt are updated and synchronized before submitting your PR.
+
+**Release Process:**
+
+Releases are automated using GitHub Actions workflows that trigger when a version tag is pushed. 
+
+To trigger a new release build, push a tag following the semantic versioning format:
+`git tag v2.3.5` (for version 2.3.5) and then `git push origin v2.3.5`
+
+The tag must begin with "v" followed by the version number (v*.*.*).
+
+When preparing for a release:
+1. Update the version number in the main plugin file and readme.txt
+2. Update the changelog in readme.txt
+3. Ensure README.md and readme.txt are synchronized with the latest information
+4. Create and push the appropriate version tag
+
+For more detailed contribution guidelines, see the [GitHub repository](https://github.com/superdav42/wp-multisite-waas).
 
 == Installation ==
 
@@ -70,10 +134,36 @@ Solution: Use the pre-packaged release from the [Releases page](https://github.c
 
 == Requirements ==
 
-- WordPress Multisite 5.3 or higher
-- PHP 7.4.30 or higher
-- MySQL 5.6 or higher
-- HTTPS enabled (recommended for secure checkout)
+* WordPress Multisite 5.3 or higher
+* PHP 7.4.30 or higher
+* MySQL 5.6 or higher
+* HTTPS enabled (recommended for secure checkout)
+
+== Frequently Asked Questions ==
+
+= Can I use this plugin with a regular WordPress installation? =
+
+No, this plugin specifically requires WordPress Multisite to function properly. It transforms your Multisite network into a platform for hosting multiple customer websites.
+
+= Does this plugin support custom domains? =
+
+Yes, WP Multisite WaaS includes robust domain mapping functionality that allows your customers to use their own domains for their websites within your network.
+
+= Which payment gateways are supported? =
+
+The plugin supports multiple payment gateways including Stripe, PayPal, and manually handled payments.
+
+= Can I migrate from WP Ultimo to this plugin? =
+
+Yes, WP Multisite WaaS is a community-maintained fork of WP Ultimo. The plugin includes migration tools to help you transition from WP Ultimo.
+
+== Screenshots ==
+
+1. Dashboard overview with key metrics
+2. Subscription plans management
+3. Customer management interface
+4. Site creation workflow
+5. Domain mapping settings
 
 == Support ==
 
@@ -84,6 +174,7 @@ For support, please open an issue on the [GitHub repository](https://github.com/
 We recommend running this in a staging environment before updating your production environment.
 
 == Changelog ==
+
 Version [2.4.0] - Released on 2025-XX-XX
 - Improved: Prep Plugin for release on WordPress.org
 - Improved: Update translation text domain
@@ -841,3 +932,4 @@ Version 2.0.1 - Released on 2021-11-22
 * Fixed: WP Ultimo and its add-ons not appearing on the main site's plugins list;
 
 Version 2.0.0 - Released on 2021-11-21 (WP Ultimo's 5-year anniversary)
+
