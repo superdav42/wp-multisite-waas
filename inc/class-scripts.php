@@ -334,8 +334,23 @@ class Scripts {
 	 * @return void
 	 */
 	public function enqueue_default_admin_styles(): void {
+		// Get current screen to conditionally load styles
+		$screen = get_current_screen();
 
-		wp_enqueue_style('wu-admin');
+		if (!$screen) {
+			return;
+		}
+
+		// Only load styles on WP Ultimo admin pages
+		if ($this->is_wp_ultimo_admin_page($screen)) {
+			wp_enqueue_style('wu-admin');
+			wp_enqueue_style('wu-flags');
+		}
+
+		// Load checkout styles only on checkout pages
+		if (isset($_GET['page']) && str_starts_with($_GET['page'], 'wu-checkout')) {
+			wp_enqueue_style('wu-checkout');
+		}
 	}
 
 	/**
@@ -345,8 +360,17 @@ class Scripts {
 	 * @return void
 	 */
 	public function enqueue_default_admin_scripts(): void {
+		// Get current screen to conditionally load scripts
+		$screen = get_current_screen();
 
-		wp_enqueue_script('wu-admin');
+		if (!$screen) {
+			return;
+		}
+
+		// Only load scripts on WP Ultimo admin pages
+		if ($this->is_wp_ultimo_admin_page($screen)) {
+			wp_enqueue_script('wu-admin');
+		}
 	}
 
 	/**
@@ -381,5 +405,22 @@ class Scripts {
 		}
 
 		return $classes;
+	}
+
+	/**
+	 * Checks if the current screen is a WP Ultimo admin page.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param \WP_Screen $screen The current screen object.
+	 * @return bool
+	 */
+	private function is_wp_ultimo_admin_page($screen) {
+		// Check if the screen ID contains 'wp-ultimo' or if it's a WP Ultimo admin page
+		return (
+			str_contains($screen->id, 'wp-ultimo') ||
+			str_contains($screen->id, 'wu-') ||
+			(isset($_GET['page']) && str_starts_with($_GET['page'], 'wu-'))
+		);
 	}
 }
