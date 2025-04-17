@@ -7,7 +7,7 @@
 ?>
 <p><?php esc_html_e('Hey there', 'wp-multisite-waas'); ?></p>
 
-<p><?php printf(__('We have great news! You received %1$s from %2$s (%3$s) for %4$s.', 'wp-multisite-waas'), '{{payment_total}}', '{{customer_name}}', '{{customer_user_email}}', '{{payment_product_names}}'); ?></p>
+<p><?php printf(esc_html__('We have great news! You received %1$s from %2$s (%3$s) for %4$s.', 'wp-multisite-waas'), '{{payment_total}}', '{{customer_name}}', '{{customer_user_email}}', '{{payment_product_names}}'); ?></p>
 
 <p><a href="{{payment_invoice_url}}" style="text-decoration: none;" rel="nofollow"><?php esc_html_e('Download Invoice', 'wp-multisite-waas'); ?></a></p>
 

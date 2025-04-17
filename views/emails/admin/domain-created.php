@@ -7,7 +7,7 @@
 ?>
 <p><?php esc_html_e('Hey there', 'wp-multisite-waas'); ?></p>
 
-<p><?php printf(__('A new domain, %2$s, was added to the site %3$s.', 'wp-multisite-waas'), '{{customer_name}}', '{{domain_domain}}', '{{site_title}}'); ?></p>
+<p><?php printf(esc_html__('A new domain, %2$s, was added to the site %3$s.', 'wp-multisite-waas'), '{{customer_name}}', '{{domain_domain}}', '{{site_title}}'); ?></p>
 
 <h2><b><?php esc_html_e('Domain', 'wp-multisite-waas'); ?></b></h2>
 
