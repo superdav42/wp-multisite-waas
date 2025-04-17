@@ -5,7 +5,7 @@
  * @since 2.0.0
  */
 ?>
-<div class="wu-styling <?php echo esc_attr($className); ?>">
+<div class="wu-styling wu-login-form <?php echo esc_attr($className); ?>">
 
 	<?php if ($logged) : ?>
 
