@@ -1,0 +1,71 @@
+name: E2E Cross-Browser Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ["7.4.30", "8.0", "8.1", "8.2"]
+        browser: ["chrome", "firefox", "edge", "webkit"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, intl, pdo, pdo_mysql
+          coverage: none
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update PHP version in wp-env.json
+        run: |
+          jq --arg php "${{ matrix.php }}" '.phpVersion = $php' wp-env.json > tmp && mv tmp wp-env.json
+
+      - name: Install Playwright WebKit dependencies
+        if: matrix.browser == 'webkit'
+        run: npx playwright install-deps webkit
+
+      - name: Start WordPress Environment
+        run: npm run wp:start
+
+      - name: Wait for WordPress to be ready
+        run: |
+          for i in {1..30}; do
+            if curl -s http://localhost:8888 | grep -q "WordPress"; then
+              echo "WordPress is ready";
+              break;
+            fi
+            echo "Waiting for WordPress...";
+            sleep 5;
+          done
+
+      - name: Run Cypress Tests in ${{ matrix.browser }}
+        run: |
+          docker run --network host \
+            -v ${{ github.workspace }}:/e2e \
+            -w /e2e \
+            cypress/included:13.7.3 \
+            --browser ${{ matrix.browser }} \
+            --config baseUrl=http://localhost:8888
+
+      - name: Stop WordPress Environment
+        if: always()
+        run: npm run wp:stop

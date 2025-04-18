@@ -7,7 +7,10 @@
     "url": "git://github.com/superdav/wp-multisite-waas.git"
   },
   "devDependencies": {
+    "@wordpress/env": "^10.22.0",
     "clean-css-cli": "^5.6.3",
+    "cypress": "^14.3.1",
+    "playwright-webkit": "^1.52.0",
     "uglify-js": "^3.19.3"
   },
   "config": {
@@ -24,6 +27,11 @@
     "uglify": "for f in assets/js/*.js; do file=${f%.js}; node_modules/.bin/uglifyjs $f -c -m > $file.min.js; done",
     "precleancss": "rm -f assets/css/*.min.css",
     "cleancss": "for f in assets/css/*.css; do file=${f%.css}; node_modules/.bin/cleancss -o $file.min.css $f; done",
-    "makepot": "wp i18n make-pot ./ lang/$npm_package_name.pot --exclude=node_modules,tests,docs,assets/js/lib"
+    "makepot": "wp i18n make-pot ./ lang/$npm_package_name.pot --exclude=node_modules,tests,docs,assets/js/lib",
+    "env:start": "wp-env start",
+    "env:clean:tests": "wp-env clean tests",
+    "env:stop": "wp-env stop",
+    "cy:open": "npm run env:start && npm run env:clean:tests && npx cypress open --config video=false",
+    "cy:run": "npm run env:start && npm run env:clean:tests && npx cypress run --config --headless video=false"
   }
 }
