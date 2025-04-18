@@ -130,9 +130,9 @@ class Multiple_Accounts_Compat {
 			 * escape the %s placeholder, which will break the query.
 			 */
 			return sprintf(
-				"SELECT u.* 
-				FROM $wpdb->users u 
-				JOIN $wpdb->usermeta m on u.id = m.user_id 
+				"SELECT u.*
+				FROM $wpdb->users u
+				JOIN $wpdb->usermeta m on u.id = m.user_id
 				WHERE m.meta_key = \"wp_%d_capabilities\"
 				AND u.user_email%s",
 				$site_id,
@@ -298,12 +298,12 @@ class Multiple_Accounts_Compat {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param null   $null No idea.
+	 * @param mixed  $unused Unused parameter.
 	 * @param string $column The name of the column.
 	 * @param int    $user_id The ID of the user.
 	 * @return void
 	 */
-	public function add_column_content($null, $column, $user_id): void {
+	public function add_column_content($unused, $column, $user_id): void {
 
 		if ('multiple_accounts' === $column) {
 
@@ -324,7 +324,7 @@ class Multiple_Accounts_Compat {
 
 			$html .= sprintf("<br><a href='%s' class=''>" . __('See all', 'wp-multisite-waas') . ' &raquo;</a>', network_admin_url('users.php?s=' . $user->user_email));
 
-			echo $html;
+			echo wp_kses_post($html);
 		}
 	}
 
@@ -338,14 +338,17 @@ class Multiple_Accounts_Compat {
 
 		// Only run in the right case
 		if (wu_request('action') === 'retrievepassword' || wu_request('wc_reset_password')) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Password reset functionality, nonce is verified elsewhere
 
 			// Only do thing if is login by email
-			if (is_email($_REQUEST['user_login'])) {
-				$user = $this->get_right_user($_REQUEST['user_login']);
+			if (isset($_REQUEST['user_login']) && is_email($_REQUEST['user_login'])) {
+				// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Recommended -- Password reset functionality, nonce is verified elsewhere
+				$user = $this->get_right_user(sanitize_email(wp_unslash($_REQUEST['user_login'])));
 
-				$_REQUEST['user_login'] = $user->user_login;
-
-				$_POST['user_login'] = $user->user_login;
+				if ($user) {
+					$_REQUEST['user_login'] = $user->user_login;
+					$_POST['user_login']    = $user->user_login;
+				}
 			}
 		}
 	}
@@ -479,7 +482,7 @@ class Multiple_Accounts_Compat {
 
 		// Loop the results and check which one is in this group
 		foreach ($users->results as $user_with_email) {
-			$conditions = false == $password ? true : wp_check_password($password, $user_with_email->user_pass, $user_with_email->ID);
+			$conditions = false === $password ? true : wp_check_password($password, $user_with_email->user_pass, $user_with_email->ID);
 
 			// Check for the pertinence of that user in this site
 			if ($conditions && $this->user_can_for_blog($user_with_email, get_current_blog_id(), 'read')) {
