@@ -10,7 +10,6 @@
     "@wordpress/env": "^10.22.0",
     "clean-css-cli": "^5.6.3",
     "cypress": "^14.3.1",
-    "playwright-webkit": "^1.52.0",
     "uglify-js": "^3.19.3"
   },
   "config": {

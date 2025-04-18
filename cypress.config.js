@@ -7,7 +7,6 @@ module.exports = defineConfig({
   fixturesFolder: "tests/e2e/cypress/fixtures",
   screenshotsFolder: "tests/e2e/cypress/screenshots",
   videosFolder: "tests/e2e/cypress/videos",
-  experimentalWebKitSupport: true,
   video: false,
   e2e: {
     baseUrl: "http://localhost:8889",
