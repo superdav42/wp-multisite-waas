@@ -129,6 +129,7 @@ class Domain_Manager extends Base_Manager {
 		 */
 
 		add_action('wp_insert_site', [$this, 'handle_site_created']);
+		add_action('wu_initialize_site', [$this, 'handle_site_created']);
 
 		add_action('wp_delete_site', [$this, 'handle_site_deleted']);
 	}
@@ -142,8 +143,8 @@ class Domain_Manager extends Base_Manager {
 	 */
 	protected function set_cookie_domain() {
 
-		if (defined('DOMAIN_CURRENT_SITE') && ! defined('COOKIE_DOMAIN') && ! preg_match('/' . DOMAIN_CURRENT_SITE . '$/', '.' . $_SERVER['HTTP_HOST'])) {
-			define('COOKIE_DOMAIN', '.' . $_SERVER['HTTP_HOST']);
+		if (defined('DOMAIN_CURRENT_SITE') && ! defined('COOKIE_DOMAIN') && isset($_SERVER['HTTP_HOST']) && ! preg_match('/' . DOMAIN_CURRENT_SITE . '$/', '.' . sanitize_text_field(wp_unslash($_SERVER['HTTP_HOST'])))) {
+			define('COOKIE_DOMAIN', '.' . sanitize_text_field(wp_unslash($_SERVER['HTTP_HOST'])));
 		}
 	}
 
@@ -162,6 +163,8 @@ class Domain_Manager extends Base_Manager {
 		$has_subdomain = str_replace($current_site->domain, '', $site->domain);
 
 		if ( ! $has_subdomain) {
+			// Create a domain record for the site
+			$this->create_domain_record_for_site($site);
 			return;
 		}
 
@@ -171,6 +174,56 @@ class Domain_Manager extends Base_Manager {
 		];
 
 		wu_enqueue_async_action('wu_add_subdomain', $args, 'domain');
+
+		// Create a domain record for the site
+		$this->create_domain_record_for_site($site);
+	}
+
+	/**
+	 * Creates a domain record for a site.
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param \WP_Site $site The site to create a domain record for.
+	 * @return \WP_Error|\WP_Ultimo\Models\Domain
+	 */
+	public function create_domain_record_for_site($site) {
+
+		// Check if a domain record already exists for this site
+		$existing_domains = wu_get_domains(
+			[
+				'blog_id' => $site->blog_id,
+				'number'  => 1,
+			]
+		);
+
+		if ( ! empty($existing_domains)) {
+			return $existing_domains[0];
+		}
+
+		// Create a new domain record
+		$domain = wu_create_domain(
+			[
+				'blog_id'        => $site->blog_id,
+				'domain'         => $site->domain,
+				'active'         => true,
+				'primary_domain' => true,
+				'secure'         => false,
+				'stage'          => 'checking-dns',
+			]
+		);
+
+		if (is_wp_error($domain)) {
+			wu_log_add('domain-creation', sprintf('Failed to create domain record for site %d: %s', $site->blog_id, $domain->get_error_message()), LogLevel::ERROR);
+			return $domain;
+		}
+
+		wu_log_add('domain-creation', sprintf('Created domain record for site %d: %s', $site->blog_id, $site->domain));
+
+		// Process the domain stage asynchronously
+		wu_enqueue_async_action('wu_async_process_domain_stage', ['domain_id' => $domain->get_id()], 'domain');
+
+		return $domain;
 	}
 
 	/**
@@ -318,6 +371,26 @@ class Domain_Manager extends Base_Manager {
 				'require'   => [
 					'enable_domain_mapping' => true,
 					'custom_domains'        => true,
+				],
+			]
+		);
+
+		wu_register_settings_field(
+			'domain-mapping',
+			'dns_check_interval',
+			[
+				'title'     => __('DNS Check Interval', 'wp-multisite-waas'),
+				'tooltip'   => __('Set the interval in seconds between DNS and SSL certificate checks for domains.', 'wp-multisite-waas'),
+				'desc'      => __('Minimum: 10 seconds, Maximum: 300 seconds (5 minutes). Default: 300 seconds.', 'wp-multisite-waas'),
+				'type'      => 'number',
+				'default'   => 300,
+				'min'       => 10,
+				'max'       => 300,
+				'html_attr' => [
+					'step' => 1,
+				],
+				'require'   => [
+					'enable_domain_mapping' => true,
 				],
 			]
 		);
@@ -470,7 +543,19 @@ class Domain_Manager extends Base_Manager {
 
 		$max_tries = apply_filters('wu_async_process_domain_stage_max_tries', 5, $domain);
 
-		$try_again_time = apply_filters('wu_async_process_domains_try_again_time', 5, $domain); // minutes
+		// Get the DNS check interval from settings (in seconds)
+		$dns_check_interval = wu_get_setting('dns_check_interval', 300);
+
+		// Ensure the interval is within the allowed range (10-300 seconds)
+		$dns_check_interval = max(10, min(300, (int) $dns_check_interval));
+
+		// Convert seconds to minutes for the schedule
+		$try_again_time = ceil($dns_check_interval / 60);
+
+		// Ensure we have at least 1 minute
+		$try_again_time = max(1, $try_again_time);
+
+		$try_again_time = apply_filters('wu_async_process_domains_try_again_time', $try_again_time, $domain); // minutes
 
 		++$tries;
 
@@ -515,8 +600,8 @@ class Domain_Manager extends Base_Manager {
 
 					wu_log_add(
 						"domain-{$domain_url}",
-						// translators: %d is the number of minutes to try again.
-						sprintf(__('- DNS propagation checks tried for the max amount of times (5 times, one every %d minutes). Marking as failed.', 'wp-multisite-waas'), $try_again_time)
+						// translators: %d is the number of seconds to try again.
+						sprintf(__('- DNS propagation checks tried for the max amount of times (5 times, one every %d seconds). Marking as failed.', 'wp-multisite-waas'), $dns_check_interval)
 					);
 
 					return;
@@ -524,12 +609,12 @@ class Domain_Manager extends Base_Manager {
 
 				wu_log_add(
 					"domain-{$domain_url}",
-					// translators: %d is the number of minutes before trying again.
-					sprintf(__('- DNS propagation not finished, retrying in %d minutes...', 'wp-multisite-waas'), $try_again_time)
+					// translators: %d is the number of seconds before trying again.
+					sprintf(__('- DNS propagation not finished, retrying in %d seconds...', 'wp-multisite-waas'), $dns_check_interval)
 				);
 
 				wu_schedule_single_action(
-					strtotime("+{$try_again_time} minutes"),
+					time() + $dns_check_interval,
 					'wu_async_process_domain_stage',
 					[
 						'domain_id' => $domain_id,
@@ -565,8 +650,8 @@ class Domain_Manager extends Base_Manager {
 
 					wu_log_add(
 						"domain-{$domain_url}",
-						// translators: %d is the number of minutes to try again.
-						sprintf(__('- SSL checks tried for the max amount of times (5 times, one every %d minutes). Marking as ready without SSL.', 'wp-multisite-waas'), $try_again_time)
+						// translators: %d is the number of seconds to try again.
+						sprintf(__('- SSL checks tried for the max amount of times (5 times, one every %d seconds). Marking as ready without SSL.', 'wp-multisite-waas'), $dns_check_interval)
 					);
 
 					return;
@@ -574,12 +659,12 @@ class Domain_Manager extends Base_Manager {
 
 				wu_log_add(
 					"domain-{$domain_url}",
-					// translators: %d is the number of minutes before trying again.
-					sprintf(__('- SSL Cert not found, retrying in %d minute(s)...', 'wp-multisite-waas'), $try_again_time)
+					// translators: %d is the number of seconds before trying again.
+					sprintf(__('- SSL Cert not found, retrying in %d seconds...', 'wp-multisite-waas'), $dns_check_interval)
 				);
 
 				wu_schedule_single_action(
-					strtotime("+{$try_again_time} minutes"),
+					time() + $dns_check_interval,
 					'wu_async_process_domain_stage',
 					[
 						'domain_id' => $domain_id,
