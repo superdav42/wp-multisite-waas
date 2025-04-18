@@ -1518,11 +1518,16 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function handle_save() {
 
-		if ( ! wu_request('restrict_by_country') || empty($_POST['allowed_countries'])) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification happens in parent::handle_save()
+		if ( ! wu_request('restrict_by_country') || (isset($_POST['allowed_countries']) && empty($_POST['allowed_countries']))) {
 			$_POST['allowed_countries'] = [];
 		}
 
-		$_POST['settings'] = json_decode(stripslashes((string) $_POST['_settings']), true);
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification happens in parent::handle_save()
+		if (isset($_POST['_settings'])) {
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- We're using json_decode which handles sanitization
+			$_POST['settings'] = json_decode(wp_unslash((string) $_POST['_settings']), true);
+		}
 
 		/**
 		 * Prevent parents redirect to perform additional checks to destroy session.

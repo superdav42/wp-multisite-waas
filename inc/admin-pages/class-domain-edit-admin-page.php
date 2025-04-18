@@ -191,6 +191,7 @@ class Domain_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function domain_after_delete_actions($domain): void {
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification happens in the form handler
 		$new_primary_domain_name = wu_request('set_domain_as_primary');
 
 		$new_primary_domain = wu_get_domain($new_primary_domain_name);
@@ -550,14 +551,17 @@ class Domain_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function handle_save(): void {
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification happens in parent::handle_save()
 		if ( ! wu_request('primary_domain')) {
 			$_POST['primary_domain'] = false;
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification happens in parent::handle_save()
 		if ( ! wu_request('active')) {
 			$_POST['active'] = false;
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification happens in parent::handle_save()
 		if ( ! wu_request('secure')) {
 			$_POST['secure'] = false;
 		}

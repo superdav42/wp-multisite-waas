@@ -125,7 +125,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 
 		add_filter(
 			'wu_data_json_success_delete_site_modal',
-			fn($data_json) => [
+			fn($unused_data_json) => [
 				'redirect_url' => wu_network_admin_url('wp-ultimo-sites', ['deleted' => 1]),
 			]
 		);
@@ -141,6 +141,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function add_new_site_template_warning_message(): void {
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Just checking if we need to show a message
 		if (wu_request('wu-new-model')) {
 			if ( ! $this->get_object() || $this->get_object()->get_type() !== Site_Type::SITE_TEMPLATE) {
 				return;
@@ -180,7 +181,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 	 * @since 2.0.0
 	 * @return void
 	 */
-	function render_transfer_site_modal(): void {
+	public function render_transfer_site_modal(): void {
 
 		$site = wu_get_site(wu_request('id'));
 
@@ -249,8 +250,10 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 
 		global $wpdb;
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification happens in the form handler
 		$site = wu_get_site(wu_request('id'));
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification happens in the form handler
 		$target_membership = wu_get_membership(wu_request('target_membership_id'));
 
 		if ( ! $site) {
@@ -580,7 +583,6 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 					'scraper'           => [
 						'type'    => 'submit',
 						'title'   => __('Take Screenshot', 'wp-multisite-waas'),
-						'title'   => __('Take Screenshot', 'wp-multisite-waas'),
 						'classes' => 'button wu-w-full',
 					],
 				],
@@ -724,6 +726,7 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 			return $this->object;
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Just getting the object ID from the URL
 		$item_id = wu_request('id', 0);
 
 		$item = wu_get_site($item_id);
@@ -757,9 +760,11 @@ class Site_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function handle_save() {
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification happens in parent::handle_save()
 		$_POST['categories'] = wu_get_isset($_POST, 'categories', []);
 
-		if ($_POST['type'] !== Site_Type::CUSTOMER_OWNED) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification happens in parent::handle_save()
+		if (isset($_POST['type']) && Site_Type::CUSTOMER_OWNED !== $_POST['type']) {
 			$_POST['membership_id'] = false;
 			$_POST['customer_id']   = false;
 		}
