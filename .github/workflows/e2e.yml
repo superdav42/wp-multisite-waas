@@ -61,7 +61,7 @@ jobs:
           docker run --network host \
             -v ${{ github.workspace }}:/e2e \
             -w /e2e \
-            cypress/included:13.7.3 \
+            cypress/included:latest \
             --browser ${{ matrix.browser }} \
             --config baseUrl=http://localhost:8888
 
