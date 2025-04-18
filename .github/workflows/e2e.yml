@@ -44,7 +44,7 @@ jobs:
         run: npx playwright install-deps webkit
 
       - name: Start WordPress Environment
-        run: npm run wp:start
+        run: npm run wp-env:start
 
       - name: Wait for WordPress to be ready
         run: |
@@ -68,4 +68,4 @@ jobs:
 
       - name: Stop WordPress Environment
         if: always()
-        run: npm run wp:stop
+        run: npm run wp-env:stop
