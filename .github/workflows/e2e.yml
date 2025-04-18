@@ -32,10 +32,10 @@ jobs:
           extensions: mbstring, intl, pdo, pdo_mysql
           coverage: none
       
-      - name: Install plugin Composer dependencies
-        run: composer install --working-dir=wp-content/plugins/wp-multisite-waas
+      - name: Install Composer dependencies
+        run: composer install
 
-      - name: Install dependencies
+      - name: Install NPM dependencies
         run: npm ci
 
       - name: Set PHP version for wp-env
