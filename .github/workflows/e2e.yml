@@ -35,9 +35,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Update PHP version in .wp-env.json
+      - name: Update WordPress image in .wp-env.json
         run: |
-          jq --arg php "${{ matrix.php }}" '.phpVersion = $php' .wp-env.json > tmp && mv tmp .wp-env.json
+          case "${{ matrix.php }}" in
+            "7.4.30") wp_image="wordpress:php7.4" ;;
+            "8.0") wp_image="wordpress:php8.0" ;;
+            "8.1") wp_image="wordpress:php8.1" ;;
+            "8.2") wp_image="wordpress:php8.2" ;;
+            *) echo "Unsupported PHP version"; exit 1 ;;
+          esac
+          jq --arg core "$wp_image" '.core = $core' .wp-env.json > tmp && mv tmp .wp-env.json
 
       - name: Install Playwright WebKit dependencies
         if: matrix.browser == 'webkit'
