@@ -5,7 +5,7 @@
  * To see what methods are available on the product variable, @see inc/models/class-products.php.
  *
  * This template can also be override using template overrides.
- * See more here: https://help.wpultimo.com/article/335-template-overrides.
+ * See more here: https://github.com/superdav42/wp-multisite-waas/wiki/Template-Overrides.
  *
  * @since 2.0.0
  * @param array $products List of product objects.
@@ -113,7 +113,7 @@ if (null !== $first_recurring_product) {
 
 		<?php foreach ($products as $product) : ?>
 
-		<div 
+		<div
 			id="plan-<?php echo esc_attr($product->get_id()); ?>"
 			class="<?php echo esc_attr("wu-product-{$product->get_id()}"); ?> lift wu-plan plan-tier wu-flex-1 <?php echo esc_attr($product->is_featured_plan() ? 'callout' : ''); ?> wu-flex wu-flex-col wu-justify-between"
 			v-show="wu_force_different_durations || (duration && wu_legacy_mode) || (( (!duration) || duration == <?php echo esc_attr($product->get_duration()); ?> && duration_unit == '<?php echo esc_attr($product->get_duration_unit()); ?>' ) || <?php echo wp_json_encode($product->get_pricing_type() !== 'paid'); ?>)"
@@ -336,22 +336,22 @@ if (null !== $first_recurring_product) {
 
 			<li class="wu-cta">
 
-				<button 
-				v-if="<?php echo wp_json_encode($product->get_pricing_type() !== 'contact_us'); ?>" 
-				v-on:click="add_plan(<?php echo $product->get_id(); ?>)" 
-				type="button" 
-				name="products[]" 
-				value="<?php echo $product->get_id(); ?>" 
+				<button
+				v-if="<?php echo wp_json_encode($product->get_pricing_type() !== 'contact_us'); ?>"
+				v-on:click="add_plan(<?php echo $product->get_id(); ?>)"
+				type="button"
+				name="products[]"
+				value="<?php echo $product->get_id(); ?>"
 				class="button button-primary button-next"
 				>
 				<?php esc_html_e('Select Plan', 'wp-multisite-waas'); ?>
 				</button>
 
-				<button 
-				v-else 
-				v-on:click="open_url('<?php echo esc_url($product->get_contact_us_link()); ?>', '_blank');" type="button" 
-				name="products[]" 
-				value="<?php echo $product->get_id(); ?>" 
+				<button
+				v-else
+				v-on:click="open_url('<?php echo esc_url($product->get_contact_us_link()); ?>', '_blank');" type="button"
+				name="products[]"
+				value="<?php echo $product->get_id(); ?>"
 				class="button button-primary button-next"
 				>
 				<?php esc_html_e('Select Plan', 'wp-multisite-waas'); ?>
@@ -367,7 +367,7 @@ if (null !== $first_recurring_product) {
 <?php endforeach; ?>
 
 	</div>
-	
+
 	</div>
 
 <?php endif; ?>

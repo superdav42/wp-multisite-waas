@@ -26,6 +26,19 @@ Configure your WP Multisite WaaS network.
 - [Checkout Forms](checkout-forms) - Customize your checkout forms
 - [Creating Products](creating-your-first-subscription-product-v2) - Set up subscription products
 
+### Host Provider Integrations
+Integrate with various hosting providers for domain management.
+
+- [Closte Integration](Closte-Integration) - Automatic domain syncing with Closte hosting
+- [Cloudflare Integration](Cloudflare-Integration) - DNS management with Cloudflare
+- [Cloudways Integration](Cloudways-Integration) - Domain syncing with Cloudways hosting
+- [cPanel Integration](cPanel-Integration) - Domain management with cPanel
+- [GridPane Integration](GridPane-Integration) - Domain syncing with GridPane
+- [RunCloud Integration](Runcloud-Integration) - Domain syncing with RunCloud
+- [ServerPilot Integration](ServerPilot-Integration) - Domain syncing with ServerPilot
+- [WP Engine Integration](WP-Engine-Integration) - Domain management with WP Engine
+- [WPMU DEV Integration](WPMU-DEV-Integration) - Domain syncing with WPMU DEV hosting
+
 ### Payment Gateways
 Set up payment processing for your network.
 
@@ -49,3 +62,17 @@ Browse all documentation using the sidebar navigation on the right. The document
 - **Troubleshooting** - Solve common issues
 - **Migration & Updates** - Migrate from v1 and update your installation
 - **Miscellaneous** - Other useful information
+
+## Host Provider Integrations
+
+WP Multisite WaaS integrates with various hosting providers to automate domain management and SSL certificate issuance:
+
+- [Closte Integration](Closte-Integration) - Automatic domain syncing with Closte hosting
+- [Cloudflare Integration](Cloudflare-Integration) - DNS management with Cloudflare
+- [Cloudways Integration](Cloudways-Integration) - Domain syncing with Cloudways hosting
+- [cPanel Integration](cPanel-Integration) - Domain management with cPanel
+- [GridPane Integration](GridPane-Integration) - Domain syncing with GridPane
+- [RunCloud Integration](Runcloud-Integration) - Domain syncing with RunCloud
+- [ServerPilot Integration](ServerPilot-Integration) - Domain syncing with ServerPilot
+- [WP Engine Integration](WP-Engine-Integration) - Domain management with WP Engine
+- [WPMU DEV Integration](WPMU-DEV-Integration) - Domain syncing with WPMU DEV hosting

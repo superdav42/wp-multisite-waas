@@ -36,6 +36,17 @@
 - [How to configure domain mapping (v1)](how-to-configure-domain-mapping-v1)
 - [Setting the Sunrise constant to true on Closte](setting-the-sunrise-constant-to-true-on-closte)
 
+## Host Provider Integrations
+- [Closte Integration](Closte-Integration)
+- [Cloudflare Integration](Cloudflare-Integration)
+- [Cloudways Integration](Cloudways-Integration)
+- [cPanel Integration](cPanel-Integration)
+- [GridPane Integration](GridPane-Integration)
+- [RunCloud Integration](Runcloud-Integration)
+- [ServerPilot Integration](ServerPilot-Integration)
+- [WP Engine Integration](WP-Engine-Integration)
+- [WPMU DEV Integration](WPMU-DEV-Integration)
+
 ## Payment Gateways
 - [Setting Up The Stripe Gateway (v2)](setting-up-the-stripe-gateway-v2)
 - [Setting Up The PayPal Gateway (v2)](setting-up-the-paypal-gateway-v2)
