@@ -1,4 +1,4 @@
-describe("Plugin", () => {
+describe("Plugin", { testIsolation: false }, () => {
   beforeEach(() => {
     cy.loginByApi(Cypress.env("admin").username, Cypress.env("admin").password);
   });
