@@ -44,7 +44,7 @@ class WPEngine_Host_Provider extends Base_Host_Provider {
 	 * @var string
 	 * @since 2.0.0
 	 */
-	protected $tutorial_link = '';
+	protected $tutorial_link = 'https://github.com/superdav42/wp-multisite-waas/wiki/WP-Engine-Integration';
 
 	/**
 	 * Array containing the features this integration supports.
