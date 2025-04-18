@@ -41,7 +41,7 @@ class Cloudways_Host_Provider extends Base_Host_Provider {
 	 * @var string
 	 * @since 2.0.0
 	 */
-	protected $tutorial_link = 'https://help.wpultimo.com/article/294-configuring-automatic-domain-syncing-with-cloudways';
+	protected $tutorial_link = 'https://github.com/superdav42/wp-multisite-waas/wiki/Cloudways-Integration';
 
 	/**
 	 * Array containing the features this integration supports.

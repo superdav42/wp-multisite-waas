@@ -5,7 +5,7 @@
  * To see what methods are available on the product variable, @see inc/models/class-producs.php.
  *
  * This template can also be overrid using template overrides.
- * See more here: https://help.wpultimo.com/article/335-template-overrides.
+ * See more here: https://github.com/superdav42/wp-multisite-waas/wiki/Template-Overrides.
  *
  * @since 2.0.0
  * @param array $products List of product objects.
