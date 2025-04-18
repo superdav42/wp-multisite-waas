@@ -7,10 +7,17 @@ module.exports = defineConfig({
   fixturesFolder: "tests/e2e/cypress/fixtures",
   screenshotsFolder: "tests/e2e/cypress/screenshots",
   videosFolder: "tests/e2e/cypress/videos",
+  retries: {
+    runMode: 2,
+    openMode: 0
+  },
   video: false,
   e2e: {
     baseUrl: "http://localhost:8889",
-    defaultCommandTimeout: 20000,
+    defaultCommandTimeout: 10000,
+    requestTimeout: 15000,
+    responseTimeout: 15000,
+    pageLoadTimeout: 60000,
     specPattern: "tests/e2e/cypress/integration/**/*.{js,jsx,ts,tsx}",
     supportFile: "tests/e2e/cypress/support/e2e.js",
     setupNodeEvents(on, config) {
