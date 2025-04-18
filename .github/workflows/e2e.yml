@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: ["7.4.30", "8.0", "8.1", "8.2"]
+        php: ["7.4", "8.0", "8.1", "8.2"]
         browser: ["chrome", "firefox", "edge", "webkit"]
 
     steps:
@@ -35,16 +35,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Update WordPress image in .wp-env.json
+      - name: Set PHP version for wp-env
         run: |
-          case "${{ matrix.php }}" in
-            "7.4.30") wp_image="wordpress:php7.4" ;;
-            "8.0") wp_image="wordpress:php8.0" ;;
-            "8.1") wp_image="wordpress:php8.1" ;;
-            "8.2") wp_image="wordpress:php8.2" ;;
-            *) echo "Unsupported PHP version"; exit 1 ;;
-          esac
-          jq --arg core "$wp_image" '.core = $core' .wp-env.json > tmp && mv tmp .wp-env.json
+          echo "{\"config\": {\"phpVersion\": \"${{ matrix.php }}\"}}" > .wp-env.override.json
 
       - name: Install Playwright WebKit dependencies
         if: matrix.browser == 'webkit'
@@ -60,7 +53,7 @@ jobs:
               echo "WordPress is ready";
               break;
             fi
-            echo "Waiting for WordPress...";
+            echo "Waiting for WordPress... ($i/30)";
             sleep 5;
           done
 
