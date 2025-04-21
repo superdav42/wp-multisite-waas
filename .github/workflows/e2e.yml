@@ -77,14 +77,14 @@ jobs:
         run: sudo chown -R $USER:$USER tests/e2e/cypress
 
       - name: Upload Cypress screenshots
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-screenshots-${{ matrix.php }}-${{ matrix.browser }}
           path: tests/e2e/cypress/screenshots
 
       - name: Upload Cypress videos
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-videos-${{ matrix.php }}-${{ matrix.browser }}
