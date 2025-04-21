@@ -224,7 +224,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 
 		echo '<div class="wu-p-6">';
 
-		echo $content;
+		echo wp_kses_post($content);
 
 		wp_print_footer_scripts();
 
@@ -1518,11 +1518,15 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function handle_save() {
 
-		if ( ! wu_request('restrict_by_country') || empty($_POST['allowed_countries'])) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification happens in parent::handle_save()
+		if ( ! wu_request('restrict_by_country') || (isset($_POST['allowed_countries']) && empty($_POST['allowed_countries']))) {
 			$_POST['allowed_countries'] = [];
 		}
 
-		$_POST['settings'] = json_decode(stripslashes((string) $_POST['_settings']), true);
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification happens in parent::handle_save()
+		if (isset($_POST['_settings'])) {
+			$_POST['settings'] = json_decode(stripslashes((string) $_POST['_settings']), true);
+		}
 
 		/**
 		 * Prevent parents redirect to perform additional checks to destroy session.
