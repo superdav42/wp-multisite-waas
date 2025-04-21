@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: ["7.4", "8.0", "8.1", "8.2"]
-        browser: ["chrome", "firefox"]
+        php: ["7.4", "8.0", "8.1", "8.2", "8.3", "8.4"]
+        browser: ["chrome", "firefox", "webkit"]
 
     steps:
       - name: Checkout code
@@ -46,6 +46,10 @@ jobs:
       - name: Set PHP version for wp-env
         run: |
           echo "{\"config\": {\"phpVersion\": \"${{ matrix.php }}\"}}" > .wp-env.override.json
+
+      - name: Install Playwright WebKit dependencies
+        if: matrix.browser == 'webkit'
+        run: npx playwright install-deps webkit
 
       - name: Start WordPress Environment
         run: npm run env:start
