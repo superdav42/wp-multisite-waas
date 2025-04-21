@@ -63,7 +63,6 @@ jobs:
 
       - name: Run Cypress Tests in ${{ matrix.browser }}
         id: tests
-        continue-on-error: true
         run: |
           docker run --network host \
             -e CYPRESS_BASE_URL=http://localhost:8888 \
