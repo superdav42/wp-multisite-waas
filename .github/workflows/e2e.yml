@@ -25,24 +25,24 @@ jobs:
         with:
           node-version: 18
 
-      # Caching npm dependencies
+      # Cache NPM dependencies
       - name: Cache NPM dependencies
         uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') || 'no-lockfile' }}
           restore-keys: |
             ${{ runner.os }}-npm-
 
       - name: Install NPM dependencies
         run: npm ci
 
-      # Caching Composer dependencies
+      # Cache Composer dependencies
       - name: Cache Composer dependencies
         uses: actions/cache@v3
         with:
           path: vendor
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') || 'no-lockfile' }}
           restore-keys: |
             ${{ runner.os }}-composer-
 
@@ -68,9 +68,11 @@ jobs:
           done
 
       - name: Run Cypress Tests in ${{ matrix.browser }}
+        id: tests
         continue-on-error: true
         run: |
           docker run --network host \
+            -u $(id -u):$(id -g) \
             -v ${{ github.workspace }}:/e2e \
             -w /e2e \
             cypress/included:latest \
@@ -78,19 +80,19 @@ jobs:
             --config baseUrl=http://localhost:8888
 
       - name: Upload Cypress screenshots
-        if: always() 
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-screenshots
+          name: cypress-screenshots-${{ matrix.php }}-${{ matrix.browser }}
           path: e2e/tests/e2e/cypress/screenshots
 
       - name: Upload Cypress videos
         if: always()
-        uses: actions/upload-artifact@v4        
+        uses: actions/upload-artifact@v4
         with:
-          name: cypress-videos
+          name: cypress-videos-${{ matrix.php }}-${{ matrix.browser }}
           path: e2e/tests/e2e/cypress/videos
-      
+
       - name: Stop WordPress Environment
         if: always()
         run: npm run env:stop
