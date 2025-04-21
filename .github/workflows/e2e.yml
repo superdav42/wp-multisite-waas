@@ -91,6 +91,12 @@ jobs:
           name: cypress-videos-${{ matrix.php }}-${{ matrix.browser }}
           path: tests/e2e/cypress/videos
 
+      - name: Fail job if tests failed
+        if: failure()
+        run: |
+          echo "❌ One or more e2e tests failed."
+          exit 1
+
       - name: Stop WordPress Environment
         if: always()
         run: npm run env:stop
