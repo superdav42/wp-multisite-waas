@@ -78,14 +78,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cypress-screenshots-${{ matrix.php }}-${{ matrix.browser }}
-          path: ${{ github.workspace }}/cypress/screenshots
+          path: cypress/screenshots
 
       - name: Upload Cypress videos
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-videos-${{ matrix.php }}-${{ matrix.browser }}
-          path: ${{ github.workspace }}/cypress/videos
+          path: cypress/videos
 
       - name: Stop WordPress Environment
         if: always()
