@@ -72,20 +72,20 @@ jobs:
             cypress/included:latest \
             --browser ${{ matrix.browser }} \
             --config baseUrl=http://localhost:8888
-            
+
       - name: Upload Cypress screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-screenshots-${{ matrix.php }}-${{ matrix.browser }}
-          path: e2e/tests/e2e/cypress/screenshots
+          path: ${{ github.workspace }}/cypress/screenshots
 
       - name: Upload Cypress videos
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-videos-${{ matrix.php }}-${{ matrix.browser }}
-          path: e2e/tests/e2e/cypress/videos
+          path: ${{ github.workspace }}/cypress/videos
 
       - name: Stop WordPress Environment
         if: always()
