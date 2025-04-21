@@ -5,6 +5,7 @@ module.exports = defineConfig({
   viewportHeight: 600,
   fileServerFolder: "tests/e2e/cypress",
   fixturesFolder: "tests/e2e/cypress/fixtures",
+  downloadsFolder: "tests/e2e/cypress/downloads",
   screenshotsFolder: "tests/e2e/cypress/screenshots",
   videosFolder: "tests/e2e/cypress/videos",
   retries: {

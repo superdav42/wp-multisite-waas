@@ -30,7 +30,7 @@
     "env:start": "wp-env start",
     "env:clean:tests": "wp-env clean tests",
     "env:stop": "wp-env stop",
-    "cy:open": "npm run env:start && npm run env:clean:tests && npx cypress open --config video=false",
-    "cy:run": "npm run env:start && npm run env:clean:tests && npx cypress run --config --headless video=false"
+    "cy:open": "npm run env:start && npm run env:clean:tests && npx cypress open",
+    "cy:run": "npm run env:start && npm run env:clean:tests && npx cypress run"
   }
 }
