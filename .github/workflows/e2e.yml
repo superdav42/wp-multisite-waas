@@ -72,13 +72,11 @@ jobs:
         continue-on-error: true
         run: |
           docker run --network host \
-            -u $(id -u):$(id -g) \
             -v ${{ github.workspace }}:/e2e \
             -w /e2e \
             cypress/included:latest \
             --browser ${{ matrix.browser }} \
             --config baseUrl=http://localhost:8888
-            --no-sandbox
 
       - name: Upload Cypress screenshots
         if: always()
