@@ -69,7 +69,7 @@ jobs:
             -e CYPRESS_BASE_URL=http://localhost:8888 \
             -v ${{ github.workspace }}:/e2e \
             -w /e2e \
-            cypress/included:14.3.1 \
+            cypress/included:latest \
             --browser ${{ matrix.browser }} \
             --config baseUrl=http://localhost:8888 \
             --no-sandbox
