@@ -78,6 +78,7 @@ jobs:
             cypress/included:latest \
             --browser ${{ matrix.browser }} \
             --config baseUrl=http://localhost:8888
+            --no-sandbox
 
       - name: Upload Cypress screenshots
         if: always()
