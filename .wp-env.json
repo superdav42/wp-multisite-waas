@@ -3,7 +3,8 @@
   "plugins": ["."],
   "env": {
     "development": {
-      "multisite": true
+      "multisite": true,
+      "plugins": ["."]
     },
     "tests": {
       "multisite": true,
