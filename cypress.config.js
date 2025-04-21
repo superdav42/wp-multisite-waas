@@ -21,7 +21,6 @@ module.exports = defineConfig({
     pageLoadTimeout: 60000,
     specPattern: "tests/e2e/cypress/integration/**/*.{js,jsx,ts,tsx}",
     supportFile: "tests/e2e/cypress/support/e2e.js",
-    experimentalWebKitSupport: true,
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
