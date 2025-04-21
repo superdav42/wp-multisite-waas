@@ -77,25 +77,19 @@ jobs:
         if: always()
         run: sudo chown -R $USER:$USER cypress
 
-      - name: Debug Cypress output
-        if: always()
-        run: |
-          echo "Workspace: ${{ github.workspace }}"
-          ls -R ${{ github.workspace }}/cypress
-
       - name: Upload Cypress screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-screenshots-${{ matrix.php }}-${{ matrix.browser }}
-          path: cypress/screenshots
+          path: tests/e2e/cypress/screenshots
 
       - name: Upload Cypress videos
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-videos-${{ matrix.php }}-${{ matrix.browser }}
-          path: cypress/videos
+          path: tests/e2e/cypress/videos
 
       - name: Stop WordPress Environment
         if: always()
