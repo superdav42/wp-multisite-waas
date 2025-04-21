@@ -76,7 +76,6 @@ jobs:
             cypress/included:latest \
             --browser ${{ matrix.browser }} \
             --config baseUrl=http://localhost:8888
-            echo "exit_code=$?" >> $GITHUB_OUTPUT
 
       - name: Upload Cypress screenshots
         if: always() 
@@ -92,10 +91,6 @@ jobs:
           name: cypress-videos
           path: e2e/tests/e2e/cypress/videos
       
-      - name: Fail if Cypress tests failed
-        if: steps.cypress.outputs.exit_code != '0'
-        run: exit 1
-
       - name: Stop WordPress Environment
         if: always()
         run: npm run env:stop
