@@ -13,15 +13,6 @@ describe("Plugin", () => {
     cy.get("#activate-wp-multisite-waas").scrollIntoView().should("be.visible");
   });
 
-  it("Should be able to activate the plugin", () => {
-    cy.visit("/wp-admin/network/plugins.php");
-    cy.location("pathname").should("equal", "/wp-admin/network/plugins.php");
-    cy.get("#activate-wp-multisite-waas").scrollIntoView().should("be.visible").click();
-    cy.get("#deactivate-wp-multisite-waas").scrollIntoView().should("be.visible");
-    cy.location("pathname").should("eq", "/wp-admin/network/admin.php");
-    cy.location("search").should("include", "page=wp-ultimo-setup");
-  });
-
   it("Should show an error message that the plugin needs to be network activated", () => {
     cy.visit("/wp-admin/");
     cy.get(".notice.notice-error")
@@ -29,5 +20,13 @@ describe("Plugin", () => {
         'WP Multisite WaaS needs to be network active to run properly. You can "Network Activate" it here'
       )
       .should("be.visible");
+  });
+
+  it("Should be able to activate the plugin", () => {
+    cy.visit("/wp-admin/network/plugins.php");
+    cy.location("pathname").should("equal", "/wp-admin/network/plugins.php");
+    cy.get("#activate-wp-multisite-waas").scrollIntoView().should("be.visible").click();
+    cy.location("pathname").should("eq", "/wp-admin/network/admin.php");
+    cy.location("search").should("include", "page=wp-ultimo-setup");
   });
 });
