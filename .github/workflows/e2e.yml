@@ -73,9 +73,9 @@ jobs:
             --browser ${{ matrix.browser }} \
             --config baseUrl=http://localhost:8888
 
-      - name: Fix permissions on Cypress artifacts
+      - name: Fix permissions for Cypress output
         if: always()
-        run: sudo chown -R $USER:$USER cypress
+        run: sudo chown -R $USER:$USER tests/e2e/cypress
 
       - name: Upload Cypress screenshots
         if: always()
