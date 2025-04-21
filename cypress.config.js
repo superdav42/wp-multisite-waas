@@ -8,10 +8,10 @@ module.exports = defineConfig({
   screenshotsFolder: "tests/e2e/cypress/screenshots",
   videosFolder: "tests/e2e/cypress/videos",
   retries: {
-    runMode: 2,
+    runMode: 1,
     openMode: 0
   },
-  video: false,
+  video: true,
   e2e: {
     baseUrl: "http://localhost:8889",
     defaultCommandTimeout: 10000,
