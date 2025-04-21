@@ -25,26 +25,20 @@ jobs:
         with:
           node-version: 18
 
-      # Cache NPM dependencies
       - name: Cache NPM dependencies
         uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') || 'no-lockfile' }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
+          key: ${{ runner.os }}-npm-cache
 
       - name: Install NPM dependencies
         run: npm ci
 
-      # Cache Composer dependencies
       - name: Cache Composer dependencies
         uses: actions/cache@v3
         with:
           path: vendor
-          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') || 'no-lockfile' }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
+          key: ${{ runner.os }}-composer-cache
 
       - name: Install Composer dependencies
         run: composer install
@@ -72,11 +66,13 @@ jobs:
         continue-on-error: true
         run: |
           docker run --network host \
+            -e CYPRESS_BASE_URL=http://localhost:8888 \
             -v ${{ github.workspace }}:/e2e \
             -w /e2e \
-            cypress/included:latest \
+            cypress/included:14.3.1 \
             --browser ${{ matrix.browser }} \
-            --config baseUrl=http://localhost:8888
+            --config baseUrl=http://localhost:8888 \
+            --no-sandbox
 
       - name: Upload Cypress screenshots
         if: always()
