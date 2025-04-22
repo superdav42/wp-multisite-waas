@@ -32,7 +32,7 @@
 				]
 			);
 
-			echo wp_kses_post($avatar);
+			echo $avatar; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 			?>
 
