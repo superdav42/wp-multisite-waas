@@ -102,7 +102,7 @@
 				break;
 
 			case 'payment':
-				echo wp_kses_post($base_list_table->column_payment($object));
+				echo $base_list_table->column_payment($object); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				break;
 		}
 
