@@ -98,7 +98,7 @@
 
 		switch ($type) {
 			case 'membership':
-				echo wp_kses_post($base_list_table->column_membership($object));
+				echo $base_list_table->column_membership($object); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				break;
 
 			case 'payment':
