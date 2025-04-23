@@ -64,14 +64,14 @@
 						v-if="field.logged && field.logged == 'guests_only'" 
 						class="wu-px-1 wu-ml-1 wu-text-xs wu-align-text-bottom wu-inline-block wu-rounded wu-bg-blue-100 wu-text-blue-600"
 					>
-			<?php echo wu_tooltip('Guests only', 'dashicons-wu-eye'); ?>
+			<?php echo wu_tooltip('Guests only', 'dashicons-wu-eye'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</span>
 
 			<span 
 						v-if="field.logged && field.logged == 'logged_only'" 
 						class="wu-px-1 wu-ml-1 wu-text-xs wu-align-text-bottom wu-inline-block wu-rounded wu-bg-blue-100 wu-text-blue-600"
 					>
-			<?php echo wu_tooltip('Logged-in users only', 'dashicons-wu-eye'); ?>
+			<?php echo wu_tooltip('Logged-in users only', 'dashicons-wu-eye'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</span>
 			<!-- Visibility - End -->
 
@@ -82,19 +82,19 @@
 						<a
 							title="Edit Field"
 							class="wubox"
-							:href="'
-							<?php
-							echo wu_get_form_url(
-								'add_new_form_field',
-								[
-									'checkout_form' => $checkout_form,
-									'step'          => '',
-								]
+							:href="'<?php // phpcs:ignore Squiz.PHP.EmbeddedPhp
+							echo esc_attr(
+								wu_get_form_url(
+									'add_new_form_field',
+									[
+										'checkout_form' => $checkout_form,
+										'step'          => '',
+									]
+								)
 							);
-							?>
-							=' + step_name + '&field=' + field.id"
+							?>=' + step_name + '&amp;field=' + field.id" <?php // phpcs:ignore Squiz.PHP.EmbeddedPhp ?>
 							>
-								<?php _e('Edit'); ?>
+								<?php esc_html_e('Edit'); ?>
 						</a>
 						|
 					</span>

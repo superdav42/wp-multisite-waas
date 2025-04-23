@@ -27,7 +27,7 @@
 			:class="index > 0 ? 'wu-border-solid wu-border-0 wu-border-t wu-border-gray-300' : ''" 
 			v-for="(event, index) in queried.events"
 		>
-			<a :href="'<?php echo wu_network_admin_url('wp-ultimo-view-event', ['id' => '']); ?>=' + event.id" class="wu-block hover:wu-bg-gray-50">
+			<a :href="'<?php echo esc_attr(wu_network_admin_url('wp-ultimo-view-event', ['id' => ''])); ?>=' + event.id" class="wu-block hover:wu-bg-gray-50">
 			<div class="wu-px-4 wu-py-4 wu-flex wu-items-center">
 				<div class="wu-min-w-0 wu-flex-1 sm:wu-flex sm:wu-items-center">
 				<div class="wu-mt-4 wu-flex-shrink-0 sm:wu-mt-0 sm:wu-mr-4">
@@ -58,7 +58,7 @@
 					<div class="wu-flex wu-font-medium wu-text-gray-700 wu-truncate">
 					<p class="wu-m-0 wu-p-0 wu-capitalize">{{ event.object_type }}</p>
 					<p class="wu-p-0 wu-m-0 wu-ml-1 wu-font-normal wu-text-gray-600">
-						<?php printf(__('with %s', 'wp-multisite-waas'), '{{ event.slug }}'); ?>
+						<?php printf(esc_html__('with %s', 'wp-multisite-waas'), '{{ event.slug }}'); ?>
 					</p>
 					</div>
 					<div class="wu-mt-1">
@@ -67,7 +67,7 @@
 						<p class="wu-p-0 wu-m-0">
 						<span v-html="event.message"></span>
 						<span class="wu-text-gray-700 wu-ml-2"><span class="dashicons-wu-clock wu-mr-1 wu-align-middle"></span>{{ $moment(event.date_created, "YYYYMMDD").fromNow() }}</span>
-						<span v-if="event.author.display_name" class="wu-text-gray-700"><?php printf(__('by %s', 'wp-multisite-waas'), '{{ event.author.display_name }}'); ?></span>
+						<span v-if="event.author.display_name" class="wu-text-gray-700"><?php printf(esc_html__('by %s', 'wp-multisite-waas'), '{{ event.author.display_name }}'); ?></span>
 						</p>
 					</div>
 					</div>

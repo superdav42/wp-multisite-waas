@@ -14,15 +14,15 @@
 
 			<?php foreach ($tax_breakthrough as $tax_rate => $tax_total) : ?>
 			<tr>
-			<td><?php echo $tax_rate; ?>%</td>
-			<td><?php echo wu_format_currency($tax_total); ?></td>
+			<td><?php echo esc_html($tax_rate); ?>%</td>
+			<td><?php echo esc_html(wu_format_currency($tax_total)); ?></td>
 			</tr>
 		<?php endforeach; ?>
 
 			<?php if ( ! empty($payment)) : ?>
 			<tr>
 			<td><span class="wu-font-bold wu-uppercase wu-text-xs wu-text-gray-700"><?php esc_html_e('Total', 'wp-multisite-waas'); ?></span></td>
-			<td><?php echo wu_format_currency($payment->get_tax_total()); ?></td>
+			<td><?php echo esc_html(wu_format_currency($payment->get_tax_total())); ?></td>
 			</tr>
 		<?php endif; ?>
 

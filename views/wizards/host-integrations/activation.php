@@ -6,7 +6,7 @@
  */
 ?>
 <h1>
-	<?php printf(__('Activate %s Integration', 'wp-multisite-waas'), $integration->get_title()); ?>
+	<?php printf(esc_html__('Activate %s Integration', 'wp-multisite-waas'), esc_html($integration->get_title())); ?>
 </h1>
 
 <p class="wu-text-lg wu-text-gray-600 wu-my-4">

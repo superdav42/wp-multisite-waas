@@ -160,17 +160,17 @@
 				<li class="wu-m-0 md:wu-ml-4 wu-text-center">
 
 				<a title="<?php esc_html_e('Edit Section', 'wp-multisite-waas'); ?>"
-					:href="'
-					<?php
-					echo wu_get_form_url(
-						'add_new_form_step',
-						[
-							'checkout_form' => $checkout_form,
-							'step'          => '',
-						]
+					:href="'<?php // phpcs:ignore Squiz.PHP.EmbeddedPhp
+					echo esc_attr(
+						wu_get_form_url(
+							'add_new_form_step',
+							[
+								'checkout_form' => $checkout_form,
+								'step'          => '',
+							]
+						)
 					);
-					?>
-					=' + step.id"
+					?>=' + step.id" <?php // phpcs:ignore Squiz.PHP.EmbeddedPhp ?>
 					type="button" 
 					class="wu-uppercase wu-text-2xs wu-font-semibold wu-no-underline wu-outline-none hover:wu-shadow-none focus:wu-shadow-none wu-text-gray-600 hover:wu-text-gray-800 wubox wu-p-4 md:wu-p-0 wu-inline-block"
 				>
@@ -182,18 +182,18 @@
 				<li class="wu-m-0 md:wu-ml-4 wu-text-center">
 
 				<a title="<?php esc_html_e('Add new Field', 'wp-multisite-waas'); ?>"
-					:href="'
-					<?php
-					echo wu_get_form_url(
-						'add_new_form_field',
-						[
-							'checkout_form' => $checkout_form,
-							'width'         => 600,
-							'step'          => '',
-						]
+					:href="'<?php // phpcs:ignore Squiz.PHP.EmbeddedPhp
+					echo esc_attr(
+						wu_get_form_url(
+							'add_new_form_field',
+							[
+								'checkout_form' => $checkout_form,
+								'width'         => 600,
+								'step'          => '',
+							]
+						)
 					);
-					?>
-					=' + step.id"
+					?>=' + step.id" <?php // phpcs:ignore Squiz.PHP.EmbeddedPhp ?>
 					type="button" class="wu-uppercase wu-text-2xs wu-font-semibold wu-no-underline wu-outline-none hover:wu-shadow-none focus:wu-shadow-none wu-text-gray-600 hover:wu-text-gray-800 wubox wu-p-4 md:wu-p-0 wu-inline-block">
 					<span class="dashicons-wu-circle-with-plus wu-align-text-bottom"></span>
 					<?php esc_html_e('Add new Field', 'wp-multisite-waas'); ?>

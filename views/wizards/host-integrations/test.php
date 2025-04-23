@@ -8,7 +8,7 @@
 <h1><?php esc_html_e('Testing the Integration', 'wp-multisite-waas'); ?></h1>
 
 <p class="wu-text-lg wu-text-gray-600 wu-my-4 wu-mb-6">
-	<?php printf(__('We will send a test API call to %s to make sure we are able to connect. This will confirm if everything we did so far have worked.', 'wp-multisite-waas'), $integration->get_title()); ?>
+	<?php printf(esc_html__('We will send a test API call to %s to make sure we are able to connect. This will confirm if everything we did so far have worked.', 'wp-multisite-waas'), esc_html($integration->get_title())); ?>
 </p>
 
 <div id="integration-test">
@@ -42,7 +42,8 @@
 
 	<ol>
 		<li>
-		<?php esc_html_e('Go back to the <strong>Configuration</strong> step - if available - and make sure you entered all the necessary information correctly;', 'wp-multisite-waas'); ?>
+		<?php // translators: %1$s and %2$s are <strong> and </strong> wrapping the word Configuration ?>
+		<?php printf(esc_html__('Go back to the %1$sConfiguration%2$s step - if available - and make sure you entered all the necessary information correctly;', 'wp-multisite-waas'), '<strong>', '</strong>'); ?>
 		</li>
 		<li>
 		<?php echo wp_kses_post(__('If you have added the constants to your wp-config.php file manually, double check to make sure you\'ve added them to the right wp-config.php file and in the right place (just above the <code>/* That\'s all, stop editing! Happy publishing. */</code>)', 'wp-multisite-waas')); ?>);

@@ -47,7 +47,7 @@
 
 		<span class="wu-ml-2 wu-text-gray-700">
 
-		<?php echo wu_format_currency($payment->get_refund_total(), $payment->get_currency()); ?>
+		<?php echo esc_html(wu_format_currency($payment->get_refund_total(), $payment->get_currency())); ?>
 
 		</span>
 
@@ -63,7 +63,7 @@
 
 		<span class="wu-ml-2">
 
-		<?php echo wu_format_currency($payment->get_total(), $payment->get_currency()); ?>
+		<?php echo esc_html(wu_format_currency($payment->get_total(), $payment->get_currency())); ?>
 
 		</span>
 

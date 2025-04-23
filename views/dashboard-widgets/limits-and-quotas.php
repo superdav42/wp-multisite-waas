@@ -7,14 +7,14 @@
 ?>
 <div class="wu-styling <?php echo esc_attr($className); ?>">
 
-	<div class="<?php echo wu_env_picker('', 'wu-widget-inset'); ?>">
+	<div class="<?php echo esc_attr(wu_env_picker('', 'wu-widget-inset')); ?>">
 
 	<!-- Title Element -->
-	<div class="wu-p-4 wu-flex wu-items-center <?php echo wu_env_picker('', 'wu-bg-gray-100 wu-border-solid wu-border-0 wu-border-b wu-border-gray-200'); ?>">
+	<div class="wu-p-4 wu-flex wu-items-center <?php echo esc_attr(wu_env_picker('', 'wu-bg-gray-100 wu-border-solid wu-border-0 wu-border-b wu-border-gray-200')); ?>">
 
 		<?php if ($title) : ?>
 
-		<h3 class="wu-m-0 <?php echo wu_env_picker('', 'wu-widget-title'); ?>">
+		<h3 class="wu-m-0 <?php echo esc_attr(wu_env_picker('', 'wu-widget-title')); ?>">
 
 			<?php echo esc_html($title); ?>
 
@@ -25,7 +25,7 @@
 	</div>
 	<!-- Title Element - End -->
 
-	<ul class="wu-list-none wu-m-0 wu-p-4 wu-grid wu-gap-2 wu-row-gap-0 lg:wu-grid-cols-<?php echo esc_attr((int) $columns); ?> <?php echo wu_env_picker('', 'wu-p-4'); ?>">
+	<ul class="wu-list-none wu-m-0 wu-p-4 wu-grid wu-gap-2 wu-row-gap-0 lg:wu-grid-cols-<?php echo esc_attr((int) $columns); ?> <?php echo esc_attr(wu_env_picker('', 'wu-p-4')); ?>">
 
 		<?php if ($post_type_limits->is_enabled()) : ?>
 
@@ -66,7 +66,7 @@
 
 				<span class="wu-w-full wu-bg-gray-200 wu-rounded-full wu-h-1 wu-block wu-my-2">
 
-					<span class="<?php echo esc_attr(wu_get_random_color($index)); ?> wu-rounded-full wu-h-1 wu-block wu-my-1" style="width: <?php echo $width; ?>%;"></span>
+					<span class="<?php echo esc_attr(wu_get_random_color($index)); ?> wu-rounded-full wu-h-1 wu-block wu-my-1" style="width: <?php echo esc_attr($width); ?>%;"></span>
 
 				</span>
 
@@ -115,13 +115,13 @@ endforeach;
 
 			<?php esc_html_e('Unique Visits', 'wp-multisite-waas'); ?>
 
-			<?php echo wu_tooltip(sprintf(__('Next Reset: %s', 'wp-multisite-waas'), date_i18n(get_option('date_format', 'd/m/Y'), strtotime('last day of this month')))); ?>
+			<?php echo wu_tooltip(sprintf(esc_html__('Next Reset: %s', 'wp-multisite-waas'), date_i18n(get_option('date_format', 'd/m/Y'), strtotime('last day of this month')))); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 			</div>
 
 			<span class="wu-w-full wu-bg-gray-200 wu-rounded-full wu-h-1 wu-block wu-my-3">
 
-			<span class="wu-bg-orange-500 wu-rounded-full wu-h-1 wu-block wu-my-1" style="width: <?php echo $visits_width; ?>%;"></span>
+			<span class="wu-bg-orange-500 wu-rounded-full wu-h-1 wu-block wu-my-1" style="width: <?php echo esc_attr($visits_width); ?>%;"></span>
 
 			</span>
 
@@ -129,7 +129,7 @@ endforeach;
 
 			<?php echo number_format($visits_count); ?>
 			/
-			<?php echo $visit_limitations->get_limit() == 0 ? __('Unlimited', 'wp-multisite-waas') : number_format((int) $visit_limitations->get_limit()); ?>
+			<?php echo $visit_limitations->get_limit() == 0 ? esc_html__('Unlimited', 'wp-multisite-waas') : esc_html(number_format((int) $visit_limitations->get_limit())); ?>
 
 			</div>
 

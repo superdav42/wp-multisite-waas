@@ -17,6 +17,7 @@ use WP_Ultimo\Database\Sites\Site_Type;
 use WP_Ultimo\Database\Payments\Payment_Status;
 use WP_Ultimo\Database\Memberships\Membership_Status;
 use WP_Ultimo\Checkout\Checkout_Pages;
+use WP_Ultimo\Managers\Payment_Manager;
 use WP_Ultimo\Objects\Billing_Address;
 use WP_Ultimo\Models\Site;
 
@@ -783,9 +784,16 @@ class Checkout {
 		if ( ! is_user_logged_in()) {
 			wp_clear_auth_cookie();
 
-			wp_set_current_user($this->customer->get_user_id());
+			$user_credentials = array(
+				'user_login'    => $this->customer->get_username(),
+				'user_password' => $this->request_or_session('password'),
+			);
 
-			wp_set_auth_cookie($this->customer->get_user_id());
+			// Remove the pending payment check action so the customer is not prompted to pay for the payment when they are already on the checkout page.
+			remove_action('wp_login', array(Payment_Manager::get_instance(), 'check_pending_payments'), 10);
+
+			// Sign in the user as if they used the login form.
+			wp_signon($user_credentials, is_ssl());
 		}
 
 		/*
