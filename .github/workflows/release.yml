@@ -1,0 +1,89 @@
+name: Release WordPress Plugin
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+    name: Build and Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          extensions: mbstring, intl, curl
+          tools: composer, wp-cli
+
+      - name: Get the version
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify version matches
+        run: |
+          WP_VERSION=$(grep -m 1 "Version: " wp-multisite-waas.php | awk -F' ' '{print $2}')
+          README_VERSION=$(grep -m 1 "Stable tag: " readme.txt | awk -F' ' '{print $3}')
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          
+          if [ "$WP_VERSION" != "${{ env.VERSION }}" ] || [ "$README_VERSION" != "${{ env.VERSION }}" ] || [ "$PKG_VERSION" != "${{ env.VERSION }}" ]; then
+            echo "Error: Version mismatch detected!"
+            echo "Tag version: ${{ env.VERSION }}"
+            echo "Plugin version: $WP_VERSION"
+            echo "readme.txt version: $README_VERSION"
+            echo "package.json version: $PKG_VERSION"
+            exit 1
+          fi
+          
+          echo "All version numbers match: ${{ env.VERSION }}"
+
+      - name: Run build process
+        run: npm run build
+
+      - name: Create ZIP file
+        run: |
+          mkdir -p build
+          zip -r build/wp-multisite-waas-${{ env.VERSION }}.zip . -x "*.git*" "node_modules/*" "tests/*" "build/*" "*.zip" "*.log"
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            build/wp-multisite-waas-${{ env.VERSION }}.zip
+          name: WP Multisite WaaS ${{ env.VERSION }}
+          draft: true
+          prerelease: true
+          body: |
+            # WP Multisite WaaS ${{ env.VERSION }}
+            
+            ## What's Changed
+            
+            For a complete list of changes, please refer to the [changelog](https://github.com/superdav42/wp-multisite-waas/blob/main/readme.txt).
+            
+            ## Installation
+            
+            1. Download the ZIP file from this release
+            2. Upload and activate the plugin in your WordPress Network installation
+            3. Follow the setup wizard to configure the plugin
+            
+            ## Notes
+            
+            - Compatible with WordPress 5.3+
+            - Requires PHP 7.4.30+
+            - Always backup your site before upgrading
