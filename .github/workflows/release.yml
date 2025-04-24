@@ -67,8 +67,8 @@ jobs:
           files: |
             build/wp-multisite-waas-${{ env.VERSION }}.zip
           name: WP Multisite WaaS ${{ env.VERSION }}
-          draft: false
-          prerelease: false
+          draft: true
+          prerelease: true
           body: |
             # WP Multisite WaaS ${{ env.VERSION }}
             
