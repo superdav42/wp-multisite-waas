@@ -43,7 +43,7 @@ class Runcloud_Host_Provider extends Base_Host_Provider {
 	 * @var string
 	 * @since 2.0.0
 	 */
-	protected $tutorial_link = 'https://help.wpultimo.com/en/articles/2636845-configuring-automatic-domain-syncing-with-runcloud-io';
+	protected $tutorial_link = 'https://github.com/superdav42/wp-multisite-waas/wiki/Runcloud-Integration';
 
 	/**
 	 * Array containing the features this integration supports.
