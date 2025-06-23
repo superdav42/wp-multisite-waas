@@ -67,8 +67,8 @@ class Documentation {
 		$links['wp-ultimo-edit-membership'] = 'https://github.com/superdav42/wp-multisite-waas/wiki/Managing-Memberships';
 
 		// Payments
-		$links['wp-ultimo-payments']     = 'https://github.com/superdav42/wp-multisite-waas/wiki/Managing-Payments';
-		$links['wp-ultimo-edit-payment'] = 'https://github.com/superdav42/wp-multisite-waas/wiki/Managing-Payments';
+		$links['wp-ultimo-payments']     = 'https://github.com/superdav42/wp-multisite-waas/wiki/managing-payments-and-invoices';
+		$links['wp-ultimo-edit-payment'] = 'https://github.com/superdav42/wp-multisite-waas/wiki/managing-payments-and-invoices';
 
 		// WP Config Closte Instructions
 		$links['wp-ultimo-closte-config'] = 'https://github.com/superdav42/wp-multisite-waas/wiki/Closte-Integration';
