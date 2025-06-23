@@ -74,7 +74,7 @@ class Documentation {
 		$links['wp-ultimo-closte-config'] = 'https://github.com/superdav42/wp-multisite-waas/wiki/Closte-Integration';
 
 		// Requirements
-		$links['wp-ultimo-requirements'] = 'https://github.com/superdav42/wp-multisite-waas/wiki/Requirements';
+		$links['wp-ultimo-requirements'] = 'https://github.com/superdav42/wp-multisite-waas/wiki/wp-ultimo-requirements';
 
 		// Installer - Migrator
 		$links['installation-errors'] = 'https://github.com/superdav42/wp-multisite-waas/wiki/Installation-Errors';
