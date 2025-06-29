@@ -244,7 +244,7 @@ function wu_get_days_in_cycle($duration_unit, $duration) {
  * Register a new field type.
  *
  * Field types are types of field (duh!) that can be
- * added to the checkout flow and other forms inside WP Multisite WaaS.
+ * added to the checkout flow and other forms inside Multisite Ultimate.
  *
  * @see https://github.com/superdav42/wp-multisite-waas/wiki/Add-Custom-Field-Types
  *
@@ -271,7 +271,7 @@ function wu_register_field_type($field_type_id, $field_type_class_name) {
  * Register a new field template for a field type.
  *
  * Field templates are different layouts that can be added to
- * WP Multisite WaaS to be used as the final representation of a given
+ * Multisite Ultimate to be used as the final representation of a given
  * checkout field.
  *
  * @see https://github.com/superdav42/wp-multisite-waas/wiki/Customize-Checkout-Flow

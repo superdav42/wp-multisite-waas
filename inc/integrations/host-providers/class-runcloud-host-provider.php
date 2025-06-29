@@ -90,24 +90,24 @@ class Runcloud_Host_Provider extends Base_Host_Provider {
 
 		return [
 			'WU_RUNCLOUD_API_KEY'    => [
-				'title'       => __('RunCloud API Key', 'wp-multisite-waas'),
-				'desc'        => __('The API Key retrieved in the previous step.', 'wp-multisite-waas'),
-				'placeholder' => __('e.g. Sx9tHAn5XMrkeyZKS1a7uj8dGTLgKnlEOaJEFRt1m95L', 'wp-multisite-waas'),
+				'title'       => __('RunCloud API Key', 'multisite-ultimate'),
+				'desc'        => __('The API Key retrieved in the previous step.', 'multisite-ultimate'),
+				'placeholder' => __('e.g. Sx9tHAn5XMrkeyZKS1a7uj8dGTLgKnlEOaJEFRt1m95L', 'multisite-ultimate'),
 			],
 			'WU_RUNCLOUD_API_SECRET' => [
-				'title'       => __('RunCloud API Secret', 'wp-multisite-waas'),
-				'desc'        => __('The API secret retrieved in the previous step.', 'wp-multisite-waas'),
-				'placeholder' => __('e.g. ZlAebXp2sa6J5xsrPoiPcMXZRIVsHJ2rEkNCNGknZnF0UK5cSNSePS8GBW9FXIQd', 'wp-multisite-waas'),
+				'title'       => __('RunCloud API Secret', 'multisite-ultimate'),
+				'desc'        => __('The API secret retrieved in the previous step.', 'multisite-ultimate'),
+				'placeholder' => __('e.g. ZlAebXp2sa6J5xsrPoiPcMXZRIVsHJ2rEkNCNGknZnF0UK5cSNSePS8GBW9FXIQd', 'multisite-ultimate'),
 			],
 			'WU_RUNCLOUD_SERVER_ID'  => [
-				'title'       => __('RunCloud Server ID', 'wp-multisite-waas'),
-				'desc'        => __('The Server ID retrieved in the previous step.', 'wp-multisite-waas'),
-				'placeholder' => __('e.g. 11667', 'wp-multisite-waas'),
+				'title'       => __('RunCloud Server ID', 'multisite-ultimate'),
+				'desc'        => __('The Server ID retrieved in the previous step.', 'multisite-ultimate'),
+				'placeholder' => __('e.g. 11667', 'multisite-ultimate'),
 			],
 			'WU_RUNCLOUD_APP_ID'     => [
-				'title'       => __('RunCloud App ID', 'wp-multisite-waas'),
-				'desc'        => __('The App ID retrieved in the previous step.', 'wp-multisite-waas'),
-				'placeholder' => __('e.g. 940288', 'wp-multisite-waas'),
+				'title'       => __('RunCloud App ID', 'multisite-ultimate'),
+				'desc'        => __('The App ID retrieved in the previous step.', 'multisite-ultimate'),
+				'placeholder' => __('e.g. 940288', 'multisite-ultimate'),
 			],
 		];
 	}
@@ -167,7 +167,7 @@ class Runcloud_Host_Provider extends Base_Host_Provider {
 		$domain_id = $this->get_runcloud_domain_id($domain);
 
 		if ( ! $domain_id) {
-			wu_log_add('integration-runcloud', __('Domain name not found on runcloud', 'wp-multisite-waas'));
+			wu_log_add('integration-runcloud', __('Domain name not found on runcloud', 'multisite-ultimate'));
 		}
 
 		$response = $this->send_runcloud_request($this->get_runcloud_base_url("domains/$domain_id"), [], 'DELETE');
@@ -371,7 +371,7 @@ class Runcloud_Host_Provider extends Base_Host_Provider {
 	 */
 	public function get_description() {
 
-		return __('With RunCloud, you don’t need to be a Linux expert to build a website powered by DigitalOcean, AWS, or Google Cloud. Use our graphical interface and build a business on the cloud affordably.', 'wp-multisite-waas');
+		return __('With RunCloud, you don’t need to be a Linux expert to build a website powered by DigitalOcean, AWS, or Google Cloud. Use our graphical interface and build a business on the cloud affordably.', 'multisite-ultimate');
 	}
 
 	/**

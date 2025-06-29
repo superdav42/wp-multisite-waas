@@ -27,12 +27,12 @@
 		<div class="wu-ml-auto">
 
 			<a 
-			title="<?php esc_attr_e('Update your membership', 'wp-multisite-waas'); ?>"
+			title="<?php esc_attr_e('Update your membership', 'multisite-ultimate'); ?>"
 			class="wu-text-sm wu-no-underline button" 
 			href="<?php echo esc_attr(wu_get_membership_update_url($membership)); ?>"
 			>
 
-			<?php esc_html_e('Change', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Change', 'multisite-ultimate'); ?>
 
 			</a>
 
@@ -93,7 +93,7 @@
 
 				<div class="wu-bg-yellow-200 wu-text-yellow-700 wu-rounded wu-p-2">
 				<?php // translators: %1$s: date, %2$s: amount. ?>
-				<?php printf(esc_html__('There\'s a pending change for this membership, scheduled to take place on %1$s. Changing to %2$s.', 'wp-multisite-waas'), '<strong>' . esc_html($pending_change_date) . '</strong>', '<strong>' . esc_html($pending_change) . '</strong>'); ?>
+				<?php printf(esc_html__('There\'s a pending change for this membership, scheduled to take place on %1$s. Changing to %2$s.', 'multisite-ultimate'), '<strong>' . esc_html($pending_change_date) . '</strong>', '<strong>' . esc_html($pending_change) . '</strong>'); ?>
 
 				</div>
 
@@ -116,7 +116,7 @@
 		<div class="sm:wu-col-span-1">
 
 			<div class="wu-text-sm wu-font-medium wu-text-gray-600">
-			<?php esc_html_e('Status', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Status', 'multisite-ultimate'); ?>
 			</div>
 
 			<div class="wu-mt-1 wu-text-sm wu-text-gray-900 wu-mb-4">
@@ -134,7 +134,7 @@
 		<div class="sm:wu-col-span-1">
 
 			<div class="wu-text-sm wu-font-medium wu-text-gray-600">
-			<?php esc_html_e('Initial Amount', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Initial Amount', 'multisite-ultimate'); ?>
 			</div>
 
 			<div class="wu-mt-1 wu-text-sm wu-text-gray-900 wu-mb-4">
@@ -148,7 +148,7 @@
 			<div class="sm:wu-col-span-1">
 
 			<div class="wu-text-sm wu-font-medium wu-text-gray-600">
-				<?php esc_html_e('Times Billed', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Times Billed', 'multisite-ultimate'); ?>
 			</div>
 
 			<div class="wu-mt-1 wu-text-sm wu-text-gray-900 wu-mb-4">
@@ -164,7 +164,7 @@
 			<div class="sm:wu-col-span-1">
 
 			<div class="wu-text-sm wu-font-medium wu-text-gray-600">
-				<?php esc_html_e('Expires', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Expires', 'multisite-ultimate'); ?>
 			</div>
 
 			<div class="wu-mt-1 wu-text-sm wu-text-gray-900 wu-mb-4">
@@ -226,7 +226,7 @@
 
 			<h3 class="wu-m-0 <?php echo esc_attr(wu_env_picker('', 'wu-widget-title')); ?>">
 
-			<?php esc_html_e('Additional Packages & Services', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Additional Packages & Services', 'multisite-ultimate'); ?>
 
 			</h3>
 
@@ -268,7 +268,7 @@
 				<div class="wu-ml-4 wu-flex-shrink-0 wu-flex">
 
 				<a 
-					title="<?php esc_attr_e('Product Details', 'wp-multisite-waas'); ?>"
+					title="<?php esc_attr_e('Product Details', 'multisite-ultimate'); ?>"
 					href="
 					<?php
 					echo esc_attr(
@@ -285,14 +285,14 @@
 					class="wubox wu-ml-4 wu-no-underline"
 				>
 
-					<?php esc_html_e('Details', 'wp-multisite-waas'); ?>
+					<?php esc_html_e('Details', 'multisite-ultimate'); ?>
 
 				</a>
 
 				<?php if ($addon['product']->is_recurring() && (! $pending_products || wu_get_isset($pending_products, $addon['product']->get_id()))) : ?>
 
 					<a     <?php // Translators: %s is the name of the product being canceled. ?>
-					title="<?php esc_attr(sprintf(__('Cancel %s', 'wp-multisite-waas'), $addon['product']->get_name())); ?>"
+					title="<?php esc_attr(sprintf(__('Cancel %s', 'multisite-ultimate'), $addon['product']->get_name())); ?>"
 					href="
 					<?php
 					echo esc_attr(
@@ -310,7 +310,7 @@
 					class="wubox wu-ml-4 wu-no-underline delete wu-text-red-500 hover:wu-text-red-600"
 					>
 
-					<?php esc_html_e('Cancel', 'wp-multisite-waas'); ?>
+					<?php esc_html_e('Cancel', 'multisite-ultimate'); ?>
 
 					</a>
 
@@ -329,7 +329,7 @@
 		<?php else : ?>      
 
 			<div class="wu-px-4 wu-py-6 wu-text-center wu-text-gray-600">
-			<?php esc_html_e('No packages or services found.', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('No packages or services found.', 'multisite-ultimate'); ?>
 			</div>
 
 		<?php endif; ?>  
@@ -344,7 +344,7 @@
 			<div class="wu-text-lg">
 
 			<small class="wu-block wu-text-xs wu-uppercase wu-font-bold wu-text-gray-600">
-				<?php esc_html_e('Total', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Total', 'multisite-ultimate'); ?>
 			</small>
 
 			<!-- <span class="wu-text-gray-500 wu-line-through">$29</span> -->

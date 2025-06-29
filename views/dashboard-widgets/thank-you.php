@@ -45,7 +45,7 @@
 
 			<span class="wu-uppercase wu-text-sm wu-block">
 
-				<?php esc_html_e('Order ID', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Order ID', 'multisite-ultimate'); ?>
 
 			</span>
 
@@ -69,7 +69,7 @@
 
 			<span class="wu-uppercase wu-text-sm wu-block">
 
-				<?php esc_html_e('Email', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Email', 'multisite-ultimate'); ?>
 
 			</span>
 
@@ -87,7 +87,7 @@
 
 			<span class="wu-uppercase wu-text-sm wu-block">
 
-				<?php esc_html_e('Total', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Total', 'multisite-ultimate'); ?>
 
 			</span>
 
@@ -141,7 +141,7 @@
 
 			<span class="wu-uppercase wu-text-sm wu-block">
 
-				<?php esc_html_e('Order ID', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Order ID', 'multisite-ultimate'); ?>
 
 			</span>
 
@@ -159,7 +159,7 @@
 
 			<span class="wu-uppercase wu-text-sm wu-block">
 
-				<?php esc_html_e('Date', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Date', 'multisite-ultimate'); ?>
 
 			</span>
 
@@ -177,7 +177,7 @@
 
 			<span class="wu-uppercase wu-text-sm wu-block">
 
-				<?php esc_html_e('Email', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Email', 'multisite-ultimate'); ?>
 
 			</span>
 
@@ -195,7 +195,7 @@
 
 			<span class="wu-uppercase wu-text-sm wu-block">
 
-				<?php esc_html_e('Total', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Total', 'multisite-ultimate'); ?>
 
 			</span>
 
@@ -227,7 +227,7 @@
 
 			<h4 class="wu-m-0 <?php echo esc_attr(wu_env_picker('', 'wu-widget-title')); ?>">
 
-			<?php esc_html_e('Site', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Site', 'multisite-ultimate'); ?>
 
 			</h4>
 
@@ -277,7 +277,7 @@
 					<?php else : ?>
 
 						<span class="wu-align-middle wu-inline-block wu-rounded wu-px-2 wu-py-1 wu-uppercase wu-text-xs wu-font-bold wu-bg-green-300 wu-text-green-700">
-						<?php esc_html_e('Ready!', 'wp-multisite-waas'); ?>
+						<?php esc_html_e('Ready!', 'multisite-ultimate'); ?>
 						</span>
 
 					<?php endif; ?>
@@ -302,23 +302,23 @@
 
 					<a v-if="!creating" href="<?php echo esc_attr(wu_get_current_url()); ?>" class="wu-block sm:wu-inline-block wu-no-underline">
 						<span class="dashicons-wu-cycle wu-align-middle wu-mr-1"></span>
-						<?php esc_html_e('Check Status', 'wp-multisite-waas'); ?>
+						<?php esc_html_e('Check Status', 'multisite-ultimate'); ?>
 					</a>
 					<div v-else class="wu-block sm:wu-inline-block wu-no-underline">
 						<span class="dashicons-wu-loader wu-align-middle wu-mr-1 wu-spin" style="display: inline-block;"></span>
-						<?php esc_html_e('Creating', 'wp-multisite-waas'); ?>
+						<?php esc_html_e('Creating', 'multisite-ultimate'); ?>
 					</div>
 
 					<?php else : ?>
 
 					<a href="<?php echo esc_attr(get_admin_url($site->get_id())); ?>" class="wu-block sm:wu-inline-block wu-no-underline sm:wu-mr-4">
 						<span class="dashicons-wu-gauge wu-align-middle wu-mr-1"></span>
-						<?php esc_html_e('Admin Panel', 'wp-multisite-waas'); ?>
+						<?php esc_html_e('Admin Panel', 'multisite-ultimate'); ?>
 					</a>
 
 					<a href="<?php echo esc_attr(wu_with_sso(get_site_url($site->get_id()))); ?>" class="wu-block sm:wu-inline-block wu-no-underline" target="_blank">
 						<span class="dashicons-wu-browser wu-align-middle wu-mr-1"></span>
-						<?php esc_html_e('Visit', 'wp-multisite-waas'); ?>
+						<?php esc_html_e('Visit', 'multisite-ultimate'); ?>
 					</a>
 
 					<?php endif; ?>
@@ -357,7 +357,7 @@
 
 			<h4 class="wu-m-0 <?php echo esc_attr(wu_env_picker('', 'wu-widget-title')); ?>">
 
-			<?php esc_html_e('Order Details', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Order Details', 'multisite-ultimate'); ?>
 
 			</h4>
 
@@ -374,8 +374,8 @@
 			<thead class="wu-bg-gray-100">
 
 			<tr>
-				<th class="wu-text-left wu-py-2 wu-px-4"><?php esc_html_e('Product', 'wp-multisite-waas'); ?></th>
-				<th class="wu-text-left wu-py-2 wu-px-4"><?php esc_html_e('Total', 'wp-multisite-waas'); ?></th>
+				<th class="wu-text-left wu-py-2 wu-px-4"><?php esc_html_e('Product', 'multisite-ultimate'); ?></th>
+				<th class="wu-text-left wu-py-2 wu-px-4"><?php esc_html_e('Total', 'multisite-ultimate'); ?></th>
 			</tr>
 
 			</thead>
@@ -404,7 +404,7 @@
 			<tfoot class="wu-bg-gray-100">
 
 			<tr>
-				<th class="wu-text-left wu-py-2 wu-px-4"><?php esc_html_e('Subtotal', 'wp-multisite-waas'); ?></th>
+				<th class="wu-text-left wu-py-2 wu-px-4"><?php esc_html_e('Subtotal', 'multisite-ultimate'); ?></th>
 				<th class="wu-text-left wu-py-2 wu-px-4"><?php echo wu_format_currency($payment->get_subtotal(), $payment->get_currency()); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></th>
 			</tr>
 
@@ -412,7 +412,7 @@
 
 				<tr>
 				<?php // translators: %s: Tax rate. ?>
-				<th class="wu-text-left wu-py-2 wu-px-4"><?php printf(esc_html__('Tax (%s%%)', 'wp-multisite-waas'), esc_html($rate)); ?></th>
+				<th class="wu-text-left wu-py-2 wu-px-4"><?php printf(esc_html__('Tax (%s%%)', 'multisite-ultimate'), esc_html($rate)); ?></th>
 				<th class="wu-text-left wu-py-2 wu-px-4"><?php echo wu_format_currency($total, $payment->get_currency()); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></th>
 				</tr>
 
@@ -421,13 +421,13 @@
 			<?php if ($payment->get_discount_total()) : ?>
 				<tr>
 					<?php // translators: %s: Discount code. ?>
-					<th class="wu-text-left wu-py-2 wu-px-4"><?php printf(esc_html__('Discount (%s)', 'wp-multisite-waas'), esc_html($payment->get_discount_code())); ?></th>
+					<th class="wu-text-left wu-py-2 wu-px-4"><?php printf(esc_html__('Discount (%s)', 'multisite-ultimate'), esc_html($payment->get_discount_code())); ?></th>
 					<th class="wu-text-left wu-py-2 wu-px-4"><?php echo wu_format_currency($payment->get_discount_total(), $payment->get_currency()); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></th>
 				</tr>
 			<?php endif; ?>
 
 			<tr>
-				<th class="wu-text-left wu-py-2 wu-px-4"><?php esc_html_e('Total', 'wp-multisite-waas'); ?></th>
+				<th class="wu-text-left wu-py-2 wu-px-4"><?php esc_html_e('Total', 'multisite-ultimate'); ?></th>
 				<th class="wu-text-left wu-py-2 wu-px-4"><?php echo wu_format_currency($payment->get_total(), $payment->get_currency()); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></th>
 			</tr>
 
@@ -451,7 +451,7 @@
 
 			<h4 class="wu-m-0 <?php echo esc_attr(wu_env_picker('', 'wu-widget-title')); ?>">
 
-			<?php esc_html_e('Billing Address', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Billing Address', 'multisite-ultimate'); ?>
 
 			</h4>
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * WP Multisite WaaS main class.
+ * Multisite Ultimate main class.
  *
  * @package WP_Ultimo
  * @since 2.0.0
@@ -10,7 +10,7 @@
 defined('ABSPATH') || exit;
 
 /**
- * WP Multisite WaaS main class
+ * Multisite Ultimate main class
  *
  * This class instantiates our dependencies and loads the things
  * our plugin needs to run.
@@ -40,16 +40,16 @@ final class WP_Ultimo {
 	public $version = self::VERSION;
 
 	/**
-	 * Tables registered by WP Multisite WaaS.
+	 * Tables registered by Multisite Ultimate.
 	 *
 	 * @var array
 	 */
 	public $tables = [];
 
 	/**
-	 * Checks if WP Multisite WaaS was loaded or not.
+	 * Checks if Multisite Ultimate was loaded or not.
 	 *
-	 * This is set to true when all the WP Multisite WaaS requirements are met.
+	 * This is set to true when all the Multisite Ultimate requirements are met.
 	 *
 	 * @since 2.0.0
 	 * @var boolean
@@ -142,14 +142,14 @@ final class WP_Ultimo {
 		new WP_Ultimo\Admin_Pages\Setup_Wizard_Admin_Page();
 
 		/*
-		 * Loads the WP Multisite WaaS settings helper class.
+		 * Loads the Multisite Ultimate settings helper class.
 		 */
 		$this->settings = WP_Ultimo\Settings::get_instance();
 
 		WP_Ultimo\Newsletter::get_instance();
 
 		/*
-		 * Check if the WP Multisite WaaS requirements are present.
+		 * Check if the Multisite Ultimate requirements are present.
 		 *
 		 * Everything we need to run our setup install needs top be loaded before this
 		 * and have no dependencies outside of the classes loaded so far.
@@ -166,12 +166,12 @@ final class WP_Ultimo {
 		$this->currents = WP_Ultimo\Current::get_instance();
 
 		/*
-		 * Loads the WP Multisite WaaS admin notices helper class.
+		 * Loads the Multisite Ultimate admin notices helper class.
 		 */
 		$this->notices = WP_Ultimo\Admin_Notices::get_instance();
 
 		/*
-		 * Loads the WP Multisite WaaS scripts handler
+		 * Loads the Multisite Ultimate scripts handler
 		 */
 		$this->scripts = WP_Ultimo\Scripts::get_instance();
 
@@ -260,7 +260,7 @@ final class WP_Ultimo {
 	 * Loads public apis that should be on the global scope
 	 *
 	 * This method is responsible for loading and exposing public apis that
-	 * plugin developers will use when creating extensions for WP Multisite WaaS.
+	 * plugin developers will use when creating extensions for Multisite Ultimate.
 	 * Things like render functions, helper methods, etc.
 	 *
 	 * @since 2.0.0
@@ -369,7 +369,7 @@ final class WP_Ultimo {
 		 * Checkout and Registration.
 		 *
 		 * Loads functions that interact with the checkout
-		 * and the registration elements of WP Multisite WaaS.
+		 * and the registration elements of Multisite Ultimate.
 		 *
 		 * @see wu_is_registration_page()
 		 */
@@ -427,7 +427,7 @@ final class WP_Ultimo {
 	}
 
 	/**
-	 * Load extra the WP Multisite WaaS elements
+	 * Load extra the Multisite Ultimate elements
 	 *
 	 * @since 2.0.0
 	 * @return void
@@ -616,8 +616,8 @@ final class WP_Ultimo {
 		/*
 		 * Adds support to multiple accounts.
 		 *
-		 * This used to be an add-on on WP Multisite WaaS 1.X
-		 * Now it is native, but needs to be activated on WP Multisite WaaS settings.
+		 * This used to be an add-on on Multisite Ultimate 1.X
+		 * Now it is native, but needs to be activated on Multisite Ultimate settings.
 		 */
 		\WP_Ultimo\Compat\Multiple_Accounts_Compat::get_instance();
 
@@ -627,7 +627,7 @@ final class WP_Ultimo {
 		\WP_Ultimo\Dashboard_Widgets::get_instance();
 
 		/*
-		 *  Admin Themes Compatibility for WP Multisite WaaS
+		 *  Admin Themes Compatibility for Multisite Ultimate
 		 */
 		\WP_Ultimo\Admin_Themes_Compatibility::get_instance();
 
@@ -638,7 +638,7 @@ final class WP_Ultimo {
 	}
 
 	/**
-	 * Load the WP Multisite WaaS Admin Pages.
+	 * Load the Multisite Ultimate Admin Pages.
 	 *
 	 * @since 2.0.0
 	 * @return void
@@ -802,7 +802,7 @@ final class WP_Ultimo {
 	}
 
 	/**
-	 * Load extra the WP Multisite WaaS managers.
+	 * Load extra the Multisite Ultimate managers.
 	 *
 	 * @since 2.0.0
 	 * @return void

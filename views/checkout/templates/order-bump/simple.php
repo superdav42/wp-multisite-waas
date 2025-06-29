@@ -40,11 +40,11 @@ if (false !== $product_variation) {
 	</div>
 	<?php if (! $parent || ! method_exists($parent, 'has_product')) : ?>
 		<div v-if="!($parent.has_product('<?php echo esc_js($product->get_id()); ?>') || $parent.has_product('<?php echo esc_js($product->get_slug()); ?>'))" class="wu-ml-2">
-			<a href="#" @click.prevent="$parent.add_product('<?php echo esc_js($product->get_id()); ?>')" class="button btn"><?php esc_html_e('Add to Cart', 'wp-multisite-waas'); ?></a>
+			<a href="#" @click.prevent="$parent.add_product('<?php echo esc_js($product->get_id()); ?>')" class="button btn"><?php esc_html_e('Add to Cart', 'multisite-ultimate'); ?></a>
 		</div>
 	<?php else : ?>
 		<div v-else class="wu-ml-2">
-			<a href="#" @click.prevent="$parent.remove_product('<?php echo esc_js($product->get_id()); ?>', '<?php echo esc_js($product->get_slug()); ?>')" class="button btn"><?php esc_html_e('Remove', 'wp-multisite-waas'); ?></a>
+			<a href="#" @click.prevent="$parent.remove_product('<?php echo esc_js($product->get_id()); ?>', '<?php echo esc_js($product->get_slug()); ?>')" class="button btn"><?php esc_html_e('Remove', 'multisite-ultimate'); ?></a>
 			<input type="hidden" name="products[]" value="<?php echo esc_attr($product->get_id()); ?>">
 		</div>
 	<?php endif; ?>

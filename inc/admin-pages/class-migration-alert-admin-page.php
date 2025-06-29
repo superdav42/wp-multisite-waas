@@ -1,6 +1,6 @@
 <?php
 /**
- * WP Multisite WaaS Dashboard Admin Page.
+ * Multisite Ultimate Dashboard Admin Page.
  *
  * @package WP_Ultimo
  * @subpackage Admin_Pages
@@ -13,7 +13,7 @@ namespace WP_Ultimo\Admin_Pages;
 defined('ABSPATH') || exit;
 
 /**
- * WP Multisite WaaS Dashboard Admin Page.
+ * Multisite Ultimate Dashboard Admin Page.
  */
 class Migration_Alert_Admin_Page extends Wizard_Admin_Page {
 
@@ -89,7 +89,7 @@ class Migration_Alert_Admin_Page extends Wizard_Admin_Page {
 	 */
 	public function get_title(): string {
 
-		return sprintf(__('Migration', 'wp-multisite-waas'));
+		return sprintf(__('Migration', 'multisite-ultimate'));
 	}
 
 	/**
@@ -100,7 +100,7 @@ class Migration_Alert_Admin_Page extends Wizard_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return WP_Ultimo()->is_loaded() ? __('WP Multisite WaaS Migration Alert', 'wp-multisite-waas') : __('WP Multisite WaaS', 'wp-multisite-waas');
+		return WP_Ultimo()->is_loaded() ? __('Multisite Ultimate Migration Alert', 'multisite-ultimate') : __('Multisite Ultimate', 'multisite-ultimate');
 	}
 
 	/**
@@ -113,7 +113,7 @@ class Migration_Alert_Admin_Page extends Wizard_Admin_Page {
 
 		return [
 			'alert' => [
-				'title'   => __('Alert!', 'wp-multisite-waas'),
+				'title'   => __('Alert!', 'multisite-ultimate'),
 				'view'    => [$this, 'section_alert'],
 				'handler' => [$this, 'handle_proceed'],
 			],

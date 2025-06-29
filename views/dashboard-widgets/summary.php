@@ -20,12 +20,12 @@
 		</div>
 
 		<div class="wu-text-md wu-text-gray-600">
-		<span class="wu-block"><?php esc_html_e('Signups today', 'wp-multisite-waas'); ?></span>
+		<span class="wu-block"><?php esc_html_e('Signups today', 'multisite-ultimate'); ?></span>
 		</div>
 
 	</li>
 
-	<li class="wu-p-2 wu-w-full md:wu-w-4/12 wu-relative" <?php echo wu_tooltip_text(__('MRR stands for Monthly Recurring Revenue', 'wp-multisite-waas')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+	<li class="wu-p-2 wu-w-full md:wu-w-4/12 wu-relative" <?php echo wu_tooltip_text(__('MRR stands for Monthly Recurring Revenue', 'multisite-ultimate')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 
 		<div>
 
@@ -36,7 +36,7 @@
 		</div>
 
 		<div class="wu-text-md wu-text-gray-600">
-		<span class="wu-block"><?php esc_html_e('MRR', 'wp-multisite-waas'); ?></span>
+		<span class="wu-block"><?php esc_html_e('MRR', 'multisite-ultimate'); ?></span>
 		</div>
 
 	</li>
@@ -52,7 +52,7 @@
 		</div>
 
 		<div class="wu-text-md wu-text-gray-600">
-		<span class="wu-block"><?php esc_html_e('Today\'s gross revenue', 'wp-multisite-waas'); ?></span>
+		<span class="wu-block"><?php esc_html_e('Today\'s gross revenue', 'multisite-ultimate'); ?></span>
 		</div>
 
 	</li>

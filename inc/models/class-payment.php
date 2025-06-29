@@ -548,13 +548,13 @@ class Payment extends Base_Model {
 		$gateway = $this->get_gateway();
 
 		if ( ! $gateway) {
-			return __('None', 'wp-multisite-waas');
+			return __('None', 'multisite-ultimate');
 		}
 
 		$gateway_class = wu_get_gateway($gateway);
 
 		if ( ! $gateway_class) {
-			return __('None', 'wp-multisite-waas');
+			return __('None', 'multisite-ultimate');
 		}
 
 		$title = $gateway_class->get_public_title();
@@ -935,7 +935,7 @@ class Payment extends Base_Model {
 
 		$prefix = str_replace($search, $replace, (string) $prefix);
 
-		return sprintf('%s%s %s', $prefix, $this->invoice_number, $provisional ? __('(provisional)', 'wp-multisite-waas') : '');
+		return sprintf('%s%s %s', $prefix, $this->invoice_number, $provisional ? __('(provisional)', 'multisite-ultimate') : '');
 	}
 
 	/**
@@ -1017,7 +1017,7 @@ class Payment extends Base_Model {
 	 * An example of how that would work:
 	 * 1. Admin issues a refund on the admin panel;
 	 * 2. PayPal (for example), process the refund request
-	 *    and sends back a IPN (webhook call) telling WP Multisite WaaS
+	 *    and sends back a IPN (webhook call) telling Multisite Ultimate
 	 *    that the refund was issued successfully;
 	 * 3. The IPN handler listens for that event and calls this
 	 *    to reflect the refund in the original WU payment.
@@ -1055,11 +1055,11 @@ class Payment extends Base_Model {
 		 * it is a partial refund.
 		 */
 		if ($amount >= $this->get_total()) {
-			$title = __('Full Refund', 'wp-multisite-waas');
+			$title = __('Full Refund', 'multisite-ultimate');
 
 			$new_status = Payment_Status::REFUND;
 		} else {
-			$title = __('Partial Refund', 'wp-multisite-waas');
+			$title = __('Partial Refund', 'multisite-ultimate');
 
 			$new_status = Payment_Status::PARTIAL_REFUND;
 		}
@@ -1069,7 +1069,7 @@ class Payment extends Base_Model {
 		$formatted_value = date_i18n(get_option('date_format'), $time);
 
 		// translators: %s is the date of processing.
-		$description = sprintf(__('Processed on %s', 'wp-multisite-waas'), $formatted_value);
+		$description = sprintf(__('Processed on %s', 'multisite-ultimate'), $formatted_value);
 
 		$line_item_data = [
 			'type'         => 'refund',

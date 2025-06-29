@@ -60,13 +60,13 @@ class Sites_Domain_List_Table extends Domain_List_Table {
 				'primary' => [
 					'icon'  => $item->is_primary_domain() ? 'dashicons-wu-filter_1 wu-align-text-bottom wu-mr-1' : 'dashicons-wu-plus-square wu-align-text-bottom wu-mr-1',
 					'label' => '',
-					'value' => $item->is_primary_domain() ? __('Primary', 'wp-multisite-waas') : __('Alias', 'wp-multisite-waas'),
+					'value' => $item->is_primary_domain() ? __('Primary', 'multisite-ultimate') : __('Alias', 'multisite-ultimate'),
 				],
 				'secure'  => [
 					'wrapper_classes' => $item->is_secure() ? 'wu-text-green-500' : '',
 					'icon'            => $item->is_secure() ? 'dashicons-wu-lock1 wu-align-text-bottom wu-mr-1' : 'dashicons-wu-lock1 wu-align-text-bottom wu-mr-1',
 					'label'           => '',
-					'value'           => $item->is_secure() ? __('Secure (HTTPS)', 'wp-multisite-waas') : __('Not Secure (HTTP)', 'wp-multisite-waas'),
+					'value'           => $item->is_secure() ? __('Secure (HTTPS)', 'multisite-ultimate') : __('Not Secure (HTTP)', 'multisite-ultimate'),
 				],
 			],
 			[
@@ -74,7 +74,7 @@ class Sites_Domain_List_Table extends Domain_List_Table {
 					'icon'  => 'dashicons-wu-calendar1 wu-align-middle wu-mr-1',
 					'label' => '',
 					// translators: %s is a placeholder for the human-readable time difference, e.g., "2 hours ago"
-					'value' => sprintf(__('Created %s', 'wp-multisite-waas'), wu_human_time_diff(strtotime((string) $item->get_date_created()))),
+					'value' => sprintf(__('Created %s', 'multisite-ultimate'), wu_human_time_diff(strtotime((string) $item->get_date_created()))),
 				],
 			]
 		);

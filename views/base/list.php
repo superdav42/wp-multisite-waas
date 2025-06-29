@@ -43,7 +43,7 @@
 	 * Allow plugin developers to add additional buttons to list pages
 	 *
 	 * @since 1.8.2
-	 * @param WU_Page WP Multisite WaaS Page instance
+	 * @param WU_Page Multisite Ultimate Page instance
 	 */
 	do_action('wu_page_list_after_title', $page);
 	?>
@@ -108,7 +108,7 @@
 	 * Allow plugin developers to add scripts to the bottom of the page
 	 *
 	 * @since 1.8.2
-	 * @param WU_Page WP Multisite WaaS Page instance
+	 * @param WU_Page Multisite Ultimate Page instance
 	 */
 	do_action('wu_page_list_footer', $page);
 	?>

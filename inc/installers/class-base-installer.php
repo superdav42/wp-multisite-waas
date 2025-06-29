@@ -1,6 +1,6 @@
 <?php
 /**
- * WP Multisite WaaS base Installer Class.
+ * Multisite Ultimate base Installer Class.
  *
  * @package WP_Ultimo
  * @subpackage Installers
@@ -13,7 +13,7 @@ namespace WP_Ultimo\Installers;
 defined('ABSPATH') || exit;
 
 /**
- * WP Multisite WaaS base Installer Class.
+ * Multisite Ultimate base Installer Class.
  *
  * @since 2.0.0
  */

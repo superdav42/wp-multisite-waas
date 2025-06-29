@@ -29,12 +29,12 @@
 		<div class="wu-ml-auto">
 
 			<a 
-			title="<?php esc_attr_e('Update Billing Address', 'wp-multisite-waas'); ?>"
+			title="<?php esc_attr_e('Update Billing Address', 'multisite-ultimate'); ?>"
 			class="wu-text-sm wu-no-underline wubox button" 
 			href="<?php echo esc_attr($update_billing_address_link); ?>"
 			>
 
-			<?php esc_html_e('Update', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Update', 'multisite-ultimate'); ?>
 
 			</a>
 
@@ -50,7 +50,7 @@
 			<div class="wu-p-4 wu-bg-gray-100 wu-rounded">
 
 			<?php // translators: %s: Billing address link. ?>
-			<?php printf(wp_kses_post(__('No billing address found. Click <a title="%1$s" href="%2$s" class="wubox wu-no-underline">here</a> to add one.', 'wp-multisite-waas')), esc_html__('Update Billing Address', 'wp-multisite-waas'), esc_url($update_billing_address_link)); ?>
+			<?php printf(wp_kses_post(__('No billing address found. Click <a title="%1$s" href="%2$s" class="wubox wu-no-underline">here</a> to add one.', 'multisite-ultimate')), esc_html__('Update Billing Address', 'multisite-ultimate'), esc_url($update_billing_address_link)); ?>
 
 			</div>
 
@@ -100,7 +100,7 @@
 
 			<h3 class="wu-m-0 <?php echo esc_attr(wu_env_picker('', 'wu-widget-title')); ?>">
 
-				<?php esc_html_e('Payment Method', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Payment Method', 'multisite-ultimate'); ?>
 
 			</h3>
 
@@ -109,12 +109,12 @@
 			<div class="wu-ml-auto">
 
 			<a 
-				title="<?php esc_attr_e('Update Billing Address', 'wp-multisite-waas'); ?>"
+				title="<?php esc_attr_e('Update Billing Address', 'multisite-ultimate'); ?>"
 				class="wu-text-sm wu-no-underline wubox button" 
 				href="<?php echo esc_attr($update_billing_address_link); ?>"
 			>
 
-				<?php esc_html_e('Update', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Update', 'multisite-ultimate'); ?>
 
 			</a>
 

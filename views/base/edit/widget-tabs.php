@@ -33,7 +33,7 @@
 
 							<span class="wu-text-base wu-w-4 wu-h-4 wu-pt-2px wu-mr-1 dashicons dashicons-wu-chevron-with-circle-down">&nbsp;</span>
 
-							<?php esc_html_e('All Options', 'wp-multisite-waas'); ?>
+							<?php esc_html_e('All Options', 'multisite-ultimate'); ?>
 
 						</a>
 						<!-- End Menu Link -->
@@ -79,13 +79,13 @@
 
 					<span v-show="!display_all">
 
-						<?php esc_html_e('Display all fields', 'wp-multisite-waas'); ?>
+						<?php esc_html_e('Display all fields', 'multisite-ultimate'); ?>
 
 					</span>
 
 					<span v-cloak v-show="display_all">
 
-						<?php esc_html_e('Hide other fields', 'wp-multisite-waas'); ?>
+						<?php esc_html_e('Hide other fields', 'multisite-ultimate'); ?>
 
 					</span>
 
@@ -101,7 +101,7 @@
 
 				<span class="wu-blinking-animation">
 
-					<?php esc_html_e('Loading...', 'wp-multisite-waas'); ?>
+					<?php esc_html_e('Loading...', 'multisite-ultimate'); ?>
 
 				</span>
 

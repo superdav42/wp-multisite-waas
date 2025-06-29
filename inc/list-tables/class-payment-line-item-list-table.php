@@ -49,13 +49,13 @@ class Payment_Line_Item_List_Table extends Line_Item_List_Table {
 		$first_row = [
 			'quantity'   => [
 				'icon'  => 'dashicons-wu-package wu-align-middle wu-mr-1',
-				'label' => __('Quantity', 'wp-multisite-waas'),
+				'label' => __('Quantity', 'multisite-ultimate'),
 				// translators: %d is a quantity number
-				'value' => sprintf(__('x%d', 'wp-multisite-waas'), $item->get_quantity()),
+				'value' => sprintf(__('x%d', 'multisite-ultimate'), $item->get_quantity()),
 			],
 			'unit_price' => [
 				'icon'  => 'dashicons-wu-info1 wu-align-middle wu-mr-1',
-				'label' => __('Unit Price', 'wp-multisite-waas'),
+				'label' => __('Unit Price', 'multisite-ultimate'),
 				'value' => wu_format_currency($item->get_unit_price()),
 			],
 		];
@@ -71,7 +71,7 @@ class Payment_Line_Item_List_Table extends Line_Item_List_Table {
 			'wrapper_classes' => 'wubox',
 			'icon'            => 'dashicons-wu-edit1 wu-align-middle wu-mr-1',
 			'label'           => '',
-			'value'           => __('Edit', 'wp-multisite-waas'),
+			'value'           => __('Edit', 'multisite-ultimate'),
 			'url'             => wu_get_form_url('edit_line_item', $url_atts),
 		];
 
@@ -79,7 +79,7 @@ class Payment_Line_Item_List_Table extends Line_Item_List_Table {
 			'wrapper_classes' => 'wu-text-red-500 wubox',
 			'icon'            => 'dashicons-wu-trash-2 wu-align-middle wu-mr-1',
 			'label'           => '',
-			'value'           => __('Remove', 'wp-multisite-waas'),
+			'value'           => __('Remove', 'multisite-ultimate'),
 			'url'             => wu_get_form_url('delete_line_item', $url_atts),
 		];
 
@@ -91,7 +91,7 @@ class Payment_Line_Item_List_Table extends Line_Item_List_Table {
 				$tax_rate = $item->get_discount_rate() . '%';
 			}
 
-			$tax_label = $item->get_discount_rate() ? ($item->get_discount_label() ?: __('Discount', 'wp-multisite-waas')) : __('No discount', 'wp-multisite-waas');
+			$tax_label = $item->get_discount_rate() ? ($item->get_discount_label() ?: __('Discount', 'multisite-ultimate')) : __('No discount', 'multisite-ultimate');
 
 			$tooltip = sprintf('%s (%s)', $tax_rate, $tax_label);
 
@@ -99,7 +99,7 @@ class Payment_Line_Item_List_Table extends Line_Item_List_Table {
 				'icon'  => 'dashicons-wu-percent wu-align-middle wu-mr-1',
 				'label' => $tooltip,
 				// translators: %s is a currency amount
-				'value' => sprintf(__('Discounts: %s', 'wp-multisite-waas'), wu_format_currency($item->get_discount_total())),
+				'value' => sprintf(__('Discounts: %s', 'multisite-ultimate'), wu_format_currency($item->get_discount_total())),
 			];
 		}
 
@@ -107,7 +107,7 @@ class Payment_Line_Item_List_Table extends Line_Item_List_Table {
 			'icon'  => 'dashicons-wu-info1 wu-align-middle wu-mr-1',
 			'label' => '',
 			/* translators: %s is a currency amount */
-			'value' => sprintf(__('Subtotal: %s', 'wp-multisite-waas'), wu_format_currency($item->get_subtotal())),
+			'value' => sprintf(__('Subtotal: %s', 'multisite-ultimate'), wu_format_currency($item->get_subtotal())),
 		];
 
 		/*
@@ -118,7 +118,7 @@ class Payment_Line_Item_List_Table extends Line_Item_List_Table {
 				$tax_rate = $item->get_tax_rate() . '%';
 			}
 
-			$tax_label = $item->get_tax_rate() ? ($item->get_tax_label() ?: __('Tax Applied', 'wp-multisite-waas')) : __('No Taxes Applied', 'wp-multisite-waas');
+			$tax_label = $item->get_tax_rate() ? ($item->get_tax_label() ?: __('Tax Applied', 'multisite-ultimate')) : __('No Taxes Applied', 'multisite-ultimate');
 
 			$tooltip = sprintf('%s (%s)', $tax_rate, $tax_label);
 
@@ -126,13 +126,13 @@ class Payment_Line_Item_List_Table extends Line_Item_List_Table {
 				'icon'  => 'dashicons-wu-percent wu-align-middle wu-mr-1',
 				'label' => $tooltip,
 				// translators: %s is a currency amount
-				'value' => sprintf(__('Taxes: %s', 'wp-multisite-waas'), wu_format_currency($item->get_tax_total())),
+				'value' => sprintf(__('Taxes: %s', 'multisite-ultimate'), wu_format_currency($item->get_tax_total())),
 			];
 		}
 
 		$first_row['description'] = [
 			'icon'  => 'dashicons-wu-file-text wu-align-middle wu-mr-1',
-			'label' => __('Item Description', 'wp-multisite-waas'),
+			'label' => __('Item Description', 'multisite-ultimate'),
 			'value' => $item->get_description(),
 		];
 

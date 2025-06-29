@@ -1,6 +1,6 @@
 <?php
 /**
- * WP Multisite WaaS Dashboard Admin Page.
+ * Multisite Ultimate Dashboard Admin Page.
  *
  * @package WP_Ultimo
  * @subpackage Admin_Pages
@@ -13,7 +13,7 @@ namespace WP_Ultimo\Admin_Pages;
 defined('ABSPATH') || exit;
 
 /**
- * WP Multisite WaaS Dashboard Admin Page.
+ * Multisite Ultimate Dashboard Admin Page.
  */
 class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 
@@ -109,7 +109,7 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 	 */
 	public function get_title(): string {
 
-		return sprintf(__('Integration Setup', 'wp-multisite-waas'));
+		return sprintf(__('Integration Setup', 'multisite-ultimate'));
 	}
 
 	/**
@@ -120,7 +120,7 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Host Provider Integration', 'wp-multisite-waas');
+		return __('Host Provider Integration', 'multisite-ultimate');
 	}
 
 	/**
@@ -133,25 +133,25 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 		$sections = [
 			'activation'   => [
-				'title'   => __('Activation', 'wp-multisite-waas'),
+				'title'   => __('Activation', 'multisite-ultimate'),
 				'view'    => [$this, 'section_activation'],
 				'handler' => [$this, 'handle_activation'],
 			],
 			'instructions' => [
-				'title' => __('Instructions', 'wp-multisite-waas'),
+				'title' => __('Instructions', 'multisite-ultimate'),
 				'view'  => [$this, 'section_instructions'],
 			],
 			'config'       => [
-				'title'   => __('Configuration', 'wp-multisite-waas'),
+				'title'   => __('Configuration', 'multisite-ultimate'),
 				'view'    => [$this, 'section_configuration'],
 				'handler' => [$this, 'handle_configuration'],
 			],
 			'testing'      => [
-				'title' => __('Testing Integration', 'wp-multisite-waas'),
+				'title' => __('Testing Integration', 'multisite-ultimate'),
 				'view'  => [$this, 'section_test'],
 			],
 			'done'         => [
-				'title' => __('Ready!', 'wp-multisite-waas'),
+				'title' => __('Ready!', 'multisite-ultimate'),
 				'view'  => [$this, 'section_ready'],
 			],
 		];

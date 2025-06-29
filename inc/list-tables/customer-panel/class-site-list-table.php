@@ -73,7 +73,7 @@ class Site_List_Table extends Parent_Site_List_Table {
 			'all' => [
 				'field' => 'type',
 				'url'   => add_query_arg('type', 'all'),
-				'label' => __('Your Sites', 'wp-multisite-waas'),
+				'label' => __('Your Sites', 'multisite-ultimate'),
 				'count' => 0,
 			],
 		];

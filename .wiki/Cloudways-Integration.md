@@ -1,7 +1,7 @@
 # Cloudways Integration
 
 ## Overview
-Cloudways is a managed cloud hosting platform that allows you to deploy WordPress sites on various cloud providers like DigitalOcean, AWS, Google Cloud, and more. This integration enables automatic domain syncing and SSL certificate management between WP Multisite WaaS and Cloudways.
+Cloudways is a managed cloud hosting platform that allows you to deploy WordPress sites on various cloud providers like DigitalOcean, AWS, Google Cloud, and more. This integration enables automatic domain syncing and SSL certificate management between Multisite Ultimate and Cloudways.
 
 ## Features
 - Automatic domain syncing
@@ -61,7 +61,7 @@ define('WU_CLOUDWAYS_EXTRA_DOMAINS', 'domain1.com,domain2.com,*.wildcard.com');
 
 ### 4. Enable the Integration
 
-1. In your WordPress admin, go to WP Multisite WaaS > Settings
+1. In your WordPress admin, go to Multisite Ultimate > Settings
 2. Navigate to the "Domain Mapping" tab
 3. Scroll down to "Host Integrations"
 4. Enable the Cloudways integration
@@ -71,7 +71,7 @@ define('WU_CLOUDWAYS_EXTRA_DOMAINS', 'domain1.com,domain2.com,*.wildcard.com');
 
 ### Domain Syncing
 
-When a domain is mapped in WP Multisite WaaS:
+When a domain is mapped in Multisite Ultimate:
 
 1. The integration retrieves all currently mapped domains
 2. It adds the new domain to the list (along with a www version if applicable)
@@ -92,7 +92,7 @@ After domains are synced:
 
 The `WU_CLOUDWAYS_EXTRA_DOMAINS` constant allows you to specify additional domains that should always be included when syncing with Cloudways. This is useful for:
 
-- Domains that are not managed by WP Multisite WaaS
+- Domains that are not managed by Multisite Ultimate
 - Wildcard domains (e.g., `*.example.com`)
 - Development or staging domains
 
@@ -109,6 +109,6 @@ The `WU_CLOUDWAYS_EXTRA_DOMAINS` constant allows you to specify additional domai
 - If SSL certificates are not being issued, check that your domains are properly pointing to your server's IP address
 
 ### Domain Not Added
-- Check the WP Multisite WaaS logs for any error messages
+- Check the Multisite Ultimate logs for any error messages
 - Verify that the domain is not already added to Cloudways
 - Ensure that your Cloudways plan supports the number of domains you're adding

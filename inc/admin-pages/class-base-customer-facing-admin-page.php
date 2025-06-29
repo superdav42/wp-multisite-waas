@@ -122,7 +122,7 @@ abstract class Base_Customer_Facing_Admin_Page extends Base_Admin_Page {
 
 		$fields['title'] = [
 			'type'    => 'text',
-			'title'   => __('Page & Menu Title', 'wp-multisite-waas'),
+			'title'   => __('Page & Menu Title', 'multisite-ultimate'),
 			'value'   => wu_get_isset($settings, 'title', ''),
 			'tooltip' => '',
 		];
@@ -130,14 +130,14 @@ abstract class Base_Customer_Facing_Admin_Page extends Base_Admin_Page {
 		if ($this->menu_settings) {
 			$fields['position'] = [
 				'type'    => 'number',
-				'title'   => __('Menu', 'wp-multisite-waas'),
+				'title'   => __('Menu', 'multisite-ultimate'),
 				'value'   => wu_get_isset($settings, 'position', ''),
 				'tooltip' => '',
 			];
 
 			$fields['menu_icon'] = [
 				'type'    => 'dashicon',
-				'title'   => __('Menu Icon', 'wp-multisite-waas'),
+				'title'   => __('Menu Icon', 'multisite-ultimate'),
 				'value'   => wu_get_isset($settings, 'menu_icon', ''),
 				'tooltip' => '',
 			];
@@ -150,14 +150,14 @@ abstract class Base_Customer_Facing_Admin_Page extends Base_Admin_Page {
 			'fields'          => [
 				'reset'  => [
 					'type'            => 'submit',
-					'title'           => __('Reset Settings', 'wp-multisite-waas'),
+					'title'           => __('Reset Settings', 'multisite-ultimate'),
 					'value'           => 'edit',
 					'classes'         => 'button',
 					'wrapper_classes' => 'wu-mb-0',
 				],
 				'submit' => [
 					'type'            => 'submit',
-					'title'           => __('Save Changes', 'wp-multisite-waas'),
+					'title'           => __('Save Changes', 'multisite-ultimate'),
 					'value'           => 'edit',
 					'classes'         => 'button button-primary',
 					'wrapper_classes' => 'wu-mb-0',
@@ -372,9 +372,9 @@ abstract class Base_Customer_Facing_Admin_Page extends Base_Admin_Page {
 					'customize_link'      => add_query_arg('customize', 1),
 					'close_link'          => remove_query_arg('customize'),
 					'i18n'                => [
-						'page_customize_label' => __('Customize Page', 'wp-multisite-waas'),
-						'customize_label'      => __('Customize Elements', 'wp-multisite-waas'),
-						'close_label'          => __('Exit Customize Mode', 'wp-multisite-waas'),
+						'page_customize_label' => __('Customize Page', 'multisite-ultimate'),
+						'customize_label'      => __('Customize Elements', 'multisite-ultimate'),
+						'close_label'          => __('Exit Customize Mode', 'multisite-ultimate'),
 					],
 				]
 			);

@@ -27,12 +27,12 @@
 		<div class="wu-ml-auto">
 
 			<a 
-			title="<?php esc_attr_e('See More', 'wp-multisite-waas'); ?>"
+			title="<?php esc_attr_e('See More', 'multisite-ultimate'); ?>"
 			class="wu-text-sm wu-no-underline button" 
 			href="<?php echo esc_attr($element->get_manage_url($site->get_id())); ?>"
 			>
 
-			<?php esc_html_e('See More', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('See More', 'multisite-ultimate'); ?>
 
 			</a>
 
@@ -60,8 +60,8 @@
 		</div>
 
 		<div class="wu-text-sm wu-text-gray-600">
-			<span class="wu-block"><?php esc_html_e('Your current plan', 'wp-multisite-waas'); ?></span>
-			<!-- <a href="#" class="wu-no-underline"><?php esc_html_e('Manage →', 'wp-multisite-waas'); ?></a> -->
+			<span class="wu-block"><?php esc_html_e('Your current plan', 'multisite-ultimate'); ?></span>
+			<!-- <a href="#" class="wu-no-underline"><?php esc_html_e('Manage →', 'multisite-ultimate'); ?></a> -->
 		</div>
 
 		</li>
@@ -76,14 +76,14 @@
 
 		<strong class="wu-text-gray-800 wu-text-base">
 			<?php // translators: %s: Number of days. ?>
-			<?php printf(esc_html(_n('%s day', '%s days', $site_trial, 'wp-multisite-waas')), esc_html($site_trial)); ?>
+			<?php printf(esc_html(_n('%s day', '%s days', $site_trial, 'multisite-ultimate')), esc_html($site_trial)); ?>
 		</strong>
 
 		</div>
 
 		<div class="wu-text-sm wu-text-gray-600">
-		<span class="wu-block"><?php esc_html_e('Remaining time in trial', 'wp-multisite-waas'); ?></span>
-		<!-- <a href="#" class="wu-no-underline"><?php esc_html_e('Upgrade →', 'wp-multisite-waas'); ?></a> -->
+		<span class="wu-block"><?php esc_html_e('Remaining time in trial', 'multisite-ultimate'); ?></span>
+		<!-- <a href="#" class="wu-no-underline"><?php esc_html_e('Upgrade →', 'multisite-ultimate'); ?></a> -->
 		</div>
 
 	</li>
@@ -114,8 +114,8 @@
 		</div>
 
 		<div class="wu-text-sm wu-text-gray-600">
-		<span class="wu-block"><?php esc_html_e('Disk space used', 'wp-multisite-waas'); ?></span>
-		<!-- <a href="#" class="wu-no-underline"><?php esc_html_e('Upgrade →', 'wp-multisite-waas'); ?></a> -->
+		<span class="wu-block"><?php esc_html_e('Disk space used', 'multisite-ultimate'); ?></span>
+		<!-- <a href="#" class="wu-no-underline"><?php esc_html_e('Upgrade →', 'multisite-ultimate'); ?></a> -->
 		</div>
 
 	</li>

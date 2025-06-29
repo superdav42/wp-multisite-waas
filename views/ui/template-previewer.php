@@ -4,7 +4,7 @@
  *
  * This template can be overridden by copying it to yourtheme/wp-ultimo/signup/steps/step-template-previewer.php.
  *
- * HOWEVER, on occasion WP Multisite WaaS will need to update template files and you
+ * HOWEVER, on occasion Multisite Ultimate will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
  * maintain compatibility. We try to do this as little as possible, but it does
  * happen. When this occurs the version of the template file will be bumped and
@@ -85,7 +85,7 @@ do_action('wu_template_previewer_before');
 
 						<a id="template_selector" href="#">
 
-									<?php esc_html_e('Select template...', 'wp-multisite-waas'); ?>
+									<?php esc_html_e('Select template...', 'multisite-ultimate'); ?>
 
 							<span style="float: right; margin-top:  -3px" class="dashicons dashicons-arrow-down-alt2"></span>
 
@@ -126,15 +126,15 @@ do_action('wu_template_previewer_before');
 
 				<div class="responsive">
 
-					<a href="#" class="desktop active dashicons-before dashicons-desktop" title="<?php esc_attr_e('View Desktop Version', 'wp-multisite-waas'); ?>"></a>
+					<a href="#" class="desktop active dashicons-before dashicons-desktop" title="<?php esc_attr_e('View Desktop Version', 'multisite-ultimate'); ?>"></a>
 
-					<a href="#" class="tabletlandscape dashicons-before dashicons-tablet" title="<?php esc_attr_e('View Tablet Landscape (1024x768)', 'wp-multisite-waas'); ?>"></a>
+					<a href="#" class="tabletlandscape dashicons-before dashicons-tablet" title="<?php esc_attr_e('View Tablet Landscape (1024x768)', 'multisite-ultimate'); ?>"></a>
 
-					<a href="#" class="tabletportrait dashicons-before dashicons-tablet" title="<?php esc_attr_e('View Tablet Portrait (768x1024)', 'wp-multisite-waas'); ?>"></a>
+					<a href="#" class="tabletportrait dashicons-before dashicons-tablet" title="<?php esc_attr_e('View Tablet Portrait (768x1024)', 'multisite-ultimate'); ?>"></a>
 
-					<a href="#" class="mobilelandscape dashicons-before dashicons-smartphone" title="<?php esc_attr_e('View Mobile Landscape (480x320)', 'wp-multisite-waas'); ?>"></a>
+					<a href="#" class="mobilelandscape dashicons-before dashicons-smartphone" title="<?php esc_attr_e('View Mobile Landscape (480x320)', 'multisite-ultimate'); ?>"></a>
 
-					<a href="#" class="mobileportrait dashicons-before dashicons-smartphone" title="<?php esc_attr_e('View Mobile Portrait (320x480)', 'wp-multisite-waas'); ?>"></a>
+					<a href="#" class="mobileportrait dashicons-before dashicons-smartphone" title="<?php esc_attr_e('View Mobile Portrait (320x480)', 'multisite-ultimate'); ?>"></a>
 
 				</div>
 
@@ -202,7 +202,7 @@ do_action('wu_template_previewer_before');
 
 			<div class="wu-text-xl wu-rounded wu-font-bold wu-uppercase wu-inline-block wu-p-8 wu-opacity-50" style="margin-top: 62px; background-color: #000; color: #666;">
 
-				<?php esc_html_e('Site Template Preview will go here!', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('Site Template Preview will go here!', 'multisite-ultimate'); ?>
 
 			</div>
 

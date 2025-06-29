@@ -2,26 +2,24 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Multisite WaaS 2.4.0\n"
+"Project-Id-Version: Multisite WaaS 2.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-multisite-waas\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-06-26T05:58:51+00:00\n"
+"POT-Creation-Date: 2025-06-26T14:05:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: wp-multisite-waas\n"
 
 #. Plugin Name of the plugin
 #: wp-multisite-waas.php
-#: inc/admin-pages/class-migration-alert-admin-page.php:103
-#: inc/admin-pages/class-setup-wizard-admin-page.php:305
-#: inc/admin-pages/class-setup-wizard-admin-page.php:650
-#: inc/development/query-monitor/panel/class-overview.php:46
-#: inc/development/query-monitor/panel/class-overview.php:108
-msgid "WP Multisite WaaS"
+#: inc/admin-pages/class-about-admin-page.php:100
+#: inc/admin-pages/class-dashboard-admin-page.php:551
+#: inc/managers/class-block-manager.php:59
+msgid "Multisite WaaS"
 msgstr ""
 
 #. Plugin URI of the plugin
@@ -79,12 +77,6 @@ msgstr ""
 #: inc/admin-pages/class-about-admin-page.php:89
 #: inc/admin-pages/class-about-admin-page.php:111
 msgid "About"
-msgstr ""
-
-#: inc/admin-pages/class-about-admin-page.php:100
-#: inc/admin-pages/class-dashboard-admin-page.php:551
-#: inc/managers/class-block-manager.php:59
-msgid "Multisite WaaS"
 msgstr ""
 
 #: inc/admin-pages/class-base-admin-page.php:629
@@ -1186,7 +1178,7 @@ msgid "Custom Meta"
 msgstr ""
 
 #: inc/admin-pages/class-customer-edit-admin-page.php:707
-msgid "Custom data collected via WP Multisite WaaS forms."
+msgid "Custom data collected via Multisite Ultimate forms."
 msgstr ""
 
 #: inc/admin-pages/class-customer-edit-admin-page.php:739
@@ -1453,7 +1445,7 @@ msgid "Our dashboard"
 msgstr ""
 
 #: inc/admin-pages/class-dashboard-admin-page.php:235
-msgid "This is the <strong>WP Multisite WaaS Dashboard</strong>, where you will find most of the important information you will need regarding your business' performance."
+msgid "This is the <strong>Multisite Ultimate Dashboard</strong>, where you will find most of the important information you will need regarding your business' performance."
 msgstr ""
 
 #: inc/admin-pages/class-dashboard-admin-page.php:240
@@ -1461,7 +1453,7 @@ msgid "Learning more"
 msgstr ""
 
 #: inc/admin-pages/class-dashboard-admin-page.php:242
-msgid "Most of the WP Multisite WaaS admin pages will contain a link like this one at the top. These will link directly to the relevant knowledge base page on the WP Multisite WaaS site."
+msgid "Most of the Multisite Ultimate admin pages will contain a link like this one at the top. These will link directly to the relevant knowledge base page on the Multisite Ultimate site."
 msgstr ""
 
 #: inc/admin-pages/class-dashboard-admin-page.php:251
@@ -2002,7 +1994,7 @@ msgstr ""
 #. translators: %s is the URL to the add-on.
 #: inc/admin-pages/class-domain-list-admin-page.php:96
 #, php-format
-msgid "To activate this feature you need to install the <a href=\"%s\" target=\"_blank\" class=\"wu-no-underline\">WP Multisite WaaS: Domain Seller</a> add-on."
+msgid "To activate this feature you need to install the <a href=\"%s\" target=\"_blank\" class=\"wu-no-underline\">Multisite Ultimate: Domain Seller</a> add-on."
 msgstr ""
 
 #: inc/admin-pages/class-domain-list-admin-page.php:102
@@ -2036,7 +2028,7 @@ msgid "The target site of the domain being added."
 msgstr ""
 
 #: inc/admin-pages/class-domain-list-admin-page.php:138
-msgid "The stage in the domain check lifecycle. Leave \"Checking DNS\" to have the domain go through WP Multisite WaaS's automated tests."
+msgid "The stage in the domain check lifecycle. Leave \"Checking DNS\" to have the domain go through Multisite Ultimate's automated tests."
 msgstr ""
 
 #: inc/admin-pages/class-domain-list-admin-page.php:144
@@ -2419,7 +2411,7 @@ msgid "Import System Emails"
 msgstr ""
 
 #: inc/admin-pages/class-email-list-admin-page.php:383
-msgid "Add new system emails based on WP Multisite WaaS presets."
+msgid "Add new system emails based on Multisite Ultimate presets."
 msgstr ""
 
 #: inc/admin-pages/class-email-list-admin-page.php:394
@@ -3342,7 +3334,15 @@ msgid "Migration"
 msgstr ""
 
 #: inc/admin-pages/class-migration-alert-admin-page.php:103
-msgid "WP Multisite WaaS Migration Alert"
+msgid "Multisite Ultimate Migration Alert"
+msgstr ""
+
+#: inc/admin-pages/class-migration-alert-admin-page.php:103
+#: inc/admin-pages/class-setup-wizard-admin-page.php:305
+#: inc/admin-pages/class-setup-wizard-admin-page.php:650
+#: inc/development/query-monitor/panel/class-overview.php:46
+#: inc/development/query-monitor/panel/class-overview.php:108
+msgid "Multisite Ultimate"
 msgstr ""
 
 #: inc/admin-pages/class-migration-alert-admin-page.php:116
@@ -3368,7 +3368,7 @@ msgid "Checking this option will cancel the membership as well."
 msgstr ""
 
 #: inc/admin-pages/class-payment-edit-admin-page.php:299
-msgid "Confirming the refund might not immediately change the status of the payment, as each gateway handles refunds differently and WP Multisite WaaS relies on the gateway reporting a successful refund before changing the status."
+msgid "Confirming the refund might not immediately change the status of the payment, as each gateway handles refunds differently and Multisite Ultimate relies on the gateway reporting a successful refund before changing the status."
 msgstr ""
 
 #: inc/admin-pages/class-payment-edit-admin-page.php:308
@@ -3441,7 +3441,7 @@ msgid "Fee"
 msgstr ""
 
 #: inc/admin-pages/class-payment-edit-admin-page.php:669
-#: inc/checkout/class-cart.php:1278
+#: inc/checkout/class-cart.php:1282
 msgid "Credit"
 msgstr ""
 
@@ -3754,7 +3754,7 @@ msgid "On adding a new product..."
 msgstr ""
 
 #: inc/admin-pages/class-product-edit-admin-page.php:121
-msgid "You just successfully added a new product to your WP Multisite WaaS network and that's awesome!"
+msgid "You just successfully added a new product to your Multisite Ultimate network and that's awesome!"
 msgstr ""
 
 #: inc/admin-pages/class-product-edit-admin-page.php:122
@@ -3940,7 +3940,7 @@ msgid "Customer Role"
 msgstr ""
 
 #: inc/admin-pages/class-product-edit-admin-page.php:656
-msgid "Select the role WP Multisite WaaS should use when adding the user to their newly created site."
+msgid "Select the role Multisite Ultimate should use when adding the user to their newly created site."
 msgstr ""
 
 #: inc/admin-pages/class-product-edit-admin-page.php:671
@@ -4212,7 +4212,7 @@ msgid "Customize System Emails"
 msgstr ""
 
 #: inc/admin-pages/class-settings-admin-page.php:380
-msgid "You can completely customize the contents of the emails sent out by WP Multisite WaaS when particular events occur, such as Account Creation, Payment Failures, etc."
+msgid "You can completely customize the contents of the emails sent out by Multisite Ultimate when particular events occur, such as Account Creation, Payment Failures, etc."
 msgstr ""
 
 #: inc/admin-pages/class-settings-admin-page.php:389
@@ -4254,7 +4254,7 @@ msgid "Installation"
 msgstr ""
 
 #: inc/admin-pages/class-setup-wizard-admin-page.php:305
-msgid "WP Multisite WaaS Install"
+msgid "Multisite Ultimate Install"
 msgstr ""
 
 #: inc/admin-pages/class-setup-wizard-admin-page.php:318
@@ -4262,11 +4262,11 @@ msgid "Welcome"
 msgstr ""
 
 #: inc/admin-pages/class-setup-wizard-admin-page.php:322
-msgid "...and thanks for choosing WP Multisite WaaS!"
+msgid "...and thanks for choosing Multisite Ultimate!"
 msgstr ""
 
 #: inc/admin-pages/class-setup-wizard-admin-page.php:323
-msgid "This quick setup wizard will make sure your server is correctly setup, help you configure your new network, and migrate data from previous WP Multisite WaaS versions if necessary."
+msgid "This quick setup wizard will make sure your server is correctly setup, help you configure your new network, and migrate data from previous Multisite Ultimate versions if necessary."
 msgstr ""
 
 #: inc/admin-pages/class-setup-wizard-admin-page.php:324
@@ -4283,7 +4283,7 @@ msgid "Pre-install Checks"
 msgstr ""
 
 #: inc/admin-pages/class-setup-wizard-admin-page.php:332
-msgid "Now it is time to see if this machine has what it takes to run WP Multisite WaaS well!"
+msgid "Now it is time to see if this machine has what it takes to run Multisite Ultimate well!"
 msgstr ""
 
 #: inc/admin-pages/class-setup-wizard-admin-page.php:333
@@ -4297,7 +4297,7 @@ msgid "Check Again"
 msgstr ""
 
 #: inc/admin-pages/class-setup-wizard-admin-page.php:345
-msgid "Now, let's update your database and install the Sunrise.php file, which are necessary for the correct functioning of WP Multisite WaaS."
+msgid "Now, let's update your database and install the Sunrise.php file, which are necessary for the correct functioning of Multisite Ultimate."
 msgstr ""
 
 #: inc/admin-pages/class-setup-wizard-admin-page.php:346
@@ -4318,7 +4318,7 @@ msgid "Run Check"
 msgstr ""
 
 #: inc/admin-pages/class-setup-wizard-admin-page.php:375
-msgid "It seems that you were running WP Multisite WaaS 1.X on this network. This migrator will convert the data from the old version to the new one."
+msgid "It seems that you were running Multisite Ultimate 1.X on this network. This migrator will convert the data from the old version to the new one."
 msgstr ""
 
 #: inc/admin-pages/class-setup-wizard-admin-page.php:375
@@ -4433,7 +4433,7 @@ msgid "On adding a new Site Template..."
 msgstr ""
 
 #: inc/admin-pages/class-site-edit-admin-page.php:157
-msgid "You just successfully added a new site template to your WP Multisite WaaS network and that's awesome!"
+msgid "You just successfully added a new site template to your Multisite Ultimate network and that's awesome!"
 msgstr ""
 
 #: inc/admin-pages/class-site-edit-admin-page.php:158
@@ -4577,7 +4577,7 @@ msgid "You need to save the site for the change to take effect."
 msgstr ""
 
 #: inc/admin-pages/class-site-edit-admin-page.php:580
-msgid "We detected that this network might be running locally. If that's the case, WP Multisite WaaS will not be able to take a screenshot of the site. A site needs to be publicly available to the outside world in order for this feature to work."
+msgid "We detected that this network might be running locally. If that's the case, Multisite Ultimate will not be able to take a screenshot of the site. A site needs to be publicly available to the outside world in order for this feature to work."
 msgstr ""
 
 #: inc/admin-pages/class-site-edit-admin-page.php:585
@@ -4849,7 +4849,7 @@ msgid "URL Parameter"
 msgstr ""
 
 #: inc/admin-pages/class-template-previewer-customize-admin-page.php:101
-msgid "This is the URL parameter WP Multisite WaaS will use to generate the template preview URLs."
+msgid "This is the URL parameter Multisite Ultimate will use to generate the template preview URLs."
 msgstr ""
 
 #: inc/admin-pages/class-template-previewer-customize-admin-page.php:107
@@ -4981,7 +4981,7 @@ msgid "No log files found"
 msgstr ""
 
 #: inc/admin-pages/class-view-logs-admin-page.php:166
-msgid "You can see files that are not WP Multisite WaaS's logs"
+msgid "You can see files that are not Multisite Ultimate's logs"
 msgstr ""
 
 #: inc/admin-pages/class-view-logs-admin-page.php:175
@@ -6463,71 +6463,71 @@ msgid "This cart proposes no changes to the current membership."
 msgstr ""
 
 #. Translators: Placeholder receives the recurring period description
-#: inc/checkout/class-cart.php:1056
+#: inc/checkout/class-cart.php:1060
 #, php-format
 msgid "You already have an active %s agreement."
 msgstr ""
 
-#: inc/checkout/class-cart.php:1077
+#: inc/checkout/class-cart.php:1081
 msgid "Scheduled Swap Credit"
 msgstr ""
 
-#: inc/checkout/class-cart.php:1078
+#: inc/checkout/class-cart.php:1082
 msgid "Swap scheduled to next billing cycle."
 msgstr ""
 
-#: inc/checkout/class-cart.php:1279
+#: inc/checkout/class-cart.php:1283
 msgid "Prorated amount based on the previous membership."
 msgstr ""
 
 #. translators: %s is the coupon code being used, all-caps. e.g. PROMO10OFF
-#: inc/checkout/class-cart.php:1315
+#: inc/checkout/class-cart.php:1319
 #, php-format
 msgid "The code %s do not exist or is no longer valid."
 msgstr ""
 
 #. translators: two intervals
-#: inc/checkout/class-cart.php:1396
+#: inc/checkout/class-cart.php:1400
 #, php-format
 msgid "Interval %1$s and %2$s do not match."
 msgstr ""
 
-#: inc/checkout/class-cart.php:1559
+#: inc/checkout/class-cart.php:1563
 msgid "The product you are trying to add does not exist."
 msgstr ""
 
-#: inc/checkout/class-cart.php:1571
+#: inc/checkout/class-cart.php:1575
 msgid "The product you are trying to add does not exist for the selected duration."
 msgstr ""
 
-#: inc/checkout/class-cart.php:1585
+#: inc/checkout/class-cart.php:1589
 msgid "Theres already a plan in this membership."
 msgstr ""
 
 #. translators: respectively, product name, duration, and duration unit.
-#: inc/checkout/class-cart.php:1647
+#: inc/checkout/class-cart.php:1651
 #, php-format
 msgid "%1$s does not have a valid price variation for that billing period (every %2$s %3$s(s)) and was not added to the cart."
 msgstr ""
 
 #. translators: placeholder is the product name.
-#: inc/checkout/class-cart.php:1711
+#: inc/checkout/class-cart.php:1715
 #, php-format
 msgid "Signup Fee for %s"
 msgstr ""
 
 #. translators: placeholder is the product name.
-#: inc/checkout/class-cart.php:1711
+#: inc/checkout/class-cart.php:1715
 #, php-format
 msgid "Signup Credit for %s"
 msgstr ""
 
 #: inc/checkout/class-checkout-pages.php:111
-msgid "WP Multisite WaaS Compatibility Mode"
+msgid "Multisite Ultimate Compatibility Mode"
 msgstr ""
 
 #: inc/checkout/class-checkout-pages.php:112
-msgid "Toggle this option on if WP Multisite WaaS elements are not loading correctly or at all."
+msgid "Toggle this option on if Multisite Ultimate elements are not loading correctly or at all."
 msgstr ""
 
 #: inc/checkout/class-checkout-pages.php:193
@@ -6550,23 +6550,23 @@ msgid "Resend verification email →"
 msgstr ""
 
 #: inc/checkout/class-checkout-pages.php:628
-msgid "WP Multisite WaaS - Register Page"
+msgid "Multisite Ultimate - Register Page"
 msgstr ""
 
 #: inc/checkout/class-checkout-pages.php:629
-msgid "WP Multisite WaaS - Login Page"
+msgid "Multisite Ultimate - Login Page"
 msgstr ""
 
 #: inc/checkout/class-checkout-pages.php:630
-msgid "WP Multisite WaaS - Site Blocked Page"
+msgid "Multisite Ultimate - Site Blocked Page"
 msgstr ""
 
 #: inc/checkout/class-checkout-pages.php:631
-msgid "WP Multisite WaaS - Membership Update Page"
+msgid "Multisite Ultimate - Membership Update Page"
 msgstr ""
 
 #: inc/checkout/class-checkout-pages.php:632
-msgid "WP Multisite WaaS - New Site Page"
+msgid "Multisite Ultimate - New Site Page"
 msgstr ""
 
 #: inc/checkout/class-checkout.php:650
@@ -6615,7 +6615,7 @@ msgid "Checkout failed for customer %s: "
 msgstr ""
 
 #: inc/checkout/class-legacy-checkout.php:100
-msgid "WP Multisite WaaS Legacy Signup"
+msgid "Multisite Ultimate Legacy Signup"
 msgstr ""
 
 #: inc/checkout/class-legacy-checkout.php:393
@@ -7225,11 +7225,11 @@ msgid "Shortcode"
 msgstr ""
 
 #: inc/checkout/signup-fields/class-signup-field-shortcode.php:69
-msgid "Displays the content of a given WordPress shortcode. Can be useful to inset content from other plugins inside a WP Multisite WaaS checkout form."
+msgid "Displays the content of a given WordPress shortcode. Can be useful to inset content from other plugins inside a Multisite Ultimate checkout form."
 msgstr ""
 
 #: inc/checkout/signup-fields/class-signup-field-shortcode.php:82
-msgid "Displays the content of a given WordPress shortcode. Can be useful to insert content from other plugins inside a WP Multisite WaaS checkout form."
+msgid "Displays the content of a given WordPress shortcode. Can be useful to insert content from other plugins inside a Multisite Ultimate checkout form."
 msgstr ""
 
 #: inc/checkout/signup-fields/class-signup-field-shortcode.php:152
@@ -7484,7 +7484,7 @@ msgid "Legacy"
 msgstr ""
 
 #: inc/checkout/signup-fields/field-templates/period-selection/class-legacy-period-selection-field-template.php:80
-msgid "Implementation of the layout that shipped with WP Multisite WaaS < 1.10.X."
+msgid "Implementation of the layout that shipped with Multisite Ultimate < 1.10.X."
 msgstr ""
 
 #: inc/checkout/signup-fields/field-templates/pricing-table/class-legacy-pricing-table-field-template.php:80
@@ -7516,7 +7516,7 @@ msgid "API Settings"
 msgstr ""
 
 #: inc/class-api.php:157
-msgid "Options related to WP Multisite WaaS API endpoints."
+msgid "Options related to Multisite Ultimate API endpoints."
 msgstr ""
 
 #: inc/class-api.php:166
@@ -7524,7 +7524,7 @@ msgid "Enable API"
 msgstr ""
 
 #: inc/class-api.php:167
-msgid "Tick this box if you want WP Multisite WaaS to add its own endpoints to the WordPress REST API. This is required for some integrations to work, most notabily, Zapier."
+msgid "Tick this box if you want Multisite Ultimate to add its own endpoints to the WordPress REST API. This is required for some integrations to work, most notabily, Zapier."
 msgstr ""
 
 #: inc/class-api.php:176
@@ -7561,7 +7561,7 @@ msgid "Log API calls (Advanced)"
 msgstr ""
 
 #: inc/class-api.php:261
-msgid "Tick this box if you want to log all calls received via WP Multisite WaaS API endpoints. You can access the logs on WP Multisite WaaS &rarr; System Info &rarr; Logs."
+msgid "Tick this box if you want to log all calls received via Multisite Ultimate API endpoints. You can access the logs on Multisite Ultimate &rarr; System Info &rarr; Logs."
 msgstr ""
 
 #: inc/class-api.php:274
@@ -7569,7 +7569,7 @@ msgid "Webhook Settings"
 msgstr ""
 
 #: inc/class-api.php:275
-msgid "Options related to WP Multisite WaaS API webhooks."
+msgid "Options related to Multisite Ultimate API webhooks."
 msgstr ""
 
 #: inc/class-api.php:284
@@ -7577,7 +7577,7 @@ msgid "Wait for Response (Advanced)"
 msgstr ""
 
 #: inc/class-api.php:285
-msgid "Tick this box if you want the WP Multisite WaaS's webhook calls to wait for the remote server to respond. Keeping this option enabled can have huge effects on your network's performance, only enable it if you know what you are doing and need to debug webhook calls."
+msgid "Tick this box if you want the Multisite Ultimate's webhook calls to wait for the remote server to respond. Keeping this option enabled can have huge effects on your network's performance, only enable it if you know what you are doing and need to debug webhook calls."
 msgstr ""
 
 #: inc/class-api.php:489
@@ -7585,15 +7585,15 @@ msgid "Welcome to our API"
 msgstr ""
 
 #: inc/class-dashboard-widgets.php:90
-msgid "WP Multisite WaaS - First Steps"
+msgid "Multisite Ultimate - First Steps"
 msgstr ""
 
 #: inc/class-dashboard-widgets.php:92
-msgid "WP Multisite WaaS - Summary"
+msgid "Multisite Ultimate - Summary"
 msgstr ""
 
 #: inc/class-dashboard-widgets.php:94
-msgid "WP Multisite WaaS - Activity Stream"
+msgid "Multisite Ultimate - Activity Stream"
 msgstr ""
 
 #: inc/class-dashboard-widgets.php:101
@@ -7605,7 +7605,7 @@ msgid "Welcome to your new network dashboard!"
 msgstr ""
 
 #: inc/class-dashboard-widgets.php:104
-msgid "You will notice that <strong>WP Multisite WaaS</strong> adds a couple of useful widgets here so you can keep an eye on how your network is doing."
+msgid "You will notice that <strong>Multisite Ultimate</strong> adds a couple of useful widgets here so you can keep an eye on how your network is doing."
 msgstr ""
 
 #: inc/class-dashboard-widgets.php:109
@@ -7621,7 +7621,7 @@ msgid "Our home"
 msgstr ""
 
 #: inc/class-dashboard-widgets.php:122
-msgid "You can always find WP Multisite WaaS settings and other pages under our menu item, here on the Network-level dashboard. 😃"
+msgid "You can always find Multisite Ultimate settings and other pages under our menu item, here on the Network-level dashboard. 😃"
 msgstr ""
 
 #: inc/class-dashboard-widgets.php:185
@@ -7677,11 +7677,11 @@ msgid "Unable to delete mapping %1$d for site %2$d"
 msgstr ""
 
 #: inc/class-hooks.php:59
-msgid "Activating WP Multisite WaaS..."
+msgid "Activating Multisite Ultimate..."
 msgstr ""
 
 #: inc/class-hooks.php:103
-msgid "Deactivating WP Multisite WaaS..."
+msgid "Deactivating Multisite Ultimate..."
 msgstr ""
 
 #. translators: the placeholder %s will be replaced by the time in seconds (float).
@@ -7727,7 +7727,7 @@ msgid "Allow your customers and super admins to quickly take sites offline via a
 msgstr ""
 
 #: inc/class-newsletter.php:20
-msgid "Signup for WP Multisite WaaS Newsletter"
+msgid "Signup for Multisite Ultimate Newsletter"
 msgstr ""
 
 #: inc/class-newsletter.php:21
@@ -7737,17 +7737,17 @@ msgstr ""
 #. translators: the %1$s placeholder is the required PHP version, while the %2$s is the current PHP version, and %3$s is the recommended PHP version.
 #: inc/class-requirements.php:287
 #, php-format
-msgid "WP Multisite WaaS requires at least PHP version %1$s to run. Your current PHP version is %2$s. Please, contact your hosting company support to upgrade your PHP version. If you want maximum performance consider upgrading your PHP to version %3$s or later."
+msgid "Multisite Ultimate requires at least PHP version %1$s to run. Your current PHP version is %2$s. Please, contact your hosting company support to upgrade your PHP version. If you want maximum performance consider upgrading your PHP to version %3$s or later."
 msgstr ""
 
 #. translators: the %1$s placeholder is the required WP version, while the %2$s is the current WP version.
 #: inc/class-requirements.php:312
 #, php-format
-msgid "WP Multisite WaaS requires at least WordPress version %1$s to run. Your current WordPress version is %2$s."
+msgid "Multisite Ultimate requires at least WordPress version %1$s to run. Your current WordPress version is %2$s."
 msgstr ""
 
 #: inc/class-requirements.php:330
-msgid "WP Multisite WaaS requires a multisite install to run properly. To know more about WordPress Networks, visit this link:"
+msgid "Multisite Ultimate requires a multisite install to run properly. To know more about WordPress Networks, visit this link:"
 msgstr ""
 
 #: inc/class-requirements.php:330
@@ -7757,14 +7757,14 @@ msgstr ""
 #. translators: %s is a placeholder for the Network Admin plugins page URL with link text.
 #: inc/class-requirements.php:345
 #, php-format
-msgid "WP Multisite WaaS needs to be network active to run properly. You can \"Network Activate\" it %s"
+msgid "Multisite Ultimate needs to be network active to run properly. You can \"Network Activate\" it %s"
 msgstr ""
 
 #: inc/class-requirements.php:346
 msgid "here"
 msgstr ""
 
-#. translators: the day/month/year date format used by WP Multisite WaaS. You can changed it to localize this date format to your language. the default value is d/m/Y, which is the format 31/12/2021.
+#. translators: the day/month/year date format used by Multisite Ultimate. You can changed it to localize this date format to your language. the default value is d/m/Y, which is the format 31/12/2021.
 #: inc/class-scripts.php:277
 msgid "d/m/Y"
 msgstr ""
@@ -7916,7 +7916,7 @@ msgid "Currency"
 msgstr ""
 
 #: inc/class-settings.php:624
-msgid "Select the currency to be used in WP Multisite WaaS."
+msgid "Select the currency to be used in Multisite Ultimate."
 msgstr ""
 
 #: inc/class-settings.php:636
@@ -8075,7 +8075,7 @@ msgid "Add to Main Site with Role..."
 msgstr ""
 
 #: inc/class-settings.php:866
-msgid "Select the role WP Multisite WaaS should use when adding the user to the main site of your network. Be careful."
+msgid "Select the role Multisite Ultimate should use when adding the user to the main site of your network. Be careful."
 msgstr ""
 
 #: inc/class-settings.php:897
@@ -8099,7 +8099,7 @@ msgid "Frontend Block Grace Period"
 msgstr ""
 
 #: inc/class-settings.php:930
-msgid "Select the number of days WP Multisite WaaS should wait after the membership goes inactive before blocking the frontend access. Leave 0 to block immediately after the membership becomes inactive."
+msgid "Select the number of days Multisite Ultimate should wait after the membership goes inactive before blocking the frontend access. Leave 0 to block immediately after the membership becomes inactive."
 msgstr ""
 
 #: inc/class-settings.php:944
@@ -8131,7 +8131,7 @@ msgid "Block Sites on Downgrade"
 msgstr ""
 
 #: inc/class-settings.php:988
-msgid "Choose how WP Multisite WaaS should handle client sites above their plan quota on downgrade."
+msgid "Choose how Multisite Ultimate should handle client sites above their plan quota on downgrade."
 msgstr ""
 
 #: inc/class-settings.php:992
@@ -8179,7 +8179,7 @@ msgid "Emulates the registering of a custom post type to be able to create limit
 msgstr ""
 
 #: inc/class-settings.php:1034
-msgid "By default, WP Multisite WaaS only allows super admins to limit post types that are registered on the main site. This makes sense from a technical stand-point but it also forces you to have plugins network-activated in order to be able to set limitations for their custom post types. Using this option, you can emulate the registering of a post type. This will register them on the main site and allow you to create limits for them on your products."
+msgid "By default, Multisite Ultimate only allows super admins to limit post types that are registered on the main site. This makes sense from a technical stand-point but it also forces you to have plugins network-activated in order to be able to set limitations for their custom post types. Using this option, you can emulate the registering of a post type. This will register them on the main site and allow you to create limits for them on your products."
 msgstr ""
 
 #: inc/class-settings.php:1045
@@ -8227,7 +8227,7 @@ msgid "Enable Screenshot Generator"
 msgstr ""
 
 #: inc/class-settings.php:1184
-msgid "With this option is enabled, WP Multisite WaaS will take a screenshot for every newly created site on your network and set the resulting image as that site's featured image. This features requires a valid license key to work and it is not supported for local sites."
+msgid "With this option is enabled, Multisite Ultimate will take a screenshot for every newly created site on your network and set the resulting image as that site's featured image. This features requires a valid license key to work and it is not supported for local sites."
 msgstr ""
 
 #: inc/class-settings.php:1194
@@ -8319,7 +8319,7 @@ msgid "Allow Trials without Payment Method"
 msgstr ""
 
 #: inc/class-settings.php:1325
-msgid "By default, WP Multisite WaaS asks customers to add a payment method on sign-up even if a trial period is present. Enable this option to only ask for a payment method when the trial period is over."
+msgid "By default, Multisite Ultimate asks customers to add a payment method on sign-up even if a trial period is present. Enable this option to only ask for a payment method when the trial period is over."
 msgstr ""
 
 #: inc/class-settings.php:1336
@@ -8339,7 +8339,7 @@ msgid "Invoice Numbering Scheme"
 msgstr ""
 
 #: inc/class-settings.php:1349
-msgid "What should WP Multisite WaaS use as the invoice number?"
+msgid "What should Multisite Ultimate use as the invoice number?"
 msgstr ""
 
 #: inc/class-settings.php:1354
@@ -8424,7 +8424,7 @@ msgid "Hide UI Tours"
 msgstr ""
 
 #: inc/class-settings.php:1510
-msgid "The UI tours showed by WP Multisite WaaS should permanently hide themselves after being seen but if they persist for whatever reason, toggle this option to force them into their viewed state - which will prevent them from showing up again."
+msgid "The UI tours showed by Multisite Ultimate should permanently hide themselves after being seen but if they persist for whatever reason, toggle this option to force them into their viewed state - which will prevent them from showing up again."
 msgstr ""
 
 #: inc/class-settings.php:1522
@@ -8432,7 +8432,7 @@ msgid "Disable \"Hover to Zoom\""
 msgstr ""
 
 #: inc/class-settings.php:1523
-msgid "By default, WP Multisite WaaS adds a \"hover to zoom\" feature, allowing network admins to see larger version of site screenshots and other images across the UI in full-size when hovering over them. You can disable that feature here. Preview tags like the above are not affected."
+msgid "By default, Multisite Ultimate adds a \"hover to zoom\" feature, allowing network admins to see larger version of site screenshots and other images across the UI in full-size when hovering over them. You can disable that feature here. Preview tags like the above are not affected."
 msgstr ""
 
 #: inc/class-settings.php:1533
@@ -8440,7 +8440,7 @@ msgid "Logging"
 msgstr ""
 
 #: inc/class-settings.php:1534
-msgid "Log WP Multisite WaaS data. This is useful for debugging purposes."
+msgid "Log Multisite Ultimate data. This is useful for debugging purposes."
 msgstr ""
 
 #: inc/class-settings.php:1543
@@ -8464,11 +8464,11 @@ msgid "Everything"
 msgstr ""
 
 #: inc/class-settings.php:1560
-msgid "Send Error Data to WP Multisite WaaS Developers"
+msgid "Send Error Data to Multisite Ultimate Developers"
 msgstr ""
 
 #: inc/class-settings.php:1561
-msgid "With this option enabled, every time your installation runs into an error related to WP Multisite WaaS, that error data will be sent to us. No sensitive data gets collected, only environmental stuff (e.g. if this is this is a subdomain network, etc)."
+msgid "With this option enabled, every time your installation runs into an error related to Multisite Ultimate, that error data will be sent to us. No sensitive data gets collected, only environmental stuff (e.g. if this is this is a subdomain network, etc)."
 msgstr ""
 
 #: inc/class-settings.php:1572
@@ -8498,7 +8498,7 @@ msgstr ""
 #. Translators: Placeholder adds the security mode key and current site url with query string
 #: inc/class-settings.php:1620
 #, php-format
-msgid "Only WP Multisite WaaS and other must-use plugins will run on your WordPress install while this option is enabled.<div class=\"wu-mt-2\"><b>Important:</b> Copy the following URL to disable security mode if something goes wrong and this page becomes unavailable:<code>%2$s</code></div>"
+msgid "Only Multisite Ultimate and other must-use plugins will run on your WordPress install while this option is enabled.<div class=\"wu-mt-2\"><b>Important:</b> Copy the following URL to disable security mode if something goes wrong and this page becomes unavailable:<code>%2$s</code></div>"
 msgstr ""
 
 #: inc/class-settings.php:1631
@@ -8506,7 +8506,7 @@ msgid "Remove Data on Uninstall"
 msgstr ""
 
 #: inc/class-settings.php:1632
-msgid "Remove all saved data for WP Multisite WaaS when the plugin is uninstalled."
+msgid "Remove all saved data for Multisite Ultimate when the plugin is uninstalled."
 msgstr ""
 
 #. translators: the placeholder is an error message
@@ -8554,7 +8554,7 @@ msgid "Hide Sites Admin Menu"
 msgstr ""
 
 #: inc/class-whitelabel.php:234
-msgid "We recommend that you manage all of your sites using the WP Multisite WaaS &rarr; Sites page. To avoid confusion, you can hide the default \"Sites\" item from the WordPress admin menu by toggling this option."
+msgid "We recommend that you manage all of your sites using the Multisite Ultimate &rarr; Sites page. To avoid confusion, you can hide the default \"Sites\" item from the WordPress admin menu by toggling this option."
 msgstr ""
 
 #: inc/class-whitelabel.php:244
@@ -8606,7 +8606,7 @@ msgid "Failed to authenticate with WPMultisiteWaaS.org."
 msgstr ""
 
 #: inc/compat/class-general-compat.php:255
-msgid "WP Typography \"Smart Quotes\" replacement is not compatible with WP Multisite WaaS and will be automatically disabled."
+msgid "WP Typography \"Smart Quotes\" replacement is not compatible with Multisite Ultimate and will be automatically disabled."
 msgstr ""
 
 #. translators: the placeholder is replaced with the network name.
@@ -12589,7 +12589,7 @@ msgid "Only reset generated data."
 msgstr ""
 
 #: inc/debug/class-debug.php:408
-msgid "Toggle this option to only remove data that was added by the generator previously. Untoggling this option will reset ALL data in WP Multisite WaaS tables."
+msgid "Toggle this option to only remove data that was added by the generator previously. Untoggling this option will reset ALL data in Multisite Ultimate tables."
 msgstr ""
 
 #: inc/debug/class-debug.php:416
@@ -12597,7 +12597,7 @@ msgid "Reset Database &rarr;"
 msgstr ""
 
 #: inc/debug/class-debug.php:493
-msgid "This action will drop the WP Multisite WaaS database tables and is irreversable."
+msgid "This action will drop the Multisite Ultimate database tables and is irreversable."
 msgstr ""
 
 #: inc/debug/class-debug.php:496
@@ -13808,7 +13808,7 @@ msgid "Regular setting APIs are already available. You should use wu_save_settin
 msgstr ""
 
 #: inc/functions/user.php:28
-msgid "Use WP Multisite WaaS default"
+msgid "Use Multisite Ultimate default"
 msgstr ""
 
 #: inc/gateways/class-base-gateway.php:617
@@ -14287,7 +14287,7 @@ msgstr ""
 
 #: inc/gateways/class-stripe-checkout-gateway.php:171
 #: inc/gateways/class-stripe-gateway.php:198
-msgid "Whenever you change your Stripe settings, WP Multisite WaaS will automatically check the webhook URLs on your Stripe account to make sure we get notified about changes in subscriptions and payments."
+msgid "Whenever you change your Stripe settings, Multisite Ultimate will automatically check the webhook URLs on your Stripe account to make sure we get notified about changes in subscriptions and payments."
 msgstr ""
 
 #: inc/gateways/class-stripe-checkout-gateway.php:177
@@ -14472,7 +14472,7 @@ msgid "The file %s is not writable"
 msgstr ""
 
 #: inc/helpers/class-wp-config.php:55
-msgid "WP Multisite WaaS can't recognize your wp-config.php, please revert it to original state for further process."
+msgid "Multisite Ultimate can't recognize your wp-config.php, please revert it to original state for further process."
 msgstr ""
 
 #. translators: %s is a placeholder for the field name
@@ -14522,7 +14522,7 @@ msgid "Create Database Tables"
 msgstr ""
 
 #: inc/installers/class-core-installer.php:70
-msgid "WP Multisite WaaS uses custom tables for performance reasons. We need to create those tables and make sure they are setup properly before we can activate the plugin."
+msgid "Multisite Ultimate uses custom tables for performance reasons. We need to create those tables and make sure they are setup properly before we can activate the plugin."
 msgstr ""
 
 #: inc/installers/class-core-installer.php:72
@@ -14588,7 +14588,7 @@ msgid "Create the System Emails"
 msgstr ""
 
 #: inc/installers/class-default-content-installer.php:181
-msgid "This action will create all emails sent by WP Multisite WaaS."
+msgid "This action will create all emails sent by Multisite Ultimate."
 msgstr ""
 
 #: inc/installers/class-default-content-installer.php:183
@@ -14949,7 +14949,7 @@ msgid "Cloudways Extra Domains"
 msgstr ""
 
 #: inc/integrations/host-providers/class-cloudways-host-provider.php:166
-msgid "The Cloudways API is a bit strange in that it doesn’t offer a way to add or remove just one domain, only a way to update the whole domain list. That means that WP Multisite WaaS will replace all domains you might have there with the list of mapped domains of the network every time a new domain is added."
+msgid "The Cloudways API is a bit strange in that it doesn’t offer a way to add or remove just one domain, only a way to update the whole domain list. That means that Multisite Ultimate will replace all domains you might have there with the list of mapped domains of the network every time a new domain is added."
 msgstr ""
 
 #: inc/integrations/host-providers/class-cloudways-host-provider.php:167
@@ -15745,7 +15745,7 @@ msgid "Event Type"
 msgstr ""
 
 #: inc/list-tables/class-inside-events-list-table.php:63
-msgid "Automatically processed by WP Multisite WaaS"
+msgid "Automatically processed by Multisite Ultimate"
 msgstr ""
 
 #. translators: %s is a placeholder for the human-readable time difference, e.g., "2 hours ago"
@@ -16134,7 +16134,7 @@ msgid "Single Sign-On Settings"
 msgstr ""
 
 #: inc/managers/class-domain-manager.php:339
-msgid "Settings to configure the Single Sign-On functionality of WP Multisite WaaS, responsible for keeping customers and admins logged in across all network domains."
+msgid "Settings to configure the Single Sign-On functionality of Multisite Ultimate, responsible for keeping customers and admins logged in across all network domains."
 msgstr ""
 
 #: inc/managers/class-domain-manager.php:348
@@ -16247,7 +16247,7 @@ msgid "\"From\" Name"
 msgstr ""
 
 #: inc/managers/class-email-manager.php:232
-msgid "How the sender name will appear in emails sent by WP Multisite WaaS."
+msgid "How the sender name will appear in emails sent by Multisite Ultimate."
 msgstr ""
 
 #: inc/managers/class-email-manager.php:246
@@ -16255,7 +16255,7 @@ msgid "\"From\" E-mail"
 msgstr ""
 
 #: inc/managers/class-email-manager.php:247
-msgid "How the sender email will appear in emails sent by WP Multisite WaaS."
+msgid "How the sender email will appear in emails sent by Multisite Ultimate."
 msgstr ""
 
 #: inc/managers/class-email-manager.php:261
@@ -16367,7 +16367,7 @@ msgid "New Renewal Payment Created"
 msgstr ""
 
 #: inc/managers/class-event-manager.php:452
-msgid "This event is fired every time a new renewal payment is created by WP Multisite WaaS."
+msgid "This event is fired every time a new renewal payment is created by Multisite Ultimate."
 msgstr ""
 
 #. translators: %1$s is the model name, %2$s is the event type.
@@ -16379,7 +16379,7 @@ msgstr ""
 #. translators: %1$s is the model name, %2$s is the event type.
 #: inc/managers/class-event-manager.php:475
 #, php-format
-msgid "This event is fired every time a %1$s is %2$s by WP Multisite WaaS."
+msgid "This event is fired every time a %1$s is %2$s by Multisite Ultimate."
 msgstr ""
 
 #. Translators:  1: Number of successfully removed events.  2: Number of failed events to remove.
@@ -16750,7 +16750,7 @@ msgid "Hide Admin Notices on Sites"
 msgstr ""
 
 #: inc/managers/class-notification-manager.php:125
-msgid "Hide all admin notices on network sites, except for WP Multisite WaaS broadcasts."
+msgid "Hide all admin notices on network sites, except for Multisite Ultimate broadcasts."
 msgstr ""
 
 #: inc/managers/class-payment-manager.php:172
@@ -16798,11 +16798,11 @@ msgid "We were not able to fetch the screenshot."
 msgstr ""
 
 #: inc/managers/class-site-manager.php:421
-msgid "WP Multisite WaaS - Search Engines"
+msgid "Multisite Ultimate - Search Engines"
 msgstr ""
 
 #: inc/managers/class-site-manager.php:438
-msgid "Your WP Multisite WaaS settings are configured to <strong>prevent search engines such as Google from indexing your template sites</strong>."
+msgid "Your Multisite Ultimate settings are configured to <strong>prevent search engines such as Google from indexing your template sites</strong>."
 msgstr ""
 
 #. translators: %s: link to the settings page
@@ -16812,11 +16812,11 @@ msgid "If you are experiencing negative SEO impacts on other sites in your netwo
 msgstr ""
 
 #: inc/managers/class-site-manager.php:542
-msgid "Hey there! We highly recommend managing your network sites using the WP Multisite WaaS &rarr; Sites page. <br>If you want to avoid confusion, you can also hide this page from the admin panel completely on the WP Multisite WaaS &rarr; Settings &rarr; Whitelabel options."
+msgid "Hey there! We highly recommend managing your network sites using the Multisite Ultimate &rarr; Sites page. <br>If you want to avoid confusion, you can also hide this page from the admin panel completely on the Multisite Ultimate &rarr; Settings &rarr; Whitelabel options."
 msgstr ""
 
 #: inc/managers/class-site-manager.php:551
-msgid "Go to the WP Multisite WaaS Sites page &rarr;"
+msgid "Go to the Multisite Ultimate Sites page &rarr;"
 msgstr ""
 
 #: inc/managers/class-site-manager.php:555
@@ -17146,7 +17146,7 @@ msgid "Inclusive Tax"
 msgstr ""
 
 #: inc/tax/class-tax.php:127
-msgid "Enable this option if your prices include taxes. In that case, WP Multisite WaaS will calculate the included tax instead of adding taxes to the price."
+msgid "Enable this option if your prices include taxes. In that case, Multisite Ultimate will calculate the included tax instead of adding taxes to the price."
 msgstr ""
 
 #: inc/tax/class-tax.php:189
@@ -18918,10 +18918,10 @@ msgstr ""
 msgid "Change"
 msgstr ""
 
-#. translators: %1\$s: date, %2\$s: amount.
+#. translators: %1$s: date, %2$s: amount.
 #: views/dashboard-widgets/current-membership.php:96
 #, php-format
-msgid "There's a pending change for this membership, scheduled to take place on <strong>%1$s</strong>. Changing to <strong>%2$s</strong>."
+msgid "There's a pending change for this membership, scheduled to take place on %1$s. Changing to %2$s."
 msgstr ""
 
 #: views/dashboard-widgets/current-membership.php:229
@@ -19759,7 +19759,7 @@ msgstr ""
 #. translators: % site title
 #: views/wizards/host-integrations/ready.php:17
 #, php-format
-msgid "The integration with %s was correctly setup and is now ready! Now, every time a new domain is added to your platform, WP Multisite WaaS will sync that with your application automatically."
+msgid "The integration with %s was correctly setup and is now ready! Now, every time a new domain is added to your platform, Multisite Ultimate will sync that with your application automatically."
 msgstr ""
 
 #: views/wizards/host-integrations/ready.php:29
@@ -19823,7 +19823,7 @@ msgid "Make sure the RunCloud API toggle is turned ON"
 msgstr ""
 
 #: views/wizards/host-integrations/runcloud-instructions.php:34
-msgid "otherwise RunCloud won’t accept WP Multisite WaaS API calls"
+msgid "otherwise RunCloud won’t accept Multisite Ultimate API calls"
 msgstr ""
 
 #: views/wizards/host-integrations/runcloud-instructions.php:38
@@ -19925,19 +19925,19 @@ msgstr ""
 #. translators: %1$s developer's name, %2$s company name
 #: views/wizards/setup/ready.php:21
 #, php-format
-msgid "WP Multisite WaaS would not be possible without the work of %1$s and %2$s."
+msgid "Multisite Ultimate would not be possible without the work of %1$s and %2$s."
 msgstr ""
 
 #. translators: %s GitHub link
 #: views/wizards/setup/ready.php:26
 #, php-format
-msgid "WP Multisite WaaS is maintained by volunteer open source developers. Please consider sponsoring the project on %s."
+msgid "Multisite Ultimate is maintained by volunteer open source developers. Please consider sponsoring the project on %s."
 msgstr ""
 
 #. translators: %s support page link
 #: views/wizards/setup/ready.php:31
 #, php-format
-msgid "Paid support is available. Go to %s to find an expert who can assist in setting up WP Multisite WaaS or custom development."
+msgid "Paid support is available. Go to %s to find an expert who can assist in setting up Multisite Ultimate or custom development."
 msgstr ""
 
 #. translators: %s support page link
@@ -19954,7 +19954,7 @@ msgid "Thanks!"
 msgstr ""
 
 #: views/wizards/setup/requirements_table.php:11
-msgid "WP Multisite WaaS Requires:"
+msgid "Multisite Ultimate Requires:"
 msgstr ""
 
 #: views/wizards/setup/requirements_table.php:19
@@ -19989,7 +19989,7 @@ msgid "Condition"
 msgstr ""
 
 #: views/wizards/setup/requirements_table.php:90
-msgid "It looks like your hosting environment does not support the current version of WP Multisite WaaS. Visit the <strong>Read More</strong> links on each item to see what steps you need to take to bring your environment up to the WP Multisite WaaS current requirements."
+msgid "It looks like your hosting environment does not support the current version of Multisite Ultimate. Visit the <strong>Read More</strong> links on each item to see what steps you need to take to bring your environment up to the Multisite Ultimate current requirements."
 msgstr ""
 
 #: views/wizards/setup/support_terms.php:9

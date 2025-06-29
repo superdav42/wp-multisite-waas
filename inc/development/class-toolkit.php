@@ -346,7 +346,7 @@ class Toolkit {
 	}
 
 	/**
-	 * Manually enqueues query monitor and WP Multisite WaaS styles.
+	 * Manually enqueues query monitor and Multisite Ultimate styles.
 	 *
 	 * @since 2.0.11
 	 *

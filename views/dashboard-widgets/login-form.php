@@ -16,7 +16,7 @@
 		<?php
 
 		// translators: 1$s is the display name of the user currently logged in.
-		printf(wp_kses_post(__('Not %1$s? <a href="%2$s" class="wu-no-underline">Log in</a> using your account.', 'wp-multisite-waas')), esc_html(wp_get_current_user()->display_name), esc_url($login_url));
+		printf(wp_kses_post(__('Not %1$s? <a href="%2$s" class="wu-no-underline">Log in</a> using your account.', 'multisite-ultimate')), esc_html(wp_get_current_user()->display_name), esc_url($login_url));
 
 		?>
 
@@ -44,12 +44,12 @@
 		<div class="wu-ml-auto">
 
 			<a
-			title="<?php esc_attr_e('Update Billing Address', 'wp-multisite-waas'); ?>"
+			title="<?php esc_attr_e('Update Billing Address', 'multisite-ultimate'); ?>"
 			class="wu-text-sm wu-no-underline button"
 			href="<?php echo esc_attr(wu_get_registration_url()); ?>"
 			>
 
-			<?php esc_html_e('Create an Account', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Create an Account', 'multisite-ultimate'); ?>
 
 			</a>
 

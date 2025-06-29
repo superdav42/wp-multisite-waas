@@ -336,7 +336,7 @@ function wu_print_signup_field($field_slug, $field, $results) {
       <input name="signup_form_id" type="hidden" value="1">
 
       <button id="wp-submit" <?php echo $attributes; ?> type="submit" class="button button-primary button-large button-next" value="1" name="save_step">
-			<?php esc_attr_e($field['name'], 'wp-multisite-waas'); ?>
+			<?php esc_attr_e($field['name'], 'multisite-ultimate'); ?>
       </button>
 
 			<?php wp_nonce_field('signup_form_1', '_signup_form'); ?>
@@ -412,7 +412,7 @@ function wu_print_signup_field($field_slug, $field, $results) {
 
 }
 /**
- * Alias function to allow creation of users for WP Multisite WaaS.
+ * Alias function to allow creation of users for Multisite Ultimate.
  *
  * User Data should contain: user_login, user_email, user_pass;
  * Plan Data should contain: plan_id, plan_freq;
@@ -430,7 +430,7 @@ function wu_create_user(array $user_data, array $plan_data, array $user_meta = [
 }
 
 /**
- * Alias function to allow creation of sites for WP Multisite WaaS.
+ * Alias function to allow creation of sites for Multisite Ultimate.
  *
  * Site Data should contain: blog_title, blogname, and role;
  * Site Meta is an associative array containing key => value pairs to be saved as meta fields on that site.

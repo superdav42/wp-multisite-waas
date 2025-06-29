@@ -42,11 +42,11 @@ function wu_replace_scheme($url, $new_scheme = '') {
 }
 
 /**
- * Wrapper to the network_admin_url function for WP Multisite WaaS admin urls.
+ * Wrapper to the network_admin_url function for Multisite Ultimate admin urls.
  *
  * @since 2.0.0
  *
- * @param string $path WP Multisite WaaS page.
+ * @param string $path Multisite Ultimate page.
  * @param array  $query URL query parameters.
  * @return string
  */

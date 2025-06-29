@@ -9,7 +9,7 @@
 
 	<ul class="lg:wu-flex wu-my-0 wu-mx-0">
 
-	<li class="wu-p-2 wu-w-full md:wu-w-4/12 wu-relative" <?php echo wu_tooltip_text(__('MRR stands for Monthly Recurring Revenue', 'wp-multisite-waas')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+	<li class="wu-p-2 wu-w-full md:wu-w-4/12 wu-relative" <?php echo wu_tooltip_text(__('MRR stands for Monthly Recurring Revenue', 'multisite-ultimate')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 
 		<div>
 
@@ -20,7 +20,7 @@
 		</div>
 
 		<div class="wu-text-md wu-text-gray-600">
-		<span class="wu-block"><?php esc_html_e('MRR', 'wp-multisite-waas'); ?></span>
+		<span class="wu-block"><?php esc_html_e('MRR', 'multisite-ultimate'); ?></span>
 		</div>
 
 	</li>
@@ -36,7 +36,7 @@
 		</div>
 
 		<div class="wu-text-md wu-text-gray-600">
-		<span class="wu-block"><?php esc_html_e('Gross Revenue', 'wp-multisite-waas'); ?></span>
+		<span class="wu-block"><?php esc_html_e('Gross Revenue', 'multisite-ultimate'); ?></span>
 		</div>
 
 	</li>
@@ -52,7 +52,7 @@
 		</div>
 
 		<div class="wu-text-md wu-text-gray-600">
-		<span class="wu-block"><?php esc_html_e('Refunded', 'wp-multisite-waas'); ?></span>
+		<span class="wu-block"><?php esc_html_e('Refunded', 'multisite-ultimate'); ?></span>
 		</div>
 
 	</li>
@@ -65,8 +65,8 @@
 
 		<thead>
 			<tr>
-			<th><?php esc_html_e('Product', 'wp-multisite-waas'); ?></th>
-			<th class="wu-text-right"><?php esc_html_e('Revenue', 'wp-multisite-waas'); ?></th>
+			<th><?php esc_html_e('Product', 'multisite-ultimate'); ?></th>
+			<th class="wu-text-right"><?php esc_html_e('Revenue', 'multisite-ultimate'); ?></th>
 			</tr>
 		</thead>
 
@@ -91,7 +91,7 @@
 
 			<tr>
 				<td colspan="2">
-				<?php esc_html_e('No Products found.', 'wp-multisite-waas'); ?>
+				<?php esc_html_e('No Products found.', 'multisite-ultimate'); ?>
 				</td>
 			</tr>
 

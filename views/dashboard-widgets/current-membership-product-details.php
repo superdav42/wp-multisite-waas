@@ -38,7 +38,7 @@
 
 	<span class="wu-text-xs wu-uppercase wu-font-bold wu-block">
 
-		<?php esc_html_e('Product Description:', 'wp-multisite-waas'); ?>
+		<?php esc_html_e('Product Description:', 'multisite-ultimate'); ?>
 
 	</span>
 
@@ -48,7 +48,7 @@
 
 	<span class="wu-text-xs wu-uppercase wu-font-bold wu-block">
 
-	<?php esc_html_e('Product Characteristics:', 'wp-multisite-waas'); ?>
+	<?php esc_html_e('Product Characteristics:', 'multisite-ultimate'); ?>
 
 	</span>
 

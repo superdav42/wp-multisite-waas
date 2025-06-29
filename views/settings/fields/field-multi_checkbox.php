@@ -57,7 +57,7 @@
 		</div>
 
 		<button type="button" data-select-all="multiselect-<?php echo esc_attr($field_slug); ?>" class="button wu-select-all">
-			<?php esc_html_e('Check / Uncheck All', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Check / Uncheck All', 'multisite-ultimate'); ?>
 		</button>
 
 		<br>

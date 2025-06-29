@@ -1,6 +1,6 @@
 <?php
 /**
- * WP Multisite WaaS overview collector.
+ * Multisite Ultimate overview collector.
  *
  * @package query-monitor
  * @since 2.0.11

@@ -13,8 +13,6 @@ $setting = is_array($setting) ? $setting : [];
 
 $placeholder = $field['placeholder'] ?? '';
 
-// WU_Scripts()->enqueue_select2();
-
 ?>
 
 <tr>

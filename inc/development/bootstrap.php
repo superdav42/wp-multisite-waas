@@ -2,7 +2,7 @@
 /**
  * Development Bootstrap File
  *
- * This file loads some of the tooling we use to develop WP Multisite WaaS.
+ * This file loads some of the tooling we use to develop Multisite Ultimate.
  * It is not part of the final zip file we ship, so there's no need to worry
  * about things added in here.
  *

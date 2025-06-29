@@ -195,7 +195,7 @@ class Webhook_Manager extends Base_Manager {
 		if ( ! current_user_can('manage_network')) {
 			wp_send_json(
 				[
-					'response' => __('You do not have enough permissions to send a test event.', 'wp-multisite-waas'),
+					'response' => __('You do not have enough permissions to send a test event.', 'multisite-ultimate'),
 					'webhooks' => Webhook::get_items_as_array(),
 				]
 			);
@@ -249,7 +249,7 @@ class Webhook_Manager extends Base_Manager {
 		';
 
 		if ( ! current_user_can('manage_network')) {
-			esc_html_e('You do not have enough permissions to read the logs of this webhook.', 'wp-multisite-waas');
+			esc_html_e('You do not have enough permissions to read the logs of this webhook.', 'multisite-ultimate');
 			exit;
 		}
 
@@ -293,7 +293,7 @@ class Webhook_Manager extends Base_Manager {
 		$message = sprintf('Sent a %s event to the URL %s with data: %s ', $event_name, $url, wp_json_encode($data));
 
 		if ( ! $is_error) {
-			$message .= empty($response) ? sprintf('Got response: %s', $response) : 'To debug the remote server response, turn the "Wait for Response" option on the WP Multisite WaaS Settings > API & Webhooks Tab';
+			$message .= empty($response) ? sprintf('Got response: %s', $response) : 'To debug the remote server response, turn the "Wait for Response" option on the Multisite Ultimate Settings > API & Webhooks Tab';
 		} else {
 			$message .= sprintf('Got error: %s', $response);
 		}

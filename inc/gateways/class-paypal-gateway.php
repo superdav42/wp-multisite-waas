@@ -189,8 +189,8 @@ class PayPal_Gateway extends Base_Gateway {
 			'payment-gateways',
 			'paypal_header',
 			[
-				'title'           => __('PayPal', 'wp-multisite-waas'),
-				'desc'            => __('Use the settings section below to configure PayPal Express as a payment method.', 'wp-multisite-waas'),
+				'title'           => __('PayPal', 'multisite-ultimate'),
+				'desc'            => __('Use the settings section below to configure PayPal Express as a payment method.', 'multisite-ultimate'),
 				'type'            => 'header',
 				'show_as_submenu' => true,
 				'require'         => [
@@ -203,8 +203,8 @@ class PayPal_Gateway extends Base_Gateway {
 			'payment-gateways',
 			'paypal_sandbox_mode',
 			[
-				'title'     => __('PayPal Sandbox Mode', 'wp-multisite-waas'),
-				'desc'      => __('Toggle this to put PayPal on sandbox mode. This is useful for testing and making sure PayPal is correctly setup to handle your payments.', 'wp-multisite-waas'),
+				'title'     => __('PayPal Sandbox Mode', 'multisite-ultimate'),
+				'desc'      => __('Toggle this to put PayPal on sandbox mode. This is useful for testing and making sure PayPal is correctly setup to handle your payments.', 'multisite-ultimate'),
 				'type'      => 'toggle',
 				'default'   => 0,
 				'html_attr' => [
@@ -220,10 +220,10 @@ class PayPal_Gateway extends Base_Gateway {
 			'payment-gateways',
 			'paypal_test_username',
 			[
-				'title'       => __('PayPal Test Username', 'wp-multisite-waas'),
+				'title'       => __('PayPal Test Username', 'multisite-ultimate'),
 				'desc'        => '',
-				'tooltip'     => __('Make sure you are placing the TEST username, not the live one.', 'wp-multisite-waas'),
-				'placeholder' => __('e.g. username_api1.username.co', 'wp-multisite-waas'),
+				'tooltip'     => __('Make sure you are placing the TEST username, not the live one.', 'multisite-ultimate'),
+				'placeholder' => __('e.g. username_api1.username.co', 'multisite-ultimate'),
 				'type'        => 'text',
 				'default'     => '',
 				'capability'  => 'manage_api_keys',
@@ -238,10 +238,10 @@ class PayPal_Gateway extends Base_Gateway {
 			'payment-gateways',
 			'paypal_test_password',
 			[
-				'title'       => __('PayPal Test Password', 'wp-multisite-waas'),
+				'title'       => __('PayPal Test Password', 'multisite-ultimate'),
 				'desc'        => '',
-				'tooltip'     => __('Make sure you are placing the TEST password, not the live one.', 'wp-multisite-waas'),
-				'placeholder' => __('e.g. IUOSABK987HJG88N', 'wp-multisite-waas'),
+				'tooltip'     => __('Make sure you are placing the TEST password, not the live one.', 'multisite-ultimate'),
+				'placeholder' => __('e.g. IUOSABK987HJG88N', 'multisite-ultimate'),
 				'type'        => 'text',
 				'default'     => '',
 				'capability'  => 'manage_api_keys',
@@ -256,10 +256,10 @@ class PayPal_Gateway extends Base_Gateway {
 			'payment-gateways',
 			'paypal_test_signature',
 			[
-				'title'       => __('PayPal Test Signature', 'wp-multisite-waas'),
+				'title'       => __('PayPal Test Signature', 'multisite-ultimate'),
 				'desc'        => '',
-				'tooltip'     => __('Make sure you are placing the TEST signature, not the live one.', 'wp-multisite-waas'),
-				'placeholder' => __('e.g. AFcpSSRl31ADOdqnHNv4KZdVHEQzdMEEsWxV21C7fd0v3bYYYRCwYxqo', 'wp-multisite-waas'),
+				'tooltip'     => __('Make sure you are placing the TEST signature, not the live one.', 'multisite-ultimate'),
+				'placeholder' => __('e.g. AFcpSSRl31ADOdqnHNv4KZdVHEQzdMEEsWxV21C7fd0v3bYYYRCwYxqo', 'multisite-ultimate'),
 				'type'        => 'text',
 				'default'     => '',
 				'capability'  => 'manage_api_keys',
@@ -274,10 +274,10 @@ class PayPal_Gateway extends Base_Gateway {
 			'payment-gateways',
 			'paypal_live_username',
 			[
-				'title'       => __('PayPal Live Username', 'wp-multisite-waas'),
+				'title'       => __('PayPal Live Username', 'multisite-ultimate'),
 				'desc'        => '',
-				'tooltip'     => __('Make sure you are placing the LIVE username, not the test one.', 'wp-multisite-waas'),
-				'placeholder' => __('e.g. username_api1.username.co', 'wp-multisite-waas'),
+				'tooltip'     => __('Make sure you are placing the LIVE username, not the test one.', 'multisite-ultimate'),
+				'placeholder' => __('e.g. username_api1.username.co', 'multisite-ultimate'),
 				'type'        => 'text',
 				'default'     => '',
 				'capability'  => 'manage_api_keys',
@@ -292,10 +292,10 @@ class PayPal_Gateway extends Base_Gateway {
 			'payment-gateways',
 			'paypal_live_password',
 			[
-				'title'       => __('PayPal Live Password', 'wp-multisite-waas'),
+				'title'       => __('PayPal Live Password', 'multisite-ultimate'),
 				'desc'        => '',
-				'tooltip'     => __('Make sure you are placing the LIVE password, not the test one.', 'wp-multisite-waas'),
-				'placeholder' => __('e.g. IUOSABK987HJG88N', 'wp-multisite-waas'),
+				'tooltip'     => __('Make sure you are placing the LIVE password, not the test one.', 'multisite-ultimate'),
+				'placeholder' => __('e.g. IUOSABK987HJG88N', 'multisite-ultimate'),
 				'type'        => 'text',
 				'default'     => '',
 				'capability'  => 'manage_api_keys',
@@ -310,10 +310,10 @@ class PayPal_Gateway extends Base_Gateway {
 			'payment-gateways',
 			'paypal_live_signature',
 			[
-				'title'       => __('PayPal Live Signature', 'wp-multisite-waas'),
+				'title'       => __('PayPal Live Signature', 'multisite-ultimate'),
 				'desc'        => '',
-				'tooltip'     => __('Make sure you are placing the LIVE signature, not the test one.', 'wp-multisite-waas'),
-				'placeholder' => __('e.g. AFcpSSRl31ADOdqnHNv4KZdVHEQzdMEEsWxV21C7fd0v3bYYYRCwYxqo', 'wp-multisite-waas'),
+				'tooltip'     => __('Make sure you are placing the LIVE signature, not the test one.', 'multisite-ultimate'),
+				'placeholder' => __('e.g. AFcpSSRl31ADOdqnHNv4KZdVHEQzdMEEsWxV21C7fd0v3bYYYRCwYxqo', 'multisite-ultimate'),
 				'type'        => 'text',
 				'default'     => '',
 				'capability'  => 'manage_api_keys',
@@ -341,7 +341,7 @@ class PayPal_Gateway extends Base_Gateway {
 		$gateway_subscription_id = $membership->get_gateway_subscription_id();
 
 		if (empty($gateway_subscription_id)) {
-			return new \WP_Error('wu_paypal_no_subscription_id', __('Error: No gateway subscription ID found for this membership.', 'wp-multisite-waas'));
+			return new \WP_Error('wu_paypal_no_subscription_id', __('Error: No gateway subscription ID found for this membership.', 'multisite-ultimate'));
 		}
 
 		$original = $membership->_get_original();
@@ -349,7 +349,7 @@ class PayPal_Gateway extends Base_Gateway {
 		$has_duration_change = $membership->get_duration() !== absint(wu_get_isset($original, 'duration')) || $membership->get_duration_unit() !== wu_get_isset($original, 'duration_unit');
 
 		if ($has_duration_change) {
-			return new \WP_Error('wu_paypal_no_duration_change', __('Error: PayPal does not support changing the duration of a subscription.', 'wp-multisite-waas'));
+			return new \WP_Error('wu_paypal_no_duration_change', __('Error: PayPal does not support changing the duration of a subscription.', 'multisite-ultimate'));
 		}
 
 		/**
@@ -367,7 +367,7 @@ class PayPal_Gateway extends Base_Gateway {
 			'VERSION'   => '124',
 			'METHOD'    => 'UpdateRecurringPaymentsProfile',
 			'PROFILEID' => $gateway_subscription_id,
-			'NOTE'      => __('Membership update', 'wp-multisite-waas'),
+			'NOTE'      => __('Membership update', 'multisite-ultimate'),
 			'DESC'      => $description,
 			'AMT'       => $temp_payment->get_total() - $temp_payment->get_tax_total(),
 			'TAXAMT'    => $temp_payment->get_tax_total(),
@@ -399,7 +399,7 @@ class PayPal_Gateway extends Base_Gateway {
 		}
 
 		if ('failure' === strtolower((string) $body['ACK'])) {
-			return new \WP_Error($body['L_ERRORCODE0'], __('PayPal Error:', 'wp-multisite-waas') . ' ' . $body['L_LONGMESSAGE0']);
+			return new \WP_Error($body['L_ERRORCODE0'], __('PayPal Error:', 'multisite-ultimate') . ' ' . $body['L_LONGMESSAGE0']);
 		}
 
 		return true;
@@ -504,7 +504,7 @@ class PayPal_Gateway extends Base_Gateway {
 
 			$date = wp_date(get_option('date_format'), strtotime($membership->get_date_trial_end(), wu_get_current_time('timestamp', true)));
 			// translators: %1$s is the date it will end
-			$notes[] = sprintf(__('Your trial period will end on %1$s.', 'wp-multisite-waas'), $date);
+			$notes[] = sprintf(__('Your trial period will end on %1$s.', 'multisite-ultimate'), $date);
 		}
 
 		if ($is_recurring && $should_auto_renew) {
@@ -523,25 +523,25 @@ class PayPal_Gateway extends Base_Gateway {
 				if ('downgrade' === $type) {
 					if ($is_trial_setup) {
 						// translators: $1$s the date membership will start, $2$s amount to be billed.
-						$notes[] = sprintf(__('Your updated membership will start on $1$s, from that date you will be billed %2$s every month.', 'wp-multisite-waas'), $date, $recurring_total_format);
+						$notes[] = sprintf(__('Your updated membership will start on $1$s, from that date you will be billed %2$s every month.', 'multisite-ultimate'), $date, $recurring_total_format);
 					} else {
 						$date_renew = wp_date(get_option('date_format'), strtotime($membership->get_date_expiration(), wu_get_current_time('timestamp', true)));
 						// translators: $1$s the date membership will start, $2$s amount to be billed, %3$s the description of how often.
-						$notes[] = sprintf(__('Your updated membership will start on %1$s, from that date you will be billed %2$s %3$s.', 'wp-multisite-waas'), $date_renew, $recurring_total_format, $desc);
+						$notes[] = sprintf(__('Your updated membership will start on %1$s, from that date you will be billed %2$s %3$s.', 'multisite-ultimate'), $date_renew, $recurring_total_format, $desc);
 					}
 				} elseif ($is_trial_setup) {
 					// translators: $1$s amount to be billed, $2$s how often
-					$notes[] = sprintf(__('After the first payment you will be billed %1$s %2$s.', 'wp-multisite-waas'), $recurring_total_format, $desc);
+					$notes[] = sprintf(__('After the first payment you will be billed %1$s %2$s.', 'multisite-ultimate'), $recurring_total_format, $desc);
 				} else {
 					// translators: $1$s amount to be billed, $2$s how often
-					$notes[] = sprintf(__('After this payment you will be billed %1$s %2$s.', 'wp-multisite-waas'), $recurring_total_format, $desc);
+					$notes[] = sprintf(__('After this payment you will be billed %1$s %2$s.', 'multisite-ultimate'), $recurring_total_format, $desc);
 				}
 			} elseif ($is_trial_setup) {
 					// translators: $1$s amount to be billed, $2$s how often
-					$notes[] = sprintf(__('From that date, you will be billed %1$s %2$s.', 'wp-multisite-waas'), $recurring_total_format, $desc);
+					$notes[] = sprintf(__('From that date, you will be billed %1$s %2$s.', 'multisite-ultimate'), $recurring_total_format, $desc);
 			} else {
 				// translators: $1$s how often
-				$notes[] = sprintf(__('After this payment you will be billed %1$s.', 'wp-multisite-waas'), $desc);
+				$notes[] = sprintf(__('After this payment you will be billed %1$s.', 'multisite-ultimate'), $desc);
 			}
 		}
 
@@ -581,12 +581,12 @@ class PayPal_Gateway extends Base_Gateway {
 		$discounts_total = $cart->get_total_discounts();
 
 		if ( ! empty($discounts_total)) {
-			__('Account credit and other discounts', 'wp-multisite-waas');
+			__('Account credit and other discounts', 'multisite-ultimate');
 
 			$args = array_merge(
 				$args,
 				[
-					"L_PAYMENTREQUEST_0_NAME{$product_index}" => __('Account credit and other discounts', 'wp-multisite-waas'),
+					"L_PAYMENTREQUEST_0_NAME{$product_index}" => __('Account credit and other discounts', 'multisite-ultimate'),
 					"L_PAYMENTREQUEST_0_AMT{$product_index}"  => $discounts_total,
 					"L_PAYMENTREQUEST_0_QTY{$product_index}"  => 1,
 				]
@@ -657,7 +657,7 @@ class PayPal_Gateway extends Base_Gateway {
 		/*
 		 * If we get here, something went wrong.
 		 */
-		throw new \Exception(esc_html__('Something has gone wrong, please try again', 'wp-multisite-waas'));
+		throw new \Exception(esc_html__('Something has gone wrong, please try again', 'multisite-ultimate'));
 	}
 
 	/**
@@ -717,7 +717,7 @@ class PayPal_Gateway extends Base_Gateway {
 		$gateway_payment_id = $payment->get_gateway_payment_id();
 
 		if (empty($gateway_payment_id)) {
-			throw new \Exception(esc_html__('Gateway payment ID not found. Cannot process refund automatically.', 'wp-multisite-waas'));
+			throw new \Exception(esc_html__('Gateway payment ID not found. Cannot process refund automatically.', 'multisite-ultimate'));
 		}
 
 		$refund_type = 'Partial';
@@ -779,7 +779,7 @@ class PayPal_Gateway extends Base_Gateway {
 			return true;
 		}
 
-		throw new \Exception(esc_html__('Something went wrong.', 'wp-multisite-waas'));
+		throw new \Exception(esc_html__('Something went wrong.', 'multisite-ultimate'));
 	}
 
 	/**
@@ -794,7 +794,7 @@ class PayPal_Gateway extends Base_Gateway {
 	 */
 	public function fields() {
 
-		$message = __('You will be redirected to PayPal to complete the purchase.', 'wp-multisite-waas');
+		$message = __('You will be redirected to PayPal to complete the purchase.', 'multisite-ultimate');
 
 		return sprintf('<p class="wu-p-4 wu-bg-yellow-200">%s</p>', $message);
 	}
@@ -830,7 +830,7 @@ class PayPal_Gateway extends Base_Gateway {
 			$details = $this->get_checkout_details(wu_request('token'));
 
 			if (empty($details)) {
-				$error = new \WP_Error(esc_html__('PayPal token no longer valid.', 'wp-multisite-waas'));
+				$error = new \WP_Error(esc_html__('PayPal token no longer valid.', 'multisite-ultimate'));
 
 				wp_die($error); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
@@ -846,7 +846,7 @@ class PayPal_Gateway extends Base_Gateway {
 			* Bail.
 			*/
 			if (empty($payment)) {
-				$error = new \WP_Error(esc_html__('Pending payment does not exist.', 'wp-multisite-waas'));
+				$error = new \WP_Error(esc_html__('Pending payment does not exist.', 'multisite-ultimate'));
 
 				wp_die($error); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
@@ -860,7 +860,7 @@ class PayPal_Gateway extends Base_Gateway {
 			$original_cart = $payment->get_meta('wu_original_cart');
 
 			if (empty($original_cart)) {
-				$error = new \WP_Error('no-cart', esc_html__('Original cart does not exist.', 'wp-multisite-waas'));
+				$error = new \WP_Error('no-cart', esc_html__('Original cart does not exist.', 'multisite-ultimate'));
 
 				wp_die($error); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
@@ -874,7 +874,7 @@ class PayPal_Gateway extends Base_Gateway {
 			$is_recurring      = $original_cart->has_recurring();
 
 			if (empty($membership) || empty($customer)) {
-				$error = new \WP_Error('no-membership', esc_html__('Missing membership or customer data.', 'wp-multisite-waas'));
+				$error = new \WP_Error('no-membership', esc_html__('Missing membership or customer data.', 'multisite-ultimate'));
 
 				wp_die($error); // phpcs:ignore WordPress.Security.EscapeOutput
 			}
@@ -929,7 +929,7 @@ class PayPal_Gateway extends Base_Gateway {
 		}
 
 		if (empty($membership)) {
-			throw new \Exception(esc_html__('Exiting PayPal Express IPN - membership ID not found.', 'wp-multisite-waas'));
+			throw new \Exception(esc_html__('Exiting PayPal Express IPN - membership ID not found.', 'multisite-ultimate'));
 		}
 
 		wu_log_add('paypal', sprintf('Processing IPN for membership #%d.', $membership->get_id()));
@@ -1048,15 +1048,15 @@ class PayPal_Gateway extends Base_Gateway {
 
 					// Recurring payment failed.
 					// translators: %s: Transaction ID
-					$membership->add_note(['text' => sprintf(__('Transaction ID %s failed in PayPal.', 'wp-multisite-waas'), $posted['txn_id'])]);
+					$membership->add_note(['text' => sprintf(__('Transaction ID %s failed in PayPal.', 'multisite-ultimate'), $posted['txn_id'])]);
 
 					die('Subscription payment failed');
 				} elseif ('pending' === strtolower((string) $posted['payment_status'])) {
 
 					// Recurring payment pending (such as echeck).
-					$pending_reason = ! empty($posted['pending_reason']) ? $posted['pending_reason'] : __('unknown', 'wp-multisite-waas');
+					$pending_reason = ! empty($posted['pending_reason']) ? $posted['pending_reason'] : __('unknown', 'multisite-ultimate');
 					// translators: %1$s: Transaction ID, %2$s: Pending reason
-					$membership->add_note(['text' => sprintf(__('Transaction ID %1$s is pending in PayPal for reason: %2$s', 'wp-multisite-waas'), $posted['txn_id'], $pending_reason)]);
+					$membership->add_note(['text' => sprintf(__('Transaction ID %1$s is pending in PayPal for reason: %2$s', 'multisite-ultimate'), $posted['txn_id'], $pending_reason)]);
 
 					die('Subscription payment pending');
 				}
@@ -1100,9 +1100,9 @@ class PayPal_Gateway extends Base_Gateway {
 					// Initial payment failed, so set the user back to pending.
 					$membership->set_status('pending');
 
-					$membership->add_note(['text' => __('Initial payment failed in PayPal Express.', 'wp-multisite-waas')]);
+					$membership->add_note(['text' => __('Initial payment failed in PayPal Express.', 'multisite-ultimate')]);
 
-					$this->error_message = __('Initial payment failed.', 'wp-multisite-waas');
+					$this->error_message = __('Initial payment failed.', 'multisite-ultimate');
 				} else {
 
 					// If this is a completed payment plan, we can skip any cancellation actions. This is handled in renewals.
@@ -1115,7 +1115,7 @@ class PayPal_Gateway extends Base_Gateway {
 					// user is marked as cancelled but retains access until end of term
 					$membership->cancel();
 
-					$membership->add_note(['text' => __('Membership cancelled via PayPal Express IPN.', 'wp-multisite-waas')]);
+					$membership->add_note(['text' => __('Membership cancelled via PayPal Express IPN.', 'multisite-ultimate')]);
 				}
 
 				break;
@@ -1358,8 +1358,8 @@ class PayPal_Gateway extends Base_Gateway {
 			}
 		} else {
 			wp_die(
-				esc_html__('Something has gone wrong, please try again', 'wp-multisite-waas'),
-				esc_html__('Error', 'wp-multisite-waas'),
+				esc_html__('Something has gone wrong, please try again', 'multisite-ultimate'),
+				esc_html__('Error', 'multisite-ultimate'),
 				[
 					'back_link' => true,
 					'response'  => '401',
@@ -1513,8 +1513,8 @@ class PayPal_Gateway extends Base_Gateway {
 			}
 		} else {
 			wp_die(
-				esc_html__('Something has gone wrong, please try again', 'wp-multisite-waas'),
-				esc_html__('Error', 'wp-multisite-waas'),
+				esc_html__('Something has gone wrong, please try again', 'multisite-ultimate'),
+				esc_html__('Error', 'multisite-ultimate'),
 				[
 					'back_link' => true,
 					'response'  => '401',
@@ -1536,10 +1536,10 @@ class PayPal_Gateway extends Base_Gateway {
 		$checkout_details = $this->get_checkout_details($token);
 
 		if ( ! is_array($checkout_details)) {
-			$error = is_wp_error($checkout_details) ? $checkout_details->get_error_message() : __('Invalid response code from PayPal', 'wp-multisite-waas');
+			$error = is_wp_error($checkout_details) ? $checkout_details->get_error_message() : __('Invalid response code from PayPal', 'multisite-ultimate');
 
 			// translators: %s is the paypal error message.
-			return '<p>' . sprintf(__('An unexpected PayPal error occurred. Error message: %s.', 'wp-multisite-waas'), $error) . '</p>';
+			return '<p>' . sprintf(__('An unexpected PayPal error occurred. Error message: %s.', 'multisite-ultimate'), $error) . '</p>';
 		}
 
 		/*

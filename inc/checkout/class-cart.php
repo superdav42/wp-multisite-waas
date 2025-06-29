@@ -556,7 +556,7 @@ class Cart implements \JsonSerializable {
 		$payment = wu_get_payment($payment_id);
 
 		if ( ! $payment) {
-			$this->errors->add('payment_not_found', __('The payment in question was not found.', 'wp-multisite-waas'));
+			$this->errors->add('payment_not_found', __('The payment in question was not found.', 'multisite-ultimate'));
 
 			return true;
 		}
@@ -583,7 +583,7 @@ class Cart implements \JsonSerializable {
 		 * a payment can pay it. Let's check for that.
 		 */
 		if (empty($this->customer) || $this->customer->get_id() !== $payment->get_customer_id()) {
-			$this->errors->add('lacks_permission', __('You are not allowed to modify this payment.', 'wp-multisite-waas'));
+			$this->errors->add('lacks_permission', __('You are not allowed to modify this payment.', 'multisite-ultimate'));
 
 			return true;
 		}
@@ -594,7 +594,7 @@ class Cart implements \JsonSerializable {
 		$membership = $payment->get_membership();
 
 		if ( ! $membership) {
-			$this->errors->add('membership_not_found', __('The membership in question was not found.', 'wp-multisite-waas'));
+			$this->errors->add('membership_not_found', __('The membership in question was not found.', 'multisite-ultimate'));
 
 			return true;
 		}
@@ -683,7 +683,7 @@ class Cart implements \JsonSerializable {
 		);
 
 		if ( ! in_array($payment->get_status(), $allowed_status, true)) {
-			$this->errors->add('invalid_status', __('The payment in question has an invalid status.', 'wp-multisite-waas'));
+			$this->errors->add('invalid_status', __('The payment in question has an invalid status.', 'multisite-ultimate'));
 
 			return true;
 		}
@@ -742,7 +742,7 @@ class Cart implements \JsonSerializable {
 		$membership = wu_get_membership($membership_id);
 
 		if ( ! $membership) {
-			$this->errors->add('membership_not_found', __('The membership in question was not found.', 'wp-multisite-waas'));
+			$this->errors->add('membership_not_found', __('The membership in question was not found.', 'multisite-ultimate'));
 
 			return true;
 		}
@@ -762,7 +762,7 @@ class Cart implements \JsonSerializable {
 		 * Only the customer that owns a membership can change it.
 		 */
 		if (empty($this->customer) || $this->customer->get_id() !== $membership->get_customer_id()) {
-			$this->errors->add('lacks_permission', __('You are not allowed to modify this membership.', 'wp-multisite-waas'));
+			$this->errors->add('lacks_permission', __('You are not allowed to modify this membership.', 'multisite-ultimate'));
 
 			return true;
 		}
@@ -794,7 +794,7 @@ class Cart implements \JsonSerializable {
 				return false;
 			}
 
-			$this->errors->add('no_changes', __('This cart proposes no changes to the current membership.', 'wp-multisite-waas'));
+			$this->errors->add('no_changes', __('This cart proposes no changes to the current membership.', 'multisite-ultimate'));
 
 			return true;
 		}
@@ -816,7 +816,7 @@ class Cart implements \JsonSerializable {
 		 */
 		if (empty($this->plan_id)) {
 			if (count($this->products) === 0) {
-				$this->errors->add('no_changes', __('This cart proposes no changes to the current membership.', 'wp-multisite-waas'));
+				$this->errors->add('no_changes', __('This cart proposes no changes to the current membership.', 'multisite-ultimate'));
 
 				return true;
 			}
@@ -938,7 +938,7 @@ class Cart implements \JsonSerializable {
 			$this->products   = [];
 			$this->line_items = [];
 
-			$this->errors->add('no_changes', __('This cart proposes no changes to the current membership.', 'wp-multisite-waas'));
+			$this->errors->add('no_changes', __('This cart proposes no changes to the current membership.', 'multisite-ultimate'));
 
 			return true;
 		} else {
@@ -1057,7 +1057,7 @@ class Cart implements \JsonSerializable {
 			);
 
 			// Translators: Placeholder receives the recurring period description
-			$message = sprintf(__('You already have an active %s agreement.', 'wp-multisite-waas'), $description);
+			$message = sprintf(__('You already have an active %s agreement.', 'multisite-ultimate'), $description);
 
 			$this->errors->add('no_changes', $message);
 
@@ -1078,8 +1078,8 @@ class Cart implements \JsonSerializable {
 					'wu_checkout_credit_line_item_params',
 					[
 						'type'         => 'credit',
-						'title'        => __('Scheduled Swap Credit', 'wp-multisite-waas'),
-						'description'  => __('Swap scheduled to next billing cycle.', 'wp-multisite-waas'),
+						'title'        => __('Scheduled Swap Credit', 'multisite-ultimate'),
+						'description'  => __('Swap scheduled to next billing cycle.', 'multisite-ultimate'),
 						'discountable' => false,
 						'taxable'      => false,
 						'quantity'     => 1,
@@ -1279,8 +1279,8 @@ class Cart implements \JsonSerializable {
 			'wu_checkout_credit_line_item_params',
 			[
 				'type'         => 'credit',
-				'title'        => __('Credit', 'wp-multisite-waas'),
-				'description'  => __('Prorated amount based on the previous membership.', 'wp-multisite-waas'),
+				'title'        => __('Credit', 'multisite-ultimate'),
+				'description'  => __('Prorated amount based on the previous membership.', 'multisite-ultimate'),
 				'discountable' => false,
 				'taxable'      => false,
 				'quantity'     => 1,
@@ -1316,7 +1316,7 @@ class Cart implements \JsonSerializable {
 		if (empty($discount_code)) {
 
 			// translators: %s is the coupon code being used, all-caps. e.g. PROMO10OFF
-			$this->errors->add('discount_code', sprintf(__('The code %s do not exist or is no longer valid.', 'wp-multisite-waas'), $code));
+			$this->errors->add('discount_code', sprintf(__('The code %s do not exist or is no longer valid.', 'multisite-ultimate'), $code));
 
 			return false;
 		}
@@ -1397,7 +1397,7 @@ class Cart implements \JsonSerializable {
 
 			if ($line_item_interval !== $interval) {
 				// translators: two intervals
-				$this->errors->add('wrong', sprintf(__('Interval %1$s and %2$s do not match.', 'wp-multisite-waas'), $line_item_interval, $interval));
+				$this->errors->add('wrong', sprintf(__('Interval %1$s and %2$s do not match.', 'multisite-ultimate'), $line_item_interval, $interval));
 
 				return false;
 			}
@@ -1560,7 +1560,7 @@ class Cart implements \JsonSerializable {
 		$product = is_numeric($product_id_or_slug) ? wu_get_product($product_id_or_slug) : wu_get_product_by_slug($product_id_or_slug);
 
 		if ( ! $product) {
-			$message = __('The product you are trying to add does not exist.', 'wp-multisite-waas');
+			$message = __('The product you are trying to add does not exist.', 'multisite-ultimate');
 
 			$this->errors->add('missing-product', $message);
 
@@ -1572,7 +1572,7 @@ class Cart implements \JsonSerializable {
 			$product = $product->get_as_variation($this->duration, $this->duration_unit);
 
 			if ( ! $product) {
-				$message = __('The product you are trying to add does not exist for the selected duration.', 'wp-multisite-waas');
+				$message = __('The product you are trying to add does not exist for the selected duration.', 'multisite-ultimate');
 
 				$this->errors->add('missing-price-variations', $message);
 
@@ -1586,7 +1586,7 @@ class Cart implements \JsonSerializable {
 			 * another one. Bail.
 			 */
 			if ( ! empty($this->plan_id)) {
-				$message = __('Theres already a plan in this membership.', 'wp-multisite-waas');
+				$message = __('Theres already a plan in this membership.', 'multisite-ultimate');
 
 				$this->errors->add('plan-already-added', $message);
 
@@ -1648,7 +1648,7 @@ class Cart implements \JsonSerializable {
 					 * price variation. We need to add an error.
 					 */
 					// translators: respectively, product name, duration, and duration unit.
-					$message = sprintf(__('%1$s does not have a valid price variation for that billing period (every %2$s %3$s(s)) and was not added to the cart.', 'wp-multisite-waas'), $product->get_name(), $this->duration, $this->duration_unit);
+					$message = sprintf(__('%1$s does not have a valid price variation for that billing period (every %2$s %3$s(s)) and was not added to the cart.', 'multisite-ultimate'), $product->get_name(), $this->duration, $this->duration_unit);
 
 					$this->errors->add('missing-price-variations', $message);
 
@@ -1712,7 +1712,7 @@ class Cart implements \JsonSerializable {
 		}
 
 		// translators: placeholder is the product name.
-		$description = ($product->get_setup_fee() > 0) ? __('Signup Fee for %s', 'wp-multisite-waas') : __('Signup Credit for %s', 'wp-multisite-waas');
+		$description = ($product->get_setup_fee() > 0) ? __('Signup Fee for %s', 'multisite-ultimate') : __('Signup Credit for %s', 'multisite-ultimate');
 
 		$description = sprintf($description, $product->get_name());
 

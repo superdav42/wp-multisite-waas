@@ -14,7 +14,7 @@
 
 <?php if (empty($products)) : ?>
 	<div class="wu-text-center wu-bg-gray-100 wu-rounded wu-uppercase wu-font-semibold wu-text-xs wu-text-gray-700 wu-p-4">
-		<?php esc_html_e('No Products Found.', 'wp-multisite-waas'); ?>
+		<?php esc_html_e('No Products Found.', 'multisite-ultimate'); ?>
 	</div>
 <?php endif; ?>
 
@@ -33,7 +33,7 @@
 				</ul>
 			</div>
 			<div class="wu-relative">
-				<a href="#wu-checkout-add-<?php echo esc_attr($product->get_slug()); ?>" class="button btn wu-w-full wu-text-center wu-inline-block"><?php esc_html_e('Select', 'wp-multisite-waas'); ?></a>
+				<a href="#wu-checkout-add-<?php echo esc_attr($product->get_slug()); ?>" class="button btn wu-w-full wu-text-center wu-inline-block"><?php esc_html_e('Select', 'multisite-ultimate'); ?></a>
 			</div>
 			<input type="checkbox" style="display: none;" name="products[]" value="<?php echo esc_attr($product->get_slug()); ?>" v-model="products">
 		</div>

@@ -647,7 +647,7 @@ class Checkout {
 		if ($cart->should_collect_payment() === false) {
 			$gateway = wu_get_gateway('free');
 		} elseif ( ! $gateway || $gateway->get_id() === 'free') {
-			$this->errors = new \WP_Error('no-gateway', __('Payment gateway not registered.', 'wp-multisite-waas'));
+			$this->errors = new \WP_Error('no-gateway', __('Payment gateway not registered.', 'multisite-ultimate'));
 
 			return false;
 		}
@@ -657,7 +657,7 @@ class Checkout {
 		 * we need to bail.
 		 */
 		if ( ! $gateway) {
-			return new \WP_Error('no-gateway', __('Payment gateway not registered.', 'wp-multisite-waas'));
+			return new \WP_Error('no-gateway', __('Payment gateway not registered.', 'multisite-ultimate'));
 		}
 
 		$this->gateway_id = $gateway->get_id();
@@ -971,7 +971,7 @@ class Checkout {
 					'email_verification' => 'verified',
 				];
 			} elseif (isset($customer_data['email']) && get_user_by('email', $customer_data['email'])) {
-				return new \WP_Error('email_exists', __('The email address you entered is already in use.', 'wp-multisite-waas'));
+				return new \WP_Error('email_exists', __('The email address you entered is already in use.', 'multisite-ultimate'));
 			}
 
 			/*
@@ -1029,7 +1029,7 @@ class Checkout {
 		 * wrong with the customer update, we return a general error.
 		 */
 		if ( ! $address_saved) {
-			return new \WP_Error('address_failure', __('Something wrong happened while attempting to save the customer billing address', 'wp-multisite-waas'));
+			return new \WP_Error('address_failure', __('Something wrong happened while attempting to save the customer billing address', 'multisite-ultimate'));
 		}
 
 		/*
@@ -1103,7 +1103,7 @@ class Checkout {
 			 *
 			 * @since 2.0.0
 			 * @param array $meta_repository The list of meta fields, key => value structured.
-			 * @param Customer $customer The WP Multisite WaaS customer object.
+			 * @param Customer $customer The Multisite Ultimate customer object.
 			 * @param Checkout $this The checkout class.
 			 */
 			do_action('wu_handle_customer_meta_fields', $meta_repository, $customer, $this);
@@ -1136,7 +1136,7 @@ class Checkout {
 			 * @since 2.0.4
 			 * @param array $meta_repository The list of meta fields, key => value structured.
 			 * @param \WP_User $user The WordPress user object.
-			 * @param Customer $customer The WP Multisite WaaS customer object.
+			 * @param Customer $customer The Multisite Ultimate customer object.
 			 * @param Checkout $this The checkout class.
 			 */
 			do_action('wu_handle_user_meta_fields', $user_meta_repository, $user, $customer, $this);
@@ -1558,9 +1558,9 @@ class Checkout {
 		 * Localized strings.
 		 */
 		$i18n = [
-			'loading'        => __('Loading...', 'wp-multisite-waas'),
-			'added_to_order' => __('The item was added!', 'wp-multisite-waas'),
-			'weak_password'  => __('The Password entered is too weak.', 'wp-multisite-waas'),
+			'loading'        => __('Loading...', 'multisite-ultimate'),
+			'added_to_order' => __('The item was added!', 'multisite-ultimate'),
+			'weak_password'  => __('The Password entered is too weak.', 'multisite-ultimate'),
 		];
 
 		/*
@@ -1861,11 +1861,11 @@ class Checkout {
 		// Add some hidden or compound fields ids
 		$validation_aliases = array_merge(
 			[
-				'password_conf'  => __('Password confirmation', 'wp-multisite-waas'),
-				'template_id'    => __('Template ID', 'wp-multisite-waas'),
-				'valid_password' => __('Valid password', 'wp-multisite-waas'),
-				'products'       => __('Products', 'wp-multisite-waas'),
-				'gateway'        => __('Payment Gateway', 'wp-multisite-waas'),
+				'password_conf'  => __('Password confirmation', 'multisite-ultimate'),
+				'template_id'    => __('Template ID', 'multisite-ultimate'),
+				'valid_password' => __('Valid password', 'multisite-ultimate'),
+				'products'       => __('Products', 'multisite-ultimate'),
+				'gateway'        => __('Payment Gateway', 'multisite-ultimate'),
 			],
 			$base_aliases
 		);
@@ -1923,7 +1923,7 @@ class Checkout {
 		/*
 		 * Checks if we are in the last step.
 		 *
-		 * WP Multisite WaaS supports multi-step checkout
+		 * Multisite Ultimate supports multi-step checkout
 		 * flows. That means that we do different
 		 * things on the intermediary steps (mostly
 		 * add things to the session) and on the final,
@@ -2082,13 +2082,13 @@ class Checkout {
 			} elseif ($this->order->should_collect_payment() === false) {
 				$gateway = wu_get_gateway('free');
 			} elseif ($gateway->get_id() === 'free') {
-					$this->errors = new \WP_Error('no-gateway', __('Payment gateway not registered.', 'wp-multisite-waas'));
+					$this->errors = new \WP_Error('no-gateway', __('Payment gateway not registered.', 'multisite-ultimate'));
 
 					return false;
 			}
 
 			if ( ! $gateway) {
-				$this->errors = new \WP_Error('no-gateway', __('Payment gateway not registered.', 'wp-multisite-waas'));
+				$this->errors = new \WP_Error('no-gateway', __('Payment gateway not registered.', 'multisite-ultimate'));
 
 				return false;
 			}
@@ -2110,7 +2110,7 @@ class Checkout {
 			 *
 			 * The gateway takes in the info about the transaction
 			 * and perform the necessary steps to make sure the
-			 * data on the gateway correctly reflects the data on WP Multisite WaaS.
+			 * data on the gateway correctly reflects the data on Multisite Ultimate.
 			 */
 			$status = $gateway->process_checkout($payment, $membership, $customer, $this->order, $type);
 
@@ -2186,7 +2186,7 @@ class Checkout {
 			$membership_id = $this->order->get_membership() ? $this->order->get_membership()->get_id() : 'unknown';
 
 			// translators: %s is the membership ID
-			$log_message  = sprintf(__('Checkout failed for customer %s: ', 'wp-multisite-waas'), $membership_id);
+			$log_message  = sprintf(__('Checkout failed for customer %s: ', 'multisite-ultimate'), $membership_id);
 			$log_message .= $e->getMessage();
 
 			wu_log_add('checkout', $log_message, LogLevel::ERROR);

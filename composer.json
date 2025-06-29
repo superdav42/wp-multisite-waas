@@ -1,7 +1,7 @@
 {
-    "name": "devstone/wp-multisite-waas",
-    "url": "https://wpmultisitewaas.org",
-    "description": "The WordPress Multisite Website as a Service (WaaS) plugin.",
+    "name": "devstone/multisite-ultimate",
+    "url": "https://MultisiteUltimate.org",
+    "description": "The Multisite Website as a Service (WaaS) plugin.",
     "version": "2.4.0",
     "authors": [
         {

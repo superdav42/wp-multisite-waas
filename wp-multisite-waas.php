@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WP Multisite WaaS
+ * Plugin Name: Multisite WaaS
  * Description: The WordPress Multisite Website as a Service (WaaS) plugin.
  * Plugin URI: https://wpmultisitewaas.org
  * Text Domain: wp-multisite-waas
@@ -15,17 +15,17 @@
  * Requires at least: 5.3
  * Requires PHP: 7.4.30
  *
- * WP Multisite WaaS is distributed under the terms of the GNU General Public License as published by
+ * Multisite Ultimate is distributed under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2 of the License, or
  * any later version.
  *
- * WP Multisite WaaS is distributed in the hope that it will be useful,
+ * Multisite Ultimate is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with WP Multisite WaaS. If not, see <http://www.gnu.org/licenses/>.
+ * along with Multisite Ultimate. If not, see <http://www.gnu.org/licenses/>.
  *
  * @author   Arindo Duque and NextPress and WP Multisite Community
  * @category Core

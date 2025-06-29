@@ -108,8 +108,8 @@ class Checkout_Pages {
 
     <div class="misc-pub-section misc-pub-section-last" style="margin-top: 12px; margin-bottom: 6px; display: flex; align-items: center;">
 				<label for="wu-compat-mode">
-						<span style="display: block; font-weight: 600; margin-bottom: 3px;"><?php esc_html_e('WP Multisite WaaS Compatibility Mode', 'wp-multisite-waas'); ?></span>
-						<small style="display: block; line-height: 1.8em;"><?php esc_html_e('Toggle this option on if WP Multisite WaaS elements are not loading correctly or at all.', 'wp-multisite-waas'); ?></small>
+						<span style="display: block; font-weight: 600; margin-bottom: 3px;"><?php esc_html_e('Multisite Ultimate Compatibility Mode', 'multisite-ultimate'); ?></span>
+						<small style="display: block; line-height: 1.8em;"><?php esc_html_e('Toggle this option on if Multisite Ultimate elements are not loading correctly or at all.', 'multisite-ultimate'); ?></small>
 				</label>
 				<div style="margin-left: 6px;">
 					<input id="wu-compat-mode" type="checkbox" value="1" <?php checked($value, true, true); ?> name="_wu_force_elements_loading" />
@@ -190,7 +190,7 @@ class Checkout_Pages {
 	public function get_error_message($error_code, $username = '') {
 
 		$messages = [
-			'incorrect_password'         => sprintf(__('<strong>Error:</strong> The password you entered is incorrect.', 'wp-multisite-waas')),
+			'incorrect_password'         => sprintf(__('<strong>Error:</strong> The password you entered is incorrect.', 'multisite-ultimate')),
 			// From here we are using the same messages as WordPress core.
 			'expired'                    => __('Your session has expired. Please log in to continue where you left off.'),
 			'confirm'                    => sprintf(__('Check your email for the confirmation link, then visit the <a href="%s">login page</a>.'), wp_login_url()),
@@ -217,7 +217,7 @@ class Checkout_Pages {
 		 */
 		$messages = apply_filters('wu_checkout_pages_error_messages', $messages);
 
-		return wu_get_isset($messages, $error_code, __('Something went wrong', 'wp-multisite-waas'));
+		return wu_get_isset($messages, $error_code, __('Something went wrong', 'multisite-ultimate'));
 	}
 
 	/**
@@ -421,11 +421,11 @@ class Checkout_Pages {
                 </div>',
 				sprintf(
 					// translators: %1$s and %2$s are <strong></strong> HTML tags
-					esc_html__('Your email address is not yet verified. Your site %1$s will only be activated %2$s after your email address is verified. Check your inbox and verify your email address.', 'wp-multisite-waas'),
+					esc_html__('Your email address is not yet verified. Your site %1$s will only be activated %2$s after your email address is verified. Check your inbox and verify your email address.', 'multisite-ultimate'),
 					'<strong>',
 					'</strong>'
 				),
-				esc_html__('Resend verification email →', 'wp-multisite-waas')
+				esc_html__('Resend verification email →', 'multisite-ultimate')
 			);
 		}
 	}
@@ -555,7 +555,7 @@ class Checkout_Pages {
 	}
 
 	/**
-	 * Returns the ID of the pages being used for each WP Multisite WaaS purpose.
+	 * Returns the ID of the pages being used for each Multisite Ultimate purpose.
 	 *
 	 * @since 2.0.0
 	 * @return array
@@ -610,7 +610,7 @@ class Checkout_Pages {
 	}
 
 	/**
-	 * Tags the WP Multisite WaaS pages on the main site.
+	 * Tags the Multisite Ultimate pages on the main site.
 	 *
 	 * @since 2.0.0
 	 *
@@ -625,11 +625,11 @@ class Checkout_Pages {
 		}
 
 		$labels = [
-			'register'       => __('WP Multisite WaaS - Register Page', 'wp-multisite-waas'),
-			'login'          => __('WP Multisite WaaS - Login Page', 'wp-multisite-waas'),
-			'block_frontend' => __('WP Multisite WaaS - Site Blocked Page', 'wp-multisite-waas'),
-			'update'         => __('WP Multisite WaaS - Membership Update Page', 'wp-multisite-waas'),
-			'new_site'       => __('WP Multisite WaaS - New Site Page', 'wp-multisite-waas'),
+			'register'       => __('Multisite Ultimate - Register Page', 'multisite-ultimate'),
+			'login'          => __('Multisite Ultimate - Login Page', 'multisite-ultimate'),
+			'block_frontend' => __('Multisite Ultimate - Site Blocked Page', 'multisite-ultimate'),
+			'update'         => __('Multisite Ultimate - Membership Update Page', 'multisite-ultimate'),
+			'new_site'       => __('Multisite Ultimate - New Site Page', 'multisite-ultimate'),
 		];
 
 		$pages = array_map('absint', $this->get_signup_pages());

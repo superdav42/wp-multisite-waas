@@ -61,11 +61,11 @@
 
 		<!-- <label>
 			<input class="wu-rounded-none" type="checkbox" name="bulk-delete[]" value="<?php echo esc_attr($item->get_id()); ?>" />
-			<?php esc_html_e('Select Site', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Select Site', 'multisite-ultimate'); ?>
 		</label> -->
 
 		<a href="<?php echo esc_attr(wu_network_admin_url('wp-ultimo-edit-product', ['id' => $item->get_id()])); ?>" class="button button-primary">
-			<?php esc_html_e('Read More', 'wp-multisite-waas'); ?>
+			<?php esc_html_e('Read More', 'multisite-ultimate'); ?>
 		</a>
 
 	</div>
