@@ -41,13 +41,13 @@
 
 		<span class="wu-text-xs wu-font-bold wu-uppercase wu-text-gray-600">
 
-		<?php esc_html_e('Refunds:', 'wp-multisite-waas'); ?>
+		<?php esc_html_e('Refunds:', 'multisite-ultimate'); ?>
 
 		</span>
 
 		<span class="wu-ml-2 wu-text-gray-700">
 
-		<?php echo wu_format_currency($payment->get_refund_total(), $payment->get_currency()); ?>
+		<?php echo esc_html(wu_format_currency($payment->get_refund_total(), $payment->get_currency())); ?>
 
 		</span>
 
@@ -57,13 +57,13 @@
 
 		<span class="wu-text-xs wu-font-bold wu-uppercase wu-text-gray-700">
 
-		<?php esc_html_e('Total:', 'wp-multisite-waas'); ?>
+		<?php esc_html_e('Total:', 'multisite-ultimate'); ?>
 
 		</span>
 
 		<span class="wu-ml-2">
 
-		<?php echo wu_format_currency($payment->get_total(), $payment->get_currency()); ?>
+		<?php echo esc_html(wu_format_currency($payment->get_total(), $payment->get_currency())); ?>
 
 		</span>
 

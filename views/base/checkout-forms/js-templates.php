@@ -23,7 +23,7 @@
 		<tr class="no-items">
 			<td :colspan="Object.keys(headers).length" class="colspanchange">
 				<div class="wu-p-6 wu-text-gray-600 wu-text-base wu-text-center">
-					<span><?php esc_html_e('Add the first field!', 'wp-multisite-waas'); ?></span>
+					<span><?php esc_html_e('Add the first field!', 'multisite-ultimate'); ?></span>
 				</div>
 			</td>
 		</tr>
@@ -40,7 +40,7 @@
 
 		<tr v-for="(field, idx) in list" :key="field.id" :id="'wp-ultimo-field-' + field.id">
 
-			<td class="order column-order has-row-actions column-primary" data-colname="<?php esc_html_e('Order', 'wp-multisite-waas'); ?>">
+			<td class="order column-order has-row-actions column-primary" data-colname="<?php esc_html_e('Order', 'multisite-ultimate'); ?>">
 
 				<span
 					class="wu-inline-block wu-bg-gray-100 wu-text-center wu-align-middle wu-p-1 wu-font-mono wu-px-3 wu-border wu-border-gray-300 wu-border-solid wu-rounded">
@@ -48,30 +48,30 @@
 				</span>
 
 				<button type="button" class="toggle-row">
-					<span class="screen-reader-text"><?php esc_html_e('Show more details', 'wp-multisite-waas'); ?></span>
+					<span class="screen-reader-text"><?php esc_html_e('Show more details', 'multisite-ultimate'); ?></span>
 				</button>
 
 			</td>
 
-			<td class="name column-name" data-colname="<?php esc_html_e('Name', 'wp-multisite-waas'); ?>">
+			<td class="name column-name" data-colname="<?php esc_html_e('Name', 'multisite-ultimate'); ?>">
 
 				<span class="wu-inline-block wu-font-medium">
 
-					{{ field.name ? field.name : "<?php echo esc_html__('(no label)', 'wp-multisite-waas'); ?>" }}
+					{{ field.name ? field.name : "<?php echo esc_html__('(no label)', 'multisite-ultimate'); ?>" }}
 
 					<!-- Visibility -->
 			<span 
 						v-if="field.logged && field.logged == 'guests_only'" 
 						class="wu-px-1 wu-ml-1 wu-text-xs wu-align-text-bottom wu-inline-block wu-rounded wu-bg-blue-100 wu-text-blue-600"
 					>
-			<?php echo wu_tooltip('Guests only', 'dashicons-wu-eye'); ?>
+			<?php echo wu_tooltip('Guests only', 'dashicons-wu-eye'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</span>
 
 			<span 
 						v-if="field.logged && field.logged == 'logged_only'" 
 						class="wu-px-1 wu-ml-1 wu-text-xs wu-align-text-bottom wu-inline-block wu-rounded wu-bg-blue-100 wu-text-blue-600"
 					>
-			<?php echo wu_tooltip('Logged-in users only', 'dashicons-wu-eye'); ?>
+			<?php echo wu_tooltip('Logged-in users only', 'dashicons-wu-eye'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</span>
 			<!-- Visibility - End -->
 
@@ -82,19 +82,19 @@
 						<a
 							title="Edit Field"
 							class="wubox"
-							:href="'
-							<?php
-							echo wu_get_form_url(
-								'add_new_form_field',
-								[
-									'checkout_form' => $checkout_form,
-									'step'          => '',
-								]
+							:href="'<?php // phpcs:ignore Squiz.PHP.EmbeddedPhp
+							echo esc_attr(
+								wu_get_form_url(
+									'add_new_form_field',
+									[
+										'checkout_form' => $checkout_form,
+										'step'          => '',
+									]
+								)
 							);
-							?>
-							=' + step_name + '&field=' + field.id"
+							?>=' + step_name + '&amp;field=' + field.id" <?php // phpcs:ignore Squiz.PHP.EmbeddedPhp ?>
 							>
-								<?php _e('Edit'); ?>
+								<?php esc_html_e('Edit'); ?>
 						</a>
 						|
 					</span>
@@ -103,38 +103,38 @@
 						<a
 							v-show="delete_field_id !== field.id"
 							v-on:click.prevent="delete_field_id = field.id"
-							title="<?php esc_html_e('Delete', 'wp-multisite-waas'); ?>"
+							title="<?php esc_html_e('Delete', 'multisite-ultimate'); ?>"
 							href="#"
-						><?php esc_html_e('Delete', 'wp-multisite-waas'); ?></a>
+						><?php esc_html_e('Delete', 'multisite-ultimate'); ?></a>
 
 						<a
 							v-show="delete_field_id === field.id"
 							v-on:click.prevent="remove_field(field.id)"
-							title="<?php esc_html_e('Delete', 'wp-multisite-waas'); ?>"
+							title="<?php esc_html_e('Delete', 'multisite-ultimate'); ?>"
 							href="#"
 							class="wu-font-bold"
-						><?php esc_html_e('Confirm?', 'wp-multisite-waas'); ?></a>
+						><?php esc_html_e('Confirm?', 'multisite-ultimate'); ?></a>
 
 					</span>
 				</div>
 
 				<button type="button" class="toggle-row">
 					<span class="screen-reader-text">
-						<?php esc_html_e('Show more details', 'wp-multisite-waas'); ?>
+						<?php esc_html_e('Show more details', 'multisite-ultimate'); ?>
 					</span>
 				</button>
 
 			</td>
 
-			<td class="type column-type" data-colname="<?php esc_html_e('Type', 'wp-multisite-waas'); ?>">
+			<td class="type column-type" data-colname="<?php esc_html_e('Type', 'multisite-ultimate'); ?>">
 				<span class="wu-bg-gray-200 wu-text-gray-700 wu-py-1 wu-px-2 wu-rounded-sm wu-text-xs wu-font-mono">{{ field.type }}</span>
 			</td>
 
-			<td class="type column-slug" data-colname="<?php esc_html_e('Slug', 'wp-multisite-waas'); ?>">
+			<td class="type column-slug" data-colname="<?php esc_html_e('Slug', 'multisite-ultimate'); ?>">
 				<span class="wu-bg-gray-200 wu-text-gray-700 wu-py-1 wu-px-2 wu-rounded-sm wu-text-xs wu-font-mono">{{ field.id }}</span>
 			</td>
 
-			<td class="move column-move wu-text-right" data-colname="<?php esc_html_e('Move', 'wp-multisite-waas'); ?>">
+			<td class="move column-move wu-text-right" data-colname="<?php esc_html_e('Move', 'multisite-ultimate'); ?>">
 
 				<span class="wu-placeholder-sortable dashicons-wu-menu"></span>
 
