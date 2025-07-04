@@ -1615,9 +1615,6 @@ class Site extends Base_Model implements Limitable {
 				 */
 				do_action('wu_site_created', $data, $this); // @phpstan-ignore-line
 
-				// Create a domain record for the site
-				$site_obj = get_site($saved);
-				do_action('wu_initialize_site', $site_obj, array());
 			}
 
 			if ( ! is_wp_error($saved) && wu_get_setting('enable_screenshot_generator', true)) {

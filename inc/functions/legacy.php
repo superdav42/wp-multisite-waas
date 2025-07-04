@@ -8,7 +8,7 @@
 
 // Exit if accessed directly
 defined('ABSPATH') || exit;
-
+// phpcs:disable
 /**
  * Return the instance of the function
  */

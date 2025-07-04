@@ -129,7 +129,6 @@ class Domain_Manager extends Base_Manager {
 		 */
 
 		add_action('wp_insert_site', [$this, 'handle_site_created']);
-		add_action('wu_initialize_site', [$this, 'handle_site_created']);
 
 		add_action('wp_delete_site', [$this, 'handle_site_deleted']);
 	}
