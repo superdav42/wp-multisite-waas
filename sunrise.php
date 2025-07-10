@@ -30,7 +30,7 @@ const WP_ULTIMO_SUNRISE_VERSION = '2.0.0.9';
 
 $wu_sunrise = defined('WP_PLUGIN_DIR')
 	? WP_PLUGIN_DIR . '/multisite-ultimate/inc/class-sunrise.php'
-	: WP_CONTENT_DIR . '/plugins/wp-multisite-waas/inc/class-sunrise.php';
+	: WP_CONTENT_DIR . '/plugins/multisite-ultimate/inc/class-sunrise.php';
 
 $wu_mu_sunrise = defined('WPMU_PLUGIN_DIR')
 	? WPMU_PLUGIN_DIR . '/multisite-ultimate/inc/class-sunrise.php'
