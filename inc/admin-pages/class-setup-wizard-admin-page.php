@@ -167,7 +167,7 @@ class Setup_Wizard_Admin_Page extends Wizard_Admin_Page {
 
 		header('Pragma: no-cache');
 
-		readfile($file);
+		readfile($file); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_readfile
 
 		exit;
 	}

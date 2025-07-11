@@ -528,7 +528,7 @@ class WU_Util {
 
 		_deprecated_function(__METHOD__, '2.0.0', 'wp_die()');
 
-		wp_die(esc_html($message), esc_html($title), (array) $args);
+		wp_die(esc_html($message), esc_html($title), (array) $args); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**

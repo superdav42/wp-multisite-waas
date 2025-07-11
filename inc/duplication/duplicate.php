@@ -126,7 +126,7 @@ if ( ! class_exists('MUCD_Duplicate') ) {
 				if ( false == $user_id ) {
 					return new \WP_Error('file_copy', MUCD_NETWORK_PAGE_DUPLICATE_ADMIN_ERROR_CREATE_USER);
 				} else {
-					wp_new_user_notification($user_id, $password);
+					wp_new_user_notification($user_id);
 				}
 			}
 
@@ -210,7 +210,7 @@ if ( ! class_exists('MUCD_Duplicate') ) {
 			// INIT LOG AND SAVE OPTION
 			if (isset($data['log']) && 'yes' == $data['log'] ) {
 				if (isset($data['log-path']) && ! empty($data['log-path'])) {
-					$log_name = @date('Y_m_d_His') . '-' . $data['domain'] . '.log';
+					$log_name = @gmdate('Y_m_d_His') . '-' . $data['domain'] . '.log';
 					if (! str_ends_with((string) $data['log-path'], '/')) {
 						$data['log-path'] .= '/';
 					}
@@ -295,8 +295,8 @@ if ( ! class_exists('MUCD_Duplicate') ) {
 		 * @since 0.2.0
 		 */
 		public static function bypass_server_limit(): void {
-			@ini_set('memory_limit', '1024M');
-			set_time_limit(0);
+			@ini_set('memory_limit', '1024M'); // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
+			set_time_limit(0); // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
 		}
 	}
 

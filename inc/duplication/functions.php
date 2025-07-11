@@ -71,7 +71,7 @@ if ( ! class_exists('MUCD_Functions') ) {
 		 * @return boolean true | false
 		 */
 		public static function is_duplicable($blog_id): bool {
-			if ( get_site_option('mucd_duplicables', 'all', 'selected') == 'all') {
+			if ( get_site_option('mucd_duplicables', 'all') === 'all') {
 				return true;
 			}
 
@@ -169,7 +169,7 @@ if ( ! class_exists('MUCD_Functions') ) {
 			global $wpdb;
 
 			// Load network data
-			$networks = $wpdb->get_results(
+			$networks = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 				$wpdb->prepare(
 					"SELECT * FROM $wpdb->site WHERE id = %d",
 					$network_id
@@ -199,7 +199,7 @@ if ( ! class_exists('MUCD_Functions') ) {
 				$defaults = ['limit' => MUCD_MAX_NUMBER_OF_SITE];
 				$args     = apply_filters('mucd_get_sites_args', $args);
 				$args     = wp_parse_args($args, $defaults);
-				return wp_get_sites($args);
+				return get_sites($args);
 			}
 		}
 

@@ -327,7 +327,7 @@ class Debug {
 
 		ignore_user_abort(true); // You and I are gonna live forever!
 
-		set_time_limit(0); // Seriously, this script needs to run until the end.
+		set_time_limit(0); // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged -- Seriously, this script needs to run until the end.
 
 		global $wpdb;
 
@@ -709,13 +709,25 @@ class Debug {
 
 				$id_placeholders = implode(', ', array_fill(0, count($ids), '%d'));
 
-				$result = $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-					$wpdb->prepare("DELETE FROM %i WHERE %i IN ($id_placeholders)", [$table, $field, ...$ids]) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber
-				);
+				if (version_compare(get_bloginfo('version'), '6.2', '>=')) {
+					$result = $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+						$wpdb->prepare("DELETE FROM %i WHERE %i IN ($id_placeholders)", [$table, $field, ...$ids]) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber
+					);
+				} else {
+					$result = $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+						$wpdb->prepare("DELETE FROM `{$table}` WHERE `{$field}` IN ($id_placeholders)", ...$ids) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+					);
+				}
 			} else {
-				$result = $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-					$wpdb->prepare('DELETE FROM %i', $table)
-				);
+				if (version_compare(get_bloginfo('version'), '6.2', '>=')) {
+					$result = $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+						$wpdb->prepare('DELETE FROM %i', $table)
+					);
+				} else {
+					$result = $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+						$wpdb->prepare("DELETE FROM `{$table}`") // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+					);
+				}
 			}
 
 			if (false === $result) {

@@ -99,7 +99,7 @@ if ( ! class_exists('MUCD_Log') ) {
 		 * @return boolean True if plugin can writes the log, or false
 		 */
 		public function can_write() {
-			return (is_resource($this->fp) && is_writable($this->log_file_path));
+			return (is_resource($this->fp) && is_writable($this->log_file_path)); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_is_writable
 		}
 
 		/**
@@ -120,11 +120,11 @@ if ( ! class_exists('MUCD_Log') ) {
 		 */
 		private function init_file(): bool {
 			if (MUCD_Files::init_dir($this->log_dir_path) !== false) {
-				if ( ! $this->fp = @fopen($this->log_file_path, 'a') ) {
+				if ( ! $this->fp = @fopen($this->log_file_path, 'a') ) { // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 					return false;
 				}
 
-				chmod($this->log_file_path, 0777);
+				chmod($this->log_file_path, 0777); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_chmod
 				return true;
 			}
 
@@ -140,8 +140,8 @@ if ( ! class_exists('MUCD_Log') ) {
 		 */
 		public function write_log($message): bool {
 			if (false !== $this->mod && $this->can_write() ) {
-				$time = @date('[d/M/Y:H:i:s]');
-				fwrite($this->fp, "$time $message" . "\r\n");
+				$time = @gmdate('[d/M/Y:H:i:s]');
+				fwrite($this->fp, "$time $message" . "\r\n"); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
 				return true;
 			}
 
@@ -154,7 +154,7 @@ if ( ! class_exists('MUCD_Log') ) {
 		 * @since 0.2.0
 		 */
 		public function close_log(): void {
-			@fclose($this->fp);
+			@fclose($this->fp); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 		}
 	}
 }

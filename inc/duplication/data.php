@@ -81,20 +81,9 @@ if ( ! class_exists('MUCD_Data') ) {
 			if (MUCD_PRIMARY_SITE_ID == $from_site_id) {
 				$from_site_table = self::get_primary_tables($from_site_prefix);
 			} else {
-				$sql_query       = $wpdb->prepare('SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = \'%s\' AND TABLE_NAME LIKE \'%s\'', $schema, $from_site_prefix_like . '%');
+				$sql_query       = $wpdb->prepare('SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = %s AND TABLE_NAME LIKE %s', $schema, $from_site_prefix_like . '%');
 				$from_site_table = self::do_sql_query($sql_query, 'col');
 			}
-
-			// var_dump($from_site_table);
-
-			// $a = 6;
-			// $b = 9;
-
-			// [$from_site_table[$a], $from_site_table[$b]] = [$from_site_table[$b], $from_site_table[$a]];
-
-			// var_dump($from_site_table);
-
-			// die;
 
 			$tables_to_ignore = [
 				'actionscheduler_actions',
@@ -125,10 +114,6 @@ if ( ! class_exists('MUCD_Data') ) {
 				$wpdb->get_results('SET foreign_key_checks = 0'); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 
 				self::do_sql_query($create_statement_sql);
-
-				// echo($create_statement_sql);
-
-				// die;
 
 				// Populate database with data from source table
 				self::do_sql_query('INSERT `' . $table_name . '` SELECT * FROM `' . $schema . '`.`' . $table . '`');
@@ -285,19 +270,19 @@ if ( ! class_exists('MUCD_Data') ) {
 
 					$sql_query = $wpdb->prepare(
 						'
-                        SELECT `' . $field . '` FROM `' . $table . '` WHERE `' . $field . '` LIKE "%s" ',
+                        SELECT `' . $field . '` FROM `' . $table . '` WHERE `' . $field . '` LIKE %s ', // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQLPlaceholders.QuotedSimplePlaceholder
 						'%' . $from_string_like . '%'
 					);
 
 					$results = self::do_sql_query($sql_query, 'results', false);
 
 					if ($results) {
-						$update = 'UPDATE `' . $table . '` SET `' . $field . '` = "%s" WHERE `' . $field . '` = "%s"';
+						$update = 'UPDATE `' . $table . '` SET `' . $field . '` = %s WHERE `' . $field . '` = %s'; // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 						foreach ($results as $result => $row) {
 							$old_value = $row[ $field ];
 							$new_value = self::try_replace($row, $field, $from_string, $to_string);
-							$sql_query = $wpdb->prepare($update, $new_value, $old_value);
+							$sql_query = $wpdb->prepare($update, $new_value, $old_value); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 							$results   = self::do_sql_query($sql_query);
 						}
 					}
@@ -440,7 +425,7 @@ if ( ! class_exists('MUCD_Data') ) {
 
 			if ($log) {
 				MUCD_Duplicate::write_log('SQL :' . $sql_query);
-				MUCD_Duplicate::write_log('Result :' . var_export($results, true));
+				MUCD_Duplicate::write_log('Result :' . var_export($results, true)); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_export
 			}
 
 			if ('' != $wpdb->last_error) {

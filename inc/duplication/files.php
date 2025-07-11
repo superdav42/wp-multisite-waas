@@ -16,7 +16,7 @@ if ( ! class_exists('MUCD_Files') ) {
 			switch_to_blog($from_site_id);
 			$wp_upload_info   = wp_upload_dir();
 			$from_dir['path'] = $wp_upload_info['basedir'];
-			MUCD_PRIMARY_SITE_ID === (int) $from_site_id ? $from_dir['exclude'] = MUCD_Option::get_primary_dir_exclude() : $from_dir['exclude'] = [];
+			MUCD_PRIMARY_SITE_ID === (int) $from_site_id ? $from_dir['exclude'] = MUCD_Option::get_primary_dir_exclude() : $from_dir['exclude'] = []; // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 
 			// Switch to Destination site and get uploads info
 			switch_to_blog($to_site_id);
@@ -55,23 +55,42 @@ if ( ! class_exists('MUCD_Files') ) {
 		 * @param  array  $exclude_dirs directories to ignore.
 		 */
 		public static function recurse_copy($src, $dst, $exclude_dirs = []): void {
-			$src = rtrim($src, '/');
-			$dst = rtrim($dst, '/');
-			$dir = opendir($src);
-			@mkdir($dst);
-			while (false !== ($file = readdir($dir)) ) {
-				if (('.' != $file) && ('..' != $file)) {
-					if ( is_dir($src . '/' . $file) ) {
-						if ( ! in_array($file, $exclude_dirs, true)) {
-							self::recurse_copy($src . '/' . $file, $dst . '/' . $file);
-						}
-					} else {
-						copy($src . '/' . $file, $dst . '/' . $file);
-					}
-				}
+			global $wp_filesystem;
+
+			if ( ! $wp_filesystem ) {
+				require_once ABSPATH . 'wp-admin/includes/file.php';
+				WP_Filesystem();
 			}
 
-			closedir($dir);
+			$src = rtrim($src, '/');
+			$dst = rtrim($dst, '/');
+
+			if ( ! $wp_filesystem->is_dir($src) ) {
+				return;
+			}
+
+			if ( ! $wp_filesystem->is_dir($dst) ) {
+				$wp_filesystem->mkdir($dst);
+			}
+
+			$files = $wp_filesystem->dirlist($src);
+
+			if ( ! $files ) {
+				return;
+			}
+
+			foreach ( $files as $file ) {
+				$src_path = $src . '/' . $file['name'];
+				$dst_path = $dst . '/' . $file['name'];
+
+				if ( 'd' === $file['type'] ) {
+					if ( ! in_array($file['name'], $exclude_dirs, true) ) {
+						self::recurse_copy($src_path, $dst_path, $exclude_dirs);
+					}
+				} else {
+					$wp_filesystem->copy($src_path, $dst_path);
+				}
+			}
 		}
 
 		/**

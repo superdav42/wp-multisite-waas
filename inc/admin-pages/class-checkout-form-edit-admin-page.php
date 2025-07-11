@@ -128,7 +128,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 			];
 
 			$actions[] = [
-				'label'   => __('Generate Shortcode'),
+				'label'   => __('Generate Shortcode', 'multisite-ultimate'),
 				'icon'    => 'wu-copy',
 				'classes' => 'wubox',
 				'url'     => wu_get_form_url('shortcode_checkout', $url_atts),
@@ -721,7 +721,7 @@ class Checkout_Form_Edit_Admin_Page extends Edit_Admin_Page {
 				[
 					'duration'      => 1,
 					'duration_unit' => 'month',
-					'label'         => __('Monthly'),
+					'label'         => __('Monthly', 'multisite-ultimate'),
 				],
 			];
 		}

@@ -373,10 +373,10 @@ class Dashboard_Widgets {
 		$dashboard_widgets = wu_get_isset($wp_meta_boxes, 'dashboard-network', []);
 
 		$options = [
-			'normal:core:dashboard_right_now'         => __('At a Glance'),
-			'normal:core:network_dashboard_right_now' => __('Right Now'),
-			'normal:core:dashboard_activity'          => __('Activity'),
-			'normal:core:dashboard_primary'           => __('WordPress Events and News'),
+			'normal:core:dashboard_right_now'         => __('At a Glance'), // phpcs:ignore WordPress.WP.I18n.MissingArgDomain
+			'normal:core:network_dashboard_right_now' => __('Right Now'), // phpcs:ignore WordPress.WP.I18n.MissingArgDomain
+			'normal:core:dashboard_activity'          => __('Activity'), // phpcs:ignore WordPress.WP.I18n.MissingArgDomain
+			'normal:core:dashboard_primary'           => __('WordPress Events and News'), // phpcs:ignore WordPress.WP.I18n.MissingArgDomain
 		];
 
 		foreach ($dashboard_widgets as $position => $priorities) {
