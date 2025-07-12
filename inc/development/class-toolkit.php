@@ -355,7 +355,7 @@ class Toolkit {
 	 */
 	protected function enqueue_scripts($dispatcher) {
 
-		printf('<link rel="stylesheet" id="toolkit" href="%s" type="text/css" media="all">', esc_attr(wu_url('inc/development/assets/development.css')));
+		printf('<link rel="stylesheet" id="toolkit" href="%s" type="text/css" media="all">', esc_attr(wu_url('inc/development/assets/development.css'))); // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
 
 		wp_print_styles(
 			[

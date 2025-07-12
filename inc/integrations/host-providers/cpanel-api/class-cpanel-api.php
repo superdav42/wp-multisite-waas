@@ -145,12 +145,12 @@ class CPanel_API {
 	private function request($url, $params = []) {
 
 		if ($this->log) {
-			$curl_log = fopen($this->curlfile, 'a+');
+			$curl_log = fopen($this->curlfile, 'a+'); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 		}
 
 		if ( ! file_exists($this->cookie_file)) {
 			try {
-				fopen($this->cookie_file, 'w');
+				fopen($this->cookie_file, 'w'); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 			} catch (\Exception $ex) {
 				if ( ! file_exists($this->cookie_file)) {
 					$this->log($ex . __('Cookie file missing.', 'multisite-ultimate'));
@@ -158,13 +158,13 @@ class CPanel_API {
 					return false;
 				}
 			}
-		} elseif ( ! is_writable($this->cookie_file)) {
+		} elseif ( ! is_writable($this->cookie_file)) { // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_is_writable
 			$this->log(__('Cookie file not writable', 'multisite-ultimate'));
 
 			return false;
 		}
 
-		$ch = curl_init();
+		$ch = curl_init(); // phpcs:ignore WordPress.WP.AlternativeFunctions.curl_curl_init
 
 		$curl_opts = [
 			CURLOPT_URL            => $url,
@@ -196,22 +196,22 @@ class CPanel_API {
 			$curl_opts[ CURLOPT_VERBOSE ]     = true;
 		}
 
-		curl_setopt_array($ch, $curl_opts);
+		curl_setopt_array($ch, $curl_opts); // phpcs:ignore WordPress.WP.AlternativeFunctions.curl_curl_setopt_array
 
-		$answer = curl_exec($ch);
+		$answer = curl_exec($ch); // phpcs:ignore WordPress.WP.AlternativeFunctions.curl_curl_exec
 
-		if (curl_error($ch)) {
+		if (curl_error($ch)) { // phpcs:ignore WordPress.WP.AlternativeFunctions.curl_curl_error
 
 			// translators: %s is the cURL error.
-			$this->log(sprintf(__('cPanel API Error: %s', 'multisite-ultimate'), curl_error($ch)));
+			$this->log(sprintf(__('cPanel API Error: %s', 'multisite-ultimate'), curl_error($ch))); // phpcs:ignore WordPress.WP.AlternativeFunctions.curl_curl_error
 
 			return false;
 		}
 
-		curl_close($ch);
+		curl_close($ch); // phpcs:ignore WordPress.WP.AlternativeFunctions.curl_curl_close
 
 		if ($this->log) {
-			fclose($curl_log);
+			fclose($curl_log); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 		}
 
 		return (@gzdecode($answer)) ? gzdecode($answer) : $answer; // phpcs:ignore

@@ -253,12 +253,12 @@ class Customer_Test extends WP_UnitTestCase {
 		$this->assertFalse($customer->is_online());
 
 		// Test with recent login (within 3 minutes)
-		$recent_time = date('Y-m-d H:i:s', strtotime('-2 minutes'));
+		$recent_time = gmdate('Y-m-d H:i:s', strtotime('-2 minutes'));
 		$customer->set_last_login($recent_time);
 		$this->assertTrue($customer->is_online());
 
 		// Test with old login (more than 3 minutes ago)
-		$old_time = date('Y-m-d H:i:s', strtotime('-5 minutes'));
+		$old_time = gmdate('Y-m-d H:i:s', strtotime('-5 minutes'));
 		$customer->set_last_login($old_time);
 		$this->assertFalse($customer->is_online());
 	}

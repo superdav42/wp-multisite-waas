@@ -541,7 +541,7 @@ class System_Info_Admin_Page extends Base_Admin_Page {
 						'logs-directory' => [
 							'tooltip' => '',
 							'title'   => 'Logs Directory',
-							'value'   => is_writable(Logger::get_logs_folder()) ? __('Writable', 'multisite-ultimate') : __('Not Writable', 'multisite-ultimate'),
+							'value'   => wp_is_writable(Logger::get_logs_folder()) ? __('Writable', 'multisite-ultimate') : __('Not Writable', 'multisite-ultimate'),
 						],
 					],
 					$wpultimo_settings
@@ -559,25 +559,40 @@ class System_Info_Admin_Page extends Base_Admin_Page {
 	 */
 	public function generate_text_file_system_info(): void {
 
+		global $wp_filesystem;
+		if ( ! $wp_filesystem ) {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+			WP_Filesystem();
+		}
+
 		$file_name = sprintf("$this->id-%s.txt", gmdate('Y-m-d'));
-		$txt       = fopen($file_name, 'w') || die('Unable to open file!');
+		$content   = '';
 
 		foreach ($this->get_data() as $type) {
 			foreach ($type as $item) {
-				fwrite($txt, $item['title'] . ': ' . $item['value'] . PHP_EOL);
+				$content .= $item['title'] . ': ' . $item['value'] . PHP_EOL;
 			}
 		}
 
-		fclose($txt);
+		$upload_dir = wp_upload_dir();
+		$temp_file  = trailingslashit($upload_dir['basedir']) . $file_name;
+
+		if ( ! $wp_filesystem->put_contents($temp_file, $content) ) {
+			wp_die(esc_html__('Unable to create system info file.', 'multisite-ultimate'));
+		}
 
 		header('Content-Description: File Transfer');
 		header('Content-Disposition: attachment; filename=' . basename($file_name));
 		header('Expires: 0');
 		header('Cache-Control: must-revalidate');
 		header('Pragma: public');
-		header('Content-Length: ' . filesize($file_name));
+		header('Content-Length: ' . strlen($content));
 		header('Content-Type: text/plain');
-		readfile($file_name);
+		
+		echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+
+		// Clean up temp file
+		$wp_filesystem->delete($temp_file);
 
 		die;
 	}

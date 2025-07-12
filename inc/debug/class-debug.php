@@ -711,17 +711,17 @@ class Debug {
 
 				if (version_compare(get_bloginfo('version'), '6.2', '>=')) {
 					$result = $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-						$wpdb->prepare("DELETE FROM %i WHERE %i IN ($id_placeholders)", [$table, $field, ...$ids]) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber
+						$wpdb->prepare("DELETE FROM %i WHERE %i IN ($id_placeholders)", [$table, $field, ...$ids]) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber, WordPress.DB.PreparedSQLPlaceholders.UnsupportedIdentifierPlaceholder
 					);
 				} else {
 					$result = $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-						$wpdb->prepare("DELETE FROM `{$table}` WHERE `{$field}` IN ($id_placeholders)", ...$ids) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+						$wpdb->prepare("DELETE FROM `{$table}` WHERE `{$field}` IN ($id_placeholders)", ...$ids) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
 					);
 				}
 			} else {
 				if (version_compare(get_bloginfo('version'), '6.2', '>=')) {
 					$result = $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-						$wpdb->prepare('DELETE FROM %i', $table)
+						$wpdb->prepare('DELETE FROM %i', $table) // phpcs:ignore WordPress.DB.PreparedSQLPlaceholders.UnsupportedIdentifierPlaceholder
 					);
 				} else {
 					$result = $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching

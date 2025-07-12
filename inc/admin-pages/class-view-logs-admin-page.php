@@ -343,7 +343,23 @@ class View_Logs_Admin_Page extends Edit_Admin_Page {
 			header("Content-Disposition: attachment; filename=$file_name");
 			header('Pragma: no-cache');
 
-			readfile($file);
+			global $wp_filesystem;
+			if ( ! $wp_filesystem ) {
+				require_once ABSPATH . 'wp-admin/includes/file.php';
+				WP_Filesystem();
+			}
+
+			if ( ! $wp_filesystem->exists($file) ) {
+				wp_die(esc_html__('Log file not found.', 'multisite-ultimate'));
+			}
+
+			$content = $wp_filesystem->get_contents($file);
+			if ( false === $content ) {
+				wp_die(esc_html__('Unable to read log file.', 'multisite-ultimate'));
+			}
+
+			header('Content-Length: ' . strlen($content));
+			echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 			exit;
 		} elseif ('delete' === $action) {

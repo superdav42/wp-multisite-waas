@@ -28,43 +28,24 @@
 	<?php esc_html_e('On the Cloudflare overview page of your Zone (the domain managed), you\'ll see a block on the sidebar containing the Zone ID. Copy that value.', 'multisite-ultimate'); ?>
 </p>
 
-<div class="">
-	<img class="wu-w-full" src="https://wpultimo.com/wp-content/uploads/2021/04/Captura-de-Pantalla-2021-04-01-a-las-23.08.14.png">
-</div>
-
 <p class="wu-text-center"><i><?php esc_html_e('DNS Zone ID on the Sidebar', 'multisite-ultimate'); ?></i></p>
 
 <p class="wu-text-sm"><?php esc_html_e('On that same sidebar block, you will see the Get your API token link. Click on it to go to the token generation screen.', 'multisite-ultimate'); ?></p>
 
-<div class="">
-	<img class="wu-w-full" src="https://wpultimo.com/wp-content/uploads/2021/04/Captura-de-Pantalla-2021-04-01-a-las-23.12.19.png">
-</div>
 <p class="wu-text-center"><i><?php esc_html_e('Go to the API Tokens tab, then click on Create Token', 'multisite-ultimate'); ?></i></p>
 
 <p class="wu-text-sm"><?php esc_html_e('We want an API token that will allow us to edit DNS records, so select the Edit zone DNS template.', 'multisite-ultimate'); ?></p>
 
-<div class="">
-	<img class="wu-w-full" src="https://wpultimo.com/wp-content/uploads/2021/04/Captura-de-Pantalla-2021-04-01-a-las-23.15.03.png">
-</div>
 <p class="wu-text-center"><i><?php esc_html_e('Use the Edit Zone DNS template', 'multisite-ultimate'); ?></i></p>
 
 <p class="wu-text-sm"><?php esc_html_e('On the next screen, set the permissions to Edit, and select the zone that corresponds to your target domain. Then, move to the next step.', 'multisite-ultimate'); ?></p>
 
-<div class="">
-	<img class="wu-w-full" src="https://wpultimo.com/wp-content/uploads/2021/04/Captura-de-Pantalla-2021-04-01-a-las-23.17.58.png">
-</div>
 <p class="wu-text-center"><i><?php esc_html_e('Permission and Zone Settings', 'multisite-ultimate'); ?></i></p>
 
 <p class="wu-text-sm"><?php esc_html_e('Finally, click Create Token.', 'multisite-ultimate'); ?></p>
 
-<div class="">
-	<img class="wu-w-full" src="https://wpultimo.com/wp-content/uploads/2021/04/Captura-de-Pantalla-2021-04-01-a-las-23.19.52.png">
-</div>
 <p class="wu-text-center"><i><?php esc_html_e('Finishing up.', 'multisite-ultimate'); ?></i></p>
 
 <p class="wu-text-sm"><?php esc_html_e('Copy the API Token (it won\'t be shown again, so you need to copy it now!). We will use it on the next step alongside with the Zone ID', 'multisite-ultimate'); ?></p>
 
-<div class="">
-	<img class="wu-w-full" src="https://wpultimo.com/wp-content/uploads/2021/04/Captura-de-Pantalla-2021-04-01-a-las-23.21.47.png">
-</div>
 <p class="wu-text-center"><i><?php esc_html_e('Done!', 'multisite-ultimate'); ?></i></p>

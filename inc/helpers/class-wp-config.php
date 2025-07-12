@@ -34,7 +34,7 @@ class WP_Config {
 
 		$config_path = $this->get_wp_config_path();
 
-		if ( ! is_writable($config_path)) {
+		if ( ! is_writable($config_path)) { // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_is_writable
 
 			// translators: %s is the file name.
 			return new \WP_Error('not-writeable', sprintf(__('The file %s is not writable', 'multisite-ultimate'), $config_path));
@@ -177,7 +177,7 @@ class WP_Config {
 
 		$config_path = $this->get_wp_config_path();
 
-		if ( ! is_writable($config_path)) {
+		if ( ! is_writable($config_path)) { // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_is_writable
 
 			// translators: %s is the file name.
 			return new \WP_Error('not-writeable', sprintf(__('The file %s is not writable', 'multisite-ultimate'), $config_path));

@@ -109,6 +109,7 @@ if ( ! class_exists('MUCD_Files') ) {
 			} elseif (! $wp_filesystem->is_writable($path)) {
 				return $wp_filesystem->chmod($path, 0777, true);
 			}
+			return true;
 		}
 
 		/**
@@ -128,9 +129,10 @@ if ( ! class_exists('MUCD_Files') ) {
 		 * Stop process on Creating dir Error, print and log error, removes the new blog
 		 *
 		 * @since 0.2.0
-		 * @param  string $dir_path the path.
+		 * @param string $dir_path the path.
+		 * @param int    $to_site_id the site id.
 		 */
-		public static function mkdir_error($dir_path): void {
+		public static function mkdir_error($dir_path, $to_site_id): void {
 			$error_1 = 'ERROR DURING FILE COPY : CANNOT CREATE ' . $dir_path;
 			MUCD_Duplicate::write_log($error_1);
 			$error_2 = sprintf(MUCD_NETWORK_PAGE_DUPLICATE_COPY_FILE_ERROR, MUCD_Functions::get_primary_upload_dir());
@@ -142,7 +144,7 @@ if ( ! class_exists('MUCD_Files') ) {
 				echo '<a href="' . esc_attr($log_url) . '">' . esc_html(MUCD_NETWORK_PAGE_DUPLICATE_VIEW_LOG) . '</a>';
 			}
 
-			MUCD_Functions::remove_blog(self::$to_site_id);
+			MUCD_Functions::remove_blog($to_site_id);
 			wp_die();
 		}
 	}

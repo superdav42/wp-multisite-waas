@@ -104,7 +104,7 @@ class Ajax {
 			[
 				'model'   => 'membership',
 				'query'   => [],
-				'exclude' => [],
+				'exclude' => [], // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 			]
 		);
 
@@ -117,9 +117,9 @@ class Ajax {
 
 		if ($args['exclude']) {
 			if (is_string($args['exclude'])) {
-				$args['exclude'] = explode(',', $args['exclude']);
+				$args['exclude'] = explode(',', $args['exclude']); // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 
-				$args['exclude'] = array_map('trim', $args['exclude']);
+				$args['exclude'] = array_map('trim', $args['exclude']); // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 			}
 
 			$query['id__not_in'] = $args['exclude'];
@@ -162,7 +162,7 @@ class Ajax {
 					'post_type'   => 'page',
 					'post_status' => 'publish',
 					'numberposts' => -1,
-					'exclude'     => $query['id__not_in'] ?? '',
+					'exclude'     => $query['id__not_in'] ?? '', // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 				]
 			);
 		} elseif ('setting' === $args['model']) {

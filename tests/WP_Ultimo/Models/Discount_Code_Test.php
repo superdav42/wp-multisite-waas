@@ -58,7 +58,7 @@ class Discount_Code_Test extends WP_UnitTestCase {
 	public function test_is_valid_before_start_date(): void {
 		$discount_code = new Discount_Code();
 		$discount_code->set_active(true);
-		$discount_code->set_date_start(date('Y-m-d H:i:s', strtotime('+1 day')));
+		$discount_code->set_date_start(gmdate('Y-m-d H:i:s', strtotime('+1 day')));
 
 		$result = $discount_code->is_valid();
 
@@ -73,7 +73,7 @@ class Discount_Code_Test extends WP_UnitTestCase {
 	public function test_is_valid_after_expiration_date(): void {
 		$discount_code = new Discount_Code();
 		$discount_code->set_active(true);
-		$discount_code->set_date_expiration(date('Y-m-d H:i:s', strtotime('-1 day')));
+		$discount_code->set_date_expiration(gmdate('Y-m-d H:i:s', strtotime('-1 day')));
 
 		$result = $discount_code->is_valid();
 

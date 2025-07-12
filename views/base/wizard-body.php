@@ -1,0 +1,1 @@
+<?php // phpcs:ignore Internal.NoCodeFound ?>

@@ -175,7 +175,7 @@ class Site_Actions_Element extends Base_Element {
 
 		$pages = get_pages(
 			[
-				'exclude' => [get_the_ID()],
+				'exclude' => [get_the_ID()], // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 			]
 		);
 

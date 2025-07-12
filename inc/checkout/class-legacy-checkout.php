@@ -986,7 +986,7 @@ class Legacy_Checkout {
 
 			$templates = array_keys((array) wu_get_setting('templates'));
 
-			if ( ($plan && $plan->is_template_available($_REQUEST['template_id'])) || in_array($_REQUEST['template_id'], $templates)) { // phpcs:ignore WordPress.Security.NonceVerification
+			if ( ($plan && $plan->is_template_available($_REQUEST['template_id'])) || in_array($_REQUEST['template_id'], $templates)) { // phpcs:ignore WordPress.Security.NonceVerification, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 				unset($this->steps['template']);
 				unset($params['skip_template_selection']);
 			}
@@ -1175,7 +1175,7 @@ class Legacy_Checkout {
 		}
 
 		/** Update Transient Content */
-		$transient['plan_freq'] = sanitize_text_field(wp_unslash($_POST['plan_freq'])); // phpcs:ignore WordPress.Security.NonceVerification
+		$transient['plan_freq'] = isset($_POST['plan_freq']) ? sanitize_text_field(wp_unslash($_POST['plan_freq'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification
 		$transient['plan_id']   = (int) $_POST['plan_id']; // phpcs:ignore WordPress.Security.NonceVerification
 
 		/** Update Data */

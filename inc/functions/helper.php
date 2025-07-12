@@ -133,7 +133,7 @@ function wu_url($dir) {
  */
 function wu_request($key, $default_value = false) {
 
-	$value = isset($_REQUEST[ $key ]) ? wu_clean(stripslashes_deep($_REQUEST[ $key ])) : $default_value; // phpcs:ignore WordPress.Security.NonceVerification
+	$value = isset($_REQUEST[ $key ]) ? wu_clean(stripslashes_deep($_REQUEST[ $key ])) : $default_value; // phpcs:ignore WordPress.Security.NonceVerification, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 	return apply_filters('wu_request', $value, $key, $default_value);
 }
@@ -250,7 +250,7 @@ function wu_maybe_log_error($e) {
  */
 function wu_get_function_caller($depth = 1) {
 
-	$backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, $depth + 1);
+	$backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, $depth + 1); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_debug_backtrace
 
 	$caller = $backtrace[ $depth ]['function'] ?? null;
 
