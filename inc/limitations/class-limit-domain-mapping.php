@@ -84,9 +84,99 @@ class Limit_Domain_Mapping extends Limit {
 	 */
 	public function check($value_to_check, $limit, $type = '') {
 
-		$check = true;
+		if ( ! $this->is_enabled() ) {
+			return false;
+		}
 
-		return $check;
+		// For simple boolean limits (enabled/disabled)
+		if ( is_bool($limit) ) {
+			return $limit;
+		}
+
+		// For numeric limits (number of allowed domains)
+		if ( is_numeric($limit) ) {
+			$current_count = $this->get_current_domain_count($value_to_check);
+			return $current_count <= $limit;
+		}
+
+		// Default to enabled if limit is not properly set
+		return true;
+	}
+
+	/**
+	 * Check all domains for a specific site or membership during downgrade.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param int|null $site_id Site ID to check domains for.
+	 * @return array|false Array with current and limit counts if over limit, false if within limit.
+	 */
+	public function check_all_domains($site_id = null) {
+
+		if ( ! $this->is_enabled() ) {
+			return false;
+		}
+
+		$current_count = $this->get_current_domain_count($site_id);
+		$limit         = $this->get_limit();
+
+		// If limit is boolean true, unlimited domains allowed
+		if (is_bool($limit) && $limit) {
+			return false;
+		}
+
+		// If limit is boolean false, no domains allowed
+		if (is_bool($limit) && ! $limit) {
+			return $current_count > 0 ? array(
+				'current' => $current_count,
+				'limit'   => 0,
+			) : false;
+		}
+
+		// If numeric limit
+		if (is_numeric($limit)) {
+			return $current_count > $limit ? array(
+				'current' => $current_count,
+				'limit'   => $limit,
+			) : false;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Get the current count of active domains for a site.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param int|null $site_id Site ID to check domains for.
+	 * @return int Number of active domains.
+	 */
+	public function get_current_domain_count($site_id = null) {
+
+		if ( ! $site_id) {
+			$site_id = get_current_blog_id();
+		}
+
+		$domains = \WP_Ultimo\Models\Domain::get_by_site($site_id);
+
+		if ( ! $domains) {
+			return 0;
+		}
+
+		// If single domain returned, convert to array
+		if ( ! is_array($domains)) {
+			$domains = array($domains);
+		}
+
+		$active_count = 0;
+		foreach ($domains as $domain) {
+			if ($domain->is_active()) {
+				++$active_count;
+			}
+		}
+
+		return $active_count;
 	}
 
 	/**

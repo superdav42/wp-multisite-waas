@@ -990,6 +990,31 @@ class Cart implements \JsonSerializable {
 
 					return true;
 				}
+
+				// Check domain mapping limits for downgrade
+				$domain_overlimits = $new_limitations->domain_mapping->check_all_domains($site->get_id());
+
+				if ( $domain_overlimits ) {
+					$domain_count = $domain_overlimits['current'];
+					$domain_limit = $domain_overlimits['limit'];
+
+					$this->errors->add(
+						'overlimits',
+						sprintf(
+						// translators: %1$d: current number of custom domains, %2$s: 'custom domain' or 'custom domains', %3$d: domain limit, %4$s: 'custom domain' or 'custom domains', %5$d: number of domains to be removed, %6$s: 'custom domain' or 'custom domains'.
+							esc_html__('Your site currently has %1$d %2$s but the new plan is limited to %3$d %4$s. You must remove %5$d %6$s before you can downgrade your plan.', 'multisite-ultimate'),
+							$domain_count,
+							$domain_count > 1 ? __('custom domains', 'multisite-ultimate') : __('custom domain', 'multisite-ultimate'),
+							$domain_limit,
+							$domain_limit > 1 ? __('custom domains', 'multisite-ultimate') : __('custom domain', 'multisite-ultimate'),
+							$domain_count - $domain_limit,
+							($domain_count - $domain_limit) > 1 ? __('custom domains', 'multisite-ultimate') : __('custom domain', 'multisite-ultimate')
+						)
+					);
+					restore_current_blog();
+
+					return true;
+				}
 				restore_current_blog();
 			}
 		}
