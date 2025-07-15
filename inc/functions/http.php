@@ -19,7 +19,12 @@ defined('ABSPATH') || exit;
  */
 function wu_get_input($raw = false) {
 
-	$body = @file_get_contents('php://input'); // phpcs:ignore
+	// Init filesystem if not yet initiated.
+	WP_Filesystem();
+
+	// Get POST body HTML data.
+	global $wp_filesystem;
+	$body = $wp_filesystem->get_contents('php://input');
 
 	return $raw ? $body : json_decode($body);
 }

@@ -297,7 +297,13 @@ class Tax {
 			);
 		}
 
-		$data = json_decode(file_get_contents('php://input'), true);
+		// Init filesystem if not yet initiated.
+		WP_Filesystem();
+
+		// Get POST body HTML data.
+		global $wp_filesystem;
+		$json_data = $wp_filesystem->get_contents('php://input');
+		$data      = wu_clean(json_decode($json_data, true));
 
 		$tax_rates = $data['tax_rates'] ?? false;
 

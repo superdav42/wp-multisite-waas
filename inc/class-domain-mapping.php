@@ -306,7 +306,7 @@ class Domain_Mapping {
 		 * Note: This is only for backwards compatibility with WPMU Domain Mapping,
 		 * do not rely on this constant in new code.
 		 */
-		defined('DOMAIN_MAPPING') or define('DOMAIN_MAPPING', 1); // phpcs:ignore
+		defined('DOMAIN_MAPPING') || define('DOMAIN_MAPPING', 1); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals
 
 		/*
 		 * Decide if we use SSL
@@ -374,7 +374,7 @@ class Domain_Mapping {
 		}
 
 		$real_domain = $current_site->domain;
-		$domain      = $_SERVER['HTTP_HOST']; // phpcs:ignore
+		$domain      = sanitize_text_field(wp_unslash($_SERVER['HTTP_HOST']?? ''));
 
 		if ($domain === $real_domain) {
 
@@ -472,7 +472,7 @@ class Domain_Mapping {
 		}
 
 		// If we don't have a valid mapping, return the original URL
-		if (!$current_mapping) {
+		if (! $current_mapping) {
 			return $url;
 		}
 
@@ -480,7 +480,7 @@ class Domain_Mapping {
 		$site = $current_mapping->get_site();
 
 		// If we don't have a valid site, return the original URL
-		if (!$site) {
+		if (! $site) {
 			return $url;
 		}
 
@@ -527,7 +527,7 @@ class Domain_Mapping {
 		}
 
 		// Check if the site exists
-		if (!$current_mapping->get_site()) {
+		if (! $current_mapping->get_site()) {
 			return $url;
 		}
 
@@ -544,7 +544,7 @@ class Domain_Mapping {
 	public function fix_srcset($sources) {
 
 		// Check if we have a valid mapping
-		if (empty($this->current_mapping) || !$this->current_mapping->get_site()) {
+		if (empty($this->current_mapping) || ! $this->current_mapping->get_site()) {
 			return $sources;
 		}
 

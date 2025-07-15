@@ -166,7 +166,22 @@ class Template_Placeholders {
 			);
 		}
 
-		$data = json_decode(file_get_contents('php://input'), true);
+		// Init filesystem if not yet initiated.
+		WP_Filesystem();
+
+		// Get POST body HTML data.
+		global $wp_filesystem;
+		$data = json_decode($wp_filesystem->get_contents('php://input'), true);
+
+		if (null === $data) {
+			wp_send_json(
+				[
+					'code'    => 'invalid-input',
+					'message' => __('The JSON provided is invalid', 'multisite-ultimate'),
+				]
+			);
+		}
+		$data = wu_clean($data);
 
 		$placeholders = $data['placeholders'] ?? [];
 

@@ -78,7 +78,7 @@
 	</rule>
 	<rule ref="Generic.WhiteSpace.ArbitraryParenthesesSpacing">
         <properties>
-            <property name="spacing" value="0"/>read_notes
+            <property name="spacing" value="0"/>
             <property name="ignoreNewlines" value="true"/>
         </properties>
     </rule>
@@ -107,6 +107,13 @@
         <properties>
             <property name="customSanitizingFunctions" type="array">
                 <element value="wu_clean" />
+            </property>
+        </properties>
+    </rule>
+    <rule ref="WordPress.WP.I18n.MissingArgDomain">
+        <properties>
+            <property name="text_domain" type="array">
+                <element value="multisite-ultimate"/>
             </property>
         </properties>
     </rule>
