@@ -121,10 +121,6 @@ We welcome contributions to Multisite Ultimate! Here's how you can contribute ef
 8. Push to the branch (`git push origin feature/amazing-feature`)
 9. Open a Pull Request
 
-### Testing
-
-See [readme](tests/e2e/README.md) for e2e testing.
-
 ### Pull Request Guidelines
 
 When submitting pull requests, please:
@@ -160,6 +156,10 @@ When preparing for a release:
 2. Update the changelog in readme.txt
 3. Ensure README.md and readme.txt are synchronized with the latest information
 4. Create and push the appropriate version tag
+
+## ✅ Testing
+
+See [readme](tests/e2e/README.md) for e2e testing.
 
 ## 🆘 Support
 
