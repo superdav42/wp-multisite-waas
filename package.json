@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "clean-css-cli": "^5.6.3",
+    "rimraf": "^6.0.1",
     "uglify-js": "^3.19.3"
   },
   "config": {
@@ -20,10 +21,10 @@
     "build:dev": "cp node_modules/apexcharts/dist/apexcharts.js assets/js/lib/apexcharts.js && cp node_modules/shepherd.js/dist/esm/shepherd.mjs assets/js/lib/shepherd.js && cp node_modules/shepherd.js/dist/css/shepherd.css assets/css/lib/shepherd.css &&  npm run uglify && npm run makepot && npm run cleancss",
     "archive": "composer archive --file=$npm_package_name --format=zip",
     "postarchive": "rm -rf $npm_package_name && unzip $npm_package_name.zip -d $npm_package_name && rm $npm_package_name.zip && zip -r -9 $npm_package_name.zip $npm_package_name && rm -rf $npm_package_name",
-    "preuglify": "rm -f assets/js/*.min.js assets/js/lib/*.min.js assets/js/gateways/*.min.js",
-    "uglify": "for f in assets/js/*.js assets/js/lib/*.js assets/js/gateways/*.js; do file=${f%.js}; node_modules/.bin/uglifyjs $f -c -m > $file.min.js; done",
-    "precleancss": "rm -f assets/css/*.min.css assets/css/lib/*.min.css",
-    "cleancss": "for f in assets/css/*.css assets/css/lib/*.css; do file=${f%.css}; node_modules/.bin/cleancss -o $file.min.css $f; done",
+    "preuglify": "rimraf \"assets/js/**/*.min.js\" --glob",
+    "uglify": "node scripts/uglify.js",
+    "precleancss": "rimraf \"assets/css/**/*.min.css\" --glob",
+    "cleancss": "node scripts/cleancss.js",
     "makepot": "wp i18n make-pot ./ lang/$npm_package_name.pot --exclude=node_modules,tests,docs,assets/js/lib"
   },
   "dependencies": {
