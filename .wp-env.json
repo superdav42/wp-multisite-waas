@@ -1,5 +1,5 @@
 {
-  "core": "https://wordpress.org/wordpress-6.8.zip",
+  "core": "https://wordpress.org/wordpress-6.8.2.zip",
   "plugins": ["."],
   "env": {
     "development": {
