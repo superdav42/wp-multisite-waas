@@ -1,0 +1,103 @@
+name: E2E Cross-Browser Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ["7.4", "8.0", "8.1", "8.2", "8.3", "8.4"]
+        browser: ["chrome", "firefox"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Cache NPM dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-cache
+
+      - name: Install NPM dependencies
+        run: npm ci
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-cache
+
+      - name: Install Composer dependencies
+        run: composer install
+
+      - name: Set PHP version for wp-env
+        run: |
+          echo "{\"config\": {\"phpVersion\": \"${{ matrix.php }}\"}}" > .wp-env.override.json
+
+      - name: Start WordPress Environment
+        run: npm run env:start
+
+      - name: Wait for WordPress to be ready
+        run: |
+          for i in {1..30}; do
+            if curl -s http://localhost:8888 | grep -q "WordPress"; then
+              echo "WordPress is ready";
+              break;
+            fi
+            echo "Waiting for WordPress... ($i/30)";
+            sleep 5;
+          done
+
+      - name: Run Cypress Tests in ${{ matrix.browser }}
+        id: tests
+        run: |
+          docker run --network host \
+            -e CYPRESS_BASE_URL=http://localhost:8888 \
+            -v ${{ github.workspace }}:/e2e \
+            -w /e2e \
+            cypress/included:latest \
+            --browser ${{ matrix.browser }} \
+            --config baseUrl=http://localhost:8888
+
+      - name: Fix permissions for Cypress output
+        if: always()
+        run: sudo chown -R $USER:$USER tests/e2e/cypress
+
+      - name: Upload Cypress screenshots
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots-${{ matrix.php }}-${{ matrix.browser }}
+          path: tests/e2e/cypress/screenshots
+
+      - name: Upload Cypress videos
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos-${{ matrix.php }}-${{ matrix.browser }}
+          path: tests/e2e/cypress/videos
+
+      - name: Fail job if tests failed
+        if: failure()
+        run: |
+          echo "❌ One or more e2e tests failed."
+          exit 1
+
+      - name: Stop WordPress Environment
+        if: always()
+        run: npm run env:stop
