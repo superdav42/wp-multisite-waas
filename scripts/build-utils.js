@@ -34,10 +34,29 @@ function cleanMinified(dir, ext) {
 function postArchive(packageName) {
   const zipName = `${packageName}.zip`;
   const extractDir = packageName;
+
   deleteFolder(extractDir);
-  execSync(`unzip ${zipName} -d ${extractDir}`);
+
+  // Extract ZIP
+  if (process.platform === 'win32') {
+    execSync(`powershell -Command "Expand-Archive -Path '${zipName}' -DestinationPath '${extractDir}' -Force"`, {
+      stdio: 'inherit',
+    });
+  } else {
+    execSync(`unzip ${zipName} -d ${extractDir}`, { stdio: 'inherit' });
+  }
+
   fs.unlinkSync(zipName);
-  execSync(`zip -r -9 ${zipName} ${extractDir}`);
+
+  // Re-create ZIP
+  if (process.platform === 'win32') {
+    execSync(`powershell -Command "Compress-Archive -Path '${extractDir}\\*' -DestinationPath '${zipName}' -Force"`, {
+      stdio: 'inherit',
+    });
+  } else {
+    execSync(`zip -r -9 ${zipName} ${extractDir}`, { stdio: 'inherit' });
+  }
+
   deleteFolder(extractDir);
 }
 
