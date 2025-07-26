@@ -94,6 +94,7 @@
   "archive": {
     "exclude": [
       "tests",
+      "scripts",
       "bin",
       "phpunit.xml.dist",
       "composer.lock",
