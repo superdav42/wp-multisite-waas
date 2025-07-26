@@ -157,6 +157,10 @@ When preparing for a release:
 3. Ensure README.md and readme.txt are synchronized with the latest information
 4. Create and push the appropriate version tag
 
+## ✅ Testing
+
+See [readme](tests/e2e/README.md) for e2e testing.
+
 ## 🆘 Support
 
 For support, please open an issue on the [GitHub repository](https://github.com/superdav42/wp-multisite-waas/issues).

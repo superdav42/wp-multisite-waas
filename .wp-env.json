@@ -1,0 +1,19 @@
+{
+  "core": "https://wordpress.org/wordpress-6.8.2.zip",
+  "plugins": ["."],
+  "env": {
+    "development": {
+      "multisite": true,
+      "plugins": ["."]
+    },
+    "tests": {
+      "multisite": true,
+      "plugins": ["."]
+    }
+  },
+  "config": {
+    "WP_DEBUG": true,
+    "WP_DEBUG_DISPLAY": true,
+    "SCRIPT_DEBUG": true
+  }
+}
