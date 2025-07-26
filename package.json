@@ -8,25 +8,25 @@
   },
   "devDependencies": {
     "clean-css-cli": "^5.6.3",
-    "rimraf": "^6.0.1",
     "uglify-js": "^3.19.3"
   },
   "config": {
     "translate": true
   },
   "scripts": {
-    "prebuild": "composer install -o --no-dev",
-    "prebuild:dev": "composer install",
-    "build": "cp node_modules/apexcharts/dist/apexcharts.js assets/js/lib/apexcharts.js && cp node_modules/shepherd.js/dist/esm/shepherd.mjs assets/js/lib/shepherd.js && cp node_modules/shepherd.js/dist/css/shepherd.css assets/css/lib/shepherd.css && npm run uglify && npm run makepot && npm run cleancss && npm run archive",
-    "build:dev": "cp node_modules/apexcharts/dist/apexcharts.js assets/js/lib/apexcharts.js && cp node_modules/shepherd.js/dist/esm/shepherd.mjs assets/js/lib/shepherd.js && cp node_modules/shepherd.js/dist/css/shepherd.css assets/css/lib/shepherd.css &&  npm run uglify && npm run makepot && npm run cleancss",
-    "archive": "composer archive --file=$npm_package_name --format=zip",
-    "postarchive": "rm -rf $npm_package_name && unzip $npm_package_name.zip -d $npm_package_name && rm $npm_package_name.zip && zip -r -9 $npm_package_name.zip $npm_package_name && rm -rf $npm_package_name",
-    "preuglify": "rimraf \"assets/js/**/*.min.js\" --glob",
-    "uglify": "node scripts/uglify.js",
-    "precleancss": "rimraf \"assets/css/**/*.min.css\" --glob",
-    "cleancss": "node scripts/cleancss.js",
-    "makepot": "wp i18n make-pot ./ lang/$npm_package_name.pot --exclude=node_modules,tests,docs,assets/js/lib"
-  },
+  "prebuild": "composer install -o --no-dev",
+  "prebuild:dev": "composer install",
+  "copylibs": "node scripts/copy-libs.js",
+  "build": "npm run copylibs && npm run uglify && npm run makepot && npm run cleancss && npm run archive",
+  "build:dev": "npm run copylibs && npm run uglify && npm run makepot && npm run cleancss",
+  "archive": "composer archive --file=$npm_package_name --format=zip",
+  "postarchive": "node scripts/post-archive.js",
+  "preuglify": "node scripts/clean-js.js",
+  "uglify": "node scripts/uglify.js",
+  "precleancss": "node scripts/clean-css.js",
+  "cleancss": "node scripts/cleancss.js",
+  "makepot": "wp i18n make-pot ./ lang/$npm_package_name.pot --exclude=node_modules,tests,docs,assets/js/lib"
+},
   "dependencies": {
     "apexcharts": "^5.2.0",
     "shepherd.js": "^14.5.0"

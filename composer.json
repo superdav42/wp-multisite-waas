@@ -1,155 +1,160 @@
 {
-    "name": "devstone/multisite-ultimate",
-    "url": "https://MultisiteUltimate.org",
-    "description": "The Multisite Website as a Service (WaaS) plugin.",
-    "version": "2.4.0",
-    "authors": [
-        {
-            "name": "Arindo Duque",
-            "email": "arindo@wpultimo.com",
-            "homepage": "https://wpultimo.com"
-        },
-        {
-            "name": "David Stone",
-            "homepage": "https://github.com/superdav42"
-        }
-    ],
-    "license": [
-        "GPL-3.0-or-later"
-    ],
-    "autoload": {
-        "classmap": [
-            "inc"
-        ]
+  "name": "devstone/multisite-ultimate",
+  "url": "https://MultisiteUltimate.org",
+  "description": "The Multisite Website as a Service (WaaS) plugin.",
+  "version": "2.4.0",
+  "authors": [
+    {
+      "name": "Arindo Duque",
+      "email": "arindo@wpultimo.com",
+      "homepage": "https://wpultimo.com"
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "composer-plugins/wp-ultimo-autoloader-plugin"
-        }
-    ],
-    "type": "wordpress-plugin",
-    "require": {
-        "php": ">=7.4.1",
-        "automattic/jetpack-autoloader": "^5.0.0",
-        "wp-ultimo/autoloader-plugin": "dev-main",
-        "rpnzl/arrch": "dev-master#994258bbefb7722243211654c4f78813312cd5ed",
-        "amphp/amp": "^2.6.2",
-        "amphp/byte-stream": "^1.8.1",
-        "amphp/cache": "^1.5.1",
-        "amphp/http-client": "^4.6.3",
-        "amphp/http": "^1.7.1",
-        "amphp/sync": "^1.4.2",
-        "psr/log": "^1.1.4",
-        "delight-im/cookie": "^3.4.0",
-        "berlindb/core": "^2.0.1",
-        "mexitek/phpcolors": "^1.0.4",
-        "phpdocumentor/reflection-docblock": "^5.3.0",
-        "stripe/stripe-php": "^17.4.0",
-        "hashids/hashids": "^4.1.0",
-        "rakit/validation": "dev-master#ff003a35cdf5030a5f2482299f4c93f344a35b29",
-        "ifsnop/mysqldump-php": "^2.12",
-        "mpdf/mpdf": "^8.2.0",
-        "remotelyliving/php-dns": "^4.3.0",
-        "jasny/sso": "^0.4.2",
-        "nyholm/psr7": "^1.8.0",
-        "symfony/cache": "^5.4.29",
-        "scssphp/scssphp": "^1.11.1",
-        "cweagans/composer-patches": "^1.7",
-        "woocommerce/action-scheduler": "^3.9.1",
-        "ext-json": "*",
-        "symfony/polyfill-php80": "^1.31.0",
-        "symfony/polyfill-php81": "^1.31.0",
-        "symfony/polyfill-php82": "^1.31.0",
-        "symfony/polyfill-php83": "^1.31.0",
-        "symfony/polyfill-php84": "^1.31.0",
-        "ext-curl": "*"
-    },
-    "require-dev": {
-        "composer/installers": "^1.9.0",
-        "phpunit/phpunit": "^9.6.22",
-        "yoast/phpunit-polyfills": "^1.1.3",
-        "woocommerce/woocommerce-sniffs": "^1.0.0",
-        "symplify/vendor-patches": "^11.3",
-        "fakerphp/faker": "^1.24",
-        "rector/rector": "^2.0.8",
-        "szepeviktor/phpstan-wordpress": "^2.0.1",
-        "phpstan/extension-installer": "^1.1"
-    },
-    "config": {
-        "platform": {
-            "php": "7.4.1"
-        },
-        "allow-plugins": {
-            "composer/installers": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "automattic/jetpack-autoloader": true,
-            "cweagans/composer-patches": true,
-            "phpstan/extension-installer": true,
-            "php-http/discovery": true,
-            "wp-ultimo/autoloader-plugin": true
-        }
-    },
-    "archive": {
-        "exclude": [
-            "tests",
-            "bin",
-            "phpunit.xml.dist",
-            "composer.lock",
-            ".phpcs.xml.dist",
-            ".circleci",
-            "addons",
-            ".idea",
-            "node_modules",
-            ".gitignore",
-            ".phpcs.xml.dist",
-            ".phpunit.result.cache",
-            "build.sh",
-            "package.json",
-            "package-lock.json",
-            "setuptest.sh",
-            "utils",
-            "update.sh",
-            "phpstan.neon.dist",
-            "rector.php",
-            "inc/development",
-            ".github",
-            ".wiki",
-            "codeception.yml",
-            "CLAUDE.md",
-            ".claude",
-            "patches",
-            "composer-plugins",
-            "blueprint.json"
-        ]
-    },
-    "extra": {
-        "installer-paths": {
-            "vendor/woocommerce/{$name}/": [
-                "type:wordpress-plugin"
-            ]
-        },
-        "patches": {
-            "jasny/sso": [
-                "patches/jasny-sso-src-broker-cookies-php.patch"
-            ],
-            "berlindb/core": [
-                "patches/berlindb-core-src-database-query-php.patch",
-                "patches/berlindb-core-src-database-column-php.patch"
-            ]
-        }
-    },
-    "scripts": {
-        "post-update-cmd": "cd vendor/mpdf/mpdf/ttfonts && rm -f AboriginalSansREGULAR.ttf Aegean.otf Aegyptus.otf Akkadian.otf ayar.ttf damase_v.2.ttf DBSILBR.ttf DejaVuSerif.ttf Dhyana-Regular.ttf DejaVuSansMono-Oblique.ttf DejaVuSerif-BoldItalic.ttf DhyanaOFL.txt DejaVuSerifCondensed-BoldItalic.ttf DejaVuSansMono-Bold.ttf DejaVuSerif-Italic.ttf DejaVuSansMono.ttf DejaVuSansMono-BoldOblique.ttf DejaVuSerif-Bold.ttf Dhyana-Bold.ttf DejaVuSerifCondensed-Italic.ttf DejaVuSansCondensed-BoldOblique.ttf DejaVuSansCondensed-Oblique.ttf DejaVuSans-Oblique.ttf DejaVuSans-BoldOblique.ttf DejaVuSans-Bold.ttf DejaVuSans.ttf FreeMonoBoldOblique.ttf FreeMonoOblique.ttf FreeSans.ttf FreeSansBold.ttf FreeSansBoldOblique.ttf FreeSansOblique.ttf FreeSerif.ttf FreeSerifBold.ttf FreeSerifBoldItalic.ttf FreeSerifItalic.ttf Garuda.ttf Garuda-Bold.ttf Garuda-BoldOblique.ttf Garuda-Oblique.ttf GNUFreeFontinfo.txt Jomolhari.ttf Jomolhari-OFL.txt kaputaunicode.ttf KhmerOFL.txt KhmerOS.ttf lannaalif-v1-03.ttf 'Lateef font OFL.txt' LateefRegOT.ttf Lohit-Kannada.ttf LohitKannadaOFL.txt ocrb10.ttf ocrbinfo.txt Padauk-book.ttf Pothana2000.ttf Quivira.otf Sun-ExtA.ttf Sun-ExtB.ttf SundaneseUnicode-1.0.5.ttf SyrCOMEdessa.otf SyrCOMEdessa_license.txt TaameyDavidCLM-LICENSE.txt TaameyDavidCLM-Medium.ttf TaiHeritagePro.ttf Tharlon-Regular.ttf TharlonOFL.txt UnBatang_0613.ttf Uthman.otf 'XB Riyaz.ttf' 'XB RiyazBd.ttf' 'XB RiyazBdIt.ttf' 'XB RiyazIt.ttf' 'XW Zar Font Info.txt' ZawgyiOne.ttf Abyssinica_SIL.ttf",
-        "post-install-cmd": "cd vendor/mpdf/mpdf/ttfonts && rm -f AboriginalSansREGULAR.ttf Aegean.otf Aegyptus.otf Akkadian.otf ayar.ttf damase_v.2.ttf DBSILBR.ttf DejaVuSerif.ttf Dhyana-Regular.ttf DejaVuSansMono-Oblique.ttf DejaVuSerif-BoldItalic.ttf DhyanaOFL.txt DejaVuSerifCondensed-BoldItalic.ttf DejaVuSansMono-Bold.ttf DejaVuSerif-Italic.ttf DejaVuSansMono.ttf DejaVuSansMono-BoldOblique.ttf DejaVuSerif-Bold.ttf Dhyana-Bold.ttf DejaVuSerifCondensed-Italic.ttf DejaVuSansCondensed-BoldOblique.ttf DejaVuSansCondensed-Oblique.ttf DejaVuSans-Oblique.ttf DejaVuSans-BoldOblique.ttf DejaVuSans-Bold.ttf DejaVuSans.ttf FreeMonoBoldOblique.ttf FreeMonoOblique.ttf FreeSans.ttf FreeSansBold.ttf FreeSansBoldOblique.ttf FreeSansOblique.ttf FreeSerif.ttf FreeSerifBold.ttf FreeSerifBoldItalic.ttf FreeSerifItalic.ttf Garuda.ttf Garuda-Bold.ttf Garuda-BoldOblique.ttf Garuda-Oblique.ttf GNUFreeFontinfo.txt Jomolhari.ttf Jomolhari-OFL.txt kaputaunicode.ttf KhmerOFL.txt KhmerOS.ttf lannaalif-v1-03.ttf 'Lateef font OFL.txt' LateefRegOT.ttf Lohit-Kannada.ttf LohitKannadaOFL.txt ocrb10.ttf ocrbinfo.txt Padauk-book.ttf Pothana2000.ttf Quivira.otf Sun-ExtA.ttf Sun-ExtB.ttf SundaneseUnicode-1.0.5.ttf SyrCOMEdessa.otf SyrCOMEdessa_license.txt TaameyDavidCLM-LICENSE.txt TaameyDavidCLM-Medium.ttf TaiHeritagePro.ttf Tharlon-Regular.ttf TharlonOFL.txt UnBatang_0613.ttf Uthman.otf 'XB Riyaz.ttf' 'XB RiyazBd.ttf' 'XB RiyazBdIt.ttf' 'XB RiyazIt.ttf' 'XW Zar Font Info.txt' ZawgyiOne.ttf Abyssinica_SIL.ttf"
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Utils\\Rector\\": "utils/rector/src",
-            "Utils\\Rector\\Tests\\": "utils/rector/tests"
-        }
-    },
-    "replace": {
-        "paragonie/random_compat": "*"
+    {
+      "name": "David Stone",
+      "homepage": "https://github.com/superdav42"
     }
+  ],
+  "license": [
+    "GPL-3.0-or-later"
+  ],
+  "autoload": {
+    "classmap": [
+      "inc"
+    ]
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "composer-plugins/wp-ultimo-autoloader-plugin"
+    }
+  ],
+  "type": "wordpress-plugin",
+  "require": {
+    "php": ">=7.4.1",
+    "automattic/jetpack-autoloader": "^5.0.0",
+    "wp-ultimo/autoloader-plugin": "dev-main",
+    "rpnzl/arrch": "dev-master#994258bbefb7722243211654c4f78813312cd5ed",
+    "amphp/amp": "^2.6.2",
+    "amphp/byte-stream": "^1.8.1",
+    "amphp/cache": "^1.5.1",
+    "amphp/http-client": "^4.6.3",
+    "amphp/http": "^1.7.1",
+    "amphp/sync": "^1.4.2",
+    "psr/log": "^1.1.4",
+    "delight-im/cookie": "^3.4.0",
+    "berlindb/core": "^2.0.1",
+    "mexitek/phpcolors": "^1.0.4",
+    "phpdocumentor/reflection-docblock": "^5.3.0",
+    "stripe/stripe-php": "^17.4.0",
+    "hashids/hashids": "^4.1.0",
+    "rakit/validation": "dev-master#ff003a35cdf5030a5f2482299f4c93f344a35b29",
+    "ifsnop/mysqldump-php": "^2.12",
+    "mpdf/mpdf": "^8.2.0",
+    "remotelyliving/php-dns": "^4.3.0",
+    "jasny/sso": "^0.4.2",
+    "nyholm/psr7": "^1.8.0",
+    "symfony/cache": "^5.4.29",
+    "scssphp/scssphp": "^1.11.1",
+    "cweagans/composer-patches": "^1.7",
+    "woocommerce/action-scheduler": "^3.9.1",
+    "ext-json": "*",
+    "symfony/polyfill-php80": "^1.31.0",
+    "symfony/polyfill-php81": "^1.31.0",
+    "symfony/polyfill-php82": "^1.31.0",
+    "symfony/polyfill-php83": "^1.31.0",
+    "symfony/polyfill-php84": "^1.31.0",
+    "ext-curl": "*"
+  },
+  "require-dev": {
+    "composer/installers": "^1.9.0",
+    "phpunit/phpunit": "^9.6.22",
+    "yoast/phpunit-polyfills": "^1.1.3",
+    "woocommerce/woocommerce-sniffs": "^1.0.0",
+    "symplify/vendor-patches": "^11.3",
+    "fakerphp/faker": "^1.24",
+    "rector/rector": "^2.0.8",
+    "szepeviktor/phpstan-wordpress": "^2.0.1",
+    "phpstan/extension-installer": "^1.1",
+    "wp-cli/wp-cli": "^2.12"
+  },
+  "config": {
+    "platform": {
+      "php": "7.4.1"
+    },
+    "allow-plugins": {
+      "composer/installers": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "automattic/jetpack-autoloader": true,
+      "cweagans/composer-patches": true,
+      "phpstan/extension-installer": true,
+      "php-http/discovery": true,
+      "wp-ultimo/autoloader-plugin": true
+    }
+  },
+  "archive": {
+    "exclude": [
+      "tests",
+      "bin",
+      "phpunit.xml.dist",
+      "composer.lock",
+      ".phpcs.xml.dist",
+      ".circleci",
+      "addons",
+      ".idea",
+      "node_modules",
+      ".gitignore",
+      ".phpcs.xml.dist",
+      ".phpunit.result.cache",
+      "build.sh",
+      "package.json",
+      "package-lock.json",
+      "setuptest.sh",
+      "utils",
+      "update.sh",
+      "phpstan.neon.dist",
+      "rector.php",
+      "inc/development",
+      ".github",
+      ".wiki",
+      "codeception.yml",
+      "CLAUDE.md",
+      ".claude",
+      "patches",
+      "composer-plugins",
+      "blueprint.json"
+    ]
+  },
+  "extra": {
+    "installer-paths": {
+      "vendor/woocommerce/{$name}/": [
+        "type:wordpress-plugin"
+      ]
+    },
+    "patches": {
+      "jasny/sso": [
+        "patches/jasny-sso-src-broker-cookies-php.patch"
+      ],
+      "berlindb/core": [
+        "patches/berlindb-core-src-database-query-php.patch",
+        "patches/berlindb-core-src-database-column-php.patch"
+      ]
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "@php scripts/remove-mpdf-fonts.php"
+    ],
+    "post-update-cmd": [
+      "@php scripts/remove-mpdf-fonts.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Utils\\Rector\\": "utils/rector/src",
+      "Utils\\Rector\\Tests\\": "utils/rector/tests"
+    }
+  },
+  "replace": {
+    "paragonie/random_compat": "*"
+  }
 }
