@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
 <!-- Submit Box -->
 <div class="wu-bg-gray-100 wu--m-in wu-mt-4 wu-p-4 wu-overflow-hidden wu-border-t wu-border-solid wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300">
 	<span class="wu-float-right">
-		<button name="next" value="1" class="wu-next-button button button-primary button-large wu-ml-2">
+		<button name="next" value="1" class="wu-next-button button button-primary button-large wu-ml-2" data-testid="button-primary">
 			<?php esc_html_e('Proceed', 'multisite-ultimate'); ?>
 		</button>
 	</span>

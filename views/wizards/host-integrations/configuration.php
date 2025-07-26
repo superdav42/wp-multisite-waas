@@ -43,7 +43,7 @@ defined( 'ABSPATH' ) || exit;
 		<?php esc_html_e('Add manually', 'multisite-ultimate'); ?>
 	</button>
 
-	<button name="submit" value="1" class="wu-ml-2 button button-primary button-large">
+	<button name="submit" value="1" class="wu-ml-2 button button-primary button-large" data-testid="button-primary">
 		<?php esc_html_e('Add automatically', 'multisite-ultimate'); ?>
 	</button>
 

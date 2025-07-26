@@ -39,7 +39,7 @@ defined( 'ABSPATH' ) || exit;
 
 		<div class="md:wu-w-2/12 wu-pt-10">
 
-		<span class="wu-uppercase wu-block wu-px-4 wu-text-gray-700 wu-font-bold">
+		<span class="wu-uppercase wu-block wu-px-4 wu-text-gray-700 wu-font-bold" data-testid="wizard-menu-heaing">
 
 		<?php echo esc_html($page->get_title()); ?>
 
@@ -56,7 +56,7 @@ defined( 'ABSPATH' ) || exit;
 		?>
 
 			<!-- Navigator -->
-			<ul class="">
+			<ul class="" data-testid="wizard-menu">
 
 				<?php
 
@@ -84,15 +84,15 @@ defined( 'ABSPATH' ) || exit;
 					<?php if (wu_get_isset($section, 'separator')) : ?>
 
 						<!-- Separator Item -->
-						<li class="wu-sticky wu-py-2 wu-px-4">&nbsp;</li>
+						<li class="wu-sticky wu-py-2 wu-px-4" data-testid="wizard-menu-separator">&nbsp;</li>
 
 					<?php else : ?>
 
 						<!-- Menu Item -->
-						<li class="wu-sticky">
+						<li class="wu-sticky" data-testid="<?php echo $current_section === $section_name ? 'wizard-menu-item-active' : 'wizard-menu-item'; ?>">
 
 							<!-- Menu Link -->
-							<a href="<?php echo esc_url($page->get_section_link($section_name)); ?>" class="wu-block wu-py-2 wu-px-4 wu-no-underline wu-text-sm wu-rounded <?php echo ! $clickable_navigation && ! $is_pre_current_section ? 'wu-pointer-events-none' : ''; ?> <?php echo $current_section === $section_name ? 'wu-bg-gray-300 wu-text-gray-800' : 'wu-text-gray-600 hover:wu-text-gray-700'; ?>">
+							<a href="<?php echo esc_url($page->get_section_link($section_name)); ?>" class="wu-block wu-py-2 wu-px-4 wu-no-underline wu-text-sm wu-rounded <?php echo ! $clickable_navigation && ! $is_pre_current_section ? 'wu-pointer-events-none' : ''; ?> <?php echo $current_section === $section_name ? 'wu-bg-gray-300 wu-text-gray-800' : 'wu-text-gray-600 hover:wu-text-gray-700'; ?>" data-testid="<?php echo $current_section === $section_name ? 'wizard-menu-item-link-active' : 'wizard-menu-item-link'; ?>">
 								<?php echo esc_html($section['title']); ?>
 							</a>
 							<!-- End Menu Link -->
@@ -129,7 +129,7 @@ defined( 'ABSPATH' ) || exit;
 
 		</div>
 
-		<div class="md:wu-w-8/12 wu-px-4 metabox-holder">
+		<div class="md:wu-w-8/12 wu-px-4 metabox-holder" data-testid="wizard-section-<?php echo esc_attr($current_section); ?>">
 
 			<form method="post" id="<?php echo esc_attr($form_id); ?>">
 

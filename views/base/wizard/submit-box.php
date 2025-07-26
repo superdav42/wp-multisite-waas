@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<span class="wu-self-center wu-content-center wu-flex">
 
-	<button name="submit" value="1" class="button button-primary button-large">
+	<button name="submit" value="1" class="button button-primary button-large" data-testid="button-primary">
 		<?php esc_html_e('Continue', 'multisite-ultimate'); ?>
 	</button>
 

@@ -93,7 +93,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php endif; ?>
 
-	<button name="submit" value="1" class="button button-primary button-large">
+	<button name="submit" value="1" class="button button-primary button-large" data-testid="button-primary">
 		<?php echo esc_html($integration->is_enabled() ? __('Deactivate', 'multisite-ultimate') : __('Activate', 'multisite-ultimate')); ?>
 	</button>
 
