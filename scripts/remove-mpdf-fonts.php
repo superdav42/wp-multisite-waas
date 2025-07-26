@@ -28,9 +28,14 @@ $fonts = [
 
 $dir = __DIR__ . '/../vendor/mpdf/mpdf/ttfonts/';
 
+echo "\nRemoving fonts...\n\n";
+
 foreach ($fonts as $font) {
     $filePath = $dir . $font;
     if (file_exists($filePath)) {
         unlink($filePath);
+        echo "Deleted: $font\n";
+    } else {
+        echo "Not found: $font\n";
     }
 }
