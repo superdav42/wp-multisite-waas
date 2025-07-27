@@ -192,7 +192,7 @@ do_action('wu_template_previewer_before');
 
 	<?php if ( ! wu_request('customizer')) : ?>
 
-		<iframe id="iframe" src="<?php echo esc_attr(set_url_scheme(add_query_arg('wu-preview', '1', get_home_url($selected_template->get_id())))); ?>" width="100%" height="100%"></iframe>
+		<iframe id="iframe" src="<?php echo esc_attr(set_url_scheme(add_query_arg('wu-preview', '1', get_home_url($selected_template->get_id())))); ?>" width="100%" height="100%" referrerpolicy="unsafe-url"></iframe>
 
 	<?php else : ?>
 

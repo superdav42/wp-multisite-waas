@@ -29,7 +29,7 @@ final class WP_Ultimo {
 	 * @since 2.1.0
 	 * @var string
 	 */
-	const VERSION = '2.4.1';
+	const VERSION = '2.4.1-beta';
 
 	/**
 	 * Version of the Plugin.
@@ -204,6 +204,8 @@ final class WP_Ultimo {
 	 * @return void
 	 */
 	public function after_init() {
+		load_plugin_textdomain('multisite-ultimate', false, dirname((string) WP_ULTIMO_PLUGIN_BASENAME) . '/lang');
+
 		/*
 		 * Loads admin pages
 		 * @todo: move this to a manager in the future?
