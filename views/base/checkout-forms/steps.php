@@ -254,7 +254,7 @@ defined( 'ABSPATH' ) || exit;
 		<!-- <div v-show="!loading_preview && !preview_error" class="wu-block wu-p-8 wu-bg-white wu-my-4 wu-border wu-border-solid wu-rounded wu-border-gray-400" v-html="preview_content"></div> -->
 		<div v-show="!loading_preview && !preview_error" id="wu-iframe-content" class="wu-w-full wu-relative">
 
-		<iframe id="wp-ultimo-checkout-preview" v-bind:src="iframe_preview_url" class="wu-w-full wu-h-full wu-m-0 wu-mt-4 wu-mb-2 wu-p-0 wu-overflow-hidden wu-border-radius wu-border wu-border-solid wu-rounded wu-border-gray-400">
+		<iframe id="wp-ultimo-checkout-preview" v-bind:src="iframe_preview_url" referrerpolicy="unsafe-url" class="wu-w-full wu-h-full wu-m-0 wu-mt-4 wu-mb-2 wu-p-0 wu-overflow-hidden wu-border-radius wu-border wu-border-solid wu-rounded wu-border-gray-400">
 			<?php esc_html_e('Your browser doesn\'t support iframes', 'multisite-ultimate'); ?>
 		</iframe>
 

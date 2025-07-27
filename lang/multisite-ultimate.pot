@@ -2,14 +2,14 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Multisite Ultimate 2.4.1\n"
+"Project-Id-Version: Multisite Ultimate 2.4.1-beta\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/multisite-ultimate\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-07-18T00:58:19+00:00\n"
+"POT-Creation-Date: 2025-07-19T23:56:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: multisite-ultimate\n"
@@ -3453,7 +3453,7 @@ msgid "Fee"
 msgstr ""
 
 #: inc/admin-pages/class-payment-edit-admin-page.php:669
-#: inc/checkout/class-cart.php:1315
+#: inc/checkout/class-cart.php:1296
 msgid "Credit"
 msgstr ""
 
@@ -4886,7 +4886,7 @@ msgstr ""
 
 #: inc/admin-pages/class-template-previewer-customize-admin-page.php:154
 #: inc/installers/class-migrator.php:918
-#: inc/ui/class-template-previewer.php:363
+#: inc/ui/class-template-previewer.php:400
 msgid "Use this Template"
 msgstr ""
 
@@ -6487,89 +6487,89 @@ msgid "This cart proposes no changes to the current membership."
 msgstr ""
 
 #. translators: %1$d: current number of posts, %2$s: post type name, %3$d: posts quota, %4$s: post type name, %5$d: number of posts to be deleted, %6$s: post type name.
-#: inc/checkout/class-cart.php:979
+#: inc/checkout/class-cart.php:960
 #, php-format
 msgid "You site currently has %1$d %2$s but the new plan is limited to %3$d %4$s. You must trash %5$d %6$s before you can downgrade your plan."
 msgstr ""
 
-#: inc/checkout/class-cart.php:1005
+#: inc/checkout/class-cart.php:986
 msgid "This new plan does NOT support custom domains. You must remove all custom domains before you can downgrade your plan."
 msgstr ""
 
 #. translators: %1$d: current number of custom domains, %2$s: 'custom domain' or 'custom domains', %3$d: domain limit, %4$s: 'custom domain' or 'custom domains', %5$d: number of domains to be removed, %6$s: 'custom domain' or 'custom domains'.
-#: inc/checkout/class-cart.php:1013
+#: inc/checkout/class-cart.php:994
 #, php-format
 msgid "Your site currently has %1$d %2$s but the new plan is limited to %3$d %4$s. You must remove %5$d %6$s before you can downgrade your plan."
 msgstr ""
 
-#: inc/checkout/class-cart.php:1015
-#: inc/checkout/class-cart.php:1017
-#: inc/checkout/class-cart.php:1019
+#: inc/checkout/class-cart.php:996
+#: inc/checkout/class-cart.php:998
+#: inc/checkout/class-cart.php:1000
 msgid "custom domains"
 msgstr ""
 
-#: inc/checkout/class-cart.php:1015
-#: inc/checkout/class-cart.php:1017
-#: inc/checkout/class-cart.php:1019
+#: inc/checkout/class-cart.php:996
+#: inc/checkout/class-cart.php:998
+#: inc/checkout/class-cart.php:1000
 msgid "custom domain"
 msgstr ""
 
 #. Translators: Placeholder receives the recurring period description
-#: inc/checkout/class-cart.php:1093
+#: inc/checkout/class-cart.php:1074
 #, php-format
 msgid "You already have an active %s agreement."
 msgstr ""
 
-#: inc/checkout/class-cart.php:1114
+#: inc/checkout/class-cart.php:1095
 msgid "Scheduled Swap Credit"
 msgstr ""
 
-#: inc/checkout/class-cart.php:1115
+#: inc/checkout/class-cart.php:1096
 msgid "Swap scheduled to next billing cycle."
 msgstr ""
 
-#: inc/checkout/class-cart.php:1316
+#: inc/checkout/class-cart.php:1297
 msgid "Prorated amount based on the previous membership."
 msgstr ""
 
 #. translators: %s is the coupon code being used, all-caps. e.g. PROMO10OFF
-#: inc/checkout/class-cart.php:1352
+#: inc/checkout/class-cart.php:1333
 #, php-format
 msgid "The code %s do not exist or is no longer valid."
 msgstr ""
 
 #. translators: two intervals
-#: inc/checkout/class-cart.php:1433
+#: inc/checkout/class-cart.php:1414
 #, php-format
 msgid "Interval %1$s and %2$s do not match."
 msgstr ""
 
-#: inc/checkout/class-cart.php:1596
+#: inc/checkout/class-cart.php:1577
 msgid "The product you are trying to add does not exist."
 msgstr ""
 
-#: inc/checkout/class-cart.php:1608
+#: inc/checkout/class-cart.php:1589
 msgid "The product you are trying to add does not exist for the selected duration."
 msgstr ""
 
-#: inc/checkout/class-cart.php:1622
+#: inc/checkout/class-cart.php:1603
 msgid "Theres already a plan in this membership."
 msgstr ""
 
 #. translators: respectively, product name, duration, and duration unit.
-#: inc/checkout/class-cart.php:1684
+#: inc/checkout/class-cart.php:1665
 #, php-format
 msgid "%1$s does not have a valid price variation for that billing period (every %2$s %3$s(s)) and was not added to the cart."
 msgstr ""
 
 #. translators: placeholder is the product name.
-#: inc/checkout/class-cart.php:1748
+#: inc/checkout/class-cart.php:1729
 #, php-format
 msgid "Signup Fee for %s"
 msgstr ""
 
 #. translators: placeholder is the product name.
-#: inc/checkout/class-cart.php:1748
+#: inc/checkout/class-cart.php:1729
 #, php-format
 msgid "Signup Credit for %s"
 msgstr ""
@@ -17070,12 +17070,12 @@ msgid "The customer will be able to create %s users(s) of this user role."
 msgstr ""
 
 #: inc/managers/class-limitation-manager.php:597
-#: inc/managers/class-limitation-manager.php:661
+#: inc/managers/class-limitation-manager.php:665
 msgid "unlimited"
 msgstr ""
 
 #: inc/managers/class-limitation-manager.php:597
-#: inc/managers/class-limitation-manager.php:661
+#: inc/managers/class-limitation-manager.php:665
 msgid "no"
 msgstr ""
 
@@ -17086,40 +17086,40 @@ msgid "%s Role Quota. e.g. 10"
 msgstr ""
 
 #. translators: %s is the post type name.
-#: inc/managers/class-limitation-manager.php:657
+#: inc/managers/class-limitation-manager.php:661
 #, php-format
 msgid "Limit %s"
 msgstr ""
 
 #. translators: %s is the post type name.
-#: inc/managers/class-limitation-manager.php:660
+#: inc/managers/class-limitation-manager.php:664
 #, php-format
 msgid "The customer will be able to create %s post(s) of this post type."
 msgstr ""
 
 #. translators: %s is the post type name.
-#: inc/managers/class-limitation-manager.php:673
+#: inc/managers/class-limitation-manager.php:677
 #, php-format
 msgid "%s Quota. e.g. 200"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:718
+#: inc/managers/class-limitation-manager.php:722
 msgid "Limit Sites"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:719
+#: inc/managers/class-limitation-manager.php:723
 msgid "Enable site limitations for this product."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:736
+#: inc/managers/class-limitation-manager.php:740
 msgid "The product type selection does not support allowing for the creating of extra sites."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:747
+#: inc/managers/class-limitation-manager.php:751
 msgid "Site Allowance"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:748
+#: inc/managers/class-limitation-manager.php:752
 msgid "This is the number of sites the customer will be able to create under this membership."
 msgstr ""
 
@@ -18614,7 +18614,7 @@ msgstr ""
 msgid "Put your site on maintenance mode. When activated, the front-end will only be accessible to logged users."
 msgstr ""
 
-#: inc/ui/class-template-previewer.php:243
+#: inc/ui/class-template-previewer.php:280
 msgid "This template is not available"
 msgstr ""
 
@@ -20069,12 +20069,6 @@ msgstr ""
 
 #: views/ui/toolbox.php:20
 msgid "Toggle Toolbox"
-msgstr ""
-
-#. translators: %s hash of membership.
-#: views/ui/toolbox.php:66
-#, php-format
-msgid "Membership <Strong>%s</strong>"
 msgstr ""
 
 #. translators: %s is the integration name

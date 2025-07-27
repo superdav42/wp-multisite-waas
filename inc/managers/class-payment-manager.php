@@ -172,7 +172,7 @@ class Payment_Manager extends Base_Manager {
 		$form_title = __('Pending Payments', 'multisite-ultimate');
 		$form_url   = wu_get_form_url('pending_payments');
 
-		wp_add_inline_script('wubox', sprintf("document.addEventListener('DOMContentLoaded', function(){wubox.show('%s', '%s');});", esc_js($form_title), esc_js($form_url)));
+		wp_add_inline_script('wubox', sprintf("document.addEventListener('DOMContentLoaded', function(){wubox.show('%s', '%s');});", esc_js($form_title), $form_url));
 
 		// Show only after user login
 		delete_user_meta($user_id, 'wu_show_pending_payment_popup');

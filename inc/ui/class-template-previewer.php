@@ -44,7 +44,7 @@ class Template_Previewer {
 	 */
 	public function init(): void {
 
-		add_action('wp_ultimo_load', [$this, 'hooks']);
+		add_action('plugins_loaded', [$this, 'hooks']);
 	}
 
 	/**
@@ -106,7 +106,14 @@ class Template_Previewer {
 		// Get the main site domain for frame-ancestors (where the template previewer iframe is embedded)
 		$main_site_url    = get_site_url(get_main_site_id());
 		$main_site_domain = wp_parse_url($main_site_url, PHP_URL_HOST);
-		$allowed_domain   = set_url_scheme("https://{$main_site_domain}");
+
+		if (strpos($main_site_domain, 'www.') === 0) {
+			$main_site_domain = str_replace('www.', '', $main_site_domain);
+		}
+
+		$current_site_info = wp_parse_url(get_site_url());
+		$current_site_host = $current_site_info['host'];
+		$allowed_domains   = set_url_scheme("*.$main_site_domain $main_site_domain $current_site_host");
 
 		// Check if CSP header already exists
 		$existing_csp = '';
@@ -125,19 +132,19 @@ class Template_Previewer {
 			foreach ($directives as $key => $directive) {
 				if (stripos($directive, 'frame-ancestors') === 0) {
 					// Modify existing frame-ancestors directive
-					$directives[ $key ]    = "frame-ancestors 'self' {$allowed_domain}";
+					$directives[ $key ]    = "frame-ancestors 'self' {$allowed_domains}";
 					$frame_ancestors_found = true;
 					break;
 				}
 			}
 			if ( ! $frame_ancestors_found) {
 				// Add frame-ancestors directive
-				$directives[] = "frame-ancestors 'self' {$allowed_domain}";
+				$directives[] = "frame-ancestors 'self' {$allowed_domains}";
 			}
 			$new_csp = implode('; ', array_filter($directives));
 		} else {
 			// Create new CSP with frame-ancestors only
-			$new_csp = "frame-ancestors 'self' $allowed_domain";
+			$new_csp = "frame-ancestors 'self' $allowed_domains";
 		}
 
 		header("Content-Security-Policy: {$new_csp}");
@@ -377,7 +384,18 @@ class Template_Previewer {
 	 */
 	public function is_preview() {
 
-		return ! empty(wu_request('wu-preview')) || (isset($_SERVER['HTTP_SEC_FETCH_DEST']) && 'iframe' === $_SERVER['HTTP_SEC_FETCH_DEST']);
+		$referer_is_preview = false;
+		$referer            = wp_get_referer();
+		if ( $referer) {
+			$query = wp_parse_url($referer, PHP_URL_QUERY);
+			if ($query) {
+				parse_str($query, $params);
+				$slug               = $this->get_preview_parameter();
+				$referer_is_preview = ! empty($params[ $slug ]);
+			}
+		}
+
+		return ! empty(wu_request('wu-preview')) || (isset($_SERVER['HTTP_SEC_FETCH_DEST']) && 'iframe' === $_SERVER['HTTP_SEC_FETCH_DEST'] && $referer_is_preview);
 	}
 
 	/**
