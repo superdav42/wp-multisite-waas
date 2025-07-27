@@ -16,7 +16,7 @@
   <a href="https://github.com/superdav42/wp-multisite-waas/releases"><img src="https://img.shields.io/github/v/release/superdav42/wp-multisite-waas" alt="Latest Release"></a>
 </p>
 <p align="center">
-  <a href="https://github.com/superdav42/wp-multisite-waas/actions/workflows/unit.yml"><img src="https://github.com/superdav42/wp-multisite-waas/actions/workflows/unit.yml/badge.svg" alt="Unit & Integration Tests"></a>
+  <a href="https://github.com/superdav42/wp-multisite-waas/actions/workflows/tests.yml"><img src="https://github.com/superdav42/wp-multisite-waas/actions/workflows/tests.yml/badge.svg" alt="Unit & Integration Tests"></a>
   <a href="https://github.com/superdav42/wp-multisite-waas/actions/workflows/e2e.yml"><img src="https://github.com/superdav42/wp-multisite-waas/actions/workflows/e2e.yml/badge.svg" alt="E2E Tests"></a>
 </p>
 
