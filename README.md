@@ -9,24 +9,12 @@
 </p>
 
 <p align="center">
-  <a href="http://www.gnu.org/licenses/gpl-2.0.html">
-    <img src="https://img.shields.io/badge/License-GPL%20v2-blue.svg" alt="License: GPL v2">
-  </a>
-  <a href="https://wordpress.org/">
-    <img src="https://img.shields.io/badge/WordPress-6.8%20Tested-green.svg" alt="WordPress: 6.8 Tested">
-  </a>
-  <a href="https://php.net/">
-    <img src="https://img.shields.io/badge/PHP-7.4.0%2B-purple.svg" alt="PHP: 7.4.0+">
-  </a>
-  <a href="https://php.net/">
-    <img src="https://img.shields.io/badge/Up%20To%20PHP-8.4.6-purple.svg" alt="Up To PHP: 8.4.6">
-  </a>
-  <a href="https://github.com/superdav42/wp-multisite-waas/releases">
-    <img src="https://img.shields.io/github/v/release/superdav42/wp-multisite-waas" alt="Latest Release">
-  </a>
-  <a href="https://github.com/superdav42/wp-multisite-waas/actions/workflows/e2e.yml">
-    <img src="https://github.com/superdav42/wp-multisite-waas/actions/workflows/e2e.yml/badge.svg" alt="E2E Tests">
-  </a>
+  <a href="http://www.gnu.org/licenses/gpl-2.0.html"><img src="https://img.shields.io/badge/License-GPL%20v2-blue.svg" alt="License: GPL v2"></a>
+  <a href="https://wordpress.org/"><img src="https://img.shields.io/badge/WordPress-6.8%20Tested-green.svg" alt="WordPress: 6.8 Tested"></a>
+  <a href="https://php.net/"><img src="https://img.shields.io/badge/PHP-7.4.0%2B-purple.svg" alt="PHP: 7.4.0+"></a>
+  <a href="https://php.net/"><img src="https://img.shields.io/badge/Up%20To%20PHP-8.4.6-purple.svg" alt="Up To PHP: 8.4.6"></a>
+  <a href="https://github.com/superdav42/wp-multisite-waas/releases"><img src="https://img.shields.io/github/v/release/superdav42/wp-multisite-waas" alt="Latest Release"></a>
+  <a href="https://github.com/superdav42/wp-multisite-waas/actions/workflows/e2e.yml"><img src="https://github.com/superdav42/wp-multisite-waas/actions/workflows/e2e.yml/badge.svg" alt="E2E Tests"></a>
 </p>
 
 ## 🌟 Overview
