@@ -116,6 +116,7 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 		wp_enqueue_script('wu-vue-apps');
 
 		wp_enqueue_script('wu-fields');
+		wp_enqueue_script('wu-ajax-button', wu_get_asset('ajax-button.js', 'js'), ['jquery'], wu_get_version(), true);
 
 		wp_enqueue_style('wp-color-picker');
 	}

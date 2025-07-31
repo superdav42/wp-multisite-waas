@@ -2278,7 +2278,9 @@ class Checkout {
 
 		$custom_css = apply_filters('wu_checkout_custom_css', '');
 
-		wp_add_inline_style('wu-checkout', $custom_css);
+		if ($custom_css) {
+			wp_add_inline_style('wu-checkout', $custom_css);
+		}
 
 		wp_enqueue_style('wu-checkout');
 

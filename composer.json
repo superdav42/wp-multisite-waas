@@ -123,7 +123,15 @@
             ".claude",
             "patches",
             "composer-plugins",
-            "blueprint.json"
+            "blueprint.json",
+            "vendor/amphp/sync/docs/Gemfile",
+            "vendor/amphp/dns/docs/Gemfile",
+            "vendor/stripe/stripe-php/API_VERSION",
+            "vendor/amphp/hpack/src/Internal/amp-hpack.h",
+            "vendor/amphp/socket/docs/Gemfile",
+            "vendor/delight-im/cookie/.travis-ci-apache",
+            "vendor/doctrine",
+            ".distignore"
         ]
     },
     "extra": {

@@ -42,9 +42,4 @@ defined( 'ABSPATH' ) || exit;
 
 </div>
 
-<style>
-#wu-line_item_list_table .tablenav.bottom,
-#wu-line_item_list_table tfoot {
-	display: none;
-}
-</style>
+<?php wp_enqueue_style('wu-tax-details', wu_get_asset('tax-details.css', 'css'), [], wu_get_version()); ?>

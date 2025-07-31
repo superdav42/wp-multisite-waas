@@ -192,23 +192,19 @@ class Theme_Limits {
 	 * @since 2.0.0
 	 * @return void
 	 */
-	public function modify_backbone_template(): void { // phpcs:disable ?>
+	public function modify_backbone_template(): void {
+			// Inline script required to modify WordPress theme Backbone.js template - cannot be externalized.
+		?>
 
 		<script type="text/javascript">
-
 			if (typeof wu_theme_settings !== 'undefined') {
-
 				let content = document.getElementById("tmpl-theme").innerHTML;
-
 				content = content.replace(new RegExp('(<a class="button activate".*<\/a>)', 'g'), '<# if ( !wu_theme_settings.themes_not_available.includes(data.id) ) { #>$1<# } else { #> {{{ wu_theme_settings.replacement_message.replace("EXTENSION", data.id) }}} <# } #>');
-
 				document.getElementById("tmpl-theme").innerHTML = content;
-
 			}
-
 		</script>
 
-		<?php // phpcs:enable
+		<?php
 	}
 
 	/**

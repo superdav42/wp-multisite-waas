@@ -95,29 +95,7 @@ defined( 'ABSPATH' ) || exit;
 
 </div>
 
-<script>
-if (typeof jQuery !== 'undefined') {
-	(function($) {
-	$(document).ready(function() {
-		$('body').on('click', '#wu-toolbox-toggle', function() {
-		$(this).parents('#wu-toolbox').toggleClass('wu-toolbox-closed');
-		});
-	});
-	})(jQuery);
-}
-</script>
-
-<style>
-#wu-toolbox-links {
-	transition: width 2s;
-}
-.wu-toolbox-closed #wu-toolbox-links {
-	transition: width 2s;
-	width: 1px;
-	height: 1px;
-	overflow: hidden;
-}
-#wu-toolbox-membership-status {
-	margin-top: 2px;
-}
-</style>
+<?php
+wp_enqueue_style('wu-toolbox', wu_get_asset('toolbox.css', 'css'), [], wu_get_version());
+wp_enqueue_script('wu-toolbox', wu_get_asset('toolbox.js', 'js'), ['jquery'], wu_get_version(), true);
+?>

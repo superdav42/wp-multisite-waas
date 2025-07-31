@@ -144,11 +144,10 @@ function wu_print_signup_field($field_slug, $field, $results) {
 
 		wp_enqueue_script('jquery');
 		?>
-
     <script type="text/javascript">
 			document.addEventListener('DOMContentLoaded', function() {
 				var requires = <?php echo wp_json_encode($field['requires']); ?>,
-						target_field = document.getElementById('<?php echo $field_slug; ?>-field');
+						target_field = document.getElementById('<?php echo esc_js($field_slug); ?>-field');
 
         var display_field = function(target_field, requires, velocity) {
 
@@ -280,7 +279,7 @@ function wu_print_signup_field($field_slug, $field, $results) {
         <input <?php echo $attributes; ?> <?php echo isset($field['required']) && $field['required'] ? 'required' : ''; ?> type="<?php echo $field['type']; ?>" name="<?php echo $field_slug; ?>" id="<?php echo $field_slug; ?>" class="input" value="<?php echo $results[$field_slug] ?? ''; ?>"  data-reveal="1" data-pw="<?php echo esc_attr( wp_generate_password( 16 ) ); ?>" class="input" size="20" autocomplete="off" aria-describedby="pass-strength-result" />
       </span>
 
-      <span style="display: block; margin-top: -16px; opacity: 1; height: 36px;" id="pass-strength-result" class="hide-if-no-js" aria-live="polite"><?php _e( 'Strength indicator' ); ?></span>
+      <span style="display: block; margin-top: -16px; opacity: 1; height: 36px;" id="pass-strength-result" class="hide-if-no-js" aria-live="polite"><?php esc_html_e( 'Strength indicator', 'multisite-ultimate' ); ?></span>
 
       <script>
 				document.addEventListener('DOMContentLoaded', function() {
@@ -334,7 +333,7 @@ function wu_print_signup_field($field_slug, $field, $results) {
       <input name="signup_form_id" type="hidden" value="1">
 
       <button id="wp-submit" <?php echo $attributes; ?> type="submit" class="button button-primary button-large button-next" value="1" name="save_step">
-			<?php esc_attr_e($field['name'], 'multisite-ultimate'); ?>
+			<?php echo esc_attr($field['name']); ?>
       </button>
 
 			<?php wp_nonce_field('signup_form_1', '_signup_form'); ?>

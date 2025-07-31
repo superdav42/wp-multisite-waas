@@ -271,7 +271,7 @@ class Sunrise {
 		$copy_results = copy(
 			dirname(WP_ULTIMO_PLUGIN_FILE) . '/sunrise.php',
 			WP_CONTENT_DIR . '/sunrise.php'
-		); // phpcs:ignore
+		);
 
 		if ( ! $copy_results) {
 			$error = error_get_last();

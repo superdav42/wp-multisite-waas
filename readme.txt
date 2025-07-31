@@ -157,6 +157,60 @@ The plugin supports multiple payment gateways including Stripe, PayPal, and manu
 
 Yes, Multisite Ultimate is a community-maintained fork of WP Ultimo. The plugin includes migration tools to help you transition from WP Ultimo.
 
+== External Services ==
+
+This plugin connects to several external services to provide its functionality. Below is a detailed list of all external services used, what data is sent, and when:
+
+= Payment Processing Services =
+
+**PayPal**
+- Service: PayPal payment processing for subscription payments
+- Data sent: Customer email, payment amounts, subscription details, transaction IDs
+- When: During checkout process and subscription management
+- Terms of Service: https://www.paypal.com/us/legalhub/useragreement-full
+- Privacy Policy: https://www.paypal.com/us/legalhub/privacy-full
+
+**Stripe**
+- Service: Stripe payment processing for credit card payments and subscriptions
+- Data sent: Customer payment information, email addresses, subscription data
+- When: During checkout process and recurring billing
+- Terms of Service: https://stripe.com/legal/ssa
+- Privacy Policy: https://stripe.com/privacy
+
+= Hosting Provider Integrations =
+
+**Cloudflare**
+- Service: DNS management and domain configuration
+- Data sent: Domain names, DNS records, API authentication tokens
+- When: When customers add custom domains or manage DNS settings
+- Terms of Service: https://www.cloudflare.com/terms/
+- Privacy Policy: https://www.cloudflare.com/privacypolicy/
+
+**GridPane**
+- Service: Server management and site provisioning
+- Data sent: Site configuration data, domain information
+- When: When sites are created or managed on GridPane hosting
+- Terms of Service: https://gridpane.com/terms-of-service/
+- Privacy Policy: https://gridpane.com/privacy-policy/
+
+**WPMU DEV Hosting**
+- Service: Hosting management and domain configuration
+- Data sent: Site IDs, domain information, API keys
+- When: When managing sites on WPMU DEV hosting platform
+- Terms of Service: https://wpmudev.com/terms-of-service/
+- Privacy Policy: https://incsub.com/privacy-policy/
+
+= Newsletter and Analytics =
+
+**Multisite Ultimate Newsletter Service**
+- Service: Newsletter subscription for product updates (wpmultisitewaas.org)
+- Data sent: Company email, name, country information
+- When: During initial plugin setup (optional)
+- This is our own service for providing plugin updates and announcements
+- You can opt out of this service during setup
+
+All external service connections are clearly disclosed to users during setup, and most services are optional or can be configured based on your chosen hosting provider and payment methods.
+
 == Screenshots ==
 
 1. Dashboard overview with key metrics

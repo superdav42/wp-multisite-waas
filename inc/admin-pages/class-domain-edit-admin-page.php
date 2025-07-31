@@ -113,12 +113,29 @@ class Domain_Edit_Admin_Page extends Edit_Admin_Page {
 			]
 		);
 
+		wp_enqueue_script(
+			'wu-domain-logs',
+			wu_get_asset('domain-logs.js', 'js'),
+			['jquery'],
+			\WP_Ultimo::VERSION,
+			[
+				'in_footer' => true,
+			]
+		);
 
 		wp_localize_script(
 			'wu-dns-table',
 			'wu_dns_table_config',
 			[
-				'domain'       => $this->get_object()->get_domain(),
+				'domain' => $this->get_object()->get_domain(),
+			]
+		);
+
+		wp_localize_script(
+			'wu-domain-logs',
+			'wu_domain_logs',
+			[
+				'log_file' => \WP_Ultimo\Logger::get_logs_folder() . 'domain-' . $this->get_object()->get_domain() . '.log',
 			]
 		);
 	}

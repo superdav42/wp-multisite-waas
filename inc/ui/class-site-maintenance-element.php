@@ -238,6 +238,7 @@ class Site_Maintenance_Element extends Base_Element {
 	public function register_scripts(): void {
 
 		wp_register_script('wu-site-maintenance', wu_get_asset('site-maintenance.js', 'js'), ['jquery', 'wu-functions'], wu_get_version(), true);
+		wp_register_style('wu-site-maintenance', wu_get_asset('site-maintenance.css', 'css'), [], wu_get_version());
 
 		wp_localize_script(
 			'wu-site-maintenance',
@@ -249,6 +250,7 @@ class Site_Maintenance_Element extends Base_Element {
 		);
 
 		wp_enqueue_script('wu-site-maintenance');
+		wp_enqueue_style('wu-site-maintenance');
 	}
 
 	/**

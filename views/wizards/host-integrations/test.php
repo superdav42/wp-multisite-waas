@@ -78,46 +78,11 @@ defined( 'ABSPATH' ) || exit;
 
 </div>
 
-<script>
-	(function($) {
-	$(document).ready(function() {
-
-		new Vue({
-		el: "#integration-test",
-		data: {
-			success: false,
-			loading: false,
-			results: '<?php echo esc_js(__('Waiting for results...', 'multisite-ultimate')); ?>',
-		},
-		mounted: function() {
-
-			var that = this;
-
-			this.loading = true;
-
-			setTimeout(() => {
-
-			$.ajax({
-				url: ajaxurl,
-				method: 'POST',
-				data: {
-				action: 'wu_test_hosting_integration',
-				integration: '<?php echo esc_js($integration->get_id()); ?>',
-				},
-				success: function(response) {
-				console.log(response);
-				that.loading = false;
-				that.success = response.success;
-				that.results = response.data;
-				}
-			});
-
-			}, 1000);
-
-		},
-		});
-
-	});
-	})(jQuery);
-</script>
+<?php
+wp_enqueue_script('wu-integration-test', wu_get_asset('integration-test.js', 'js'), ['jquery', 'vue'], wu_get_version(), true);
+wp_add_inline_script('wu-integration-test', 'var wu_integration_test_data = {
+	integration_id: "' . esc_js($integration->get_id()) . '",
+	waiting_message: "' . esc_js(__('Waiting for results...', 'multisite-ultimate')) . '"
+};', 'before');
+?>
 

@@ -52,20 +52,4 @@ defined( 'ABSPATH' ) || exit;
 
 </div>
 
-<!-- Instantiate clipboard by passing a string selector -->
-<script>
 
-	var clipboard = new ClipboardJS('.btn');
-
-</script>
-
-<style>
-	.meta-box-sortables .inside {
-	margin:0 !important;
-	padding:0;
-	}
-	.meta-box-sortables h2 {
-	margin:0;
-	padding:0;
-	}
-</style>

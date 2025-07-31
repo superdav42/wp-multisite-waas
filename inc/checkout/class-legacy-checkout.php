@@ -241,6 +241,30 @@ class Legacy_Checkout {
 
 		wp_enqueue_script('wu-legacy-signup');
 
+		// Register coupon code script
+		wp_register_script('wu-coupon-code', wu_get_asset('coupon-code.js', 'js'), ['wu-vue', 'wu-functions', 'wu-block-ui', 'wu-accounting'], \WP_Ultimo::VERSION, true);
+
+		// Check if coupon is present and enqueue script
+		if (isset($_GET['coupon']) && wu_get_coupon(sanitize_text_field(wp_unslash($_GET['coupon']))) !== false && isset($_GET['step']) && 'plan' === $_GET['step']) { // phpcs:ignore WordPress.Security.NonceVerification
+			$coupon = wu_get_coupon(sanitize_text_field(wp_unslash($_GET['coupon']))); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+			wp_localize_script('wu-coupon-code', 'wu_coupon_data', [
+				'coupon' => $coupon,
+				'type' => get_post_meta($coupon->id, 'wpu_type', true),
+				'value' => get_post_meta($coupon->id, 'wpu_value', true),
+				'applies_to_setup_fee' => get_post_meta($coupon->id, 'wpu_applies_to_setup_fee', true),
+				'setup_fee_discount_value' => get_post_meta($coupon->id, 'wpu_setup_fee_discount_value', true),
+				'setup_fee_discount_type' => get_post_meta($coupon->id, 'wpu_setup_fee_discount_type', true),
+				'allowed_plans' => get_post_meta($coupon->id, 'wpu_allowed_plans', true),
+				'allowed_freqs' => get_post_meta($coupon->id, 'wpu_allowed_freqs', true),
+				'off_text' => __('OFF', 'multisite-ultimate'),
+				'free_text' => __('Free!', 'multisite-ultimate'),
+				'no_setup_fee_text' => __('No Setup Fee', 'multisite-ultimate'),
+			]);
+
+			wp_enqueue_script('wu-coupon-code');
+		}
+
 		wp_enqueue_style('legacy-signup', wu_get_asset('legacy-signup.css', 'css'), ['dashicons', 'install', 'admin-bar'], \WP_Ultimo::VERSION);
 
 		wp_enqueue_style('legacy-shortcodes', wu_get_asset('legacy-shortcodes.css', 'css'), ['dashicons', 'install'], \WP_Ultimo::VERSION);
@@ -489,10 +513,11 @@ class Legacy_Checkout {
 		if (isset($_REQUEST['template_id']) && wu_get_setting('allow_template')) { // phpcs:ignore WordPress.Security.NonceVerification
 
 			// Check if the template is valid
-			$site = new WU_Site_Template($_REQUEST['template_id']); // phpcs:ignore
+			$template_id = sanitize_text_field(wp_unslash($_REQUEST['template_id'] ?? '')); // phpcs:ignore WordPress.Security.NonceVerification
+			$site = new WU_Site_Template($template_id);
 
 			if ($site->is_template) {
-				$content['template']                = $_REQUEST['template_id']; // phpcs:ignore
+				$content['template']                = $template_id;
 				$content['skip_template_selection'] = true;
 			}
 		}

@@ -242,7 +242,7 @@ class Geolocation {
 	 * @return string
 	 */
 	public static function get_local_database_path($deprecated = '2') {
-		return apply_filters('wu_geolocation_local_database_path', WP_CONTENT_DIR . '/uploads/GeoLite2-Country.mmdb', $deprecated);
+		return apply_filters('wu_geolocation_local_database_path', wp_upload_dir()['basedir'] . '/GeoLite2-Country.mmdb', $deprecated);
 	}
 
 

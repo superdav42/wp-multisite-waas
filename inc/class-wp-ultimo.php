@@ -644,11 +644,6 @@ final class WP_Ultimo {
 		new WP_Ultimo\Admin_Pages\Top_Admin_Nav_Menu();
 
 		/*
-		 * The about admin page.
-		 */
-		new WP_Ultimo\Admin_Pages\About_Admin_Page();
-
-		/*
 		 * Loads the Checkout Form admin page.
 		 */
 		new WP_Ultimo\Admin_Pages\Checkout_Form_List_Admin_Page();

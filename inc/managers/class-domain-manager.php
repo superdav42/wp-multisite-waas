@@ -12,6 +12,7 @@
 
 namespace WP_Ultimo\Managers;
 
+use Psr\Log\LogLevel;
 use WP_Ultimo\Domain_Mapping\Helper;
 
 // Exit if accessed directly

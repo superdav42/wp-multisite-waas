@@ -766,7 +766,8 @@ class Base_List_Table extends \WP_List_Table {
 		$response['type']                 = wu_request('type', 'all');
 
 		if (isset($total_items)) {
-			$response['total_items_i18n'] = sprintf(_n('1 item', '%s items', $total_items), number_format_i18n($total_items)); // phpcs:ignore
+			// translators: %s number of total items.
+			$response['total_items_i18n'] = sprintf(_n('%s item', '%s items', $total_items, 'multisite-ultimate'), number_format_i18n($total_items));
 		}
 
 		if (isset($total_pages)) {
@@ -1147,31 +1148,24 @@ class Base_List_Table extends \WP_List_Table {
 		 */
 		parent::_js_vars();
 
-		?>
-
-		<script type='text/javascript'>
-			document.addEventListener('DOMContentLoaded', function() {
-
-				let table_id = '<?php echo esc_js($this->_get_js_var_name()); ?>';
-
-				/**
-				 * Create the ajax List Table
-				 */
-				if (typeof window[table_id] === 'undefined') {
-
-					window[table_id + '_config'] = {
-						filters: <?php echo wp_json_encode($this->get_filters()); ?>,
-						context: <?php echo wp_json_encode($this->context); ?>,
-					}
-
+		$table_id = $this->_get_js_var_name();
+		
+		$inline_script = sprintf(
+			'document.addEventListener("DOMContentLoaded", function() {
+				let table_id = %s;
+				if (typeof window[table_id] === "undefined") {
+					window[table_id + "_config"] = %s;
 					window[table_id] = wu_create_list(table_id).init();
-
 				}
+			});',
+			wp_json_encode($table_id),
+			wp_json_encode([
+				'filters' => $this->get_filters(),
+				'context' => $this->context,
+			])
+		);
 
-			});
-		</script>
-
-		<?php
+		wp_add_inline_script('wu-ajax-list-table', $inline_script);
 	}
 
 	/**

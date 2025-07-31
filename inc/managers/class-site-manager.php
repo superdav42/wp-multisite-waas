@@ -491,22 +491,18 @@ class Site_Manager extends Base_Manager {
 		if (empty($logo)) {
 			return;
 		}
-
-		// phpcs:disable
-
+		// Inline styles for login logo - dynamically generated based on site settings.
 		?>
 
-    <style type="text/css">
-
+	<style type="text/css">
 			#login h1 a, .login h1 a {
-				background-image: url(<?php echo $logo; ?>);
+				background-image: url(<?php echo esc_url($logo); ?>);
 				background-position: center center;
 				background-size: contain;
 			}
+	</style>
 
-    </style>
-
-		<?php // phpcs:enable
+		<?php
 	}
 
 	/**
