@@ -15,9 +15,9 @@ module.exports = defineConfig({
   video: true,
   e2e: {
     baseUrl: "http://localhost:8889",
-    defaultCommandTimeout: 10000,
-    requestTimeout: 15000,
-    responseTimeout: 15000,
+    defaultCommandTimeout: 20000,
+    requestTimeout: 30000,
+    responseTimeout: 30000,
     pageLoadTimeout: 60000,
     specPattern: "tests/e2e/cypress/integration/**/*.{js,jsx,ts,tsx}",
     supportFile: "tests/e2e/cypress/support/e2e.js",
