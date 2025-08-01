@@ -17,7 +17,7 @@ describe("Plugin", () => {
     cy.visit("/wp-admin/network/plugins.php");
     cy.location("pathname").should("equal", "/wp-admin/network/plugins.php");
     cy.get("#activate-multisite-ultimate").scrollIntoView().should("be.visible").click();
-    cy.location("pathname").should("eq", "/wp-admin/network/admin.php");
+    cy.location("pathname").should("eq", "/wp-admin/network/plugins.php");
     cy.location("search").should("include", "page=wp-ultimo-setup");
   });
 });
