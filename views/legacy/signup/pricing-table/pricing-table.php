@@ -21,36 +21,6 @@ if ( ! defined('ABSPATH')) {
 
 ?>
 
-<?php
-
-/**
- * Get the Colors to be used
- */
-$primary_color  = wu_color($atts['primary_color']);
-$accent_color   = wu_color($atts['accent_color']);
-$accent_color_2 = wu_color($accent_color->darken(4));
-
-?>
-
-<style>
-
-	.wu-content-plan .plan-tier h4 {
-	background-color: #<?php echo esc_html($primary_color->getHex()); ?>;
-	color: <?php echo $primary_color->isDark() ? 'white' : '#333'; ?> !important;
-	}
-
-	.wu-content-plan .plan-tier.callout h6 {
-	background-color: #<?php echo esc_html($accent_color->getHex()); ?>;
-	color: <?php echo $accent_color->isDark() ? '#f9f9f9' : 'rgba(39,65,90,.5)'; ?> !important;
-	}
-
-	.wu-content-plan .plan-tier.callout h4 {
-	background-color: #<?php echo esc_html($accent_color_2->getHex()); ?>;
-	color: <?php echo $accent_color->isDark() ? 'white' : '#333'; ?> !important;
-	}
-
-</style>
-
 <div class="wu-setup-content wu-content-<?php echo isset($is_shortcode) && $is_shortcode ? 'shortcode-plan' : 'plan'; ?>">
 
 <?php
@@ -119,18 +89,7 @@ if (empty($plans)) {
 
 
 
-<script type="text/javascript">
-
-	(function ($) {
-	$(document).ready(function () {
-		/**
-		* Select the default pricing option
-		*/
-		setTimeout(function() {
-		$('[data-frequency-selector="<?php echo esc_attr(wu_get_setting('default_pricing_option', 1)); ?>"]').click();
-		}, 100);
-
-	});
-	})(jQuery);
-
-</script>
+<?php
+wp_enqueue_script('wu-pricing-table', wu_get_asset('pricing-table.js', 'js'), ['jquery'], wu_get_version(), true);
+wp_add_inline_script('wu-pricing-table', 'var wu_default_pricing_option = "' . esc_js(wu_get_setting('default_pricing_option', 1)) . '";', 'before');
+?>

@@ -54,10 +54,8 @@ class Invoice {
 	/**
 	 * Constructs the invoice object.
 	 *
-	 * @since 2.0.0
-	 *
-	 * @param \WP_Ultimo\Checkout\Cart $payment The payment.
-	 * @param array                    $atts Attributes to make available on template.
+	 * @param \WP_Ultimo\Models\Payment $payment The payment.
+	 * @param array                     $atts Attributes to make available on template.
 	 */
 	public function __construct($payment, $atts = []) {
 

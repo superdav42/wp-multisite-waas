@@ -15,6 +15,8 @@
 namespace WP_Ultimo\Admin_Pages;
 
 // Exit if accessed directly
+use WP_Ultimo\Models\Limitable;
+
 defined('ABSPATH') || exit;
 
 /**
@@ -828,11 +830,10 @@ abstract class Edit_Admin_Page extends Base_Admin_Page {
 		 */
 		$_POST['active'] = (bool) wu_request('active', false);
 
-		// Nonce handled in calling method.
-		$object->attributes($_POST); // phpcs:ignore WordPress.Security.NonceVerification
+		$object->load_attributes_from_post();
 
-		if (method_exists($object, 'handle_limitations')) {
-			$object->handle_limitations($_POST); // phpcs:ignore WordPress.Security.NonceVerification
+		if ($object instanceof Limitable) {
+			$object->handle_limitations();
 		}
 
 		$save = $object->save();

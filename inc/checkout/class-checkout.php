@@ -998,14 +998,8 @@ class Checkout {
 		 */
 		$billing_address = $customer->get_billing_address();
 
-		/*
-		 * I know this appears super unsafe,
-		 * but we clean the data up on the billing address
-		 * class, so there's no problem in passing
-		 * the entire post array in here.
-		 */
 		$session = $this->session->get('signup') ?? [];
-		$billing_address->attributes(array_merge($session, $_POST)); // phpcs:ignore WordPress.Security.NonceVerification
+		$billing_address->load_attributes_from_post($session);
 
 		/*
 		 * Validates the address.
@@ -1834,8 +1828,6 @@ class Checkout {
 		$session = $this->session->get('signup');
 
 		// Nonce check handled in calling method.
-		$stack = $_REQUEST; // phpcs:ignore WordPress.Security.NonceVerification
-
 		if (is_array($session)) {
 			$stack = array_merge($session, $_REQUEST); // phpcs:ignore WordPress.Security.NonceVerification
 		}
@@ -2168,7 +2160,7 @@ class Checkout {
 				 *
 				 * @since 1.1.3 Let developers filter the redirect URL.
 				 */
-				$redirect_url = apply_filters('wp_ultimo_redirect_url_after_signup', $redirect_url, 0, get_current_user_id(), $_POST); // phpcs:ignore WordPress.Security.NonceVerification
+				$redirect_url = apply_filters('wp_ultimo_redirect_url_after_signup', $redirect_url, 0, get_current_user_id());
 
 				$redirect_url = add_query_arg(
 					[
@@ -2278,7 +2270,9 @@ class Checkout {
 
 		$custom_css = apply_filters('wu_checkout_custom_css', '');
 
-		wp_add_inline_style('wu-checkout', $custom_css);
+		if ($custom_css) {
+			wp_add_inline_style('wu-checkout', $custom_css);
+		}
 
 		wp_enqueue_style('wu-checkout');
 

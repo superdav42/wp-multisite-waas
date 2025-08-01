@@ -9,7 +9,9 @@
 
 namespace WP_Ultimo\UI;
 
+use Psr\Log\LogLevel;
 use ScssPhp\ScssPhp\Compiler;
+use ScssPhp\ScssPhp\Exception\SassException;
 use WP_Ultimo\Database\Memberships\Membership_Status;
 
 // Exit if accessed directly
@@ -243,29 +245,28 @@ class Checkout_Element extends Base_Element {
 	}
 
 	/**
-	 * Print the Custom CSS added on the checkout.
-	 *
-	 * @since 2.0.0
-	 *
-	 * @param \WP_Ultimo\Models\Checkout_Form $checkout_form The current checkout form.
 	 * @return void
 	 */
-	public function print_custom_css($checkout_form): void {
-
-		$scss = new Compiler();
-
-		$slug = $checkout_form->get_slug();
+	public function register_scripts() {
+		$slug          = $this->get_pre_loaded_attribute('slug');
+		$checkout_form = wu_get_checkout_form_by_slug($slug);
 
 		$custom_css = $checkout_form->get_custom_css();
 
 		if ($custom_css) {
-			$custom_css = $scss->compileString(
-				".wu_checkout_form_{$slug} {
-				{$custom_css}
-			}"
-			)->getCss();
+			try {
+				$scss       = new Compiler();
+				$custom_css = $scss->compileString(
+					".wu_checkout_form_{$slug} {
+						{$custom_css}
+					}"
+				)->getCss();
 
-			printf('<style>%s</style>', $custom_css); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				wp_add_inline_style('wu-checkout', $custom_css);
+			} catch (SassException $e) {
+				// translators: %s the error message.
+				wu_log_add('checkout', sprintf(__('An error occurred while compiling scss: %s', 'multisite-ultimate'), $e->getMessage()), LogLevel::ERROR);
+			}
 		}
 	}
 
@@ -609,14 +610,6 @@ class Checkout_Element extends Base_Element {
 		$signup = new Mocked_Signup($this->step_name, $this->steps); // phpcs:ignore
 
 		$this->signup = $signup;
-
-		add_action(
-			'wp_print_footer_scripts',
-			function () use ($checkout_form) {
-
-				$this->print_custom_css($checkout_form);
-			}
-		);
 
 		/*
 		 * Load the checkout class with the parameters

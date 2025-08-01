@@ -179,7 +179,18 @@ class Webhook_List_Admin_Page extends List_Admin_Page {
 	public function handle_add_new_webhook_modal(): void {
 
 		// Nonce check handled in calling method.
-		$status = wu_create_webhook($_POST); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$status = wu_create_webhook(
+			[
+				'name'             => ! empty($_POST['name']) ? sanitize_text_field(wp_unslash($_POST['name'])) : false, // phpcs:ignore WordPress.Security.NonceVerification
+				'webhook_url'      => ! empty($_POST['webhook_url']) ? sanitize_url(wp_unslash($_POST['webhook_url'])) : false, // phpcs:ignore WordPress.Security.NonceVerification
+				'event'            => ! empty($_POST['event']) ? sanitize_text_field(wp_unslash($_POST['event'])) : false, // phpcs:ignore WordPress.Security.NonceVerification
+				'active'           => ! empty($_POST['active']) ? sanitize_text_field(wp_unslash($_POST['active'])) : false, // phpcs:ignore WordPress.Security.NonceVerification
+				'event_count'      => ! empty($_POST['event_count']) ? (int) $_POST['event_count'] : 0, // phpcs:ignore WordPress.Security.NonceVerification
+				'date_created'     => ! empty($_POST['date_created']) ? sanitize_text_field(wp_unslash($_POST['date_created'])) : wu_get_current_time('mysql', true), // phpcs:ignore WordPress.Security.NonceVerification
+				'date_modified'    => ! empty($_POST['date_modified']) ? sanitize_text_field(wp_unslash($_POST['date_modified'])) : wu_get_current_time('mysql', true), // phpcs:ignore WordPress.Security.NonceVerification
+				'migrated_from_id' => ! empty($_POST['migrated_from_id']) ? (int) $_POST['migrated_from_id'] : 0, // phpcs:ignore WordPress.Security.NonceVerification
+			]
+		);
 
 		if (is_wp_error($status)) {
 			wp_send_json_error($status);

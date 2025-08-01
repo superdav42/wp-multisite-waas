@@ -76,7 +76,7 @@ class ServerPilot_Host_Provider extends Base_Host_Provider {
 	 */
 	public function detect() {
 
-		return defined('WP_PLUGIN_DIR') && preg_match('/\/srv\/users\/(.+)\/apps\/(.+)/', (string) WP_PLUGIN_DIR);
+		return preg_match('/\/srv\/users\/(.+)\/apps\/(.+)/', WP_ULTIMO_PLUGIN_DIR);
 	}
 
 	/**

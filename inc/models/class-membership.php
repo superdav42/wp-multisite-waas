@@ -23,7 +23,7 @@ defined('ABSPATH') || exit;
  *
  * @since 2.0.0
  */
-class Membership extends Base_Model {
+class Membership extends Base_Model implements Limitable {
 
 	use Traits\Limitable;
 	use Traits\Billable;

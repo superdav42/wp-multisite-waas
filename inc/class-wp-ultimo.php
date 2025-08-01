@@ -204,7 +204,6 @@ final class WP_Ultimo {
 	 * @return void
 	 */
 	public function after_init() {
-		load_plugin_textdomain('multisite-ultimate', false, dirname((string) WP_ULTIMO_PLUGIN_BASENAME) . '/lang');
 
 		/*
 		 * Loads admin pages
@@ -642,11 +641,6 @@ final class WP_Ultimo {
 		 * The top admin navigation bar.
 		 */
 		new WP_Ultimo\Admin_Pages\Top_Admin_Nav_Menu();
-
-		/*
-		 * The about admin page.
-		 */
-		new WP_Ultimo\Admin_Pages\About_Admin_Page();
 
 		/*
 		 * Loads the Checkout Form admin page.

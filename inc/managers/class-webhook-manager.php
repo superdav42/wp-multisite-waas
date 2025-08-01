@@ -223,59 +223,6 @@ class Webhook_Manager extends Base_Manager {
 	}
 
 	/**
-	 * Reads the log file and displays the content.
-	 *
-	 * @return void.
-	 */
-	public function serve_logs(): void {
-
-		echo '<style>
-			body {
-				font-family: monospace;
-				line-height: 20px;
-			}
-			pre {
-				background: #ececec;
-				border: solid 1px #ccc;
-				padding: 10px;
-				border-radius: 3px;
-			}
-			hr {
-				margin: 25px 0;
-				border-top: 1px solid #cecece;
-				border-bottom: transparent;
-			}
-		</style>
-		';
-
-		if ( ! current_user_can('manage_network')) {
-			esc_html_e('You do not have enough permissions to read the logs of this webhook.', 'multisite-ultimate');
-			exit;
-		}
-
-		$id = absint($_REQUEST['id'] ?? 0); // phpcs:ignore WordPress.Security.NonceVerification
-
-		$logs = array_map(
-			function ($line): string {
-
-				$line = str_replace(' - ', ' </strong> - ', $line);
-
-				$matches = [];
-
-				$line = str_replace('\'', '\\\'', $line);
-				$line = preg_replace('~(\{(?:[^{}]|(?R))*\})~', '<pre><script>document.write(JSON.stringify(JSON.parse(\'${1}\'), null, 2));</script></pre>', $line);
-
-				return '<strong>' . $line . '<hr>';
-			},
-			Logger::read_lines("webhook-$id", 5)
-		);
-
-		echo implode('', $logs); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
-		exit;
-	}
-
-	/**
 	 * Log a webhook sent for later reference.
 	 *
 	 * @since 2.0.0

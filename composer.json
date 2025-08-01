@@ -1,6 +1,6 @@
 {
   "name": "devstone/multisite-ultimate",
-  "url": "https://MultisiteUltimate.org",
+  "url": "https://MultisiteUltimate.com",
   "description": "The Multisite Website as a Service (WaaS) plugin.",
   "version": "2.4.0",
   "authors": [
@@ -94,7 +94,6 @@
   "archive": {
     "exclude": [
       "tests",
-      "scripts",
       "bin",
       "phpunit.xml.dist",
       "composer.lock",
@@ -122,7 +121,15 @@
       ".claude",
       "patches",
       "composer-plugins",
-      "blueprint.json"
+      "blueprint.json",
+      "vendor/amphp/sync/docs/Gemfile",
+      "vendor/amphp/dns/docs/Gemfile",
+      "vendor/stripe/stripe-php/API_VERSION",
+      "vendor/amphp/hpack/src/Internal/amp-hpack.h",
+      "vendor/amphp/socket/docs/Gemfile",
+      "vendor/delight-im/cookie/.travis-ci-apache",
+      "vendor/doctrine",
+      ".distignore"
     ]
   },
   "extra": {

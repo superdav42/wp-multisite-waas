@@ -59,6 +59,25 @@ class Billing_Address {
 	}
 
 	/**
+	 * Loads only the allowed keys from $_POST array and sanitizes them.
+	 *
+	 * @param array $session optional data to be loaded if not in $_POST.
+	 * @return void
+	 */
+	public function load_attributes_from_post(array $session = []) {
+		$allowed_attributes = array_keys(self::fields());
+
+		foreach ($allowed_attributes as $attribute) {
+			// Nonce checked in class-form-manager:151
+			if (isset($_POST[ $attribute ])) { // phpcs:ignore WordPress.Security.NonceVerification
+				$this->attributes[ $attribute ] = sanitize_text_field(wp_unslash($_POST[ $attribute ])); // phpcs:ignore WordPress.Security.NonceVerification
+			} elseif (isset($session[ $attribute ])) {
+				$this->attributes[ $attribute ] = $session[ $attribute ];
+			}
+		}
+	}
+
+	/**
 	 * Checks if this billing address has any content at all.
 	 *
 	 * @since 2.0.0

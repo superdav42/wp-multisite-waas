@@ -1197,7 +1197,7 @@ class Membership_Edit_Admin_Page extends Edit_Admin_Page {
 
 		$billing_address = $object->get_billing_address();
 
-		$billing_address->attributes($_POST); // phpcs:ignore WordPress.Security.NonceVerification
+		$billing_address->load_attributes_from_post();
 
 		$valid_address = $billing_address->validate();
 

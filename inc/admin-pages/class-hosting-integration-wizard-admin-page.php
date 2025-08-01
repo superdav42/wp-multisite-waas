@@ -308,11 +308,22 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 	public function handle_configuration(): void {
 
 		check_admin_referer('saving_config', 'saving_config');
+
+		$allowed_fields = array_keys($this->integration->get_fields());
+
+		// Filter and sanitize $_POST to only include allowed integration fields
+		$filtered_data = [];
+		foreach ($allowed_fields as $field) {
+			if (isset($_POST[ $field ])) {
+				$filtered_data[ $field ] = sanitize_text_field(wp_unslash($_POST[ $field ]));
+			}
+		}
+
 		if ((int) wu_request('submit') === 0) {
 			$redirect_url = add_query_arg(
 				[
 					'manual' => '1',
-					'post'   => $_POST,
+					'post'   => wp_json_encode($filtered_data),
 				]
 			);
 
@@ -322,7 +333,7 @@ class Hosting_Integration_Wizard_Admin_Page extends Wizard_Admin_Page {
 		}
 
 		if ((int) wu_request('submit') === 1) {
-			$this->integration->setup_constants($_POST);
+			$this->integration->setup_constants($filtered_data);
 		}
 
 		$redirect_url = $this->get_next_section_link();

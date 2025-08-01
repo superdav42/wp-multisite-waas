@@ -7,7 +7,7 @@
 defined( 'ABSPATH' ) || exit;
 
 $has_tax_included = false;
-
+// Inline styles for invoice template - required for PDF generation and email formatting.
 ?>
 <style>
 .invoice-box {

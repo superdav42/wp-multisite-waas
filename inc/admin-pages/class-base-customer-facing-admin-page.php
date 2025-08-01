@@ -195,8 +195,12 @@ abstract class Base_Customer_Facing_Admin_Page extends Base_Admin_Page {
 	 * @return void
 	 */
 	public function handle_edit_page(): void {
-		// don't worry, this gets cleaned later on.
-		$settings_to_save = 'restore' !== wu_request('submit') ? $_POST : []; // phpcs:ignore WordPress.Security.NonceVerification
+		// Nonce checked in class-form-manager:151
+		$settings_to_save = 'restore' !== wu_request('submit') ? [
+			'title'     => isset($_POST['title']) ? sanitize_text_field(wp_unslash($_POST['title'])) : '', // phpcs:ignore WordPress.Security.NonceVerification
+			'position'  => isset($_POST['position']) ? absint($_POST['position']) : 0, // phpcs:ignore WordPress.Security.NonceVerification
+			'menu_icon' => isset($_POST['menu_icon']) ? sanitize_text_field(wp_unslash($_POST['menu_icon'])) : '', // phpcs:ignore WordPress.Security.NonceVerification
+		] : [];
 
 		$this->save_page_settings($settings_to_save);
 

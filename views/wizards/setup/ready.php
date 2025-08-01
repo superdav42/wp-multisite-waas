@@ -36,11 +36,6 @@ defined( 'ABSPATH' ) || exit;
 		<?php esc_html_e('You now have everything you need in place to start building your Website as a Service business!', 'multisite-ultimate'); ?>
 	</p>
 
-	<p>
-		<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://wpmultisitewaas.org" data-text="<?php echo esc_attr('I just created my own premium WordPress site network with #wpmultisitewaas'); ?>" data-via="WPUltimo" data-size="large">Tell the World!</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-	</p>
-
 	</div>
 
 </div>

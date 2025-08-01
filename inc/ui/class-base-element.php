@@ -341,7 +341,7 @@ abstract class Base_Element {
 		 * Bail if things don't look normal or in the right context.
 		 */
 		if ( ! function_exists('get_current_screen')) {
-			return;
+			return false;
 		}
 
 		$screen = get_current_screen();

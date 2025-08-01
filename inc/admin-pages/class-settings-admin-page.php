@@ -116,6 +116,7 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 		wp_enqueue_script('wu-vue-apps');
 
 		wp_enqueue_script('wu-fields');
+		wp_enqueue_script('wu-ajax-button', wu_get_asset('ajax-button.js', 'js'), ['jquery'], wu_get_version(), true);
 
 		wp_enqueue_style('wp-color-picker');
 	}
@@ -520,12 +521,35 @@ class Settings_Admin_Page extends Wizard_Admin_Page {
 		if ( ! current_user_can('wu_edit_settings')) {
 			wp_die(esc_html__('You do not have the permissions required to change settings.', 'multisite-ultimate'));
 		}
-		// Nonce processed in the calling method.
-		if ( ! isset($_POST['active_gateways']) && 'payment-gateways' === wu_request('tab')) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			$_POST['active_gateways'] = [];
+
+		// Get all valid setting keys from sections
+		$sections       = WP_Ultimo()->settings->get_sections();
+		$allowed_fields = [];
+		foreach ($sections as $section) {
+			if (isset($section['fields'])) {
+				$allowed_fields = array_merge($allowed_fields, array_keys($section['fields']));
+			}
 		}
 
-		WP_Ultimo()->settings->save_settings($_POST); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		// Filter and sanitize $_POST to only include allowed setting fields
+		// Nonce processed in the calling method.
+		$filtered_data = [];
+		foreach ($allowed_fields as $field) {
+			if (isset($_POST[ $field ])) { // phpcs:ignore WordPress.Security.NonceVerification
+				$value = wp_unslash($_POST[ $field ]); // phpcs:ignore WordPress.Security.NonceVerification, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+				if (is_array($value)) {
+					$filtered_data[ $field ] = array_map('sanitize_text_field', $value);
+				} else {
+					$filtered_data[ $field ] = sanitize_text_field($value);
+				}
+			}
+		}
+
+		if ( ! isset($filtered_data['active_gateways']) && 'payment-gateways' === wu_request('tab')) {
+			$filtered_data['active_gateways'] = [];
+		}
+
+		WP_Ultimo()->settings->save_settings($filtered_data);
 
 		wp_safe_redirect(add_query_arg('updated', 1, wu_get_current_url()));
 

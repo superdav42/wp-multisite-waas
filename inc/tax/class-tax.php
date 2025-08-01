@@ -356,6 +356,26 @@ class Tax {
 	 * @return void
 	 */
 	public function render_taxes_side_panel(): void {
+
+		wp_enqueue_script('wu-vue');
+
+		$inline_script = sprintf(
+			'document.addEventListener("DOMContentLoaded", function() {
+				new Vue({
+					el: "#wu-taxes-side-panel",
+					data: {},
+					computed: {
+						enabled: function() {
+							return %s;
+						}
+					}
+				});
+			});',
+			wp_json_encode(wu_get_setting('enable_taxes'))
+		);
+
+		wp_add_inline_script('wu-vue', $inline_script);
+
 		?>
 
 		<div id="wu-taxes-side-panel" class="wu-widget-inset">
@@ -405,19 +425,6 @@ class Tax {
 
 		</div>
 
-		<script>
-			document.addEventListener('DOMContentLoaded', function() {
-				new Vue({
-					el: "#wu-taxes-side-panel",
-					data: {},
-					computed: {
-						enabled: function() {
-							return <?php echo wp_json_encode(wu_get_setting('enable_taxes')); ?>
-						}
-					}
-				});
-			});
-		</script>
 		<?php
 	}
 }

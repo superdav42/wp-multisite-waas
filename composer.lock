@@ -4858,17 +4858,17 @@
             "time": "2025-05-26T15:08:54+00:00"
         },
         {
-            "name": "composer/class-map-generator",
-            "version": "1.6.1",
+            "name": "dealerdirect/phpcodesniffer-composer-installer",
+            "version": "v1.1.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/composer/class-map-generator.git",
-                "reference": "134b705ddb0025d397d8318a75825fe3c9d1da34"
+                "url": "https://github.com/PHPCSStandards/composer-installer.git",
+                "reference": "e9cf5e4bbf7eeaf9ef5db34938942602838fc2b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/class-map-generator/zipball/134b705ddb0025d397d8318a75825fe3c9d1da34",
-                "reference": "134b705ddb0025d397d8318a75825fe3c9d1da34",
+                "url": "https://api.github.com/repos/PHPCSStandards/composer-installer/zipball/e9cf5e4bbf7eeaf9ef5db34938942602838fc2b1",
+                "reference": "e9cf5e4bbf7eeaf9ef5db34938942602838fc2b1",
                 "shasum": ""
             },
             "require": {
@@ -4928,7 +4928,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-03-24T13:50:44+00:00"
+            "time": "2025-07-17T20:45:56+00:00"
         },
         {
             "name": "composer/composer",

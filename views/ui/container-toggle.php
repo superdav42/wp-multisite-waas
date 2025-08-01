@@ -24,39 +24,8 @@ defined( 'ABSPATH' ) || exit;
 	</strong>
 </small>
 
-<style>
-body.has-wu-container .wu-no-container {
-	display: none;
-}
-body:not(.has-wu-container) .wu-use-container {
-	display: none;
-}
-</style>
-
-<script>
-(function($) {
-
-	$(document).ready(function() {
-
-	$('#wu-container-toggle').on('click', function(e) {
-
-		e.preventDefault();
-
-		wu_block_ui('#wpcontent');
-
-		$.ajax(ajaxurl + '?action=wu_toggle_container&nonce=<?php echo esc_js(wp_create_nonce('wu_toggle_container')); ?>').done(function() {
-
-		$('.wrap').toggleClass('admin-lg:wu-container admin-lg:wu-mx-auto');
-
-		$('body').toggleClass('has-wu-container');
-
-		wu_block_ui('#wpcontent').unblock();
-
-		});;
-
-	});
-
-	});
-
-}(jQuery));
-</script>
+<?php
+wp_enqueue_style('wu-container-toggle', wu_get_asset('container-toggle.css', 'css'), [], wu_get_version());
+wp_enqueue_script('wu-container-toggle', wu_get_asset('container-toggle.js', 'js'), ['jquery'], wu_get_version(), true);
+wp_add_inline_script('wu-container-toggle', 'var wu_container_nonce = "' . esc_js(wp_create_nonce('wu_toggle_container')) . '";', 'before');
+?>

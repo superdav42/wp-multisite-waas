@@ -35,10 +35,7 @@ wu_get_template(
 		'current_plan' => false,
 		'is_shortcode' => false,
 		'atts'         => [
-			'primary_color'          => '#00a1ff', // wu_get_setting('primary-color', '#00a1ff'),
-			'accent_color'           => '#78b336', // wu_get_setting('accent-color', '#78b336'),
-			'default_pricing_option' => 1, // wu_get_setting('default_pricing_option', 1),
-			'show_selector'          => true,
+			'show_selector' => true,
 		],
 	]
 );

@@ -92,8 +92,10 @@ class System_Info_Admin_Page extends Base_Admin_Page {
 	public function register_scripts(): void {
 
 		wp_enqueue_script('dashboard');
-
 		wp_enqueue_script('clipboard');
+		wp_enqueue_style('wu-system-info', wu_get_asset('system-info.css', 'css'), [], wu_get_version());
+
+		wp_add_inline_script('clipboard', 'var clipboard = new ClipboardJS(".btn");');
 	}
 
 	/**
@@ -349,27 +351,27 @@ class System_Info_Admin_Page extends Base_Admin_Page {
 					'content-directory'      => [
 						'tooltip' => '',
 						'title'   => 'Content Directory',
-						'value'   => WP_CONTENT_DIR,
+						'value'   => WP_CONTENT_DIR, // This is acceptable for system info display
 					],
 					'content-url'            => [
 						'tooltip' => '',
 						'title'   => 'Content URL',
-						'value'   => WP_CONTENT_URL,
+						'value'   => content_url(),
 					],
 					'plugins-directory'      => [
 						'tooltip' => '',
 						'title'   => 'Plugins Directory',
-						'value'   => WP_PLUGIN_DIR,
+						'value'   => WP_PLUGIN_DIR, // This is acceptable for system info display
 					],
 					'pluguins-url'           => [
 						'tooltip' => '',
 						'title'   => 'Plugins URL',
-						'value'   => WP_PLUGIN_URL,
+						'value'   => plugins_url(),
 					],
 					'uploads-directory'      => [
 						'tooltip' => '',
 						'title'   => 'Uploads Directory',
-						'value'   => (defined('UPLOADS') ? UPLOADS : WP_CONTENT_DIR . '/uploads'),
+						'value'   => wp_upload_dir()['basedir'],
 					],
 					'cookie-domain'          => [
 						'tooltip' => '',

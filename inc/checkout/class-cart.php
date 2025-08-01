@@ -954,10 +954,10 @@ class Cart implements \JsonSerializable {
 						$post_type = get_post_type_object($post_type_slug);
 
 						$this->errors->add(
-							'overlimits',
+							'overlimits_' . $post_type_slug,
 							sprintf(
 							// translators: %1$d: current number of posts, %2$s: post type name, %3$d: posts quota, %4$s: post type name, %5$d: number of posts to be deleted, %6$s: post type name.
-								esc_html__('You site currently has %1$d %2$s but the new plan is limited to %3$d %4$s. You must trash %5$d %6$s before you can downgrade your plan.', 'multisite-ultimate'),
+								esc_html__('Your site currently has %1$d %2$s but the new plan is limited to %3$d %4$s. You must trash %5$d %6$s before you can downgrade your plan.', 'multisite-ultimate'),
 								$limit['current'],
 								$limit['current'] > 1 ? $post_type->labels->name : $post_type->labels->singular_name,
 								$limit['limit'],
