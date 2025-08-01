@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: ["7.4", "8.0", "8.1", "8.2", "8.3"]
+        php-version: ["7.4", "8.0", "8.1", "8.2", "8.3", "8.4"]
     services:
       mysql:
         image: mysql:5.7
@@ -30,8 +30,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Composer Bin Path
-        run: echo "export PATH=$HOME/.composer/vendor/bin:$PATH" >> $GITHUB_ENV
+      - name: Set up Composer global bin path
+        run: |
+          mkdir -p "$HOME/.config/composer/vendor/bin"
+          echo "PATH=$HOME/.config/composer/vendor/bin:$PATH" >> $GITHUB_ENV
 
       - name: Install System Dependencies
         run: |
