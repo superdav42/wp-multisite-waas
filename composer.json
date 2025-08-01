@@ -94,9 +94,9 @@
   "archive": {
     "exclude": [
       "tests",
-            "cypress.env.json",
-            "cypress.config.js",
-            ".wp-env.json",
+      "cypress.env.json",
+      "cypress.config.js",
+      ".wp-env.json",
       "bin",
       "phpunit.xml.dist",
       "composer.lock",
