@@ -47,6 +47,9 @@ jobs:
         run: |
           echo "{\"config\": {\"phpVersion\": \"${{ matrix.php }}\"}}" > .wp-env.override.json
 
+      - name: Cleanup WordPress Envorinment
+        run: npm run env:clean:tests
+
       - name: Start WordPress Environment
         run: npm run env:start
 
