@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-07-30T22:20:10+00:00\n"
+"POT-Creation-Date: 2025-08-01T06:11:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: multisite-ultimate\n"
@@ -107,15 +107,15 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
-#: inc/admin-pages/class-base-customer-facing-admin-page.php:375
+#: inc/admin-pages/class-base-customer-facing-admin-page.php:379
 msgid "Customize Page"
 msgstr ""
 
-#: inc/admin-pages/class-base-customer-facing-admin-page.php:376
+#: inc/admin-pages/class-base-customer-facing-admin-page.php:380
 msgid "Customize Elements"
 msgstr ""
 
-#: inc/admin-pages/class-base-customer-facing-admin-page.php:377
+#: inc/admin-pages/class-base-customer-facing-admin-page.php:381
 msgid "Exit Customize Mode"
 msgstr ""
 
@@ -265,9 +265,9 @@ msgid "%s customer(s) targeted."
 msgstr ""
 
 #: inc/admin-pages/class-broadcast-edit-admin-page.php:374
-#: inc/admin-pages/class-edit-admin-page.php:487
+#: inc/admin-pages/class-edit-admin-page.php:489
 #: inc/admin-pages/class-tax-rates-admin-page.php:193
-#: inc/checkout/class-checkout.php:1561
+#: inc/checkout/class-checkout.php:1555
 #: views/base/edit/widget-tabs.php:106
 #: views/dashboard-statistics/filter.php:28
 #: views/dashboard-statistics/widget-mrr-growth.php:16
@@ -313,7 +313,7 @@ msgstr ""
 #: inc/admin-pages/class-customer-edit-admin-page.php:1011
 #: inc/admin-pages/class-discount-code-edit-admin-page.php:590
 #: inc/admin-pages/class-domain-edit-admin-page.php:497
-#: inc/admin-pages/class-edit-admin-page.php:275
+#: inc/admin-pages/class-edit-admin-page.php:277
 #: inc/admin-pages/class-email-edit-admin-page.php:452
 #: inc/admin-pages/class-email-template-customize-admin-page.php:556
 #: inc/admin-pages/class-event-view-admin-page.php:253
@@ -848,7 +848,7 @@ msgstr ""
 
 #: inc/admin-pages/class-checkout-form-edit-admin-page.php:1455
 #: inc/admin-pages/class-email-template-customize-admin-page.php:552
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:344
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:365
 #: inc/admin-pages/class-template-previewer-customize-admin-page.php:289
 msgid "This name is used for internal reference only."
 msgstr ""
@@ -1086,7 +1086,7 @@ msgstr ""
 #: inc/admin-pages/class-customer-edit-admin-page.php:652
 #: inc/admin-pages/class-customer-edit-admin-page.php:908
 #: inc/admin-pages/class-discount-code-edit-admin-page.php:161
-#: inc/admin-pages/class-edit-admin-page.php:373
+#: inc/admin-pages/class-edit-admin-page.php:375
 #: views/admin-pages/fields/field-text-edit.php:36
 msgid "No date"
 msgstr ""
@@ -1118,7 +1118,7 @@ msgstr ""
 #: inc/admin-pages/class-dashboard-admin-page.php:183
 #: inc/admin-pages/class-domain-edit-admin-page.php:265
 #: inc/admin-pages/class-email-edit-admin-page.php:298
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:172
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:193
 #: inc/admin-pages/class-membership-edit-admin-page.php:431
 #: inc/admin-pages/class-product-edit-admin-page.php:621
 #: inc/admin-pages/class-template-previewer-customize-admin-page.php:132
@@ -1826,8 +1826,8 @@ msgstr ""
 
 #: inc/admin-pages/class-domain-edit-admin-page.php:191
 #: inc/admin-pages/class-domain-edit-admin-page.php:192
-#: inc/admin-pages/class-edit-admin-page.php:274
-#: inc/admin-pages/class-edit-admin-page.php:719
+#: inc/admin-pages/class-edit-admin-page.php:276
+#: inc/admin-pages/class-edit-admin-page.php:721
 #: inc/admin-pages/class-payment-edit-admin-page.php:178
 #: inc/list-tables/class-base-list-table.php:605
 #: inc/list-tables/class-broadcast-list-table.php:125
@@ -2090,50 +2090,50 @@ msgid "Add Domain"
 msgstr ""
 
 #. translators: %1$s is the date, using the site format options, %2$s is a <br /> tag.
-#: inc/admin-pages/class-edit-admin-page.php:144
+#: inc/admin-pages/class-edit-admin-page.php:146
 #, php-format
 msgid "This item is locked from editions. %2$s This is probably due to a background action being performed (like a transfer between different accounts, for example). You can manually unlock it, but be careful. The lock should be released automatically in %1$s seconds."
 msgstr ""
 
-#: inc/admin-pages/class-edit-admin-page.php:148
+#: inc/admin-pages/class-edit-admin-page.php:150
 msgid "Unlock"
 msgstr ""
 
-#: inc/admin-pages/class-edit-admin-page.php:267
+#: inc/admin-pages/class-edit-admin-page.php:269
 #: inc/admin-pages/class-wizard-admin-page.php:127
 msgid "Edit Object"
 msgstr ""
 
-#: inc/admin-pages/class-edit-admin-page.php:268
+#: inc/admin-pages/class-edit-admin-page.php:270
 #: inc/admin-pages/class-wizard-admin-page.php:128
 msgid "Add New Object"
 msgstr ""
 
-#: inc/admin-pages/class-edit-admin-page.php:269
+#: inc/admin-pages/class-edit-admin-page.php:271
 #: inc/admin-pages/class-wizard-admin-page.php:129
 msgid "Object updated with success!"
 msgstr ""
 
-#: inc/admin-pages/class-edit-admin-page.php:270
+#: inc/admin-pages/class-edit-admin-page.php:272
 #: inc/admin-pages/class-wizard-admin-page.php:130
 msgid "Enter Object Name"
 msgstr ""
 
-#: inc/admin-pages/class-edit-admin-page.php:272
-#: inc/admin-pages/class-edit-admin-page.php:677
+#: inc/admin-pages/class-edit-admin-page.php:274
+#: inc/admin-pages/class-edit-admin-page.php:679
 #: inc/admin-pages/class-payment-edit-admin-page.php:832
 #: inc/admin-pages/class-payment-edit-admin-page.php:833
 #: inc/admin-pages/class-wizard-admin-page.php:132
 msgid "Save"
 msgstr ""
 
-#: inc/admin-pages/class-edit-admin-page.php:323
+#: inc/admin-pages/class-edit-admin-page.php:325
 #: inc/admin-pages/class-event-view-admin-page.php:140
 #: inc/admin-pages/class-view-logs-admin-page.php:231
 msgid "Timestamps"
 msgstr ""
 
-#: inc/admin-pages/class-edit-admin-page.php:353
+#: inc/admin-pages/class-edit-admin-page.php:355
 #: inc/list-tables/class-customers-membership-list-table.php:94
 #: inc/list-tables/class-event-list-table.php:214
 #: inc/list-tables/class-membership-list-table.php:177
@@ -2144,26 +2144,26 @@ msgstr ""
 msgid "Created at"
 msgstr ""
 
-#: inc/admin-pages/class-edit-admin-page.php:370
+#: inc/admin-pages/class-edit-admin-page.php:372
 #: inc/admin-pages/class-view-logs-admin-page.php:235
 msgid "Last Modified at"
 msgstr ""
 
-#: inc/admin-pages/class-edit-admin-page.php:404
+#: inc/admin-pages/class-edit-admin-page.php:406
 msgid "List Table"
 msgstr ""
 
-#: inc/admin-pages/class-edit-admin-page.php:469
-#: inc/admin-pages/class-edit-admin-page.php:654
+#: inc/admin-pages/class-edit-admin-page.php:471
+#: inc/admin-pages/class-edit-admin-page.php:656
 #: inc/admin-pages/class-tax-rates-admin-page.php:175
 msgid "Fields"
 msgstr ""
 
-#: inc/admin-pages/class-edit-admin-page.php:538
+#: inc/admin-pages/class-edit-admin-page.php:540
 msgid "Tabs"
 msgstr ""
 
-#: inc/admin-pages/class-edit-admin-page.php:697
+#: inc/admin-pages/class-edit-admin-page.php:699
 #: inc/admin-pages/class-membership-edit-admin-page.php:577
 msgid "Locked"
 msgstr ""
@@ -2475,7 +2475,7 @@ msgid "Footer"
 msgstr ""
 
 #: inc/admin-pages/class-email-template-customize-admin-page.php:253
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:237
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:258
 #: inc/admin-pages/class-template-previewer-customize-admin-page.php:192
 msgid "Use Custom Logo"
 msgstr ""
@@ -2485,7 +2485,7 @@ msgid "You can set a different logo to be used on the system emails."
 msgstr ""
 
 #: inc/admin-pages/class-email-template-customize-admin-page.php:266
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:249
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:270
 #: inc/admin-pages/class-template-previewer-customize-admin-page.php:205
 msgid "Custom Logo"
 msgstr ""
@@ -2612,7 +2612,7 @@ msgid "Toggle to show/hide your company address."
 msgstr ""
 
 #: inc/admin-pages/class-email-template-customize-admin-page.php:420
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:210
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:231
 msgid "Footer Content"
 msgstr ""
 
@@ -2637,7 +2637,7 @@ msgid "Alignment of the font in the main email footer."
 msgstr ""
 
 #: inc/admin-pages/class-email-template-customize-admin-page.php:492
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:284
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:305
 #: inc/admin-pages/class-template-previewer-customize-admin-page.php:229
 msgid "Customizer"
 msgstr ""
@@ -2753,88 +2753,88 @@ msgstr ""
 msgid "Ready!"
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:149
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:170
 msgid "Changes to this template will be applied to all PDF invoices generated after the change. <br><br>Existing PDF Invoices will not be affected unless explicitly re-generated"
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:173
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:194
 #: inc/admin-pages/class-template-previewer-customize-admin-page.php:133
 msgid "Colors"
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:174
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:195
 #: inc/admin-pages/class-template-previewer-customize-admin-page.php:134
 msgid "Images"
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:180
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:201
 msgid "Paid Tag"
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:181
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:202
 msgid "e.g. Paid."
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:182
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:266
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:203
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:287
 #: inc/admin-pages/class-product-edit-admin-page.php:296
-#: inc/invoices/class-invoice.php:254
+#: inc/invoices/class-invoice.php:252
 msgid "Paid"
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:193
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:214
 msgid "Font-Family"
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:196
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:217
 msgid "Sans-Serif"
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:197
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:218
 msgid "Serif"
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:198
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:219
 msgid "Mono"
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:211
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:232
 msgid "e.g. Extra Info about the Invoice."
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:224
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:245
 msgid "Primary Color"
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:238
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:259
 msgid "You can set a different logo to be used on the invoice."
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:250
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:271
 msgid "This will be added to the top of the generated PDF."
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:305
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:316
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:339
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:340
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:326
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:337
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:360
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:361
 msgid "Customize Invoice Template"
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:341
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:362
 msgid "Edit Invoice Template"
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:342
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:363
 msgid "Invoice Template updated with success!"
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:343
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:364
 msgid "Enter Invoice Template Name"
 msgstr ""
 
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:345
-#: inc/admin-pages/class-invoice-template-customize-admin-page.php:346
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:366
+#: inc/admin-pages/class-invoice-template-customize-admin-page.php:367
 msgid "Save Invoice Template"
 msgstr ""
 
@@ -2904,7 +2904,7 @@ msgstr ""
 #: inc/admin-pages/class-product-list-admin-page.php:98
 #: inc/admin-pages/class-product-list-admin-page.php:109
 #: inc/admin-pages/class-top-admin-nav-menu.php:103
-#: inc/checkout/class-checkout.php:1867
+#: inc/checkout/class-checkout.php:1859
 #: inc/checkout/signup-fields/class-signup-field-pricing-table.php:170
 #: inc/checkout/signup-fields/class-signup-field-products.php:149
 #: inc/checkout/signup-fields/class-signup-field-products.php:150
@@ -4246,7 +4246,7 @@ msgstr ""
 msgid "You do not have the permissions required to change settings."
 msgstr ""
 
-#: inc/admin-pages/class-settings-admin-page.php:559
+#: inc/admin-pages/class-settings-admin-page.php:582
 msgid "Save Settings"
 msgstr ""
 
@@ -4835,14 +4835,14 @@ msgid "Tax Rates"
 msgstr ""
 
 #: inc/admin-pages/class-tax-rates-admin-page.php:114
-#: inc/objects/class-billing-address.php:272
+#: inc/objects/class-billing-address.php:291
 #: views/dashboard-statistics/widget-countries.php:19
 #: views/dashboard-statistics/widget-countries.php:54
 msgid "Country"
 msgstr ""
 
 #: inc/admin-pages/class-tax-rates-admin-page.php:115
-#: inc/objects/class-billing-address.php:282
+#: inc/objects/class-billing-address.php:301
 msgid "State / Province"
 msgstr ""
 
@@ -5175,21 +5175,21 @@ msgid "E.g. https://example.com/"
 msgstr ""
 
 #: inc/admin-pages/class-webhook-list-admin-page.php:142
-#: inc/admin-pages/class-webhook-list-admin-page.php:265
+#: inc/admin-pages/class-webhook-list-admin-page.php:276
 msgid "Add New Webhook"
 msgstr ""
 
-#: inc/admin-pages/class-webhook-list-admin-page.php:217
+#: inc/admin-pages/class-webhook-list-admin-page.php:228
 msgid "Webhook removed successfully."
 msgstr ""
 
-#: inc/admin-pages/class-webhook-list-admin-page.php:218
+#: inc/admin-pages/class-webhook-list-admin-page.php:229
 msgid "Search Webhook"
 msgstr ""
 
-#: inc/admin-pages/class-webhook-list-admin-page.php:230
 #: inc/admin-pages/class-webhook-list-admin-page.php:241
 #: inc/admin-pages/class-webhook-list-admin-page.php:252
+#: inc/admin-pages/class-webhook-list-admin-page.php:263
 #: inc/installers/class-migrator.php:366
 #: inc/list-tables/class-webhook-list-table.php:40
 #: views/ui/jumper.php:72
@@ -6412,7 +6412,7 @@ msgstr ""
 #: inc/api/trait-rest-api.php:171
 #: inc/api/trait-rest-api.php:244
 #: inc/api/trait-rest-api.php:302
-#: inc/models/class-base-model.php:612
+#: inc/models/class-base-model.php:648
 #: inc/models/class-site.php:1440
 msgid "Item not found."
 msgstr ""
@@ -6617,8 +6617,8 @@ msgstr ""
 
 #: inc/checkout/class-checkout.php:650
 #: inc/checkout/class-checkout.php:660
-#: inc/checkout/class-checkout.php:2085
-#: inc/checkout/class-checkout.php:2091
+#: inc/checkout/class-checkout.php:2077
+#: inc/checkout/class-checkout.php:2083
 msgid "Payment gateway not registered."
 msgstr ""
 
@@ -6626,36 +6626,36 @@ msgstr ""
 msgid "The email address you entered is already in use."
 msgstr ""
 
-#: inc/checkout/class-checkout.php:1032
+#: inc/checkout/class-checkout.php:1026
 msgid "Something wrong happened while attempting to save the customer billing address"
 msgstr ""
 
-#: inc/checkout/class-checkout.php:1562
+#: inc/checkout/class-checkout.php:1556
 msgid "The item was added!"
 msgstr ""
 
-#: inc/checkout/class-checkout.php:1563
+#: inc/checkout/class-checkout.php:1557
 msgid "The Password entered is too weak."
 msgstr ""
 
-#: inc/checkout/class-checkout.php:1864
+#: inc/checkout/class-checkout.php:1856
 msgid "Password confirmation"
 msgstr ""
 
-#: inc/checkout/class-checkout.php:1865
+#: inc/checkout/class-checkout.php:1857
 msgid "Template ID"
 msgstr ""
 
-#: inc/checkout/class-checkout.php:1866
+#: inc/checkout/class-checkout.php:1858
 msgid "Valid password"
 msgstr ""
 
-#: inc/checkout/class-checkout.php:1868
+#: inc/checkout/class-checkout.php:1860
 msgid "Payment Gateway"
 msgstr ""
 
 #. translators: %s is the membership ID
-#: inc/checkout/class-checkout.php:2189
+#: inc/checkout/class-checkout.php:2181
 #, php-format
 msgid "Checkout failed for customer %s: "
 msgstr ""
@@ -8016,7 +8016,7 @@ msgid "General information about your business.."
 msgstr ""
 
 #: inc/class-settings.php:547
-#: inc/objects/class-billing-address.php:242
+#: inc/objects/class-billing-address.php:261
 msgid "Company Name"
 msgstr ""
 
@@ -14602,8 +14602,8 @@ msgid "After this payment you will be billed %1$s."
 msgstr ""
 
 #: inc/gateways/class-paypal-gateway.php:660
-#: inc/gateways/class-paypal-gateway.php:1361
-#: inc/gateways/class-paypal-gateway.php:1516
+#: inc/gateways/class-paypal-gateway.php:1393
+#: inc/gateways/class-paypal-gateway.php:1548
 msgid "Something has gone wrong, please try again"
 msgstr ""
 
@@ -14636,40 +14636,40 @@ msgstr ""
 msgid "Missing membership or customer data."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:932
+#: inc/gateways/class-paypal-gateway.php:964
 msgid "Exiting PayPal Express IPN - membership ID not found."
 msgstr ""
 
 #. translators: %s: Transaction ID
-#: inc/gateways/class-paypal-gateway.php:1051
+#: inc/gateways/class-paypal-gateway.php:1083
 #, php-format
 msgid "Transaction ID %s failed in PayPal."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:1057
+#: inc/gateways/class-paypal-gateway.php:1089
 msgid "unknown"
 msgstr ""
 
 #. translators: %1$s: Transaction ID, %2$s: Pending reason
-#: inc/gateways/class-paypal-gateway.php:1059
+#: inc/gateways/class-paypal-gateway.php:1091
 #, php-format
 msgid "Transaction ID %1$s is pending in PayPal for reason: %2$s"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:1103
+#: inc/gateways/class-paypal-gateway.php:1135
 msgid "Initial payment failed in PayPal Express."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:1105
+#: inc/gateways/class-paypal-gateway.php:1137
 msgid "Initial payment failed."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:1118
+#: inc/gateways/class-paypal-gateway.php:1150
 msgid "Membership cancelled via PayPal Express IPN."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:1362
-#: inc/gateways/class-paypal-gateway.php:1517
+#: inc/gateways/class-paypal-gateway.php:1394
+#: inc/gateways/class-paypal-gateway.php:1549
 #: inc/managers/class-gateway-manager.php:285
 #: inc/managers/class-gateway-manager.php:314
 #: inc/managers/class-gateway-manager.php:326
@@ -14677,12 +14677,12 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:1539
+#: inc/gateways/class-paypal-gateway.php:1571
 msgid "Invalid response code from PayPal"
 msgstr ""
 
 #. translators: %s is the paypal error message.
-#: inc/gateways/class-paypal-gateway.php:1542
+#: inc/gateways/class-paypal-gateway.php:1574
 #, php-format
 msgid "An unexpected PayPal error occurred. Error message: %s."
 msgstr ""
@@ -15641,7 +15641,7 @@ msgstr ""
 msgid "Your server's PHP and WordPress memory limits are too low to perform this check. You might need to contact your host provider and ask the PHP memory limit in particular to be raised."
 msgstr ""
 
-#: inc/invoices/class-invoice.php:107
+#: inc/invoices/class-invoice.php:105
 #: views/emails/admin/payment-received.php:64
 #: views/emails/customer/payment-received.php:49
 msgid "Invoice"
@@ -17378,7 +17378,7 @@ msgstr ""
 msgid "You can only use numeric fields to generate hashes."
 msgstr ""
 
-#: inc/models/class-base-model.php:735
+#: inc/models/class-base-model.php:771
 msgid "This method expects an array as argument."
 msgstr ""
 
@@ -17559,55 +17559,55 @@ msgstr ""
 msgid "one-time payment"
 msgstr ""
 
-#: inc/objects/class-billing-address.php:243
+#: inc/objects/class-billing-address.php:262
 msgid "E.g. Google (optional)"
 msgstr ""
 
-#: inc/objects/class-billing-address.php:249
+#: inc/objects/class-billing-address.php:268
 msgid "Billing Email"
 msgstr ""
 
-#: inc/objects/class-billing-address.php:250
+#: inc/objects/class-billing-address.php:269
 msgid "E.g. john@company.com"
 msgstr ""
 
-#: inc/objects/class-billing-address.php:257
+#: inc/objects/class-billing-address.php:276
 msgid "Address Line 1"
 msgstr ""
 
-#: inc/objects/class-billing-address.php:258
+#: inc/objects/class-billing-address.php:277
 msgid "E.g. 555 1st Avenue"
 msgstr ""
 
-#: inc/objects/class-billing-address.php:265
+#: inc/objects/class-billing-address.php:284
 msgid "Address Line 2"
 msgstr ""
 
-#: inc/objects/class-billing-address.php:266
+#: inc/objects/class-billing-address.php:285
 msgid "E.g. Apartment 10a"
 msgstr ""
 
-#: inc/objects/class-billing-address.php:273
+#: inc/objects/class-billing-address.php:292
 msgid "E.g. US"
 msgstr ""
 
-#: inc/objects/class-billing-address.php:283
+#: inc/objects/class-billing-address.php:302
 msgid "E.g. NY"
 msgstr ""
 
-#: inc/objects/class-billing-address.php:289
+#: inc/objects/class-billing-address.php:308
 msgid "City / Town"
 msgstr ""
 
-#: inc/objects/class-billing-address.php:290
+#: inc/objects/class-billing-address.php:309
 msgid "E.g. New York City"
 msgstr ""
 
-#: inc/objects/class-billing-address.php:296
+#: inc/objects/class-billing-address.php:315
 msgid "ZIP / Postal Code"
 msgstr ""
 
-#: inc/objects/class-billing-address.php:297
+#: inc/objects/class-billing-address.php:316
 msgid "E.g. 10009"
 msgstr ""
 

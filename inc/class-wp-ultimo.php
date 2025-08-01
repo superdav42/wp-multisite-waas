@@ -204,7 +204,6 @@ final class WP_Ultimo {
 	 * @return void
 	 */
 	public function after_init() {
-		load_plugin_textdomain('multisite-ultimate', false, dirname((string) WP_ULTIMO_PLUGIN_BASENAME) . '/lang');
 
 		/*
 		 * Loads admin pages

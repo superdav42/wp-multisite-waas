@@ -102,7 +102,7 @@ class Light_Ajax {
 		);
 
 		// nonce checked in process_light_ajax().
-		$action = isset($_REQUEST['wu-when']) ? base64_decode(sanitize_key(wp_unslash($_REQUEST['wu-when']))) : 'plugins_loaded'; // phpcs:ignore WordPress
+		$action = isset($_REQUEST['wu-when']) ? base64_decode(sanitize_text_field(wp_unslash($_REQUEST['wu-when']))) : 'plugins_loaded'; // phpcs:ignore WordPress
 
 		return in_array($action, $allowed_list, true) ? $action : 'plugins_loaded';
 	}

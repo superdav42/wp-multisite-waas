@@ -301,7 +301,48 @@ class Template_Previewer_Customize_Admin_Page extends Customizer_Admin_Page {
 	public function handle_save(): void {
 
 		// Nonce checked in calling method.
-		$settings = Template_Previewer::get_instance()->save_settings($_POST); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$allowed_settings = [
+			'bg_color',
+			'button_bg_color',
+			'logo_url',
+			'button_text',
+			'preview_url_parameter',
+			'display_responsive_controls',
+			'use_custom_logo',
+			'custom_logo',
+			'enabled',
+		];
+
+		$settings_to_save = [];
+
+		foreach ($allowed_settings as $setting) {
+			if (isset($_POST[ $setting ])) { // phpcs:ignore WordPress.Security.NonceVerification
+				$value = wp_unslash($_POST[ $setting ]); // phpcs:ignore WordPress.Security.NonceVerification, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+				switch ($setting) {
+					case 'bg_color':
+					case 'button_bg_color':
+						$settings_to_save[ $setting ] = sanitize_hex_color($value);
+						break;
+					case 'display_responsive_controls':
+					case 'use_custom_logo':
+					case 'enabled':
+						$settings_to_save[ $setting ] = wu_string_to_bool($value);
+						break;
+					case 'custom_logo':
+					case 'logo_url':
+						$settings_to_save[ $setting ] = esc_url_raw($value);
+						break;
+					case 'button_text':
+					case 'preview_url_parameter':
+					default:
+						$settings_to_save[ $setting ] = sanitize_text_field($value);
+						break;
+				}
+			}
+		}
+
+		Template_Previewer::get_instance()->save_settings($settings_to_save);
 
 		$array_params = [
 			'updated' => 1,

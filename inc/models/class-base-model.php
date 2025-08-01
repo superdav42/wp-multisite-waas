@@ -252,6 +252,42 @@ abstract class Base_Model implements \JsonSerializable {
 	}
 
 	/**
+	 * @return $this
+	 */
+	public function load_attributes_from_post() {
+		// Nonce check handled in calling method.
+		foreach ($_POST as $key => $value) { // phpcs:ignore WordPress.Security.NonceVerification
+			if ('meta' === $key && is_array($value)) {
+				$value      = wu_clean(wp_unslash($value));
+				$this->meta = is_array($this->meta) ? array_merge($this->meta, $value) : $value;
+			}
+
+			if (method_exists($this, "set_$key")) {
+				call_user_func([$this, "set_$key"], sanitize_text_field(wp_unslash($value)));
+			}
+
+			$mapping = wu_get_isset($this->_mappings, $key);
+
+			if ($mapping && method_exists($this, "set_$mapping")) {
+				call_user_func([$this, "set_$mapping"], sanitize_text_field(wp_unslash($value)));
+			}
+		}
+
+		/*
+		 * Keeps the original.
+		 */
+		if (null === $this->_original) {
+			$original = get_object_vars($this);
+
+			unset($original['_original']);
+
+			$this->_original = $original;
+		}
+
+		return $this;
+	}
+
+	/**
 	 * Return the model schema. useful to list all models fields.
 	 *
 	 * @since 2.0.0

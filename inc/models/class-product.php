@@ -20,7 +20,7 @@ use WP_Ultimo\Database\Products\Product_Type;
  *
  * @since 2.0.0
  */
-class Product extends Base_Model {
+class Product extends Base_Model implements Limitable {
 
 	use Traits\Limitable;
 	use \WP_Ultimo\Traits\WP_Ultimo_Plan_Deprecated;

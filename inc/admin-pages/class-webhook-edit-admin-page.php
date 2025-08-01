@@ -389,8 +389,7 @@ class Webhook_Edit_Admin_Page extends Edit_Admin_Page {
 
 		$object = $this->get_object();
 
-		// Nonce checked in calling method.
-		$object->attributes($_POST); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$object->load_attributes_from_post();
 
 		if (is_wp_error($object->save())) {
 			$errors = implode('<br>', $object->save()->get_error_messages());

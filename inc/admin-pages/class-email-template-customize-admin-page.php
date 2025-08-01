@@ -565,15 +565,77 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 	 */
 	public function handle_save(): void {
 		// Calling method performs the nonce check.
-		if ( ! empty($_POST['footer_text'])) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			$_POST['footer_text'] = sanitize_text_field(wp_unslash((string) $_POST['footer_text'])); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$allowed_settings = [
+			'use_custom_logo',
+			'custom_logo',
+			'display_company_address',
+			'background_color',
+			'title_color',
+			'title_size',
+			'title_align',
+			'title_font',
+			'content_color',
+			'content_align',
+			'content_font',
+			'footer_font',
+			'footer_text',
+			'footer_color',
+			'footer_align',
+		];
+
+		$settings_to_save = [];
+
+		foreach ($allowed_settings as $setting) {
+			if (isset($_POST[ $setting ])) { // phpcs:ignore WordPress.Security.NonceVerification
+				$value = wp_unslash($_POST[ $setting ]); // phpcs:ignore WordPress.Security.NonceVerification, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+				switch ($setting) {
+					case 'background_color':
+					case 'title_color':
+					case 'content_color':
+					case 'footer_color':
+						$settings_to_save[ $setting ] = sanitize_hex_color($value);
+						break;
+					case 'use_custom_logo':
+					case 'display_company_address':
+						$settings_to_save[ $setting ] = wu_string_to_bool($value);
+						break;
+					case 'custom_logo':
+						$settings_to_save[ $setting ] = sanitize_url($value);
+						break;
+					case 'title_size':
+						// Validate against allowed title sizes
+						$allowed_sizes                = ['h1', 'h2', 'h3', 'h4', 'h5'];
+						$settings_to_save[ $setting ] = in_array($value, $allowed_sizes, true) ? $value : 'h3';
+						break;
+					case 'title_align':
+					case 'content_align':
+					case 'footer_align':
+						// Validate against allowed alignments
+						$allowed_aligns               = ['left', 'center', 'right'];
+						$settings_to_save[ $setting ] = in_array($value, $allowed_aligns, true) ? $value : 'center';
+						break;
+					case 'title_font':
+					case 'content_font':
+					case 'footer_font':
+						// Validate against allowed fonts
+						$allowed_fonts                = [
+							'Helvetica Neue, Helvetica, Helvetica, Arial, sans-serif',
+							'Arial, Helvetica, sans-serif',
+							'Times New Roman, Times, serif',
+							'Lucida Console, Courier, monospace',
+						];
+						$settings_to_save[ $setting ] = in_array($value, $allowed_fonts, true) ? $value : 'Helvetica Neue, Helvetica, Helvetica, Arial, sans-serif';
+						break;
+					case 'footer_text':
+					default:
+						$settings_to_save[ $setting ] = sanitize_text_field($value);
+						break;
+				}
+			}
 		}
 
-		$_POST['use_custom_logo'] = wu_request('use_custom_logo');
-
-		$_POST['display_company_address'] = wu_request('display_company_address');
-
-		$this->save_settings($_POST); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$this->save_settings($settings_to_save);
 
 		$url = add_query_arg('updated', '1');
 

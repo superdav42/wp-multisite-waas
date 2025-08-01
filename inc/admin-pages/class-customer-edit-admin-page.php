@@ -1136,7 +1136,7 @@ class Customer_Edit_Admin_Page extends Edit_Admin_Page {
 
 		$billing_address = $object->get_billing_address();
 
-		$billing_address->attributes($_POST);
+        $billing_address->load_attributes_from_post();
 
 		$valid_address = $billing_address->validate();
 

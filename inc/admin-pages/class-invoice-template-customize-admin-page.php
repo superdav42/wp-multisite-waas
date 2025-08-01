@@ -102,7 +102,28 @@ class Invoice_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 		$payment = wu_mock_payment();
 
 		check_ajax_referer('wu-preview-invoice', 'wu-preview-nonce');
-		$invoice = new Invoice($payment, $_GET);
+
+		// Filter and sanitize $_GET to only include allowed invoice attributes
+		$allowed_attributes = [
+			'company_name',
+			'company_address',
+			'primary_color',
+			'font',
+			'logo_url',
+			'use_custom_logo',
+			'custom_logo',
+			'footer_message',
+			'paid_tag_text',
+		];
+
+		$filtered_attributes = [];
+		foreach ($allowed_attributes as $attribute) {
+			if (isset($_GET[ $attribute ])) {
+				$filtered_attributes[ $attribute ] = sanitize_text_field(wp_unslash($_GET[ $attribute ]));
+			}
+		}
+
+		$invoice = new Invoice($payment, $filtered_attributes);
 
 		$invoice->print_file();
 
@@ -356,7 +377,52 @@ class Invoice_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 	public function handle_save(): void {
 
 		// Nonce in handeled in the calling method.
-		Invoice::save_settings($_POST); // phpcs:ignore WordPress.Security.NonceVerification
+		$allowed_settings = [
+			'company_name',
+			'company_address',
+			'primary_color',
+			'font',
+			'logo_url',
+			'use_custom_logo',
+			'custom_logo',
+			'footer_message',
+			'paid_tag_text',
+		];
+
+		$settings_to_save = [];
+
+		foreach ($allowed_settings as $setting) {
+			if (isset($_POST[ $setting ])) { // phpcs:ignore WordPress.Security.NonceVerification
+				$value = wp_unslash($_POST[ $setting ]); // phpcs:ignore WordPress.Security.NonceVerification, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+				switch ($setting) {
+					case 'primary_color':
+						$settings_to_save[ $setting ] = sanitize_hex_color($value);
+						break;
+					case 'use_custom_logo':
+						$settings_to_save[ $setting ] = wu_string_to_bool($value);
+						break;
+					case 'custom_logo':
+					case 'logo_url':
+						$settings_to_save[ $setting ] = esc_url_raw($value);
+						break;
+					case 'font':
+						// Validate against allowed fonts
+						$allowed_fonts                = ['DejaVuSansCondensed', 'DejaVuSerifCondensed', 'FreeMono'];
+						$settings_to_save[ $setting ] = in_array($value, $allowed_fonts, true) ? $value : 'DejaVuSansCondensed';
+						break;
+					case 'company_name':
+					case 'company_address':
+					case 'footer_message':
+					case 'paid_tag_text':
+					default:
+						$settings_to_save[ $setting ] = sanitize_text_field($value);
+						break;
+				}
+			}
+		}
+
+		Invoice::save_settings($settings_to_save);
 
 		$url = add_query_arg('updated', '1');
 

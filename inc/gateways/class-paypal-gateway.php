@@ -9,6 +9,7 @@
 
 namespace WP_Ultimo\Gateways;
 
+use Psr\Log\LogLevel;
 use WP_Ultimo\Gateways\Base_Gateway;
 use WP_Ultimo\Database\Payments\Payment_Status;
 use WP_Ultimo\Database\Memberships\Membership_Status;
@@ -904,13 +905,46 @@ class PayPal_Gateway extends Base_Gateway {
 	 * Process webhooks
 	 *
 	 * @since 2.0.0
-	 * @throws \Exception
+	 * @throws \Exception When transaciton id is missing.
 	 */
 	public function process_webhooks(): bool {
 
 		wu_log_add('paypal', 'Receiving PayPal IPN webhook...');
 
-		$posted = apply_filters('wu_ipn_post', $_POST); // phpcs:ignore WordPress.Security.NonceVerification
+		$allowed_ipn_fields = [
+			'custom',
+			'recurring_payment_id',
+			'mc_gross',
+			'payment_date',
+			'txn_id',
+			'txn_type',
+			'initial_payment_txn_id',
+			'initial_payment_status',
+			'ipn_track_id',
+			'time_created',
+			'amount',
+			'next_payment_date',
+			'payment_status',
+			'pending_reason',
+		];
+
+		$posted = [];
+
+		foreach ($allowed_ipn_fields as $field) {
+			// Not possible to use a nonce with this webhook but verify_ipn() is used below to confirm the request came from PayPal.
+			if (isset($_POST[ $field ])) { // phpcs:ignore WordPress.Security.NonceVerification
+				$posted[ $field ] = sanitize_text_field(wp_unslash($_POST[ $field ])); // phpcs:ignore WordPress.Security.NonceVerification
+			}
+		}
+
+		$posted = apply_filters('wu_ipn_post', $posted);
+
+		// Verify the IPN actually came from PayPal to prevent spoofing attacks
+		if (! $this->verify_ipn($posted)) {
+			wu_log_add('paypal', 'PayPal IPN verification failed - possible fraud attempt. Rejecting IPN.', LogLevel::ERROR);
+			http_response_code(400);
+			wp_die('IPN verification failed');
+		}
 
 		$payment    = false;
 		$customer   = false;
@@ -1645,5 +1679,57 @@ class PayPal_Gateway extends Base_Gateway {
 		$base_url = 'https://www.%spaypal.com/us/cgi-bin/webscr?cmd=_profile-recurring-payments&encrypted_profile_id=%s';
 
 		return sprintf($base_url, $sandbox_prefix, $gateway_subscription_id);
+	}
+
+	/**
+	 * Verifies that the IPN notification actually came from PayPal.
+	 *
+	 * This prevents spoofing attacks by validating the IPN with PayPal's servers.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param array $posted The IPN data to verify.
+	 * @return bool True if verified, false otherwise.
+	 */
+	protected function verify_ipn($posted): bool {
+
+		wu_log_add('paypal', 'Verifying PayPal IPN with PayPal servers...');
+
+		$req = 'cmd=_notify-validate';
+
+		foreach ($posted as $key => $value) {
+			$req .= '&' . rawurlencode($key) . '=' . rawurlencode($value);
+		}
+
+		// Use sandbox or live verification endpoint
+		$verify_url = $this->test_mode
+			? 'https://ipnpb.sandbox.paypal.com/cgi-bin/webscr'
+			: 'https://ipnpb.paypal.com/cgi-bin/webscr';
+
+		$response = wp_remote_post(
+			$verify_url,
+			[
+				'body'        => $req,
+				'timeout'     => 30,
+				'httpversion' => '1.1',
+				'headers'     => [
+					'Host'         => $this->test_mode ? 'ipnpb.sandbox.paypal.com' : 'ipnpb.paypal.com',
+					'Connection'   => 'close',
+					'Content-Type' => 'application/x-www-form-urlencoded',
+				],
+			]
+		);
+
+		if (is_wp_error($response)) {
+			wu_log_add('paypal', 'PayPal IPN verification failed: ' . $response->get_error_message());
+			return false;
+		}
+
+		$body     = wp_remote_retrieve_body($response);
+		$verified = 'VERIFIED' === $body;
+
+		wu_log_add('paypal', $verified ? 'PayPal IPN verification successful' : 'PayPal IPN verification failed - received: ' . $body);
+
+		return $verified;
 	}
 }
