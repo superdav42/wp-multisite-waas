@@ -266,7 +266,7 @@ function wu_get_currency_symbol($currency = '') {
 			$currency_symbol = '₩';
 			break;
 		case 'MMK':
-			$currency_symbol = 'K / Ks';
+			$currency_symbol = 'K, Ks';
 			break;
 		case 'MRU':
 			$currency_symbol = 'UM';
