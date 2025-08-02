@@ -204,6 +204,8 @@ function wu_get_currency_symbol($currency = '') {
 		case 'BRL':
 			$currency_symbol = 'R$';
 			break;
+		case 'BYN':
+			$currency_symbol = 'Br';
 		case 'CHF':
 			$currency_symbol = 'CHF';
 			break;
@@ -263,6 +265,12 @@ function wu_get_currency_symbol($currency = '') {
 		case 'KRW':
 			$currency_symbol = '₩';
 			break;
+		case 'MMK':
+			$currency_symbol = 'K / Ks';
+			break;
+		case 'MRU':
+			$currency_symbol = 'UM';
+			break;
 		case 'MYR':
 			$currency_symbol = 'RM';
 			break;
@@ -272,6 +280,9 @@ function wu_get_currency_symbol($currency = '') {
 		case 'NOK':
 		case 'SEK':
 			$currency_symbol = 'kr';
+			break;
+		case 'SLE':
+			$currency_symbol = 'Le';
 			break;
 		case 'PHP':
 			$currency_symbol = '₱';
