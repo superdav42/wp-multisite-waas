@@ -24,7 +24,6 @@ function wu_get_currencies(): array {
 			'AFN' => __('Afghan Afghani', 'multisite-ultimate'),
 			'ALL' => __('Albanian Lek', 'multisite-ultimate'),
 			'AMD' => __('Armenian Dram', 'multisite-ultimate'),
-			// 'ANG' => __('Antillean Guilder', 'multisite-ultimate'), // Should be removed at some point, is fully replaced by XCG per june 2025.
 			'AOA' => __('Angolan Kwanza', 'multisite-ultimate'),
 			'ARS' => __('Argentine Peso', 'multisite-ultimate'),
 			'AUD' => __('Australian Dollar', 'multisite-ultimate'),
