@@ -31,8 +31,13 @@
     "env:start": "wp-env start",
     "env:clean:tests": "wp-env clean tests",
     "env:stop": "wp-env stop",
-    "cy:open": "npm run env:start && npm run env:clean:tests && npx cypress open",
-    "cy:run": "npm run env:start && npm run env:clean:tests && npx cypress run"
+    "env:destroy": "wp-env destroy",
+    "cy:open": "npm run env:start && npm run env:clean:tests && npx cypress open -b chrome",
+    "cy:run": "npm run env:start && npm run env:clean:tests && npx cypress run -b chrome",
+    "pma:start": "bash ./bin/pma-docker.sh",
+    "pma:stop": "docker stop phpmyadmin",
+    "mailpit:start": "bash ./bin/connect-mailpit.sh && ./bin/configure-mailpit-smtp.sh",
+    "mailpit:stop": "docker stop mailpit"
   },
   "dependencies": {
     "apexcharts": "^5.2.0",

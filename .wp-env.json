@@ -1,19 +1,27 @@
 {
   "core": "https://wordpress.org/wordpress-6.8.2.zip",
+  "multisite": true,
   "plugins": ["."],
   "env": {
     "development": {
       "multisite": true,
-      "plugins": ["."]
+      "plugins": ["."],
+      "config": {
+        "WP_DEBUG": true,
+        "WP_DEBUG_DISPLAY": true,
+        "WP_DEBUG_LOG": true,
+        "SCRIPT_DEBUG": true
+      }
     },
     "tests": {
       "multisite": true,
-      "plugins": ["."]
+      "plugins": ["."],
+      "config": {
+        "WP_DEBUG": true,
+        "WP_DEBUG_DISPLAY": false,
+        "WP_DEBUG_LOG": true,
+        "SCRIPT_DEBUG": true
+      }
     }
   },
-  "config": {
-    "WP_DEBUG": true,
-    "WP_DEBUG_DISPLAY": true,
-    "SCRIPT_DEBUG": true
-  }
 }
