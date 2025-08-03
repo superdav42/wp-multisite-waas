@@ -104,6 +104,7 @@ PMA_CONTAINER_ID=$(docker run \
   --name "$HOST_PMA_CONTAINER_NAME" \
   -e PMA_ARBITRARY=1 \
   -e PMA_HOSTS="mysql,tests-mysql" \
+  -e PMA_VERBOSES="Development,Test" \
   -e PMA_USER=root \
   -e PMA_PASSWORD=password \
   -p "$HOST_PMA_PORT:80" \
