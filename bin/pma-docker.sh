@@ -116,7 +116,7 @@ echo "- $HOST_PMA_CONTAINER_NAME container started in detached mode: $PMA_CONTAI
 echo
 echo "$HOST_PMA_CONTAINER_NAME is now running at: http://localhost:$HOST_PMA_PORT"
 echo
-echo "You can select 'mysql' or 'mysql-test' as the server in the phpMyAdmin login screen."
+echo "You can select 'Development (root)' or 'Test (root)' as the server in the phpMyAdmin login screen."
 echo
 echo "stop the container by executing the following command"
 echo "docker stop $HOST_PMA_CONTAINER_NAME"
