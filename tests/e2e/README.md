@@ -16,8 +16,13 @@ This project provides end-to-end (E2E) testing for a WordPress environment using
 | `npm run env:start`       | Starts the WordPress testing environment using `wp-env`.                    |
 | `npm run env:clean:tests` | Cleans the WordPress test environment. Useful for ensuring a clean slate.   |
 | `npm run env:stop`        | Stops the running WordPress environment.                                    |
+| `npm run env:destroy`     | Deletes all docker containers, images and volumes.                          |
 | `npm run cy:open`         | Starts the environment, cleans it, and opens Cypress Test Runner UI.        |
 | `npm run cy:run`          | Starts the environment, cleans it, and runs Cypress tests in headless mode. |
+| `npm run pma:start`       | Starts the phpMyAdmin application for easy access to the database.          |
+| `npm run pma:stop`        | Stops the docker container from running phpMyAdmin.                         |
+| `npm run mailpit:start`   | Starts the mailpit application for catching and testing emails.             |
+| `npm run mailpit:stop`    | Stops the docker container from running mailpit.                            |
 
 ## Running Tests
 
