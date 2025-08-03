@@ -26,27 +26,48 @@ This project provides end-to-end (E2E) testing for a WordPress environment using
 | `npm run mailpit:start`   | Starts the mailpit application for catching and testing emails.                  |
 | `npm run mailpit:stop`    | Stops the docker container from running mailpit.                                 |
 
+## Start development and test environment
+
+Run `npm run env:start` to start both environments.
+
+- [Development environment on port 8888](http://localhost:8888)
+- [Testing environment on port 8889](http://localhost:8889)
+
 ## Running Tests
 
 ### Open Cypress UI
 
+Development environment
 ```
-npm run cy:open
+npm run cy:open:dev
 ```
+
+Testing environment
+```
+npm run cy:open:test
+```
+
 This will launch the Cypress Test Runner where you can run tests interactively.
 
 ### Run Cypress Tests Headlessly
 
+Development environment
 ```
-npm run cy:run
+npm run cy:run:dev
 ```
+
+Testing environment
+```
+npm run cy:run:test
+```
+
 Runs all Cypress tests in the CLI, useful for testing locally and CI/CD environments.
 
-## Cleaning Up
+## Destroy all environments
 
-To stop and clean the environment manually:
+To destroy all environments manually:
 ```
-npm run env:stop
+npm run env:destroy
 ```
 
 ## Configuration
