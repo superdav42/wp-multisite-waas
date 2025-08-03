@@ -229,7 +229,7 @@ class Jumper {
 			 * Adds Main Site Dashboard
 			 */
 			if (isset($links[ __('Sites') ])) { // phpcs:ignore WordPress.WP.I18n.MissingArgDomain
-				$main_site_url = get_admin_url(get_current_site()->blog_id);
+				$main_site_url = get_admin_url(get_current_site()->site_id);
 
 				$links[ __('Sites') ][ $main_site_url ] = __('Main Site Dashboard', 'multisite-ultimate'); // phpcs:ignore WordPress.WP.I18n.MissingArgDomain
 			}
@@ -321,7 +321,7 @@ class Jumper {
 				'trigger_key'       => $this->get_defined_trigger_key(),
 				'network_base_url'  => network_admin_url(),
 				'ajaxurl'           => wu_ajax_url(),
-				'base_url'          => get_admin_url(get_current_site()->blog_id),
+				'base_url'          => get_admin_url(get_current_site()->site_id),
 			]
 		);
 

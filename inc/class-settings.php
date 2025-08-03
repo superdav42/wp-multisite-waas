@@ -1634,6 +1634,8 @@ class Settings {
 				'default' => 0,
 			]
 		);
+
+		do_action('wu_settings_other');
 	}
 
 	/**
