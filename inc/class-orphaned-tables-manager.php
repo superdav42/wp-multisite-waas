@@ -31,8 +31,7 @@ class Orphaned_Tables_Manager {
 	public function init(): void {
 
 		add_action('plugins_loaded', [$this, 'register_forms']);
-		add_action('wp_ajax_wu_check_orphaned_tables', [$this, 'ajax_check_orphaned_tables']);
-		add_action('wu_settings_integrations', [$this, 'register_settings_field']);
+		add_action('wu_settings_other', [$this, 'register_settings_field']);
 	}
 
 	/**
@@ -42,15 +41,6 @@ class Orphaned_Tables_Manager {
 	 * @return void
 	 */
 	public function register_forms(): void {
-
-		wu_register_form(
-			'orphaned_tables_check',
-			[
-				'render'     => [$this, 'render_orphaned_tables_check_modal'],
-				'handler'    => [$this, 'handle_orphaned_tables_check_modal'],
-				'capability' => 'manage_network',
-			]
-		);
 
 		wu_register_form(
 			'orphaned_tables_delete',
@@ -76,126 +66,11 @@ class Orphaned_Tables_Manager {
 					'style' => 'margin-bottom: 20px;',
 				],
 				'html_attr'         => [
-					'href'        => wu_get_form_url('orphaned_tables_check'),
-					'wu-tooltip'  => __('Scan and cleanup database tables from deleted sites', 'multisite-ultimate'),
+					'href'       => wu_get_form_url('orphaned_tables_delete'),
+					'wu-tooltip' => __('Scan and cleanup database tables from deleted sites', 'multisite-ultimate'),
 				],
 			]
 		);
-	}
-
-	/**
-	 * AJAX handler to check for orphaned tables.
-	 *
-	 * @since 2.0.0
-	 * @return void
-	 */
-	public function ajax_check_orphaned_tables(): void {
-
-		if (!current_user_can('manage_network')) {
-			wp_die(esc_html__('You do not have the required permissions.', 'multisite-ultimate'));
-		}
-
-		$orphaned_tables = $this->find_orphaned_tables();
-
-		if (empty($orphaned_tables)) {
-			wp_send_json_success([
-				'message' => __('No orphaned tables found! Your database is clean.', 'multisite-ultimate'),
-				'count'   => 0,
-			]);
-		} else {
-			wp_send_json_success([
-				'count'      => count($orphaned_tables),
-				'tables'     => $orphaned_tables,
-				'form_url'   => wu_get_form_url('orphaned_tables_delete', [
-					'orphaned_tables' => base64_encode(wp_json_encode($orphaned_tables))
-				]),
-			]);
-		}
-	}
-
-	/**
-	 * Renders the orphaned tables check modal.
-	 *
-	 * @since 2.0.0
-	 * @return void
-	 */
-	public function render_orphaned_tables_check_modal(): void {
-
-		$orphaned_tables = $this->find_orphaned_tables();
-		$table_count = count($orphaned_tables);
-
-		if (empty($orphaned_tables)) {
-			$fields = [
-				'no_orphans' => [
-					'type'            => 'note',
-					'desc'            => sprintf(
-						'<div class="wu-p-4 wu-bg-green-100 wu-border wu-border-green-400 wu-text-green-700 wu-rounded">%s</div>',
-						esc_html__('No orphaned tables found! Your database is clean.', 'multisite-ultimate')
-					),
-					'wrapper_classes' => 'wu-w-full',
-				],
-			];
-		} else {
-			$table_list = '<div class="wu-max-h-32 wu-overflow-y-auto wu-bg-white wu-p-2 wu-border wu-rounded wu-mb-4">';
-			foreach ($orphaned_tables as $table) {
-				$table_list .= '<div class="wu-text-xs wu-font-mono wu-py-1">' . esc_html($table) . '</div>';
-			}
-			$table_list .= '</div>';
-
-			$fields = [
-				'warning' => [
-					'type'            => 'note',
-					'desc'            => sprintf(
-						'<div class="wu-p-4 wu-bg-yellow-100 wu-border wu-border-yellow-400 wu-text-yellow-700 wu-rounded">
-							<h3 class="wu-mt-0 wu-mb-2">%s</h3>
-							<p class="wu-mb-2">%s</p>
-							%s
-						</div>',
-						sprintf(
-							/* translators: %d: number of orphaned tables */
-							esc_html(_n('%d Orphaned Table Found', '%d Orphaned Tables Found', $table_count, 'multisite-ultimate')),
-							$table_count
-						),
-						esc_html__('The following database tables belong to sites that have been deleted:', 'multisite-ultimate'),
-						$table_list
-					),
-					'wrapper_classes' => 'wu-w-full',
-				],
-				'proceed_to_delete' => [
-					'type'            => 'link',
-					'display_value'   => __('Proceed to Delete These Tables', 'multisite-ultimate'),
-					'wrapper_classes' => 'wu-w-full wu-text-center',
-					'classes'         => 'button button-primary',
-					'html_attr'       => [
-						'href'               => wu_get_form_url('orphaned_tables_delete', [
-							'orphaned_tables' => base64_encode(wp_json_encode($orphaned_tables))
-						]),
-						'wu-tooltip'         => __('This will open a confirmation dialog', 'multisite-ultimate'),
-						'data-wu-app'        => 'orphaned_tables_check',
-						'data-wu-action'     => 'next-step',
-					],
-				],
-			];
-		}
-
-		$form = new Form(
-			'orphaned-tables-check',
-			$fields,
-			[
-				'views'                 => 'admin-pages/fields',
-				'classes'               => 'wu-modal-form wu-widget-list wu-striped wu-m-0',
-				'field_wrapper_classes' => 'wu-w-full wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid',
-				'html_attr'             => [
-					'data-wu-app' => 'orphaned_tables_check',
-					'data-state'  => wp_json_encode([
-						'orphaned_tables' => $orphaned_tables,
-						'table_count'     => $table_count,
-					]),
-				],
-			]
-		);
-
-		$form->render();
 	}
 
 	/**
@@ -206,18 +81,20 @@ class Orphaned_Tables_Manager {
 	 */
 	public function render_orphaned_tables_delete_modal(): void {
 
-		$orphaned_tables_encoded = wu_request('orphaned_tables');
-		$orphaned_tables = [];
-
-		if ($orphaned_tables_encoded) {
-			$orphaned_tables = json_decode(base64_decode($orphaned_tables_encoded), true);
-		}
-
-		if (empty($orphaned_tables) || !is_array($orphaned_tables)) {
-			$orphaned_tables = $this->find_orphaned_tables();
-		}
+		$orphaned_tables = $this->find_orphaned_tables();
 
 		$table_count = count($orphaned_tables);
+		if (! $table_count) {
+			printf(
+				'<div class="wu-p-4 wu-bg-red-100 wu-border wu-border-red-400 wu-text-red-700 wu-rounded">
+							<h3 class="wu-mt-0 wu-mb-2">%s</h3>
+							<p>%s</p>
+						</div>',
+				esc_html__('Not Found', 'multisite-ultimate'),
+				esc_html__('No Orphaned Tables found.', 'multisite-ultimate')
+			);
+			return;
+		}
 
 		$table_list = '<div class="wu-max-h-32 wu-overflow-y-auto wu-bg-white wu-p-2 wu-border wu-rounded wu-mb-4">';
 		foreach ($orphaned_tables as $table) {
@@ -226,10 +103,6 @@ class Orphaned_Tables_Manager {
 		$table_list .= '</div>';
 
 		$fields = [
-			'orphaned_tables' => [
-				'type'  => 'hidden',
-				'value' => base64_encode(wp_json_encode($orphaned_tables)),
-			],
 			'confirmation' => [
 				'type'            => 'note',
 				'desc'            => sprintf(
@@ -253,7 +126,7 @@ class Orphaned_Tables_Manager {
 				),
 				'wrapper_classes' => 'wu-w-full',
 			],
-			'submit' => [
+			'submit'       => [
 				'type'            => 'submit',
 				'title'           => __('Yes, Delete These Tables', 'multisite-ultimate'),
 				'value'           => 'delete',
@@ -271,27 +144,17 @@ class Orphaned_Tables_Manager {
 				'field_wrapper_classes' => 'wu-w-full wu-box-border wu-items-center wu-flex wu-justify-between wu-p-4 wu-m-0 wu-border-t wu-border-l-0 wu-border-r-0 wu-border-b-0 wu-border-gray-300 wu-border-solid',
 				'html_attr'             => [
 					'data-wu-app' => 'orphaned_tables_delete',
-					'data-state'  => wp_json_encode([
-						'orphaned_tables' => $orphaned_tables,
-						'table_count'     => $table_count,
-					]),
+					'data-state'  => wp_json_encode(
+						[
+							'orphaned_tables' => $orphaned_tables,
+							'table_count'     => $table_count,
+						]
+					),
 				],
 			]
 		);
 
 		$form->render();
-	}
-
-	/**
-	 * Handles the orphaned tables check modal (no action needed).
-	 *
-	 * @since 2.0.0
-	 * @return void
-	 */
-	public function handle_orphaned_tables_check_modal(): void {
-		// No action needed, just redirect back
-		wp_safe_redirect(wu_get_current_url());
-		exit;
 	}
 
 	/**
@@ -302,33 +165,29 @@ class Orphaned_Tables_Manager {
 	 */
 	public function handle_orphaned_tables_delete_modal(): void {
 
-		if (!current_user_can('manage_network')) {
+		if (! current_user_can('manage_network')) {
 			wp_die(esc_html__('You do not have the required permissions.', 'multisite-ultimate'));
 		}
 
-		$orphaned_tables_encoded = wu_request('orphaned_tables');
-		$orphaned_tables = [];
-
-		if ($orphaned_tables_encoded) {
-			$orphaned_tables = json_decode(base64_decode($orphaned_tables_encoded), true);
-		}
-
-		if (empty($orphaned_tables) || !is_array($orphaned_tables)) {
+		if (empty($orphaned_tables) || ! is_array($orphaned_tables)) {
 			$orphaned_tables = $this->find_orphaned_tables();
 		}
 
 		$deleted_count = $this->delete_orphaned_tables($orphaned_tables);
 
-		$message = sprintf(
-			/* translators: %d: number of deleted tables */
-			_n('Successfully deleted %d orphaned table.', 'Successfully deleted %d orphaned tables.', $deleted_count, 'multisite-ultimate'),
-			$deleted_count
+		$redirect_to = wu_network_admin_url(
+			'wp-ultimo-settings',
+			[
+				'tab'     => 'other',
+				'deleted' => $deleted_count,
+			]
 		);
 
-		WP_Ultimo()->notices->add($message, 'success', 'network-admin');
-
-		wp_safe_redirect(wu_get_current_url());
-		exit;
+		wp_send_json_success(
+			[
+				'redirect_url' => $redirect_to,
+			]
+		);
 	}
 
 	/**
@@ -344,26 +203,31 @@ class Orphaned_Tables_Manager {
 		$orphaned_tables = [];
 
 		// Get all site IDs
-		$site_ids = get_sites(['fields' => 'ids', 'number' => 0]);
+		$site_ids = get_sites(
+			[
+				'fields' => 'ids',
+				'number' => 0,
+			]
+		);
 
 		// Get all tables from the database
-		$all_tables = $wpdb->get_col("SHOW TABLES");
+		$all_tables = $wpdb->get_col('SHOW TABLES'); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
 		foreach ($all_tables as $table) {
 			// Check if table matches multisite pattern (prefix + number + underscore)
 			$pattern = '/^' . preg_quote($wpdb->prefix, '/') . '([0-9]+)_(.+)/';
-			
+
 			if (preg_match($pattern, $table, $matches)) {
-				$site_id = (int) $matches[1];
+				$site_id      = (int) $matches[1];
 				$table_suffix = $matches[2];
 
 				// Skip if this is the main site (usually ID 1)
-				if ($site_id === 1) {
+				if (1 === $site_id) {
 					continue;
 				}
 
 				// Check if site ID exists in active sites
-				if (!in_array($site_id, $site_ids, true)) {
+				if (! in_array($site_id, $site_ids, true)) {
 					$orphaned_tables[] = $table;
 				}
 			}
@@ -376,7 +240,7 @@ class Orphaned_Tables_Manager {
 	 * Delete orphaned tables.
 	 *
 	 * @since 2.0.0
-	 * @param array $tables List of table names to delete
+	 * @param array $tables List of table names to delete.
 	 * @return int Number of successfully deleted tables
 	 */
 	public function delete_orphaned_tables(array $tables): int {
@@ -391,15 +255,15 @@ class Orphaned_Tables_Manager {
 
 			// Verify the table still exists and matches our pattern
 			$pattern = '/^' . preg_quote($wpdb->prefix, '/') . '([0-9]+)_(.+)/';
-			if (!preg_match($pattern, $table)) {
+			if (! preg_match($pattern, $table)) {
 				continue;
 			}
 
 			// Use DROP TABLE IF EXISTS for safety
-			$result = $wpdb->query($wpdb->prepare("DROP TABLE IF EXISTS `%s`", $table));
+			$result = $wpdb->query($wpdb->prepare('DROP TABLE IF EXISTS %i', $table)); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
-			if ($result !== false) {
-				$deleted_count++;
+			if (false !== $result) {
+				++$deleted_count;
 			}
 		}
 

@@ -135,7 +135,6 @@ class Sunrise {
 		require_once __DIR__ . '/models/class-domain.php';
 		require_once __DIR__ . '/models/class-site.php';
 		require_once __DIR__ . '/domain-mapping/class-primary-domain.php';
-		require_once __DIR__ . '/compat/class-domain-mapping-compat.php';
 		require_once __DIR__ . '/class-domain-mapping.php';
 		require_once __DIR__ . '/traits/trait-wp-ultimo-settings-deprecated.php';
 		require_once __DIR__ . '/class-settings.php';
@@ -184,11 +183,6 @@ class Sunrise {
 			 *  Load dependencies and get autoload running
 			 */
 			self::load_dependencies();
-
-			/*
-			 * Adds backwards compatibility code for the domain mapping.
-			 */
-			\WP_Ultimo\Compat\Domain_Mapping_Compat::get_instance();
 
 			/*
 			 * Plugin Limits

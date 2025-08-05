@@ -36,7 +36,7 @@ class General_Compat {
 		 *
 		 * Removes the default woocommerce hook on switch_blog to another more performant
 	 *
-		 * @see https://wordpress.org/plugins/woocommerce/
+		 * @see https://github.com/woocommerce/woocommerce/pull/60174
 		 */
 		add_action('woocommerce_loaded', [$this, 'replace_wc_wpdb_table_fix']);
 
@@ -203,10 +203,6 @@ class General_Compat {
 			'wc_tax_rate_classes'    => 'wc_tax_rate_classes',
 			'wc_reserved_stock'      => 'wc_reserved_stock',
 		];
-
-		foreach ( $tables as $name => $table ) {
-			$wpdb->tables[] = $table;
-		}
 
 		add_action(
 			'switch_blog',

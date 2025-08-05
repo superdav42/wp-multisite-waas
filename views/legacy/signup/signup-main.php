@@ -97,7 +97,7 @@ do_action('wu_checkout_scripts');
 		<div id="login">
 
 			<h1 id="wu-setup-logo">
-			<a href="<?php echo esc_attr(get_site_url(get_current_site()->blog_id)); ?>">
+			<a href="<?php echo esc_attr(get_site_url(get_current_site()->site_id)); ?>">
 				<?php // translators: %s: Site Name ?>
 				<?php printf(esc_html__('%s - Signup', 'multisite-ultimate'), esc_html(get_bloginfo('Name'))); ?>
 			</a>

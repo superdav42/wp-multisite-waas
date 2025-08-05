@@ -683,8 +683,9 @@ class Base_List_Table extends \WP_List_Table {
 			case 'delete':
 				foreach ($item_ids as $item_id) {
 					$item = $func_name($item_id);
-
-					$item->delete();
+					if ($item) {
+						$item->delete();
+					}
 				}
 
 				break;

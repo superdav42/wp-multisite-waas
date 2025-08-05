@@ -572,16 +572,6 @@ final class WP_Ultimo {
 		\WP_Ultimo\Compat\Gutenberg_Support::get_instance();
 
 		/*
-		 * Backwards compatibility with 1.X for products
-		 */
-		\WP_Ultimo\Compat\Product_Compat::get_instance();
-
-		/*
-		 * Backwards compatibility with 1.X for discount codes
-		 */
-		\WP_Ultimo\Compat\Discount_Code_Compat::get_instance();
-
-		/*
 		 * Elementor compatibility Layer
 		 */
 		\WP_Ultimo\Compat\Elementor_Compat::get_instance();
@@ -890,6 +880,8 @@ final class WP_Ultimo {
 		 * Loads the Cache manager.
 		 */
 		WP_Ultimo\Managers\Cache_Manager::get_instance();
+
+		WP_Ultimo\Orphaned_Tables_Manager::get_instance();
 
 		/**
 		 * Loads views overrides

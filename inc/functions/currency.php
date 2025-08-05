@@ -24,7 +24,6 @@ function wu_get_currencies(): array {
 			'AFN' => __('Afghan Afghani', 'multisite-ultimate'),
 			'ALL' => __('Albanian Lek', 'multisite-ultimate'),
 			'AMD' => __('Armenian Dram', 'multisite-ultimate'),
-			'ANG' => __('Netherlands Antillean Gulden', 'multisite-ultimate'),
 			'AOA' => __('Angolan Kwanza', 'multisite-ultimate'),
 			'ARS' => __('Argentine Peso', 'multisite-ultimate'),
 			'AUD' => __('Australian Dollar', 'multisite-ultimate'),
@@ -41,6 +40,7 @@ function wu_get_currencies(): array {
 			'BRL' => __('Brazilian Real', 'multisite-ultimate'),
 			'BSD' => __('Bahamian Dollar', 'multisite-ultimate'),
 			'BWP' => __('Botswana Pula', 'multisite-ultimate'),
+			'BYN' => __('Belarusian Ruble', 'multisite-ultimate'),
 			'BZD' => __('Belize Dollar', 'multisite-ultimate'),
 			'CAD' => __('Canadian Dollar', 'multisite-ultimate'),
 			'CDF' => __('Congolese Franc', 'multisite-ultimate'),
@@ -94,9 +94,10 @@ function wu_get_currencies(): array {
 			'MDL' => __('Moldovan Leu', 'multisite-ultimate'),
 			'MGA' => __('Malagasy Ariary', 'multisite-ultimate'),
 			'MKD' => __('Macedonian Denar', 'multisite-ultimate'),
+			'MMK' => __('Myanmar Kyat', 'multisite-ultimate'),
 			'MNT' => __('Mongolian Tögrög', 'multisite-ultimate'),
 			'MOP' => __('Macanese Pataca', 'multisite-ultimate'),
-			'MRO' => __('Mauritanian Ouguiya', 'multisite-ultimate'),
+			'MRU' => __('Mauritanian Ouguiya', 'multisite-ultimate'), // MRO seems outdated, MRU modern replacements in ISO 4217.
 			'MUR' => __('Mauritian Rupee', 'multisite-ultimate'),
 			'MVR' => __('Maldivian Rufiyaa', 'multisite-ultimate'),
 			'MWK' => __('Malawian Kwacha', 'multisite-ultimate'),
@@ -127,7 +128,7 @@ function wu_get_currencies(): array {
 			'SEK' => __('Swedish Krona', 'multisite-ultimate'),
 			'SGD' => __('Singapore Dollar', 'multisite-ultimate'),
 			'SHP' => __('Saint Helenian Pound', 'multisite-ultimate'),
-			'SLL' => __('Sierra Leonean Leone', 'multisite-ultimate'),
+			'SLE' => __('Sierra Leonean Leone', 'multisite-ultimate'), // SLL is outdated, SLE modern replacements in ISO 4217.
 			'SOS' => __('Somali Shilling', 'multisite-ultimate'),
 			'SRD' => __('Surinamese Dollar', 'multisite-ultimate'),
 			'STD' => __('São Tomé and Príncipe Dobra', 'multisite-ultimate'),
@@ -152,6 +153,7 @@ function wu_get_currencies(): array {
 			'XCD' => __('East Caribbean Dollar', 'multisite-ultimate'),
 			'XOF' => __('West African Cfa Franc', 'multisite-ultimate'),
 			'XPF' => __('Cfp Franc', 'multisite-ultimate'),
+			'XCG' => __('Caribbean Guilder', 'multisite-ultimate'),
 			'YER' => __('Yemeni Rial', 'multisite-ultimate'),
 			'ZAR' => __('South African Rand', 'multisite-ultimate'),
 			'ZMW' => __('Zambian Kwacha', 'multisite-ultimate'),
@@ -202,6 +204,8 @@ function wu_get_currency_symbol($currency = '') {
 		case 'BRL':
 			$currency_symbol = 'R$';
 			break;
+		case 'BYN':
+			$currency_symbol = 'Br';
 		case 'CHF':
 			$currency_symbol = 'CHF';
 			break;
@@ -261,6 +265,12 @@ function wu_get_currency_symbol($currency = '') {
 		case 'KRW':
 			$currency_symbol = '₩';
 			break;
+		case 'MMK':
+			$currency_symbol = 'K';
+			break;
+		case 'MRU':
+			$currency_symbol = 'UM';
+			break;
 		case 'MYR':
 			$currency_symbol = 'RM';
 			break;
@@ -270,6 +280,9 @@ function wu_get_currency_symbol($currency = '') {
 		case 'NOK':
 		case 'SEK':
 			$currency_symbol = 'kr';
+			break;
+		case 'SLE':
+			$currency_symbol = 'Le';
 			break;
 		case 'PHP':
 			$currency_symbol = '₱';
