@@ -45,7 +45,7 @@
     "cy:run:test": "run-s env:destroy env:start:test cy:run:launch:test",
     "pma:start": "bash ./bin/pma-docker.sh",
     "pma:stop": "docker stop phpmyadmin",
-    "mailpit:start": "bash ./bin/connect-mailpit.sh && ./bin/configure-mailpit-smtp.sh",
+    "mailpit:start": "bash ./bin/connect-mailpit.sh && bash ./bin/configure-mailpit-smtp.sh",
     "mailpit:stop": "docker stop mailpit"
   },
   "dependencies": {
