@@ -297,7 +297,7 @@ class Base_Stripe_Gateway extends Base_Gateway {
 				'customer'                   => $s_customer_id,
 			];
 
-			$session       = $this->get_stripe_client()->checkout->sessions->create($subscription_data);
+			$session       = $this->get_stripe_client()->checkout->sessions->create(apply_filters('wu_stripe_checkout_subscription_data', $subscription_data, $gateway));
 			$s_customer_id = $session->customer;
 		}
 
