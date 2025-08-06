@@ -150,9 +150,9 @@ function wu_create_customer($customer_data) {
 
 	if ( ! $user) {
 		if ($customer_data['password']) {
-			$user_id = wpmu_create_user($customer_data['username'], $customer_data['password'], $customer_data['email']);
+			$user_id = wpmu_create_user(strtolower($customer_data['username']), $customer_data['password'], $customer_data['email']);
 		} else {
-			$user_id = register_new_user($customer_data['username'], $customer_data['email']);
+			$user_id = register_new_user(strtolower($customer_data['username']), $customer_data['email']);
 		}
 
 		if (is_wp_error($user_id)) {
