@@ -1,6 +1,6 @@
 <?php
 /** global $themes */
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 ?>
 
 <ul data-columns="1" class='items wu--mx-1 wu-overflow-hidden wu-multiselect-content wu-static wu-my-2'>
@@ -44,13 +44,13 @@ defined( 'ABSPATH' ) || exit;
 			<div class="wu-block wu-mt-4">
 
 				<span class="wu-text-xs wu-text-gray-700 wu-my-1 wu-mr-4 wu-block">
-                <?php // translators: %s current version of the theme. ?>
+				<?php // translators: %s current version. ?>
 				<?php printf(esc_html__('Version %s', 'multisite-ultimate'), esc_html($theme_data['Version'])); ?>
 				</span>
 
 				<span class="wu-text-xs wu-text-gray-700 wu-my-1 wu-mr-4 wu-block">
-                <?php // translators: %s name of the theme author ?>
-				<?php printf(esc_html__('by %s', 'multisite-ultimate'), $theme_data['Author']); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php // translators: %s name of the author ?>
+				<?php printf(esc_html__('by %s', 'multisite-ultimate'), wp_kses($theme_data['Author'], wu_kses_allowed_html())); ?>
 				</span>
 
 			</div>
