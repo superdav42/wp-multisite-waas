@@ -4,6 +4,9 @@
     "development": {
       "multisite": true,
       "plugins": ["."],
+      "mappings": {
+        "wp-content/mu-plugins/email-smtp-dev.php": "./mu-plugins/email-smtp-dev/email-smtp-dev.php"
+      },
       "config": {
         "WP_DEBUG": true,
         "WP_DEBUG_DISPLAY": true,
@@ -14,6 +17,9 @@
     "tests": {
       "multisite": true,
       "plugins": ["."],
+      "mappings": {
+        "wp-content/mu-plugins/email-smtp-test.php": "./mu-plugins/email-smtp-test/email-smtp-test.php"
+      },
       "config": {
         "WP_DEBUG": true,
         "WP_DEBUG_DISPLAY": false,
