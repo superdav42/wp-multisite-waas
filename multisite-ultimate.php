@@ -30,7 +30,7 @@
  * @author   Arindo Duque and NextPress and the Multisite Ultimate Community
  * @category Core
  * @package  WP_Ultimo
- * @version  2.4.1
+ * @version  2.4.2
  */
 
 // Exit if accessed directly
