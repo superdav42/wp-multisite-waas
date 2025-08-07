@@ -619,12 +619,14 @@ class Payment extends Base_Model {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param Line_Item[] $line_items THe line items.
+	 * @param Line_Item[] $line_items The line items.
 	 * @return void
 	 */
 	public function set_line_items(array $line_items): void {
 
 		$line_items = array_filter($line_items);
+
+		$line_items = array_map(fn($item) => is_array($item) ? new \WP_Ultimo\Checkout\Line_Item($item) : $item, $line_items);
 
 		$this->meta['wu_line_items'] = $line_items;
 
@@ -643,7 +645,7 @@ class Payment extends Base_Model {
 
 		$line_items = $this->get_line_items();
 
-		if ( ! is_a($line_item, self::class)) {
+		if ( ! is_a($line_item, Line_Item::class)) {
 			return;
 		}
 

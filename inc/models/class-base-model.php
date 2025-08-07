@@ -597,9 +597,7 @@ abstract class Base_Model implements \JsonSerializable {
 		}
 
 		if ( ! empty($meta)) {
-			$this->update_meta_batch($meta);
-
-			$saved = true;
+			$saved = $this->update_meta_batch($meta);
 		}
 
 		/**
