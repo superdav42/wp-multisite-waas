@@ -403,6 +403,8 @@ class Invoice_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 						$settings_to_save[ $setting ] = wu_string_to_bool($value);
 						break;
 					case 'custom_logo':
+						$settings_to_save[ $setting ] = absint($value);
+						break;
 					case 'logo_url':
 						$settings_to_save[ $setting ] = esc_url_raw($value);
 						break;
