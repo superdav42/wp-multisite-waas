@@ -287,17 +287,30 @@ class Base_Stripe_Gateway extends Base_Gateway {
 
 		// If customer is not set, get from checkout session
 		if (empty($s_customer_id)) {
-			$subscription_data = [
-				'payment_method_types'       => $allowed_payment_method_types,
-				'mode'                       => 'setup',
-				'success_url'                => $return_url,
-				'cancel_url'                 => wu_get_current_url(),
-				'billing_address_collection' => 'required',
-				'client_reference_id'        => $customer_id,
-				'customer'                   => $s_customer_id,
-			];
+			/**
+			 * Filter Stripe Subscription data. Can override success_url or cancel_url.
+			 *
+			 * @since 2.4.2
+			 *
+    			 * @param array $subscription_data An array of parameters to pass to Stripe.
+			 * @param Base_Stripe_Gateway $gateway The current Stripe Gateway object.
+			 */
+			$subscription_data = apply_filters(
+				'wu_stripe_checkout_subscription_data'
+			 	[
+					'payment_method_types'       => $allowed_payment_method_types,
+					'mode'                       => 'setup',
+					'success_url'                => $return_url,
+					'cancel_url'                 => wu_get_current_url(),
+					'billing_address_collection' => 'required',
+					'client_reference_id'        => $customer_id,
+					'customer'                   => $s_customer_id,
+				],
+				$subscription_data,
+				$gateway
+			);
 
-			$session       = $this->get_stripe_client()->checkout->sessions->create(apply_filters('wu_stripe_checkout_subscription_data', $subscription_data, $gateway));
+			$session       = $this->get_stripe_client()->checkout->sessions->create($subscription_data);
 			$s_customer_id = $session->customer;
 		}
 
