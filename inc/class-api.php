@@ -185,7 +185,7 @@ class API {
 				'tooltip' => '',
 				'copy'    => true,
 				'type'    => 'text-display',
-				'default' => network_site_url(),
+				'default' => network_site_url('wp-json'),
 				'require' => [
 					'enable_api' => true,
 				],
@@ -323,8 +323,8 @@ class API {
 	 * @return boolean
 	 */
 	public function validate_credentials($api_key, $api_secret) {
-
-		return [$api_key, $api_secret] === $this->get_auth();
+		$auth = $this->get_auth();
+		return $api_key === $auth['api_key'] && $api_secret === $auth['api_secret'] && 'prevent' !== $api_key && 'prevent' !== $api_secret;
 	}
 
 	/**

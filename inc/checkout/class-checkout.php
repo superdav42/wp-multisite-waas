@@ -383,6 +383,10 @@ class Checkout {
 
 			$this->step = $this->checkout_form->get_step($this->step_name, true);
 
+			if(!$this->step) {
+				$this->step = [];
+			}
+
 			$this->step['fields'] ??= [];
 
 			$this->auto_submittable_field = $this->contains_auto_submittable_field($this->step['fields']);
@@ -1830,6 +1834,8 @@ class Checkout {
 		// Nonce check handled in calling method.
 		if (is_array($session)) {
 			$stack = array_merge($session, $_REQUEST); // phpcs:ignore WordPress.Security.NonceVerification
+		} else {
+			$stack = $_REQUEST;
 		}
 
 		if (null === $rules) {

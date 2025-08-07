@@ -7,6 +7,8 @@
  */
 
 // Exit if accessed directly
+use WP_Ultimo\Addon_Repository;
+
 defined('ABSPATH') || exit;
 
 /**
@@ -93,6 +95,8 @@ final class WP_Ultimo {
 	 * @var \WP_Ultimo\Current
 	 */
 	public $currents;
+
+	private Addon_Repository $addon_repository;
 
 	/**
 	 * Loads the necessary components into the main class
@@ -210,6 +214,8 @@ final class WP_Ultimo {
 		 * @todo: move this to a manager in the future?
 		 */
 		$this->load_admin_pages();
+
+		$this->get_addon_repository();
 
 		/*
 		 * Checks Sunrise versions
@@ -766,6 +772,8 @@ final class WP_Ultimo {
 		 */
 		new WP_Ultimo\Tax\Dashboard_Taxes_Tab();
 
+		new WP_Ultimo\Admin_Pages\Addons_Admin_Page();
+
 		do_action('wp_ultimo_admin_pages');
 	}
 
@@ -880,12 +888,18 @@ final class WP_Ultimo {
 		 * Loads the Cache manager.
 		 */
 		WP_Ultimo\Managers\Cache_Manager::get_instance();
-
 		WP_Ultimo\Orphaned_Tables_Manager::get_instance();
 
 		/**
 		 * Loads views overrides
 		 */
 		WP_Ultimo\Views::get_instance();
+	}
+
+	public function get_addon_repository(): Addon_Repository {
+		if (! isset($this->addon_repository)) {
+			$this->addon_repository = new Addon_Repository();
+		}
+		return $this->addon_repository;
 	}
 }

@@ -116,7 +116,7 @@ class Form_Manager extends Base_Manager {
 			'
 		<div v-cloak data-wu-app="%s" data-state="%s">
 			<ul class="wu-p-4 wu-bg-red-200 wu-m-0 wu-list-none" v-if="errors.length">
-				<li class="wu-m-0 wu-p-0" v-for="error in errors">{{ error.message }}</li>
+				<li class="wu-m-0 wu-p-0" v-for="error in errors" v-html="error.message"></li>
 			</ul>
 		</div>',
 			esc_attr($form['id'] . '_errors'),

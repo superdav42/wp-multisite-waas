@@ -149,10 +149,26 @@ function wu_create_customer($customer_data) {
 	}
 
 	if ( ! $user) {
+
+		$sanitized_username = '';
+		if (!empty($customer_data['username'])) {
+			$sanitized_username = sanitize_user($customer_data['username'], true);
+			$sanitized_username = strtolower($sanitized_username);
+		}
+
+		$customer_data['email'] = sanitize_email($customer_data['email']);
+		if (!is_email($customer_data['email'])) {
+			return new \WP_Error(
+				'invalid_email',
+				__('The email address is invalid.', 'multisite-ultimate'),
+				$customer_data
+			);
+		}
+
 		if ($customer_data['password']) {
-			$user_id = wpmu_create_user($customer_data['username'], $customer_data['password'], $customer_data['email']);
+			$user_id = wpmu_create_user($sanitized_username, $customer_data['password'], $customer_data['email']);
 		} else {
-			$user_id = register_new_user($customer_data['username'], $customer_data['email']);
+			$user_id = register_new_user($sanitized_username, $customer_data['email']);
 		}
 
 		if (is_wp_error($user_id)) {

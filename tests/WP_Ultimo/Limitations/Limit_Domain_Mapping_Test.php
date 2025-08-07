@@ -25,7 +25,7 @@ class Limit_Domain_Mapping_Test extends WP_UnitTestCase {
 		self::$test_site = wu_create_site(
 			[
 				'title'       => 'Test Site',
-				'url'         => 'https://test-site.example.com',
+				'domain'      => 'test-site5.example.com',
 				'template_id' => 1,
 			]
 		);

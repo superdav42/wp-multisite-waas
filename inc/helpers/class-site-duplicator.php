@@ -26,6 +26,9 @@ if ( ! defined('MUCD_NETWORK_PAGE_DUPLICATE_COPY_FILE_ERROR')) {
 if ( ! defined('MUCD_NETWORK_PAGE_DUPLICATE_VIEW_LOG')) {
 	define('MUCD_NETWORK_PAGE_DUPLICATE_VIEW_LOG', __('View log', 'multisite-ultimate')); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
 }
+if ( ! defined('MUCD_MAX_NUMBER_OF_SITE')) {
+	define('MUCD_MAX_NUMBER_OF_SITE', 5000); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
+}
 
 /**
  * Exposes the public API to handle site duplication.

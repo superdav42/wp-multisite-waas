@@ -145,17 +145,12 @@ if ( ! class_exists('MUCD_Duplicate') ) {
 
 			global $wpdb;
 
-			// Bugfix Pierre Dargham : relocating this declaration outside of the loop
-			// PHP < 5.3
-			function user_array_map($a) {
-				return $a[0]; }
-
 			if (is_main_site($from_site_id)) {
 				$is_from_main_site = true;
 				$args              = ['fields' => 'ids'];
 				$all_sites_ids     = MUCD_Functions::get_sites($args);
 				if ( ! empty($all_sites_ids)) {
-					$all_sites_ids = array_map('user_array_map', $all_sites_ids);
+					$all_sites_ids = array_map(fn($a) => $a[0], $all_sites_ids);
 				}
 			} else {
 				$is_from_main_site = false;
@@ -179,7 +174,7 @@ if ( ! class_exists('MUCD_Duplicate') ) {
 				if ($user->user_email !== $admin_email) {
 					add_user_to_blog($to_site_id, $user->ID, 'subscriber');
 
-					$all_meta = array_map('user_array_map', get_user_meta($user->ID));
+					$all_meta = array_map(fn($a) => $a[0], get_user_meta($user->ID));
 
 					foreach ($all_meta as $metakey => $metavalue) {
 						$prefix = substr($metakey, 0, $from_site_prefix_length);

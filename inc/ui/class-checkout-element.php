@@ -251,22 +251,27 @@ class Checkout_Element extends Base_Element {
 		$slug          = $this->get_pre_loaded_attribute('slug');
 		$checkout_form = wu_get_checkout_form_by_slug($slug);
 
+		if (! $checkout_form) {
+			return;
+		}
 		$custom_css = $checkout_form->get_custom_css();
 
-		if ($custom_css) {
-			try {
-				$scss       = new Compiler();
-				$custom_css = $scss->compileString(
-					".wu_checkout_form_{$slug} {
-						{$custom_css}
-					}"
-				)->getCss();
+		if (! $custom_css) {
+			return;
+		}
 
-				wp_add_inline_style('wu-checkout', $custom_css);
-			} catch (SassException $e) {
-				// translators: %s the error message.
-				wu_log_add('checkout', sprintf(__('An error occurred while compiling scss: %s', 'multisite-ultimate'), $e->getMessage()), LogLevel::ERROR);
-			}
+		try {
+			$scss       = new Compiler();
+			$custom_css = $scss->compileString(
+				".wu_checkout_form_{$slug} {
+					{$custom_css}
+				}"
+			)->getCss();
+
+			wp_add_inline_style('wu-checkout', $custom_css);
+		} catch (SassException $e) {
+			// translators: %s the error message.
+			wu_log_add('checkout', sprintf(__('An error occurred while compiling scss: %s', 'multisite-ultimate'), $e->getMessage()), LogLevel::ERROR);
 		}
 	}
 

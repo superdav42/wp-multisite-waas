@@ -81,6 +81,7 @@ function wu_get_isset($array_or_obj, $key, $default_value = false) {
 function wu_get_main_site_id() {
 
 	_wu_require_hook('ms_loaded');
+
 	return get_main_site_id();
 }
 

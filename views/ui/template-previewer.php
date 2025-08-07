@@ -192,6 +192,11 @@ do_action('wu_template_previewer_before');
 
 	<?php if ( ! wu_request('customizer')) : ?>
 
+		<div class="wu-loading-indicator" id="wu-loading-indicator">
+			<div class="wu-loading-spinner"></div>
+			<div class="wu-loading-text"><?php esc_html_e('Loading template preview...', 'multisite-ultimate'); ?></div>
+		</div>
+
 		<iframe id="iframe" src="<?php echo esc_attr(set_url_scheme(add_query_arg('wu-preview', '1', get_home_url($selected_template->get_id())))); ?>" width="100%" height="100%" referrerpolicy="unsafe-url"></iframe>
 
 	<?php else : ?>
