@@ -263,13 +263,13 @@ abstract class Base_Model implements \JsonSerializable {
 			}
 
 			if (method_exists($this, "set_$key")) {
-				call_user_func([$this, "set_$key"], sanitize_text_field(wp_unslash($value)));
+				call_user_func([$this, "set_$key"], wu_clean(wp_unslash($value)));
 			}
 
 			$mapping = wu_get_isset($this->_mappings, $key);
 
 			if ($mapping && method_exists($this, "set_$mapping")) {
-				call_user_func([$this, "set_$mapping"], sanitize_text_field(wp_unslash($value)));
+				call_user_func([$this, "set_$mapping"], wu_clean(wp_unslash($value)));
 			}
 		}
 

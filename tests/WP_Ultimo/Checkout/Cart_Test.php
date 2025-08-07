@@ -248,7 +248,7 @@ class Cart_Test extends WP_UnitTestCase {
 		$site = wu_create_site(
 			[
 				'title'       => 'Test Site for Domain Validation',
-				'url'         => 'https://domain-test.example.com',
+				'domain'      => 'domain-test.example.com',
 				'template_id' => 1,
 			]
 		);
@@ -398,7 +398,7 @@ class Cart_Test extends WP_UnitTestCase {
 		$site = wu_create_site(
 			[
 				'title'       => 'Test Site for Domain Validation 2',
-				'url'         => 'https://domain-test-2.example.com',
+				'domain'      => 'domain-test-2.example.com',
 				'template_id' => 1,
 			]
 		);
@@ -534,7 +534,7 @@ class Cart_Test extends WP_UnitTestCase {
 		$site = wu_create_site(
 			[
 				'title'       => 'Test Site for Domain Validation 3',
-				'url'         => 'https://domain-test-3.example.com',
+				'domain'      => 'domain-test-3.example.com',
 				'template_id' => 1,
 			]
 		);

@@ -347,7 +347,7 @@ class Stripe_Checkout_Gateway extends Base_Stripe_Gateway {
 			$subscription_data['subscription_data']['trial_end'] = $this->order->get_billing_start_date();
 		}
 
-		$session = $this->get_stripe_client()->checkout->sessions->create($subscription_data);
+		$session = $this->get_stripe_client()->checkout->sessions->create(apply_filters('wu_stripe_checkout_subscription_data', $subscription_data, $this));
 
 		// Add the client secret to the JSON success data.
 		return [
