@@ -272,7 +272,7 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 					'v-cloak' => 1,
 				],
 				'html_attr'         => [
-					// 'v-model' => 'custom_logo',
+					'v-model' => 'custom_logo',
 				],
 			],
 			'background_color'        => [
@@ -601,7 +601,7 @@ class Email_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 						$settings_to_save[ $setting ] = wu_string_to_bool($value);
 						break;
 					case 'custom_logo':
-						$settings_to_save[ $setting ] = sanitize_url($value);
+						$settings_to_save[ $setting ] = absint($value);
 						break;
 					case 'title_size':
 						// Validate against allowed title sizes
