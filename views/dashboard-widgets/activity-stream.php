@@ -70,7 +70,7 @@ defined( 'ABSPATH' ) || exit;
 						<p class="wu-p-0 wu-m-0">
 						<span v-html="event.message"></span>
 						<span class="wu-text-gray-700 wu-ml-2"><span class="dashicons-wu-clock wu-mr-1 wu-align-middle"></span>{{ $moment(event.date_created, "YYYYMMDD").fromNow() }}</span>
-						<?php // translators: %s: the event author's name ?>
+						<?php // translators: %s name of the author ?>
 						<span v-if="event.author.display_name" class="wu-text-gray-700"><?php printf(esc_html__('by %s', 'multisite-ultimate'), '{{ event.author.display_name }}'); ?></span>
 						</p>
 					</div>

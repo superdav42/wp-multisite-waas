@@ -203,7 +203,7 @@ This plugin connects to several external services to provide its functionality. 
 = Newsletter and Analytics =
 
 **Multisite Ultimate Newsletter Service**
-- Service: Newsletter subscription for product updates (wpmultisitewaas.org)
+- Service: Newsletter subscription for product updates (multisiteultimate.com)
 - Data sent: Company email, name, country information
 - When: During initial plugin setup (optional)
 - This is our own service for providing plugin updates and announcements

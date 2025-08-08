@@ -2,14 +2,14 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Multisite Ultimate 2.4.1\n"
+"Project-Id-Version: Multisite Ultimate 2.4.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/multisite-ultimate\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-01T06:11:20+00:00\n"
+"POT-Creation-Date: 2025-08-07T18:17:42+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: multisite-ultimate\n"
@@ -194,7 +194,7 @@ msgstr ""
 #: inc/admin-pages/class-payment-list-admin-page.php:106
 #: inc/list-tables/class-membership-list-table-widget.php:263
 #: inc/list-tables/class-membership-list-table.php:173
-#: inc/list-tables/class-membership-list-table.php:232
+#: inc/list-tables/class-membership-list-table.php:233
 #: inc/list-tables/class-payment-list-table.php:177
 #: inc/list-tables/class-payment-list-table.php:202
 #: inc/list-tables/customer-panel/class-invoice-list-table.php:34
@@ -235,7 +235,7 @@ msgid "Product Targets"
 msgstr ""
 
 #: inc/admin-pages/class-broadcast-edit-admin-page.php:195
-#: inc/list-tables/class-base-list-table.php:948
+#: inc/list-tables/class-base-list-table.php:950
 #: inc/list-tables/class-broadcast-list-table.php:151
 #: inc/list-tables/class-membership-list-table-widget.php:210
 #: inc/list-tables/class-payment-list-table-widget.php:155
@@ -267,7 +267,7 @@ msgstr ""
 #: inc/admin-pages/class-broadcast-edit-admin-page.php:374
 #: inc/admin-pages/class-edit-admin-page.php:489
 #: inc/admin-pages/class-tax-rates-admin-page.php:193
-#: inc/checkout/class-checkout.php:1555
+#: inc/checkout/class-checkout.php:1559
 #: views/base/edit/widget-tabs.php:106
 #: views/dashboard-statistics/filter.php:28
 #: views/dashboard-statistics/widget-mrr-growth.php:16
@@ -693,7 +693,7 @@ msgstr ""
 #: inc/admin-pages/class-checkout-form-edit-admin-page.php:1245
 #: inc/admin-pages/class-discount-code-edit-admin-page.php:230
 #: inc/admin-pages/class-email-edit-admin-page.php:294
-#: inc/class-settings.php:1571
+#: inc/class-settings.php:1572
 msgid "Advanced Options"
 msgstr ""
 
@@ -782,7 +782,7 @@ msgstr ""
 #: inc/list-tables/class-domain-list-table.php:165
 #: inc/list-tables/class-domain-list-table.php:188
 #: inc/list-tables/class-domain-list-table.php:191
-#: inc/list-tables/class-membership-list-table.php:284
+#: inc/list-tables/class-membership-list-table.php:285
 #: inc/list-tables/class-webhook-list-table.php:178
 #: views/emails/admin/domain-created.php:36
 msgid "Active"
@@ -1254,7 +1254,7 @@ msgstr ""
 #: inc/list-tables/class-product-list-table.php:178
 #: inc/models/class-payment.php:551
 #: inc/models/class-payment.php:557
-#: views/admin-pages/fields/field-text-display.php:45
+#: views/admin-pages/fields/field-text-display.php:46
 #: views/admin-pages/fields/field-text-edit.php:49
 #: views/base/customers/grid-item.php:129
 msgid "None"
@@ -1274,7 +1274,7 @@ msgstr ""
 #: inc/installers/class-migrator.php:265
 #: inc/installers/class-migrator.php:278
 #: inc/installers/class-migrator.php:383
-#: inc/list-tables/class-membership-list-table.php:296
+#: inc/list-tables/class-membership-list-table.php:297
 #: inc/list-tables/class-payment-list-table.php:204
 #: inc/list-tables/class-payment-list-table.php:262
 #: inc/list-tables/class-site-list-table.php:363
@@ -1344,7 +1344,7 @@ msgid "Delete Customer"
 msgstr ""
 
 #: inc/admin-pages/class-customer-edit-admin-page.php:1230
-#: inc/ui/class-checkout-element.php:387
+#: inc/ui/class-checkout-element.php:392
 #: inc/ui/class-thank-you-element.php:141
 msgid "Verification email sent!"
 msgstr ""
@@ -1637,7 +1637,7 @@ msgstr ""
 
 #: inc/admin-pages/class-discount-code-edit-admin-page.php:184
 #: inc/admin-pages/class-membership-list-admin-page.php:135
-#: inc/list-tables/class-membership-list-table.php:251
+#: inc/list-tables/class-membership-list-table.php:252
 msgid "Expiration Date"
 msgstr ""
 
@@ -1737,7 +1737,6 @@ msgstr ""
 #: inc/admin-pages/class-discount-code-edit-admin-page.php:491
 #: inc/admin-pages/class-product-edit-admin-page.php:573
 #: inc/admin-pages/class-product-edit-admin-page.php:595
-#: inc/compat/class-product-compat.php:97
 msgid "Legacy Options"
 msgstr ""
 
@@ -2904,7 +2903,7 @@ msgstr ""
 #: inc/admin-pages/class-product-list-admin-page.php:98
 #: inc/admin-pages/class-product-list-admin-page.php:109
 #: inc/admin-pages/class-top-admin-nav-menu.php:103
-#: inc/checkout/class-checkout.php:1859
+#: inc/checkout/class-checkout.php:1865
 #: inc/checkout/signup-fields/class-signup-field-pricing-table.php:170
 #: inc/checkout/signup-fields/class-signup-field-products.php:149
 #: inc/checkout/signup-fields/class-signup-field-products.php:150
@@ -4775,7 +4774,7 @@ msgstr ""
 #: inc/admin-pages/class-system-info-admin-page.php:479
 #: inc/admin-pages/class-system-info-admin-page.php:484
 #: inc/admin-pages/class-system-info-admin-page.php:489
-#: inc/class-settings.php:1549
+#: inc/class-settings.php:1550
 msgid "Disabled"
 msgstr ""
 
@@ -6409,26 +6408,26 @@ msgstr ""
 msgid "The date when this webhook last fail."
 msgstr ""
 
-#: inc/api/trait-rest-api.php:171
-#: inc/api/trait-rest-api.php:244
-#: inc/api/trait-rest-api.php:302
-#: inc/models/class-base-model.php:648
+#: inc/api/trait-rest-api.php:174
+#: inc/api/trait-rest-api.php:247
+#: inc/api/trait-rest-api.php:305
+#: inc/models/class-base-model.php:646
 #: inc/models/class-site.php:1440
 msgid "Item not found."
 msgstr ""
 
-#: inc/api/trait-rest-api.php:223
+#: inc/api/trait-rest-api.php:226
 msgid "Something went wrong (Code 1)."
 msgstr ""
 
 #. translators: 1. Object class name; 2. Set method name
-#: inc/api/trait-rest-api.php:263
+#: inc/api/trait-rest-api.php:266
 #: inc/api/trait-wp-cli.php:340
 #, php-format
 msgid "The %1$s object does not have a %2$s method"
 msgstr ""
 
-#: inc/api/trait-rest-api.php:283
+#: inc/api/trait-rest-api.php:286
 msgid "Something went wrong (Code 2)."
 msgstr ""
 
@@ -6615,47 +6614,47 @@ msgstr ""
 msgid "Multisite Ultimate - New Site Page"
 msgstr ""
 
-#: inc/checkout/class-checkout.php:650
-#: inc/checkout/class-checkout.php:660
-#: inc/checkout/class-checkout.php:2077
+#: inc/checkout/class-checkout.php:654
+#: inc/checkout/class-checkout.php:664
 #: inc/checkout/class-checkout.php:2083
+#: inc/checkout/class-checkout.php:2089
 msgid "Payment gateway not registered."
 msgstr ""
 
-#: inc/checkout/class-checkout.php:974
+#: inc/checkout/class-checkout.php:978
 msgid "The email address you entered is already in use."
 msgstr ""
 
-#: inc/checkout/class-checkout.php:1026
+#: inc/checkout/class-checkout.php:1030
 msgid "Something wrong happened while attempting to save the customer billing address"
 msgstr ""
 
-#: inc/checkout/class-checkout.php:1556
+#: inc/checkout/class-checkout.php:1560
 msgid "The item was added!"
 msgstr ""
 
-#: inc/checkout/class-checkout.php:1557
+#: inc/checkout/class-checkout.php:1561
 msgid "The Password entered is too weak."
 msgstr ""
 
-#: inc/checkout/class-checkout.php:1856
+#: inc/checkout/class-checkout.php:1862
 msgid "Password confirmation"
 msgstr ""
 
-#: inc/checkout/class-checkout.php:1857
+#: inc/checkout/class-checkout.php:1863
 msgid "Template ID"
 msgstr ""
 
-#: inc/checkout/class-checkout.php:1858
+#: inc/checkout/class-checkout.php:1864
 msgid "Valid password"
 msgstr ""
 
-#: inc/checkout/class-checkout.php:1860
+#: inc/checkout/class-checkout.php:1866
 msgid "Payment Gateway"
 msgstr ""
 
 #. translators: %s is the membership ID
-#: inc/checkout/class-checkout.php:2181
+#: inc/checkout/class-checkout.php:2187
 #, php-format
 msgid "Checkout failed for customer %s: "
 msgstr ""
@@ -7573,6 +7572,18 @@ msgstr ""
 msgid "Minimal"
 msgstr ""
 
+#: inc/class-addon-repository.php:155
+msgid "Failed to connect to the update server. Please try again later."
+msgstr ""
+
+#: inc/class-addon-repository.php:192
+msgid "Successfully connected your site to MultisiteUltimate.com."
+msgstr ""
+
+#: inc/class-addon-repository.php:200
+msgid "Failed to authenticate with MultisiteUltimate.com."
+msgstr ""
+
 #: inc/class-api.php:145
 #: inc/class-api.php:146
 msgid "API & Webhooks"
@@ -7801,83 +7812,57 @@ msgstr ""
 msgid "Be informed of new releases and all things related to running a WaaS Network."
 msgstr ""
 
-#: inc/class-orphaned-tables-manager.php:70
+#: inc/class-orphaned-tables-manager.php:60
 msgid "Cleanup Orphaned Database Tables"
 msgstr ""
 
-#: inc/class-orphaned-tables-manager.php:71
+#: inc/class-orphaned-tables-manager.php:61
 msgid "Remove database tables from deleted sites that were not properly cleaned up."
 msgstr ""
 
-#: inc/class-orphaned-tables-manager.php:73
+#: inc/class-orphaned-tables-manager.php:63
 msgid "Check for Orphaned Tables"
 msgstr ""
 
-#: inc/class-orphaned-tables-manager.php:80
+#: inc/class-orphaned-tables-manager.php:70
 msgid "Scan and cleanup database tables from deleted sites"
 msgstr ""
 
-#: inc/class-orphaned-tables-manager.php:95
-#: inc/class-orphaned-tables-manager.php:306
-msgid "You do not have the required permissions."
+#: inc/class-orphaned-tables-manager.php:93
+msgid "Not Found"
 msgstr ""
 
-#: inc/class-orphaned-tables-manager.php:102
-#: inc/class-orphaned-tables-manager.php:133
-msgid "No orphaned tables found! Your database is clean."
-msgstr ""
-
-#. translators: %d: number of orphaned tables
-#: inc/class-orphaned-tables-manager.php:156
-#, php-format
-msgid "%d Orphaned Table Found"
-msgid_plural "%d Orphaned Tables Found"
-msgstr[0] ""
-msgstr[1] ""
-
-#: inc/class-orphaned-tables-manager.php:159
-msgid "The following database tables belong to sites that have been deleted:"
-msgstr ""
-
-#: inc/class-orphaned-tables-manager.php:166
-msgid "Proceed to Delete These Tables"
-msgstr ""
-
-#: inc/class-orphaned-tables-manager.php:173
-msgid "This will open a confirmation dialog"
+#: inc/class-orphaned-tables-manager.php:94
+msgid "No Orphaned Tables found."
 msgstr ""
 
 #. translators: %d: number of orphaned tables
-#: inc/class-orphaned-tables-manager.php:246
+#: inc/class-orphaned-tables-manager.php:119
 #, php-format
 msgid "Confirm Deletion of %d Orphaned Table"
 msgid_plural "Confirm Deletion of %d Orphaned Tables"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/class-orphaned-tables-manager.php:249
+#: inc/class-orphaned-tables-manager.php:122
 msgid "You are about to permanently delete the following database tables:"
 msgstr ""
 
-#: inc/class-orphaned-tables-manager.php:251
+#: inc/class-orphaned-tables-manager.php:124
 msgid "Warning:"
 msgstr ""
 
-#: inc/class-orphaned-tables-manager.php:252
+#: inc/class-orphaned-tables-manager.php:125
 msgid "This action cannot be undone. Please ensure you have a database backup before proceeding."
 msgstr ""
 
-#: inc/class-orphaned-tables-manager.php:258
+#: inc/class-orphaned-tables-manager.php:131
 msgid "Yes, Delete These Tables"
 msgstr ""
 
-#. translators: %d: number of deleted tables
-#: inc/class-orphaned-tables-manager.php:324
-#, php-format
-msgid "Successfully deleted %d orphaned table."
-msgid_plural "Successfully deleted %d orphaned tables."
-msgstr[0] ""
-msgstr[1] ""
+#: inc/class-orphaned-tables-manager.php:169
+msgid "You do not have the required permissions."
+msgstr ""
 
 #. translators: the %1$s placeholder is the required PHP version, while the %2$s is the current PHP version, and %3$s is the recommended PHP version.
 #: inc/class-requirements.php:287
@@ -7921,12 +7906,11 @@ msgid "in %s"
 msgstr ""
 
 #. translators: %s is a relative past date.
-#. translators: %s a unit of time.
 #: inc/class-scripts.php:307
-#: inc/functions/date.php:155
-#: inc/list-tables/class-base-list-table.php:832
-#: inc/list-tables/class-membership-list-table.php:209
-#: views/admin-pages/fields/field-text-display.php:41
+#: inc/functions/date.php:156
+#: inc/list-tables/class-base-list-table.php:834
+#: inc/list-tables/class-membership-list-table.php:210
+#: views/admin-pages/fields/field-text-display.php:42
 #: views/admin-pages/fields/field-text-edit.php:45
 #, php-format
 msgid "%s ago"
@@ -8199,8 +8183,8 @@ msgid "By default, when a new pending site needs to be converted into a real net
 msgstr ""
 
 #: inc/class-settings.php:832
-#: inc/class-settings.php:1486
 #: inc/class-settings.php:1487
+#: inc/class-settings.php:1488
 msgid "Other Options"
 msgstr ""
 
@@ -8520,156 +8504,157 @@ msgstr ""
 msgid "INV00"
 msgstr ""
 
-#: inc/class-settings.php:1381
+#. translators: %%YEAR%%, %%MONTH%%, and %%DAY%% are placeholders but are replaced before shown to the user but are used as examples.
+#: inc/class-settings.php:1382
 #, php-format
 msgid "Use %%YEAR%%, %%MONTH%%, and %%DAY%% to create a dynamic placeholder. E.g. %%YEAR%%-%%MONTH%%-INV will become %s."
 msgstr ""
 
-#: inc/class-settings.php:1395
+#: inc/class-settings.php:1396
 #: inc/ui/class-jumper.php:208
 msgid "Payment Gateways"
 msgstr ""
 
-#: inc/class-settings.php:1396
+#: inc/class-settings.php:1397
 msgid "Activate and configure the installed payment gateways in this section."
 msgstr ""
 
-#: inc/class-settings.php:1411
 #: inc/class-settings.php:1412
+#: inc/class-settings.php:1413
 #: inc/list-tables/class-broadcast-list-table.php:481
 #: inc/list-tables/class-email-list-table.php:40
 #: inc/ui/class-jumper.php:210
 msgid "Emails"
 msgstr ""
 
-#: inc/class-settings.php:1427
 #: inc/class-settings.php:1428
+#: inc/class-settings.php:1429
 msgid "Domain Mapping"
 msgstr ""
 
-#: inc/class-settings.php:1443
 #: inc/class-settings.php:1444
+#: inc/class-settings.php:1445
 msgid "Single Sign-On"
 msgstr ""
 
-#: inc/class-settings.php:1459
 #: inc/class-settings.php:1460
+#: inc/class-settings.php:1461
 msgid "Integrations"
 msgstr ""
 
-#: inc/class-settings.php:1469
+#: inc/class-settings.php:1470
 msgid "Hosting or Panel Providers"
 msgstr ""
 
-#: inc/class-settings.php:1470
+#: inc/class-settings.php:1471
 msgid "Configure and manage the integration with your Hosting or Panel Provider."
 msgstr ""
 
-#: inc/class-settings.php:1497
+#: inc/class-settings.php:1498
 msgid "Miscellaneous"
 msgstr ""
 
-#: inc/class-settings.php:1498
+#: inc/class-settings.php:1499
 msgid "Other options that do not fit anywhere else."
 msgstr ""
 
-#: inc/class-settings.php:1509
+#: inc/class-settings.php:1510
 msgid "Hide UI Tours"
 msgstr ""
 
-#: inc/class-settings.php:1510
+#: inc/class-settings.php:1511
 msgid "The UI tours showed by Multisite Ultimate should permanently hide themselves after being seen but if they persist for whatever reason, toggle this option to force them into their viewed state - which will prevent them from showing up again."
 msgstr ""
 
-#: inc/class-settings.php:1522
+#: inc/class-settings.php:1523
 msgid "Disable \"Hover to Zoom\""
 msgstr ""
 
-#: inc/class-settings.php:1523
+#: inc/class-settings.php:1524
 msgid "By default, Multisite Ultimate adds a \"hover to zoom\" feature, allowing network admins to see larger version of site screenshots and other images across the UI in full-size when hovering over them. You can disable that feature here. Preview tags like the above are not affected."
 msgstr ""
 
-#: inc/class-settings.php:1533
+#: inc/class-settings.php:1534
 msgid "Logging"
 msgstr ""
 
-#: inc/class-settings.php:1534
+#: inc/class-settings.php:1535
 msgid "Log Multisite Ultimate data. This is useful for debugging purposes."
 msgstr ""
 
-#: inc/class-settings.php:1543
+#: inc/class-settings.php:1544
 msgid "Logging Level"
 msgstr ""
 
-#: inc/class-settings.php:1544
+#: inc/class-settings.php:1545
 msgid "Select the level of logging you want to use."
 msgstr ""
 
-#: inc/class-settings.php:1548
+#: inc/class-settings.php:1549
 msgid "PHP Default"
 msgstr ""
 
-#: inc/class-settings.php:1550
+#: inc/class-settings.php:1551
 msgid "Errors Only"
 msgstr ""
 
-#: inc/class-settings.php:1551
+#: inc/class-settings.php:1552
 msgid "Everything"
 msgstr ""
 
-#: inc/class-settings.php:1560
+#: inc/class-settings.php:1561
 msgid "Send Error Data to Multisite Ultimate Developers"
 msgstr ""
 
-#: inc/class-settings.php:1561
+#: inc/class-settings.php:1562
 msgid "With this option enabled, every time your installation runs into an error related to Multisite Ultimate, that error data will be sent to us. No sensitive data gets collected, only environmental stuff (e.g. if this is this is a subdomain network, etc)."
 msgstr ""
 
-#: inc/class-settings.php:1572
+#: inc/class-settings.php:1573
 msgid "Change the plugin and wordpress behavior."
 msgstr ""
 
-#: inc/class-settings.php:1587
+#: inc/class-settings.php:1588
 msgid "Run Migration Again"
 msgstr ""
 
-#: inc/class-settings.php:1589
+#: inc/class-settings.php:1590
 msgid "Rerun the Migration Wizard if you experience data-loss after migrate."
 msgstr ""
 
-#: inc/class-settings.php:1592
+#: inc/class-settings.php:1593
 msgid "<b>Important:</b> This process can have unexpected behavior with your current Ultimo models.<br>We recommend that you create a backup before continue."
 msgstr ""
 
-#: inc/class-settings.php:1595
+#: inc/class-settings.php:1596
 msgid "Migrate"
 msgstr ""
 
-#: inc/class-settings.php:1618
+#: inc/class-settings.php:1619
 msgid "Security Mode"
 msgstr ""
 
 #. Translators: Placeholder adds the security mode key and current site url with query string
-#: inc/class-settings.php:1620
+#: inc/class-settings.php:1621
 #, php-format
 msgid "Only Multisite Ultimate and other must-use plugins will run on your WordPress install while this option is enabled.<div class=\"wu-mt-2\"><b>Important:</b> Copy the following URL to disable security mode if something goes wrong and this page becomes unavailable:<code>%2$s</code></div>"
 msgstr ""
 
-#: inc/class-settings.php:1631
+#: inc/class-settings.php:1632
 msgid "Remove Data on Uninstall"
 msgstr ""
 
-#: inc/class-settings.php:1632
+#: inc/class-settings.php:1633
 msgid "Remove all saved data for Multisite Ultimate when the plugin is uninstalled."
 msgstr ""
 
 #. translators: the placeholder is an error message
-#: inc/class-sunrise.php:281
+#: inc/class-sunrise.php:275
 #, php-format
 msgid "Sunrise copy failed: %s"
 msgstr ""
 
-#: inc/class-sunrise.php:284
+#: inc/class-sunrise.php:278
 msgid "Sunrise upgrade attempt succeeded."
 msgstr ""
 
@@ -8747,7 +8732,7 @@ msgstr ""
 msgid "Replace all occurrences of the word \"Sites\" with a different word."
 msgstr ""
 
-#: inc/compat/class-general-compat.php:255
+#: inc/compat/class-general-compat.php:251
 msgid "WP Typography \"Smart Quotes\" replacement is not compatible with Multisite Ultimate and will be automatically disabled."
 msgstr ""
 
@@ -8812,44 +8797,6 @@ msgstr ""
 
 #: inc/compat/class-multiple-accounts-compat.php:324
 msgid "See all"
-msgstr ""
-
-#: inc/compat/class-product-compat.php:98
-msgid "Options used by old 1.X versions. "
-msgstr ""
-
-#: inc/compat/class-product-compat.php:107
-msgid "Toggle Legacy Options"
-msgstr ""
-
-#: inc/compat/class-product-compat.php:108
-msgid "Toggle this option to edit legacy options."
-msgstr ""
-
-#: inc/compat/class-product-compat.php:116
-#: views/checkout/templates/pricing-table/legacy.php:135
-#: views/legacy/signup/pricing-table/plan.php:46
-msgid "Featured Plan"
-msgstr ""
-
-#: inc/compat/class-product-compat.php:117
-msgid "Toggle this option to mark this product as featured on the legacy pricing tables."
-msgstr ""
-
-#: inc/compat/class-product-compat.php:124
-msgid "Features List"
-msgstr ""
-
-#: inc/compat/class-product-compat.php:125
-msgid "E.g. Feature 1"
-msgstr ""
-
-#: inc/compat/class-product-compat.php:125
-msgid "Feature 2"
-msgstr ""
-
-#: inc/compat/class-product-compat.php:126
-msgid "Add a feature per line. These will be shown on the pricing tables."
 msgstr ""
 
 #: inc/country/class-country-br.php:93
@@ -12578,23 +12525,23 @@ msgid "Ready (without SSL)"
 msgstr ""
 
 #: inc/database/memberships/class-membership-status.php:70
-#: inc/list-tables/class-membership-list-table.php:290
+#: inc/list-tables/class-membership-list-table.php:291
 msgid "Trialing"
 msgstr ""
 
 #: inc/database/memberships/class-membership-status.php:71
-#: inc/list-tables/class-membership-list-table.php:302
+#: inc/list-tables/class-membership-list-table.php:303
 msgid "On Hold"
 msgstr ""
 
 #: inc/database/memberships/class-membership-status.php:72
-#: inc/list-tables/class-membership-list-table.php:308
+#: inc/list-tables/class-membership-list-table.php:309
 msgid "Expired"
 msgstr ""
 
 #: inc/database/memberships/class-membership-status.php:73
 #: inc/database/payments/class-payment-status.php:96
-#: inc/list-tables/class-membership-list-table.php:314
+#: inc/list-tables/class-membership-list-table.php:315
 msgid "Cancelled"
 msgstr ""
 
@@ -13664,71 +13611,71 @@ msgid "Armenian Dram"
 msgstr ""
 
 #: inc/functions/currency.php:27
-msgid "Netherlands Antillean Gulden"
-msgstr ""
-
-#: inc/functions/currency.php:28
 msgid "Angolan Kwanza"
 msgstr ""
 
-#: inc/functions/currency.php:29
+#: inc/functions/currency.php:28
 msgid "Argentine Peso"
 msgstr ""
 
-#: inc/functions/currency.php:30
+#: inc/functions/currency.php:29
 msgid "Australian Dollar"
 msgstr ""
 
-#: inc/functions/currency.php:31
+#: inc/functions/currency.php:30
 msgid "Aruban Florin"
 msgstr ""
 
-#: inc/functions/currency.php:32
+#: inc/functions/currency.php:31
 msgid "Azerbaijani Manat"
 msgstr ""
 
-#: inc/functions/currency.php:33
+#: inc/functions/currency.php:32
 msgid "Bosnia & Herzegovina Convertible Mark"
 msgstr ""
 
-#: inc/functions/currency.php:34
+#: inc/functions/currency.php:33
 msgid "Barbadian Dollar"
 msgstr ""
 
-#: inc/functions/currency.php:35
+#: inc/functions/currency.php:34
 msgid "Bangladeshi Taka"
 msgstr ""
 
-#: inc/functions/currency.php:36
+#: inc/functions/currency.php:35
 msgid "Bulgarian Lev"
 msgstr ""
 
-#: inc/functions/currency.php:37
+#: inc/functions/currency.php:36
 msgid "Burundian Franc"
 msgstr ""
 
-#: inc/functions/currency.php:38
+#: inc/functions/currency.php:37
 msgid "Bermudian Dollar"
 msgstr ""
 
-#: inc/functions/currency.php:39
+#: inc/functions/currency.php:38
 msgid "Brunei Dollar"
 msgstr ""
 
-#: inc/functions/currency.php:40
+#: inc/functions/currency.php:39
 msgid "Bolivian Boliviano"
 msgstr ""
 
-#: inc/functions/currency.php:41
+#: inc/functions/currency.php:40
 msgid "Brazilian Real"
 msgstr ""
 
-#: inc/functions/currency.php:42
+#: inc/functions/currency.php:41
 msgid "Bahamian Dollar"
 msgstr ""
 
-#: inc/functions/currency.php:43
+#: inc/functions/currency.php:42
 msgid "Botswana Pula"
+msgstr ""
+
+#: inc/functions/currency.php:43
+msgid "Belarusian Ruble"
 msgstr ""
 
 #: inc/functions/currency.php:44
@@ -13944,254 +13891,266 @@ msgid "Macedonian Denar"
 msgstr ""
 
 #: inc/functions/currency.php:97
-msgid "Mongolian Tögrög"
+msgid "Myanmar Kyat"
 msgstr ""
 
 #: inc/functions/currency.php:98
-msgid "Macanese Pataca"
+msgid "Mongolian Tögrög"
 msgstr ""
 
 #: inc/functions/currency.php:99
-msgid "Mauritanian Ouguiya"
+msgid "Macanese Pataca"
 msgstr ""
 
 #: inc/functions/currency.php:100
-msgid "Mauritian Rupee"
+msgid "Mauritanian Ouguiya"
 msgstr ""
 
 #: inc/functions/currency.php:101
-msgid "Maldivian Rufiyaa"
+msgid "Mauritian Rupee"
 msgstr ""
 
 #: inc/functions/currency.php:102
-msgid "Malawian Kwacha"
+msgid "Maldivian Rufiyaa"
 msgstr ""
 
 #: inc/functions/currency.php:103
-msgid "Mexican Peso"
+msgid "Malawian Kwacha"
 msgstr ""
 
 #: inc/functions/currency.php:104
-msgid "Malaysian Ringgit"
+msgid "Mexican Peso"
 msgstr ""
 
 #: inc/functions/currency.php:105
-msgid "Mozambican Metical"
+msgid "Malaysian Ringgit"
 msgstr ""
 
 #: inc/functions/currency.php:106
-msgid "Namibian Dollar"
+msgid "Mozambican Metical"
 msgstr ""
 
 #: inc/functions/currency.php:107
-msgid "Nigerian Naira"
+msgid "Namibian Dollar"
 msgstr ""
 
 #: inc/functions/currency.php:108
-msgid "Nicaraguan Córdoba"
+msgid "Nigerian Naira"
 msgstr ""
 
 #: inc/functions/currency.php:109
-msgid "Norwegian Krone"
+msgid "Nicaraguan Córdoba"
 msgstr ""
 
 #: inc/functions/currency.php:110
-msgid "Nepalese Rupee"
+msgid "Norwegian Krone"
 msgstr ""
 
 #: inc/functions/currency.php:111
-msgid "New Zealand Dollar"
+msgid "Nepalese Rupee"
 msgstr ""
 
 #: inc/functions/currency.php:112
-msgid "Panamanian Balboa"
+msgid "New Zealand Dollar"
 msgstr ""
 
 #: inc/functions/currency.php:113
-msgid "Peruvian Nuevo Sol"
+msgid "Panamanian Balboa"
 msgstr ""
 
 #: inc/functions/currency.php:114
-msgid "Papua New Guinean Kina"
+msgid "Peruvian Nuevo Sol"
 msgstr ""
 
 #: inc/functions/currency.php:115
-msgid "Philippine Peso"
+msgid "Papua New Guinean Kina"
 msgstr ""
 
 #: inc/functions/currency.php:116
-msgid "Pakistani Rupee"
+msgid "Philippine Peso"
 msgstr ""
 
 #: inc/functions/currency.php:117
-msgid "Polish Złoty"
+msgid "Pakistani Rupee"
 msgstr ""
 
 #: inc/functions/currency.php:118
-msgid "Paraguayan Guaraní"
+msgid "Polish Złoty"
 msgstr ""
 
 #: inc/functions/currency.php:119
-msgid "Qatari Riyal"
+msgid "Paraguayan Guaraní"
 msgstr ""
 
 #: inc/functions/currency.php:120
-msgid "Romanian Leu"
+msgid "Qatari Riyal"
 msgstr ""
 
 #: inc/functions/currency.php:121
-msgid "Serbian Dinar"
+msgid "Romanian Leu"
 msgstr ""
 
 #: inc/functions/currency.php:122
-msgid "Russian Ruble"
+msgid "Serbian Dinar"
 msgstr ""
 
 #: inc/functions/currency.php:123
-msgid "Rwandan Franc"
+msgid "Russian Ruble"
 msgstr ""
 
 #: inc/functions/currency.php:124
-msgid "Saudi Riyal"
+msgid "Rwandan Franc"
 msgstr ""
 
 #: inc/functions/currency.php:125
-msgid "Solomon Islands Dollar"
+msgid "Saudi Riyal"
 msgstr ""
 
 #: inc/functions/currency.php:126
-msgid "Seychellois Rupee"
+msgid "Solomon Islands Dollar"
 msgstr ""
 
 #: inc/functions/currency.php:127
-msgid "Swedish Krona"
+msgid "Seychellois Rupee"
 msgstr ""
 
 #: inc/functions/currency.php:128
-msgid "Singapore Dollar"
+msgid "Swedish Krona"
 msgstr ""
 
 #: inc/functions/currency.php:129
-msgid "Saint Helenian Pound"
+msgid "Singapore Dollar"
 msgstr ""
 
 #: inc/functions/currency.php:130
-msgid "Sierra Leonean Leone"
+msgid "Saint Helenian Pound"
 msgstr ""
 
 #: inc/functions/currency.php:131
-msgid "Somali Shilling"
+msgid "Sierra Leonean Leone"
 msgstr ""
 
 #: inc/functions/currency.php:132
-msgid "Surinamese Dollar"
+msgid "Somali Shilling"
 msgstr ""
 
 #: inc/functions/currency.php:133
-msgid "São Tomé and Príncipe Dobra"
+msgid "Surinamese Dollar"
 msgstr ""
 
 #: inc/functions/currency.php:134
-msgid "Salvadoran Colón"
+msgid "São Tomé and Príncipe Dobra"
 msgstr ""
 
 #: inc/functions/currency.php:135
-msgid "Swazi Lilangeni"
+msgid "Salvadoran Colón"
 msgstr ""
 
 #: inc/functions/currency.php:136
-msgid "Thai Baht"
+msgid "Swazi Lilangeni"
 msgstr ""
 
 #: inc/functions/currency.php:137
-msgid "Tajikistani Somoni"
+msgid "Thai Baht"
 msgstr ""
 
 #: inc/functions/currency.php:138
-msgid "Tongan Paʻanga"
+msgid "Tajikistani Somoni"
 msgstr ""
 
 #: inc/functions/currency.php:139
-msgid "Turkish Lira"
+msgid "Tongan Paʻanga"
 msgstr ""
 
 #: inc/functions/currency.php:140
-msgid "Trinidad and Tobago Dollar"
+msgid "Turkish Lira"
 msgstr ""
 
 #: inc/functions/currency.php:141
-msgid "New Taiwan Dollar"
+msgid "Trinidad and Tobago Dollar"
 msgstr ""
 
 #: inc/functions/currency.php:142
-msgid "Tanzanian Shilling"
+msgid "New Taiwan Dollar"
 msgstr ""
 
 #: inc/functions/currency.php:143
-msgid "Ukrainian Hryvnia"
+msgid "Tanzanian Shilling"
 msgstr ""
 
 #: inc/functions/currency.php:144
-msgid "Ugandan Shilling"
+msgid "Ukrainian Hryvnia"
 msgstr ""
 
 #: inc/functions/currency.php:145
-msgid "United States Dollar"
+msgid "Ugandan Shilling"
 msgstr ""
 
 #: inc/functions/currency.php:146
-msgid "Uruguayan Peso"
+msgid "United States Dollar"
 msgstr ""
 
 #: inc/functions/currency.php:147
-msgid "Uzbekistani Som"
+msgid "Uruguayan Peso"
 msgstr ""
 
 #: inc/functions/currency.php:148
-msgid "Vietnamese Đồng"
+msgid "Uzbekistani Som"
 msgstr ""
 
 #: inc/functions/currency.php:149
-msgid "Vanuatu Vatu"
+msgid "Vietnamese Đồng"
 msgstr ""
 
 #: inc/functions/currency.php:150
-msgid "Samoan Tala"
+msgid "Vanuatu Vatu"
 msgstr ""
 
 #: inc/functions/currency.php:151
-msgid "Central African Cfa Franc"
+msgid "Samoan Tala"
 msgstr ""
 
 #: inc/functions/currency.php:152
-msgid "East Caribbean Dollar"
+msgid "Central African Cfa Franc"
 msgstr ""
 
 #: inc/functions/currency.php:153
-msgid "West African Cfa Franc"
+msgid "East Caribbean Dollar"
 msgstr ""
 
 #: inc/functions/currency.php:154
-msgid "Cfp Franc"
+msgid "West African Cfa Franc"
 msgstr ""
 
 #: inc/functions/currency.php:155
-msgid "Yemeni Rial"
+msgid "Cfp Franc"
 msgstr ""
 
 #: inc/functions/currency.php:156
-msgid "South African Rand"
+msgid "Caribbean Guilder"
 msgstr ""
 
 #: inc/functions/currency.php:157
+msgid "Yemeni Rial"
+msgstr ""
+
+#: inc/functions/currency.php:158
+msgid "South African Rand"
+msgstr ""
+
+#: inc/functions/currency.php:159
 msgid "Zambian Kwacha"
 msgstr ""
 
 #: inc/functions/customer.php:163
+msgid "The email address is invalid."
+msgstr ""
+
+#: inc/functions/customer.php:179
 msgid "We were not able to create a new user with the provided username and email address combination."
 msgstr ""
 
-#: inc/functions/customer.php:170
+#: inc/functions/customer.php:186
 msgid "We were not able to find a user with the given user_id."
 msgstr ""
 
@@ -14215,11 +14174,11 @@ msgstr ""
 msgid "on %s"
 msgstr ""
 
-#. translators: %s a unit of time.
-#: inc/functions/date.php:155
-#: inc/list-tables/class-base-list-table.php:832
-#: inc/list-tables/class-membership-list-table.php:209
-#: views/admin-pages/fields/field-text-display.php:41
+#. translators: %s is a relative past date.
+#: inc/functions/date.php:156
+#: inc/list-tables/class-base-list-table.php:834
+#: inc/list-tables/class-membership-list-table.php:210
+#: views/admin-pages/fields/field-text-display.php:42
 #: views/admin-pages/fields/field-text-edit.php:45
 #, php-format
 msgid "In %s"
@@ -14315,112 +14274,112 @@ msgstr ""
 msgid "Change Payment Method"
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:334
+#: inc/gateways/class-base-stripe-gateway.php:346
 msgid "Manage your membership payment methods."
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:367
+#: inc/gateways/class-base-stripe-gateway.php:379
 #: inc/gateways/class-stripe-checkout-gateway.php:67
 #: inc/gateways/class-stripe-gateway.php:94
 msgid "Credit Card"
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:384
+#: inc/gateways/class-base-stripe-gateway.php:396
 msgid "Use Stripe Billing Portal"
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:533
-#: inc/gateways/class-base-stripe-gateway.php:557
+#: inc/gateways/class-base-stripe-gateway.php:545
+#: inc/gateways/class-base-stripe-gateway.php:569
 msgid "Invalid API Key provided"
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:683
-#: inc/gateways/class-paypal-gateway.php:344
+#: inc/gateways/class-base-stripe-gateway.php:695
+#: inc/gateways/class-paypal-gateway.php:345
 msgid "Error: No gateway subscription ID found for this membership."
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:767
+#: inc/gateways/class-base-stripe-gateway.php:779
 msgid "Amount adjustment based on custom deal."
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:1051
+#: inc/gateways/class-base-stripe-gateway.php:1063
 msgid "Invalid payment method"
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:1257
-#: inc/gateways/class-paypal-gateway.php:584
-#: inc/gateways/class-paypal-gateway.php:589
+#: inc/gateways/class-base-stripe-gateway.php:1269
+#: inc/gateways/class-paypal-gateway.php:585
+#: inc/gateways/class-paypal-gateway.php:590
 msgid "Account credit and other discounts"
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:1726
-#: inc/gateways/class-paypal-gateway.php:720
+#: inc/gateways/class-base-stripe-gateway.php:1738
+#: inc/gateways/class-paypal-gateway.php:721
 msgid "Gateway payment ID not found. Cannot process refund automatically."
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:1745
+#: inc/gateways/class-base-stripe-gateway.php:1757
 msgid "Gateway payment ID not valid."
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:1878
+#: inc/gateways/class-base-stripe-gateway.php:1890
 msgid "An unknown error has occurred."
 msgstr ""
 
 #. translators: 1 is the error code and 2 the message.
-#: inc/gateways/class-base-stripe-gateway.php:1901
+#: inc/gateways/class-base-stripe-gateway.php:1913
 #, php-format
 msgid "An error has occurred (code: %1$s; message: %2$s)."
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:1942
+#: inc/gateways/class-base-stripe-gateway.php:1954
 msgid "Event ID not found."
 msgstr ""
 
 #. translators: %s is the customer ID.
-#: inc/gateways/class-base-stripe-gateway.php:2045
+#: inc/gateways/class-base-stripe-gateway.php:2057
 #, php-format
 msgid "Exiting Stripe webhook - This call must be handled by %s webhook"
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:2323
+#: inc/gateways/class-base-stripe-gateway.php:2335
 msgid "Duplicate payment."
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:2340
+#: inc/gateways/class-base-stripe-gateway.php:2352
 msgid "Payment not found on refund webhook call."
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:2346
+#: inc/gateways/class-base-stripe-gateway.php:2358
 msgid "Payment is not refundable."
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:2397
+#: inc/gateways/class-base-stripe-gateway.php:2409
 msgid "Membership cancelled via Stripe webhook."
 msgstr ""
 
 #. translators: 1 is the card brand (e.g. VISA), and 2 is the last 4 digits.
-#: inc/gateways/class-base-stripe-gateway.php:2430
+#: inc/gateways/class-base-stripe-gateway.php:2442
 #, php-format
 msgid "%1$s ending in %2$s"
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:2460
+#: inc/gateways/class-base-stripe-gateway.php:2472
 msgid "Name on Card"
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:2606
+#: inc/gateways/class-base-stripe-gateway.php:2618
 msgid "Missing plan name or price."
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:2627
+#: inc/gateways/class-base-stripe-gateway.php:2639
 msgid "Empty plan ID."
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:2708
+#: inc/gateways/class-base-stripe-gateway.php:2720
 msgid "Missing product name."
 msgstr ""
 
-#: inc/gateways/class-base-stripe-gateway.php:2720
+#: inc/gateways/class-base-stripe-gateway.php:2732
 msgid "Empty product ID."
 msgstr ""
 
@@ -14462,152 +14421,152 @@ msgstr ""
 msgid "Instructions for Payment"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:192
+#: inc/gateways/class-paypal-gateway.php:193
 #: inc/managers/class-gateway-manager.php:422
 msgid "PayPal"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:193
+#: inc/gateways/class-paypal-gateway.php:194
 msgid "Use the settings section below to configure PayPal Express as a payment method."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:206
+#: inc/gateways/class-paypal-gateway.php:207
 msgid "PayPal Sandbox Mode"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:207
+#: inc/gateways/class-paypal-gateway.php:208
 msgid "Toggle this to put PayPal on sandbox mode. This is useful for testing and making sure PayPal is correctly setup to handle your payments."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:223
+#: inc/gateways/class-paypal-gateway.php:224
 msgid "PayPal Test Username"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:225
+#: inc/gateways/class-paypal-gateway.php:226
 msgid "Make sure you are placing the TEST username, not the live one."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:226
-#: inc/gateways/class-paypal-gateway.php:280
+#: inc/gateways/class-paypal-gateway.php:227
+#: inc/gateways/class-paypal-gateway.php:281
 msgid "e.g. username_api1.username.co"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:241
+#: inc/gateways/class-paypal-gateway.php:242
 msgid "PayPal Test Password"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:243
+#: inc/gateways/class-paypal-gateway.php:244
 msgid "Make sure you are placing the TEST password, not the live one."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:244
-#: inc/gateways/class-paypal-gateway.php:298
+#: inc/gateways/class-paypal-gateway.php:245
+#: inc/gateways/class-paypal-gateway.php:299
 msgid "e.g. IUOSABK987HJG88N"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:259
+#: inc/gateways/class-paypal-gateway.php:260
 msgid "PayPal Test Signature"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:261
+#: inc/gateways/class-paypal-gateway.php:262
 msgid "Make sure you are placing the TEST signature, not the live one."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:262
-#: inc/gateways/class-paypal-gateway.php:316
+#: inc/gateways/class-paypal-gateway.php:263
+#: inc/gateways/class-paypal-gateway.php:317
 msgid "e.g. AFcpSSRl31ADOdqnHNv4KZdVHEQzdMEEsWxV21C7fd0v3bYYYRCwYxqo"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:277
+#: inc/gateways/class-paypal-gateway.php:278
 msgid "PayPal Live Username"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:279
+#: inc/gateways/class-paypal-gateway.php:280
 msgid "Make sure you are placing the LIVE username, not the test one."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:295
+#: inc/gateways/class-paypal-gateway.php:296
 msgid "PayPal Live Password"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:297
+#: inc/gateways/class-paypal-gateway.php:298
 msgid "Make sure you are placing the LIVE password, not the test one."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:313
+#: inc/gateways/class-paypal-gateway.php:314
 msgid "PayPal Live Signature"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:315
+#: inc/gateways/class-paypal-gateway.php:316
 msgid "Make sure you are placing the LIVE signature, not the test one."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:352
+#: inc/gateways/class-paypal-gateway.php:353
 msgid "Error: PayPal does not support changing the duration of a subscription."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:370
+#: inc/gateways/class-paypal-gateway.php:371
 msgid "Membership update"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:402
+#: inc/gateways/class-paypal-gateway.php:403
 msgid "PayPal Error:"
 msgstr ""
 
 #. translators: %1$s is the date it will end
-#: inc/gateways/class-paypal-gateway.php:507
+#: inc/gateways/class-paypal-gateway.php:508
 #: views/checkout/paypal/confirm.php:19
 #, php-format
 msgid "Your trial period will end on %1$s."
 msgstr ""
 
 #. translators: $1$s the date membership will start, $2$s amount to be billed.
-#: inc/gateways/class-paypal-gateway.php:526
+#: inc/gateways/class-paypal-gateway.php:527
 #, php-format
 msgid "Your updated membership will start on $1$s, from that date you will be billed %2$s every month."
 msgstr ""
 
 #. translators: $1$s the date membership will start, $2$s amount to be billed, %3$s the description of how often.
-#: inc/gateways/class-paypal-gateway.php:530
+#: inc/gateways/class-paypal-gateway.php:531
 #: views/checkout/paypal/confirm.php:44
 #, php-format
 msgid "Your updated membership will start on %1$s, from that date you will be billed %2$s %3$s."
 msgstr ""
 
 #. translators: $1$s amount to be billed, $2$s how often
-#: inc/gateways/class-paypal-gateway.php:534
+#: inc/gateways/class-paypal-gateway.php:535
 #, php-format
 msgid "After the first payment you will be billed %1$s %2$s."
 msgstr ""
 
 #. translators: $1$s amount to be billed, $2$s how often
-#: inc/gateways/class-paypal-gateway.php:537
+#: inc/gateways/class-paypal-gateway.php:538
 #: views/checkout/paypal/confirm.php:52
 #, php-format
 msgid "After this payment you will be billed %1$s %2$s."
 msgstr ""
 
 #. translators: $1$s amount to be billed, $2$s how often
-#: inc/gateways/class-paypal-gateway.php:541
+#: inc/gateways/class-paypal-gateway.php:542
 #: views/checkout/paypal/confirm.php:59
 #, php-format
 msgid "From that date, you will be billed %1$s %2$s."
 msgstr ""
 
 #. translators: $1$s how often
-#: inc/gateways/class-paypal-gateway.php:544
+#: inc/gateways/class-paypal-gateway.php:545
 #: views/checkout/paypal/confirm.php:62
 #, php-format
 msgid "After this payment you will be billed %1$s."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:660
-#: inc/gateways/class-paypal-gateway.php:1393
-#: inc/gateways/class-paypal-gateway.php:1548
+#: inc/gateways/class-paypal-gateway.php:661
+#: inc/gateways/class-paypal-gateway.php:1395
+#: inc/gateways/class-paypal-gateway.php:1550
 msgid "Something has gone wrong, please try again"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:782
+#: inc/gateways/class-paypal-gateway.php:783
 #: inc/list-tables/class-base-list-table.php:657
 #: inc/managers/class-form-manager.php:499
 #: inc/ui/class-billing-info-element.php:378
@@ -14616,60 +14575,60 @@ msgstr ""
 msgid "Something went wrong."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:797
+#: inc/gateways/class-paypal-gateway.php:798
 msgid "You will be redirected to PayPal to complete the purchase."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:833
+#: inc/gateways/class-paypal-gateway.php:834
 msgid "PayPal token no longer valid."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:849
+#: inc/gateways/class-paypal-gateway.php:850
 msgid "Pending payment does not exist."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:863
+#: inc/gateways/class-paypal-gateway.php:864
 msgid "Original cart does not exist."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:877
+#: inc/gateways/class-paypal-gateway.php:878
 msgid "Missing membership or customer data."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:964
+#: inc/gateways/class-paypal-gateway.php:966
 msgid "Exiting PayPal Express IPN - membership ID not found."
 msgstr ""
 
 #. translators: %s: Transaction ID
-#: inc/gateways/class-paypal-gateway.php:1083
+#: inc/gateways/class-paypal-gateway.php:1085
 #, php-format
 msgid "Transaction ID %s failed in PayPal."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:1089
+#: inc/gateways/class-paypal-gateway.php:1091
 msgid "unknown"
 msgstr ""
 
 #. translators: %1$s: Transaction ID, %2$s: Pending reason
-#: inc/gateways/class-paypal-gateway.php:1091
+#: inc/gateways/class-paypal-gateway.php:1093
 #, php-format
 msgid "Transaction ID %1$s is pending in PayPal for reason: %2$s"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:1135
+#: inc/gateways/class-paypal-gateway.php:1137
 msgid "Initial payment failed in PayPal Express."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:1137
+#: inc/gateways/class-paypal-gateway.php:1139
 msgid "Initial payment failed."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:1150
+#: inc/gateways/class-paypal-gateway.php:1152
 msgid "Membership cancelled via PayPal Express IPN."
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:1394
-#: inc/gateways/class-paypal-gateway.php:1549
+#: inc/gateways/class-paypal-gateway.php:1396
+#: inc/gateways/class-paypal-gateway.php:1551
 #: inc/managers/class-gateway-manager.php:285
 #: inc/managers/class-gateway-manager.php:314
 #: inc/managers/class-gateway-manager.php:326
@@ -14677,12 +14636,12 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: inc/gateways/class-paypal-gateway.php:1571
+#: inc/gateways/class-paypal-gateway.php:1573
 msgid "Invalid response code from PayPal"
 msgstr ""
 
 #. translators: %s is the paypal error message.
-#: inc/gateways/class-paypal-gateway.php:1574
+#: inc/gateways/class-paypal-gateway.php:1576
 #, php-format
 msgid "An unexpected PayPal error occurred. Error message: %s."
 msgstr ""
@@ -14866,38 +14825,38 @@ msgid "View log"
 msgstr ""
 
 #. translators: %s id the template site id and %s is the error message returned.
-#: inc/helpers/class-site-duplicator.php:66
+#: inc/helpers/class-site-duplicator.php:69
 #, php-format
 msgid "Attempt to duplicate site %1$d failed: %2$s"
 msgstr ""
 
 #. translators: %1$d is the ID of the site template used, and %2$d is the id of the new site.
-#: inc/helpers/class-site-duplicator.php:74
+#: inc/helpers/class-site-duplicator.php:77
 #, php-format
 msgid "Attempt to duplicate site %1$d successful - New site id: %2$d"
 msgstr ""
 
 #. translators: %s id the template site id and %s is the error message returned.
-#: inc/helpers/class-site-duplicator.php:118
+#: inc/helpers/class-site-duplicator.php:121
 #, php-format
 msgid "Attempt to override site %1$d with data from site %2$d failed: %3$s"
 msgstr ""
 
 #. translators: %1$d is the ID of the site template used, and %2$d is the ID of the overriden site.
-#: inc/helpers/class-site-duplicator.php:142
+#: inc/helpers/class-site-duplicator.php:145
 #, php-format
 msgid "Attempt to override site %1$d with data from site %2$d successful."
 msgstr ""
 
-#: inc/helpers/class-site-duplicator.php:198
+#: inc/helpers/class-site-duplicator.php:201
 msgid "You need to provide a valid site to duplicate."
 msgstr ""
 
-#: inc/helpers/class-site-duplicator.php:220
+#: inc/helpers/class-site-duplicator.php:223
 msgid "An attempt to create a new site failed."
 msgstr ""
 
-#: inc/helpers/class-site-duplicator.php:284
+#: inc/helpers/class-site-duplicator.php:287
 msgid "We were not able to create a new admin user for the site being duplicated."
 msgstr ""
 
@@ -15750,85 +15709,85 @@ msgid "Deactivate"
 msgstr ""
 
 #. translators: %s number of total items.
-#: inc/list-tables/class-base-list-table.php:770
+#: inc/list-tables/class-base-list-table.php:771
 #, php-format
 msgid "%s item"
 msgid_plural "%s items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/list-tables/class-base-list-table.php:825
+#: inc/list-tables/class-base-list-table.php:826
 #: inc/list-tables/class-membership-list-table.php:202
 #: views/checkout/templates/pricing-table/legacy.php:183
 #: views/legacy/signup/pricing-table/plan.php:62
 msgid "--"
 msgstr ""
 
-#: inc/list-tables/class-base-list-table.php:852
+#: inc/list-tables/class-base-list-table.php:854
 msgid "No membership found"
 msgstr ""
 
-#: inc/list-tables/class-base-list-table.php:900
+#: inc/list-tables/class-base-list-table.php:902
 msgid "No payment found"
 msgstr ""
 
 #. translators: %s the payment total.
-#: inc/list-tables/class-base-list-table.php:920
+#: inc/list-tables/class-base-list-table.php:922
 #, php-format
 msgid "Total %s"
 msgstr ""
 
-#: inc/list-tables/class-base-list-table.php:1005
+#: inc/list-tables/class-base-list-table.php:1007
 #: inc/list-tables/class-broadcast-list-table.php:289
 #: inc/list-tables/class-payment-list-table.php:135
 msgid "No product found"
 msgstr ""
 
-#: inc/list-tables/class-base-list-table.php:1058
+#: inc/list-tables/class-base-list-table.php:1060
 msgid "No site found"
 msgstr ""
 
-#: inc/list-tables/class-base-list-table.php:1181
+#: inc/list-tables/class-base-list-table.php:1183
 #: inc/ui/class-my-sites-element.php:161
 #: views/checkout/templates/template-selection/clean.php:50
 #: views/checkout/templates/template-selection/minimal.php:44
 msgid "All"
 msgstr ""
 
-#: inc/list-tables/class-base-list-table.php:1186
+#: inc/list-tables/class-base-list-table.php:1188
 msgid "Today"
 msgstr ""
 
-#: inc/list-tables/class-base-list-table.php:1191
+#: inc/list-tables/class-base-list-table.php:1193
 msgid "Yesterday"
 msgstr ""
 
-#: inc/list-tables/class-base-list-table.php:1196
+#: inc/list-tables/class-base-list-table.php:1198
 msgid "Last 7 Days"
 msgstr ""
 
-#: inc/list-tables/class-base-list-table.php:1201
+#: inc/list-tables/class-base-list-table.php:1203
 msgid "Last 30 Days"
 msgstr ""
 
-#: inc/list-tables/class-base-list-table.php:1206
+#: inc/list-tables/class-base-list-table.php:1208
 msgid "Current Month"
 msgstr ""
 
-#: inc/list-tables/class-base-list-table.php:1211
+#: inc/list-tables/class-base-list-table.php:1213
 msgid "Last 12 Months"
 msgstr ""
 
-#: inc/list-tables/class-base-list-table.php:1216
+#: inc/list-tables/class-base-list-table.php:1218
 msgid "Year to Date"
 msgstr ""
 
-#: inc/list-tables/class-base-list-table.php:1221
+#: inc/list-tables/class-base-list-table.php:1223
 msgid "Custom"
 msgstr ""
 
 #. translators: %s will be replaced with a plural label
-#: inc/list-tables/class-base-list-table.php:1371
+#: inc/list-tables/class-base-list-table.php:1373
 #, php-format
 msgid "All %s"
 msgstr ""
@@ -16257,7 +16216,7 @@ msgid "Fatal"
 msgstr ""
 
 #: inc/list-tables/class-event-list-table.php:243
-#: inc/list-tables/class-membership-list-table.php:243
+#: inc/list-tables/class-membership-list-table.php:244
 #: inc/list-tables/class-payment-list-table.php:231
 msgid "Created At"
 msgstr ""
@@ -16402,11 +16361,11 @@ msgstr ""
 msgid "It never expires"
 msgstr ""
 
-#: inc/list-tables/class-membership-list-table.php:259
+#: inc/list-tables/class-membership-list-table.php:260
 msgid "Renewal Date"
 msgstr ""
 
-#: inc/list-tables/class-membership-list-table.php:278
+#: inc/list-tables/class-membership-list-table.php:279
 msgid "All Memberships"
 msgstr ""
 
@@ -17378,7 +17337,7 @@ msgstr ""
 msgid "You can only use numeric fields to generate hashes."
 msgstr ""
 
-#: inc/models/class-base-model.php:771
+#: inc/models/class-base-model.php:769
 msgid "This method expects an array as argument."
 msgstr ""
 
@@ -17527,20 +17486,20 @@ msgstr[1] ""
 msgid "%1$s one time payment"
 msgstr ""
 
-#: inc/models/class-payment.php:938
+#: inc/models/class-payment.php:940
 msgid "(provisional)"
 msgstr ""
 
-#: inc/models/class-payment.php:1058
+#: inc/models/class-payment.php:1060
 msgid "Full Refund"
 msgstr ""
 
-#: inc/models/class-payment.php:1062
+#: inc/models/class-payment.php:1064
 msgid "Partial Refund"
 msgstr ""
 
 #. translators: %s is the date of processing.
-#: inc/models/class-payment.php:1072
+#: inc/models/class-payment.php:1074
 #, php-format
 msgid "Processed on %s"
 msgstr ""
@@ -17875,99 +17834,99 @@ msgid "The checkout form slug."
 msgstr ""
 
 #. translators: %s the error message.
-#: inc/ui/class-checkout-element.php:268
+#: inc/ui/class-checkout-element.php:274
 #, php-format
 msgid "An error occurred while compiling scss: %s"
 msgstr ""
 
 #. Translators: Placeholder receives the customer display name
-#: inc/ui/class-checkout-element.php:339
+#: inc/ui/class-checkout-element.php:344
 #, php-format
 msgid "Hi %s. You have a pending payment for your membership!"
 msgstr ""
 
 #. Translators: The link to registration url with payment hash
-#: inc/ui/class-checkout-element.php:349
+#: inc/ui/class-checkout-element.php:354
 #, php-format
 msgid "Click <a href=\"%s\">here</a> to pay."
 msgstr ""
 
 #. Translators: Placeholder receives the customer display name
-#: inc/ui/class-checkout-element.php:370
+#: inc/ui/class-checkout-element.php:375
 #, php-format
 msgid "Hi %s. You cannot take action on your membership while it is not active!"
 msgstr ""
 
-#: inc/ui/class-checkout-element.php:386
+#: inc/ui/class-checkout-element.php:391
 #: inc/ui/class-thank-you-element.php:140
 msgid "Resending verification email..."
 msgstr ""
 
-#: inc/ui/class-checkout-element.php:394
+#: inc/ui/class-checkout-element.php:399
 msgid "Check your inbox and verify your email address."
 msgstr ""
 
-#: inc/ui/class-checkout-element.php:396
+#: inc/ui/class-checkout-element.php:401
 msgid "Resend verification email"
 msgstr ""
 
-#: inc/ui/class-checkout-element.php:426
+#: inc/ui/class-checkout-element.php:431
 msgid "You already have a membership!"
 msgstr ""
 
-#: inc/ui/class-checkout-element.php:430
+#: inc/ui/class-checkout-element.php:435
 msgid "Go to my account"
 msgstr ""
 
-#: inc/ui/class-checkout-element.php:446
+#: inc/ui/class-checkout-element.php:451
 msgid "You are not allowed to change this membership!"
 msgstr ""
 
 #. Translators: Placeholder receives the limit name
-#: inc/ui/class-checkout-element.php:485
+#: inc/ui/class-checkout-element.php:490
 #, php-format
 msgid "You reached your membership %s limit!"
 msgstr ""
 
-#: inc/ui/class-checkout-element.php:491
+#: inc/ui/class-checkout-element.php:496
 msgid "Buy a new membership"
 msgstr ""
 
-#: inc/ui/class-checkout-element.php:517
+#: inc/ui/class-checkout-element.php:522
 msgid "Upgrade your account"
 msgstr ""
 
-#: inc/ui/class-checkout-element.php:541
+#: inc/ui/class-checkout-element.php:546
 msgid "You need to be the account owner to complete this payment."
 msgstr ""
 
-#: inc/ui/class-checkout-element.php:543
+#: inc/ui/class-checkout-element.php:548
 msgid "You need to be logged in to complete a payment"
 msgstr ""
 
 #. Translators: The link to login url with redirect_to url
-#: inc/ui/class-checkout-element.php:546
+#: inc/ui/class-checkout-element.php:551
 #, php-format
 msgid "Click <a href=\"%s\">here</a> sign in."
 msgstr ""
 
 #. translators: %s is the id of the form. e.g. main-form
-#: inc/ui/class-checkout-element.php:564
+#: inc/ui/class-checkout-element.php:569
 #, php-format
 msgid "Checkout form %s not found."
 msgstr ""
 
 #. translators: %s is the id of the form. e.g. main-form
-#: inc/ui/class-checkout-element.php:570
+#: inc/ui/class-checkout-element.php:575
 #, php-format
 msgid "Checkout form %s contains no fields."
 msgstr ""
 
-#: inc/ui/class-checkout-element.php:574
+#: inc/ui/class-checkout-element.php:579
 msgid "Registration is not available at this time."
 msgstr ""
 
-#: inc/ui/class-checkout-element.php:581
+#: inc/ui/class-checkout-element.php:586
 msgid "Registration is closed for your location."
 msgstr ""
 
@@ -18818,7 +18777,7 @@ msgstr ""
 msgid "Add new Line"
 msgstr ""
 
-#: views/admin-pages/fields/field-text-display.php:58
+#: views/admin-pages/fields/field-text-display.php:59
 #: views/admin-pages/fields/field-text-edit.php:118
 #: views/email/widget-placeholders.php:49
 msgid "Copy"
@@ -18847,7 +18806,6 @@ msgid "Move"
 msgstr ""
 
 #. translators: %1$s: number of steps, %2$s: number of fields
-#. translators: %1$s number of steps, %2$s number of fields
 #: views/base/checkout-forms/steps.php:21
 #: views/base/checkout-forms/steps.php:279
 #, php-format
@@ -19190,6 +19148,11 @@ msgstr ""
 msgid "Discount applied: %1$s - %2$s (%3$s) %4$s"
 msgstr ""
 
+#: views/checkout/templates/pricing-table/legacy.php:135
+#: views/legacy/signup/pricing-table/plan.php:46
+msgid "Featured Plan"
+msgstr ""
+
 #: views/checkout/templates/pricing-table/legacy.php:261
 #: views/legacy/signup/pricing-table/plan.php:74
 msgid "/mo"
@@ -19416,9 +19379,7 @@ msgstr ""
 msgid "with %s"
 msgstr ""
 
-#. translators: %s: the event author's name
-#. translators: %s author of the plugin
-#. translators: %s name of the theme author
+#. translators: %s name of the author
 #: views/dashboard-widgets/activity-stream.php:74
 #: views/limitations/plugin-selector.php:53
 #: views/limitations/theme-selector.php:53
@@ -19857,7 +19818,6 @@ msgid "This is your current plan"
 msgstr ""
 
 #. translators: %s title of the current site
-#. translators: %s: Site Name
 #: views/legacy/signup/signup-main.php:64
 #: views/legacy/signup/signup-main.php:102
 #, php-format
@@ -19884,9 +19844,7 @@ msgstr ""
 msgid "Network Active"
 msgstr ""
 
-#. translators: %s current version of the plugin
-#. translators: %s current version of the theme.
-#. translators: %s: version number of plugin.
+#. translators: %s current version.
 #: views/limitations/plugin-selector.php:48
 #: views/limitations/theme-selector.php:48
 #: views/ui/branding/footer.php:15
@@ -20135,7 +20093,11 @@ msgstr ""
 msgid "View Mobile Portrait (320x480)"
 msgstr ""
 
-#: views/ui/template-previewer.php:205
+#: views/ui/template-previewer.php:197
+msgid "Loading template preview..."
+msgstr ""
+
+#: views/ui/template-previewer.php:210
 msgid "Site Template Preview will go here!"
 msgstr ""
 
