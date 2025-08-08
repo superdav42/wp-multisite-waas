@@ -332,7 +332,7 @@ abstract class Base_Model implements \JsonSerializable {
 	 *
 	 * @param int $item_id The item id.
 	 *
-	 * @return object|false Base_Model
+	 * @return static|false Base_Model
 	 */
 	public static function get_by_id($item_id) {
 

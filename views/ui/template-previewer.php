@@ -101,7 +101,7 @@ do_action('wu_template_previewer_before');
 
 								<a
 								href="<?php echo esc_attr($tp->get_preview_url($template->get_id())); ?>"
-								data-frame="<?php echo esc_attr(add_query_arg('wu-preview', '1', $template->get_active_site_url())); ?>"
+								data-frame="<?php echo esc_attr($template->get_active_site_url()); ?>"
 								data-title="<?php echo esc_attr($template->get_title()); ?>"
 								data-id="<?php echo esc_attr($template->get_id()); ?>"
 								>
@@ -132,9 +132,9 @@ do_action('wu_template_previewer_before');
 
 					<a href="#" class="tabletportrait dashicons-before dashicons-tablet" title="<?php esc_attr_e('View Tablet Portrait (768x1024)', 'multisite-ultimate'); ?>"></a>
 
-					<a href="#" class="mobilelandscape dashicons-before dashicons-smartphone" title="<?php esc_attr_e('View Mobile Landscape (480x320)', 'multisite-ultimate'); ?>"></a>
+					<a href="#" class="mobilelandscape dashicons-before dashicons-smartphone" title="<?php esc_attr_e('View Mobile Landscape (640x360)', 'multisite-ultimate'); ?>"></a>
 
-					<a href="#" class="mobileportrait dashicons-before dashicons-smartphone" title="<?php esc_attr_e('View Mobile Portrait (320x480)', 'multisite-ultimate'); ?>"></a>
+					<a href="#" class="mobileportrait dashicons-before dashicons-smartphone" title="<?php esc_attr_e('View Mobile Portrait (360x640)', 'multisite-ultimate'); ?>"></a>
 
 				</div>
 
@@ -197,7 +197,7 @@ do_action('wu_template_previewer_before');
 			<div class="wu-loading-text"><?php esc_html_e('Loading template preview...', 'multisite-ultimate'); ?></div>
 		</div>
 
-		<iframe id="iframe" src="<?php echo esc_attr(set_url_scheme(add_query_arg('wu-preview', '1', get_home_url($selected_template->get_id())))); ?>" width="100%" height="100%" referrerpolicy="unsafe-url"></iframe>
+		<iframe id="iframe" src="<?php echo esc_attr(set_url_scheme(get_home_url($selected_template->get_id()))); ?>" width="100%" height="100%" referrerpolicy="unsafe-url"></iframe>
 
 	<?php else : ?>
 

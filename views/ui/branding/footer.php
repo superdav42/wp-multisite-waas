@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<ul id="wu-footer-nav" class="wu-text-xs wu-pb-0">
 	<li class="wu-inline-block wu-mx-1 wu-font-medium">
-		<?php // translators: %s: version number of plugin. ?>
+		<?php // translators: %s current version. ?>
 		<?php printf(esc_html__('Version %s', 'multisite-ultimate'), esc_html(\WP_Ultimo::VERSION)); ?>
 	</li>
 
@@ -52,7 +52,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php do_action('wu_footer_left'); ?>
 	<li class="wu-inline-block wu-mx-2">
-		• <a href="https://wpmultisitewaas.org/support" class="wu-text-gray-500 hover:wu-text-gray-600">Support</a>
+		• <a href="https://multisiteultimate.com/support" class="wu-text-gray-500 hover:wu-text-gray-600">Support</a>
 	</li>
 	</ul>
 

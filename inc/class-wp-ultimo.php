@@ -772,7 +772,7 @@ final class WP_Ultimo {
 		 */
 		new WP_Ultimo\Tax\Dashboard_Taxes_Tab();
 
-		new WP_Ultimo\Admin_Pages\Addons_Admin_Page();
+//		new WP_Ultimo\Admin_Pages\Addons_Admin_Page();
 
 		do_action('wp_ultimo_admin_pages');
 	}

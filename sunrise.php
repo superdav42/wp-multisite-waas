@@ -2,7 +2,7 @@
 // WP Ultimo Starts #
 /**
  * Multisite Ultimate Sunrise
- * Plugin URI: https://wpmultisitewaas.org
+ * Plugin URI: https://multisiteultimate.com
  * Version: 2.0.0.8
  * License: GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
