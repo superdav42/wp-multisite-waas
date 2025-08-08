@@ -269,7 +269,7 @@ class Invoice_Template_Customize_Admin_Page extends Customizer_Admin_Page {
 				'type'              => 'image',
 				'title'             => __('Custom Logo', 'multisite-ultimate'),
 				'desc'              => __('This will be added to the top of the generated PDF.', 'multisite-ultimate'),
-				'value'             => '',
+				'value'             => $custom_logo,
 				'img'               => $custom_logo_url,
 				'stacked'           => true,
 				'wrapper_html_attr' => [
