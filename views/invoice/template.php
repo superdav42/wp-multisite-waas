@@ -152,7 +152,7 @@ $has_tax_included = false;
 									$logo_data = base64_encode(file_get_contents($logo_url));
 									$logo_mime = mime_content_type($logo_url);
 								?>
-								<img width="100" src="data:<?php echo esc_attr($logo_mime); ?>;base64,<?php echo $logo_data; ?>" alt="<?php echo esc_attr($site_name); ?>">
+								<img style="max-width:280px; width:auto; max-height:70px;" src="data:<?php echo esc_attr($logo_mime); ?>;base64,<?php echo $logo_data; ?>" alt="<?php echo esc_attr($site_name); ?>">
 							<?php endif; ?>
 						</td>
 
