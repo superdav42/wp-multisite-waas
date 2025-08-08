@@ -1,4 +1,5 @@
 #!/bin/bash
+
 docker run -d \
   --name "${3}-phpmyadmin" \
   -p 8080:80 \

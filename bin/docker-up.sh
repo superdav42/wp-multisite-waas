@@ -1,4 +1,5 @@
 #!/bin/bash
+
 contaner_name_prefix=$(basename "$PWD")
 
 wp-env start
