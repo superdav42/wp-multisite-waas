@@ -43,9 +43,8 @@
     "cy:run:dev": "run-s env:destroy env:start:dev cy:run:launch:dev",
     "cy:open:test": "run-s env:destroy env:start:test cy:open:launch:test",
     "cy:run:test": "run-s env:destroy env:start:test cy:run:launch:test",
-    "phpmyadmin:stop": "docker stop phpmyadmin",
-    "mailpit:stop": "docker stop mailpit",
-    "env:run:all": "bash ./bin/docker-up.sh"
+    "env:run:all": "bash ./bin/docker-up.sh",
+    "env:run:stop": "bash ./bin/docker-down.sh"
   },
   "dependencies": {
     "apexcharts": "^5.2.0",
