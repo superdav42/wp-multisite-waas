@@ -7,8 +7,7 @@
         "."
       ],
       "mappings": {
-        "wp-content/mu-plugins/email-smtp-dev.php": "./mu-plugins/email-smtp-dev/email-smtp-dev.php",
-        "wp-content": "./wp-content"
+        "wp-content/mu-plugins/email-smtp-dev.php": "./mu-plugins/email-smtp-dev/email-smtp-dev.php"
       },
       "config": {
         "WP_DEBUG": true,
@@ -25,8 +24,7 @@
         "."
       ],
       "mappings": {
-        "wp-content/mu-plugins/email-smtp-test.php": "./mu-plugins/email-smtp-test/email-smtp-test.php",
-        "wp-content": "./wp-content"
+        "wp-content/mu-plugins/email-smtp-test.php": "./mu-plugins/email-smtp-test/email-smtp-test.php"
       },
       "config": {
         "WP_DEBUG": true,
