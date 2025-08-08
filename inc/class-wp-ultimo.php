@@ -31,7 +31,7 @@ final class WP_Ultimo {
 	 * @since 2.1.0
 	 * @var string
 	 */
-	const VERSION = '2.4.1-beta';
+	const VERSION = '2.4.2';
 
 	/**
 	 * Version of the Plugin.
@@ -772,7 +772,7 @@ final class WP_Ultimo {
 		 */
 		new WP_Ultimo\Tax\Dashboard_Taxes_Tab();
 
-		new WP_Ultimo\Admin_Pages\Addons_Admin_Page();
+//		new WP_Ultimo\Admin_Pages\Addons_Admin_Page();
 
 		do_action('wp_ultimo_admin_pages');
 	}

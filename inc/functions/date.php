@@ -152,7 +152,8 @@ function wu_human_time_diff($from, $limit = '-5 days', $to = false): string {
 		$to = wu_get_current_time('timestamp'); // phpcs:ignore
 	}
 
-	$placeholder = wu_get_current_time('timestamp') > $timestamp_from ? __('%s ago', 'multisite-ultimate') : __('In %s', 'multisite-ultimate'); // phpcs:ignore
+	// translators: %s is a relative past date.
+	$placeholder = wu_get_current_time('timestamp') > $timestamp_from ? __('%s ago', 'multisite-ultimate') : __('In %s', 'multisite-ultimate');
 
 	return sprintf($placeholder, human_time_diff($timestamp_from, $to));
 }

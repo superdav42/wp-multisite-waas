@@ -179,6 +179,16 @@ We recommend running this in a staging environment before updating your producti
 
 ## 📝 Recent Changes
 
+### Version [2.4.2] - Released on 2025-08-07
+- Fixed: Authentication of the API
+- Fixed: Saving checkout fields
+- Fixed: Creating Products and Sites
+- Fixed: Duplicating sites
+- Improved: Performance of switch_blog
+- Improved: Remove extra queries related update_meta_data hook and 1.X compat
+- New: Addon Marketplace
+- Improved: Update currencies to support all supported by Stripe
+
 ### Version [2.4.1] - Released on 2025-07-17
 
 - Improved: Update Stripe PHP Library to latest version.

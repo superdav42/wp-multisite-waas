@@ -29,7 +29,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<p class="wu-text-lg wu-text-gray-600 wu-my-4">
 		<?php // translators: %s support page link ?>
-		<?php printf(esc_html__('Paid support is available. Go to %s to find an expert who can assist in setting up Multisite Ultimate or custom development.', 'multisite-ultimate'), sprintf('<a href="https://wpmultisitewaas.org/support" target="_blank">%s</a>', esc_html__('The Support Page', 'multisite-ultimate'))); ?>
+		<?php printf(esc_html__('Paid support is available. Go to %s to find an expert who can assist in setting up Multisite Ultimate or custom development.', 'multisite-ultimate'), sprintf('<a href="https://multisiteultimate.com/support" target="_blank">%s</a>', esc_html__('The Support Page', 'multisite-ultimate'))); ?>
 	</p>
 
 	<p class="wu-text-lg wu-text-gray-600 wu-my-4">

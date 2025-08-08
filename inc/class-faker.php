@@ -819,16 +819,12 @@ class Faker {
 			$membership = $this->get_random_membership();
 
 			$payment_data = [
-				'description'        => $faker->sentence(),
 				'parent_id'          => 0,
 				'status'             => $faker->randomElement($status_options),
 				'customer_id'        => $membership ? $membership->get_customer_id() : false,
 				'membership_id'      => $membership ? $membership->get_id() : false,
 				'product_id'         => $membership ? $membership->get_plan_id() : false,
 				'currency'           => $membership ? $membership->get_currency() : false,
-				'quantity'           => 1,
-				'unit_price'         => $membership ? $membership->get_amount() : false,
-				'tax_type'           => $faker->optional(0.2, $type_options_percentage)->randomElement($type_options),
 				'tax'                => 0.00,
 				'credits'            => 0.00,
 				'fees'               => 0.00,

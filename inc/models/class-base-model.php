@@ -332,7 +332,7 @@ abstract class Base_Model implements \JsonSerializable {
 	 *
 	 * @param int $item_id The item id.
 	 *
-	 * @return object|false Base_Model
+	 * @return static|false Base_Model
 	 */
 	public static function get_by_id($item_id) {
 
@@ -597,9 +597,7 @@ abstract class Base_Model implements \JsonSerializable {
 		}
 
 		if ( ! empty($meta)) {
-			$this->update_meta_batch($meta);
-
-			$saved = true;
+			$saved = $this->update_meta_batch($meta);
 		}
 
 		/**

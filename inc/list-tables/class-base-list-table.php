@@ -830,7 +830,8 @@ class Base_List_Table extends \WP_List_Table {
 
 		$formatted_value = date_i18n(get_option('date_format'), $time);
 
-		$placeholder = wu_get_current_time('timestamp') > $time ? __('%s ago', 'multisite-ultimate') : __('In %s', 'multisite-ultimate'); // phpcs:ignore
+		// translators: %s is a relative past date.
+		$placeholder = wu_get_current_time('timestamp') > $time ? __('%s ago', 'multisite-ultimate') : __('In %s', 'multisite-ultimate');
 
 		$text = $formatted_value . sprintf('<br><small>%s</small>', sprintf($placeholder, human_time_diff($time)));
 

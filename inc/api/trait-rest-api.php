@@ -9,6 +9,9 @@
 
 namespace WP_Ultimo\Apis;
 
+use WP_REST_Request;
+use WP_Ultimo\Managers\Base_Manager;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -160,7 +163,7 @@ trait Rest_Api {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_REST_Request $request The request sent.
+	 * @param \WP_REST_Request $request The request sent.
 	 * @return \WP_REST_Response|\WP_Error
 	 */
 	public function get_item_rest($request) {
@@ -194,7 +197,7 @@ trait Rest_Api {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_REST_Request $request The request sent.
+	 * @param \WP_REST_Request $request The request sent.
 	 * @return \WP_REST_Response|\WP_Error
 	 */
 	public function create_item_rest($request) {
@@ -231,7 +234,7 @@ trait Rest_Api {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_REST_Request $request The request sent.
+	 * @param \WP_REST_Request $request The request sent.
 	 * @return \WP_REST_Response|\WP_Error
 	 */
 	public function update_item_rest($request) {
@@ -291,7 +294,7 @@ trait Rest_Api {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_REST_Request $request The request sent.
+	 * @param \WP_REST_Request $request The request sent.
 	 * @return \WP_REST_Response|\WP_Error
 	 */
 	public function delete_item_rest($request) {
@@ -312,7 +315,7 @@ trait Rest_Api {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param WP_REST_Request $request The request sent.
+	 * @param \WP_REST_Request $request The request sent.
 	 * @return bool
 	 */
 	public function get_items_permissions_check($request) {

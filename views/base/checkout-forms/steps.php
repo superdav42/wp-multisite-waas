@@ -275,7 +275,7 @@ defined( 'ABSPATH' ) || exit;
 		<div class="wu-w-1/2">
 
 		<span class="wu-text-gray-600 wu-my-1 wu-text-2xs wu-uppercase wu-font-semibold">
-			<?php // translators: %1$s number of steps, %2$s number of fields ?>
+			<?php // translators: %1$s: number of steps, %2$s: number of fields ?>
 			<?php echo esc_html(sprintf(__('%1$s steps and %2$s fields', 'multisite-ultimate'), '{{ steps.length }}', '{{ field_count }}')); ?>
 
 		</span>
