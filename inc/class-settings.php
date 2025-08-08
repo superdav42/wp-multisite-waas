@@ -1378,12 +1378,13 @@ class Settings {
 			[
 				'title'       => __('Invoice Number Prefix', 'multisite-ultimate'),
 				'placeholder' => __('INV00', 'multisite-ultimate'),
-			'desc'        => sprintf(__('Use %%YEAR%%, %%MONTH%%, and %%DAY%% to create a dynamic placeholder. E.g. %%YEAR%%-%%MONTH%%-INV will become %s.', 'multisite-ultimate'), date('Y') . '-' . date('m') . '-INV'), // phpcs:ignore
-			'default'         => '',
-			'type'            => 'text',
-			'raw'             => true, // Necessary to prevent the removal of the %% tags.
-			'require'         => [
-				'invoice_numbering_scheme' => 'sequential_number',
+				// translators: %%YEAR%%, %%MONTH%%, and %%DAY%% are placeholders but are replaced before shown to the user but are used as examples.
+				'desc'        => sprintf(__('Use %%YEAR%%, %%MONTH%%, and %%DAY%% to create a dynamic placeholder. E.g. %%YEAR%%-%%MONTH%%-INV will become %s.', 'multisite-ultimate'), gmdate('Y') . '-' . gmdate('m') . '-INV'),
+				'default'     => '',
+				'type'        => 'text',
+				'raw'         => true, // Necessary to prevent the removal of the %% tags.
+				'require'     => [
+					'invoice_numbering_scheme' => 'sequential_number',
 				],
 			]
 		);

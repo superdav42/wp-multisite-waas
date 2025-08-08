@@ -38,7 +38,8 @@ defined( 'ABSPATH' ) || exit;
 
 			$formatted_value = date_i18n(get_option('date_format'), $time);
 
-			$placeholder = wu_get_current_time('timestamp') > $time ? esc_html__('%s ago', 'multisite-ultimate') : esc_html__('In %s', 'multisite-ultimate'); // phpcs:ignore
+			// translators: %s is a relative past date.
+			$placeholder = wu_get_current_time('timestamp') > $time ? esc_html__('%s ago', 'multisite-ultimate') : esc_html__('In %s', 'multisite-ultimate');
 
 			printf('<time datetime="%3$s">%1$s</time><br><small>%2$s</small>', esc_html($formatted_value), esc_html(sprintf($placeholder, human_time_diff($time, wu_get_current_time('timestamp')))), esc_attr(get_date_from_gmt($date)));
 		} else {

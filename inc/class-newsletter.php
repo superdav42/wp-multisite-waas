@@ -43,7 +43,7 @@ class Newsletter {
 
 		if ( isset($settings_to_save[ self::SETTING_FIELD_SLUG ]) && $settings_to_save[ self::SETTING_FIELD_SLUG ] && $settings_to_save[ self::SETTING_FIELD_SLUG ] !== $saved_settings[ self::SETTING_FIELD_SLUG ] ) {
 			$response = wp_remote_post(
-				'https://wpmultisitewaas.org/wp-json/newsletter/v2/subscribers',
+				'https://multisiteultimate.com/wp-json/newsletter/v2/subscribers',
 				[
 					'method'  => 'PUT',
 					'body'    => wp_json_encode(
@@ -63,7 +63,7 @@ class Newsletter {
 			);
 		} elseif ( empty($settings_to_save[ self::SETTING_FIELD_SLUG ]) && ! empty($saved_settings[ self::SETTING_FIELD_SLUG ]) ) {
 			$response = wp_remote_post(
-				'https://wpmultisitewaas.org/wp-json/newsletter/v2/subscribers',
+				'https://multisiteultimate.com/wp-json/newsletter/v2/subscribers',
 				[
 					'method'  => 'PUT',
 					'body'    => wp_json_encode(

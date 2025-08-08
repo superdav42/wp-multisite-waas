@@ -44,12 +44,12 @@ defined( 'ABSPATH' ) || exit;
 				<div class="wu-block wu-mt-4">
 
 				<span class="wu-text-xs wu-text-gray-700 wu-my-1 wu-mr-4 wu-block">
-					<?php // translators: %s current version of the plugin ?>
+					<?php // translators: %s current version. ?>
 					<?php printf(esc_html__('Version %s', 'multisite-ultimate'), esc_html($plugin_data['Version'])); ?>
 				</span>
 
 				<span class="wu-text-xs wu-text-gray-700 wu-my-1 wu-mr-4 wu-block">
-					<?php // translators: %s author of the plugin ?>
+					<?php // translators: %s name of the author ?>
 					<?php printf(esc_html__('by %s', 'multisite-ultimate'), esc_html(wp_strip_all_tags($plugin_data['Author']))); ?>
 				</span>
 

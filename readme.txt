@@ -6,7 +6,7 @@ Requires at least: 5.3
 
 Requires PHP: 7.4.30
 Tested up to: 6.8
-Stable tag: 2.4.1
+Stable tag: 2.4.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -203,7 +203,7 @@ This plugin connects to several external services to provide its functionality. 
 = Newsletter and Analytics =
 
 **Multisite Ultimate Newsletter Service**
-- Service: Newsletter subscription for product updates (wpmultisitewaas.org)
+- Service: Newsletter subscription for product updates (multisiteultimate.com)
 - Data sent: Company email, name, country information
 - When: During initial plugin setup (optional)
 - This is our own service for providing plugin updates and announcements
@@ -229,7 +229,7 @@ We recommend running this in a staging environment before updating your producti
 
 == Changelog ==
 
-Version [2.4.1] - Released on 2025-08-XX
+Version [2.4.2] - Released on 2025-08-07
 - Fixed: Authentication of the API
 - Fixed: Saving checkout fields
 - Fixed: Creating Products and Sites

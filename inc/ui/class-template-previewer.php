@@ -55,6 +55,8 @@ class Template_Previewer {
 	 */
 	public function hooks(): void {
 
+		add_action('template_redirect', [$this, 'send_cross_origin_headers'], 1000);
+
 		if ($this->is_preview()) {
 			/*
 			 * Remove admin bar from logged users.
@@ -64,10 +66,6 @@ class Template_Previewer {
 			add_filter('wu_is_jumper_enabled', '__return_false');
 
 			add_filter('wu_is_toolbox_enabled', '__return_false');
-
-			add_filter('home_url', [$this, 'append_preview_parameter'], 9999, 4);
-
-			add_action('template_redirect', [$this, 'send_cross_origin_headers'], 1000);
 
 			return;
 		}
@@ -96,6 +94,11 @@ class Template_Previewer {
 	 * @return void
 	 */
 	public function send_cross_origin_headers(): void {
+
+		$site = wu_get_current_site();
+		if (Site_Type::SITE_TEMPLATE !== $site->get_type()) {
+			return;
+		}
 
 		global $current_site;
 
@@ -212,37 +215,6 @@ class Template_Previewer {
 			'wu-template-previewer',
 			'dashicons',
 		];
-	}
-
-	/**
-	 * Append preview parameter.
-	 *
-	 * @since 2.0.0
-	 *
-	 * @param string      $url The URL.
-	 * @param string      $path        Path relative to the home URL. Blank string if no path is specified.
-	 * @param string|null $orig_scheme Scheme to give the home URL context. Accepts 'http', 'https',
-	 *                                 'relative', 'rest', or null.
-	 * @param int|null    $blog_id     Site ID, or null for the current site.
-	 * @return string
-	 */
-	public function append_preview_parameter($url, $path, $orig_scheme, $blog_id) {
-
-		$allowed_schemes = [
-			null,
-			'http',
-			'https',
-		];
-
-		if (in_array($orig_scheme, $allowed_schemes, true) === false) {
-			return $url;
-		}
-
-		if (apply_filters('wu_append_preview_parameter', true, $this) === false) {
-			return $url;
-		}
-
-		return add_query_arg('wu-preview', 1, $url);
 	}
 
 	/**
@@ -384,18 +356,7 @@ class Template_Previewer {
 	 */
 	public function is_preview() {
 
-		$referer_is_preview = false;
-		$referer            = wp_get_referer();
-		if ( $referer) {
-			$query = wp_parse_url($referer, PHP_URL_QUERY);
-			if ($query) {
-				parse_str($query, $params);
-				$slug               = $this->get_preview_parameter();
-				$referer_is_preview = ! empty($params[ $slug ]);
-			}
-		}
-
-		return ! empty(wu_request('wu-preview')) || (isset($_SERVER['HTTP_SEC_FETCH_DEST']) && 'iframe' === $_SERVER['HTTP_SEC_FETCH_DEST'] && $referer_is_preview);
+		return isset($_SERVER['HTTP_SEC_FETCH_DEST']) && 'iframe' === $_SERVER['HTTP_SEC_FETCH_DEST'];
 	}
 
 	/**

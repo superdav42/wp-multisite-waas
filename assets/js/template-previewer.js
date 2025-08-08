@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tabletlandscape: "1040px",
     tabletportrait: "788px",
     mobilelandscape: "500px",
-    mobileportrait: "340px",
+    mobileportrait: "360px",
     placebo: "0px"
   };
   document.querySelectorAll(".responsive a").forEach((element) => element.addEventListener("click", (event) => {
