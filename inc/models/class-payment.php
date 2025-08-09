@@ -600,6 +600,14 @@ class Payment extends Base_Model {
 		if (null === $this->line_items) {
 			$line_items = (array) $this->get_meta('wu_line_items');
 
+			// Convert arrays back to Line_Item objects
+			$line_items = array_map(function($item) {
+				if (is_array($item)) {
+					return new \WP_Ultimo\Checkout\Line_Item($item);
+				}
+				return $item;
+			}, $line_items);
+	
 			$this->line_items = array_filter($line_items);
 		}
 
