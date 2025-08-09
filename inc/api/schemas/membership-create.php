@@ -130,7 +130,7 @@ return [
 	],
 	'gateway_customer_id'         => [
 		'description' => __('The ID of the customer on the payment gateway database.', 'multisite-ultimate'),
-		'type'        => 'integer',
+		'type'        => 'string',
 		'required'    => false,
 	],
 	'gateway_subscription_id'     => [
