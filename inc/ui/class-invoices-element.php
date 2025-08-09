@@ -274,6 +274,11 @@ class Invoices_Element extends Base_Element {
 	 */
 	public function output($atts, $content = null) {
 
+		// Defensive check for Slim SEO plugin compatibility
+		if ( ! $this->membership) {
+			return '<div class="wu-text-center wu-text-gray-500">' . __('Membership information not available', 'multisite-ultimate') . '</div>';
+		}
+
 		$atts['membership'] = $this->membership;
 
 		return wu_get_template_contents('dashboard-widgets/invoices', $atts);

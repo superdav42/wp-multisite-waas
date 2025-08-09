@@ -352,6 +352,11 @@ class Current_Site_Element extends Base_Element {
 	 */
 	public function output($atts, $content = null) {
 
+		// Defensive check for Slim SEO plugin compatibility
+		if ( ! $this->site) {
+			return '<div class="wu-text-center wu-text-gray-500">' . __('Site information not available', 'multisite-ultimate') . '</div>';
+		}
+
 		$actions = [
 			'visit_site' => [
 				'label'        => __('Visit Site', 'multisite-ultimate'),
