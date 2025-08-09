@@ -20,7 +20,7 @@
   <a href="https://github.com/superdav42/wp-multisite-waas/actions/workflows/e2e.yml"><img src="https://github.com/superdav42/wp-multisite-waas/actions/workflows/e2e.yml/badge.svg" alt="E2E Tests"></a>
 </p>
 
-## 🌟 Overview 
+## 🌟 Overview
 
 **Multisite Ultimate** helps you transform your WordPress Multisite installation into a powerful Website as a Service (WaaS) platform. This plugin enables you to offer website creation, hosting, and management services to your customers through a streamlined interface.
 
