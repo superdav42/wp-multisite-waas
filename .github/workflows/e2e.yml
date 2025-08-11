@@ -16,6 +16,13 @@ jobs:
         php: ["7.4", "8.0", "8.1", "8.2", "8.3", "8.4"]
         browser: ["chrome", "firefox"]
 
+    services:
+      mailpit:
+        image: axllent/mailpit:latest
+        ports:
+          - 1025:1025
+          - 8025:8025
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -48,7 +55,7 @@ jobs:
           echo "{\"config\": {\"phpVersion\": \"${{ matrix.php }}\"}}" > .wp-env.override.json
 
       - name: Start WordPress Environment
-        run: npm run env:start
+        run: npm run env:run:all
 
       - name: Wait for WordPress to be ready
         run: |
