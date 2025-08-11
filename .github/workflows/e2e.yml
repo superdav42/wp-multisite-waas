@@ -22,6 +22,11 @@ jobs:
         ports:
           - 1025:1025
           - 8025:8025
+        options: >-
+          --health-cmd="wget --spider -q http://localhost:8025 || exit 1"
+          --health-interval=2s
+          --health-timeout=2s
+          --health-retries=10
 
     steps:
       - name: Checkout code
