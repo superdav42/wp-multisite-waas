@@ -10,8 +10,8 @@ module.exports = defineConfig({
   videosFolder: "tests/e2e/cypress/videos",
   video: true,
   retries: {
-      runMode: 1,
-      openMode: 0
+    runMode: 1,
+    openMode: 0,
   },
   e2e: {
     specPattern: "tests/e2e/cypress/integration/**/*.{js,jsx,ts,tsx}",
@@ -22,5 +22,8 @@ module.exports = defineConfig({
     responseTimeout: 30000,
     pageLoadTimeout: 60000,
     setupNodeEvents(on, config) {},
+  },
+  env: {
+    MAILPIT_URL: "http://localhost:8025",
   },
 });
