@@ -60,7 +60,7 @@ jobs:
           echo "{\"config\": {\"phpVersion\": \"${{ matrix.php }}\"}}" > .wp-env.override.json
 
       - name: Start WordPress Environment
-        run: npm run env:run:all
+        run: npm run cy:run:launch:test
 
       - name: Wait for WordPress to be ready
         run: |
