@@ -294,6 +294,11 @@ class Account_Summary_Element extends Base_Element {
 	 */
 	public function output($atts, $content = null) {
 
+		// Defensive check - setup() may have been called but site can still be null
+		if ( ! $this->site) {
+			return '';
+		}
+
 		$atts = array_merge($atts, $this->atts);
 
 		$atts['site'] = $this->site;

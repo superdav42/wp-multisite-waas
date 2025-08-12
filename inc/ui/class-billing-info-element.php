@@ -272,6 +272,11 @@ class Billing_Info_Element extends Base_Element {
 	 */
 	public function output($atts, $content = null) {
 
+		// Defensive check - setup() may have been called but membership can still be null
+		if ( ! $this->membership) {
+			return '';
+		}
+
 		$atts['membership'] = $this->membership;
 
 		$atts['billing_address'] = $this->membership->get_billing_address();

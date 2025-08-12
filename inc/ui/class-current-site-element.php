@@ -352,6 +352,11 @@ class Current_Site_Element extends Base_Element {
 	 */
 	public function output($atts, $content = null) {
 
+		// Defensive check - setup() may have been called but site can still be null
+		if ( ! $this->site) {
+			return '';
+		}
+
 		$actions = [
 			'visit_site' => [
 				'label'        => __('Visit Site', 'multisite-ultimate'),

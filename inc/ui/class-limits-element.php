@@ -240,6 +240,11 @@ class Limits_Element extends Base_Element {
 	 */
 	public function output($atts, $content = null) {
 
+		// Defensive check - setup() may have been called but site can still be null
+		if ( ! $this->site) {
+			return '';
+		}
+
 		$post_types = get_post_types(
 			[
 				'public' => true,
