@@ -158,6 +158,15 @@ class Addon_Repository {
 		return $reply;
 	}
 
+	/**
+	 * Saves the OAuth access token using the authorization code.
+	 *
+	 * @param string $code The authorization code received from OAuth provider.
+	 * @param string $redirect_url The redirect URL used in the OAuth flow.
+	 *
+	 * @return void
+	 * @throws \Exception When the API request fails.
+	 */
 	public function save_access_token($code, $redirect_url) {
 
 		$url     = MULTISITE_ULTIMATE_UPDATE_URL . 'oauth/token';

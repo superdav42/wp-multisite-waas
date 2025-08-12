@@ -132,9 +132,9 @@ do_action('wu_template_previewer_before');
 
 					<a href="#" class="tabletportrait dashicons-before dashicons-tablet" title="<?php esc_attr_e('View Tablet Portrait (768x1024)', 'multisite-ultimate'); ?>"></a>
 
-					<a href="#" class="mobilelandscape dashicons-before dashicons-smartphone" title="<?php esc_attr_e('View Mobile Landscape (640x360)', 'multisite-ultimate'); ?>"></a>
+					<a href="#" class="mobilelandscape dashicons-before dashicons-smartphone" title="<?php esc_attr_e('View Mobile Landscape (800x360)', 'multisite-ultimate'); ?>"></a>
 
-					<a href="#" class="mobileportrait dashicons-before dashicons-smartphone" title="<?php esc_attr_e('View Mobile Portrait (360x640)', 'multisite-ultimate'); ?>"></a>
+					<a href="#" class="mobileportrait dashicons-before dashicons-smartphone" title="<?php esc_attr_e('View Mobile Portrait (360x800)', 'multisite-ultimate'); ?>"></a>
 
 				</div>
 

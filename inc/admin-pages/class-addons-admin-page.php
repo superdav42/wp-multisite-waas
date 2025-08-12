@@ -209,7 +209,7 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 		// Get access token for authenticated downloads (only needed for premium addons)
 		$access_token = '';
 		if (! $addon['free']) {
-			$access_token = get_transient('wu-access-token');
+			$access_token  = get_transient('wu-access-token');
 			$refresh_token = wu_get_option('wu-refresh-token');
 
 			if (! $access_token && $refresh_token) {
@@ -415,7 +415,7 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 	public function get_title() {
 
 		return __('Add-ons', 'wp-ultimo');
-	} // end get_title;
+	}
 
 	/**
 	 * Returns the title of menu for this page.
@@ -426,49 +426,6 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 	public function get_menu_title() {
 
 		return __('Add-ons', 'wp-ultimo');
-	}
-
-
-	/**
-	 * Saves the OAuth access token using the authorization code.
-	 *
-	 * @param string $code The authorization code received from OAuth provider.
-	 * @param string $redirect_url The redirect URL used in the OAuth flow.
-	 *
-	 * @return void
-	 * @throws \Exception When the API request fails.
-	 */
-	private function save_access_token($code, $redirect_url) {
-		$url     = 'https://multisiteultimate.com/oauth/token';
-		$data    = array(
-			'code'          => $code,
-			'redirect_uri'  => $redirect_url,
-			'grant_type'    => 'authorization_code',
-			'client_id'     => wu_get_option('oauth_client_id', ''),
-			'client_secret' => wu_get_option('oauth_client_secret', ''),
-		);
-		$request = \wp_remote_post(
-			$url,
-			[
-				'body'      => $data,
-				'sslverify' => defined('WP_DEBUG') && WP_DEBUG ? false : true,
-			]
-		);
-
-		$body    = wp_remote_retrieve_body($request);
-		$code    = wp_remote_retrieve_response_code($request);
-		$message = wp_remote_retrieve_response_message($request);
-
-		if (is_wp_error($request)) {
-			throw new \Exception(esc_html($request->get_error_message()), esc_html($request->get_error_code()));
-		}
-
-		if (200 === absint($code) && 'OK' === $message) {
-			$response = json_decode($body, true);
-
-			set_transient('wu-access-token', $response['access_token'], $response['expires_in']);
-			wu_save_option('wu-refresh-token', $response['refresh_token']);
-		}
 	}
 
 	/**

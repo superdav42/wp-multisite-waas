@@ -39,7 +39,7 @@ body .theme-browser .theme .theme-name {
 
 		<?php endif; ?>
 
-		<?php echo $action_link['label']; ?>
+		<?php echo esc_html($action_link['label']); ?>
 
 		</a>
 
@@ -60,7 +60,7 @@ body .theme-browser .theme .theme-name {
 	<?php if (wu_request('updated')) : ?>
 
 	<div id="message" class="updated notice wu-admin-notice notice-success is-dismissible below-h2">
-		<p><?php esc_html_e('Settings successfully saved.', 'wp-ultimo'); ?></p>
+		<p><?php esc_html_e('Settings successfully saved.', 'multisite-ultimate'); ?></p>
 	</div>
 
 	<?php endif; ?>
@@ -77,7 +77,7 @@ body .theme-browser .theme .theme-name {
 
 			<input
 			type="text"
-			placeholder="<?php esc_attr_e('Search Add-ons', 'wp-ultimo'); ?>"
+			placeholder="<?php esc_attr_e('Search Add-ons', 'multisite-ultimate'); ?>"
 			class="wu-w-full"
 			v-model="search"
 			>
@@ -88,7 +88,7 @@ body .theme-browser .theme .theme-name {
 		<ul id="addons-menu">
 
 			<li class="md:wu-hidden wu-p-4 wu-font-bold wu-uppercase wu-text-xs wu-text-gray-700">
-			<?php _e('Menu', 'wp-ultimo'); ?>
+			<?php esc_html_e('Menu', 'multisite-ultimate'); ?>
 			</li>
 
 			<?php
@@ -174,10 +174,10 @@ body .theme-browser .theme .theme-name {
 			<div>
 
 			<span class="wu-bg-orange-600 wu-text-gray-100 wu-text-xs wu-inline-block wu-rounded wu-py-1 wu-px-2 wu-font-bold wu-uppercase wu-opacity-50">
-				<?php esc_html_e('Beta', 'wp-ultimo'); ?>
+				<?php esc_html_e('Beta', 'multisite-ultimate'); ?>
 			</span>
 
-			<span class="wu-block wu-mt-2 wu-text-xs wu-text-gray-600"><?php esc_html_e('Ready for testing, but not necessarily production-ready.', 'wp-ultimo'); ?></span>
+			<span class="wu-block wu-mt-2 wu-text-xs wu-text-gray-600"><?php esc_html_e('Ready for testing, but not necessarily production-ready.', 'multisite-ultimate'); ?></span>
 
 
 			</div>
@@ -185,20 +185,20 @@ body .theme-browser .theme .theme-name {
 			<div class="wu-mt-4">
 
 			<span class="wu-bg-gray-800 wu-text-gray-200 wu-text-xs wu-inline-block wu-rounded wu-py-1 wu-px-2 wu-font-bold wu-uppercase wu-opacity-50">
-				<?php esc_html_e('Coming Soon', 'wp-ultimo'); ?>
+				<?php esc_html_e('Coming Soon', 'multisite-ultimate'); ?>
 			</span>
 
-			<span class="wu-block wu-mt-2 wu-text-xs wu-text-gray-600"><?php _e('In active development, but not yet available.', 'wp-ultimo'); ?></span>
+			<span class="wu-block wu-mt-2 wu-text-xs wu-text-gray-600"><?php _e('In active development, but not yet available.', 'multisite-ultimate'); ?></span>
 
 			</div>
 
 			<div class="wu-mt-4">
 
 			<span class="wu-bg-purple-800 wu-text-gray-200 wu-text-xs wu-inline-block wu-rounded wu-py-1 wu-px-2 wu-font-bold wu-uppercase wu-opacity-50">
-				<?php esc_html_e('Legacy', 'wp-ultimo'); ?>
+				<?php esc_html_e('Legacy', 'multisite-ultimate'); ?>
 			</span>
 
-			<span class="wu-block wu-mt-2 wu-text-xs wu-text-gray-600"><?php esc_html_e('Developed for 1.X, but compatible with 2.X.', 'wp-ultimo'); ?></span>
+			<span class="wu-block wu-mt-2 wu-text-xs wu-text-gray-600"><?php esc_html_e('Developed for 1.X, but compatible with 2.X.', 'multisite-ultimate'); ?></span>
 
 			</div>
 
@@ -218,37 +218,8 @@ body .theme-browser .theme .theme-name {
 			<?php endif; ?>
 
 		<div id="wu-addon" class="wu-relative">
-<!-- 
-			<div class="wp-filter" v-cloak>
 
-			<ul class="filter-links">
-
-				<li :class="category == 'all' ? '' : 'selector-inactive'">
-					<a 
-						v-cloak 
-						href="#"
-						:class="category == 'all' ? 'current wu-font-medium' : ''" 
-						@click.prevent="category = 'all'"
-					>{{ i18n.all }}</a>
-				</li>
-
-				<li 
-					v-for="_category in categories"
-					:class="category == _category ? '' : 'selector-inactive'" 
-				>
-					<a 
-						v-cloak 
-						href="#"
-						:class="category == _category.toLowerCase() ? 'current wu-font-medium' : ''" 
-						@click.prevent="category = _category.toLowerCase()"
-					>{{ _category }}</a>
-				</li>
-
-			</ul>
-
-			</div> -->
-
-			<div class="theme-browser rendered">
+			<div class="">
 
 				<div v-if="loading"
 				class="">
@@ -256,8 +227,8 @@ body .theme-browser .theme .theme-name {
 					<?php
 					echo wu_render_empty_state( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						array(
-							'message'     => __('Loading...', 'wp-ultimo'),
-							'sub_message' => __('We are fetching the list of WP Ultimo add-ons.', 'wp-ultimo'),
+							'message'     => __('Loading...', 'multisite-ultimate'),
+							'sub_message' => __('We are fetching the list of WP Ultimo add-ons.', 'multisite-ultimate'),
 							'link_url'    => false,
 						)
 					);
@@ -265,68 +236,67 @@ body .theme-browser .theme .theme-name {
 
 				</div>
 
-				<div class="themes wp-clearfix wu-grid wu-gap-6 wu-grid-cols-1 sm:wu-grid-cols-2 lg:wu-grid-cols-3">
+				<div class="wp-clearfix wu-grid wu-gap-6 wu-grid-cols-1 sm:wu-grid-cols-2 lg:wu-grid-cols-3">
 
 					<div 
-					class="theme wu-col-span-1" 
-					style="width: 100% !important; margin: 0 !important;"
+					class="wu-col-span-1"
 					tabindex="0"
 					v-cloak
 					v-for="addon in addons_list"
 					:data-slug="addon.slug"
 					>
+						<a
+							class="wubox wu-no-underline"
+							:title="addon.name"
+							:href="'<?php echo esc_attr($more_info_url); ?>'.replace('ADDON_SLUG', addon.slug)"
+						>
 
-						<div class="theme-screenshot wu-bg-gray-100">
+						<span class="wu-bg-gray-100" v-if="addon.images && addon.images[0]">
+							<img :class="addon.available ? 'wu-w-full' : 'wu-w-full wu-opacity-50'" :src="addon.images[0].src" :srcset="addon.images[0].srcset"  :alt="addon.name" />
+						</span>
+						<span v-else>
+							<svg fill="currentColor" viewBox="0 0 20 20" style="aspect-ratio: 4/3;">
+								<path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
+							</svg>
+						</span>
 
-							<img :class="addon.available ? '' : 'wu-opacity-50'" :src="addon.image_url" :alt="addon.name" />
-
-						</div>
-
-						<span class="wu-absolute wu-m-6 wu-bg-gray-800 wu-text-gray-200 wu-text-xs wu-inline-block wu-rounded wu-top-0 wu-right-0 wu-py-1 wu-px-2 wu-font-bold wu-uppercase" v-cloak v-if="!addon.available">
-						<?php _e('Coming Soon', 'wp-ultimo'); ?>
+						<span class="wu-absolute wu-m-6 wu-bg-gray-800 wu-text-gray-200 wu-text-xs wu-inline-block wu-rounded wu-top-0 wu-right-0 wu-py-1 wu-px-2 wu-font-bold wu-uppercase" v-cloak v-if="!addon.is_purchasable">
+						<?php esc_html_e('Coming Soon', 'multisite-ultimate'); ?>
 						</span>
 
 						<span class="wu-absolute wu-m-6 wu-bg-purple-800 wu-text-gray-200 wu-text-xs wu-inline-block wu-rounded wu-top-0 wu-right-0 wu-py-1 wu-px-2 wu-font-bold wu-uppercase" v-cloak v-show="addon.legacy">
-						<?php _e('Legacy', 'wp-ultimo'); ?>
+						<?php esc_html_e('Legacy', 'multisite-ultimate'); ?>
 						</span>
 
 						<span class="wu-absolute wu-m-6 wu-bg-orange-600 wu-text-gray-100 wu-text-xs wu-inline-block wu-rounded wu-top-0 wu-right-0 wu-py-1 wu-px-2 wu-font-bold wu-uppercase" v-cloak v-show="addon.beta">
-						<?php _e('Beta', 'wp-ultimo'); ?>
+						<?php esc_html_e('Beta', 'multisite-ultimate'); ?>
 						</span>
 
-						<a 
-						class="more-details wubox wu-no-underline" 
-						:title="addon.name"
-						:href="'<?php echo esc_attr($more_info_url); ?>'.replace('ADDON_SLUG', addon.slug)"
-						>
-
-						<?php _e('Add-on Details', 'wp-ultimo'); ?>
-
-						</a>
+						<?php esc_html_e('Add-on Details', 'multisite-ultimate'); ?>
 
 						<div class="theme-author">
 
-							<?php _e('By WP Ultimo', 'wp-ultimo'); ?>
+							<?php esc_html_e('By WP Ultimo', 'multisite-ultimate'); ?>
 
 						</div>
 
 						<h2 class="theme-name" :id="addon.slug" :class="addon.available ? '' : 'wu-opacity-50'" >
 						{{ addon.name }}
 
-						<div class="wu-pt-1 wu-block">
+						<span class="wu-pt-1 wu-block">
 							<span 
 							v-cloak
 							class="wu-text-gray-600 wu-font-normal wu-text-xs"
 							v-if="addon.free"
 							>
-							<?php _e('Free Add-on', 'wp-ultimo'); ?>
+							<?php esc_html_e('Free Add-on', 'multisite-ultimate'); ?>
 							</span>
 							<span 
 							v-cloak
 							class="wu-text-gray-600 wu-font-normal wu-text-xs"
 							v-else
 							>
-							<?php _e('Premium Add-on', 'wp-ultimo'); ?>
+							<?php esc_html_e('Premium Add-on', 'multisite-ultimate'); ?>
 							</span>
 
 							<span 
@@ -335,12 +305,11 @@ body .theme-browser .theme .theme-name {
 							v-if="addon.installed"
 							>
 							<span class="dashicons-wu-check"></span>
-							<?php _e('Installed', 'wp-ultimo'); ?>
+							<?php esc_html_e('Installed', 'multisite-ultimate'); ?>
 							</span>
-
-						</div>
+						</span>
 						</h2>
-
+						</a>
 					</div>
 
 				</div>
@@ -356,9 +325,9 @@ body .theme-browser .theme .theme-name {
 			<?php
 			echo wu_render_empty_state( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				array(
-					'message'      => __('No add-ons found...', 'wp-ultimo'),
-					'sub_message'  => __('Check the search terms or navigate between categories to see what add-ons we have available.', 'wp-ultimo'),
-					'link_label'   => __('See all add-ons', 'wp-ultimo'),
+					'message'      => __('No add-ons found...', 'multisite-ultimate'),
+					'sub_message'  => __('Check the search terms or navigate between categories to see what add-ons we have available.', 'multisite-ultimate'),
+					'link_label'   => __('See all add-ons', 'multisite-ultimate'),
 					'link_url'     => remove_query_arg('tab'),
 					'link_classes' => '',
 					'link_icon'    => 'dashicons-wu-reply',

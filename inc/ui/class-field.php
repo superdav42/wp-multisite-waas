@@ -398,9 +398,8 @@ class Field implements \JsonSerializable {
 			$this->atts['html_attr'] = call_user_func($this->atts['html_attr']);
 		}
 
-		$attributes = $this->atts['html_attr'];
-
 		unset($this->atts['html_attr']['class']);
+		$attributes = $this->atts['html_attr'];
 
 		if ('number' === $this->type) {
 			if (false !== $this->min) {
