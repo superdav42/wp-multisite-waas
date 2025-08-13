@@ -215,7 +215,7 @@ final class WP_Ultimo {
 		 */
 		$this->load_admin_pages();
 
-		$this->get_addon_repository();
+		$this->get_addon_repository()->init();
 
 		/*
 		 * Checks Sunrise versions

@@ -135,9 +135,7 @@
 
 		<?php endif; ?>
 
-		<form id="plugin-install" class="wu_form">
-
-		<?php if ($addon->is_purchasable) : ?>
+		<?php if ($addon->installed) : ?>
 
 			<button
 			disabled="disabled"
@@ -149,14 +147,14 @@
 
 		<?php else : ?>
 
-			<?php if ($addon->available) : ?>
+			<?php if ($addon->is_purchasable) : ?>
 
-				<?php if ($license->allowed('wpultimo') || $addon->free) : ?>
+				<?php if ($addon->extensions['wp-update-server-plugin']['download_url'] || (float) $addon->prices['price'] < 0) : ?>
 
 				<button
 				type="submit"
 				name="install"
-				data-slug="<?php echo $addon_slug; ?>"
+				data-slug="<?php echo esc_attr($addon_slug); ?>"
 				class="button button-primary right"
 				>
 					<?php esc_html_e('Install Now', 'multisite-ultimate'); ?>
@@ -165,7 +163,7 @@
 			<?php else : ?>
 
 				<a
-				href="httsp://multisiteultimate.com/<?php echo esc_attr($upgrade_url); ?>"
+				href="<?php echo esc_attr($addon->permalink . $addon->add_to_cart['url']); ?>"
 				class="button button-primary right"
 				>
 				<?php esc_html_e('Purchase', 'multisite-ultimate'); ?>
@@ -178,8 +176,6 @@
 			<input type="hidden" name="action" value="wu_form_handler">
 
 			<input type="hidden" name="addon" value="<?php echo $addon_slug; ?>">
-
-			<input type="hidden" name="wu-when" value="<?php echo base64_encode('after_setup_theme'); ?>">
 
 			<?php wp_nonce_field('wu_form_addon_more_info'); ?>
 

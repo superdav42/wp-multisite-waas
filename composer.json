@@ -132,7 +132,8 @@
             "vendor/amphp/socket/docs/Gemfile",
             "vendor/delight-im/cookie/.travis-ci-apache",
             "vendor/doctrine",
-            ".distignore"
+            ".distignore",
+            "encrypt-sectrets.php"
         ]
     },
     "extra": {

@@ -1,7 +1,11 @@
 {
   "name": "multisite-ultimate",
   "title": "Multisite Ultimate",
-  "homepage": "https://wpmultisitewaas.org/",
+  "homepage": "https://multisiteultimate.com/",
+  "authors": [{
+    "name": "David Stone",
+    "email": "david@multisiteultimate.com"
+  }],
   "repository": {
     "type": "git",
     "url": "git://github.com/superdav/wp-multisite-waas.git"
@@ -21,6 +25,7 @@
     "copylibs": "node scripts/copy-libs.js",
     "build": "npm run copylibs && npm run uglify && npm run cleancss && npm run archive",
     "build:dev": "npm run copylibs && npm run uglify && npm run cleancss && npm run makepot",
+    "prearchive": "php encrypt-sectrets.php",
     "archive": "node scripts/archive.js",
     "postarchive": "node scripts/post-archive.js",
     "preuglify": "node scripts/clean-js.js",
