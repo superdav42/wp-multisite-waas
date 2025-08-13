@@ -142,6 +142,17 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 	}
 
 	/**
+	 * Get an addon given a slug.
+	 *
+	 * @param string $addon_slug The addon Slug.
+	 *
+	 * @return array
+	 */
+	private function get_addon(string $addon_slug): array {
+		return array_find($this->get_addons_list(), fn($addon) => $addon['slug'] === $addon_slug);
+	}
+
+	/**
 	 * Displays the more info tab.
 	 *
 	 * @since 2.0.0
@@ -151,26 +162,13 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 
 		$addon_slug = wu_request('addon');
 
-		$addon = wu_get_isset($this->get_addons_list(), $addon_slug);
-
-		$upgrade_url = wu_network_admin_url(
-			'wp-ultimo-pricing',
-			array(
-				'checkout'      => 'true',
-				'plan_id'       => '4675',
-				'plan_name'     => 'wpultimo',
-				'billing_cycle' => 'annual',
-				'pricing_id'    => '3849',
-				'currency'      => 'usd',
-			)
-		);
+		$addon = $this->get_addon($addon_slug);
 
 		wu_get_template(
 			'base/addons/details',
 			array(
-				'upgrade_url' => $upgrade_url,
-				'addon'       => (object) $addon,
-				'addon_slug'  => $addon_slug,
+				'addon'      => (object) $addon,
+				'addon_slug' => $addon_slug,
 			)
 		);
 
@@ -193,65 +191,22 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 
 		$addon_slug = wu_request('addon');
 
-		$addon = wu_get_isset($this->get_addons_list(), $addon_slug);
+		$addon = $this->get_addon($addon_slug);
 
-		if (! $addon) {
-			$error = new \WP_Error('addon-not-found', __('Add-on not found.', 'wp-ultimo'));
-			wp_send_json_error($error);
-		}
+		$download_url = $addon['extensions']['wp-update-server-plugin']['download_url'] ?? '';
 
-		// Check if user has access to this addon (skip for free addons)
-		if (! $addon['free'] && ! \WP_Ultimo\License::get_instance()->allowed('wpultimo')) {
-			$error = new \WP_Error('license-required', __('A valid license is required to install premium add-ons.', 'wp-ultimo'));
-			wp_send_json_error($error);
-		}
-
-		// Get access token for authenticated downloads (only needed for premium addons)
-		$access_token = '';
-		if (! $addon['free']) {
-			$access_token = get_transient('wu-access-token');
-			$refresh_token = wu_get_option('wu-refresh-token');
-
-			if (! $access_token && $refresh_token) {
-				// Try to refresh the token
-				$access_token = $this->refresh_access_token($refresh_token);
-			}
-		}
-
-		// Use WooCommerce API to get download URL
-		$api_client = new \WP_Ultimo\Helpers\WooCommerce_API_Client(
-			'https://multisiteultimate.com/',
-		);
-
-		$download_url = $api_client->get_download_url($addon_slug, $access_token);
-
-		if (is_wp_error($download_url)) {
-			wp_send_json_error($download_url);
+		if (! $download_url) {
+			// translators: %s slug of the addon.
+			wp_send_json_error(sprintf(__('Unable to download update addon. User does not have permission to install %s', 'multisite-ultimate'), $addon_slug), 400);
 		}
 
 		/**
 		 * Security check: Ensure URL is from our domain
 		 */
-		$allowed_sites = array(
-			'https://multisiteultimate.com',
-		);
-
-		if (defined('WP_DEBUG') && WP_DEBUG) {
-			$allowed_sites[] = 'http://localhost';
-			$allowed_sites[] = 'https://wp-multisite-waas.test';
-		}
-
-		$allowed = false;
-
-		foreach ($allowed_sites as $allowed_site) {
-			if (strncmp($download_url, $allowed_site, strlen($allowed_site)) === 0) {
-				$allowed = true;
-				break;
-			}
-		}
+		$allowed = strncmp($download_url, MULTISITE_ULTIMATE_UPDATE_URL, strlen(MULTISITE_ULTIMATE_UPDATE_URL)) === 0;
 
 		if (! $allowed) {
-			$error = new \WP_Error('insecure-url', __('You are trying to download an add-on from an insecure URL', 'wp-ultimo'));
+			$error = new \WP_Error('insecure-url', __('You are trying to download an add-on from an insecure URL', 'multisite-ultimate'));
 			wp_send_json_error($error);
 		}
 
@@ -260,7 +215,7 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 		include_once ABSPATH . 'wp-admin/includes/misc.php';
 		include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 
-		$skin = new \Automatic_Upgrader_Skin(array());
+		$skin     = new \Automatic_Upgrader_Skin(array());
 		$upgrader = new \Plugin_Upgrader($skin);
 
 		// Add authentication headers for download
@@ -360,37 +315,17 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 			return array();
 		}
 
-		/*
-		 * Process addon data and check installation status
-		 */
-		foreach ($data as $slug => $item) {
-			/*
-			 * Checks if the plugin is installed.
-			 */
-			$item['installed'] = $this->is_plugin_installed($slug);
+		$installed_plugins = get_plugins();
 
-			$this->addons[ $slug ] = $item;
+		foreach ($data as &$item) {
+			$item['installed'] = isset($installed_plugins[ "{$item['sku']}/{$item['sku']}.php" ]);
 		}
+
+		$this->addons = $data;
 
 		set_transient('wu-addons-list', $this->addons, 2 * DAY_IN_SECONDS);
 
 		return $this->addons;
-	}
-
-	/**
-	 * Checks if a given plugin is installed.
-	 *
-	 * @since 2.0.0
-	 * @param string $plugin_slug The plugin slug to check.
-	 * @return boolean
-	 */
-	public function is_plugin_installed($plugin_slug) {
-
-		$plugin_keys = array_keys(get_plugins());
-
-		$installed_plugins = implode(' - ', $plugin_keys);
-
-		return stristr($installed_plugins, $plugin_slug) !== false;
 	}
 
 	/**
@@ -415,7 +350,7 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 	public function get_title() {
 
 		return __('Add-ons', 'wp-ultimo');
-	} // end get_title;
+	}
 
 	/**
 	 * Returns the title of menu for this page.
@@ -426,49 +361,6 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 	public function get_menu_title() {
 
 		return __('Add-ons', 'wp-ultimo');
-	}
-
-
-	/**
-	 * Saves the OAuth access token using the authorization code.
-	 *
-	 * @param string $code The authorization code received from OAuth provider.
-	 * @param string $redirect_url The redirect URL used in the OAuth flow.
-	 *
-	 * @return void
-	 * @throws \Exception When the API request fails.
-	 */
-	private function save_access_token($code, $redirect_url) {
-		$url     = 'https://multisiteultimate.com/oauth/token';
-		$data    = array(
-			'code'          => $code,
-			'redirect_uri'  => $redirect_url,
-			'grant_type'    => 'authorization_code',
-			'client_id'     => wu_get_option('oauth_client_id', ''),
-			'client_secret' => wu_get_option('oauth_client_secret', ''),
-		);
-		$request = \wp_remote_post(
-			$url,
-			[
-				'body'      => $data,
-				'sslverify' => defined('WP_DEBUG') && WP_DEBUG ? false : true,
-			]
-		);
-
-		$body    = wp_remote_retrieve_body($request);
-		$code    = wp_remote_retrieve_response_code($request);
-		$message = wp_remote_retrieve_response_message($request);
-
-		if (is_wp_error($request)) {
-			throw new \Exception(esc_html($request->get_error_message()), esc_html($request->get_error_code()));
-		}
-
-		if (200 === absint($code) && 'OK' === $message) {
-			$response = json_decode($body, true);
-
-			set_transient('wu-access-token', $response['access_token'], $response['expires_in']);
-			wu_save_option('wu-refresh-token', $response['refresh_token']);
-		}
 	}
 
 	/**
@@ -503,14 +395,9 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 
 		$addon_repo = \WP_Ultimo::get_instance()->get_addon_repository();
 
-		if ( $code) {
-			$addon_repo->save_access_token($code, $redirect_url);
-		}
-
 		if ( wu_request('logout') && wp_verify_nonce(wu_request('_wpnonce'), 'logout')) {
 			$addon_repo->delete_tokens();
 		}
-
 
 		$more_info_url = wu_get_form_url(
 			'addon_more_info',
@@ -519,14 +406,12 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 				'addon' => 'ADDON_SLUG',
 			)
 		);
-		$oauth_url = add_query_arg(
-			[
-				'response_type' => 'code',
-				'client_id'     => wu_get_option('oauth_client_id', ''),
-				'redirect_uri'  => $redirect_url,
-			],
-			'https://multisiteultimate.com/oauth/authorize'
-		);
+
+		$user = $addon_repo->get_user_data();
+
+		if (! $user && $code) {
+			$addon_repo->save_access_token($code, $redirect_url);
+		}
 
 		wu_get_template(
 			'base/addons',
@@ -538,7 +423,7 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 				'current_section'      => $this->get_current_section(),
 				'clickable_navigation' => $this->clickable_navigation,
 				'more_info_url'        => $more_info_url,
-				'oauth_url'            => $oauth_url,
+				'oauth_url'            => $addon_repo->get_oauth_url(),
 				'logout_url'           => wu_network_admin_url(
 					'wp-ultimo-addons',
 					[
@@ -624,26 +509,5 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 		wp_safe_redirect(add_query_arg('updated', 1, wu_get_current_url()));
 
 		exit;
-	}
-
-
-	private function get_client_id() {
-		if (isset($this->client_id)) {
-			return $this->client_id;
-		}
-		$stuff               = include __DIR__ . '/stuff.php';
-		$this->client_id     = $this->decrypt_value($stuff[0]);
-		$this->client_secret = $this->decrypt_value($stuff[1]);
-		return $this->client_id;
-	}
-
-	private function get_client_secret() {
-		if (isset($this->client_secret)) {
-			return $this->client_secret;
-		}
-		$stuff               = include __DIR__ . '/stuff.php';
-		$this->client_id     = $this->decrypt_value($stuff[0]);
-		$this->client_secret = $this->decrypt_value($stuff[1]);
-		return $this->client_secret;
 	}
 }

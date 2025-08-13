@@ -6,7 +6,7 @@
  * @subpackage Admin_Notices
  * @since 2.0.0
  */
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 foreach ($notices as $key => $notice) : ?>
 
@@ -18,7 +18,7 @@ foreach ($notices as $key => $notice) : ?>
 	
 	<?php else : ?>
 
-    <p class="wu-py-2"><?php echo $notice['message']; // phpcs:ignore ?></p>
+	<p class="wu-py-2"><?php echo esc_html($notice['message']); ?></p>
 
 <?php endif; ?>
 

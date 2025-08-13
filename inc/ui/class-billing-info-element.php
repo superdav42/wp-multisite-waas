@@ -272,6 +272,12 @@ class Billing_Info_Element extends Base_Element {
 	 */
 	public function output($atts, $content = null) {
 
+		// Defensive check - setup() may have been called but membership can still be null
+		if ( ! $this->membership) {
+			_doing_it_wrong(__METHOD__, esc_html__('setup() or setup_preview() must be called before output().', 'multisite-ultimate'));
+			return '';
+		}
+
 		$atts['membership'] = $this->membership;
 
 		$atts['billing_address'] = $this->membership->get_billing_address();

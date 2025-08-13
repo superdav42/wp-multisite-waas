@@ -54,9 +54,7 @@
 
         return _.filter(app.addons, function(addon, slug) {
 
-          addon.slug = slug;
-
-          if (app.category !== 'all' && ! _.contains(addon.categories.map((item) => item.toLowerCase()), app.category.toLowerCase())) {
+          if (app.category !== 'all' && ! _.contains(addon.categories.map((item) => item.slug), app.category.slug)) {
 
             return false;
 
