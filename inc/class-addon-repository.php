@@ -84,12 +84,23 @@ class Addon_Repository {
 		return $access_token;
 	}
 
-	public function get_user_data() {
+	public function get_oauth_url(): string {
+		return add_query_arg(
+			[
+				'response_type' => 'code',
+				'client_id'     => $this->get_client_id(),
+				'redirect_uri'  => wu_network_admin_url('wp-ultimo-addons'),
+			],
+			MULTISITE_ULTIMATE_UPDATE_URL . 'oauth/authorize'
+		);
+	}
+
+	public function get_user_data(): array {
 
 		$access_token = $this->get_access_token();
 
 		if ($access_token) {
-			$url     = 'https://multisiteultimate.com/oauth/me';
+			$url     = MULTISITE_ULTIMATE_UPDATE_URL . 'oauth/me';
 			$request = \wp_remote_get(
 				$url,
 				[
@@ -124,16 +135,8 @@ class Addon_Repository {
 			$access_token = $this->get_access_token();
 
 			if (empty($access_token)) {
-				$oauth_url = add_query_arg(
-					[
-						'response_type' => 'code',
-						'client_id'     => $this->get_client_id(),
-						'redirect_uri'  => wu_network_admin_url('wp-ultimo-addons'),
-					],
-					MULTISITE_ULTIMATE_UPDATE_URL . 'oauth/authorize'
-				);
-
-				return new \WP_Error('noauth', sprintf('You must <a href="%s" target="_parent">Login</a> first.', $oauth_url));
+				// translators: %s the url for login.
+				return new \WP_Error('noauth', sprintf(__('You must <a href="%s" target="_parent">Login</a> first.', 'multisite-ultimate'), $this->get_oauth_url()));
 			}
 			$this->authorization_header = 'Bearer ' . $access_token;
 
@@ -151,13 +154,22 @@ class Addon_Repository {
 				return $response;
 			}
 
-			if (200 !== absint($code)) {
+			if (! in_array(absint($code), [200, 302, 301], true)) {
 				return new \WP_Error('http_request_failed', esc_html__('Failed to connect to the update server. Please try again later.', 'multisite-ultimate'));
 			}
 		}
 		return $reply;
 	}
 
+	/**
+	 * Saves the OAuth access token using the authorization code.
+	 *
+	 * @param string $code The authorization code received from OAuth provider.
+	 * @param string $redirect_url The redirect URL used in the OAuth flow.
+	 *
+	 * @return void
+	 * @throws \Exception When the API request fails.
+	 */
 	public function save_access_token($code, $redirect_url) {
 
 		$url     = MULTISITE_ULTIMATE_UPDATE_URL . 'oauth/token';

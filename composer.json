@@ -96,6 +96,8 @@
             "tests",
             "cypress.env.json",
             "cypress.config.js",
+            "cypress.config.dev.js",
+            "cypress.config.test.js",
             ".wp-env.json",
             "bin",
             "phpunit.xml.dist",
@@ -132,7 +134,8 @@
             "vendor/amphp/socket/docs/Gemfile",
             "vendor/delight-im/cookie/.travis-ci-apache",
             "vendor/doctrine",
-            ".distignore"
+            ".distignore",
+            "encrypt-sectrets.php"
         ]
     },
     "extra": {

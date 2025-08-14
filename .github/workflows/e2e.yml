@@ -16,6 +16,18 @@ jobs:
         php: ["7.4", "8.0", "8.1", "8.2", "8.3", "8.4"]
         browser: ["chrome", "firefox"]
 
+    services:
+      mailpit:
+        image: axllent/mailpit:latest
+        ports:
+          - 1025:1025
+          - 8025:8025
+        options: >-
+          --health-cmd="wget --spider -q http://localhost:8025 || exit 1"
+          --health-interval=2s
+          --health-timeout=2s
+          --health-retries=10
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2

@@ -6,12 +6,6 @@
  */
 ?>
 
-<style>
-body .theme-browser .theme .theme-name {
-	height: auto;
-}
-</style>
-
 <div id="wp-ultimo-wrap" class="<?php wu_wrap_use_container(); ?> wrap wu-wrap <?php echo esc_attr($classes); ?>">
 
 	<h1 class="wp-heading-inline">
@@ -39,7 +33,7 @@ body .theme-browser .theme .theme-name {
 
 		<?php endif; ?>
 
-		<?php echo $action_link['label']; ?>
+		<?php echo esc_html($action_link['label']); ?>
 
 		</a>
 
@@ -60,315 +54,216 @@ body .theme-browser .theme .theme-name {
 	<?php if (wu_request('updated')) : ?>
 
 	<div id="message" class="updated notice wu-admin-notice notice-success is-dismissible below-h2">
-		<p><?php esc_html_e('Settings successfully saved.', 'wp-ultimo'); ?></p>
+		<p><?php esc_html_e('Settings successfully saved.', 'multisite-ultimate'); ?></p>
 	</div>
 
+	<?php endif; ?>
+	<?php if ( $user ) : ?>
+		<div class="notice wu-hidden wu-admin-notice wu-styling hover:wu-styling notice-success">
+			<?php // translators: %1$s: the current user display name, %2$s: their password. ?>
+			<p class="wu-py-2"><?php echo esc_html(sprintf(__('Connected to MultisiteUltimate.com as %1$s (%2$s).', 'multisite-ultimate'), $user['display_name'], $user['user_email'])); ?> <a title="<?php esc_attr_e('Disconnect your site', 'multisite-ultimate'); ?>" href="<?php echo esc_attr($logout_url); ?>"><?php esc_html_e('Disconnect', 'multisite-ultimate'); ?></a></p>
+		</div>
+	<?php else : ?>
+		<div class="notice wu-hidden wu-admin-notice wu-styling hover:wu-styling notice-warning">
+			<p class="wu-py-2"><?php esc_html_e('Multisite Ultimate might be at risk because it’s unable to automatically update add-ons. Please complete the connection to get updates and streamlined support.', 'multisite-ultimate'); ?></p>
+			<div>
+				<ul class="wu-m-0">
+					<li class="">
+						<a class="button-primary wu-font-bold wu-uppercase" title="<?php esc_attr_e('Connect your site', 'multisite-ultimate'); ?>" href="<?php echo esc_attr($oauth_url); ?>"><?php esc_html_e('Connect your site to MultisiteUltimate.com', 'multisite-ultimate'); ?></a>
+					</li>
+				</ul>
+			</div>
+		</div>
 	<?php endif; ?>
 
 	<hr class="wp-header-end">
 
-	<form method="post">
-
-	<div id="poststuff" class="md:wu-flex">
-
-		<div class="wu-w-full md:wu-w-4/12 lg:wu-w-2/12">
-
-		<div class="wu-py-4 wu-relative" id="search-addons">
-
-			<input
-			type="text"
-			placeholder="<?php esc_attr_e('Search Add-ons', 'wp-ultimo'); ?>"
-			class="wu-w-full"
-			v-model="search"
-			>
-
+	<div class="wu-flex wu-items-center wu-justify-between wu-mb-6 wu-p-4 wu-bg-gray-50 wu-border wu-border-gray-200 wu-rounded-lg">
+		<div class="wu-flex wu-items-center wu-space-x-4">
+			<span class="wu-text-sm wu-text-gray-600">
+				<span class="wu-font-semibold" v-text="count" v-cloak>0</span> <?php esc_html_e('add-ons', 'multisite-ultimate'); ?>
+			</span>
 		</div>
-
-		<!-- Navigator -->
-		<ul id="addons-menu">
-
-			<li class="md:wu-hidden wu-p-4 wu-font-bold wu-uppercase wu-text-xs wu-text-gray-700">
-			<?php _e('Menu', 'wp-ultimo'); ?>
-			</li>
-
-			<?php
-
-			/**
-			 * We need to set a couple of flags in here to control clickable navigation elements.
-			 * This flag makes sure only steps the user already went through are clickable.
-			 */
-			$is_pre_current_section = true;
-
-			?>
-
+		
+		<div class="wu-flex wu-items-center wu-space-x-2" id="addons-menu">
 			<?php foreach ($sections as $section_name => $section) : ?>
-
-				<?php
-
-				/**
-				 * Updates the flag after the current section is looped.
-				 */
-				if ($current_section === $section_name) {
-					$is_pre_current_section = false;
-				}
-
-				?>
-
-				<?php if (wu_get_isset($section, 'separator')) : ?>
-
-				<!-- Separator Item -->
-				<li class="wu-sticky wu-py-2 wu-px-4">&nbsp;</li>
-
-			<?php else : ?>
-
-				<!-- Menu Item -->
-				<li class="wu-sticky">
-
-				<!-- Menu Link -->
 				<a 
-					href="<?php echo esc_url($page->get_section_link($section_name)); ?>" 
-					class="wu-block wu-py-2 wu-px-4 wu-no-underline wu-text-sm wu-rounded wu-text-gray-600 hover:wu-text-gray-700"
-					:class="category === '<?php echo esc_attr($section_name); ?>' ? 'wu-bg-gray-300 wu-text-gray-800' : 'wu-text-gray-600 hover:wu-text-gray-700'"
+					href="<?php echo esc_url($page->get_section_link($section_name)); ?>"
+					class="wu-px-3 wu-py-1 wu-text-sm wu-rounded-md wu-border wu-transition-colors"
+					:class="category === '<?php echo esc_attr($section_name); ?>' ? 'wu-bg-blue-600 wu-text-white wu-border-blue-600' : 'wu-bg-white wu-text-gray-700 wu-border-gray-300 hover:wu-bg-gray-50'"
 					@click.prevent="set_category('<?php echo esc_attr($section_name); ?>')"
 				>
-
-					<span class="<?php echo esc_attr($section['icon']); ?> wu-align-text-bottom wu-mr-1"></span>
-
-					<?php echo $section['title']; ?>
-
+					<span class="<?php echo esc_attr($section['icon']); ?> wu-mr-1"></span>
+					<?php echo esc_html($section['title']); ?>
 				</a>
-				<!-- End Menu Link -->
-
-				<?php if (! empty($section['sub-sections'])) : ?>
-
-					<!-- Sub-menu -->
-					<ul class="classes" v-show="false" v-cloak>
-
-					<?php foreach ($section['sub-sections'] as $sub_section_name => $sub_section) : ?>
-
-						<li class="classes">
-						<a href="<?php echo esc_url($page->get_section_link($section_name) . '#' . $sub_section_name); ?>" class="wu-block wu-py-2 wu-px-4 wu-no-underline wu-text-gray-500 hover:wu-text-gray-600 wu-text-sm">
-							&rarr; <?php echo $sub_section['title']; ?>
-						</a>
-						</li>
-
-					<?php endforeach; ?>
-
-					</ul>
-					<!-- End Sub-menu -->
-
-				<?php endif; ?>
-
-				</li>
-				<!-- End Menu Item -->
-
-			<?php endif; ?>
-
-<?php endforeach; ?>
-
-		</ul>
-		<!-- End Navigator -->
-
-		<div class="wu-mt-10 wu-p-4">
-
-			<div>
-
-			<span class="wu-bg-orange-600 wu-text-gray-100 wu-text-xs wu-inline-block wu-rounded wu-py-1 wu-px-2 wu-font-bold wu-uppercase wu-opacity-50">
-				<?php esc_html_e('Beta', 'wp-ultimo'); ?>
-			</span>
-
-			<span class="wu-block wu-mt-2 wu-text-xs wu-text-gray-600"><?php esc_html_e('Ready for testing, but not necessarily production-ready.', 'wp-ultimo'); ?></span>
-
-
-			</div>
-
-			<div class="wu-mt-4">
-
-			<span class="wu-bg-gray-800 wu-text-gray-200 wu-text-xs wu-inline-block wu-rounded wu-py-1 wu-px-2 wu-font-bold wu-uppercase wu-opacity-50">
-				<?php esc_html_e('Coming Soon', 'wp-ultimo'); ?>
-			</span>
-
-			<span class="wu-block wu-mt-2 wu-text-xs wu-text-gray-600"><?php _e('In active development, but not yet available.', 'wp-ultimo'); ?></span>
-
-			</div>
-
-			<div class="wu-mt-4">
-
-			<span class="wu-bg-purple-800 wu-text-gray-200 wu-text-xs wu-inline-block wu-rounded wu-py-1 wu-px-2 wu-font-bold wu-uppercase wu-opacity-50">
-				<?php esc_html_e('Legacy', 'wp-ultimo'); ?>
-			</span>
-
-			<span class="wu-block wu-mt-2 wu-text-xs wu-text-gray-600"><?php esc_html_e('Developed for 1.X, but compatible with 2.X.', 'wp-ultimo'); ?></span>
-
-			</div>
-
+			<?php endforeach; ?>
 		</div>
 
+		<div id="search-addons">
+			<input 
+				type="search" 
+				class="wu-w-64 wu-px-3 wu-py-2 wu-text-sm wu-border wu-border-gray-300 wu-rounded-md focus:wu-outline-none focus:wu-ring-2 focus:wu-ring-blue-500 focus:wu-border-blue-500" 
+				placeholder="<?php esc_attr_e('Search add-ons...', 'multisite-ultimate'); ?>" 
+				v-model="search" 
+			/>
+		</div>
+	</div>
 
+	<div id="wu-addon">
+		
+		<div v-if="loading" class="wu-text-center wu-py-12">
+			<div class="wu-inline-flex wu-items-center wu-px-4 wu-py-2 wu-text-sm wu-text-blue-600 wu-bg-blue-50 wu-border wu-border-blue-200 wu-rounded-lg">
+				<svg class="wu-animate-spin wu-mr-2 wu-h-4 wu-w-4" fill="none" viewBox="0 0 24 24">
+					<circle class="wu-opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+					<path class="wu-opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+				</svg>
+				<?php esc_html_e('Loading add-ons...', 'multisite-ultimate'); ?>
+			</div>
 		</div>
 
-		<div class="wu-w-full md:wu-w-8/12 lg:wu-w-10/12 md:wu-pl-4 metabox-holder">
-			<?php if ( $user ) : ?>
-			<div>
-				<?php echo $user['display_name'] . '(' . $user['user_email'] . ')'; ?>
-				<a href="<?php echo esc_attr($logout_url); ?>">Logout</a>
-			</div>
-			<?php else : ?>
-			<a class="wu-btn wp-btn-primary" href="<?php echo esc_attr($oauth_url); ?>">Login</a>
-			<?php endif; ?>
+		<div class="wu-grid wu-grid-cols-1 md:wu-grid-cols-2 lg:wu-grid-cols-3 wu-gap-6" v-cloak>
+			<div 
+				v-for="addon in addons_list"
+				:key="addon.slug"
+				class="wu-bg-white wu-border wu-border-gray-200 wu-rounded-lg wu-shadow-sm wu-overflow-hidden wu-transition-shadow hover:wu-shadow-md"
+				:data-slug="addon.slug"
+			>
+				<div class="wu-relative wu-p-6">
+					
+					<div v-if="addon.installed" class="wu-absolute wu-top-3 wu-right-3 wu-px-2 wu-py-1 wu-text-xs wu-font-semibold wu-text-white wu-bg-green-600 wu-rounded">
+						<?php esc_html_e('Installed', 'multisite-ultimate'); ?>
+					</div>
+					<div v-else-if="addon.beta" class="wu-absolute wu-top-3 wu-right-3 wu-px-2 wu-py-1 wu-text-xs wu-font-semibold wu-text-white wu-bg-orange-500 wu-rounded">
+						<?php esc_html_e('Beta', 'multisite-ultimate'); ?>
+					</div>
+					<div v-else-if="!addon.is_purchasable" class="wu-absolute wu-top-3 wu-right-3 wu-px-2 wu-py-1 wu-text-xs wu-font-semibold wu-text-white wu-bg-gray-600 wu-rounded">
+						<?php esc_html_e('Coming Soon', 'multisite-ultimate'); ?>
+					</div>
+					<div v-else-if="addon.legacy" class="wu-absolute wu-top-3 wu-right-3 wu-px-2 wu-py-1 wu-text-xs wu-font-semibold wu-text-white wu-bg-purple-600 wu-rounded">
+						<?php esc_html_e('Legacy', 'multisite-ultimate'); ?>
+					</div>
 
-		<div id="wu-addon" class="wu-relative">
-<!-- 
-			<div class="wp-filter" v-cloak>
-
-			<ul class="filter-links">
-
-				<li :class="category == 'all' ? '' : 'selector-inactive'">
-					<a 
-						v-cloak 
-						href="#"
-						:class="category == 'all' ? 'current wu-font-medium' : ''" 
-						@click.prevent="category = 'all'"
-					>{{ i18n.all }}</a>
-				</li>
-
-				<li 
-					v-for="_category in categories"
-					:class="category == _category ? '' : 'selector-inactive'" 
-				>
-					<a 
-						v-cloak 
-						href="#"
-						:class="category == _category.toLowerCase() ? 'current wu-font-medium' : ''" 
-						@click.prevent="category = _category.toLowerCase()"
-					>{{ _category }}</a>
-				</li>
-
-			</ul>
-
-			</div> -->
-
-			<div class="theme-browser rendered">
-
-				<div v-if="loading"
-				class="">
-
-					<?php
-					echo wu_render_empty_state( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-						array(
-							'message'     => __('Loading...', 'wp-ultimo'),
-							'sub_message' => __('We are fetching the list of WP Ultimo add-ons.', 'wp-ultimo'),
-							'link_url'    => false,
-						)
-					);
-					?>
-
-				</div>
-
-				<div class="themes wp-clearfix wu-grid wu-gap-6 wu-grid-cols-1 sm:wu-grid-cols-2 lg:wu-grid-cols-3">
-
-					<div 
-					class="theme wu-col-span-1" 
-					style="width: 100% !important; margin: 0 !important;"
-					tabindex="0"
-					v-cloak
-					v-for="addon in addons_list"
-					:data-slug="addon.slug"
-					>
-
-						<div class="theme-screenshot wu-bg-gray-100">
-
-							<img :class="addon.available ? '' : 'wu-opacity-50'" :src="addon.image_url" :alt="addon.name" />
-
+					<div class="wu-flex">
+						<div class="wu-flex wu-items-center wu-justify-center wu-flex-shrink-0">
+							<img v-if="addon.extensions['wp-update-server-plugin'].icon"
+								:src="addon.extensions['wp-update-server-plugin'].icon"
+								:alt="addon.name" 
+								class="wu-w-full wu-rounded-lg  wu-bg-gray-100 wu-border wu-border-gray-200 wu-rounded-lg"
+								width="70" height="70"
+								:class="addon.available ? '' : 'wu-opacity-50'">
+							<div v-else class="wu-text-2xl wu-text-gray-400  wu-bg-gray-100 wu-border wu-border-gray-200 wu-rounded-lg">
+								<span class="dashicons dashicons-admin-plugins" style="width: 70px; height:70px; line-height: 70px"></span>
+							</div>
 						</div>
 
-						<span class="wu-absolute wu-m-6 wu-bg-gray-800 wu-text-gray-200 wu-text-xs wu-inline-block wu-rounded wu-top-0 wu-right-0 wu-py-1 wu-px-2 wu-font-bold wu-uppercase" v-cloak v-if="!addon.available">
-						<?php _e('Coming Soon', 'wp-ultimo'); ?>
-						</span>
-
-						<span class="wu-absolute wu-m-6 wu-bg-purple-800 wu-text-gray-200 wu-text-xs wu-inline-block wu-rounded wu-top-0 wu-right-0 wu-py-1 wu-px-2 wu-font-bold wu-uppercase" v-cloak v-show="addon.legacy">
-						<?php _e('Legacy', 'wp-ultimo'); ?>
-						</span>
-
-						<span class="wu-absolute wu-m-6 wu-bg-orange-600 wu-text-gray-100 wu-text-xs wu-inline-block wu-rounded wu-top-0 wu-right-0 wu-py-1 wu-px-2 wu-font-bold wu-uppercase" v-cloak v-show="addon.beta">
-						<?php _e('Beta', 'wp-ultimo'); ?>
-						</span>
-
-						<a 
-						class="more-details wubox wu-no-underline" 
-						:title="addon.name"
-						:href="'<?php echo esc_attr($more_info_url); ?>'.replace('ADDON_SLUG', addon.slug)"
-						>
-
-						<?php _e('Add-on Details', 'wp-ultimo'); ?>
-
-						</a>
-
-						<div class="theme-author">
-
-							<?php _e('By WP Ultimo', 'wp-ultimo'); ?>
-
+						<div class="wu-ml-6">
+							<h3 class="wu-text-lg wu-font-semibold wu-text-gray-900 wu-mb-1">{{ addon.name }}</h3>
+							<p class="wu-text-sm wu-text-gray-600 wu-mb-2">
+								<?php esc_html_e('By', 'multisite-ultimate'); ?> <span class="wu-font-medium">{{ addon.extensions['wp-update-server-plugin'].author.display_name }}</span>
+							</p>
 						</div>
-
-						<h2 class="theme-name" :id="addon.slug" :class="addon.available ? '' : 'wu-opacity-50'" >
-						{{ addon.name }}
-
-						<div class="wu-pt-1 wu-block">
-							<span 
-							v-cloak
-							class="wu-text-gray-600 wu-font-normal wu-text-xs"
-							v-if="addon.free"
-							>
-							<?php _e('Free Add-on', 'wp-ultimo'); ?>
-							</span>
-							<span 
-							v-cloak
-							class="wu-text-gray-600 wu-font-normal wu-text-xs"
-							v-else
-							>
-							<?php _e('Premium Add-on', 'wp-ultimo'); ?>
-							</span>
-
-							<span 
-							v-cloak
-							class="wu-ml-2 wu-text-green-600 wu-font-normal wu-text-xs"
-							v-if="addon.installed"
-							>
-							<span class="dashicons-wu-check"></span>
-							<?php _e('Installed', 'wp-ultimo'); ?>
-							</span>
-
-						</div>
-						</h2>
-
 					</div>
 
 				</div>
+				<div class="wu-px-6">
+					<div v-html="addon.short_description"></div>
+				</div>
+				
+				<div class="wu-px-6 wu-py-4 wu-bg-gray-50 wu-border-t wu-border-gray-200">
+					
+					<div class="wu-flex wu-items-center wu-justify-between wu-text-xs wu-text-gray-600 wu-mb-3">
+						<div class="wu-space-y-1">
+							<div v-if="addon.last_updated" class="wu-flex wu-items-center wu-space-x-1">
+								<span class="wu-font-medium"><?php esc_html_e('Updated:', 'multisite-ultimate'); ?></span>
+								<span>{{ addon.last_updated }}</span>
+							</div>
+							<div v-if="addon.active_installs" class="wu-flex wu-items-center wu-space-x-1">
+								<span>{{ addon.active_installs }}+ <?php esc_html_e('installs', 'multisite-ultimate'); ?></span>
+							</div>
+						</div>
 
+						<div class="wu-text-right wu-space-y-1">
+							<div v-if="addon.average_rating > 0" class="wu-flex wu-items-center wu-space-x-1">
+								<div class="wu-flex wu-text-yellow-400">
+									<span v-for="star in 5" :key="star" 
+										:class="star <= Math.round(addon.average_rating) ? 'wu-text-yellow-400' : 'wu-text-gray-300'">
+										★
+									</span>
+								</div>
+								<span v-if="addon.review_count" class="wu-text-gray-500">({{ addon.review_count }})</span>
+							</div>
+
+						</div>
+					</div>
+					
+					<div class="wu-flex wu-items-center wu-justify-between wu-space-x-3">
+						<div>
+								<span v-if="addon.prices.price <= 0" class="wu-inline-flex wu-items-center wu-px-2 wu-py-1 wu-text-xs wu-font-medium wu-text-green-800 wu-bg-green-100 wu-rounded">
+									<?php esc_html_e('Free', 'multisite-ultimate'); ?>
+								</span>
+								<span v-else class="wu-inline-flex wu-items-center wu-px-2 wu-py-1 wu-text-xs wu-font-medium wu-text-blue-800 wu-bg-blue-100 wu-rounded">
+									<span v-html="addon.price_html"></span>
+								</span>
+						</div>
+						<button 
+							v-if="addon.installed"
+							type="button" 
+							class="wu-px-4 wu-py-2 wu-text-sm wu-font-medium wu-text-gray-500 wu-bg-gray-100 wu-border wu-border-gray-300 wu-rounded-md wu-cursor-not-allowed"
+							disabled
+						>
+							<span class="dashicons-wu-check wu-mr-1"></span>
+							<?php esc_html_e('Installed', 'multisite-ultimate'); ?>
+						</button>
+						<a 
+							v-else-if="(addon.is_purchasable && addon.prices.price <= 0) || addon.extensions['wp-update-server-plugin'].download_url"
+							:href="'<?php echo esc_attr($more_info_url); ?>'.replace('ADDON_SLUG', addon.slug)"
+							class="wubox button-primary wu-inline-flex wu-items-center wu-justify-center wu-px-4 wu-py-2 wu-text-sm wu-font-medium wu-text-white wu-bg-blue-600 wu-border wu-border-blue-600 wu-rounded-md hover:wu-bg-blue-700 wu-transition-colors wu-no-underline"
+							:data-title="'Install ' + addon.name"
+						>
+							<?php esc_html_e('Install Now', 'multisite-ultimate'); ?>
+						</a>
+						<a 
+							v-else-if="addon.is_purchasable && addon.prices.price > 0"
+							:href="addon.permalink + addon.add_to_cart.url"
+							class="wu-flex-1 wu-inline-flex wu-items-center wu-justify-center wu-px-4 wu-py-2 wu-text-sm wu-font-medium wu-text-white wu-bg-green-600 wu-border wu-border-green-600 wu-rounded-md hover:wu-bg-green-700 wu-transition-colors wu-no-underline"
+							target="_blank"
+						>
+							<?php esc_html_e('Buy Now', 'multisite-ultimate'); ?>
+						</a>
+						<button 
+							v-else
+							type="button" 
+							class="wu-flex-1 wu-px-4 wu-py-2 wu-text-sm wu-font-medium wu-text-gray-500 wu-bg-gray-100 wu-border wu-border-gray-300 wu-rounded-md wu-cursor-not-allowed"
+							disabled
+						>
+							<?php esc_html_e('Coming Soon', 'multisite-ultimate'); ?>
+						</button>
+						<a
+							:href="'<?php echo esc_attr($more_info_url); ?>'.replace('ADDON_SLUG', addon.slug)"
+							class="wubox wu-px-3 wu-py-2 wu-text-sm wu-font-medium wu-text-blue-600 wu-bg-white wu-border wu-border-blue-600 wu-rounded-md hover:wu-bg-blue-50 wu-transition-colors wu-no-underline"
+							:aria-label="'<?php esc_attr_e('More information about', 'multisite-ultimate'); ?> ' + addon.name"
+							:data-title="addon.name"
+						>
+							<?php esc_html_e('Details', 'multisite-ultimate'); ?>
+						</a>
+					</div>
+
+				</div>
 			</div>
-
-			<div class="theme-overlay"></div>
-
-			<div 
-			v-cloak
-			v-if="! loading && addons_list.length == 0"
-			>
-			<?php
-			echo wu_render_empty_state( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				array(
-					'message'      => __('No add-ons found...', 'wp-ultimo'),
-					'sub_message'  => __('Check the search terms or navigate between categories to see what add-ons we have available.', 'wp-ultimo'),
-					'link_label'   => __('See all add-ons', 'wp-ultimo'),
-					'link_url'     => remove_query_arg('tab'),
-					'link_classes' => '',
-					'link_icon'    => 'dashicons-wu-reply',
-				)
-			);
-			?>
-			</div>
-
 		</div>
 
+		<div 
+			v-cloak
+			v-if="!loading && addons_list.length === 0"
+			class="wu-text-center wu-py-12"
+		>
+			<div class="wu-max-w-md wu-mx-auto">
+				<div class="wu-text-6xl wu-text-gray-400 wu-mb-4">
+					<span class="dashicons dashicons-search"></span>
+				</div>
+				<h3 class="wu-text-lg wu-font-medium wu-text-gray-900 wu-mb-2"><?php esc_html_e('No add-ons found...', 'multisite-ultimate'); ?></h3>
+				<p class="wu-text-sm wu-text-gray-600"><?php esc_html_e('Check the search terms or navigate between categories to see what add-ons we have available.', 'multisite-ultimate'); ?></p>
+			</div>
 		</div>
 
 	</div>
@@ -382,7 +277,5 @@ body .theme-browser .theme .theme-name {
 	 */
 	do_action('wu_page_addon_footer', $page);
 	?>
-
-	</form>
 
 </div>

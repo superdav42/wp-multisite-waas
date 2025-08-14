@@ -1,7 +1,12 @@
 {
+  "version": "2.4.2",
   "name": "multisite-ultimate",
   "title": "Multisite Ultimate",
-  "homepage": "https://wpmultisitewaas.org/",
+  "homepage": "https://multisiteultimate.com/",
+  "authors": [{
+    "name": "David Stone",
+    "email": "david@multisiteultimate.com"
+  }],
   "repository": {
     "type": "git",
     "url": "git://github.com/superdav/wp-multisite-waas.git"
@@ -9,7 +14,9 @@
   "devDependencies": {
     "@wordpress/env": "^10.27.0",
     "clean-css-cli": "^5.6.3",
-    "cypress": "^14.5.3",
+    "cypress": "^14.5.4",
+    "cypress-mailpit": "^1.4.0",
+    "npm-run-all": "^4.1.5",
     "uglify-js": "^3.19.3"
   },
   "config": {
@@ -21,6 +28,7 @@
     "copylibs": "node scripts/copy-libs.js",
     "build": "npm run copylibs && npm run uglify && npm run cleancss && npm run archive",
     "build:dev": "npm run copylibs && npm run uglify && npm run cleancss && npm run makepot",
+    "prearchive": "php encrypt-sectrets.php",
     "archive": "node scripts/archive.js",
     "postarchive": "node scripts/post-archive.js",
     "preuglify": "node scripts/clean-js.js",
@@ -29,10 +37,21 @@
     "cleancss": "node scripts/cleancss.js",
     "makepot": "node scripts/makepot.js",
     "env:start": "wp-env start",
-    "env:clean:tests": "wp-env clean tests",
     "env:stop": "wp-env stop",
-    "cy:open": "npm run env:start && npm run env:clean:tests && npx cypress open",
-    "cy:run": "npm run env:start && npm run env:clean:tests && npx cypress run"
+    "env:clean": "wp-env clean all",
+    "env:destroy": "wp-env destroy all",
+    "env:start:dev": "wp-env start --env=development",
+    "env:start:test": "wp-env start --env=tests",
+    "cy:open:launch:dev": "cypress open -b chrome --config-file cypress.config.dev.js",
+    "cy:run:launch:dev": "cypress run -b chrome --config-file cypress.config.dev.js",
+    "cy:open:launch:test": "cypress open -b chrome --config-file cypress.config.test.js",
+    "cy:run:launch:test": "cypress run -b chrome --config-file cypress.config.test.js",
+    "cy:open:dev": "run-s env:destroy env:start:dev cy:open:launch:dev",
+    "cy:run:dev": "run-s env:destroy env:start:dev cy:run:launch:dev",
+    "cy:open:test": "run-s env:destroy env:start:test cy:open:launch:test",
+    "cy:run:test": "run-s env:destroy env:start:test cy:run:launch:test",
+    "env:run:all": "bash ./bin/docker-up.sh",
+    "env:run:stop": "bash ./bin/docker-down.sh"
   },
   "dependencies": {
     "apexcharts": "^5.2.0",

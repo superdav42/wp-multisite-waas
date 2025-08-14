@@ -215,7 +215,7 @@ final class WP_Ultimo {
 		 */
 		$this->load_admin_pages();
 
-		$this->get_addon_repository();
+		$this->get_addon_repository()->init();
 
 		/*
 		 * Checks Sunrise versions
@@ -587,6 +587,10 @@ final class WP_Ultimo {
 		 */
 		\WP_Ultimo\Compat\General_Compat::get_instance();
 
+		\WP_Ultimo\Compat\Login_WP_Compat::get_instance();
+
+		\WP_Ultimo\Compat\Honeypot_Compat::get_instance();
+
 		/*
 		 * Loads Basic White-labeling
 		 */
@@ -772,7 +776,7 @@ final class WP_Ultimo {
 		 */
 		new WP_Ultimo\Tax\Dashboard_Taxes_Tab();
 
-//		new WP_Ultimo\Admin_Pages\Addons_Admin_Page();
+		new WP_Ultimo\Admin_Pages\Addons_Admin_Page();
 
 		do_action('wp_ultimo_admin_pages');
 	}

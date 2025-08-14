@@ -112,11 +112,11 @@ class Template_Previewer_Customize_Admin_Page extends Customizer_Admin_Page {
 			]
 		);
 
-		$custom_logo_id = Template_Previewer::get_instance()->get_setting('custom_logo');
+		$custom_logo = Template_Previewer::get_instance()->get_setting('custom_logo');
 
-		$custom_logo = wp_get_attachment_image_src($custom_logo_id, 'full');
+		$custom_logo_args = wp_get_attachment_image_src($custom_logo, 'full');
 
-		$custom_logo = $custom_logo ? $custom_logo[0] : false;
+		$custom_logo_url = $custom_logo_args ? $custom_logo_args[0] : false;
 
 		$fields = [
 			'tab'                         => [
@@ -204,8 +204,8 @@ class Template_Previewer_Customize_Admin_Page extends Customizer_Admin_Page {
 				'stacked'           => true,
 				'title'             => __('Custom Logo', 'multisite-ultimate'),
 				'desc'              => __('The logo is displayed on the preview page top-bar.', 'multisite-ultimate'),
-				'value'             => $custom_logo_id,
-				'img'               => $custom_logo,
+				'value'             => $custom_logo,
+				'img'               => $custom_logo_url,
 				'wrapper_html_attr' => [
 					'v-show'  => 'require("tab", "images") && require("use_custom_logo", true)',
 					'v-cloak' => 1,
@@ -330,6 +330,8 @@ class Template_Previewer_Customize_Admin_Page extends Customizer_Admin_Page {
 						$settings_to_save[ $setting ] = wu_string_to_bool($value);
 						break;
 					case 'custom_logo':
+						$settings_to_save[ $setting ] = absint($value);
+						break;
 					case 'logo_url':
 						$settings_to_save[ $setting ] = esc_url_raw($value);
 						break;

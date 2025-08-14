@@ -139,10 +139,16 @@ $has_tax_included = false;
 				<table>
 					<tr>
 						<td class="title">
-							<?php if ($use_custom_logo && $custom_logo) : ?>
-								<?php echo wp_get_attachment_image($custom_logo, 'full', false, array('style' => 'width: 100px; height: auto;')); ?>
-							<?php else : ?>
-								<img width="100" src="<?php echo esc_attr($logo_url); ?>" alt="<?php echo esc_attr(get_network_option(null, 'site_name')); ?>">
+							<?php if ($use_custom_logo && $custom_logo) :
+								$logo_path = get_attached_file($custom_logo);
+								$logo_data = base64_encode(file_get_contents($logo_path));
+								$logo_mime = mime_content_type($logo_path); ?>
+								<img style="max-width:280px; width:auto; max-height:70px;" src="data:<?php echo esc_attr($logo_mime); ?>;base64,<?php echo $logo_data; ?>" alt="<?php echo esc_attr($site_name); ?>">
+							<?php else : 
+								$logo_url = get_network_option(null, 'site_logo');
+								$logo_data = base64_encode(file_get_contents($logo_url));
+								$logo_mime = mime_content_type($logo_url); ?>
+								<img style="max-width:280px; width:auto; max-height:70px;" src="data:<?php echo esc_attr($logo_mime); ?>;base64,<?php echo $logo_data; ?>" alt="<?php echo esc_attr($site_name); ?>">
 							<?php endif; ?>
 						</td>
 
