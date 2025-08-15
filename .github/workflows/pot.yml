@@ -52,6 +52,9 @@ jobs:
             echo "no-changes=false" >> $GITHUB_OUTPUT
           fi
 
+      - name: Ensure POT file is tracked
+        run: git add wp-content/plugins/wp-multisite-waas/lang/multisite-ultimate.pot
+
       - name: Create PR if changed
         if: steps.git-check.outputs.no-changes == 'false'
         run: |
