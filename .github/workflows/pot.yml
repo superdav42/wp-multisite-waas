@@ -39,6 +39,17 @@ jobs:
 
       - name: Start WP Environment
         run: npm run env:start
+    
+      - name: Wait for WordPress to be ready
+        run: |
+          for i in {1..30}; do
+            if curl -s http://localhost:8888 | grep -q "WordPress"; then
+              echo "WordPress is ready";
+              break;
+            fi
+            echo "Waiting for WordPress... ($i/30)";
+            sleep 5;
+          done
 
       - name: Generate POT
         run: >
