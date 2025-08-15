@@ -9,7 +9,6 @@ const wpCliPath = isWindows
   : 'vendor/wp-cli/wp-cli/bin/wp';
 
 const potFile = path.join(__dirname, '..', 'lang', `${pkg.name}.pot`);
-const gitPotFile = potFile.split(path.sep).join('/'); // cross-platform for git
 
 try {
   console.log('Generating POT file...');
@@ -20,32 +19,35 @@ try {
     process.exit(1);
   }
 
-  // Read POT file and ignore POT-Creation-Date
-  const potContents = fs.readFileSync(potFile, 'utf8')
+  // Read the current POT file and ignore POT-Creation-Date
+  const newContents = fs.readFileSync(potFile, 'utf8')
     .split('\n')
     .filter(line => !line.startsWith('POT-Creation-Date:'))
     .join('\n');
 
-  // Write a temporary file for diff comparison
-  const tmpFile = potFile + '.tmp';
-  fs.writeFileSync(tmpFile, potContents.replace(/\r\n/g, '\n'), 'utf8');
+  let oldContents = '';
+  if (fs.existsSync(potFile)) {
+    oldContents = fs.readFileSync(potFile, 'utf8')
+      .split('\n')
+      .filter(line => !line.startsWith('POT-Creation-Date:'))
+      .join('\n');
+  }
 
-  // Check for meaningful changes ignoring POT-Creation-Date
-  const diff = execSync(`git diff --no-index --name-only ${tmpFile} ${gitPotFile}`).toString().trim();
-  fs.unlinkSync(tmpFile); // clean up
-
-  if (diff) {
-    console.log('Meaningful changes detected. Staging POT file...');
-    execSync(`git add ${gitPotFile}`);
-
-    // Check if only POT file changed
-    const staged = execSync('git diff --cached --name-only').toString().trim().split('\n');
-    if (staged.length === 1 && staged[0] === gitPotFile) {
-      console.log('Only POT file changed. Commit aborted. Please include other changes.');
-      process.exit(1); // prevents commit
-    }
-  } else {
+  if (newContents === oldContents) {
+    console.log('Only POT-Creation-Date changed. Reverting file to previous state.');
+    execSync(`git checkout -- ${potFile}`);
     console.log('No meaningful changes in POT file.');
+    process.exit(0);
+  }
+
+  console.log('Meaningful changes detected. Staging POT file...');
+  execSync(`git add ${potFile}`);
+
+  // Check if only POT file changed
+  const staged = execSync('git diff --cached --name-only').toString().trim().split('\n');
+  if (staged.length === 1 && staged[0] === potFile) {
+    console.log('Only POT file changed. Commit aborted. Please include other changes.');
+    process.exit(1);
   }
 
 } catch (err) {
