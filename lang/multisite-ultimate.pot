@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-07T18:17:42+00:00\n"
+"POT-Creation-Date: 2025-08-15T18:09:12+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: multisite-ultimate\n"
@@ -76,6 +76,82 @@ msgstr ""
 msgid "years"
 msgstr ""
 
+#: inc/admin-pages/class-addons-admin-page.php:187
+msgid "You do not have enough permissions to perform this task."
+msgstr ""
+
+#. translators: %s slug of the addon.
+#: inc/admin-pages/class-addons-admin-page.php:200
+#, php-format
+msgid "Unable to download update addon. User does not have permission to install %s"
+msgstr ""
+
+#: inc/admin-pages/class-addons-admin-page.php:209
+msgid "You are trying to download an add-on from an insecure URL"
+msgstr ""
+
+#: inc/admin-pages/class-addons-admin-page.php:270
+#: inc/admin-pages/class-addons-admin-page.php:450
+msgid "All Add-ons"
+msgstr ""
+
+#: inc/admin-pages/class-addons-admin-page.php:352
+#: inc/admin-pages/class-addons-admin-page.php:363
+#: views/base/settings.php:188
+msgid "Add-ons"
+msgstr ""
+
+#: inc/admin-pages/class-addons-admin-page.php:454
+#: inc/installers/class-default-content-installer.php:279
+msgid "Premium"
+msgstr ""
+
+#: inc/admin-pages/class-addons-admin-page.php:458
+#: inc/admin-pages/class-product-edit-admin-page.php:297
+#: inc/installers/class-default-content-installer.php:259
+#: inc/list-tables/class-membership-list-table-widget.php:166
+#: inc/list-tables/class-membership-list-table.php:129
+#: inc/list-tables/class-payment-list-table.php:218
+#: inc/list-tables/class-product-list-table.php:136
+#: inc/managers/class-gateway-manager.php:404
+#: views/base/addons.php:203
+msgid "Free"
+msgstr ""
+
+#: inc/admin-pages/class-addons-admin-page.php:462
+msgid "Gateways"
+msgstr ""
+
+#: inc/admin-pages/class-addons-admin-page.php:466
+msgid "Growth & Scaling"
+msgstr ""
+
+#: inc/admin-pages/class-addons-admin-page.php:470
+#: inc/class-settings.php:1460
+#: inc/class-settings.php:1461
+msgid "Integrations"
+msgstr ""
+
+#: inc/admin-pages/class-addons-admin-page.php:474
+msgid "Customization"
+msgstr ""
+
+#: inc/admin-pages/class-addons-admin-page.php:478
+msgid "Admin Themes"
+msgstr ""
+
+#: inc/admin-pages/class-addons-admin-page.php:482
+msgid "Monetization"
+msgstr ""
+
+#: inc/admin-pages/class-addons-admin-page.php:486
+msgid "Migrators"
+msgstr ""
+
+#: inc/admin-pages/class-addons-admin-page.php:490
+msgid "Marketplace"
+msgstr ""
+
 #: inc/admin-pages/class-base-admin-page.php:629
 msgid "Documentation"
 msgstr ""
@@ -102,8 +178,8 @@ msgstr ""
 #: inc/admin-pages/class-base-customer-facing-admin-page.php:160
 #: inc/admin-pages/class-template-previewer-customize-admin-page.php:290
 #: inc/ui/class-base-element.php:844
-#: inc/ui/class-billing-info-element.php:339
-#: inc/ui/class-current-site-element.php:436
+#: inc/ui/class-billing-info-element.php:345
+#: inc/ui/class-current-site-element.php:442
 msgid "Save Changes"
 msgstr ""
 
@@ -1551,6 +1627,7 @@ msgstr ""
 #: inc/admin-pages/class-site-edit-admin-page.php:339
 #: inc/checkout/signup-fields/field-templates/class-base-field-template.php:94
 #: inc/ui/class-site-maintenance-element.php:147
+#: views/base/addons/details.php:43
 #: views/checkout/templates/order-summary/simple.php:27
 #: views/shortcodes/shortcodes.php:50
 msgid "Description"
@@ -1581,6 +1658,7 @@ msgstr ""
 msgid "This discount code was used %d times."
 msgstr ""
 
+#. translators: %d is the number of times the coupon was used.
 #: inc/admin-pages/class-discount-code-edit-admin-page.php:126
 msgid "The number of times that this discount code was used so far."
 msgstr ""
@@ -1683,7 +1761,7 @@ msgstr ""
 #: inc/admin-pages/class-discount-code-edit-admin-page.php:284
 #: inc/list-tables/class-line-item-list-table.php:172
 #: inc/list-tables/class-payment-line-item-list-table.php:94
-#: views/invoice/template.php:219
+#: views/invoice/template.php:225
 msgid "Discount"
 msgstr ""
 
@@ -3001,6 +3079,7 @@ msgstr ""
 msgid "E.g. %s"
 msgstr ""
 
+#. translators: %s is a price placeholder value.
 #: inc/admin-pages/class-membership-edit-admin-page.php:627
 msgid "The initial amount collected on the first payment."
 msgstr ""
@@ -3569,7 +3648,7 @@ msgstr ""
 #: views/emails/admin/payment-received.php:38
 #: views/emails/customer/payment-received.php:39
 #: views/emails/customer/renewal-payment-created.php:39
-#: views/invoice/template.php:227
+#: views/invoice/template.php:233
 #: views/payments/tax-details.php:25
 msgid "Total"
 msgstr ""
@@ -3740,7 +3819,7 @@ msgstr ""
 #: views/emails/admin/payment-received.php:32
 #: views/emails/customer/payment-received.php:33
 #: views/emails/customer/renewal-payment-created.php:33
-#: views/invoice/template.php:223
+#: views/invoice/template.php:229
 msgid "Tax"
 msgstr ""
 
@@ -3811,16 +3890,6 @@ msgstr ""
 msgid "Products can be free, paid, or require further contact for pricing."
 msgstr ""
 
-#: inc/admin-pages/class-product-edit-admin-page.php:297
-#: inc/installers/class-default-content-installer.php:259
-#: inc/list-tables/class-membership-list-table-widget.php:166
-#: inc/list-tables/class-membership-list-table.php:129
-#: inc/list-tables/class-payment-list-table.php:218
-#: inc/list-tables/class-product-list-table.php:136
-#: inc/managers/class-gateway-manager.php:404
-msgid "Free"
-msgstr ""
-
 #: inc/admin-pages/class-product-edit-admin-page.php:298
 #: inc/models/class-product.php:627
 msgid "Contact Us"
@@ -3864,7 +3933,7 @@ msgstr ""
 #: inc/list-tables/class-membership-list-table-widget.php:265
 #: inc/list-tables/class-membership-list-table.php:176
 #: inc/list-tables/class-product-list-table.php:256
-#: views/invoice/template.php:215
+#: views/invoice/template.php:221
 msgid "Price"
 msgstr ""
 
@@ -4471,7 +4540,7 @@ msgid "Site ID"
 msgstr ""
 
 #: inc/admin-pages/class-site-edit-admin-page.php:344
-#: inc/ui/class-current-site-element.php:423
+#: inc/ui/class-current-site-element.php:429
 msgid "Site Description"
 msgstr ""
 
@@ -4593,7 +4662,7 @@ msgstr ""
 #: inc/admin-pages/class-site-edit-admin-page.php:620
 #: inc/admin-pages/class-site-edit-admin-page.php:631
 #: inc/admin-pages/class-site-edit-admin-page.php:670
-#: inc/ui/class-current-site-element.php:363
+#: inc/ui/class-current-site-element.php:369
 msgid "Edit Site"
 msgstr ""
 
@@ -4611,7 +4680,7 @@ msgstr ""
 #: inc/admin-pages/class-site-edit-admin-page.php:650
 #: inc/list-tables/class-customers-site-list-table.php:79
 #: inc/list-tables/class-memberships-site-list-table.php:65
-#: inc/ui/class-current-site-element.php:357
+#: inc/ui/class-current-site-element.php:363
 #: views/dashboard-widgets/my-sites.php:111
 msgid "Visit Site"
 msgstr ""
@@ -4678,7 +4747,7 @@ msgstr ""
 #: inc/models/class-checkout-form.php:584
 #: inc/models/class-checkout-form.php:676
 #: inc/models/class-checkout-form.php:1524
-#: inc/ui/class-current-site-element.php:414
+#: inc/ui/class-current-site-element.php:420
 msgid "Site Title"
 msgstr ""
 
@@ -4879,7 +4948,7 @@ msgstr ""
 
 #: inc/admin-pages/class-template-previewer-customize-admin-page.php:154
 #: inc/installers/class-migrator.php:918
-#: inc/ui/class-template-previewer.php:418
+#: inc/ui/class-template-previewer.php:379
 msgid "Use this Template"
 msgstr ""
 
@@ -5114,6 +5183,7 @@ msgstr ""
 msgid "This webhook was triggered %d time(s)."
 msgstr ""
 
+#. translators: %d is the number of times that this webhook was triggered.
 #: inc/admin-pages/class-webhook-edit-admin-page.php:244
 msgid "The number of times that this webhook was triggered so far. It includes test runs."
 msgstr ""
@@ -6677,6 +6747,7 @@ msgstr ""
 msgid "Free!"
 msgstr ""
 
+#. translators: %s is the setup fee wrapped in strong tag.
 #: inc/checkout/class-legacy-checkout.php:262
 #: inc/list-tables/class-product-list-table.php:182
 #: inc/traits/trait-wp-ultimo-plan-deprecated.php:152
@@ -7546,6 +7617,7 @@ msgstr ""
 #: inc/checkout/signup-fields/field-templates/pricing-table/class-legacy-pricing-table-field-template.php:67
 #: inc/checkout/signup-fields/field-templates/steps/class-legacy-steps-field-template.php:67
 #: inc/checkout/signup-fields/field-templates/template-selection/class-legacy-template-selection-field-template.php:56
+#: views/base/addons.php:144
 msgid "Legacy"
 msgstr ""
 
@@ -7572,15 +7644,21 @@ msgstr ""
 msgid "Minimal"
 msgstr ""
 
-#: inc/class-addon-repository.php:155
+#. translators: %s the url for login.
+#: inc/class-addon-repository.php:158
+#, php-format
+msgid "You must <a href=\"%s\" target=\"_parent\">Login</a> first."
+msgstr ""
+
+#: inc/class-addon-repository.php:177
 msgid "Failed to connect to the update server. Please try again later."
 msgstr ""
 
-#: inc/class-addon-repository.php:192
+#: inc/class-addon-repository.php:223
 msgid "Successfully connected your site to MultisiteUltimate.com."
 msgstr ""
 
-#: inc/class-addon-repository.php:200
+#: inc/class-addon-repository.php:231
 msgid "Failed to authenticate with MultisiteUltimate.com."
 msgstr ""
 
@@ -7720,7 +7798,7 @@ msgstr ""
 #: inc/models/class-checkout-form.php:1223
 #: inc/models/class-checkout-form.php:1417
 #: views/dashboard-widgets/billing-info.php:105
-#: views/invoice/template.php:285
+#: views/invoice/template.php:291
 msgid "Payment Method"
 msgstr ""
 
@@ -7890,6 +7968,7 @@ msgstr ""
 msgid "Multisite Ultimate needs to be network active to run properly. You can \"Network Activate\" it %s"
 msgstr ""
 
+#. translators: %s is a placeholder for the Network Admin plugins page URL with link text.
 #: inc/class-requirements.php:346
 msgid "here"
 msgstr ""
@@ -7916,6 +7995,7 @@ msgstr ""
 msgid "%s ago"
 msgstr ""
 
+#. translators: %s is a relative past date.
 #: inc/class-scripts.php:308
 msgid "a few seconds"
 msgstr ""
@@ -7926,6 +8006,7 @@ msgstr ""
 msgid "%d seconds"
 msgstr ""
 
+#. translators: %s is the number of seconds.
 #: inc/class-scripts.php:311
 msgid "a minute"
 msgstr ""
@@ -7936,6 +8017,7 @@ msgstr ""
 msgid "%d minutes"
 msgstr ""
 
+#. translators: %s is the number of minutes.
 #: inc/class-scripts.php:314
 msgid "an hour"
 msgstr ""
@@ -7946,6 +8028,7 @@ msgstr ""
 msgid "%d hours"
 msgstr ""
 
+#. translators: %s is the number of hours.
 #: inc/class-scripts.php:317
 msgid "a day"
 msgstr ""
@@ -7956,6 +8039,7 @@ msgstr ""
 msgid "%d days"
 msgstr ""
 
+#. translators: %s is the number of days.
 #: inc/class-scripts.php:320
 msgid "a week"
 msgstr ""
@@ -7966,6 +8050,7 @@ msgstr ""
 msgid "%d weeks"
 msgstr ""
 
+#. translators: %s is the number of weeks.
 #: inc/class-scripts.php:323
 msgid "a month"
 msgstr ""
@@ -7976,6 +8061,7 @@ msgstr ""
 msgid "%d months"
 msgstr ""
 
+#. translators: %s is the number of months.
 #: inc/class-scripts.php:326
 msgid "a year"
 msgstr ""
@@ -8537,11 +8623,6 @@ msgstr ""
 msgid "Single Sign-On"
 msgstr ""
 
-#: inc/class-settings.php:1460
-#: inc/class-settings.php:1461
-msgid "Integrations"
-msgstr ""
-
 #: inc/class-settings.php:1470
 msgid "Hosting or Panel Providers"
 msgstr ""
@@ -8649,12 +8730,12 @@ msgid "Remove all saved data for Multisite Ultimate when the plugin is uninstall
 msgstr ""
 
 #. translators: the placeholder is an error message
-#: inc/class-sunrise.php:275
+#: inc/class-sunrise.php:287
 #, php-format
 msgid "Sunrise copy failed: %s"
 msgstr ""
 
-#: inc/class-sunrise.php:278
+#: inc/class-sunrise.php:290
 msgid "Sunrise upgrade attempt succeeded."
 msgstr ""
 
@@ -8765,6 +8846,10 @@ msgstr ""
 msgid "Plans"
 msgstr ""
 
+#: inc/compat/class-login-wp-compat.php:45
+msgid "<strong>Error:</strong> Incorrect username or password."
+msgstr ""
+
 #: inc/compat/class-multiple-accounts-compat.php:263
 #: inc/compat/class-multiple-accounts-compat.php:291
 msgid "Multiple Accounts"
@@ -8795,6 +8880,7 @@ msgstr ""
 msgid "%s accounts using this email."
 msgstr ""
 
+#. translators: the %d is the account count for that email address.
 #: inc/compat/class-multiple-accounts-compat.php:324
 msgid "See all"
 msgstr ""
@@ -14214,10 +14300,12 @@ msgstr ""
 msgid "Adjustment %s"
 msgstr ""
 
+#. translators: %s is the type of adjustment (credit or debit).
 #: inc/functions/membership.php:384
 msgid "Amount adjustment based on previous deal."
 msgstr ""
 
+#. translators: %s is the type of adjustment (credit or debit).
 #: inc/functions/membership.php:411
 msgid "Initial amount adjustment based on previous deal."
 msgstr ""
@@ -14569,8 +14657,8 @@ msgstr ""
 #: inc/gateways/class-paypal-gateway.php:783
 #: inc/list-tables/class-base-list-table.php:657
 #: inc/managers/class-form-manager.php:499
-#: inc/ui/class-billing-info-element.php:378
-#: inc/ui/class-current-site-element.php:480
+#: inc/ui/class-billing-info-element.php:384
+#: inc/ui/class-current-site-element.php:486
 #: inc/ui/class-site-actions-element.php:691
 msgid "Something went wrong."
 msgstr ""
@@ -14917,6 +15005,16 @@ msgstr ""
 msgid "or"
 msgstr ""
 
+#. translators: %1$s: HTTP response code, %2$s: response body
+#: inc/helpers/class-woocommerce-api-client.php:91
+#, php-format
+msgid "WooCommerce API request failed with status %1$s: %2$s"
+msgstr ""
+
+#: inc/helpers/class-woocommerce-api-client.php:103
+msgid "Failed to decode API response JSON"
+msgstr ""
+
 #. translators: %s is the file name.
 #: inc/helpers/class-wp-config.php:40
 #: inc/helpers/class-wp-config.php:183
@@ -15070,10 +15168,6 @@ msgstr ""
 
 #: inc/installers/class-default-content-installer.php:260
 msgid "This is an example of a free plan."
-msgstr ""
-
-#: inc/installers/class-default-content-installer.php:279
-msgid "Premium"
 msgstr ""
 
 #: inc/installers/class-default-content-installer.php:280
@@ -15680,10 +15774,12 @@ msgstr ""
 msgid "You don't have any %s yet."
 msgstr ""
 
+#. translators: %s name of items in list.
 #: inc/list-tables/class-base-list-table.php:504
 msgid "How about we create a new one?"
 msgstr ""
 
+#. translators: %s name of items in list.
 #: inc/list-tables/class-base-list-table.php:504
 msgid "...but you will see them here once they get created."
 msgstr ""
@@ -17118,11 +17214,15 @@ msgstr ""
 msgid "The customer will be able to create %s users(s) of this user role."
 msgstr ""
 
+#. translators: %s is the user role name.
+#. translators: %s is the post type name.
 #: inc/managers/class-limitation-manager.php:597
 #: inc/managers/class-limitation-manager.php:665
 msgid "unlimited"
 msgstr ""
 
+#. translators: %s is the user role name.
+#. translators: %s is the post type name.
 #: inc/managers/class-limitation-manager.php:597
 #: inc/managers/class-limitation-manager.php:665
 msgid "no"
@@ -17766,6 +17866,14 @@ msgstr ""
 msgid "Leave blank to hide the title completely."
 msgstr ""
 
+#: inc/ui/class-account-summary-element.php:299
+#: inc/ui/class-billing-info-element.php:277
+#: inc/ui/class-current-site-element.php:357
+#: inc/ui/class-invoices-element.php:279
+#: inc/ui/class-limits-element.php:245
+msgid "setup() or setup_preview() must be called before output()."
+msgstr ""
+
 #: inc/ui/class-base-element.php:747
 msgid "Result"
 msgstr ""
@@ -17821,11 +17929,11 @@ msgstr ""
 msgid "Adds a checkout form block to the page."
 msgstr ""
 
-#: inc/ui/class-billing-info-element.php:328
+#: inc/ui/class-billing-info-element.php:334
 msgid "Your Address"
 msgstr ""
 
-#: inc/ui/class-billing-info-element.php:329
+#: inc/ui/class-billing-info-element.php:335
 msgid "Enter your billing address here. This info will be used on your invoices."
 msgstr ""
 
@@ -18058,7 +18166,7 @@ msgstr ""
 msgid "Toggle to show/hide the WP admin link on the element."
 msgstr ""
 
-#: inc/ui/class-current-site-element.php:377
+#: inc/ui/class-current-site-element.php:383
 #: views/dashboard-widgets/thank-you.php:317
 #: views/emails/admin/domain-created.php:54
 #: views/emails/admin/domain-created.php:91
@@ -18073,15 +18181,15 @@ msgstr ""
 msgid "Admin Panel"
 msgstr ""
 
-#: inc/ui/class-current-site-element.php:415
+#: inc/ui/class-current-site-element.php:421
 msgid "e.g. My Awesome Site"
 msgstr ""
 
-#: inc/ui/class-current-site-element.php:424
+#: inc/ui/class-current-site-element.php:430
 msgid "e.g. My Awesome Site description."
 msgstr ""
 
-#: inc/ui/class-current-site-element.php:488
+#: inc/ui/class-current-site-element.php:494
 msgid "Site title can not be empty."
 msgstr ""
 
@@ -18654,7 +18762,7 @@ msgstr ""
 msgid "Put your site on maintenance mode. When activated, the front-end will only be accessible to logged users."
 msgstr ""
 
-#: inc/ui/class-template-previewer.php:287
+#: inc/ui/class-template-previewer.php:259
 msgid "This template is not available"
 msgstr ""
 
@@ -18781,6 +18889,150 @@ msgstr ""
 #: views/admin-pages/fields/field-text-edit.php:118
 #: views/email/widget-placeholders.php:49
 msgid "Copy"
+msgstr ""
+
+#: views/base/addons.php:57
+#: views/base/settings.php:58
+msgid "Settings successfully saved."
+msgstr ""
+
+#. translators: %1$s: the current user display name, %2$s: their password.
+#: views/base/addons.php:64
+#, php-format
+msgid "Connected to MultisiteUltimate.com as %1$s (%2$s)."
+msgstr ""
+
+#. translators: %1$s: the current user display name, %2$s: their password.
+#: views/base/addons.php:64
+msgid "Disconnect your site"
+msgstr ""
+
+#. translators: %1$s: the current user display name, %2$s: their password.
+#: views/base/addons.php:64
+msgid "Disconnect"
+msgstr ""
+
+#: views/base/addons.php:68
+msgid "Multisite Ultimate might be at risk because it’s unable to automatically update add-ons. Please complete the connection to get updates and streamlined support."
+msgstr ""
+
+#: views/base/addons.php:72
+msgid "Connect your site"
+msgstr ""
+
+#: views/base/addons.php:72
+msgid "Connect your site to MultisiteUltimate.com"
+msgstr ""
+
+#: views/base/addons.php:84
+msgid "add-ons"
+msgstr ""
+
+#: views/base/addons.php:107
+msgid "Search add-ons..."
+msgstr ""
+
+#: views/base/addons.php:121
+msgid "Loading add-ons..."
+msgstr ""
+
+#: views/base/addons.php:135
+#: views/base/addons.php:216
+#: views/wizards/setup/requirements_table.php:22
+msgid "Installed"
+msgstr ""
+
+#: views/base/addons.php:138
+msgid "Beta"
+msgstr ""
+
+#: views/base/addons.php:141
+#: views/base/addons.php:240
+msgid "Coming Soon"
+msgstr ""
+
+#: views/base/addons.php:163
+msgid "By"
+msgstr ""
+
+#: views/base/addons.php:178
+msgid "Updated:"
+msgstr ""
+
+#: views/base/addons.php:182
+msgid "installs"
+msgstr ""
+
+#: views/base/addons.php:224
+#: views/base/addons/details.php:153
+msgid "Install Now"
+msgstr ""
+
+#: views/base/addons.php:232
+msgid "Buy Now"
+msgstr ""
+
+#: views/base/addons.php:245
+msgid "More information about"
+msgstr ""
+
+#: views/base/addons.php:248
+#: views/dashboard-widgets/current-membership.php:290
+msgid "Details"
+msgstr ""
+
+#: views/base/addons.php:265
+msgid "No add-ons found..."
+msgstr ""
+
+#: views/base/addons.php:266
+msgid "Check the search terms or navigate between categories to see what add-ons we have available."
+msgstr ""
+
+#: views/base/addons/details.php:50
+msgid "FAQ"
+msgstr ""
+
+#: views/base/addons/details.php:56
+msgid "Changelog"
+msgstr ""
+
+#: views/base/addons/details.php:62
+msgid "Screenshots"
+msgstr ""
+
+#: views/base/addons/details.php:68
+msgid "Reviews"
+msgstr ""
+
+#: views/base/addons/details.php:82
+msgid "Author:"
+msgstr ""
+
+#: views/base/addons/details.php:89
+msgid "Requires Multisite Ultimate Version:"
+msgstr ""
+
+#. translators: %s minimun required version number.
+#: views/base/addons/details.php:91
+#, php-format
+msgid "%s or higher"
+msgstr ""
+
+#: views/base/addons/details.php:98
+msgid "See on the Official Site »"
+msgstr ""
+
+#: views/base/addons/details.php:125
+msgid "This is a Premium Add-on."
+msgstr ""
+
+#: views/base/addons/details.php:138
+msgid "Already Installed"
+msgstr ""
+
+#: views/base/addons/details.php:162
+msgid "Purchase"
 msgstr ""
 
 #: views/base/checkout-forms/js-templates.php:28
@@ -19019,14 +19271,6 @@ msgstr ""
 #: views/base/sites/grid-item.php:54
 #: views/base/sites/grid-item.php:65
 msgid "Select Site"
-msgstr ""
-
-#: views/base/settings.php:58
-msgid "Settings successfully saved."
-msgstr ""
-
-#: views/base/settings.php:188
-msgid "Add-ons"
 msgstr ""
 
 #: views/base/sites/grid-item.php:57
@@ -19448,10 +19692,6 @@ msgstr ""
 msgid "Product Details"
 msgstr ""
 
-#: views/dashboard-widgets/current-membership.php:290
-msgid "Details"
-msgstr ""
-
 #. Translators: %s is the name of the product being canceled.
 #: views/dashboard-widgets/current-membership.php:297
 #, php-format
@@ -19774,37 +20014,37 @@ msgstr ""
 msgid "Target %s"
 msgstr ""
 
-#: views/invoice/template.php:150
+#: views/invoice/template.php:156
 msgid "Invoice #"
 msgstr ""
 
 #. translators: %s is the payment creation date
-#: views/invoice/template.php:154
+#: views/invoice/template.php:160
 #, php-format
 msgid "Created: %s"
 msgstr ""
 
-#: views/invoice/template.php:156
+#: views/invoice/template.php:162
 msgid "Due on Receipt"
 msgstr ""
 
-#: views/invoice/template.php:192
+#: views/invoice/template.php:198
 msgid "Bill to"
 msgstr ""
 
-#: views/invoice/template.php:211
+#: views/invoice/template.php:217
 #: views/wizards/setup/installation_steps.php:16
 #: views/wizards/setup/requirements_table.php:19
 #: views/wizards/setup/requirements_table.php:60
 msgid "Item"
 msgstr ""
 
-#: views/invoice/template.php:271
+#: views/invoice/template.php:277
 msgid "Tax included in price."
 msgstr ""
 
 #. translators: %s is the total amount in currency format.
-#: views/invoice/template.php:277
+#: views/invoice/template.php:283
 #, php-format
 msgid "Total: %s"
 msgstr ""
@@ -20086,11 +20326,11 @@ msgid "View Tablet Portrait (768x1024)"
 msgstr ""
 
 #: views/ui/template-previewer.php:135
-msgid "View Mobile Landscape (480x320)"
+msgid "View Mobile Landscape (800x360)"
 msgstr ""
 
 #: views/ui/template-previewer.php:137
-msgid "View Mobile Portrait (320x480)"
+msgid "View Mobile Portrait (360x800)"
 msgstr ""
 
 #: views/ui/template-previewer.php:197
@@ -20481,10 +20721,6 @@ msgstr ""
 
 #: views/wizards/setup/requirements_table.php:21
 msgid "Recommended"
-msgstr ""
-
-#: views/wizards/setup/requirements_table.php:22
-msgid "Installed"
 msgstr ""
 
 #. translators: %s is the requirement version
