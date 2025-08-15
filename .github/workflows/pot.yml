@@ -41,7 +41,7 @@ jobs:
         run: npm run env:start
 
       - name: Generate POT
-        run: wp-env run --env-cwd='wp-content/plugins/wp-multisite-waas' wp i18n make-pot . lang/multisite-ultimate.pot --slug=multisite-ultimate --exclude=node_modules,tests,docs,assets/js/lib
+        run: npx wp-env run --env-cwd='wp-content/plugins/wp-multisite-waas' wp i18n make-pot . lang/multisite-ultimate.pot --slug=multisite-ultimate --exclude=node_modules,tests,docs,assets/js/lib
 
       - name: Stop WP Environment
         run: npm run env:stop
