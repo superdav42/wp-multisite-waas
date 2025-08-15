@@ -66,7 +66,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if git diff --exit-code wp-content/plugins/wp-multisite-waas/lang/multisite-ultimate.pot; then
+          if git diff --exit-code -- wp-content/plugins/wp-multisite-waas/lang/multisite-ultimate.pot; then
             echo "no-changes=true" >> $GITHUB_OUTPUT
           else
             echo "no-changes=false" >> $GITHUB_OUTPUT
