@@ -179,6 +179,12 @@ We recommend running this in a staging environment before updating your producti
 
 ## 📝 Recent Changes
 
+### Version [2.4.3] - Released on 2025-08-15
+- Fixed: Bug in Slim SEO plugin
+- New: Addon Marketplace
+- Fixed: Custom logo not showing on emails and invoices
+- Fixed: Limitations failing to load
+
 ### Version [2.4.2] - Released on 2025-08-07
 - Fixed: Authentication of the API
 - Fixed: Saving checkout fields
