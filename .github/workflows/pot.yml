@@ -52,7 +52,7 @@ jobs:
           done
 
       - name: Generate POT
-        run: >
+        run: |
           npx wp-env run cli --env-cwd='wp-content/plugins/wp-multisite-waas' \
           wp i18n make-pot . lang/multisite-ultimate.pot \
           --slug=multisite-ultimate \
