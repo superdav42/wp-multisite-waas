@@ -104,7 +104,7 @@ class Limitations {
 	 * @since 2.0.0
 	 * @return array
 	 */
-	public function __serialize() { // phpcs:ignore
+	public function __serialize() {
 
 		return $this->to_array();
 	}
@@ -118,8 +118,7 @@ class Limitations {
 	 * @param array $modules_data Array of modules data.
 	 * @return void
 	 */
-	public function __unserialize($modules_data) { // phpcs:ignore
-
+	public function __unserialize($modules_data) {
 		$this->build_modules($modules_data);
 	}
 
@@ -313,7 +312,7 @@ class Limitations {
 			} else {
 				$original_value = wu_get_isset($array1, $key);
 
-				// If the value is 0 or '' it can be a unlimited value
+				// If the value is 0 or '' it can be an unlimited value
 				$is_unlimited = (is_numeric($value) || '' === $value) && (int) $value === 0;
 
 				if ($should_sum && ('' === $original_value || 0 === $original_value)) {
@@ -498,6 +497,7 @@ class Limitations {
 			'site_templates'     => \WP_Ultimo\Limitations\Limit_Site_Templates::class,
 			'domain_mapping'     => \WP_Ultimo\Limitations\Limit_Domain_Mapping::class,
 			'customer_user_role' => \WP_Ultimo\Limitations\Limit_Customer_User_Role::class,
+			'fluent_forms'       => \WP_Ultimo\Limitations\Limit_Fluent_Forms::class,
 		];
 
 		return apply_filters('wu_limit_classes', $classes);

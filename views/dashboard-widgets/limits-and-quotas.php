@@ -139,6 +139,77 @@ endforeach;
 
 		<?php endif; ?>
 
+		<?php if ($fluent_forms_available && $fluent_forms_limits && $fluent_forms_limits->is_enabled()) : ?>
+
+			<?php
+			// Form types to display
+			$form_types = [
+				'forms' => [
+					'label' => __('Forms', 'multisite-ultimate'),
+					'color' => 'wu-bg-blue-500',
+				],
+				'conversational_forms' => [
+					'label' => __('Conversational Forms', 'multisite-ultimate'),
+					'color' => 'wu-bg-purple-500',
+				],
+			];
+
+			$form_index = $index ?? count($post_types);
+			?>
+
+			<?php foreach ($form_types as $form_type_slug => $form_type_data) : ?>
+
+				<?php
+				// Check if this form type should be displayed based on settings
+				if (is_array($items_to_display) && ! in_array($form_type_slug, $items_to_display, true)) {
+					continue;
+				}
+				?>
+
+				<?php if ($fluent_forms_limits->{$form_type_slug}->enabled) : ?>
+
+					<?php
+					// Get form count for this type
+					$form_count = \WP_Ultimo\Limitations\Limit_Fluent_Forms::get_form_count($form_type_slug);
+
+					// Calculate width for progress bar
+					if (empty($fluent_forms_limits->{$form_type_slug}->number)) { // unlimited forms
+						$width = 5;
+					} else {
+						$width = ($form_count / $fluent_forms_limits->{$form_type_slug}->number * 100);
+					}
+
+					if ($width > 100) {
+						$width = 100;
+					}
+					?>
+
+					<li class="wu-py-2 wu-m-0">
+
+						<span class="">
+							<?php echo esc_html($form_type_data['label']); ?>
+						</span>
+
+						<span class="wu-w-full wu-bg-gray-200 wu-rounded-full wu-h-1 wu-block wu-my-2">
+							<span class="<?php echo esc_attr($form_type_data['color']); ?> wu-rounded-full wu-h-1 wu-block wu-my-1" style="width: <?php echo esc_attr($width); ?>%;"></span>
+						</span>
+
+						<div class="wu-text-xs wu-text-gray-600 wu-align-middle">
+							<?php echo esc_html($form_count); ?>
+							/
+							<?php echo empty($fluent_forms_limits->{$form_type_slug}->number) ? esc_html__('Unlimited', 'multisite-ultimate') : esc_html($fluent_forms_limits->{$form_type_slug}->number); ?>
+						</div>
+
+					</li>
+
+				<?php endif; ?>
+
+				<?php ++$form_index; ?>
+
+			<?php endforeach; ?>
+
+		<?php endif; ?>
+
 	</ul>
 
 	</div>

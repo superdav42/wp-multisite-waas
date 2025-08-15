@@ -47,6 +47,8 @@ class Limitation_Manager {
 
 		add_action('plugins_loaded', [$this, 'register_forms']);
 
+		add_action('plugins_loaded', [$this, 'register_limit_modules']);
+
 		add_action('wu_async_handle_plugins', [$this, 'async_handle_plugins'], 10, 5);
 
 		add_action('wu_async_switch_theme', [$this, 'async_switch_theme'], 10, 2);
@@ -125,6 +127,21 @@ class Limitation_Manager {
 				'handler' => [$this, 'handle_confirm_limitations_reset'],
 			]
 		);
+	}
+
+	/**
+	 * Register custom limit modules.
+	 *
+	 * @since 2.0.0
+	 * @return void
+	 */
+	public function register_limit_modules(): void {
+
+		// Register Fluent Forms limitations
+		wu_register_limit_module('fluent_forms', \WP_Ultimo\Limitations\Limit_Fluent_Forms::class);
+
+		// Initialize the Fluent Forms limits handler
+		\WP_Ultimo\Limits\Fluent_Forms_Limits::get_instance();
 	}
 
 	/**
@@ -519,6 +536,45 @@ class Limitation_Manager {
 			],
 		];
 
+		// Add Fluent Forms limitations if the plugin is available
+		if (\WP_Ultimo\Limitations\Limit_Fluent_Forms::is_fluent_forms_available()) {
+			$sections['fluent_forms'] = [
+				'title'  => __('Fluent Forms', 'multisite-ultimate'),
+				'desc'   => __('Control limitations imposed to the number of forms allowed for memberships attached to this product.', 'multisite-ultimate'),
+				'icon'   => 'dashicons-wu-folder-text',
+				'v-show' => "get_state_value('product_type', 'none') !== 'service'",
+				'state'  => [
+					'limit_fluent_forms' => $object_model->get_limitations()->fluent_forms->is_enabled(),
+				],
+				'fields' => [
+					'modules[fluent_forms][enabled]' => [
+						'type'      => 'toggle',
+						'title'     => __('Limit Fluent Forms', 'multisite-ultimate'),
+						'desc'      => __('Toggle this option to set limits to each form type.', 'multisite-ultimate'),
+						'value'     => false,
+						'html_attr' => [
+							'v-model' => 'limit_fluent_forms',
+						],
+					],
+				],
+			];
+
+			if ('product' !== $object_model->model) {
+				$sections['fluent_forms']['fields']['fluent_forms_overwrite'] = $this->override_notice($object_model->get_limitations(false)->fluent_forms->has_own_enabled());
+			}
+
+			$sections['fluent_forms']['fields']['fluent_forms_note'] = [
+				'type'              => 'note',
+				'desc'              => __('<strong>Note:</strong> Using the fields below you can set form limits for each form type. <br>Toggle the switch to <strong>deactivate</strong> the form type altogether. Leave 0 or blank for unlimited forms.', 'multisite-ultimate'),
+				'wrapper_html_attr' => [
+					'v-show'  => 'limit_fluent_forms',
+					'v-cloak' => '1',
+				],
+			];
+
+			$this->register_fluent_forms_fields($sections, $object_model);
+		}
+
 		$reset_url = wu_get_form_url(
 			'confirm_limitations_reset',
 			[
@@ -702,6 +758,102 @@ class Limitation_Manager {
 						'limit_post_types',
 					]
 				);
+			}
+		}
+	}
+
+	/**
+	 * Register the Fluent Forms fields
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param array                       $sections Sections and fields.
+	 * @param \WP_Ultimo\Models\Limitable $object_model The object being edit.
+	 * @return void
+	 */
+	public function register_fluent_forms_fields(&$sections, $object_model): void {
+
+		// Check if Fluent Forms is available
+		if ( ! \WP_Ultimo\Limitations\Limit_Fluent_Forms::is_fluent_forms_available()) {
+			return;
+		}
+
+		$form_types = [
+			'forms' => [
+				'label' => __('Regular Forms', 'multisite-ultimate'),
+				'desc'  => __('Standard contact forms, registration forms, etc.', 'multisite-ultimate'),
+			],
+			'conversational_forms' => [
+				'label' => __('Conversational Forms', 'multisite-ultimate'),
+				'desc'  => __('Interactive, step-by-step conversational forms.', 'multisite-ultimate'),
+			],
+		];
+
+		$sections['fluent_forms']['state']['form_types'] = [];
+
+		foreach ($form_types as $form_type_slug => $form_type) {
+			$sections['fluent_forms']['state']['form_types'][ $form_type_slug ] = $object_model->get_limitations()->fluent_forms->{$form_type_slug};
+
+			$sections['fluent_forms']['fields'][ "control_{$form_type_slug}" ] = [
+				'type'              => 'group',
+				'title'             => sprintf(__('Limit %s', 'multisite-ultimate'), $form_type['label']),
+				'desc'              => sprintf(
+					__('The customer will be able to create %s form(s) of this type. %s', 'multisite-ultimate'),
+					"{{ form_types['{$form_type_slug}'].enabled ? ( parseInt(form_types['{$form_type_slug}'].number, 10) ? form_types['{$form_type_slug}'].number : '" . __('unlimited', 'multisite-ultimate') . "' ) : '" . __('no', 'multisite-ultimate') . "' }}",
+					$form_type['desc']
+				),
+				'tooltip'           => '',
+				'wrapper_html_attr' => [
+					'v-bind:class' => "!form_types['{$form_type_slug}'].enabled ? 'wu-opacity-75' : ''",
+					'v-show'       => 'limit_fluent_forms',
+					'v-cloak'      => '1',
+				],
+				'fields'            => [
+					"modules[fluent_forms][limit][{$form_type_slug}][number]" => [
+						'type'            => 'number',
+						'placeholder'     => sprintf(__('%s Quota. e.g. 10', 'multisite-ultimate'), $form_type['label']),
+						'min'             => 0,
+						'wrapper_classes' => 'wu-w-full',
+						'html_attr'       => [
+							'v-model'         => "form_types['{$form_type_slug}'].number",
+							'v-bind:readonly' => "!form_types['{$form_type_slug}'].enabled",
+						],
+					],
+					"modules[fluent_forms][limit][{$form_type_slug}][enabled]" => [
+						'type'            => 'toggle',
+						'wrapper_classes' => 'wu-mt-1',
+						'html_attr'       => [
+							'v-model' => "form_types['{$form_type_slug}'].enabled",
+						],
+					],
+				],
+			];
+
+			/*
+			 * Add override notice.
+			 */
+			if ('product' !== $object_model->model) {
+				$sections['fluent_forms']['fields'][ "override_{$form_type_slug}" ] = $this->override_notice(
+					$object_model->get_limitations(false)->fluent_forms->exists($form_type_slug),
+					[
+						'limit_fluent_forms',
+					]
+				);
+			}
+
+			// Add current form count for sites
+			if ($this->get_object_type($object_model) === 'site') {
+				$current_count = \WP_Ultimo\Limitations\Limit_Fluent_Forms::get_form_count($form_type_slug);
+				$sections['fluent_forms']['fields'][ "current_count_{$form_type_slug}" ] = [
+					'type'              => 'text-display',
+					'title'             => sprintf(__('Current %s Count', 'multisite-ultimate'), $form_type['label']),
+					'desc'              => sprintf(__('Current count for %s on this site.', 'multisite-ultimate'), strtolower($form_type['label'])),
+					'display_value'     => sprintf('%d %s', $current_count, strtolower($form_type['label'])),
+					'wrapper_html_attr' => [
+						'v-show'  => 'limit_fluent_forms',
+						'v-cloak' => '1',
+					],
+				];
 			}
 		}
 	}
