@@ -19,6 +19,24 @@ jobs:
         with:
           node-version: 20
 
+      - name: Cache NPM dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-cache
+
+      - name: Install NPM dependencies
+        run: npm ci
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-cache
+
+      - name: Install Composer dependencies
+        run: composer install
+
       - name: Start WP Environment
         run: npm run env:start
 
