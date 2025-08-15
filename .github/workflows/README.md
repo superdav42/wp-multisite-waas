@@ -20,7 +20,7 @@ The `release.yml` workflow automatically builds and releases the plugin when a n
 To create a new release:
 
 1. Update the version number in:
-   - `wp-multisite-waas.php` (the `Version:` header)
+   - `multisite-ultimate.php` (the `Version:` header)
    - `inc/class-wp-ultimo.php` (the `VERSION` class constant)
    - `readme.txt` (the `Stable tag:` field)
    - `package.json` (the `version` field)
