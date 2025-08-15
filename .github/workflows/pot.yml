@@ -14,49 +14,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
         with:
-          node-version: 20
-
-      - name: Cache NPM dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-cache
-
-      - name: Install NPM dependencies
-        run: npm ci
-
-      - name: Cache Composer dependencies
-        uses: actions/cache@v3
-        with:
-          path: vendor
-          key: ${{ runner.os }}-composer-cache
+          php-version: 8.2
+          extensions: mbstring, curl, xml
 
       - name: Install Composer dependencies
-        run: composer install
+        run: composer install --no-interaction --prefer-dist
 
-      - name: Start WP Environment
-        run: npm run env:start
-    
-      - name: Wait for WordPress to be ready
-        run: |
-          for i in {1..30}; do
-            if curl -s http://localhost:8888 | grep -q "WordPress"; then
-              echo "WordPress is ready";
-              break;
-            fi
-            echo "Waiting for WordPress... ($i/30)";
-            sleep 5;
-          done
+      - name: Ensure lang folder exists
+        run: mkdir -p wp-content/plugins/wp-multisite-waas/lang
 
-      - name: Generate POT
+      - name: Generate POT file
         run: |
-          npx wp-env run cli --env-cwd='wp-content/plugins/wp-multisite-waas' \
-          wp i18n make-pot . lang/multisite-ultimate.pot \
+          ./vendor/bin/wp i18n make-pot wp-content/plugins/wp-multisite-waas \
+          wp-content/plugins/wp-multisite-waas/lang/multisite-ultimate.pot \
           --slug=multisite-ultimate \
           --exclude=node_modules,tests,docs,assets/js/lib
+
+      - name: Verify POT file exists
+        run: ls -l wp-content/plugins/wp-multisite-waas/lang/
 
       - name: Check for changes
         id: git-check
@@ -64,7 +42,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           FILE="wp-content/plugins/wp-multisite-waas/lang/multisite-ultimate.pot"
-          if git ls-files --error-unmatch "$FILE" > /dev/null 2>&1; then
+          if [ -f "$FILE" ]; then
             if git diff --exit-code -- "$FILE"; then
                 echo "no-changes=true" >> $GITHUB_OUTPUT
             else
@@ -85,7 +63,3 @@ jobs:
           gh pr create --title "Update POT file" --body "Auto-generated POT update" --head $BRANCH --base main
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Stop WordPress Environment
-        if: always()
-        run: npm run env:stop
