@@ -58,9 +58,6 @@ jobs:
           --slug=multisite-ultimate \
           --exclude=node_modules,tests,docs,assets/js/lib
 
-      - name: Stop WP Environment
-        run: npm run env:stop
-
       - name: Check for changes
         id: git-check
         run: |
@@ -88,3 +85,7 @@ jobs:
           gh pr create --title "Update POT file" --body "Auto-generated POT update" --head $BRANCH --base main
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Stop WordPress Environment
+        if: always()
+        run: npm run env:stop
