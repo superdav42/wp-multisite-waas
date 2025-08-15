@@ -65,6 +65,6 @@ jobs:
           git add wp-content/plugins/wp-multisite-waas/lang/multisite-ultimate.pot
           git commit -m "Update POT file"
           git push origin $BRANCH
-          gh pr create --title "Update POT file" --body "Auto-generated POT update" --head $BRANCH --base master
+          gh pr create --title "Update POT file" --body "Auto-generated POT update" --head $BRANCH --base main
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
