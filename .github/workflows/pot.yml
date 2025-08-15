@@ -1,0 +1,52 @@
+name: Update POT
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  pot-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Start WP Environment
+        run: npm run env:start
+
+      - name: Generate POT
+        run: wp-env run --env-cwd='wp-content/plugins/wp-multisite-waas' wp i18n make-pot . lang/multisite-ultimate.pot
+
+      - name: Stop WP Environment
+        run: npm run env:stop
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --exit-code wp-content/plugins/wp-multisite-waas/lang/multisite-ultimate.pot; then
+            echo "no-changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "no-changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create PR if changed
+        if: steps.git-check.outputs.no-changes == 'false'
+        run: |
+          BRANCH="chore/update-pot-file-$(date +%Y%m%d%H%M%S)"
+          git checkout -b $BRANCH
+          git add wp-content/plugins/wp-multisite-waas/lang/multisite-ultimate.pot
+          git commit -m "Update POT file"
+          git push origin $BRANCH
+          gh pr create --title "Update POT file" --body "Auto-generated POT update" --head $BRANCH --base master
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
