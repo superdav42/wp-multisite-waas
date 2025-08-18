@@ -40,7 +40,7 @@ defined( 'ABSPATH' ) || exit;
 
 						<td class="wu-align-left wu-text-xs">
 
-							<span :id="'payload_event_name_' + placeholder.placeholder" class="wu-rounded-sm wu-text-xs"><?php echo esc_html(str_replace(['Id', 'Url'], ['ID', 'URL'], $placeholder['name'])); ?></span>
+							<span :id="'payload_event_name_' + placeholder.placeholder" class="wu-rounded-sm wu-text-xs"><?php echo esc_html(str_replace(['Id', 'Url'], ['ID', 'URL'], $placeholder['name'] ?? '')); ?></span>
 
 						</td>
 
