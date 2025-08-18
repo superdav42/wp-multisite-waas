@@ -58,7 +58,6 @@ class Session_Cookie implements Session {
 		$cookie_name = $this->get_cookie_name();
 
 		$data_raw = Cookie::get($cookie_name, '{"new": true}');
-		$data_raw = urldecode((string) $data_raw);
 		$data_raw = stripslashes($data_raw);
 
 		$this->data = json_decode($data_raw, true);
