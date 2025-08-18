@@ -73,7 +73,7 @@ class Validator {
 				'required_without' => $field_required_message,
 				'required_with'    => $field_required_message,
 				// translators: %s is the email field identifier
-				'email'            => sprintf(__('The %s is not valid email', 'multisite-ultimate'), ':attribute'),
+				'email'            => sprintf(__('The %s is not a valid email', 'multisite-ultimate'), ':attribute'),
 				// translators: 1st %s is the field name; 2nd is the allowed value
 				'min'              => sprintf(__('The %1$s minimum is %2$s', 'multisite-ultimate'), ':attribute', ':min'),
 				// translators: 1st %s is the field name; 2nd is the allowed value
