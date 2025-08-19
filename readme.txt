@@ -229,6 +229,11 @@ We recommend running this in a staging environment before updating your producti
 
 == Changelog ==
 
+Version [2.4.4] - Released on 2025-08-XX
+- Fixed: Saving email templates without stripping html
+- New: Option to allow site owners to edit users on their site
+- Fixed: Invoices not loading when logo is not set
+
 Version [2.4.3] - Released on 2025-08-15
 - Fixed: Bug in Slim SEO plugin
 - New: Addon Marketplace
