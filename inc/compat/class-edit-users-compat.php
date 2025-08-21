@@ -30,6 +30,11 @@ class Edit_Users_Compat {
 
 			// Add a filter to enable editing any user configuration.
 			add_filter('enable_edit_any_user_configuration', '__return_true', 15);
+
+			// Add hooks to allow site admins to add users without confirmation emails.
+			add_action('user_new_form', [$this, 'add_noconfirmation_field'], 10);
+			add_action('admin_action_adduser', [$this, 'handle_adduser_action'], 5);
+			add_action('admin_action_createuser', [$this, 'handle_adduser_action'], 5);
 		}
 	}
 
@@ -45,7 +50,7 @@ class Edit_Users_Compat {
 	 *
 	 * @return array Modified user capabilities.
 	 */
-	function update_users_caps($caps, $cap, $user_id, $args) {
+	public function update_users_caps($caps, $cap, $user_id, $args) {
 		foreach ($caps as $key => $capability) {
 			if ('do_not_allow' !== $capability) {
 				continue;
@@ -107,10 +112,77 @@ class Edit_Users_Compat {
 			'enable_edit_users',
 			[
 				'title'   => __('Enable Edit User Capability', 'multisite-ultimate'),
-				'desc'    => __('Allow site owners to edit the user accounts of users on their own site.', 'multisite-ultimate'),
+				'desc'    => __('Allow site owners to edit the user accounts of users on their own site. Also lets site owners create user accounts without requiring email confirmation.', 'multisite-ultimate'),
 				'type'    => 'toggle',
 				'default' => 0,
 			]
 		);
+	}
+
+	/**
+	 * Add the "Skip Confirmation Email" checkbox for site administrators on the Add Existing User form.
+	 *
+	 * @since 2.4.4
+	 *
+	 * @param string $context The form context ('add-existing-user' or 'add-new-user').
+	 */
+	public function add_noconfirmation_field($context) {
+		// Only show for existing users form and only for site admins (not network admins)
+		if (current_user_can('manage_network_users')) {
+			return;
+		}
+
+		// Only show if user can create users (site admin capability)
+		if (! current_user_can('create_users')) {
+			return;
+		}
+
+		?>
+			<table class="form-table">
+				<tr>
+					<th scope="row"><?php esc_Html_e('Skip Confirmation Email'); ?></th>
+					<td>
+						<input type="checkbox" name="noconfirmation" id="adduser-noconfirmation-<?php echo esc_attr($context); ?>" value="1" />
+						<label for="adduser-noconfirmation-<?php echo esc_attr($context); ?>"><?php esc_html_e('Add the user without sending an email that requires their confirmation', 'multisite-ultimate'); ?></label>
+					</td>
+				</tr>
+			</table>
+		<?php
+	}
+
+	/**
+	 * Handle the adduser action to allow site admins to add users without confirmation.
+	 *
+	 * @since 2.4.4
+	 */
+	public function handle_adduser_action() {
+		global $pagenow;
+
+		// Only proceed if this is not a network admin and noconfirmation is checked
+		if (current_user_can('manage_network_users') || 'user-new.php' !== $pagenow) {
+			return;
+		}
+
+		// Temporarily grant network user management capability for this request
+		add_filter('user_has_cap', [$this, 'grant_temp_network_capability'], 10, 3);
+	}
+
+	/**
+	 * Temporarily grant manage_network_users capability to site admins for adding users without confirmation.
+	 *
+	 * @since 2.4.4
+	 *
+	 * @param array $allcaps All capabilities of the user.
+	 * @param array $caps    Required capabilities.
+	 * @param array $args    Arguments that accompany the requested capability check.
+	 * @return array Modified capabilities.
+	 */
+	public function grant_temp_network_capability($allcaps, $caps, $args) {
+		// Only grant during adduser action and if user can create users
+		if (! empty($allcaps['create_users']) && ! isset($allcaps['manage_network_users'])) {
+			$allcaps['manage_network_users'] = true;
+		}
+
+		return $allcaps;
 	}
 }
