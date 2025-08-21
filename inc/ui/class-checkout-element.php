@@ -290,7 +290,7 @@ class Checkout_Element extends Base_Element {
 
 		$checkout_form = wu_get_checkout_form_by_slug($slug);
 
-		$atts = $checkout_form->get_meta('wu_thank_you_settings');
+		$atts = $checkout_form->get_meta('wu_thank_you_settings', []);
 
 		$atts['checkout_form'] = $checkout_form;
 

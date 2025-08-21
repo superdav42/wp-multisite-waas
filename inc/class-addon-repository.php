@@ -23,7 +23,7 @@ class Addon_Repository {
 	 *
 	 * @return false|string
 	 */
-	private function decrypt_value($data) {
+	private function decrypt_value(string $data): string {
 		// If the site doesn't have openssl, they just won't get auto updates.
 		if ( ! function_exists('openssl_decrypt') || ! function_exists('openssl_cipher_iv_length')) {
 			return '';
@@ -36,7 +36,10 @@ class Addon_Repository {
 		return openssl_decrypt($cipher_text, 'aes-256-cbc', $key, 0, $iv);
 	}
 
-	private function get_client_id() {
+	/**
+	 * @return string
+	 */
+	private function get_client_id(): string {
 		if (isset($this->client_id)) {
 			return $this->client_id;
 		}
@@ -46,7 +49,10 @@ class Addon_Repository {
 		return $this->client_id;
 	}
 
-	private function get_client_secret() {
+	/**
+	 * @return string
+	 */
+	private function get_client_secret(): string {
 		if (isset($this->client_secret)) {
 			return $this->client_secret;
 		}
@@ -55,8 +61,14 @@ class Addon_Repository {
 		$this->client_secret = $this->decrypt_value($stuff[1]);
 		return $this->client_secret;
 	}
-	public function get_access_token() {
+
+	/**
+	 * @return string
+	 */
+	public function get_access_token(): string {
 		$refresh_token = wu_get_option('wu-refresh-token');
+
+		$access_token = '';
 
 		if ($refresh_token) {
 			$access_token = get_transient('wu-access-token');
@@ -84,6 +96,9 @@ class Addon_Repository {
 		return $access_token;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function get_oauth_url(): string {
 		return add_query_arg(
 			[
@@ -95,6 +110,10 @@ class Addon_Repository {
 		);
 	}
 
+	/**
+	 * @return array
+	 * @throws \Exception If request fails.
+	 */
 	public function get_user_data(): array {
 
 		$access_token = $this->get_access_token();
@@ -114,7 +133,7 @@ class Addon_Repository {
 			$code    = wp_remote_retrieve_response_code($request);
 			$message = wp_remote_retrieve_response_message($request);
 			if (is_wp_error($request)) {
-				throw new \Exception(esc_html($request->get_error_message()), esc_html($request->get_error_code()));
+				throw new \Exception(esc_html($request->get_error_message()), (int) $request->get_error_code());
 			}
 			if (200 === absint($code) && 'OK' === $message) {
 				$user = json_decode($body, true);
@@ -224,14 +243,17 @@ class Addon_Repository {
 	 *
 	 * @return array
 	 */
-	public function set_update_download_headers($parsed_args, $url = '') {
+	public function set_update_download_headers(array $parsed_args, string $url = ''): array {
 		if (str_starts_with($url, MULTISITE_ULTIMATE_UPDATE_URL) && $this->authorization_header) {
 			$parsed_args['headers']['Authorization'] = $this->authorization_header;
 		}
 		return $parsed_args;
 	}
 
-	public function delete_tokens() {
+	/**
+	 * @return void
+	 */
+	public function delete_tokens(): void {
 		wu_delete_option('wu-refresh-token');
 		delete_transient('wu-access-token');
 	}

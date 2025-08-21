@@ -1155,7 +1155,7 @@ class Line_Item implements \JsonSerializable {
 				'payment_status' => false,
 			]
 		);
-
+		// TODO: This doesn't seem to work:
 		$query['date_query']['column'] = 'p.date_created';
 
 		$date_query = new \WP_Date_Query($query['date_query']);
@@ -1187,6 +1187,10 @@ class Line_Item implements \JsonSerializable {
 		// phpcs:enable;
 
 		$results = $wpdb->get_results($query); // phpcs:ignore
+
+		if (! $results) {
+			return [];
+		}
 
 		foreach ($results as &$ln) {
 			$copy = $ln;

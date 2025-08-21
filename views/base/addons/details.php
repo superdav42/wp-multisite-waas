@@ -16,13 +16,13 @@
 
 	#plugin-information-title.with-banner {
 		background-position: center;
-		background-image: url("<?php echo $addon->images[0]['thumbnail'] ?? ''; ?>");
+		background-image: url("<?php echo esc_attr($addon->images[0]['thumbnail'] ?? ''); ?>");
 	}
 
 	@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
 		#plugin-information-title.with-banner {
 		background-position: center;
-		background-image: url("<?php echo $addon->images[0]['thumbnail'] ?? ''; ?>");
+		background-image: url("<?php echo esc_attr($addon->images[0]['thumbnail'] ?? ''); ?>");
 		}
 	}
 </style>
@@ -79,23 +79,16 @@
 
 				<ul>
 					<li>
-						<strong><?php _e('Author:', 'multisite-ultimate'); ?></strong> 
-						<a class="wu-no-underline" href="<?php echo $addon->author_url; ?>" target="_blank">
-							<?php echo $addon->author; ?>
-						</a>
-					</li>
-					<!-- <li><strong>Version:</strong> 1.6</li>
-					<li><strong>Last Updated:</strong> 2 months ago</li>
-					<li>
-						<strong>Requires WordPress Version:</strong>
-						4.9 or higher
-					</li>
-					<li><strong>Compatible up to:</strong> 5.5.1</li> -->
+						<strong><?php esc_html_e('Author:', 'multisite-ultimate'); ?></strong>
+
+							<?php echo esc_html($addon->extensions['wp-update-server-plugin']['author']['display_name']); ?>
+
 					<?php if (isset($addon->requires_version)) : ?>
 
 						<li>
-							<strong><?php _e('Requires Multisite Ultimate Version:', 'multisite-ultimate'); ?></strong>
-						<?php printf(__('%s or higher', 'multisite-ultimate'), $addon->requires_version); ?>
+							<strong><?php esc_html_e('Requires Multisite Ultimate Version:', 'multisite-ultimate'); ?></strong>
+							<?php // translators: %s minimun required version number. ?>
+							<?php printf(esc_html__('%s or higher', 'multisite-ultimate'), esc_html($addon->requires_version)); ?>
 						</li>
 
 					<?php endif; ?>
@@ -163,7 +156,7 @@
 			<?php else : ?>
 
 				<a
-				href="<?php echo esc_attr($addon->permalink . $addon->add_to_cart['url']); ?>"
+				href="<?php echo esc_attr($addon->permalink . '?add-to-cart=' . $addon->id); ?>"
 				class="button button-primary right"
 				>
 				<?php esc_html_e('Purchase', 'multisite-ultimate'); ?>
@@ -175,7 +168,7 @@
 
 			<input type="hidden" name="action" value="wu_form_handler">
 
-			<input type="hidden" name="addon" value="<?php echo $addon_slug; ?>">
+			<input type="hidden" name="addon" value="<?php echo esc_attr($addon_slug); ?>">
 
 			<?php wp_nonce_field('wu_form_addon_more_info'); ?>
 

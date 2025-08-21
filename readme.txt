@@ -6,7 +6,7 @@ Requires at least: 5.3
 
 Requires PHP: 7.4.30
 Tested up to: 6.8
-Stable tag: 2.4.2
+Stable tag: 2.4.3
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -229,6 +229,17 @@ We recommend running this in a staging environment before updating your producti
 
 == Changelog ==
 
+Version [2.4.4] - Released on 2025-08-XX
+- Fixed: Saving email templates without stripping html
+- New: Option to allow site owners to edit users on their site
+- Fixed: Invoices not loading when logo is not set
+
+Version [2.4.3] - Released on 2025-08-15
+- Fixed: Bug in Slim SEO plugin
+- New: Addon Marketplace
+- Fixed: Custom logo not showing on emails and invoices
+- Fixed: Limitations failing to load
+
 Version [2.4.2] - Released on 2025-08-07
 - Fixed: Authentication of the API
 - Fixed: Saving checkout fields
@@ -238,6 +249,7 @@ Version [2.4.2] - Released on 2025-08-07
 - Improved: Remove extra queries related update_meta_data hook and 1.X compat
 - New: Addon Marketplace
 - Improved: Update currencies to support all supported by Stripe
+- Improved: Template previewer
 
 Version [2.4.1] - Released on 2025-07-17
 - Improved: Update Stripe PHP Library to latest version

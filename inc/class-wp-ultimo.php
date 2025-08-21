@@ -31,7 +31,7 @@ final class WP_Ultimo {
 	 * @since 2.1.0
 	 * @var string
 	 */
-	const VERSION = '2.4.2';
+	const VERSION = '2.4.3';
 
 	/**
 	 * Version of the Plugin.
@@ -603,6 +603,7 @@ final class WP_Ultimo {
 		 * Now it is native, but needs to be activated on Multisite Ultimate settings.
 		 */
 		\WP_Ultimo\Compat\Multiple_Accounts_Compat::get_instance();
+		\WP_Ultimo\Compat\Edit_Users_Compat::get_instance();
 
 		/*
 		 * Network Admin Widgets

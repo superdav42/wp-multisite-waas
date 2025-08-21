@@ -144,6 +144,18 @@ class Sunrise {
 		require_once __DIR__ . '/database/engine/class-schema.php';
 		require_once __DIR__ . '/database/sites/class-sites-schema.php';
 		require_once __DIR__ . '/database/sites/class-site-query.php';
+		require_once __DIR__ . '/limitations/class-limit.php';
+		require_once __DIR__ . '/limitations/class-limit-subtype.php';
+		require_once __DIR__ . '/limitations/class-limit-post-types.php';
+		require_once __DIR__ . '/limitations/class-limit-plugins.php';
+		require_once __DIR__ . '/limitations/class-limit-sites.php';
+		require_once __DIR__ . '/limitations/class-limit-themes.php';
+		require_once __DIR__ . '/limitations/class-limit-visits.php';
+		require_once __DIR__ . '/limitations/class-limit-disk-space.php';
+		require_once __DIR__ . '/limitations/class-limit-users.php';
+		require_once __DIR__ . '/limitations/class-limit-site-templates.php';
+		require_once __DIR__ . '/limitations/class-limit-domain-mapping.php';
+		require_once __DIR__ . '/limitations/class-limit-customer-user-role.php';
 	}
 
 	/**

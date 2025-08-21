@@ -104,7 +104,6 @@
             "composer.lock",
             ".phpcs.xml.dist",
             ".circleci",
-            "addons",
             ".idea",
             "node_modules",
             ".gitignore",

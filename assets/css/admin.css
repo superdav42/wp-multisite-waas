@@ -5356,3 +5356,7 @@ td.column-id {
 .wu-compat-admin-theme-waaspro .tablenav.top {
   height: auto;
 }
+
+#addon_more_info #plugin-information-content #section-description img {
+    width: 100%;
+}

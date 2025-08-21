@@ -89,9 +89,10 @@
 			<?php foreach ($sections as $section_name => $section) : ?>
 				<a 
 					href="<?php echo esc_url($page->get_section_link($section_name)); ?>"
-					class="wu-px-3 wu-py-1 wu-text-sm wu-rounded-md wu-border wu-transition-colors"
-					:class="category === '<?php echo esc_attr($section_name); ?>' ? 'wu-bg-blue-600 wu-text-white wu-border-blue-600' : 'wu-bg-white wu-text-gray-700 wu-border-gray-300 hover:wu-bg-gray-50'"
+					class="wu-px-4 wu-py-2 wu-text-sm wu-mx-4 wu-border wu-transition-colors wu-no-underline"
+					:class="category === '<?php echo esc_attr($section_name); ?>' ? 'wu-bg-gray-100 wu-text-gray-900 wu-border-blue-600 wu-border-solid' : 'wu-bg-white wu-text-gray-700 wu-border-gray-300 hover:wu-bg-gray-50'"
 					@click.prevent="set_category('<?php echo esc_attr($section_name); ?>')"
+					v-show="'<?php echo esc_attr($section_name); ?>' === 'all' || available_categories.some(cat => cat.slug === '<?php echo esc_attr($section_name); ?>')"
 				>
 					<span class="<?php echo esc_attr($section['icon']); ?> wu-mr-1"></span>
 					<?php echo esc_html($section['title']); ?>
@@ -224,8 +225,8 @@
 						</a>
 						<a 
 							v-else-if="addon.is_purchasable && addon.prices.price > 0"
-							:href="addon.permalink + addon.add_to_cart.url"
-							class="wu-flex-1 wu-inline-flex wu-items-center wu-justify-center wu-px-4 wu-py-2 wu-text-sm wu-font-medium wu-text-white wu-bg-green-600 wu-border wu-border-green-600 wu-rounded-md hover:wu-bg-green-700 wu-transition-colors wu-no-underline"
+							:href="addon.permalink + '?add-to-cart=' + addon.id"
+							class="wu-inline-flex wu-items-center wu-justify-center wu-px-4 wu-py-2 wu-text-sm wu-font-medium wu-bg-gray-300 wu-border wu-border-green-600 wu-rounded-md hover:wu-bg-green-700 wu-transition-colors wu-no-underline"
 							target="_blank"
 						>
 							<?php esc_html_e('Buy Now', 'multisite-ultimate'); ?>

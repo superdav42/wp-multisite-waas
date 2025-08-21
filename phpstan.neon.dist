@@ -5,7 +5,7 @@ parameters:
   paths:
     - ./views
     - ./inc
-    - ./wp-multisite-waas.php
+    - ./multisite-ultimate.php
   ignoreErrors:
       -
           message: '#Variable \$.* might not be defined.#'

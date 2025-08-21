@@ -184,7 +184,7 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 	public function install_addon() {
 
 		if (! current_user_can('manage_network_plugins')) {
-			$error = new \WP_Error('error', __('You do not have enough permissions to perform this task.', 'wp-ultimo'));
+			$error = new \WP_Error('error', __('You do not have enough permissions to perform this task.', 'multisite-ultimate'));
 
 			wp_send_json_error($error);
 		}
@@ -267,7 +267,7 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 				'search'   => wu_request('s', ''),
 				'category' => wu_request('tab', 'all'),
 				'i18n'     => array(
-					'all' => __('All Add-ons', 'wp-ultimo'),
+					'all' => __('All Add-ons', 'multisite-ultimate'),
 				),
 			)
 		);
@@ -309,9 +309,9 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 
 		$data = $api_client->get_addons();
 
-		if (is_wp_error($data)) {
+		if (is_wp_error($data) || empty($data)) {
 			// translators: %s error message.
-			wu_log_add('api-calls', sprintf(__('Failed to fetch addons from API: %s'), $data->get_error_message()));
+			wu_log_add('api-calls', sprintf(__('Failed to fetch addons from API: %s', 'multisite-ultimate'), $data ? $data->get_error_message() : __('no addons returned', 'multisite-ultimate')));
 			return array();
 		}
 
@@ -349,7 +349,7 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 	 */
 	public function get_title() {
 
-		return __('Add-ons', 'wp-ultimo');
+		return __('Add-ons', 'multisite-ultimate');
 	}
 
 	/**
@@ -360,7 +360,7 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 	 */
 	public function get_menu_title() {
 
-		return __('Add-ons', 'wp-ultimo');
+		return __('Add-ons', 'multisite-ultimate');
 	}
 
 	/**
@@ -411,6 +411,7 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 
 		if (! $user && $code) {
 			$addon_repo->save_access_token($code, $redirect_url);
+			$user = $addon_repo->get_user_data();
 		}
 
 		wu_get_template(
@@ -446,50 +447,47 @@ class Addons_Admin_Page extends Wizard_Admin_Page {
 
 		return array(
 			'all'           => array(
-				'title' => __('All Add-ons', 'wp-ultimo'),
+				'title' => __('All Add-ons', 'multisite-ultimate'),
 				'icon'  => 'dashicons-wu-grid',
 			),
 			'premium'       => array(
-				'title' => __('Premium', 'wp-ultimo'),
+				'title' => __('Premium', 'multisite-ultimate'),
 				'icon'  => 'dashicons-wu-rocket',
 			),
 			'free'          => array(
-				'title' => __('Free', 'wp-ultimo'),
+				'title' => __('Free', 'multisite-ultimate'),
 				'icon'  => 'dashicons-wu-pin',
 			),
 			'gateways'      => array(
-				'title' => __('Gateways', 'wp-ultimo'),
+				'title' => __('Gateways', 'multisite-ultimate'),
 				'icon'  => 'dashicons-wu-credit-card',
 			),
 			'growth'        => array(
-				'title' => __('Growth & Scaling', 'wp-ultimo'),
+				'title' => __('Growth & Scaling', 'multisite-ultimate'),
 				'icon'  => 'dashicons-wu-line-graph',
 			),
 			'integrations'  => array(
-				'title' => __('Integrations', 'wp-ultimo'),
+				'title' => __('Integrations', 'multisite-ultimate'),
 				'icon'  => 'dashicons-wu-power-plug',
 			),
 			'customization' => array(
-				'title' => __('Customization', 'wp-ultimo'),
+				'title' => __('Customization', 'multisite-ultimate'),
 				'icon'  => 'dashicons-wu-edit',
 			),
-			'admin theme'   => array(
-				'title' => __('Admin Themes', 'wp-ultimo'),
+			'admin-theme'   => array(
+				'title' => __('Admin Themes', 'multisite-ultimate'),
 				'icon'  => 'dashicons-wu-palette',
 			),
 			'monetization'  => array(
-				'title' => __('Monetization', 'wp-ultimo'),
+				'title' => __('Monetization', 'multisite-ultimate'),
 				'icon'  => 'dashicons-wu-credit',
 			),
 			'migrators'     => array(
-				'title' => __('Migrators', 'wp-ultimo'),
+				'title' => __('Migrators', 'multisite-ultimate'),
 				'icon'  => 'dashicons-wu-publish',
 			),
-			'separator'     => array(
-				'separator' => true,
-			),
 			'marketplace'   => array(
-				'title' => __('Marketplace', 'wp-ultimo'),
+				'title' => __('Marketplace', 'multisite-ultimate'),
 				'icon'  => 'dashicons-wu-shop',
 			),
 		);
