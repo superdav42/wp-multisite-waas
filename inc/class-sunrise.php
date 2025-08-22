@@ -158,7 +158,6 @@ class Sunrise {
 		require_once __DIR__ . '/limitations/class-limit-site-templates.php';
 		require_once __DIR__ . '/limitations/class-limit-domain-mapping.php';
 		require_once __DIR__ . '/limitations/class-limit-customer-user-role.php';
-		require_once __DIR__ . '/limitations/class-limit-fluent-forms.php';
 	}
 
 	/**
@@ -309,17 +308,19 @@ class Sunrise {
 			return self::$sunrise_meta;
 		}
 
-		$sunrise_meta = get_network_option(null, 'wu_sunrise_meta', null);
+		self::$sunrise_meta = get_network_option(
+			null,
+			'wu_sunrise_meta',
+			[
+				'active'           => false,
+				'created'          => 'unknown',
+				'last_activated'   => 'unknown',
+				'last_deactivated' => 'unknown',
+				'last_modified'    => 'unknown',
+			]
+		);
 
-		$existing = [];
-
-		if ($sunrise_meta) {
-			$existing = $sunrise_meta;
-
-			self::$sunrise_meta = $existing;
-		}
-
-		return $existing;
+		return self::$sunrise_meta;
 	}
 
 	/**

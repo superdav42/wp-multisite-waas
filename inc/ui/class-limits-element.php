@@ -274,15 +274,6 @@ class Limits_Element extends Base_Element {
 		$atts['items_to_display'] = $items_to_display ? array_keys($items_to_display) : false;
 		$atts['post_type_limits'] = $this->site->get_limitations()->post_types;
 
-		// Add Fluent Forms data if available
-		$atts['fluent_forms_limits'] = null;
-		$atts['fluent_forms_available'] = false;
-
-		if (\WP_Ultimo\Limitations\Limit_Fluent_Forms::is_fluent_forms_available()) {
-			$atts['fluent_forms_available'] = true;
-			$atts['fluent_forms_limits'] = $this->site->get_limitations()->fluent_forms;
-		}
-
 		return wu_get_template_contents('dashboard-widgets/limits-and-quotas', $atts);
 	}
 }

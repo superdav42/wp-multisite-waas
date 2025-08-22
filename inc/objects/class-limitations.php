@@ -56,6 +56,8 @@ class Limitations {
 	 */
 	protected $current_merge_id = '';
 
+	protected array $raw_module_data;
+
 	/**
 	 * Constructs the limitation class with module data.
 	 *
@@ -86,7 +88,7 @@ class Limitations {
 			$class_name = wu_get_isset($repo, $name, false);
 
 			if (class_exists($class_name)) {
-				$module = new $class_name([]);
+				$module = new $class_name($this->raw_module_data[ $name ] ?? []);
 
 				$this->modules[ $name ] = $module;
 
@@ -131,6 +133,8 @@ class Limitations {
 	 * @return self
 	 */
 	public function build_modules($modules_data) {
+
+		$this->raw_module_data = $modules_data;
 
 		foreach ($modules_data as $type => $data) {
 			$module = self::build($data, $type);
@@ -497,7 +501,6 @@ class Limitations {
 			'site_templates'     => \WP_Ultimo\Limitations\Limit_Site_Templates::class,
 			'domain_mapping'     => \WP_Ultimo\Limitations\Limit_Domain_Mapping::class,
 			'customer_user_role' => \WP_Ultimo\Limitations\Limit_Customer_User_Role::class,
-			'fluent_forms'       => \WP_Ultimo\Limitations\Limit_Fluent_Forms::class,
 		];
 
 		return apply_filters('wu_limit_classes', $classes);
