@@ -351,22 +351,22 @@ class Sunrise {
 					'sunrise-created'          => [
 						'tooltip' => '',
 						'title'   => 'Created',
-						'value'   => gmdate('Y-m-d @ H:i:s', $data['created']),
+						'value'   => is_int($data['created']) ? gmdate('Y-m-d @ H:i:s', $data['created']) : $data['created'],
 					],
 					'sunrise-last-activated'   => [
 						'tooltip' => '',
 						'title'   => 'Last Activated',
-						'value'   => gmdate('Y-m-d @ H:i:s', $data['last_activated']),
+						'value'   => is_int($data['last_activated']) ? gmdate('Y-m-d @ H:i:s', $data['last_activated']) : $data['last_activated'],
 					],
 					'sunrise-last-deactivated' => [
 						'tooltip' => '',
 						'title'   => 'Last Deactivated',
-						'value'   => gmdate('Y-m-d @ H:i:s', $data['last_deactivated']),
+						'value'   => is_int($data['last_deactivated']) ? gmdate('Y-m-d @ H:i:s', $data['last_deactivated']) : $data['last_deactivated'],
 					],
 					'sunrise-last-modified'    => [
 						'tooltip' => '',
 						'title'   => 'Last Modified',
-						'value'   => gmdate('Y-m-d @ H:i:s', $data['last_modified']),
+						'value'   => is_int($data['last_modified']) ? gmdate('Y-m-d @ H:i:s', $data['last_modified']) : $data['last_modified'],
 					],
 				],
 			]
@@ -446,6 +446,10 @@ class Sunrise {
 				'last_deactivated' => 'unknown',
 			]
 		);
+
+		if ('unknown' === $to_save['created']) {
+			$to_save['created'] = $now;
+		}
 
 		if ('activating' === $mode) {
 			$to_save['active']         = true;
