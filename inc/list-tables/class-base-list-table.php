@@ -300,6 +300,10 @@ class Base_List_Table extends \WP_List_Table {
 	 */
 	public function has_items() {
 
+		if ( ! empty($this->items)) {
+			return true;
+		}
+
 		$key = $this->get_table_id();
 
 		$results = $this->get_items(1, 1, false);
@@ -1151,7 +1155,7 @@ class Base_List_Table extends \WP_List_Table {
 		parent::_js_vars();
 
 		$table_id = $this->_get_js_var_name();
-		
+
 		$inline_script = sprintf(
 			'document.addEventListener("DOMContentLoaded", function() {
 				let table_id = %s;
@@ -1161,10 +1165,12 @@ class Base_List_Table extends \WP_List_Table {
 				}
 			});',
 			wp_json_encode($table_id),
-			wp_json_encode([
-				'filters' => $this->get_filters(),
-				'context' => $this->context,
-			])
+			wp_json_encode(
+				[
+					'filters' => $this->get_filters(),
+					'context' => $this->context,
+				]
+			)
 		);
 
 		wp_add_inline_script('wu-ajax-list-table', $inline_script);
