@@ -10,6 +10,7 @@
 namespace WP_Ultimo\Models;
 
 use WP_Ultimo\Models\Base_Model;
+use WP_Ultimo\Models\Interfaces\Notable;
 use WP_Ultimo\Database\Payments\Payment_Status;
 use WP_Ultimo\Checkout\Line_Item;
 use WP_Ultimo\Models\Customer;
@@ -24,7 +25,7 @@ defined('ABSPATH') || exit;
  *
  * @since 2.0.0
  */
-class Payment extends Base_Model {
+class Payment extends Base_Model implements Notable {
 
 	use Traits\Notable;
 

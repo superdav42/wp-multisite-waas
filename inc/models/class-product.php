@@ -12,8 +12,8 @@ namespace WP_Ultimo\Models;
 // Exit if accessed directly
 defined('ABSPATH') || exit;
 
-use WP_Ultimo\Models\Base_Model;
 use WP_Ultimo\Database\Products\Product_Type;
+use WP_Ultimo\Models\Interfaces\Limitable;
 
 /**
  * Product model class. Implements the Base Model.

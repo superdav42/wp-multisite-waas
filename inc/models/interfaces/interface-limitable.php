@@ -6,7 +6,7 @@
  * @subpackage Models
  */
 
-namespace WP_Ultimo\Models;
+namespace WP_Ultimo\Models\Interfaces;
 
 defined( 'ABSPATH' ) || exit;
 

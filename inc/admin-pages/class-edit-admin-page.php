@@ -15,7 +15,7 @@
 namespace WP_Ultimo\Admin_Pages;
 
 // Exit if accessed directly
-use WP_Ultimo\Models\Limitable;
+use WP_Ultimo\Models\Interfaces\Limitable;
 
 defined('ABSPATH') || exit;
 

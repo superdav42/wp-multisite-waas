@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-15T19:04:39+00:00\n"
+"POT-Creation-Date: 2025-08-19T15:11:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: multisite-ultimate\n"
@@ -1301,7 +1301,7 @@ msgstr ""
 #: inc/class-settings.php:1132
 #: inc/debug/class-debug.php:212
 #: inc/list-tables/class-site-list-table.php:45
-#: inc/managers/class-limitation-manager.php:297
+#: inc/managers/class-limitation-manager.php:280
 #: views/ui/jumper.php:64
 #: views/wizards/host-integrations/gridpane-instructions.php:14
 msgid "Sites"
@@ -1688,7 +1688,6 @@ msgstr ""
 #: inc/traits/trait-wp-ultimo-plan-deprecated.php:227
 #: views/dashboard-widgets/limits-and-quotas.php:79
 #: views/dashboard-widgets/limits-and-quotas.php:134
-#: views/dashboard-widgets/limits-and-quotas.php:200
 msgid "Unlimited"
 msgstr ""
 
@@ -1772,7 +1771,7 @@ msgstr ""
 #: inc/admin-pages/class-discount-code-edit-admin-page.php:284
 #: inc/list-tables/class-line-item-list-table.php:172
 #: inc/list-tables/class-payment-line-item-list-table.php:94
-#: views/invoice/template.php:225
+#: views/invoice/template.php:230
 msgid "Discount"
 msgstr ""
 
@@ -1902,7 +1901,7 @@ msgstr ""
 #: inc/admin-pages/class-payment-edit-admin-page.php:309
 #: inc/admin-pages/class-site-list-admin-page.php:134
 #: inc/managers/class-form-manager.php:366
-#: inc/managers/class-limitation-manager.php:159
+#: inc/managers/class-limitation-manager.php:142
 #: inc/managers/class-notes-manager.php:310
 #: inc/managers/class-notes-manager.php:405
 #: inc/ui/class-current-membership-element.php:459
@@ -2525,7 +2524,7 @@ msgid "Reset and/or Import"
 msgstr ""
 
 #: inc/admin-pages/class-email-list-admin-page.php:546
-#: inc/managers/class-limitation-manager.php:158
+#: inc/managers/class-limitation-manager.php:141
 msgid "Confirm Reset"
 msgstr ""
 
@@ -2866,7 +2865,7 @@ msgstr ""
 #: inc/admin-pages/class-invoice-template-customize-admin-page.php:203
 #: inc/admin-pages/class-invoice-template-customize-admin-page.php:287
 #: inc/admin-pages/class-product-edit-admin-page.php:296
-#: inc/invoices/class-invoice.php:252
+#: inc/invoices/class-invoice.php:253
 msgid "Paid"
 msgstr ""
 
@@ -3658,7 +3657,7 @@ msgstr ""
 #: views/emails/admin/payment-received.php:38
 #: views/emails/customer/payment-received.php:39
 #: views/emails/customer/renewal-payment-created.php:39
-#: views/invoice/template.php:233
+#: views/invoice/template.php:238
 #: views/payments/tax-details.php:25
 msgid "Total"
 msgstr ""
@@ -3829,7 +3828,7 @@ msgstr ""
 #: views/emails/admin/payment-received.php:32
 #: views/emails/customer/payment-received.php:33
 #: views/emails/customer/renewal-payment-created.php:33
-#: views/invoice/template.php:229
+#: views/invoice/template.php:234
 msgid "Tax"
 msgstr ""
 
@@ -3943,7 +3942,7 @@ msgstr ""
 #: inc/list-tables/class-membership-list-table-widget.php:265
 #: inc/list-tables/class-membership-list-table.php:176
 #: inc/list-tables/class-product-list-table.php:256
-#: views/invoice/template.php:221
+#: views/invoice/template.php:226
 msgid "Price"
 msgstr ""
 
@@ -7806,7 +7805,7 @@ msgstr ""
 #: inc/models/class-checkout-form.php:1223
 #: inc/models/class-checkout-form.php:1417
 #: views/dashboard-widgets/billing-info.php:105
-#: views/invoice/template.php:291
+#: views/invoice/template.php:296
 msgid "Payment Method"
 msgstr ""
 
@@ -8730,12 +8729,12 @@ msgid "Remove all saved data for Multisite Ultimate when the plugin is uninstall
 msgstr ""
 
 #. translators: the placeholder is an error message
-#: inc/class-sunrise.php:288
+#: inc/class-sunrise.php:287
 #, php-format
 msgid "Sunrise copy failed: %s"
 msgstr ""
 
-#: inc/class-sunrise.php:291
+#: inc/class-sunrise.php:290
 msgid "Sunrise upgrade attempt succeeded."
 msgstr ""
 
@@ -8811,6 +8810,14 @@ msgstr ""
 
 #: inc/class-whitelabel.php:271
 msgid "Replace all occurrences of the word \"Sites\" with a different word."
+msgstr ""
+
+#: inc/compat/class-edit-users-compat.php:109
+msgid "Enable Edit User Capability"
+msgstr ""
+
+#: inc/compat/class-edit-users-compat.php:110
+msgid "Allow site owners to edit the user accounts of users on their own site."
 msgstr ""
 
 #: inc/compat/class-general-compat.php:251
@@ -14954,7 +14961,7 @@ msgstr ""
 #. translators: %s is the email field identifier
 #: inc/helpers/class-validator.php:76
 #, php-format
-msgid "The %s is not valid email"
+msgid "The %s is not a valid email"
 msgstr ""
 
 #. translators: 1st %s is the field name; 2nd is the allowed value
@@ -15691,7 +15698,7 @@ msgstr ""
 msgid "Your server's PHP and WordPress memory limits are too low to perform this check. You might need to contact your host provider and ask the PHP memory limit in particular to be raised."
 msgstr ""
 
-#: inc/invoices/class-invoice.php:105
+#: inc/invoices/class-invoice.php:106
 #: views/emails/admin/payment-received.php:64
 #: views/emails/customer/payment-received.php:49
 msgid "Invoice"
@@ -15705,45 +15712,6 @@ msgstr ""
 #: inc/limits/class-post-type-limits.php:138
 #: inc/limits/class-post-type-limits.php:145
 msgid "Limit Reached"
-msgstr ""
-
-#: inc/limits/class-fluent-forms-limits.php:83
-msgid "Your plan does not support this form type."
-msgstr ""
-
-#: inc/limits/class-fluent-forms-limits.php:88
-#: inc/limits/class-fluent-forms-limits.php:117
-msgid "You have reached your form creation limit for this plan."
-msgstr ""
-
-#: inc/limits/class-fluent-forms-limits.php:141
-msgid "You cannot duplicate this form as it would exceed your plan's form limit."
-msgstr ""
-
-#. translators: %1$s: form type label, %2$d: current count, %3$d: limit
-#: inc/limits/class-fluent-forms-limits.php:174
-#, php-format
-msgid "Warning: You have %2$d %1$s, which exceeds your plan limit of %3$d. Some functionality may be restricted."
-msgstr ""
-
-#: inc/limits/class-fluent-forms-limits.php:210
-msgid "Upgrade your plan"
-msgstr ""
-
-#: inc/limits/class-fluent-forms-limits.php:216
-msgid "Form Creation Limit Reached"
-msgstr ""
-
-#: inc/limits/class-fluent-forms-limits.php:281
-#: inc/limits/class-fluent-forms-limits.php:285
-#: views/dashboard-widgets/limits-and-quotas.php:148
-msgid "Forms"
-msgstr ""
-
-#: inc/limits/class-fluent-forms-limits.php:282
-#: inc/managers/class-limitation-manager.php:787
-#: views/dashboard-widgets/limits-and-quotas.php:152
-msgid "Conversational Forms"
 msgstr ""
 
 #: inc/limits/class-plugin-limits.php:148
@@ -16250,7 +16218,7 @@ msgid "Verification Stage"
 msgstr ""
 
 #: inc/list-tables/class-email-list-table.php:123
-#: inc/managers/class-limitation-manager.php:185
+#: inc/managers/class-limitation-manager.php:168
 msgid "Reset"
 msgstr ""
 
@@ -17057,303 +17025,248 @@ msgstr ""
 msgid "Use the Manual Gateway to allow users to pay you directly via bank transfers, checks, or other channels."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:166
-#: inc/managers/class-limitation-manager.php:587
-#: inc/managers/class-limitation-manager.php:593
-#: inc/managers/class-limitation-manager.php:594
+#: inc/managers/class-limitation-manager.php:149
+#: inc/managers/class-limitation-manager.php:531
+#: inc/managers/class-limitation-manager.php:537
+#: inc/managers/class-limitation-manager.php:538
 msgid "Reset Limitations"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:220
+#: inc/managers/class-limitation-manager.php:203
 msgid "Required parameters are missing."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:278
+#: inc/managers/class-limitation-manager.php:261
 msgid "Limitations are only available for customer-owned sites. You need to change the type to Customer-owned and save this site before the options are shown."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:281
+#: inc/managers/class-limitation-manager.php:264
 msgid "Limits"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:282
+#: inc/managers/class-limitation-manager.php:265
 msgid "Only customer-owned sites have limitations."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:298
+#: inc/managers/class-limitation-manager.php:281
 msgid "Control limitations imposed to the number of sites allowed for memberships attached to this product."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:313
+#: inc/managers/class-limitation-manager.php:296
 #: views/dashboard-statistics/widget-most-visited-sites.php:21
 #: views/dashboard-statistics/widget-most-visited-sites.php:58
 msgid "Visits"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:314
+#: inc/managers/class-limitation-manager.php:297
 msgid "Control limitations imposed to the number of unique visitors allowed for memberships attached to this product."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:323
+#: inc/managers/class-limitation-manager.php:306
 msgid "Limit Unique Visits"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:324
+#: inc/managers/class-limitation-manager.php:307
 msgid "Toggle this option to enable unique visits limitation."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:339
+#: inc/managers/class-limitation-manager.php:322
 msgid "Unique Visits Quota"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:340
+#: inc/managers/class-limitation-manager.php:323
 msgid "Set a top limit for the number of monthly unique visits. Leave empty or 0 to allow for unlimited visits."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:341
+#: inc/managers/class-limitation-manager.php:324
 msgid "e.g. 10000"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:363
+#: inc/managers/class-limitation-manager.php:346
 msgid "Current Unique Visits Count this Month"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:364
+#: inc/managers/class-limitation-manager.php:347
 msgid "Current visits count for this particular site."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:375
+#: inc/managers/class-limitation-manager.php:358
 #: views/ui/jumper.php:56
 msgid "Users"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:376
+#: inc/managers/class-limitation-manager.php:359
 msgid "Control limitations imposed to the number of user allowed for memberships attached to this product."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:385
+#: inc/managers/class-limitation-manager.php:368
 msgid "Limit User"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:386
+#: inc/managers/class-limitation-manager.php:369
 msgid "Enable user limitations for this product."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:401
+#: inc/managers/class-limitation-manager.php:384
 msgid "Post Types"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:402
+#: inc/managers/class-limitation-manager.php:385
 msgid "Control limitations imposed to the number of posts allowed for memberships attached to this product."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:411
+#: inc/managers/class-limitation-manager.php:394
 msgid "Limit Post Types"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:412
+#: inc/managers/class-limitation-manager.php:395
 msgid "Toggle this option to set limits to each post type."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:427
+#: inc/managers/class-limitation-manager.php:410
 msgid "<strong>Note:</strong> Using the fields below you can set a post limit for each of the post types activated. <br>Toggle the switch to <strong>deactivate</strong> the post type altogether. Leave 0 or blank for unlimited posts."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:437
+#: inc/managers/class-limitation-manager.php:420
 msgid "Disk Space"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:438
+#: inc/managers/class-limitation-manager.php:421
 msgid "Control limitations imposed to the disk space allowed for memberships attached to this entity."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:447
+#: inc/managers/class-limitation-manager.php:430
 msgid "Limit Disk Space per Site"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:448
+#: inc/managers/class-limitation-manager.php:431
 msgid "Enable disk space limitations for this entity."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:463
+#: inc/managers/class-limitation-manager.php:446
 msgid "Disk Space Allowance"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:464
+#: inc/managers/class-limitation-manager.php:447
 msgid "Set a limit in MBs for the disk space for <strong>each</strong> individual site."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:479
+#: inc/managers/class-limitation-manager.php:462
 msgid "Custom Domains"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:480
-#: inc/managers/class-limitation-manager.php:508
+#: inc/managers/class-limitation-manager.php:463
+#: inc/managers/class-limitation-manager.php:491
 msgid "Limit the number of users on each role, posts, pages, and more."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:489
+#: inc/managers/class-limitation-manager.php:472
 msgid "Allow Custom Domains"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:490
+#: inc/managers/class-limitation-manager.php:473
 msgid "Toggle this option on to allow this plan to enable custom domains for sign-ups on this plan."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:507
-#: inc/managers/class-limitation-manager.php:517
+#: inc/managers/class-limitation-manager.php:490
+#: inc/managers/class-limitation-manager.php:500
 msgid "Themes"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:518
+#: inc/managers/class-limitation-manager.php:501
 msgid "Select how the themes installed on the network should behave."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:525
-#: inc/managers/class-limitation-manager.php:532
+#: inc/managers/class-limitation-manager.php:508
+#: inc/managers/class-limitation-manager.php:515
 msgid "Plugins"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:526
+#: inc/managers/class-limitation-manager.php:509
 msgid "You can choose the behavior of each plugin installed on the platform."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:533
+#: inc/managers/class-limitation-manager.php:516
 msgid "Select how the plugins installed on the network should behave."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:542
-msgid "Fluent Forms"
-msgstr ""
-
-#: inc/managers/class-limitation-manager.php:543
-msgid "Control limitations imposed to the number of forms allowed for memberships attached to this product."
-msgstr ""
-
-#: inc/managers/class-limitation-manager.php:552
-msgid "Limit Fluent Forms"
-msgstr ""
-
-#: inc/managers/class-limitation-manager.php:553
-msgid "Toggle this option to set limits to each form type."
-msgstr ""
-
-#: inc/managers/class-limitation-manager.php:568
-msgid "<strong>Note:</strong> Using the fields below you can set form limits for each form type. <br>Toggle the switch to <strong>deactivate</strong> the form type altogether. Leave 0 or blank for unlimited forms."
-msgstr ""
-
-#: inc/managers/class-limitation-manager.php:588
+#: inc/managers/class-limitation-manager.php:532
 msgid "Reset the limitations applied to this element."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:593
+#: inc/managers/class-limitation-manager.php:537
 msgid "Use this option to reset the custom limitations applied to this object."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:613
+#: inc/managers/class-limitation-manager.php:557
 #: views/limitations/plugin-selector.php:96
 #: views/limitations/theme-selector.php:92
 msgid "This value is being applied only to this entity. Changes made to the membership or product permissions will not affect this particular value."
 msgstr ""
 
 #. translators: %s is the user role name.
-#: inc/managers/class-limitation-manager.php:648
+#: inc/managers/class-limitation-manager.php:592
 #, php-format
 msgid "Limit %s Role"
 msgstr ""
 
 #. translators: %s is the user role name.
-#: inc/managers/class-limitation-manager.php:652
+#: inc/managers/class-limitation-manager.php:596
 #, php-format
 msgid "The customer will be able to create %s users(s) of this user role."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:653
-#: inc/managers/class-limitation-manager.php:721
-#: inc/managers/class-limitation-manager.php:802
+#: inc/managers/class-limitation-manager.php:597
+#: inc/managers/class-limitation-manager.php:665
 msgid "unlimited"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:653
-#: inc/managers/class-limitation-manager.php:721
-#: inc/managers/class-limitation-manager.php:802
+#: inc/managers/class-limitation-manager.php:597
+#: inc/managers/class-limitation-manager.php:665
 msgid "no"
 msgstr ""
 
 #. translators: %s is the user role name.
-#: inc/managers/class-limitation-manager.php:665
+#: inc/managers/class-limitation-manager.php:609
 #, php-format
 msgid "%s Role Quota. e.g. 10"
 msgstr ""
 
 #. translators: %s is the post type name.
-#: inc/managers/class-limitation-manager.php:717
-#: inc/managers/class-limitation-manager.php:799
+#: inc/managers/class-limitation-manager.php:661
 #, php-format
 msgid "Limit %s"
 msgstr ""
 
 #. translators: %s is the post type name.
-#: inc/managers/class-limitation-manager.php:720
+#: inc/managers/class-limitation-manager.php:664
 #, php-format
 msgid "The customer will be able to create %s post(s) of this post type."
 msgstr ""
 
 #. translators: %s is the post type name.
-#: inc/managers/class-limitation-manager.php:733
+#: inc/managers/class-limitation-manager.php:677
 #, php-format
 msgid "%s Quota. e.g. 200"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:783
-msgid "Regular Forms"
-msgstr ""
-
-#: inc/managers/class-limitation-manager.php:784
-msgid "Standard contact forms, registration forms, etc."
-msgstr ""
-
-#: inc/managers/class-limitation-manager.php:788
-msgid "Interactive, step-by-step conversational forms."
-msgstr ""
-
-#: inc/managers/class-limitation-manager.php:801
-#, php-format
-msgid "The customer will be able to create %s form(s) of this type. %s"
-msgstr ""
-
-#: inc/managers/class-limitation-manager.php:814
-#, php-format
-msgid "%s Quota. e.g. 10"
-msgstr ""
-
-#: inc/managers/class-limitation-manager.php:849
-#, php-format
-msgid "Current %s Count"
-msgstr ""
-
-#: inc/managers/class-limitation-manager.php:850
-#, php-format
-msgid "Current count for %s on this site."
-msgstr ""
-
-#: inc/managers/class-limitation-manager.php:874
+#: inc/managers/class-limitation-manager.php:722
 msgid "Limit Sites"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:875
+#: inc/managers/class-limitation-manager.php:723
 msgid "Enable site limitations for this product."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:892
+#: inc/managers/class-limitation-manager.php:740
 msgid "The product type selection does not support allowing for the creating of extra sites."
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:903
+#: inc/managers/class-limitation-manager.php:751
 msgid "Site Allowance"
 msgstr ""
 
-#: inc/managers/class-limitation-manager.php:904
+#: inc/managers/class-limitation-manager.php:752
 msgid "This is the number of sites the customer will be able to create under this membership."
 msgstr ""
 
@@ -20099,37 +20012,37 @@ msgstr ""
 msgid "Target %s"
 msgstr ""
 
-#: views/invoice/template.php:156
+#: views/invoice/template.php:161
 msgid "Invoice #"
 msgstr ""
 
 #. translators: %s is the payment creation date
-#: views/invoice/template.php:160
+#: views/invoice/template.php:165
 #, php-format
 msgid "Created: %s"
 msgstr ""
 
-#: views/invoice/template.php:162
+#: views/invoice/template.php:167
 msgid "Due on Receipt"
 msgstr ""
 
-#: views/invoice/template.php:198
+#: views/invoice/template.php:203
 msgid "Bill to"
 msgstr ""
 
-#: views/invoice/template.php:217
+#: views/invoice/template.php:222
 #: views/wizards/setup/installation_steps.php:16
 #: views/wizards/setup/requirements_table.php:19
 #: views/wizards/setup/requirements_table.php:60
 msgid "Item"
 msgstr ""
 
-#: views/invoice/template.php:277
+#: views/invoice/template.php:282
 msgid "Tax included in price."
 msgstr ""
 
 #. translators: %s is the total amount in currency format.
-#: views/invoice/template.php:283
+#: views/invoice/template.php:288
 #, php-format
 msgid "Total: %s"
 msgstr ""

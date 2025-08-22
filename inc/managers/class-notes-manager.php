@@ -12,6 +12,8 @@
 namespace WP_Ultimo\Managers;
 
 // Exit if accessed directly
+use WP_Ultimo\Models\Traits\Notable;
+
 defined('ABSPATH') || exit;
 
 /**
@@ -108,7 +110,7 @@ class Notes_Manager extends Base_Manager {
 	 * @since 2.0.0
 	 *
 	 * @param array  $sections Array sections.
-	 * @param object $obj   The object.
+	 * @param \WP_Ultimo\Models\Interfaces\Notable $obj   The object.
 	 *
 	 * @return array
 	 */

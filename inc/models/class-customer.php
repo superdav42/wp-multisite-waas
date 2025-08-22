@@ -10,6 +10,8 @@
 namespace WP_Ultimo\Models;
 
 use WP_Ultimo\Models\Base_Model;
+use WP_Ultimo\Models\Interfaces\Billable;
+use WP_Ultimo\Models\Interfaces\Notable;
 use WP_Ultimo\Models\Membership;
 use WP_Ultimo\Models\Site;
 use WP_Ultimo\Models\Payment;
@@ -22,7 +24,7 @@ defined('ABSPATH') || exit;
  *
  * @since 2.0.0
  */
-class Customer extends Base_Model {
+class Customer extends Base_Model implements Billable, Notable {
 
 	use Traits\Billable;
 	use Traits\Notable;

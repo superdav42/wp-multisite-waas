@@ -9,11 +9,11 @@
 
 namespace WP_Ultimo\Models;
 
-use WP_Ultimo\Models\Base_Model;
-use WP_Ultimo\Models\Product;
-use WP_Ultimo\Models\Site;
-use WP_Ultimo\Database\Memberships\Membership_Status;
 use WP_Ultimo\Checkout\Cart;
+use WP_Ultimo\Database\Memberships\Membership_Status;
+use WP_Ultimo\Models\Interfaces\Billable;
+use WP_Ultimo\Models\Interfaces\Limitable;
+use WP_Ultimo\Models\Interfaces\Notable;
 
 // Exit if accessed directly
 defined('ABSPATH') || exit;
@@ -23,7 +23,7 @@ defined('ABSPATH') || exit;
  *
  * @since 2.0.0
  */
-class Membership extends Base_Model implements Limitable {
+class Membership extends Base_Model implements Limitable, Billable, Notable {
 
 	use Traits\Limitable;
 	use Traits\Billable;

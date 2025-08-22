@@ -10,9 +10,9 @@
 namespace WP_Ultimo\Models;
 
 use Psr\Log\LogLevel;
-use WP_Ultimo\Models\Base_Model;
-use WP_Ultimo\Objects\Limitations;
 use WP_Ultimo\Database\Sites\Site_Type;
+use WP_Ultimo\Models\Interfaces\Limitable;
+use WP_Ultimo\Models\Interfaces\Notable;
 use WP_Ultimo\UI\Template_Previewer;
 
 // Exit if accessed directly
@@ -23,7 +23,7 @@ defined('ABSPATH') || exit;
  *
  * @since 2.0.0
  */
-class Site extends Base_Model implements Limitable {
+class Site extends Base_Model implements Limitable, Notable {
 
 	use Traits\Limitable;
 	use \WP_Ultimo\Traits\WP_Ultimo_Site_Deprecated;

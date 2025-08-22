@@ -1,4 +1,4 @@
-/*! shepherd.js 14.5.0 */
+/*! shepherd.js 14.5.1 */
 
 /**
  * Checks if `value` is classified as an `Element`.
@@ -1273,16 +1273,21 @@ const flip$1 = function flip(options) {
         const nextIndex = (((_middlewareData$flip2 = middlewareData.flip) == null ? void 0 : _middlewareData$flip2.index) || 0) + 1;
         const nextPlacement = placements[nextIndex];
         if (nextPlacement) {
-          // Try next placement and re-run the lifecycle.
-          return {
-            data: {
-              index: nextIndex,
-              overflows: overflowsData
-            },
-            reset: {
-              placement: nextPlacement
-            }
-          };
+          var _overflowsData$;
+          const ignoreCrossAxisOverflow = checkCrossAxis === 'alignment' ? initialSideAxis !== getSideAxis(nextPlacement) : false;
+          const hasInitialMainAxisOverflow = ((_overflowsData$ = overflowsData[0]) == null ? void 0 : _overflowsData$.overflows[0]) > 0;
+          if (!ignoreCrossAxisOverflow || hasInitialMainAxisOverflow) {
+            // Try next placement and re-run the lifecycle.
+            return {
+              data: {
+                index: nextIndex,
+                overflows: overflowsData
+              },
+              reset: {
+                placement: nextPlacement
+              }
+            };
+          }
         }
 
         // First, find the candidates that fit on the mainAxis side of overflow,
@@ -1394,7 +1399,11 @@ const shift$1 = function shift(options) {
       return _extends({}, limitedCoords, {
         data: {
           x: limitedCoords.x - x,
-          y: limitedCoords.y - y
+          y: limitedCoords.y - y,
+          enabled: {
+            [mainAxis]: checkMainAxis,
+            [crossAxis]: checkCrossAxis
+          }
         }
       });
     }
@@ -1538,7 +1547,8 @@ function isContainingBlock(elementOrCss) {
   const css = isElement(elementOrCss) ? getComputedStyle(elementOrCss) : elementOrCss;
 
   // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
-  return css.transform !== 'none' || css.perspective !== 'none' || (css.containerType ? css.containerType !== 'normal' : false) || !webkit && (css.backdropFilter ? css.backdropFilter !== 'none' : false) || !webkit && (css.filter ? css.filter !== 'none' : false) || ['transform', 'perspective', 'filter'].some(value => (css.willChange || '').includes(value)) || ['paint', 'layout', 'strict', 'content'].some(value => (css.contain || '').includes(value));
+  // https://drafts.csswg.org/css-transforms-2/#individual-transforms
+  return ['transform', 'translate', 'scale', 'rotate', 'perspective'].some(value => css[value] ? css[value] !== 'none' : false) || (css.containerType ? css.containerType !== 'normal' : false) || !webkit && (css.backdropFilter ? css.backdropFilter !== 'none' : false) || !webkit && (css.filter ? css.filter !== 'none' : false) || ['transform', 'translate', 'scale', 'rotate', 'perspective', 'filter'].some(value => (css.willChange || '').includes(value)) || ['paint', 'layout', 'strict', 'content'].some(value => (css.contain || '').includes(value));
 }
 function getContainingBlock(element) {
   let currentNode = getParentNode(element);
@@ -1979,6 +1989,12 @@ function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
     scrollTop: 0
   };
   const offsets = createCoords(0);
+
+  // If the <body> scrollbar appears on the left (e.g. RTL systems). Use
+  // Firefox with layout.scrollbar.side = 3 in about:config to test this.
+  function setLeftRTLScrollbarOffset() {
+    offsets.x = getWindowScrollBarX(documentElement);
+  }
   if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
     if (getNodeName(offsetParent) !== 'body' || isOverflowElement(documentElement)) {
       scroll = getNodeScroll(offsetParent);
@@ -1988,10 +2004,11 @@ function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
       offsets.x = offsetRect.x + offsetParent.clientLeft;
       offsets.y = offsetRect.y + offsetParent.clientTop;
     } else if (documentElement) {
-      // If the <body> scrollbar appears on the left (e.g. RTL systems). Use
-      // Firefox with layout.scrollbar.side = 3 in about:config to test this.
-      offsets.x = getWindowScrollBarX(documentElement);
+      setLeftRTLScrollbarOffset();
     }
+  }
+  if (isFixed && !isOffsetParentAnElement && documentElement) {
+    setLeftRTLScrollbarOffset();
   }
   const htmlOffset = documentElement && !isOffsetParentAnElement && !isFixed ? getHTMLOffset(documentElement, scroll) : createCoords(0);
   const x = rect.left + scroll.scrollLeft - offsets.x - htmlOffset.x;
@@ -2080,6 +2097,9 @@ const platform = {
   isElement,
   isRTL
 };
+function rectsAreEqual(a, b) {
+  return a.x === b.x && a.y === b.y && a.width === b.width && a.height === b.height;
+}
 
 // https://samthor.au/2021/observing-dom/
 function observeMove(element, onMove) {
@@ -2100,12 +2120,13 @@ function observeMove(element, onMove) {
       threshold = 1;
     }
     cleanup();
+    const elementRectForRootMargin = element.getBoundingClientRect();
     const {
       left,
       top,
       width,
       height
-    } = element.getBoundingClientRect();
+    } = elementRectForRootMargin;
     if (!skip) {
       onMove();
     }
@@ -2138,6 +2159,16 @@ function observeMove(element, onMove) {
           refresh(false, ratio);
         }
       }
+      if (ratio === 1 && !rectsAreEqual(elementRectForRootMargin, element.getBoundingClientRect())) {
+        // It's possible that even though the ratio is reported as 1, the
+        // element is not actually fully within the IntersectionObserver's root
+        // area anymore. This can happen under performance constraints. This may
+        // be a bug in the browser's IntersectionObserver implementation. To
+        // work around this, we compare the element's bounding rect now with
+        // what it was at the time we created the IntersectionObserver. If they
+        // are not equal then the element moved, so we refresh.
+        refresh();
+      }
       isFirstUpdate = false;
     }
 
@@ -2148,7 +2179,7 @@ function observeMove(element, onMove) {
         // Handle <iframe>s
         root: root.ownerDocument
       }));
-    } catch (e) {
+    } catch (_e) {
       io = new IntersectionObserver(handleObserve, options);
     }
     io.observe(element);
@@ -2214,7 +2245,7 @@ function autoUpdate(reference, floating, update, options) {
   }
   function frameLoop() {
     const nextRefRect = getBoundingClientRect(reference);
-    if (prevRefRect && (nextRefRect.x !== prevRefRect.x || nextRefRect.y !== prevRefRect.y || nextRefRect.width !== prevRefRect.width || nextRefRect.height !== prevRefRect.height)) {
+    if (prevRefRect && !rectsAreEqual(prevRefRect, nextRefRect)) {
       update();
     }
     prevRefRect = nextRefRect;
@@ -2356,6 +2387,7 @@ function setPosition(target, step, floatingUIOptions, shouldCenter) {
   // Replaces focusAfterRender modifier.
   .then(step => {
     if (step != null && step.el) {
+      step.el.tabIndex = 0;
       step.el.focus({
         preventScroll: true
       });
@@ -2710,6 +2742,20 @@ function onMount(fn) {
  */
 function afterUpdate(fn) {
   get_current_component().$$.after_update.push(fn);
+}
+
+/**
+ * Schedules a callback to run immediately before the component is unmounted.
+ *
+ * Out of `onMount`, `beforeUpdate`, `afterUpdate` and `onDestroy`, this is the
+ * only one that runs inside a server-side component.
+ *
+ * https://svelte.dev/docs/svelte#ondestroy
+ * @param {() => any} fn
+ * @returns {void}
+ */
+function onDestroy(fn) {
+  get_current_component().$$.on_destroy.push(fn);
 }
 
 const dirty_components = [];
@@ -4164,7 +4210,7 @@ function create_fragment$1(ctx) {
       append(dialog, t);
       mount_component(shepherdcontent, dialog, null);
       /*dialog_binding*/
-      ctx[13](dialog);
+      ctx[18](dialog);
       current = true;
       if (!mounted) {
         dispose = listen(dialog, "keydown", /*handleKeyDown*/ctx[7]);
@@ -4214,7 +4260,7 @@ function create_fragment$1(ctx) {
       if (if_block) if_block.d();
       destroy_component(shepherdcontent);
       /*dialog_binding*/
-      ctx[13](null);
+      ctx[18](null);
       mounted = false;
       dispose();
     }
@@ -4229,13 +4275,18 @@ function getClassesArray(classes) {
 }
 function instance$1($$self, $$props, $$invalidate) {
   let {
+    attachToElement,
+    attachTofocusableDialogElements,
     classPrefix,
     element,
     descriptionId,
-    firstFocusableElement,
-    focusableElements,
+    focusableAttachToElements,
+    firstFocusableAttachToElement,
+    lastFocusableAttachToElement,
+    firstFocusableDialogElement,
+    focusableDialogElements,
+    lastFocusableDialogElement,
     labelId,
-    lastFocusableElement,
     step,
     dataStepId
   } = $$props;
@@ -4246,9 +4297,24 @@ function instance$1($$self, $$props, $$invalidate) {
     $$invalidate(1, dataStepId = {
       [`data-${classPrefix}shepherd-step-id`]: step.id
     });
-    $$invalidate(9, focusableElements = element.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex="0"]'));
-    $$invalidate(8, firstFocusableElement = focusableElements[0]);
-    $$invalidate(10, lastFocusableElement = focusableElements[focusableElements.length - 1]);
+    $$invalidate(13, focusableDialogElements = [...element.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex="0"]')]);
+    $$invalidate(12, firstFocusableDialogElement = focusableDialogElements[0]);
+    $$invalidate(14, lastFocusableDialogElement = focusableDialogElements[focusableDialogElements.length - 1]);
+    const attachTo = step._getResolvedAttachToOptions();
+    if (attachTo != null && attachTo.element) {
+      $$invalidate(8, attachToElement = attachTo.element);
+      $$invalidate(8, attachToElement.tabIndex = 0, attachToElement);
+      $$invalidate(9, focusableAttachToElements = [attachToElement, ...attachToElement.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex="0"]')]);
+      $$invalidate(10, firstFocusableAttachToElement = focusableAttachToElements[0]);
+      $$invalidate(11, lastFocusableAttachToElement = focusableAttachToElements[focusableAttachToElements.length - 1]);
+
+      // Add keydown listener to attachTo element
+      attachToElement.addEventListener('keydown', handleKeyDown);
+    }
+  });
+  onDestroy(() => {
+    var _attachToElement;
+    (_attachToElement = attachToElement) == null || _attachToElement.removeEventListener('keydown', handleKeyDown);
   });
   afterUpdate(() => {
     if (classes !== step.options.classes) {
@@ -4290,21 +4356,35 @@ function instance$1($$self, $$props, $$invalidate) {
     } = step;
     switch (e.keyCode) {
       case KEY_TAB:
-        if (focusableElements.length === 0) {
+        if ((!focusableAttachToElements || focusableAttachToElements.length === 0) && focusableDialogElements.length === 0) {
           e.preventDefault();
           break;
         }
         // Backward tab
         if (e.shiftKey) {
-          if (document.activeElement === firstFocusableElement || document.activeElement.classList.contains('shepherd-element')) {
+          // If at the beginning of elements in the dialog, go to last element in attachTo
+          // If attachToElement is undefined, circle around to the last element in the dialog.
+          if (document.activeElement === firstFocusableDialogElement || document.activeElement.classList.contains('shepherd-element')) {
+            var _lastFocusableAttachT;
             e.preventDefault();
-            lastFocusableElement.focus();
-          }
+            ((_lastFocusableAttachT = lastFocusableAttachToElement) != null ? _lastFocusableAttachT : lastFocusableDialogElement).focus();
+          } else
+            // If at the beginning of elements in attachTo
+            if (document.activeElement === firstFocusableAttachToElement) {
+              e.preventDefault();
+              lastFocusableDialogElement.focus();
+            }
         } else {
-          if (document.activeElement === lastFocusableElement) {
+          if (document.activeElement === lastFocusableDialogElement) {
+            var _firstFocusableAttach;
             e.preventDefault();
-            firstFocusableElement.focus();
-          }
+            ((_firstFocusableAttach = firstFocusableAttachToElement) != null ? _firstFocusableAttach : firstFocusableDialogElement).focus();
+          } else
+            // If at the end of elements in attachTo
+            if (document.activeElement === lastFocusableAttachToElement) {
+              e.preventDefault();
+              firstFocusableDialogElement.focus();
+            }
         }
         break;
       case KEY_ESC:
@@ -4337,13 +4417,18 @@ function instance$1($$self, $$props, $$invalidate) {
     });
   }
   $$self.$$set = $$props => {
-    if ('classPrefix' in $$props) $$invalidate(11, classPrefix = $$props.classPrefix);
+    if ('attachToElement' in $$props) $$invalidate(8, attachToElement = $$props.attachToElement);
+    if ('attachTofocusableDialogElements' in $$props) $$invalidate(15, attachTofocusableDialogElements = $$props.attachTofocusableDialogElements);
+    if ('classPrefix' in $$props) $$invalidate(16, classPrefix = $$props.classPrefix);
     if ('element' in $$props) $$invalidate(0, element = $$props.element);
     if ('descriptionId' in $$props) $$invalidate(2, descriptionId = $$props.descriptionId);
-    if ('firstFocusableElement' in $$props) $$invalidate(8, firstFocusableElement = $$props.firstFocusableElement);
-    if ('focusableElements' in $$props) $$invalidate(9, focusableElements = $$props.focusableElements);
+    if ('focusableAttachToElements' in $$props) $$invalidate(9, focusableAttachToElements = $$props.focusableAttachToElements);
+    if ('firstFocusableAttachToElement' in $$props) $$invalidate(10, firstFocusableAttachToElement = $$props.firstFocusableAttachToElement);
+    if ('lastFocusableAttachToElement' in $$props) $$invalidate(11, lastFocusableAttachToElement = $$props.lastFocusableAttachToElement);
+    if ('firstFocusableDialogElement' in $$props) $$invalidate(12, firstFocusableDialogElement = $$props.firstFocusableDialogElement);
+    if ('focusableDialogElements' in $$props) $$invalidate(13, focusableDialogElements = $$props.focusableDialogElements);
+    if ('lastFocusableDialogElement' in $$props) $$invalidate(14, lastFocusableDialogElement = $$props.lastFocusableDialogElement);
     if ('labelId' in $$props) $$invalidate(3, labelId = $$props.labelId);
-    if ('lastFocusableElement' in $$props) $$invalidate(10, lastFocusableElement = $$props.lastFocusableElement);
     if ('step' in $$props) $$invalidate(4, step = $$props.step);
     if ('dataStepId' in $$props) $$invalidate(1, dataStepId = $$props.dataStepId);
   };
@@ -4355,26 +4440,31 @@ function instance$1($$self, $$props, $$invalidate) {
       }
     }
   };
-  return [element, dataStepId, descriptionId, labelId, step, hasCancelIcon, hasTitle, handleKeyDown, firstFocusableElement, focusableElements, lastFocusableElement, classPrefix, getElement, dialog_binding];
+  return [element, dataStepId, descriptionId, labelId, step, hasCancelIcon, hasTitle, handleKeyDown, attachToElement, focusableAttachToElements, firstFocusableAttachToElement, lastFocusableAttachToElement, firstFocusableDialogElement, focusableDialogElements, lastFocusableDialogElement, attachTofocusableDialogElements, classPrefix, getElement, dialog_binding];
 }
 class Shepherd_element extends SvelteComponent {
   constructor(options) {
     super();
     init(this, options, instance$1, create_fragment$1, safe_not_equal, {
-      classPrefix: 11,
+      attachToElement: 8,
+      attachTofocusableDialogElements: 15,
+      classPrefix: 16,
       element: 0,
       descriptionId: 2,
-      firstFocusableElement: 8,
-      focusableElements: 9,
+      focusableAttachToElements: 9,
+      firstFocusableAttachToElement: 10,
+      lastFocusableAttachToElement: 11,
+      firstFocusableDialogElement: 12,
+      focusableDialogElements: 13,
+      lastFocusableDialogElement: 14,
       labelId: 3,
-      lastFocusableElement: 10,
       step: 4,
       dataStepId: 1,
-      getElement: 12
+      getElement: 17
     });
   }
   get getElement() {
-    return this.$$.ctx[12];
+    return this.$$.ctx[17];
   }
 }
 
