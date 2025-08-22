@@ -97,6 +97,7 @@ class Invoice {
 				'tempDir'          => get_temp_dir(),
 			]
 		);
+		$this->printer->curlFollowLocation = true;
 
 		$this->printer->setDefaultFont($this->font);
 
