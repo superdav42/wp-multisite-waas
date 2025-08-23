@@ -491,18 +491,18 @@ class Site_Manager extends Base_Manager {
 		if (empty($logo)) {
 			return;
 		}
-		// Inline styles for login logo - dynamically generated based on site settings.
-		?>
 
-	<style type="text/css">
-			#login h1 a, .login h1 a {
-				background-image: url(<?php echo esc_url($logo); ?>);
-				background-position: center center;
-				background-size: contain;
-			}
-	</style>
-
-		<?php
+		wp_add_inline_style(
+			'login',
+			sprintf(
+				'#login h1 a, .login h1 a {
+                    background-image: url(%s);
+                    background-position: center center;
+                    background-size: contain;
+                }',
+				esc_url($logo)
+			)
+		);
 	}
 
 	/**
