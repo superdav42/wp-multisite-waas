@@ -296,7 +296,7 @@ class Account_Summary_Element extends Base_Element {
 
 		// Defensive check - setup() may have been called but site can still be null
 		if ( ! $this->site) {
-			_doing_it_wrong(__METHOD__, esc_html__('setup() or setup_preview() must be called before output().', 'multisite-ultimate'));
+			_doing_it_wrong(__METHOD__, esc_html__('setup() or setup_preview() must be called before output().', 'multisite-ultimate'), wu_get_version());
 			return '';
 		}
 
