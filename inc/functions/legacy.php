@@ -143,68 +143,59 @@ function wu_print_signup_field($field_slug, $field, $results) {
 		$elements = implode(', ', $elements);
 
 		wp_enqueue_script('jquery');
-		?>
-    <script type="text/javascript">
-			document.addEventListener('DOMContentLoaded', function() {
-				var requires = <?php echo wp_json_encode($field['requires']); ?>,
-						target_field = document.getElementById('<?php echo esc_js($field_slug); ?>-field');
+		
+		$script_data = [
+			'requires' => $field['requires'],
+			'field_slug' => $field_slug,
+			'elements' => $elements
+		];
+		
+		wp_add_inline_script('jquery', sprintf('
+			document.addEventListener("DOMContentLoaded", function() {
+				var requires = %s,
+					target_field = document.getElementById("%s-field");
 
-        var display_field = function(target_field, requires, velocity) {
-
-          var conditions_count = Object.keys(requires).length,
-              conditions_met   = 0;
+				var display_field = function(target_field, requires, velocity) {
+					var conditions_count = Object.keys(requires).length,
+						conditions_met = 0;
 
 					requires.forEach(function(element, value) {
-
 						var element = document.getElementById(element),
-						    element_value = element.value;
+							element_value = element.value;
 
 						if (element.type === "checkbox") {
+							var is_checked = element.checked;
+							if (is_checked === value) {
+								conditions_met++;
+							}
+							return true;
+						}
 
-              var is_checked = element.checked;
+						value = Array.isArray(value) ? value : [value];
+						if (value.indexOf(element_value) > -1) {
+							conditions_met++;
+						}
+					});
 
-              if (is_checked === value) {
-                conditions_met++;
-              }
+					if (conditions_met === conditions_count) {
+						target_field.slideDown(velocity);
+					} else {
+						target_field.slideUp(velocity);
+					}
+				}
 
-              return true;
+				display_field(target_field, requires, 0);
 
-            }
-
-            value = Array.isArray(value) ? value : [value];
-
-            if (value.indexOf(element_value) > -1) {
-
-              conditions_met++;
-
-            }
-
-          });
-
-          if (conditions_met === conditions_count) {
-
-            target_field.slideDown(velocity);
-
-          } else {
-
-            target_field.slideUp(velocity);
-
-          } // end
-
-        }
-
-        display_field(target_field, requires, 0);
-
-				[<?php echo $elements; ?>].forEach(function(element) {
-					document.getElementById(element).addEventListener('change', function() {
+				[%s].forEach(function(element) {
+					document.getElementById(element).addEventListener("change", function() {
 						display_field(target_field, requires, 300);
 					});
 				});
-
-			});
-    </script>
-
-		<?php
+			});',
+			wp_json_encode($script_data['requires']),
+			esc_js($script_data['field_slug']),
+			$script_data['elements']
+		), 'after');
 
 	}
 
@@ -281,14 +272,19 @@ function wu_print_signup_field($field_slug, $field, $results) {
 
       <span style="display: block; margin-top: -16px; opacity: 1; height: 36px;" id="pass-strength-result" class="hide-if-no-js" aria-live="polite"><?php esc_html_e( 'Strength indicator', 'multisite-ultimate' ); ?></span>
 
-      <script>
-				document.addEventListener('DOMContentLoaded', function() {
-					var input = document.getElementById('<?php echo $field_slug; ?>');
-					input.addEventListener('keyup', function() {
-						wu_check_pass_strength('#<?php echo $field_slug; ?>', '#<?php echo $field_slug; ?>');
+      <?php
+      wp_add_inline_script('jquery', sprintf('
+				document.addEventListener("DOMContentLoaded", function() {
+					var input = document.getElementById("%s");
+					input.addEventListener("keyup", function() {
+						wu_check_pass_strength("#%s", "#%s");
 					});
-				});
-      </script>
+				});',
+				esc_js($field_slug),
+				esc_js($field_slug),
+				esc_js($field_slug)
+			), 'after');
+			?>
 
 			<?php else : ?>
 

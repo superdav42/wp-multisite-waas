@@ -459,6 +459,7 @@ class Broadcast_Edit_Admin_Page extends Edit_Admin_Page {
 	 */
 	public function get_object() {
 
+		// Data is only being fetch, nothing is being modified, no need for nonce check.
 		if (isset($_GET['id'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$query = new \WP_Ultimo\Database\Broadcasts\Broadcast_Query();
 
