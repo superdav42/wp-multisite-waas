@@ -333,7 +333,7 @@ if (null !== $first_recurring_product) {
 
 			<?php foreach ($product->get_pricing_table_lines() as $key => $line) : ?>
 
-				<li class="<?php echo esc_attr(str_replace('_', '-', $key)); ?>"><?php echo esc_html($line); ?></li>
+				<li class="<?php echo esc_attr(str_replace('_', '-', $key)); ?>"><?php echo wp_kses_post($line); ?></li>
 
 			<?php endforeach; ?>
 
