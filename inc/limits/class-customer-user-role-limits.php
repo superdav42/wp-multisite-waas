@@ -135,7 +135,11 @@ class Customer_User_Role_Limits {
 			$role = $membership->get_limitations()->customer_user_role->get_limit();
 
 			foreach ($sites as $site) {
-				add_user_to_blog($site->get_id(), $customer->get_user_id(), $role);
+				// only add user to blog if they are not already a member, or we are downgrading their role.
+				// Without this check the user could lose additional roles added manually or with hooks.
+				if ('administrator' !== $role || ! is_user_member_of_blog($customer->get_user_id(), $site->get_id())) {
+					add_user_to_blog($site->get_id(), $customer->get_user_id(), $role);
+				}
 			}
 		}
 	}
