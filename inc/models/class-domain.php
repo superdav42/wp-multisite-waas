@@ -397,6 +397,18 @@ class Domain extends Base_Model {
 
 		$domain_url = $this->get_domain();
 
+		$domain_manager = \WP_Ultimo\Managers\Domain_Manager::get_instance();
+
+		$secret_verification_enabled = apply_filters('wu_enable_secret_domain_verification', true, $this);
+
+		if ( $secret_verification_enabled ) {
+			$secret_result = $domain_manager->verify_domain_with_secret($domain_url);
+
+			if ( $secret_result ) {
+				return true;
+			}
+		}
+
 		$network_ip_address = Helper::get_network_public_ip();
 
 		$results = \WP_Ultimo\Managers\Domain_Manager::dns_get_record($domain_url);

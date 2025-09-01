@@ -904,4 +904,154 @@ class Domain_Manager extends Base_Manager {
 		 */
 		do_action('wp_ultimo_host_providers_load');
 	}
+
+	/**
+	 * Register the domain verification endpoint.
+	 *
+	 * @since 2.0.0
+	 * @return void
+	 */
+	public function register_domain_verification_endpoint(): void {
+
+		register_rest_route(
+			'wu/v1',
+			'/domain-verification/(?P<domain>[a-zA-Z0-9.-]+)',
+			array(
+				'methods'             => \WP_REST_Server::READABLE,
+				'callback'            => array($this, 'domain_verification_endpoint'),
+				'permission_callback' => '__return_true',
+				'args'                => array(
+					'domain' => array(
+						'required'          => true,
+						'sanitize_callback' => 'sanitize_text_field',
+					),
+				),
+			)
+		);
+	}
+
+	/**
+	 * Domain verification endpoint that returns a shared secret.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param \WP_REST_Request $request The request object.
+	 * @return \WP_REST_Response|\WP_Error
+	 */
+	public function domain_verification_endpoint($request) {
+
+		$domain = $request->get_param('domain');
+
+		if ( empty($domain) ) {
+			return new \WP_Error('missing_domain', __('Domain parameter is required.', 'multisite-ultimate'), array('status' => 400));
+		}
+
+		$secret = $this->get_domain_verification_secret($domain);
+
+		return rest_ensure_response(
+			array(
+				'domain' => $domain,
+				'secret' => $secret,
+			)
+		);
+	}
+
+	/**
+	 * Generate and store a verification secret for a domain.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param string $domain The domain to generate a secret for.
+	 * @return string The generated secret.
+	 */
+	private function generate_domain_verification_secret($domain) {
+
+		$secret = wp_generate_password(32, false);
+
+		set_site_transient("wu_domain_verification_{$domain}", $secret, 5 * MINUTE_IN_SECONDS);
+
+		return $secret;
+	}
+
+	/**
+	 * Get the verification secret for a domain.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param string $domain The domain to get the secret for.
+	 * @return string The verification secret.
+	 */
+	private function get_domain_verification_secret($domain) {
+
+		$secret = get_site_transient("wu_domain_verification_{$domain}");
+
+		if ( false === $secret ) {
+			$secret = $this->generate_domain_verification_secret($domain);
+		}
+
+		return $secret;
+	}
+
+	/**
+	 * Verify domain ownership using the secret-based method.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param string $domain The domain to verify.
+	 * @return bool True if verification succeeds, false otherwise.
+	 */
+	public function verify_domain_with_secret($domain) {
+
+		$expected_secret = $this->generate_domain_verification_secret($domain);
+
+		$verification_url = "https://{$domain}/wp-json/wu/v1/domain-verification/{$domain}";
+
+		$response = wp_remote_get(
+			$verification_url,
+			array(
+				'timeout'   => 10,
+				'sslverify' => false,
+			)
+		);
+
+		if ( is_wp_error($response) ) {
+			wu_log_add(
+				"domain-verification-{$domain}",
+				// translators: %s url of the endpoint.
+				sprintf(__('Failed to connect to verification endpoint: %s', 'multisite-ultimate'), $response->get_error_message()),
+				LogLevel::WARNING
+			);
+			return false;
+		}
+
+		$body = wp_remote_retrieve_body($response);
+		$data = json_decode($body, true);
+
+		if ( ! isset($data['secret']) ) {
+			wu_log_add(
+				"domain-verification-{$domain}",
+				__('Verification endpoint did not return a secret.', 'multisite-ultimate'),
+				LogLevel::WARNING
+			);
+			return false;
+		}
+
+		$received_secret = $data['secret'];
+
+		if ( hash_equals($expected_secret, $received_secret) ) {
+			wu_log_add(
+				"domain-verification-{$domain}",
+				__('Domain verification successful using secret method.', 'multisite-ultimate')
+			);
+			return true;
+		}
+
+		wu_log_add(
+			"domain-verification-{$domain}",
+			__('Domain verification failed: secrets do not match.', 'multisite-ultimate'),
+			LogLevel::WARNING
+		);
+
+		return false;
+	}
 }
