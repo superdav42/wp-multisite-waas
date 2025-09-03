@@ -11,11 +11,15 @@ if ( ! defined('ABSPATH') ) {
 
 ?>
 
-<div id="plugin-information">
+<div id="plugin-information" style="position: static">
 
 	<div id="plugin-information-scrollable">
 
-		<div id="plugin-information-title" class="with-banner">
+		<div id="plugin-information-title" class="with-banner" 
+		<?php
+		if ( isset($addon->images[0]['thumbnail'])) :
+			?>
+style="background-image:url(<?php echo esc_url($addon->images[0]['thumbnail']); ?>);background-position:center;"<?php endif; ?>>
 			<div class="vignette"></div>
 			<h2><?php echo esc_html($addon->name); ?></h2>
 		</div>
@@ -100,7 +104,7 @@ if ( ! defined('ABSPATH') ) {
 
 	</div>
 
-	<div id="plugin-information-footer">
+	<div id="plugin-information-footer" style="height: auto !important;">
 
 		<?php if (! $addon->prices['price'] > 0) : ?>
 
