@@ -4,28 +4,12 @@
  *
  * @since 2.0.0
  */
+
+if ( ! defined('ABSPATH') ) {
+	exit; // Exit if accessed directly
+}
+
 ?>
-<style type="text/css">
-	#plugin-information {
-		position: static;
-	}
-
-	#plugin-information-footer {
-		height: auto !important;
-	}
-
-	#plugin-information-title.with-banner {
-		background-position: center;
-		background-image: url("<?php echo esc_attr($addon->images[0]['thumbnail'] ?? ''); ?>");
-	}
-
-	@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
-		#plugin-information-title.with-banner {
-		background-position: center;
-		background-image: url("<?php echo esc_attr($addon->images[0]['thumbnail'] ?? ''); ?>");
-		}
-	}
-</style>
 
 <div id="plugin-information">
 
