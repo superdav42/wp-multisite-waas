@@ -14,6 +14,7 @@ namespace WP_Ultimo\Managers;
 
 use Psr\Log\LogLevel;
 use WP_Ultimo\Domain_Mapping\Helper;
+use WP_Ultimo\Models\Domain;
 
 // Exit if accessed directly
 defined('ABSPATH') || exit;
@@ -906,150 +907,142 @@ class Domain_Manager extends Base_Manager {
 	}
 
 	/**
-	 * Register the domain verification endpoint.
+	 * Verify domain ownership using a loopback request.
 	 *
-	 * @since 2.0.0
-	 * @return void
-	 */
-	public function register_domain_verification_endpoint(): void {
-
-		register_rest_route(
-			'wu/v1',
-			'/domain-verification/(?P<domain>[a-zA-Z0-9.-]+)',
-			array(
-				'methods'             => \WP_REST_Server::READABLE,
-				'callback'            => array($this, 'domain_verification_endpoint'),
-				'permission_callback' => '__return_true',
-				'args'                => array(
-					'domain' => array(
-						'required'          => true,
-						'sanitize_callback' => 'sanitize_text_field',
-					),
-				),
-			)
-		);
-	}
-
-	/**
-	 * Domain verification endpoint that returns a shared secret.
+	 * This method attempts to verify a domain by making an loopback request with a
+	 * a specific parameter that is used by Domain_Mapper::verify_dns_mapping().
 	 *
-	 * @since 2.0.0
+	 * @since 2.4.4
 	 *
-	 * @param \WP_REST_Request $request The request object.
-	 * @return \WP_REST_Response|\WP_Error
-	 */
-	public function domain_verification_endpoint($request) {
-
-		$domain = $request->get_param('domain');
-
-		if ( empty($domain) ) {
-			return new \WP_Error('missing_domain', __('Domain parameter is required.', 'multisite-ultimate'), array('status' => 400));
-		}
-
-		$secret = $this->get_domain_verification_secret($domain);
-
-		return rest_ensure_response(
-			array(
-				'domain' => $domain,
-				'secret' => $secret,
-			)
-		);
-	}
-
-	/**
-	 * Generate and store a verification secret for a domain.
-	 *
-	 * @since 2.0.0
-	 *
-	 * @param string $domain The domain to generate a secret for.
-	 * @return string The generated secret.
-	 */
-	private function generate_domain_verification_secret($domain) {
-
-		$secret = wp_generate_password(32, false);
-
-		set_site_transient("wu_domain_verification_{$domain}", $secret, 5 * MINUTE_IN_SECONDS);
-
-		return $secret;
-	}
-
-	/**
-	 * Get the verification secret for a domain.
-	 *
-	 * @since 2.0.0
-	 *
-	 * @param string $domain The domain to get the secret for.
-	 * @return string The verification secret.
-	 */
-	private function get_domain_verification_secret($domain) {
-
-		$secret = get_site_transient("wu_domain_verification_{$domain}");
-
-		if ( false === $secret ) {
-			$secret = $this->generate_domain_verification_secret($domain);
-		}
-
-		return $secret;
-	}
-
-	/**
-	 * Verify domain ownership using the secret-based method.
-	 *
-	 * @since 2.0.0
-	 *
-	 * @param string $domain The domain to verify.
+	 * @param Domain $domain The domain object to verify.
 	 * @return bool True if verification succeeds, false otherwise.
 	 */
-	public function verify_domain_with_secret($domain) {
+	public function verify_domain_with_loopback_request(Domain $domain): bool {
 
-		$expected_secret = $this->generate_domain_verification_secret($domain);
+		$domain_url = $domain->get_domain();
+		$domain_id  = $domain->get_id();
 
-		$verification_url = "https://{$domain}/wp-json/wu/v1/domain-verification/{$domain}";
+		$endpoint_path = '/';
 
-		$response = wp_remote_get(
-			$verification_url,
-			array(
-				'timeout'   => 10,
-				'sslverify' => false,
-			)
-		);
+		// Test protocols in order of preference: HTTPS with SSL verify, HTTPS without SSL verify, HTTP
+		$protocols_to_test = [
+			[
+				'url'       => "https://{$domain_url}{$endpoint_path}",
+				/** This filter is documented in wp-includes/class-wp-http-streams.php */
+				'sslverify' => apply_filters('https_local_ssl_verify', false),
+				'label'     => 'HTTPS with SSL verification',
+			],
+			[
+				'url'   => "http://{$domain_url}{$endpoint_path}",
+				'label' => 'HTTP',
+			],
+		];
 
-		if ( is_wp_error($response) ) {
+		foreach ($protocols_to_test as $protocol_config) {
 			wu_log_add(
-				"domain-verification-{$domain}",
-				// translators: %s url of the endpoint.
-				sprintf(__('Failed to connect to verification endpoint: %s', 'multisite-ultimate'), $response->get_error_message()),
+				"domain-{$domain_url}",
+				sprintf(
+					/* translators: %1$s: Protocol label (HTTPS with SSL verification, HTTPS without SSL verification, HTTP), %2$s: URL being tested */
+					__('Testing domain verification via Loopback using %1$s: %2$s', 'multisite-ultimate'),
+					$protocol_config['label'],
+					$protocol_config['url']
+				)
+			);
+
+			// Make API request with basic auth
+			$response = wp_remote_get(
+				$protocol_config['url'],
+				[
+					'timeout'     => 10,
+					'redirection' => 0,
+					'sslverify'   => $protocol_config['sslverify'],
+					'body'        => ['async_check_dns_nonce' => wp_hash($domain_url)],
+				]
+			);
+
+			// Check for connection errors
+			if (is_wp_error($response)) {
+				wu_log_add(
+					"domain-{$domain_url}",
+					sprintf(
+					/* translators: %1$s: Protocol label (HTTPS with SSL verification, HTTPS without SSL verification, HTTP), %2$s: Error Message */
+						__('Failed to connect via %1$s: %2$s', 'multisite-ultimate'),
+						$protocol_config['label'],
+						$response->get_error_message()
+					),
+					LogLevel::WARNING
+				);
+				continue;
+			}
+
+			$response_code = wp_remote_retrieve_response_code($response);
+			$body          = wp_remote_retrieve_body($response);
+
+			// Check HTTP status
+			if (200 !== $response_code) {
+				wu_log_add(
+					"domain-{$domain_url}",
+					sprintf(
+						/* translators: %1$s: Protocol label (HTTPS with SSL verification, HTTPS without SSL verification, HTTP), %2$s: HTTP Response Code */
+						__('Loopback request via %1$s returned HTTP %2$d', 'multisite-ultimate'),
+						$protocol_config['label'],
+						$response_code
+					),
+					LogLevel::WARNING
+				);
+				continue;
+			}
+
+			// Try to decode JSON response
+			$data = json_decode($body, true);
+
+			if (json_last_error() !== JSON_ERROR_NONE) {
+				wu_log_add(
+					"domain-{$domain_url}",
+					sprintf(
+						/* translators: %1$s: Protocol label (HTTPS with SSL verification, HTTPS without SSL verification, HTTP), %2$s: Json error, %3$s part of the response */
+						__('Loopback response via %1$s is not valid JSON: %2$s : %3$s', 'multisite-ultimate'),
+						$protocol_config['label'],
+						json_last_error_msg(),
+						substr($body, 0, 100)
+					),
+					LogLevel::WARNING
+				);
+				continue;
+			}
+
+			// Check if we got a valid domain object back
+			if (isset($data['id']) && (int) $data['id'] === $domain_id) {
+				wu_log_add(
+					"domain-{$domain_url}",
+					sprintf(
+					/* translators: %1$s: Protocol label (HTTPS with SSL verification, HTTPS without SSL verification, HTTP), %2$s: Domain ID number */
+						__('Domain verification successful via Loopback using %1$s. Domain ID %2$d confirmed.', 'multisite-ultimate'),
+						$protocol_config['label'],
+						$domain_id
+					)
+				);
+
+				return true;
+			}
+
+			wu_log_add(
+				"domain-{$domain_url}",
+				sprintf(
+				/* translators: %1$s: Protocol label (HTTPS with SSL verification, HTTPS without SSL verification, HTTP), %2$s: Domain ID number, %3$s Domain ID number */
+					__('Loopback response via %1$s did not contain expected domain ID. Expected: %2$d, Got: %3$s', 'multisite-ultimate'),
+					$protocol_config['label'],
+					$domain_id,
+					isset($data['id']) ? $data['id'] : 'null'
+				),
 				LogLevel::WARNING
 			);
-			return false;
-		}
-
-		$body = wp_remote_retrieve_body($response);
-		$data = json_decode($body, true);
-
-		if ( ! isset($data['secret']) ) {
-			wu_log_add(
-				"domain-verification-{$domain}",
-				__('Verification endpoint did not return a secret.', 'multisite-ultimate'),
-				LogLevel::WARNING
-			);
-			return false;
-		}
-
-		$received_secret = $data['secret'];
-
-		if ( hash_equals($expected_secret, $received_secret) ) {
-			wu_log_add(
-				"domain-verification-{$domain}",
-				__('Domain verification successful using secret method.', 'multisite-ultimate')
-			);
-			return true;
 		}
 
 		wu_log_add(
-			"domain-verification-{$domain}",
-			__('Domain verification failed: secrets do not match.', 'multisite-ultimate'),
-			LogLevel::WARNING
+			"domain-{$domain_url}",
+			__('Domain verification failed via loopback on all protocols (HTTPS with SSL, HTTPS without SSL, HTTP).', 'multisite-ultimate'),
+			LogLevel::ERROR
 		);
 
 		return false;

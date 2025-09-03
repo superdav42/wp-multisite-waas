@@ -75,11 +75,6 @@ defined( 'ABSPATH' ) || exit;
 		<td colspan="2" class="wu-text-left">{{ results.network_ip }}</td>
 		</tr>
 
-		<tr>
-			<td colspan="2"><?php esc_html_e('Domain connected to site?', 'multisite-ultimate'); ?></td>
-			<td colspan="2" class="wu-text-left">{{ results.has_correct_dns }}</td>
-		</tr>
-
 	</tbody>
 
 	</table>
