@@ -7,7 +7,7 @@
 defined( 'ABSPATH' ) || exit;
 
 ?>
-<li class="<?php echo esc_attr(trim($field->wrapper_classes)); ?>" <?php echo $field->get_wrapper_html_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+<li class="<?php echo esc_attr(trim($field->wrapper_classes)); ?>" <?php $field->print_wrapper_html_attributes(); ?>>
 
 	<div class="wu-block">
 
@@ -56,7 +56,7 @@ defined( 'ABSPATH' ) || exit;
 
 		<?php if ($field->copy) : ?>
 
-			<a <?php echo wu_tooltip_text(esc_html__('Copy', 'multisite-ultimate')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> class="wu-no-underline wp-ui-text-highlight wu-copy"  data-clipboard-action="copy" data-clipboard-target="#<?php echo esc_attr($field->id); ?>_value">
+			<a <?php wu_tooltip_text(esc_html__('Copy', 'multisite-ultimate')); ?> class="wu-no-underline wp-ui-text-highlight wu-copy"  data-clipboard-action="copy" data-clipboard-target="#<?php echo esc_attr($field->id); ?>_value">
 
 			<span class="dashicons-wu-copy wu-align-middle"></span>
 

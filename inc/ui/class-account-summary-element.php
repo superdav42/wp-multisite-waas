@@ -9,8 +9,6 @@
 
 namespace WP_Ultimo\UI;
 
-use WP_Ultimo\UI\Base_Element;
-
 // Exit if accessed directly
 defined('ABSPATH') || exit;
 
@@ -290,14 +288,14 @@ class Account_Summary_Element extends Base_Element {
 	 *
 	 * @param array       $atts Parameters of the block/shortcode.
 	 * @param string|null $content The content inside the shortcode.
-	 * @return string
+	 * @return void
 	 */
-	public function output($atts, $content = null) {
+	public function output($atts, $content = null): void {
 
 		// Defensive check - setup() may have been called but site can still be null
 		if ( ! $this->site) {
 			_doing_it_wrong(__METHOD__, esc_html__('setup() or setup_preview() must be called before output().', 'multisite-ultimate'));
-			return '';
+			return;
 		}
 
 		$atts = array_merge($atts, $this->atts);
@@ -308,7 +306,7 @@ class Account_Summary_Element extends Base_Element {
 
 		$atts['product'] = $this->product;
 
-		return wu_get_template_contents('dashboard-widgets/account-summary', $atts);
+		wu_get_template('dashboard-widgets/account-summary', $atts);
 	}
 
 	/**

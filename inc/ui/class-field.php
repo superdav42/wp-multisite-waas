@@ -387,12 +387,12 @@ class Field implements \JsonSerializable {
 	}
 
 	/**
-	 * Return HTML attributes for the field.
+	 * Echo HTML attributes for the field.
 	 *
-	 * @since 2.0.0
-	 * @return string
+	 * @since 2.4.4
+	 * @return void
 	 */
-	public function get_html_attributes() {
+	public function print_html_attributes(): void {
 
 		if (is_callable($this->atts['html_attr'])) {
 			$this->atts['html_attr'] = call_user_func($this->atts['html_attr']);
@@ -418,22 +418,22 @@ class Field implements \JsonSerializable {
 			$attributes['v-bind'] = 'money_settings';
 		}
 
-		return wu_array_to_html_attrs($attributes);
+		wu_print_html_attributes($attributes);
 	}
 
 	/**
-	 * Return HTML attributes for the field.
+	 * Echos HTML attributes for the field.
 	 *
-	 * @since 2.0.0
-	 * @return string
+	 * @since 2.4.4
+	 * @return void
 	 */
-	public function get_wrapper_html_attributes() {
+	public function print_wrapper_html_attributes(): void {
 
 		$attributes = $this->atts['wrapper_html_attr'];
 
 		unset($this->atts['wrapper_html_attr']['class']);
 
-		return wu_array_to_html_attrs($attributes);
+		wu_print_html_attributes($attributes);
 	}
 
 	/**

@@ -4,7 +4,7 @@
  *
  * @since 2.0.0
  */
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 ?>
 <div class="wu-my-6">
 
@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<div class="wu-w-2/3">
 
-		<input <?php echo $field->html_attr ? $field->get_html_attributes() : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>  <?php echo $field->disabled ? 'disabled="disabled"' : ''; ?> name="<?php echo esc_attr($field->id); ?>" type="<?php echo esc_attr($field->type); ?>" id="<?php echo esc_attr($field->id); ?>" class="regular-text" value="<?php echo esc_attr(wu_get_setting($field->id)); ?>" placeholder="<?php echo esc_attr($field->placeholder ?: ''); ?>">
+		<input <?php $field->print_html_attributes(); ?> <?php echo $field->disabled ? 'disabled="disabled"' : ''; ?> name="<?php echo esc_attr($field->id); ?>" type="<?php echo esc_attr($field->type); ?>" id="<?php echo esc_attr($field->id); ?>" class="regular-text" value="<?php echo esc_attr(wu_get_setting($field->id)); ?>" placeholder="<?php echo esc_attr($field->placeholder ?: ''); ?>">
 
 		<?php if (isset($field->append) && ! empty($field->append)) : ?>
 

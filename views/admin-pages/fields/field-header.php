@@ -7,7 +7,7 @@
 defined( 'ABSPATH' ) || exit;
 
 ?>
-<li class="wu-bg-gray-100 wu-py-4 <?php echo esc_attr(trim($field->wrapper_classes)); ?>" <?php echo $field->get_wrapper_html_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+<li class="wu-bg-gray-100 wu-py-4 <?php echo esc_attr(trim($field->wrapper_classes)); ?>" <?php $field->print_wrapper_html_attributes(); ?>>
 
 	<div class="wu-block wu-w-full">
 
@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
 
 		<?php if ($field->tooltip) : ?>
 
-			<?php echo wu_tooltip($field->tooltip); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<?php wu_tooltip($field->tooltip); ?>
 
 		<?php endif; ?>
 

@@ -348,14 +348,14 @@ class Current_Site_Element extends Base_Element {
 	 *
 	 * @param array       $atts Parameters of the block/shortcode.
 	 * @param string|null $content The content inside the shortcode.
-	 * @return string
+	 * @return void
 	 */
-	public function output($atts, $content = null) {
+	public function output($atts, $content = null): void {
 
 		// Defensive check - setup() may have been called but site can still be null
 		if ( ! $this->site) {
 			_doing_it_wrong(__METHOD__, esc_html__('setup() or setup_preview() must be called before output().', 'multisite-ultimate'));
-			return '';
+			return;
 		}
 
 		$actions = [
@@ -397,7 +397,7 @@ class Current_Site_Element extends Base_Element {
 
 		$atts['my_sites_url'] = is_admin() ? admin_url('admin.php?page=sites') : $my_sites_url;
 
-		return wu_get_template_contents('dashboard-widgets/current-site', $atts);
+		wu_get_template('dashboard-widgets/current-site', $atts);
 	}
 
 	/**

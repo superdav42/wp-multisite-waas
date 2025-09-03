@@ -19,12 +19,12 @@ defined( 'ABSPATH' ) || exit;
 		id="<?php echo esc_attr($form_slug); ?>" 
 		action="<?php echo esc_attr($form->action); ?>"
 		method="<?php echo esc_attr($form->method); ?>"
-		<?php echo $form->get_html_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<?php $form->print_html_attributes(); ?>
 		>
 
 	<?php endif; ?>
 
-	<ul id="wp-ultimo-form-<?php echo esc_attr($form->id); ?>" class="wu-flex-grow <?php echo esc_attr(trim($form->classes)); ?>" <?php echo $form->get_html_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+	<ul id="wp-ultimo-form-<?php echo esc_attr($form->id); ?>" class="wu-flex-grow <?php echo esc_attr(trim($form->classes)); ?>" <?php $form->print_html_attributes(); ?>>
 
 		<?php echo $rendered_fields; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 

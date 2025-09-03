@@ -110,7 +110,7 @@ $plan_attrs = apply_filters('wu_pricing_table_plan', $plan_attrs, $plan);
 	foreach ($plan->get_pricing_table_lines() as $key => $line) :
 		?>
 
-		<li class="<?php echo esc_attr(str_replace('_', '-', $key)); ?>"><?php echo esc_html($line); ?></li>
+		<li class="<?php echo esc_attr(str_replace('_', '-', $key)); ?>"><?php echo wp_kses_post($line); ?></li>
 
 	<?php endforeach; ?>
 

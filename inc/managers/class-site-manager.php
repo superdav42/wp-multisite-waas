@@ -312,16 +312,9 @@ class Site_Manager extends Base_Manager {
 			}
 
 			wp_die(
-				new \WP_Error( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					'not-available',
-					// translators: %s: link to the login page
-					sprintf(__('This site is not available at the moment.<br><small>If you are the site admin, click <a href="%s">here</a> to login.</small>', 'multisite-ultimate'), wp_login_url()), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					[
-						'title' => esc_html__('Site not available', 'multisite-ultimate'),
-					]
-				),
-				'',
-				['code' => 200]
+				// translators: %s: link to the login page
+				sprintf(wp_kses_post(__('This site is not available at the moment.<br><small>If you are the site admin, click <a href="%s">here</a> to login.</small>', 'multisite-ultimate')), esc_attr(wp_login_url())),
+				esc_html__('Site not available', 'multisite-ultimate'),
 			);
 		}
 	}

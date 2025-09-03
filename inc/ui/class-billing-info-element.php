@@ -9,8 +9,6 @@
 
 namespace WP_Ultimo\UI;
 
-use WP_Ultimo\UI\Base_Element;
-
 // Exit if accessed directly
 defined('ABSPATH') || exit;
 
@@ -50,7 +48,7 @@ class Billing_Info_Element extends Base_Element {
 	 * The membership object.
 	 *
 	 * @since 2.2.0
-	 * @var \WP_Ultimo\Membership
+	 * @var \WP_Ultimo\Models\Membership
 	 */
 	protected $membership;
 
@@ -58,7 +56,7 @@ class Billing_Info_Element extends Base_Element {
 	 * The site object.
 	 *
 	 * @since 2.2.0
-	 * @var \WP_Ultimo\Site
+	 * @var \WP_Ultimo\Models\Site
 	 */
 	protected $site;
 
@@ -270,12 +268,12 @@ class Billing_Info_Element extends Base_Element {
 	 * @param string|null $content The content inside the shortcode.
 	 * @return string
 	 */
-	public function output($atts, $content = null) {
+	public function output($atts, $content = null): void {
 
 		// Defensive check - setup() may have been called but membership can still be null
 		if ( ! $this->membership) {
 			_doing_it_wrong(__METHOD__, esc_html__('setup() or setup_preview() must be called before output().', 'multisite-ultimate'));
-			return '';
+			return;
 		}
 
 		$atts['membership'] = $this->membership;
@@ -290,7 +288,7 @@ class Billing_Info_Element extends Base_Element {
 			]
 		);
 
-		return wu_get_template_contents('dashboard-widgets/billing-info', $atts);
+		wu_get_template('dashboard-widgets/billing-info', $atts);
 	}
 
 	/**

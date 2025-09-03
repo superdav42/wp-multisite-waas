@@ -233,7 +233,7 @@ function wu_print_signup_field($field_slug, $field, $results) {
 
     <p <?php echo $wrapper_attributes; ?> id="<?php echo $field_slug; ?>-field" <?php echo $wrapper_attributes; ?> style="<?php echo $display ? '' : 'display: none'; ?>" >
 
-      <label for="<?php echo $field_slug; ?>"><?php echo $field['name']; ?> <?php echo wu_tooltip($field['tooltip']); ?><br>
+      <label for="<?php echo $field_slug; ?>"><?php echo $field['name']; ?> <?php wu_tooltip($field['tooltip']); ?><br>
       <input <?php echo $attributes; ?> <?php echo isset($field['required']) && $field['required'] ? 'required' : ''; ?> type="<?php echo $field['type']; ?>" name="<?php echo $field_slug; ?>" id="<?php echo $field_slug; ?>" class="input" value="<?php echo $results[$field_slug] ?? ''; ?>" size="20"></label>
 
 
@@ -266,7 +266,7 @@ function wu_print_signup_field($field_slug, $field, $results) {
 				?>
 
       <span class="password-input-wrapper" style="display: block;">
-        <label for="<?php echo $field_slug; ?>"><?php echo $field['name']; ?> <?php echo wu_tooltip($field['tooltip']); ?><br>
+        <label for="<?php echo $field_slug; ?>"><?php echo $field['name']; ?> <?php wu_tooltip($field['tooltip']); ?><br>
         <input <?php echo $attributes; ?> <?php echo isset($field['required']) && $field['required'] ? 'required' : ''; ?> type="<?php echo $field['type']; ?>" name="<?php echo $field_slug; ?>" id="<?php echo $field_slug; ?>" class="input" value="<?php echo $results[$field_slug] ?? ''; ?>"  data-reveal="1" data-pw="<?php echo esc_attr( wp_generate_password( 16 ) ); ?>" class="input" size="20" autocomplete="off" aria-describedby="pass-strength-result" />
       </span>
 
@@ -288,7 +288,7 @@ function wu_print_signup_field($field_slug, $field, $results) {
 
 			<?php else : ?>
 
-      <label for="<?php echo $field_slug; ?>"><?php echo $field['name']; ?> <?php echo wu_tooltip($field['tooltip']); ?><br>
+      <label for="<?php echo $field_slug; ?>"><?php echo $field['name']; ?> <?php wu_tooltip($field['tooltip']); ?><br>
       <input <?php echo $attributes; ?> <?php echo isset($field['required']) && $field['required'] ? 'required' : ''; ?> type="<?php echo $field['type']; ?>" name="<?php echo $field_slug; ?>" id="<?php echo $field_slug; ?>" class="input" value="<?php echo $results[$field_slug] ?? ''; ?>" size="20"></label>
 
     <?php endif; ?>
@@ -347,7 +347,7 @@ function wu_print_signup_field($field_slug, $field, $results) {
 
     <p <?php echo $wrapper_attributes; ?> id="<?php echo $field_slug; ?>-field" style="<?php echo $display ? '' : 'display: none'; ?>">
 
-      <label for="<?php echo $field_slug; ?>"><?php echo $field['name']; ?> <?php echo wu_tooltip($field['tooltip']); ?><br>
+      <label for="<?php echo $field_slug; ?>"><?php echo $field['name']; ?> <?php wu_tooltip($field['tooltip']); ?><br>
 
       <select <?php echo $attributes; ?> <?php echo isset($field['required']) && $field['required'] ? 'required' : ''; ?> name="<?php echo $field_slug; ?>" id="<?php echo $field_slug; ?>" class="input" value="<?php echo $results[$field_slug] ?? ''; ?>">
 

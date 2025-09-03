@@ -497,7 +497,7 @@ class Base_List_Table extends \WP_List_Table {
 		 * Any items at all?
 		 */
 		if ( ! $this->has_items() && 'page' === $this->context) {
-			echo wu_render_empty_state( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			wu_render_empty_state(
 				[
 					// translators: %s name of items in list.
 					'message'      => sprintf(__("You don't have any %s yet.", 'multisite-ultimate'), $this->labels['plural']),
@@ -835,7 +835,7 @@ class Base_List_Table extends \WP_List_Table {
 
 		$text = $formatted_value . sprintf('<br><small>%s</small>', sprintf($placeholder, human_time_diff($time)));
 
-		return sprintf('<span %s>%s</span>', wu_tooltip_text(date_i18n('Y-m-d H:i:s', $time)), $text);
+		return sprintf('<span role="tooltip" aria-label="%s">%s</span>', date_i18n('Y-m-d H:i:s', $time), $text);
 	}
 
 	/**

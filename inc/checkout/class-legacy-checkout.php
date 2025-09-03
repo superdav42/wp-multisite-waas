@@ -336,7 +336,7 @@ class Legacy_Checkout {
 
 		if (isset($location['country']) && $location['country'] && $allowed_countries) {
 			if ( ! in_array($location['country'], $allowed_countries, true)) {
-				wp_die(apply_filters('wu_geolocation_error_message', esc_html__('Sorry. Our service is not allowed in your country.', 'multisite-ultimate'))); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				wp_die(esc_html__('Sorry. Our service is not allowed in your country.', 'multisite-ultimate'));
 			}
 		}
 	}
