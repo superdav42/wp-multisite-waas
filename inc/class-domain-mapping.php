@@ -242,6 +242,15 @@ class Domain_Mapping {
 		return [$nowww, $www];
 	}
 
+	/**
+	 * Check if this is a special loopback request.
+	 *
+	 * @param null|false|\WP_Site $current_site Current Site.
+	 * @param string              $domain Current domain.
+	 * @param string              $path   Current Path.
+	 *
+	 * @return void
+	 */
 	public function verify_dns_mapping($current_site, $domain, $path) {
 
 		// Nonce functions are unavailable and the wp_hash is basically the same.
@@ -274,6 +283,7 @@ class Domain_Mapping {
 	 */
 	public function check_domain_mapping($site, $domain) {
 
+		$this->verify_dns_mapping($site, $domain, '/');
 		// Have we already matched? (Allows other plugins to match first)
 		if ( ! empty($site)) {
 			return $site;
