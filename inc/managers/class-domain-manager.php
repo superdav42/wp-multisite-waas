@@ -1027,7 +1027,7 @@ class Domain_Manager extends Base_Manager {
 				[
 					'timeout'     => 10,
 					'redirection' => 0,
-					'sslverify'   => $protocol_config['sslverify'],
+					'sslverify'   => $protocol_config['sslverify'] ?? false,
 					'body'        => ['async_check_dns_nonce' => wp_hash($domain_url)],
 				]
 			);
