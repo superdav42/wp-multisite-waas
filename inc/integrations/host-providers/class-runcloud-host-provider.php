@@ -128,7 +128,7 @@ class Runcloud_Host_Provider extends Base_Host_Provider {
 			$this->get_runcloud_base_url('domains'),
 			[
 				'name'        => $domain,
-				'www'         => true,
+				'www'         => \WP_Ultimo\Managers\Domain_Manager::get_instance()->should_create_www_subdomain($domain),
 				'redirection' => 'non-www',
 			],
 			'POST'

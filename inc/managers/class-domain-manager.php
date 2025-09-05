@@ -395,6 +395,70 @@ class Domain_Manager extends Base_Manager {
 				],
 			]
 		);
+
+		wu_register_settings_field(
+			'domain-mapping',
+			'auto_create_www_subdomain',
+			[
+				'title'   => __('Create www Subdomain Automatically?', 'multisite-ultimate'),
+				'desc'    => __('Control when www subdomains should be automatically created for mapped domains.', 'multisite-ultimate'),
+				'tooltip' => __('This setting applies to all hosting integrations and determines when a www version of the domain should be automatically created.', 'multisite-ultimate'),
+				'type'    => 'select',
+				'default' => 'always',
+				'options' => [
+					'always'    => __('Always - Create www subdomain for all domains', 'multisite-ultimate'),
+					'main_only' => __('Only for main domains (e.g., example.com but not subdomain.example.com)', 'multisite-ultimate'),
+					'never'     => __('Never - Do not automatically create www subdomains', 'multisite-ultimate'),
+				],
+				'require' => [
+					'enable_domain_mapping' => true,
+				],
+			]
+		);
+	}
+
+	/**
+	 * Check if a www subdomain should be created for the given domain.
+	 *
+	 * @since 2.0.0
+	 * @param string $domain The domain to check.
+	 * @return bool True if www subdomain should be created, false otherwise.
+	 */
+	public function should_create_www_subdomain($domain) {
+
+		$setting = wu_get_setting('auto_create_www_subdomain', 'always');
+
+		switch ($setting) {
+			case 'never':
+				return false;
+
+			case 'main_only':
+				// Check if this is a main domain (no subdomain parts)
+				// A main domain has only 2 parts when split by dots (e.g., example.com)
+				// or 3 parts if it's a known TLD structure (e.g., example.co.uk)
+				$parts = explode('.', $domain);
+
+				// Simple heuristic: if domain has only 2 parts, it's definitely a main domain
+				if (count($parts) <= 2) {
+					return true; // e.g., example.com
+				}
+
+				// For 3+ parts, check if it's a main domain with multi-part TLD
+				$known_multi_part_tlds = ['.co.uk', '.com.au', '.co.nz', '.com.br', '.co.in'];
+				$last_two_parts        = '.' . $parts[ count($parts) - 2 ] . '.' . $parts[ count($parts) - 1 ];
+
+				// If it has exactly 3 parts and matches a known multi-part TLD, it's a main domain
+				if (count($parts) === 3 && in_array($last_two_parts, $known_multi_part_tlds, true)) {
+					return true; // e.g., example.co.uk
+				}
+
+				// Otherwise, it's a subdomain
+				return false;
+
+			case 'always':
+			default:
+				return true;
+		}
 	}
 
 	/**
