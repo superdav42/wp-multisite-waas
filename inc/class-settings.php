@@ -724,10 +724,15 @@ class Settings {
 			'login-and-registration',
 			'enable_email_verification',
 			[
-				'title'   => __('Enable email verification', 'multisite-ultimate'),
-				'desc'    => __('Enabling this option will require the customer to verify their email address when subscribing to a free plan or a plan with a trial period. Sites will not be created until the customer email verification status is changed to verified.', 'multisite-ultimate'),
-				'type'    => 'toggle',
-				'default' => 1,
+				'title'   => __('Email verification', 'multisite-ultimate'),
+				'desc'    => __('Controls when email verification is required during registration. Sites will not be created until the customer email verification status is changed to verified.', 'multisite-ultimate'),
+				'type'    => 'select',
+				'options' => [
+					'never'     => __('Never require email verification', 'multisite-ultimate'),
+					'free_only' => __('Only for free plans', 'multisite-ultimate'),
+					'always'    => __('Always require email verification', 'multisite-ultimate'),
+				],
+				'default' => 'free_only',
 			]
 		);
 
