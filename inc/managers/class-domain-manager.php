@@ -426,6 +426,14 @@ class Domain_Manager extends Base_Manager {
 	 */
 	public function should_create_www_subdomain($domain) {
 
+		// Normalize incoming domain
+		$domain = trim(strtolower($domain));
+
+		// Guard against double-prefixing - return false if already starts with www.
+		if (strpos($domain, 'www.') === 0) {
+			return false;
+		}
+
 		$setting = wu_get_setting('auto_create_www_subdomain', 'always');
 
 		switch ($setting) {
@@ -444,7 +452,7 @@ class Domain_Manager extends Base_Manager {
 				}
 
 				// For 3+ parts, check if it's a main domain with multi-part TLD
-				$known_multi_part_tlds = ['.co.uk', '.com.au', '.co.nz', '.com.br', '.co.in'];
+				$known_multi_part_tlds = apply_filters('wu_multi_part_tlds', ['.co.uk', '.com.au', '.co.nz', '.com.br', '.co.in']);
 				$last_two_parts        = '.' . $parts[ count($parts) - 2 ] . '.' . $parts[ count($parts) - 1 ];
 
 				// If it has exactly 3 parts and matches a known multi-part TLD, it's a main domain
