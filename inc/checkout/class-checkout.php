@@ -2259,9 +2259,23 @@ class Checkout {
 	 */
 	public function get_customer_email_verification_status() {
 
-		$should_confirm_email = wu_get_setting('enable_email_verification', true);
+		$email_verification_setting = wu_get_setting('enable_email_verification', 'free_only');
 
-		return $this->order->should_collect_payment() === false && $should_confirm_email ? 'pending' : 'none';
+		switch ($email_verification_setting) {
+			case 'never':
+				return 'none';
+
+			case 'always':
+				return 'pending';
+
+			case 'free_only':
+				return $this->order->should_collect_payment() === false ? 'pending' : 'none';
+
+			default:
+				// Legacy behavior - handle boolean values
+				$should_confirm_email = (bool) $email_verification_setting;
+				return $this->order->should_collect_payment() === false && $should_confirm_email ? 'pending' : 'none';
+		}
 	}
 
 	/**
