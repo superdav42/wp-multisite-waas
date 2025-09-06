@@ -26,7 +26,7 @@ defined('ABSPATH') || exit;
 
 		<?php if (isset($field->append) && ! empty($field->append)) : ?>
 
-			<?php echo $field->append; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<?php echo wp_kses($field->append, wu_kses_allowed_html()); ?>
 
 		<?php endif; ?>
 
@@ -34,7 +34,7 @@ defined('ABSPATH') || exit;
 
 		<p class="description" id="<?php echo esc_attr($field->id); ?>-desc">
 
-			<?php echo $field->desc; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<?php echo wp_kses($field->desc, wu_kses_allowed_html()); ?>
 
 		</p>
 

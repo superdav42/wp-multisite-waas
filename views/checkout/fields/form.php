@@ -4,7 +4,8 @@
  *
  * @since 2.0.0
  */
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
+/** @var $field \WP_Ultimo\UI\Form */
 
 ?>
 <?php if ($form->wrap_in_form_tag) : ?>
@@ -23,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php endif; ?>
 
-	<?php echo $rendered_fields; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	<?php echo wp_kses($rendered_fields, wu_kses_allowed_html()); ?>
 
 <?php if ($form->wrap_in_form_tag) : ?>
 

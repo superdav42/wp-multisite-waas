@@ -15,6 +15,53 @@ defined('ABSPATH') || exit;
 /**
  * Describes a field and contains helper functions for sanitization and validation.
  *
+ * @property string id
+ * @property string type
+ * @property string icon
+ * @property string action
+ * @property string|false form
+ * @property string|false title
+ * @property string|false img
+ * @property string|false desc
+ * @property string|false content
+ * @property string|false display_value
+ * @property string|false default_value
+ * @property string|false tooltip
+ * @property string|false args
+ * @property bool sortable
+ * @property string|false placeholder
+ * @property string|false options
+ * @property string|false options_template
+ * @property bool require
+ * @property string|false button
+ * @property string|false width
+ * @property string|false rules
+ * @property int|false min
+ * @property int|false max
+ * @property bool allow_html
+ * @property string|false append
+ * @property string|false order
+ * @property string|false dummy
+ * @property string|false disabled
+ * @property string|false capability
+ * @property string|false edit
+ * @property string|false copy
+ * @property string|false validation
+ * @property string|false meter
+ * @property string|false href
+ * @property string|false raw
+ * @property string|false money
+ * @property string|false stacked If the field is inside a restricted container
+ * @property int columns
+ * @property string classes
+ * @property string wrapper_classes
+ * @property array html_attr
+ * @property array wrapper_html_attr
+ * @property array sub_fields
+ * @property string prefix
+ * @property string suffix
+ * @property array prefix_html_attr
+ * @property array suffix_html_attr
  * @since 2.0.0
  */
 class Field implements \JsonSerializable {

@@ -40,7 +40,7 @@ defined( 'ABSPATH' ) || exit;
 		?>
 
 		<div class="wu-block wu-w-full wu-mt-4">
-			<?php echo $field->content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<?php echo wp_kses($field->content, wu_kses_allowed_html()); ?>
 		</div>
 
 		<?php

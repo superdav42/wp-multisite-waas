@@ -4,7 +4,8 @@
  *
  * @since 2.0.0
  */
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
+/** @var $field \WP_Ultimo\UI\Field */
 
 ?>
 <div class="<?php echo esc_attr(trim($field->wrapper_classes)); ?>" <?php $field->print_wrapper_html_attributes(); ?>>
@@ -13,11 +14,11 @@ defined( 'ABSPATH' ) || exit;
 
 		<input id="field-<?php echo esc_attr($field->id); ?>" type="checkbox" name="<?php echo esc_attr($field->id); ?>" value="1" <?php $field->print_html_attributes(); ?> <?php checked($field->value); ?>>
 
-		<?php echo $field->title; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<?php echo wp_kses($field->title, wu_kses_allowed_html()); ?>
 
-		<?php echo wu_tooltip($field->tooltip); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<?php wu_tooltip($field->tooltip); ?>
 
-		<?php echo $field->desc; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<?php echo wp_kses($field->desc, wu_kses_allowed_html()); ?>
 	</label>
 
 	<?php

@@ -4,7 +4,8 @@
  *
  * @since 2.0.0
  */
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
+/** @var $field \WP_Ultimo\UI\Field */
 
 ?>
 <li class="<?php echo esc_attr(trim($field->wrapper_classes)); ?>" data-wu-app="<?php echo esc_attr($field->id); ?>" data-state='{"edit":false}'>
@@ -55,7 +56,7 @@ defined( 'ABSPATH' ) || exit;
 
 		<span class="wu-my-1 wu-inline-block">
 
-		<?php echo $field->display_value; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<?php echo wp_kses($field->display_value, wu_kses_allowed_html()); ?>
 
 		</span>
 
